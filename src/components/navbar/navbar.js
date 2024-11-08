@@ -86,7 +86,7 @@ function Navbar() {
                         flexGrow: 1 // Add this line
                       }}
                     >
-                      Vastrika - Boiler
+                      ABROAED
                     </Typography>
                   </Grid>
                 </Grid>

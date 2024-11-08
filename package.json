@@ -1,5 +1,5 @@
 {
-  "name": "boiler-client",
+  "name": "abroaed-client-web",
   "version": "1.0.0",
   "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
   "scripts": {
