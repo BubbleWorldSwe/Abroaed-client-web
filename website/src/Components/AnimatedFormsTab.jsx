@@ -1,190 +1,178 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { cn } from "../lib/utils";
+'use client';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { cn } from '../lib/utils';
 
-function Tabs({
-  tabs: propTabs,
-  containerClassName,
-  activeTabClassName,
-  tabClassName,
-  contentClassName,
-}) {
-  const [active, setActive] = useState(propTabs[0]);
-  const [tabs, setTabs] = useState(propTabs);
+function Tabs() {
+  const tabOptions = [
+    { title: 'Home Counselling', value: 'home', content: <HomeForm /> },
+    { title: 'Virtual Counselling', value: 'virtual', content: <VirtualForm /> },
+    { title: 'Visit Us', value: 'visit', content: <VisitUsForm /> }
+  ];
 
-  const moveSelectedTabToTop = (idx) => {
-    const newTabs = [...propTabs];
-    const selectedTab = newTabs.splice(idx, 1);
-    newTabs.unshift(selectedTab[0]);
-    setTabs(newTabs);
-    setActive(newTabs[0]);
-  };
-
-  const [hovering, setHovering] = useState(false);
+  const [activeTab, setActiveTab] = useState(tabOptions[0].value);
 
   return (
-    <>
-      <div className="flex flex-col gap-4 items-center w-full min-h-[600px] rounded-lg p-8">
-        <div
-          className={cn(
-            "flex flex-row items-center justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full ",
-            containerClassName
-          )}
-        >
-          {propTabs.map((tab, idx) => (
-            <button
-              key={tab.title}
-              onClick={() => moveSelectedTabToTop(idx)}
-              onMouseEnter={() => setHovering(true)}
-              onMouseLeave={() => setHovering(false)}
-              className={cn(
-                "relative px-6 py-2 rounded-full text-white font-semibold transition-all duration-300",
-                tabClassName
-              )}
-              style={{
-                transformStyle: "preserve-3d",
-              }}
-            >
-              {active.value === tab.value && (
-                <motion.div
-                  layoutId="clickedbutton"
-                  transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                  className={cn(
-                    "absolute inset-0 bg-yellow-200 dark:bg-yellow-800 rounded-full",
-                    activeTabClassName
-                  )}
-                />
-              )}
-              <span className="relative block text-black">{tab.title}</span>
-            </button>
-          ))}
-        </div>
-        <FadeInDiv
-          tabs={tabs}
-          active={active}
-          key={active.value}
-          hovering={hovering}
-          className={cn("mt-8 w-full", contentClassName)}
-        />
+    <div className="flex flex-col items-center w-full rounded-lg p-8">
+      {/* Tabs Row */}
+      <div className="flex justify-center space-x-4 mb-8">
+        {tabOptions.map((tab) => (
+          <button
+            key={tab.value}
+            onClick={() => setActiveTab(tab.value)}
+            className={cn(
+              'px-6 py-2 rounded-full font-semibold transition-all duration-300',
+              activeTab === tab.value
+                ? 'bg-yellow-200 dark:bg-yellow-800 text-white'
+                : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300'
+            )}
+          >
+            {tab.title}
+          </button>
+        ))}
       </div>
-    </>
+
+      {/* Active Form */}
+      <motion.div
+        key={activeTab}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="w-full max-w-screen-md"
+      >
+        {tabOptions.find((tab) => tab.value === activeTab)?.content}
+      </motion.div>
+    </div>
   );
 }
 
 export default Tabs;
 
-const FadeInDiv = ({ className, tabs, hovering }) => {
-  const isActive = (tab) => tab.value === tabs[0].value;
+// Home Counselling Form Component
+// Shared Tailwind styles for input fields
+const inputStyles =
+  'shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500';
 
-  return (
-    <div className="relative w-full h-full">
-      {tabs.map((tab, idx) => (
-        <motion.div
-          key={tab.value}
-          layoutId={tab.value}
-          style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -30 : 0,
-            zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-          }}
-          animate={{
-            y: isActive(tab) ? [0, 40, 0] : 0,
-          }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
-        >
-          {tab.content}
-        </motion.div>
-      ))}
-    </div>
-  );
-};
-
-// Form Components
-// HomeForm Component
+// Home Counselling Form
 export const HomeForm = () => (
-  <form className="space-y-8 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-      Home Form
-    </h2>
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-      Name
-      <input
-        type="text"
-        className="block w-full px-3 py-2 mt-1 rounded-lg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-      />
-    </label>
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-      Address
-      <input
-        type="text"
-        className="block w-full px-3 py-2 mt-1 rounded-lg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-      />
-    </label>
+  <form className="space-y-8 p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+    <FormFields />
+    <TermsAndConditions />
     <button
       type="submit"
-      className="py-3 px-5 mt-4 text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      Submit
+      Book Now
     </button>
   </form>
 );
 
-// VirtualForm Component
+// Virtual Counselling Form
 export const VirtualForm = () => (
-  <form className="space-y-8 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-      Virtual Meeting Form
-    </h2>
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-      Email
-      <input
-        type="email"
-        className="block w-full px-3 py-2 mt-1 rounded-lg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-      />
-    </label>
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-      Date for Virtual Meeting
-      <input
-        type="date"
-        className="block w-full px-3 py-2 mt-1 rounded-lg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-      />
-    </label>
+  <form className="space-y-8 p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+    <FormFields />
+    <CalendarField />
+    <TermsAndConditions />
     <button
       type="submit"
-      className="py-3 px-5 mt-4 text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      Submit
+      Book Now
     </button>
   </form>
 );
 
-// VisitUsForm Component
+// Visit Us Form
 export const VisitUsForm = () => (
-  <form className="space-y-8 bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-      Visit Us Form
-    </h2>
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-      Contact Number
-      <input
-        type="tel"
-        className="block w-full px-3 py-2 mt-1 rounded-lg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-      />
-    </label>
-    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-      Preferred Visit Date
-      <input
-        type="date"
-        className="block w-full px-3 py-2 mt-1 rounded-lg shadow-sm bg-gray-50 border border-gray-300 text-gray-900 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-      />
-    </label>
+  <form className="space-y-8 p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
+    <FormFields />
+    <CalendarField />
+    <TermsAndConditions />
     <button
       type="submit"
-      className="py-3 px-5 mt-4 text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     >
-      Submit
+      Book Now
     </button>
   </form>
+);
+
+// Shared form fields component
+const FormFields = () => (
+  <>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First Name</label>
+      <input type="text" className={inputStyles} placeholder="First Name" required />
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last Name</label>
+      <input type="text" className={inputStyles} placeholder="Last Name" required />
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email ID</label>
+      <input type="email" className={inputStyles} placeholder="Email ID" required />
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact Number</label>
+      <input type="tel" className={inputStyles} placeholder="Contact Number" required />
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Highest Qualification</label>
+      <input type="text" className={inputStyles} placeholder="Highest Qualification" required />
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Preferred Study Destination
+      </label>
+      <select multiple className={`${inputStyles}`} required>
+        <option>USA</option>
+        <option>Canada</option>
+        <option>Australia</option>
+        <option>UK</option>
+        <option>Germany</option>
+        <option>France</option>
+        <option>Others</option>
+      </select>
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        When Do You Plan to Study?
+      </label>
+      <input type="month" className={inputStyles} required />
+    </div>
+    <div>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Preferred Study Level</label>
+      <select className={inputStyles} required>
+        <option>UG</option>
+        <option>PG</option>
+        <option>PHD</option>
+        <option>Others</option>
+      </select>
+    </div>
+  </>
+);
+
+// Calendar component for date and time slot selection (used in Virtual and Visit Us forms)
+const CalendarField = () => (
+  <div>
+    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+      Preferred Date & Time Slot
+    </label>
+    <input type="datetime-local" className={inputStyles} required />
+  </div>
+);
+
+// Terms and Conditions component
+const TermsAndConditions = () => (
+  <div className="flex items-start mt-4">
+    <input
+      type="checkbox"
+      className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+      required
+    />
+    <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
+      I agree to Abroaed Terms and privacy policy. Please contact me by phone, email, or SMS to assist with my enquiry.
+      I would like to receive updates and offers from Abroaed.
+    </label>
+  </div>
 );
