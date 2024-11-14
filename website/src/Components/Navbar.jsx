@@ -81,7 +81,7 @@ function Header() {
           <div className="flex-grow basis-[80%] flex items-center justify-center">
             <ul className="flex flex-row mt-0 space-x-8 text-sm font-medium">
               <li>
-                <a href="/" class="block text-white rounded text-primary-700 dark:text-primary-500">
+                <a href="/" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
                   Home
                 </a>
               </li>
@@ -89,7 +89,7 @@ function Header() {
                 <button
                   id="mega-menu-button"
                   onClick={toggleDropdown}
-                  class="flex  text-white rounded text-primary-700 dark:text-primary-500"
+                  class="flex  dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
                   <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -102,27 +102,27 @@ function Header() {
                 </button>
               </li>
               <li>
-                <a href="/blog" class="block text-white rounded text-primary-700 dark:text-primary-500">
+                <a href="/blog" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
                   Blog
                 </a>
               </li>
               <li>
-                <a href="/destinations" class="block text-white rounded text-primary-700 dark:text-primary-500">
+                <a href="/destinations" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
                   Destinations
                 </a>
               </li>
               <li>
-                <a href="/testprep" class="block text-white rounded text-primary-700 dark:text-primary-500">
+                <a href="/testprep" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
                   Test Prep
                 </a>
               </li>
               <li>
-                <a href="/finance" class="block text-white rounded text-primary-700 dark:text-primary-500">
+                <a href="/finance" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
                   Finance
                 </a>
               </li>
               <li>
-                <a href="/accommodation" class="block text-white rounded text-primary-700 dark:text-primary-500">
+                <a href="/accommodation" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
                   Accommodation
                 </a>
               </li>
@@ -144,7 +144,7 @@ function Header() {
           id="mega-menu"
           className="grid relative z-10 w-full bg-white border border-gray-100 shadow-md dark:border-gray-700 lg:rounded-lg lg:w-auto lg:grid-cols-3 dark:bg-gray-700"
         >
-          <div class="p-2 text-gray-900 bg-white lg:rounded-lg dark:text-white lg:col-span-2 dark:bg-gray-800">
+          <div class="p-2 text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
             <ul>
               <li>
                 <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
