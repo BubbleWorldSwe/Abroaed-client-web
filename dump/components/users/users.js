@@ -1,8 +1,8 @@
 import { Button, Grid, IconButton, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../contexts/userContext';
+import { UserContext } from '../../../src/contexts/userContext';
 import { toast } from 'react-toastify';
-import * as requestManager from '../../utils/apiUtils';
+import * as requestManager from '../../../src/utils/apiUtils';
 import CommonModal from '../commonModal/commonModal';
 import PaperWrapper from '../paperWrapper/paperWrapper';
 import { DataGrid } from '@mui/x-data-grid';
