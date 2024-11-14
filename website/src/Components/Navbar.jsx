@@ -357,6 +357,22 @@ function Header() {
                   Test Prep
                 </a>
               </li>
+              <li>
+                <a
+                  href="/finance"
+                  class="hidden text-gray-900 dark:text-white hover:text-primary-600 md:inline dark:hover:text-primary-500"
+                >
+                  Finance
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/testprep"
+                  class="hidden text-gray-900 dark:text-white hover:text-primary-600 md:inline dark:hover:text-primary-500"
+                >
+                  Accomodation
+                </a>
+              </li>
             </ul>
           </div>
         </div>

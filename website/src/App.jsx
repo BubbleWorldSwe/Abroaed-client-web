@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import BlogPage from './Components/BlogPage';
 import LayoutPage from './pages/destinations/layout';
 import TestPrepLayoutPage from './pages/TestPrep/Layout';
+import FinanceLayout from './pages/Finance/FinanceLayout';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/destinations" element={<LayoutPage />} />
         <Route path="/testprep" element={<TestPrepLayoutPage />} />
+        <Route path="/finance" element={<FinanceLayout />} />
       </Routes>
     </BrowserRouter>
   );
