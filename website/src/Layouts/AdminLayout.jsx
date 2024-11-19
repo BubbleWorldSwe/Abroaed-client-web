@@ -12,7 +12,7 @@ const AdminLayout = () => {
 
         {/* Main Content */}
         <main className="bg-gray-200 dark:bg-gray-900 h-full w-full flex flex-col">
-          <div className="flex-grow  overflow-scroll">
+          <div className="flex-grow  overflow-hidden">
             {/* Dynamic content based on the active route */}
             <Outlet />
           </div>
