@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FinanceForm() {
+function AccomodationLeadForm() {
   return (
     <div>
       <section className="bg-yellow-200 relative isolate overflow-hidden">
@@ -84,4 +84,4 @@ function FinanceForm() {
   );
 }
 
-export default FinanceForm;
+export default AccomodationLeadForm;

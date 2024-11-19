@@ -1,11 +1,10 @@
 import React from 'react';
-import Header from '../../Components/Navbar';
 
-import FAQ from '../../Components/FAQ';
 import TestPrepContent from './TestPrepContent';
-import { HomeForm } from '../../Components/AnimatedFormsTab';
+import Header from '../../components/Navbar';
+import { HomeForm } from '../../components/AnimatedFormsTab';
 
-function TestPrepLayoutPage() {
+function TestPrepLayout() {
   return (
     <div>
       <Header />
@@ -16,4 +15,4 @@ function TestPrepLayoutPage() {
   );
 }
 
-export default TestPrepLayoutPage;
+export default TestPrepLayout;
