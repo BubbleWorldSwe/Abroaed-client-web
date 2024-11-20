@@ -3,14 +3,15 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from '../components/Home';
 import BlogPage from '../components/BlogPage';
 import Dashboard from '../pages/admin/Dashboard';
-import Payments from '../pages/admin/Payments'; // Import Payment component
+import Payments from '../pages/admin/Teams'; // Import Payment component
 import BlogPosts from '../pages/admin/BlogPosts'; // Import Blog Posts component
 import PrivateRoute from './privateRoute';
 import AccomodationLayout from '../pages/accomodation/AccomodationLayout';
-import AdminLayout from '../layouts/AdminLayout'; // Import the Admin Layout
 import TestPrepLayout from '../pages/TestPrep/Layout';
 import FinanceLayout from '../Layouts/FinanceLayout';
 import LayoutPageDestination from '../Layouts/DestinationLayout';
+import AdminLayout from '../Layouts/AdminLayout';
+import Teams from '../pages/admin/Teams';
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -30,7 +31,7 @@ const AppRoutes = () => {
       requiredRole: 'admin',
       children: [
         { path: 'dashboard', element: <Dashboard /> },
-        { path: 'payments', element: <Payments /> },
+        { path: 'teams', element: <Teams /> },
         { path: 'blogposts', element: <BlogPosts /> }
       ]
     }
