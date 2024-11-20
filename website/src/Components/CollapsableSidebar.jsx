@@ -107,16 +107,12 @@ function CollapsableSidebar() {
               </Sidebar.Item>
 
               <Sidebar.Item
-                onClick={() => navigate('/admin/manageleads')}
+                onClick={() => navigate('/admin/manageLeads')}
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${
-                  isActive('/bookings') ||
-                  isActive('/editbooking') ||
-                  /^\/editbooking\/[^\/]+/.test(window.location.pathname)
-                    ? 'bg-primary-500'
-                    : ''
-                } ${isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'}`}
+                } hover:bg-primary-700 ${isActive('/admin/manageLeads') ? 'bg-primary-500' : ''} ${
+                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
+                }`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
