@@ -13,6 +13,8 @@ import AdminLayout from '../Layouts/AdminLayout';
 import Teams from '../pages/admin/Teams';
 import Onboarding from '../pages/admin/Onboarding';
 import NurtureLeads from '../pages/admin/NurtureLeads';
+import StudentsTable from '../pages/admin/StudentsTable';
+import ManageLeadsTable from '../pages/admin/ManageLeadsTable';
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -34,7 +36,9 @@ const AppRoutes = () => {
         { path: 'dashboard', element: <Dashboard /> },
         { path: 'teams', element: <Teams /> },
         { path: 'onboarding', element: <Onboarding /> },
-        { path: 'nurtureLeads', element: <NurtureLeads /> }
+        { path: 'nurtureLeads', element: <NurtureLeads /> },
+        { path: 'students', element: <StudentsTable /> },
+        { path: 'manageLeads', element: <ManageLeadsTable /> }
       ]
     }
   ];
