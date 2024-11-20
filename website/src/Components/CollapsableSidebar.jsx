@@ -131,7 +131,7 @@ function CollapsableSidebar() {
               </Sidebar.Item>
 
               <Sidebar.Item
-                onClick={() => navigate('/admin/nutureleads')}
+                onClick={() => navigate('/admin/nurtureLeads')}
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? 'justify-start' : 'justify-center'
                 } hover:bg-primary-700 ${isActive('/invoices') ? 'bg-primary-500' : ''} ${
