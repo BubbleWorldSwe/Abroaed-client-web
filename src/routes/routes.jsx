@@ -1,46 +1,53 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate } from "react-router-dom";
 
-import BlogPage from '../components/BlogPage';
-import Dashboard from '../pages/admin/Dashboard';
+// import BlogPage from '../components/BlogPage';
+import Dashboard from "../pages/admin/Dashboard";
 
-import PrivateRoute from './privateRoute';
-import AccomodationLayout from '../pages/accomodation/AccomodationLayout';
-import TestPrepLayout from '../pages/TestPrep/Layout';
-import FinanceLayout from '../Layouts/FinanceLayout';
-import LayoutPageDestination from '../Layouts/DestinationLayout';
-import AdminLayout from '../Layouts/AdminLayout';
-import Teams from '../pages/admin/Teams';
-import Onboarding from '../pages/admin/Onboarding';
-import NurtureLeads from '../pages/admin/NurtureLeads';
-import StudentsTable from '../pages/admin/StudentsTable';
-import ManageLeadsTable from '../pages/admin/ManageLeadsTable';
-import HomeLayout from '../components/Home';
+import PrivateRoute from "./privateRoute";
+import AccomodationLayout from "../pages/accomodation/AccomodationLayout";
+import TestPrepLayout from "../pages/TestPrep/Layout";
+import FinanceLayout from "../Layouts/FinanceLayout";
+import LayoutPageDestination from "../Layouts/DestinationLayout";
+import AdminLayout from "../Layouts/AdminLayout";
+import Teams from "../pages/admin/Teams";
+import Onboarding from "../pages/admin/Onboarding";
+import NurtureLeads from "../pages/admin/NurtureLeads";
+import StudentsTable from "../pages/admin/StudentsTable";
+import ManageLeadsTable from "../pages/admin/ManageLeadsTable";
+import HomeLayout from "../components/Home";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
   const allRoutes = [
-    { path: '/', element: <HomeLayout />, isPrivate: false },
-    { path: '/blog', element: <BlogPage />, isPrivate: false },
-    { path: '/destinations', element: <LayoutPageDestination />, isPrivate: false },
-    { path: '/testprep', element: <TestPrepLayout />, isPrivate: false },
-    { path: '/finance', element: <FinanceLayout />, isPrivate: false },
-    { path: '/accomodation', element: <AccomodationLayout />, isPrivate: false },
+    { path: "/", element: <HomeLayout />, isPrivate: false },
+    {
+      path: "/destinations",
+      element: <LayoutPageDestination />,
+      isPrivate: false,
+    },
+    { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
+    { path: "/finance", element: <FinanceLayout />, isPrivate: false },
+    {
+      path: "/accomodation",
+      element: <AccomodationLayout />,
+      isPrivate: false,
+    },
 
     // Admin Dashboard Routes (Private)
     {
-      path: '/admin',
+      path: "/admin",
       element: <AdminLayout />,
       isPrivate: true,
-      requiredRole: 'admin',
+      requiredRole: "admin",
       children: [
-        { path: 'dashboard', element: <Dashboard /> },
-        { path: 'teams', element: <Teams /> },
-        { path: 'onboarding', element: <Onboarding /> },
-        { path: 'nurtureLeads', element: <NurtureLeads /> },
-        { path: 'students', element: <StudentsTable /> },
-        { path: 'manageLeads', element: <ManageLeadsTable /> }
-      ]
-    }
+        { path: "dashboard", element: <Dashboard /> },
+        { path: "teams", element: <Teams /> },
+        { path: "onboarding", element: <Onboarding /> },
+        { path: "nurtureLeads", element: <NurtureLeads /> },
+        { path: "students", element: <StudentsTable /> },
+        { path: "manageLeads", element: <ManageLeadsTable /> },
+      ],
+    },
   ];
 
   return (
@@ -59,7 +66,10 @@ const AppRoutes = () => {
           }
         >
           {/* Render child routes */}
-          {children && children.map((child, idx) => <Route key={idx} path={child.path} element={child.element} />)}
+          {children &&
+            children.map((child, idx) => (
+              <Route key={idx} path={child.path} element={child.element} />
+            ))}
         </Route>
       ))}
 
