@@ -1,5 +1,0 @@
-1. PartyName and Fabric , color ,units takes a data from backend and autocomplete dropdown
-2. replace shades with color
-3. https://d3euaht4t57wqt.cloudfront.net/images/favicon.ico
-4.https://d3euaht4t57wqt.cloudfront.net/images/vastrika.jpg,
-5.https://d3euaht4t57wqt.cloudfront.net/images/vastrikaLogo.jpg
