@@ -1,8 +1,8 @@
 import React from 'react';
-import FinanceForm from './FinanceForm';
-import Header from '../../Components/Navbar';
-import Footer from '../../Components/Footer';
-import FinanceHeader from './FinanceHeader';
+import FinanceForm from '../pages/Finance/FinanceForm';
+import FinanceHeader from '../pages/Finance/FinanceHeader';
+import Header from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 function FinanceLayout() {
   return (
