@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import Home from '../components/Home';
 import BlogPage from '../components/BlogPage';
 import Dashboard from '../pages/admin/Dashboard';
 
@@ -15,11 +14,12 @@ import Onboarding from '../pages/admin/Onboarding';
 import NurtureLeads from '../pages/admin/NurtureLeads';
 import StudentsTable from '../pages/admin/StudentsTable';
 import ManageLeadsTable from '../pages/admin/ManageLeadsTable';
+import HomeLayout from '../components/Home';
 
 const AppRoutes = () => {
   // Define all routes (public and private)
   const allRoutes = [
-    { path: '/', element: <Home />, isPrivate: false },
+    { path: '/', element: <HomeLayout />, isPrivate: false },
     { path: '/blog', element: <BlogPage />, isPrivate: false },
     { path: '/destinations', element: <LayoutPageDestination />, isPrivate: false },
     { path: '/testprep', element: <TestPrepLayout />, isPrivate: false },

@@ -1,9 +1,9 @@
 import React from 'react';
 import DestinationHero from '../pages/destinations/DestinationHero';
 import DestinationInfo from '../pages/destinations/DestinationInfo';
-import Header from '../components/Navbar';
-import FAQ from '../components/FAQ';
 import { HomeForm } from '../components/AnimatedFormsTab';
+import FAQsection from '../Components/FAQsection';
+import Header from '../components/HeaderNav';
 
 function LayoutPageDestination() {
   return (
@@ -12,7 +12,7 @@ function LayoutPageDestination() {
       <DestinationHero />
       <DestinationInfo />
       <HomeForm />
-      <FAQ />
+      <FAQsection />
     </div>
   );
 }
