@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Navbar';
+import Header from './HeaderNav';
 import BlogLayout from './BlogLayout';
 import Footer from './Footer';
 

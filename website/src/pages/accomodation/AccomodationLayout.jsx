@@ -4,8 +4,8 @@ import AccHero from './accHero';
 import PopularCityCards from './PopularCityCards';
 import AccomodationLeadForm from './AccomodationLeadForm';
 import PopularUniversityCards from './PopularUniversities';
-import Header from '../../Components/Navbar';
-import FAQ from '../../Components/FAQ';
+import FAQsection from '../../Components/FAQsection';
+import Header from '../../components/HeaderNav';
 
 function AccomodationLayout() {
   // Create refs for each section
@@ -41,7 +41,7 @@ function AccomodationLayout() {
         <PopularUniversityCards />
       </div>
       <div ref={faqRef}>
-        <FAQ />
+        <FAQsection />
       </div>
     </div>
   );

@@ -1,11 +1,9 @@
 import React from 'react';
-import FAQ from './FAQ';
 import TestimonialsSection from './TestimonialsSection';
 import Footer from './Footer';
 import HeroSection from './HeroSection';
 import Pricing from './Pricing';
-import Navbar from './Navbar';
-import Header from './Navbar';
+import Header from './HeaderNav';
 import PromoSection from './PromoSection';
 import Tabs, { HomeForm, VirtualForm, VisitUsForm } from './AnimatedFormsTab';
 import PartnerUnis from './PartnerUnis';
@@ -57,7 +55,7 @@ const tabData = [
   { title: 'Visit Us', value: 'visit', content: <VisitUsForm /> }
 ];
 
-function Home() {
+function HomeLayout() {
   return (
     <>
       <Header />
@@ -75,10 +73,9 @@ function Home() {
 
       <TestimonialsSection />
       <Pricing />
-      <FAQ />
       <Footer />
     </>
   );
 }
 
-export default Home;
+export default HomeLayout;

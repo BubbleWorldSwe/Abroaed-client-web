@@ -1,7 +1,7 @@
 import React from 'react';
 
 import TestPrepContent from './TestPrepContent';
-import Header from '../../components/Navbar';
+import Header from '../../Components/HeaderNav';
 import { HomeForm } from '../../components/AnimatedFormsTab';
 
 function TestPrepLayout() {
