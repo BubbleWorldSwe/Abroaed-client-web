@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import TestPrepContent from './TestPrepContent';
-import Header from '../../Components/HeaderNav';
-import { HomeForm } from '../../components/AnimatedFormsTab';
+import TestPrepContent from "./TestPrepContent";
+import Header from "../../Components/Header";
+import { HomeForm } from "../../Components/AnimatedTabs";
 
 function TestPrepLayout() {
   return (

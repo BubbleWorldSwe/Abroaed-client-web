@@ -1,5 +1,5 @@
-import { TableOfContents, X } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import { TableOfContents, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
 
 function Header() {
   const [nav, setNav] = useState(false);
@@ -9,13 +9,13 @@ function Header() {
   const [dropdowns, setDropdowns] = useState({
     whyAbroad: false,
     exploreCourses: false,
-    testPrep: false
+    testPrep: false,
   });
 
   const toggleDropdown = (key) => {
     setDropdowns((prev) => ({
       ...prev,
-      [key]: !prev[key]
+      [key]: !prev[key],
     }));
   };
 
@@ -24,18 +24,20 @@ function Header() {
       setIsScrolled(window.scrollY > 0);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
       className={`w-full sticky top-0 z-[99999999] transition-all duration-300 ease-in-out ${
-        isScrolled ? 'bg-yellow-300 shadow-md opacity-100' : 'bg-transparent opacity-80'
+        isScrolled
+          ? "bg-yellow-300 shadow-md opacity-100"
+          : "bg-transparent opacity-80"
       }`}
     >
       <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
-        <div className={`py-3   ${'bg-yellow-200'}`}>
+        <div className={`py-3   ${"bg-yellow-200"}`}>
           <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <a
               href="#"
@@ -66,21 +68,30 @@ function Header() {
         <nav className="flex items-center w-full px-6 py-4">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
-            <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ABROAED</span>
+            <img
+              src="https://flowbite.com/docs/images/logo.svg"
+              className="mr-3 h-6 sm:h-9"
+              alt="Flowbite Logo"
+            />
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+              ABROAED
+            </span>
           </div>
 
           {/* Second Div: Links Section */}
           <div className="flex-grow basis-[80%] flex items-center justify-center relative">
             <ul className="flex flex-row mt-0 space-x-8 text-sm font-medium">
               <li>
-                <a href="/" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
+                <a
+                  href="/"
+                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
                   Home
                 </a>
               </li>
               <li>
                 <button
-                  onClick={() => toggleDropdown('whyAbroad')}
+                  onClick={() => toggleDropdown("whyAbroad")}
                   className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Why ABROAED
@@ -92,30 +103,45 @@ function Header() {
                     id="mega-menu"
                     className="absolute left-0 top-full mt-2 w-full bg-white border border-gray-100 shadow-md z-50"
                   >
-                    {' '}
+                    {" "}
                     <ul>
                       <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
                           About Us
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
                           Services
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
                           Blogs/Articles
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
                           Career
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="block px-4 py-2 hover:bg-gray-100">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
                           Get in Touch
                         </a>
                       </li>
@@ -126,11 +152,15 @@ function Header() {
               <li>
                 <button
                   id="mega-menu-button"
-                  onClick={() => toggleDropdown('exploreCourses')}
+                  onClick={() => toggleDropdown("exploreCourses")}
                   class="flex  dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
-                  <svg className="ml-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <svg
+                    className="ml-1 w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
                     <path
                       fillRule="evenodd"
                       d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
@@ -146,7 +176,10 @@ function Header() {
                     <div class="p-2 text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
                       <ul>
                         <li>
-                          <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                          <a
+                            href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                          >
                             <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
                                 class="w-5 h-5"
@@ -158,7 +191,9 @@ function Header() {
                               </svg>
                             </div>
                             <div>
-                              <div class="font-semibold">Explore Design Work</div>
+                              <div class="font-semibold">
+                                Explore Design Work
+                              </div>
                               <div class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Trending designs to inspire you
                               </div>
@@ -166,7 +201,10 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                          <a
+                            href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                          >
                             <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
                                 class="w-5 h-5"
@@ -190,7 +228,10 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                          <a
+                            href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                          >
                             <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
                                 class="w-5 h-5"
@@ -211,7 +252,10 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                          <a
+                            href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                          >
                             <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
                                 class="w-5 h-5"
@@ -232,7 +276,10 @@ function Header() {
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700">
+                          <a
+                            href="#"
+                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                          >
                             <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
                                 class="w-5 h-5"
@@ -258,40 +305,63 @@ function Header() {
                       </ul>
                     </div>
                     <div class="py-5 px-5 bg-gray-50 lg:rounded-lg lg:col-span-1 dark:bg-gray-700">
-                      <h3 class="mb-4 text-sm font-semibold text-gray-900 dark:text-white">Browse categories</h3>
+                      <h3 class="mb-4 text-sm font-semibold text-gray-900 dark:text-white">
+                        Browse categories
+                      </h3>
                       <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400">
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Animation
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Branding
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Illustration
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Mobile
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Print
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Product Design
                           </a>
                         </li>
                         <li>
-                          <a href="#" class="hover:text-primary-600 dark:hover:text-primary-500">
+                          <a
+                            href="#"
+                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                          >
                             Web Design
                           </a>
                         </li>
@@ -301,18 +371,24 @@ function Header() {
                 )}
               </li>
               <li>
-                <a href="/blog" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
+                <a
+                  href="/blog"
+                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
                   Blog
                 </a>
               </li>
               <li>
-                <a href="/destinations" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
+                <a
+                  href="/destinations"
+                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
                   Destinations
                 </a>
               </li>
               <li>
                 <button
-                  onClick={() => toggleDropdown('testPrep')}
+                  onClick={() => toggleDropdown("testPrep")}
                   class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   TestPrep
@@ -396,12 +472,18 @@ function Header() {
                 )}
               </li>
               <li>
-                <a href="/finance" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
+                <a
+                  href="/finance"
+                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
                   Finance
                 </a>
               </li>
               <li>
-                <a href="/accomodation" class="block dark:text-white rounded text-yellow-700 dark:text-primary-500">
+                <a
+                  href="/accomodation"
+                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
                   Accommodation
                 </a>
               </li>
