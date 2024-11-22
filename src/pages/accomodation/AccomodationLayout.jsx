@@ -1,11 +1,11 @@
-import React, { useRef } from 'react';
-import AccHero from './accHero';
+import React, { useRef } from "react";
+import AccHero from "./accHero";
 
-import PopularCityCards from './PopularCityCards';
-import AccomodationLeadForm from './AccomodationLeadForm';
-import PopularUniversityCards from './PopularUniversities';
-import FAQsection from '../../Components/FAQsection';
-import Header from '../../components/HeaderNav';
+import PopularCityCards from "./PopularCityCards";
+import AccomodationLeadForm from "./AccomodationLeadForm";
+import PopularUniversityCards from "./PopularUniversities";
+import FAQsection from "../../Components/FAQsection";
+import Header from "../../Components/Header";
 
 function AccomodationLayout() {
   // Create refs for each section
@@ -16,7 +16,7 @@ function AccomodationLayout() {
 
   // Scroll handler
   const handleScroll = (ref) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -28,7 +28,7 @@ function AccomodationLayout() {
           popularCities: () => handleScroll(popularCitiesRef),
           popularUnis: () => handleScroll(popularUnisRef),
           studentAccommodations: () => handleScroll(studentAccommodationsRef),
-          faq: () => handleScroll(faqRef)
+          faq: () => handleScroll(faqRef),
         }}
       />
       <div ref={popularCitiesRef}>

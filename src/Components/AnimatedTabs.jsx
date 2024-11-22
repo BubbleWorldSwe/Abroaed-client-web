@@ -1,13 +1,17 @@
-'use client';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { cn } from '../lib/utils';
+"use client";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { cn } from "../lib/utils";
 
 function Tabs() {
   const tabOptions = [
-    { title: 'Home Counselling', value: 'home', content: <HomeForm /> },
-    { title: 'Virtual Counselling', value: 'virtual', content: <VirtualForm /> },
-    { title: 'Visit Us', value: 'visit', content: <VisitUsForm /> }
+    { title: "Home Counselling", value: "home", content: <HomeForm /> },
+    {
+      title: "Virtual Counselling",
+      value: "virtual",
+      content: <VirtualForm />,
+    },
+    { title: "Visit Us", value: "visit", content: <VisitUsForm /> },
   ];
 
   const [activeTab, setActiveTab] = useState(tabOptions[0].value);
@@ -21,10 +25,10 @@ function Tabs() {
             key={tab.value}
             onClick={() => setActiveTab(tab.value)}
             className={cn(
-              'px-6 py-2 rounded-full font-semibold transition-all duration-300',
+              "px-6 py-2 rounded-full font-semibold transition-all duration-300",
               activeTab === tab.value
-                ? 'bg-yellow-200 dark:bg-yellow-800 text-white'
-                : 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300'
+                ? "bg-yellow-200 dark:bg-yellow-800 text-white"
+                : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-300"
             )}
           >
             {tab.title}
@@ -51,7 +55,7 @@ export default Tabs;
 // Home Counselling Form Component
 // Shared Tailwind styles for input fields
 const inputStyles =
-  'shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500';
+  "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
 
 // Home Counselling Form
 export const HomeForm = () => (
@@ -101,24 +105,59 @@ export const VisitUsForm = () => (
 const FormFields = () => (
   <>
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First Name</label>
-      <input type="text" className={inputStyles} placeholder="First Name" required />
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        First Name
+      </label>
+      <input
+        type="text"
+        className={inputStyles}
+        placeholder="First Name"
+        required
+      />
     </div>
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last Name</label>
-      <input type="text" className={inputStyles} placeholder="Last Name" required />
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Last Name
+      </label>
+      <input
+        type="text"
+        className={inputStyles}
+        placeholder="Last Name"
+        required
+      />
     </div>
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email ID</label>
-      <input type="email" className={inputStyles} placeholder="Email ID" required />
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Email ID
+      </label>
+      <input
+        type="email"
+        className={inputStyles}
+        placeholder="Email ID"
+        required
+      />
     </div>
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contact Number</label>
-      <input type="tel" className={inputStyles} placeholder="Contact Number" required />
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Contact Number
+      </label>
+      <input
+        type="tel"
+        className={inputStyles}
+        placeholder="Contact Number"
+        required
+      />
     </div>
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Highest Qualification</label>
-      <input type="text" className={inputStyles} placeholder="Highest Qualification" required />
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Highest Qualification
+      </label>
+      <input
+        type="text"
+        className={inputStyles}
+        placeholder="Highest Qualification"
+        required
+      />
     </div>
     <div>
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
@@ -141,7 +180,9 @@ const FormFields = () => (
       <input type="month" className={inputStyles} required />
     </div>
     <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Preferred Study Level</label>
+      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+        Preferred Study Level
+      </label>
       <select className={inputStyles} required>
         <option>UG</option>
         <option>PG</option>
@@ -171,8 +212,9 @@ const TermsAndConditions = () => (
       required
     />
     <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-      I agree to Abroaed Terms and privacy policy. Please contact me by phone, email, or SMS to assist with my enquiry.
-      I would like to receive updates and offers from Abroaed.
+      I agree to Abroaed Terms and privacy policy. Please contact me by phone,
+      email, or SMS to assist with my enquiry. I would like to receive updates
+      and offers from Abroaed.
     </label>
   </div>
 );
