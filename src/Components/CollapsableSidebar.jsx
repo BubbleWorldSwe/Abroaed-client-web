@@ -281,32 +281,32 @@ export default CollapsableSidebar;
 //   <button
 //     id="dropdownCompanyNameButton"
 //     data-dropdown-toggle="dropdownCompanyName"
-//     class="flex justify-between items-center p-2 w-full rounded-lg dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-50 dark:hover-bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+//     className="flex justify-between items-center p-2 w-full rounded-lg dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-50 dark:hover-bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
 //     type="button"
 //   >
-//     <span class="sr-only">Open user menu</span>
-//     <div class="flex items-center">
-//       <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-7" alt="Flowbite Logo" />
+//     <span className="sr-only">Open user menu</span>
+//     <div className="flex items-center">
+//       <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-7" alt="Flowbite Logo" />
 //       <div>
-//         <div class="font-semibold leading-none text-gray-900 dark:text-white mb-0.5">Flowbite</div>
-//         <div class="text-sm text-gray-500 dark:text-gray-400">Team plan</div>
+//         <div className="font-semibold leading-none text-gray-900 dark:text-white mb-0.5">Flowbite</div>
+//         <div className="text-sm text-gray-500 dark:text-gray-400">Team plan</div>
 //       </div>
 //     </div>
 //     <svg
-//       class="w-5 h-5 text-gray-500 dark:text-gray-400"
+//       className="w-5 h-5 text-gray-500 dark:text-gray-400"
 //       fill="currentColor"
 //       viewBox="0 0 20 20"
 //       xmlns="http://www.w3.org/2000/svg"
 //     >
 //       <path
-//         fill-rule="evenodd"
+//         fillRule="evenodd"
 //         d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-//         clip-rule="evenodd"
+//         clipRule="evenodd"
 //       ></path>
 //     </svg>
 //   </button>
 
-//   <ul class="mt-5 space-y-2">
+//   <ul className="mt-5 space-y-2">
 //     {['leads', 'counsellors', 'colleges'].map((key) => (
 //       <div key={key} className="mb-5">
 //         <button
@@ -344,36 +344,36 @@ export default CollapsableSidebar;
 //   </ul>
 // </div>
 
-// <div class="absolute bottom-0 left-0 justify-center p-4 w-full bg-white dark:bg-gray-800 z-20">
-//   <div class="pb-4 pl-2 mb-4 space-y-2 border-b border-gray-200 dark:border-gray-700"></div>
+// <div className="absolute bottom-0 left-0 justify-center p-4 w-full bg-white dark:bg-gray-800 z-20">
+//   <div className="pb-4 pl-2 mb-4 space-y-2 border-b border-gray-200 dark:border-gray-700"></div>
 //   <button
 //     id="dropdownUserNameButton"
 //     data-dropdown-toggle="dropdownUserName"
-//     class="flex justify-between items-center p-2 my-4 w-full rounded-lg dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-50 dark:hover-bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+//     className="flex justify-between items-center p-2 my-4 w-full rounded-lg dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-50 dark:hover-bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
 //     type="button"
 //   >
-//     <span class="sr-only">Open user menu</span>
-//     <div class="flex items-center">
+//     <span className="sr-only">Open user menu</span>
+//     <div className="flex items-center">
 //       <img
 //         src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-//         class="mr-3 w-8 h-8 rounded-full"
+//         className="mr-3 w-8 h-8 rounded-full"
 //         alt="Bonnie avatar"
 //       />
-//       <div class="text-left">
-//         <div class="font-semibold leading-none text-gray-900 dark:text-white mb-0.5">Bonnie Green</div>
-//         <div class="text-sm text-gray-500 dark:text-gray-400">name@flowbite.com</div>
+//       <div className="text-left">
+//         <div className="font-semibold leading-none text-gray-900 dark:text-white mb-0.5">Bonnie Green</div>
+//         <div className="text-sm text-gray-500 dark:text-gray-400">name@flowbite.com</div>
 //       </div>
 //     </div>
 //     <svg
-//       class="w-5 h-5 text-gray-500 dark:text-gray-400"
+//       className="w-5 h-5 text-gray-500 dark:text-gray-400"
 //       fill="currentColor"
 //       viewBox="0 0 20 20"
 //       xmlns="http://www.w3.org/2000/svg"
 //     >
 //       <path
-//         fill-rule="evenodd"
+//         fillRule="evenodd"
 //         d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-//         clip-rule="evenodd"
+//         clipRule="evenodd"
 //       ></path>
 //     </svg>
 //   </button>

@@ -3,20 +3,20 @@ import React from "react";
 function BlogPage() {
   return (
     <div>
-      <main class="py-8 lg:py-16 w-full bg-white dark:bg-gray-900 antialiased">
-        <div class="flex justify-between px-4 mx-auto max-w-screen">
+      <main className="py-8 lg:py-16 w-full bg-white dark:bg-gray-900 antialiased">
+        <div className="flex justify-between px-4 mx-auto max-w-screen">
           <aside
-            class="hidden relative ml-auto xl:block"
+            className="hidden relative ml-auto xl:block"
             aria-labelledby="sidebar-label"
           >
-            <div class="sticky top-6 p-2 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+            <div className="sticky top-6 p-2 bg-gray-50 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-800">
               <button
                 data-tooltip-target="share-twitter"
-                class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   viewBox="0 0 16 17"
                   fill="none"
@@ -30,11 +30,11 @@ function BlogPage() {
               </button>
               <button
                 data-tooltip-target="share-facebook"
-                class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   viewBox="0 0 16 17"
                   fill="none"
@@ -64,11 +64,11 @@ function BlogPage() {
               </button>
               <button
                 data-tooltip-target="share-reddit"
-                class="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="flex items-center p-2 mb-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   viewBox="0 0 16 17"
                   fill="none"
@@ -98,11 +98,11 @@ function BlogPage() {
               </button>
               <button
                 data-tooltip-target="share-linkedin"
-                class="flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-gray-50 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
               >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   aria-hidden="true"
                   viewBox="0 0 16 17"
                   fill="none"
@@ -131,46 +131,46 @@ function BlogPage() {
           <div
             id="share-twitter"
             role="tooltip"
-            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
             Share on Twitter
-            <div class="tooltip-arrow" data-popper-arrow></div>
+            <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <div
             id="share-facebook"
             role="tooltip"
-            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
             Share on Facebook
-            <div class="tooltip-arrow" data-popper-arrow></div>
+            <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <div
             id="share-reddit"
             role="tooltip"
-            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
             Share on Reddit
-            <div class="tooltip-arrow" data-popper-arrow></div>
+            <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
           <div
             id="share-linkedin"
             role="tooltip"
-            class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+            className="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
           >
             Share on LinkedIn
-            <div class="tooltip-arrow" data-popper-arrow></div>
+            <div className="tooltip-arrow" data-popper-arrow></div>
           </div>
-          <article class="mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-            <header class="mb-4 lg:mb-6 not-format">
-              <nav class="flex" aria-label="Breadcrumb">
-                <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                  <li class="inline-flex items-center">
+          <article className="mx-auto w-full format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+            <header className="mb-4 lg:mb-6 not-format">
+              <nav className="flex" aria-label="Breadcrumb">
+                <ol className="inline-flex items-center space-x-1 md:space-x-3">
+                  <li className="inline-flex items-center">
                     <a
                       href="#"
-                      class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                      className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                     >
                       <svg
-                        class="w-3 h-3 mr-2.5"
+                        className="w-3 h-3 mr-2.5"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -182,9 +182,9 @@ function BlogPage() {
                     </a>
                   </li>
                   <li>
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       <svg
-                        class="w-3 h-3 text-gray-400 mx-1"
+                        className="w-3 h-3 text-gray-400 mx-1"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -192,24 +192,24 @@ function BlogPage() {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="m1 9 4-4-4-4"
                         />
                       </svg>
                       <a
                         href="#"
-                        class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
+                        className="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
                       >
                         Tech
                       </a>
                     </div>
                   </li>
                   <li aria-current="page">
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       <svg
-                        class="w-3 h-3 text-gray-400 mx-1"
+                        className="w-3 h-3 text-gray-400 mx-1"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -217,50 +217,50 @@ function BlogPage() {
                       >
                         <path
                           stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
                           d="m1 9 4-4-4-4"
                         />
                       </svg>
-                      <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+                      <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
                         Prototyping from A to Z
                       </span>
                     </div>
                   </li>
                 </ol>
               </nav>
-              <div class="flex items-center my-4 md:my-6">
+              <div className="flex items-center my-4 md:my-6">
                 <a
                   href="#"
-                  class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800 hover:bg-primary-200"
+                  className="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800 hover:bg-primary-200"
                 >
                   Technology
                 </a>
                 <a
                   href="#"
-                  class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800 hover:bg-primary-200"
+                  className="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800 hover:bg-primary-200"
                 >
                   Design
                 </a>
                 <a
                   href="#"
-                  class="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800 hover:bg-primary-200"
+                  className="bg-primary-100 dark:hover:bg-primary-300 text-primary-800 text-sm font-medium mr-3 px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800 hover:bg-primary-200"
                 >
                   Programming
                 </a>
               </div>
-              <h1 class="mb-4 text-2xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+              <h1 className="mb-4 text-2xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
                 Prototyping from A to Z: best practices for successful
                 prototypes
               </h1>
-              <div class="flex justify-between items-center py-4 border-t border-b border-gray-200 dark:border-gray-700">
-                <div class="mr-4 text-sm">
-                  <address class="inline not-italic">
+              <div className="flex justify-between items-center py-4 border-t border-b border-gray-200 dark:border-gray-700">
+                <div className="mr-4 text-sm">
+                  <address className="inline not-italic">
                     By{" "}
                     <a
                       rel="author"
-                      class="text-gray-900 no-underline dark:text-white hover:underline"
+                      className="text-gray-900 no-underline dark:text-white hover:underline"
                       href="#"
                     >
                       Jese Leos
@@ -269,7 +269,7 @@ function BlogPage() {
                   in{" "}
                   <a
                     href="#"
-                    class="text-gray-900 no-underline dark:text-white hover:underline"
+                    className="text-gray-900 no-underline dark:text-white hover:underline"
                   >
                     Design
                   </a>
@@ -277,7 +277,7 @@ function BlogPage() {
                     on{" "}
                     <time
                       pubdate
-                      class="uppercase"
+                      className="uppercase"
                       datetime="2022-02-08"
                       title="February 8th, 2022"
                     >
@@ -287,10 +287,10 @@ function BlogPage() {
                 </div>
                 <a
                   href="#comments"
-                  class="flex items-center text-sm font-medium shrink-0 text-primary-600 dark:text-primary-500 hover:underline"
+                  className="flex items-center text-sm font-medium shrink-0 text-primary-600 dark:text-primary-500 hover:underline"
                 >
                   <svg
-                    class="mr-1 w-3 h-3"
+                    className="mr-1 w-3 h-3"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -319,7 +319,7 @@ function BlogPage() {
             <figure>
               <img
                 src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-1.png"
-                class="mx-auto"
+                className="mx-auto"
                 alt=""
               />
               <figcaption>Digital art by Anonymous</figcaption>
@@ -458,20 +458,22 @@ function BlogPage() {
               the following:
             </p>
             <pre>
-              <code class="language-html">
-                &lt;dl class="grid grid-cols-2 gap-8 max-w-screen-md
+              <code className="language-html">
+                &lt;dl className="grid grid-cols-2 gap-8 max-w-screen-md
                 text-gray-900 sm:grid-cols-3 dark:text-white"&gt; &lt;div
-                class="flex flex-col justify-center items-center"&gt; &lt;dt
-                class="mb-2 text-3xl font-extrabold"&gt;73M+&lt;/dt&gt; &lt;dd
-                class="text-lg font-normal text-gray-500
+                className="flex flex-col justify-center items-center"&gt; &lt;dt
+                className="mb-2 text-3xl font-extrabold"&gt;73M+&lt;/dt&gt;
+                &lt;dd className="text-lg font-normal text-gray-500
                 dark:text-gray-400"&gt;developers&lt;/dd&gt; &lt;/div&gt;
-                &lt;div class="flex flex-col justify-center items-center"&gt;
-                &lt;dt class="mb-2 text-3xl font-extrabold"&gt;1B+&lt;/dt&gt;
-                &lt;dd class="text-lg font-normal text-gray-500
+                &lt;div className="flex flex-col justify-center
+                items-center"&gt; &lt;dt className="mb-2 text-3xl
+                font-extrabold"&gt;1B+&lt;/dt&gt; &lt;dd className="text-lg
+                font-normal text-gray-500
                 dark:text-gray-400"&gt;contributors&lt;/dd&gt; &lt;/div&gt;
-                &lt;div class="flex flex-col justify-center items-center"&gt;
-                &lt;dt class="mb-2 text-3xl font-extrabold"&gt;4M+&lt;/dt&gt;
-                &lt;dd class="text-lg font-normal text-gray-500
+                &lt;div className="flex flex-col justify-center
+                items-center"&gt; &lt;dt className="mb-2 text-3xl
+                font-extrabold"&gt;4M+&lt;/dt&gt; &lt;dd className="text-lg
+                font-normal text-gray-500
                 dark:text-gray-400"&gt;organizations&lt;/dd&gt; &lt;/div&gt;
                 &lt;/dl&gt;
               </code>
@@ -565,15 +567,15 @@ function BlogPage() {
               And there you have it! Everything you need to design and share
               prototypes — right in Flowbite Figma.
             </p>
-            <section class="not-format" id="comments">
-              <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-bold text-gray-900 lg:text-2xl dark:text-white">
+            <section className="not-format" id="comments">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-lg font-bold text-gray-900 lg:text-2xl dark:text-white">
                   Leave a reply
                 </h2>
                 <div>
                   <button
                     type="button"
-                    class="py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className="py-2 px-3 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 focus:outline-none hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
                     Subscribe
                   </button>
@@ -581,87 +583,87 @@ function BlogPage() {
               </div>
               <form
                 action="#"
-                class="grid gap-6 p-6 mx-auto mb-6 bg-white rounded-lg border border-gray-200 shadow-sm grid-cols sm:grid-cols-2 dark:bg-gray-800 dark:border-gray-700"
+                className="grid gap-6 p-6 mx-auto mb-6 bg-white rounded-lg border border-gray-200 shadow-sm grid-cols sm:grid-cols-2 dark:bg-gray-800 dark:border-gray-700"
               >
-                <div class="sm:col-span-2">
+                <div className="sm:col-span-2">
                   <label
-                    for="first-name"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="first-name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     First Name
                   </label>
                   <input
                     type="text"
                     id="first-name"
-                    class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                    className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                     placeholder="Bonnie Green"
                     required
                   />
                 </div>
                 <div>
                   <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     Your email
                   </label>
                   <input
                     type="email"
                     id="email"
-                    class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                    className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                     placeholder="name@flowbite.com"
                     required
                   />
                 </div>
                 <div>
                   <label
-                    for="website"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    htmlFor="website"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                   >
                     Website
                   </label>
                   <input
                     type="url"
                     id="website"
-                    class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
+                    className="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light"
                     placeholder="www.yoursite.com"
                     required
                   />
                 </div>
-                <div class="sm:col-span-2">
+                <div className="sm:col-span-2">
                   <label
-                    for="message"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                    htmlFor="message"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                   >
                     Your message
                   </label>
                   <textarea
                     id="message"
                     rows="6"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder=""
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Post comment
                 </button>
               </form>
-              <article class="p-6 mb-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                <footer class="flex justify-between items-center mb-2">
-                  <div class="flex items-center">
+              <article className="p-6 mb-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <footer className="flex justify-between items-center mb-2">
+                  <div className="flex items-center">
                     <img
-                      class="mr-2 w-8 h-8 rounded-lg"
+                      className="mr-2 w-8 h-8 rounded-lg"
                       src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
                       alt="Michael Gough"
                     />
                     <div>
-                      <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                      <span className="text-sm font-semibold text-gray-900 dark:text-white">
                         Michael Gough
                       </span>
-                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         <time
                           pubdate
                           datetime="2022-02-08"
@@ -672,13 +674,13 @@ function BlogPage() {
                       </p>
                     </div>
                   </div>
-                  <div class="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                     <button
                       type="button"
-                      class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
+                      className="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
                     >
                       <svg
-                        class="mr-1 w-3 h-3"
+                        className="mr-1 w-3 h-3"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -691,11 +693,11 @@ function BlogPage() {
                     <button
                       id="dropdownComment1Button"
                       data-dropdown-toggle="dropdownComment1"
-                      class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                      className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                       type="button"
                     >
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -703,21 +705,21 @@ function BlogPage() {
                       >
                         <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                       </svg>
-                      <span class="sr-only">Comment settings</span>
+                      <span className="sr-only">Comment settings</span>
                     </button>
                   </div>
                   <div
                     id="dropdownComment1"
-                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                    className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                   >
                     <ul
-                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      className="py-1 text-sm text-gray-700 dark:text-gray-200"
                       aria-labelledby="dropdownComment1Button"
                     >
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Edit
                         </a>
@@ -725,7 +727,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Remove
                         </a>
@@ -733,7 +735,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Report
                         </a>
@@ -741,7 +743,7 @@ function BlogPage() {
                     </ul>
                   </div>
                 </footer>
-                <p class="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400">
                   Very straight-to-point article. Really worth time reading.
                   Thank you! But tools are just the instruments for the UX
                   designers. The knowledge of the design tools are as important
@@ -749,24 +751,24 @@ function BlogPage() {
                 </p>
                 <button
                   type="button"
-                  class="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
+                  className="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
                 >
                   Reply
                 </button>
               </article>
-              <article class="p-6 mb-6 ml-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm lg:ml-12 dark:bg-gray-800 dark:border-gray-700">
-                <footer class="flex justify-between items-center mb-2">
-                  <div class="flex items-center">
+              <article className="p-6 mb-6 ml-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm lg:ml-12 dark:bg-gray-800 dark:border-gray-700">
+                <footer className="flex justify-between items-center mb-2">
+                  <div className="flex items-center">
                     <img
-                      class="mr-2 w-8 h-8 rounded-lg"
+                      className="mr-2 w-8 h-8 rounded-lg"
                       src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                       alt="Jese Leos"
                     />
                     <div>
-                      <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                      <span className="text-sm font-semibold text-gray-900 dark:text-white">
                         Jese Leos
                       </span>
-                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         <time
                           pubdate
                           datetime="2022-02-12"
@@ -777,13 +779,13 @@ function BlogPage() {
                       </p>
                     </div>
                   </div>
-                  <div class="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                     <button
                       type="button"
-                      class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
+                      className="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
                     >
                       <svg
-                        class="mr-1 w-3 h-3"
+                        className="mr-1 w-3 h-3"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -796,11 +798,11 @@ function BlogPage() {
                     <button
                       id="dropdownComment1Button"
                       data-dropdown-toggle="dropdownComment1"
-                      class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                      className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                       type="button"
                     >
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -808,22 +810,22 @@ function BlogPage() {
                       >
                         <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                       </svg>
-                      <span class="sr-only">Comment settings</span>
+                      <span className="sr-only">Comment settings</span>
                     </button>
                   </div>
 
                   <div
                     id="dropdownComment2"
-                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                    className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                   >
                     <ul
-                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      className="py-1 text-sm text-gray-700 dark:text-gray-200"
                       aria-labelledby="dropdownComment1Button"
                     >
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Edit
                         </a>
@@ -831,7 +833,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Remove
                         </a>
@@ -839,7 +841,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Report
                         </a>
@@ -847,29 +849,29 @@ function BlogPage() {
                     </ul>
                   </div>
                 </footer>
-                <p class="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400">
                   Much appreciated! Glad you liked it ☺️
                 </p>
                 <button
                   type="button"
-                  class="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
+                  className="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
                 >
                   Reply
                 </button>
               </article>
-              <article class="p-6 mb-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                <footer class="flex justify-between items-center mb-2">
-                  <div class="flex items-center">
+              <article className="p-6 mb-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <footer className="flex justify-between items-center mb-2">
+                  <div className="flex items-center">
                     <img
-                      class="mr-2 w-8 h-8 rounded-lg"
+                      className="mr-2 w-8 h-8 rounded-lg"
                       src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
                       alt="Bonnie Green"
                     />
                     <div>
-                      <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                      <span className="text-sm font-semibold text-gray-900 dark:text-white">
                         Bonnie Green
                       </span>
-                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         <time
                           pubdate
                           datetime="2022-03-12"
@@ -880,13 +882,13 @@ function BlogPage() {
                       </p>
                     </div>
                   </div>
-                  <div class="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                     <button
                       type="button"
-                      class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
+                      className="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
                     >
                       <svg
-                        class="mr-1 w-3 h-3"
+                        className="mr-1 w-3 h-3"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -899,11 +901,11 @@ function BlogPage() {
                     <button
                       id="dropdownComment3Button"
                       data-dropdown-toggle="dropdownComment3"
-                      class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                      className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                       type="button"
                     >
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -911,22 +913,22 @@ function BlogPage() {
                       >
                         <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                       </svg>
-                      <span class="sr-only">Comment settings</span>
+                      <span className="sr-only">Comment settings</span>
                     </button>
                   </div>
 
                   <div
                     id="dropdownComment3"
-                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                    className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                   >
                     <ul
-                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      className="py-1 text-sm text-gray-700 dark:text-gray-200"
                       aria-labelledby="dropdownComment3Button"
                     >
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Edit
                         </a>
@@ -934,7 +936,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Remove
                         </a>
@@ -942,7 +944,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Report
                         </a>
@@ -950,31 +952,31 @@ function BlogPage() {
                     </ul>
                   </div>
                 </footer>
-                <p class="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400">
                   The article covers the essentials, challenges, myths and
                   stages the UX designer should consider while creating the
                   design strategy.
                 </p>
                 <button
                   type="button"
-                  class="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
+                  className="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
                 >
                   Reply
                 </button>
               </article>
-              <article class="p-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
-                <footer class="flex justify-between items-center mb-2">
-                  <div class="flex items-center">
+              <article className="p-6 text-base bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <footer className="flex justify-between items-center mb-2">
+                  <div className="flex items-center">
                     <img
-                      class="mr-2 w-8 h-8 rounded-lg"
+                      className="mr-2 w-8 h-8 rounded-lg"
                       src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
                       alt="Helene Engels"
                     />
                     <div>
-                      <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                      <span className="text-sm font-semibold text-gray-900 dark:text-white">
                         Helene Engels
                       </span>
-                      <p class="text-sm text-gray-500 dark:text-gray-400">
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
                         <time
                           pubdate
                           datetime="2022-06-23"
@@ -985,13 +987,13 @@ function BlogPage() {
                       </p>
                     </div>
                   </div>
-                  <div class="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
                     <button
                       type="button"
-                      class="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
+                      className="flex items-center font-medium text-sm text-gray-500 hover:underline dark:text-gray-400"
                     >
                       <svg
-                        class="mr-1 w-3 h-3"
+                        className="mr-1 w-3 h-3"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -1004,11 +1006,11 @@ function BlogPage() {
                     <button
                       id="dropdownComment4Button"
                       data-dropdown-toggle="dropdownComment4"
-                      class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                      className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                       type="button"
                     >
                       <svg
-                        class="w-4 h-4"
+                        className="w-4 h-4"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -1016,22 +1018,22 @@ function BlogPage() {
                       >
                         <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
                       </svg>
-                      <span class="sr-only">Comment settings</span>
+                      <span className="sr-only">Comment settings</span>
                     </button>
                   </div>
 
                   <div
                     id="dropdownComment4"
-                    class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                    className="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
                   >
                     <ul
-                      class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                      className="py-1 text-sm text-gray-700 dark:text-gray-200"
                       aria-labelledby="dropdownComment4Button"
                     >
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Edit
                         </a>
@@ -1039,7 +1041,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Remove
                         </a>
@@ -1047,7 +1049,7 @@ function BlogPage() {
                       <li>
                         <a
                           href="#"
-                          class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Report
                         </a>
@@ -1055,14 +1057,14 @@ function BlogPage() {
                     </ul>
                   </div>
                 </footer>
-                <p class="text-gray-500 dark:text-gray-400">
+                <p className="text-gray-500 dark:text-gray-400">
                   Thanks for sharing this. I do came from the Backend
                   development and explored some of the tools to design my Side
                   Projects.
                 </p>
                 <button
                   type="button"
-                  class="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
+                  className="mt-4 font-medium text-sm text-gray-900 hover:underline dark:text-white"
                 >
                   Reply
                 </button>
@@ -1070,103 +1072,103 @@ function BlogPage() {
             </section>
           </article>
           <aside
-            class="hidden xl:block xl:w-80"
+            className="hidden xl:block xl:w-80"
             aria-labelledby="sidebar-label"
           >
-            <h3 id="sidebar-label" class="sr-only">
+            <h3 id="sidebar-label" className="sr-only">
               Sidebar
             </h3>
-            <div class="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 divide-y divide-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:divide-gray-700">
-              <h4 class="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">
+            <div className="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 divide-y divide-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:divide-gray-700">
+              <h4 className="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">
                 Latest news
               </h4>
-              <div class="flex items-center py-4">
-                <a href="#" class="shrink-0">
+              <div className="flex items-center py-4">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-1.png"
-                    class="mr-4 w-12 max-w-full h-12 rounded-lg"
+                    className="mr-4 w-12 max-w-full h-12 rounded-lg"
                     alt="Image 1"
                   />
                 </a>
                 <a href="#">
-                  <h5 class="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
+                  <h5 className="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
                     SaaS can help speed up Cybersecurity projects
                   </h5>
                 </a>
               </div>
-              <div class="flex items-center py-4">
-                <a href="#" class="shrink-0">
+              <div className="flex items-center py-4">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-2.png"
-                    class="mr-4 w-12 max-w-full h-12 rounded-lg"
+                    className="mr-4 w-12 max-w-full h-12 rounded-lg"
                     alt="Image 2"
                   />
                 </a>
                 <a href="#">
-                  <h5 class="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
+                  <h5 className="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
                     Crunching large datasets made fast: Flowbite Library
                   </h5>
                 </a>
               </div>
-              <div class="flex items-center py-4">
-                <a href="#" class="shrink-0">
+              <div className="flex items-center py-4">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-3.png"
-                    class="mr-4 w-12 max-w-full h-12 rounded-lg"
+                    className="mr-4 w-12 max-w-full h-12 rounded-lg"
                     alt="Image 2"
                   />
                 </a>
                 <a href="#">
-                  <h5 class="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
+                  <h5 className="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
                     Here’s how to make a react app with Flowbite Blocks
                   </h5>
                 </a>
               </div>
-              <div class="flex items-center py-4">
-                <a href="#" class="shrink-0">
+              <div className="flex items-center py-4">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-2.png"
-                    class="mr-4 w-12 max-w-full h-12 rounded-lg"
+                    className="mr-4 w-12 max-w-full h-12 rounded-lg"
                     alt="Image 3"
                   />
                 </a>
                 <a href="#">
-                  <h5 class="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
+                  <h5 className="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
                     AI meets IoT: What is the artificial intelligence
                   </h5>
                 </a>
               </div>
-              <div class="flex items-center pt-4">
-                <a href="#" class="shrink-0">
+              <div className="flex items-center pt-4">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-1.png"
-                    class="mr-4 w-12 max-w-full h-12 rounded-lg"
+                    className="mr-4 w-12 max-w-full h-12 rounded-lg"
                     alt="Image 2"
                   />
                 </a>
                 <a href="#">
-                  <h5 class="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
+                  <h5 className="font-semibold leading-tight text-gray-900 dark:text-white hover:underline">
                     How to create a basic application with Flowbite
                   </h5>
                 </a>
               </div>
             </div>
-            <div class="p-5 mb-6 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
-              <h4 class="mb-2 font-semibold text-gray-900 dark:text-white">
+            <div className="p-5 mb-6 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+              <h4 className="mb-2 font-semibold text-gray-900 dark:text-white">
                 Get the best of Flowbite News delivered to your inbox
               </h4>
-              <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
                 Subscribe our newsletter for latest world news. Let's stay
                 updated!
               </p>
               <form action="#">
-                <label for="name-icon" class="sr-only">
+                <label htmlFor="name-icon" className="sr-only">
                   Your Email
                 </label>
-                <div class="relative mb-4">
-                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                <div className="relative mb-4">
+                  <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
-                      class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400"
+                      className="w-3.5 h-3.5 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -1179,14 +1181,14 @@ function BlogPage() {
                     required
                     type="text"
                     id="name-icon"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Your name"
                   />
                 </div>
-                <div class="relative mb-4">
-                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                <div className="relative mb-4">
+                  <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                     <svg
-                      class="w-3.5 h-3.5 text-gray-500 dark:text-gray-400"
+                      className="w-3.5 h-3.5 text-gray-500 dark:text-gray-400"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="currentColor"
@@ -1200,119 +1202,119 @@ function BlogPage() {
                     required
                     type="email"
                     id="email-address-icon"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-9 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="name@company.com"
                   />
                 </div>
                 <button
                   type="submit"
-                  class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 text-center w-full"
+                  className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 text-center w-full"
                 >
                   Subscribe
                 </button>
               </form>
             </div>
-            <div class="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 divide-y divide-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:divide-gray-700">
-              <h4 class="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">
+            <div className="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 divide-y divide-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:divide-gray-700">
+              <h4 className="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">
                 Recent comments
               </h4>
-              <div class="py-4">
-                <p class="font-normal text-gray-500 dark:text-gray-400">
+              <div className="py-4">
+                <p className="font-normal text-gray-500 dark:text-gray-400">
                   Bonnie Green on{" "}
                   <a
                     href="#"
-                    class="italic font-medium text-gray-900 dark:text-white hover:underline"
+                    className="italic font-medium text-gray-900 dark:text-white hover:underline"
                   >
                     5 Ways SaaS Can Help Speed Up Cybersecurity Implementation
                   </a>
                 </p>
               </div>
-              <div class="py-4">
-                <p class="font-normal text-gray-500 dark:text-gray-400">
+              <div className="py-4">
+                <p className="font-normal text-gray-500 dark:text-gray-400">
                   Lana Byrd on{" "}
                   <a
                     href="#"
-                    class="italic font-medium text-gray-900 dark:text-white hover:underline"
+                    className="italic font-medium text-gray-900 dark:text-white hover:underline"
                   >
                     Jese Leos on Crunching Large Datasets Made Fast and Easy:
                     the Polars Library
                   </a>
                 </p>
               </div>
-              <div class="py-4">
-                <p class="font-normal text-gray-500 dark:text-gray-400">
+              <div className="py-4">
+                <p className="font-normal text-gray-500 dark:text-gray-400">
                   Jese Leos on{" "}
                   <a
                     href="#"
-                    class="italic font-medium text-gray-900 dark:text-white hover:underline"
+                    className="italic font-medium text-gray-900 dark:text-white hover:underline"
                   >
                     Founders, ditch your long presentations. Here’s how to make
                     ...
                   </a>
                 </p>
               </div>
-              <div class="py-4">
-                <p class="font-normal text-gray-500 dark:text-gray-400">
+              <div className="py-4">
+                <p className="font-normal text-gray-500 dark:text-gray-400">
                   Thomas Lean on{" "}
                   <a
                     href="#"
-                    class="italic font-medium text-gray-900 dark:text-white hover:underline"
+                    className="italic font-medium text-gray-900 dark:text-white hover:underline"
                   >
                     AI Meets IoT: What is the Artificial Intelligence of Things
                   </a>
                 </p>
               </div>
             </div>
-            <div class="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
-              <h4 class="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">
+            <div className="p-5 mb-6 font-medium text-gray-500 bg-white rounded-lg border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400">
+              <h4 className="mb-4 text-sm font-bold text-gray-900 uppercase dark:text-white">
                 Follow me
               </h4>
-              <div class="flex items-center mb-4">
-                <div class="mr-3 shrink-0">
+              <div className="flex items-center mb-4">
+                <div className="mr-3 shrink-0">
                   <img
-                    class="mt-1 w-8 h-8 rounded-full"
+                    className="mt-1 w-8 h-8 rounded-full"
                     src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
                     alt="Jese Leos"
                   />
                 </div>
-                <div class="mr-3">
-                  <span class="block font-medium text-gray-900 dark:text-white">
+                <div className="mr-3">
+                  <span className="block font-medium text-gray-900 dark:text-white">
                     Jese Leos
                   </span>
-                  <span class="text-sm font-normal">546k followers</span>
+                  <span className="text-sm font-normal">546k followers</span>
                 </div>
               </div>
-              <p class="mb-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+              <p className="mb-4 text-sm font-normal text-gray-500 dark:text-gray-400">
                 Hey! I'm Jese Leos. I'm a career-changer. Bootcamp grad & Dev.
               </p>
               <button
                 type="button"
-                class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 w-full"
+                className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 w-full"
               >
                 Follow
               </button>
             </div>
             <div>
-              <div class="flex justify-center items-center mb-3 w-full h-48 bg-gray-100 rounded-lg dark:bg-gray-800">
+              <div className="flex justify-center items-center mb-3 w-full h-48 bg-gray-100 rounded-lg dark:bg-gray-800">
                 <svg
                   aria-hidden="true"
-                  class="w-8 h-8 text-gray-400"
+                  className="w-8 h-8 text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
-              <p class="mb-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+              <p className="mb-2 text-sm font-normal text-gray-500 dark:text-gray-400">
                 Students and Teachers, save up to 60% on Flowbite Creative
                 Cloud.
               </p>
-              <p class="text-xs font-medium text-gray-400 uppercase dark:text-gray-500">
+              <p className="text-xs font-medium text-gray-400 uppercase dark:text-gray-500">
                 Ads placeholder
               </p>
             </div>
@@ -1322,29 +1324,29 @@ function BlogPage() {
 
       <aside
         aria-label="Related articles"
-        class="py-8 bg-gray-50 lg:py-16 dark:bg-gray-800 antialiased"
+        className="py-8 bg-gray-50 lg:py-16 dark:bg-gray-800 antialiased"
       >
-        <div class="px-4 mx-auto max-w-screen-xl">
-          <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
+        <div className="px-4 mx-auto max-w-screen-xl">
+          <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
             Read Next
           </h2>
-          <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <article>
               <a href="#">
                 <img
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/wordpress/image-1.jpg"
-                  class="mb-5 w-full max-w-full rounded-lg"
+                  className="mb-5 w-full max-w-full rounded-lg"
                   alt="Image 1"
                 />
               </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                 <a href="#">
                   Flowbite enables IT to automate Apple device configuration
                 </a>
               </h2>
               <a
                 href="#"
-                class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
               >
                 Read more
               </a>
@@ -1353,16 +1355,16 @@ function BlogPage() {
               <a href="#">
                 <img
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/wordpress/image-2.jpg"
-                  class="mb-5 w-full max-w-full rounded-lg"
+                  className="mb-5 w-full max-w-full rounded-lg"
                   alt="Image 2"
                 />
               </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                 <a href="#">How AI is transforming your smartphone</a>
               </h2>
               <a
                 href="#"
-                class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
               >
                 Read more
               </a>
@@ -1371,18 +1373,18 @@ function BlogPage() {
               <a href="#">
                 <img
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/wordpress/image-3.jpg"
-                  class="mb-5 w-full max-w-full rounded-lg"
+                  className="mb-5 w-full max-w-full rounded-lg"
                   alt="Image 3"
                 />
               </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                 <a href="#">
                   Android, ChromeOS, and the future of app discovery
                 </a>
               </h2>
               <a
                 href="#"
-                class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
               >
                 Read more
               </a>
@@ -1391,18 +1393,18 @@ function BlogPage() {
               <a href="#">
                 <img
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/wordpress/image-4.jpg"
-                  class="mb-5 w-full max-w-full rounded-lg"
+                  className="mb-5 w-full max-w-full rounded-lg"
                   alt="Image 4"
                 />
               </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                 <a href="#">
                   What Google collaboration app offers remote teams
                 </a>
               </h2>
               <a
                 href="#"
-                class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
               >
                 Read more
               </a>
@@ -1411,18 +1413,18 @@ function BlogPage() {
               <a href="#">
                 <img
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/wordpress/image-5.jpg"
-                  class="mb-5 w-full max-w-full rounded-lg"
+                  className="mb-5 w-full max-w-full rounded-lg"
                   alt="Image 5"
                 />
               </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                 <a href="#">
                   Collaboration app spending grows in the face of crisis
                 </a>
               </h2>
               <a
                 href="#"
-                class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
               >
                 Read more
               </a>
@@ -1431,18 +1433,18 @@ function BlogPage() {
               <a href="#">
                 <img
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/wordpress/image-6.jpg"
-                  class="mb-5 w-full max-w-full rounded-lg"
+                  className="mb-5 w-full max-w-full rounded-lg"
                   alt="Image 6"
                 />
               </a>
-              <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                 <a href="#">
                   For developers, too many meetings, too little 'focus' time
                 </a>
               </h2>
               <a
                 href="#"
-                class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
               >
                 Read more
               </a>
@@ -1451,17 +1453,17 @@ function BlogPage() {
         </div>
       </aside>
 
-      <section class="bg-white dark:bg-gray-900 antialiased">
-        <div class="p-4 py-12 mx-auto max-w-screen-xl text-center lg:py-24">
-          <h2 class="mx-auto mb-6 max-w-2xl text-2xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">
+      <section className="bg-white dark:bg-gray-900 antialiased">
+        <div className="p-4 py-12 mx-auto max-w-screen-xl text-center lg:py-24">
+          <h2 className="mx-auto mb-6 max-w-2xl text-2xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">
             Join a growing community of millions of developers and designers!
           </h2>
-          <p class="mx-auto mb-8 max-w-2xl text-lg text-gray-500 lg:text-xl dark:text-gray-400">
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-500 lg:text-xl dark:text-gray-400">
             Millions of tech blogs publish on Flowbite daily.{" "}
           </p>
           <a
             href="#"
-            class="py-3 px-5 w-full text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            className="py-3 px-5 w-full text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
           >
             Create an account
           </a>
