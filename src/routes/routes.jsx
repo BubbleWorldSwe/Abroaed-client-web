@@ -43,10 +43,9 @@ const AppRoutes = () => {
       children: [
         { path: "dashboard", element: <Dashboard /> },
         { path: "teams", element: <Teams /> },
-        { path: "onboarding", element: <Onboarding /> },
         { path: "nurtureLeads", element: <NurtureLeads /> },
         { path: "students", element: <StudentsTable /> },
-        { path: "manageLeads", element: <ManageLeadsTable /> },
+        { path: "leads", element: <ManageLeadsTable /> },
       ],
     },
   ];

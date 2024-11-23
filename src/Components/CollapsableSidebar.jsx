@@ -162,26 +162,6 @@ function CollapsableSidebar() {
               </Sidebar.Item>
 
               <Sidebar.Item
-                onClick={() => navigate("/admin/nurtureLeads")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/invoices") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
-              >
-                {isOpen ? (
-                  <span className="flex flex-row items-center justify-start gap-2">
-                    <Receipt className="w-5 h-5" />
-                    <span>Nurture Leads</span>
-                  </span>
-                ) : (
-                  <span className="flex justify-center items-center w-full">
-                    <Receipt className="w-5 h-5" />
-                  </span>
-                )}
-              </Sidebar.Item>
-
-              <Sidebar.Item
                 onClick={() => navigate("/admin/onboarding")}
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? "justify-start" : "justify-center"

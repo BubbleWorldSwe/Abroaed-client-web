@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import AddTeamMember from "../../Components/Modals/AddTeamMember";
+import { EllipsisVertical } from "lucide-react";
+
+const teamMembers = [
+  { name: "John Doe", role: "Developer" },
+  { name: "Jane Smith", role: "Designer" },
+  { name: "Alice Johnson", role: "Project Manager" },
+];
 
 function Teams() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [dropdownVisible, setDropdownVisible] = useState(null);
+  const [dropdownDirection, setDropdownDirection] = useState(null);
 
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
@@ -11,6 +20,24 @@ function Teams() {
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
+  const handleDropdownToggle = (event, index) => {
+    const buttonElement = event.currentTarget;
+    const rect = buttonElement.getBoundingClientRect();
+
+    const spaceAbove = rect.top; // Distance from button to top of the viewport
+    const spaceBelow = window.innerHeight - rect.bottom; // Distance from button to bottom of the viewport
+
+    // Adjust dropdownDirection based on available space
+    if (spaceBelow < 150 && spaceAbove > 150) {
+      setDropdownDirection("up"); // Show dropdown upwards
+    } else {
+      setDropdownDirection("down"); // Show dropdown downwards
+    }
+
+    setDropdownVisible(index === dropdownVisible ? null : index);
+  };
+
   return (
     <>
       <AddTeamMember isOpen={isAddModalOpen} onClose={handleCloseAddModal} />
@@ -284,97 +311,89 @@ function Teams() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td class="px-4 py-3 w-4">
-                        <div class="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onclick="event.stopPropagation()"
-                            class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label for="checkbox-table-search-1" class="sr-only">
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
-                          alt="iMac Front Image"
-                          class="h-8 w-auto mr-3"
-                        />
-                        Apple iMac 27&#34;
-                      </th>
-
-                      <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $2999
-                      </td>
-                      <td class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        200
-                      </td>
-
-                      <td class="px-4 py-3 whitespace-nowrap">
-                        <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                          Active
-                        </span>
-                      </td>
-                      <td class="px-4 py-3">
-                        <button
-                          id="apple-imac-27-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="apple-imac-27-dropdown"
-                          class="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            class="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewbox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="apple-imac-27-dropdown"
-                          class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="apple-imac-27-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div class="py-1">
-                            <a
-                              href="#"
-                              class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                    {teamMembers.map((member, index) => (
+                      <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <td class="px-4 py-3 w-4">
+                          <div class="flex items-center">
+                            <input
+                              id="checkbox-table-search-1"
+                              type="checkbox"
+                              onclick="event.stopPropagation()"
+                              class="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                            <label
+                              for="checkbox-table-search-1"
+                              class="sr-only"
                             >
-                              Delete
-                            </a>
+                              checkbox
+                            </label>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
+                        </td>
+                        <th
+                          scope="row"
+                          class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
+                        >
+                          <img
+                            src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
+                            alt="iMac Front Image"
+                            class="h-8 w-auto mr-3"
+                          />
+                          Apple iMac 27&#34;
+                        </th>
+                        <td className="px-4 py-3">{member.name}</td>
+                        <td className="px-4 py-3">{member.role}</td>
+
+                        <td class="px-4 py-3 whitespace-nowrap">
+                          <span class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                            Active
+                          </span>
+                        </td>
+                        <td class="px-4 py-3">
+                          <button
+                            className="focus:outline-none"
+                            onClick={(e) => handleDropdownToggle(e, 1)}
+                          >
+                            <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                          </button>
+                          {dropdownVisible === index && (
+                            <div
+                              id="apple-imac-27-dropdown"
+                              class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                            >
+                              <ul
+                                class="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="apple-imac-27-dropdown-button"
+                              >
+                                <li>
+                                  <a
+                                    href="#"
+                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    Show
+                                  </a>
+                                </li>
+                                <li>
+                                  <a
+                                    href="#"
+                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    Edit
+                                  </a>
+                                </li>
+                              </ul>
+                              <div class="py-1">
+                                <a
+                                  href="#"
+                                  class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                >
+                                  Delete
+                                </a>
+                              </div>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
