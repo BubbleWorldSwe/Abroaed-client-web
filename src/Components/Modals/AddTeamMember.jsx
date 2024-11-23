@@ -1,10 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
-import { toast, Toaster } from "react-hot-toast"; // Updated import
+import React, { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
 function AddTeamMember({ isOpen, onClose }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  //sample
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [role, setRole] = useState("");
+  const [permissions, setPermissions] = useState({
+    readWrite: false,
+    readOnly: false,
+  });
+
+  const handlePermissionToggle = (permission) => {
+    setPermissions((prev) => ({
+      ...prev,
+      [permission]: !prev[permission],
+    }));
+  };
+
+  const handleAddStaff = () => {
+    // Example validation and submission logic
+    if (!firstName || !lastName || !email || !phoneNumber || !role) {
+      toast.error("Please fill out all fields");
+      return;
+    }
+    toast.success("Staff added successfully");
+    onClose();
+  };
 
   return (
     <>
@@ -12,54 +35,110 @@ function AddTeamMember({ isOpen, onClose }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
           <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-md">
             <h2 className="text-2xl font-bold mb-4 dark:text-white">
-              Add Staff
+              Add Team Member
             </h2>
             <div>
+              {/* Input Fields */}
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+              </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Username
+                  Email
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Password
+                  Phone Number
                 </label>
                 <input
-                  type="password"
+                  type="tel"
                   className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </div>
+
+              {/* Role Dropdown */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Role
+                  Role Type
                 </label>
-                <input
-                  type="text"
-                  className="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
-                  value={"role"}
-                  readOnly // Make the input read-only
-                />
+                <select
+                  className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <option value="">Select Role</option>
+                  <option value="content-manager">Content Manager</option>
+                  <option value="counsel-manager">Counsel Manager</option>
+                  <option value="counsellor">Counsellor</option>
+                  <option value="backend-manager">Backend Manager</option>
+                  <option value="backend-associate">Backend Associate</option>
+                </select>
               </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Store Location
-                </label>
-                <input
-                  type="text"
-                  className="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-sm"
-                  readOnly // Make the input read-only
-                />
-              </div>
+
+              {/* Permissions */}
+              {role && (
+                <div className="mb-4">
+                  <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    Permissions
+                  </h3>
+                  <div className="flex space-x-2">
+                    <button
+                      type="button"
+                      className={`py-2.5 px-5 text-sm font-medium rounded-full ${
+                        permissions.readWrite
+                          ? "bg-green-700 text-white"
+                          : "bg-gray-200 text-gray-700"
+                      }`}
+                      onClick={() => handlePermissionToggle("readWrite")}
+                    >
+                      Read & Write
+                    </button>
+                    <button
+                      type="button"
+                      className={`py-2.5 px-5 text-sm font-medium rounded-full ${
+                        permissions.readOnly
+                          ? "bg-green-700 text-white"
+                          : "bg-gray-200 text-gray-700"
+                      }`}
+                      onClick={() => handlePermissionToggle("readOnly")}
+                    >
+                      Read Only
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* Buttons */}
               <div className="flex justify-end">
                 <button
                   type="button"
@@ -69,8 +148,9 @@ function AddTeamMember({ isOpen, onClose }) {
                   Cancel
                 </button>
                 <button
-                  type="submit"
+                  type="button"
                   className="bg-blue-600 text-white px-4 py-2 rounded-md"
+                  onClick={handleAddStaff}
                 >
                   Add Staff
                 </button>
