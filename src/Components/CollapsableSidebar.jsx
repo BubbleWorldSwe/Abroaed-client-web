@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Button, Sidebar } from 'flowbite-react';
-import { HiUser } from 'react-icons/hi';
+import React, { useContext, useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Button, Sidebar } from "flowbite-react";
+import { HiUser } from "react-icons/hi";
 import {
   AlertCircle,
   AlertTriangle,
@@ -13,10 +13,10 @@ import {
   HouseIcon,
   Users2Icon,
   NotebookPenIcon,
-  BookUserIcon
-} from 'lucide-react';
-import { motion } from 'framer-motion';
-import ClipLoader from 'react-spinners/ClipLoader';
+  BookUserIcon,
+} from "lucide-react";
+import { motion } from "framer-motion";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function CollapsableSidebar() {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -26,19 +26,34 @@ function CollapsableSidebar() {
 
   const dropdownOptions = {
     leads: [
-      { label: 'Assignments', action: () => console.log('Navigate to Assignments') },
-      { label: 'Appointments', action: () => console.log('Navigate to Appointments') },
-      { label: 'Task 3', action: () => console.log('Navigate to Task 3') }
+      {
+        label: "Assignments",
+        action: () => console.log("Navigate to Assignments"),
+      },
+      {
+        label: "Appointments",
+        action: () => console.log("Navigate to Appointments"),
+      },
+      { label: "Task 3", action: () => console.log("Navigate to Task 3") },
     ],
     counsellors: [
-      { label: 'Assignments', action: () => console.log('Navigate to Assignments') },
-      { label: 'Add New', action: () => console.log('Navigate to Add New') }
+      {
+        label: "Assignments",
+        action: () => console.log("Navigate to Assignments"),
+      },
+      { label: "Add New", action: () => console.log("Navigate to Add New") },
     ],
     colleges: [
-      { label: 'Add College', action: () => console.log('Navigate to Add College') },
-      { label: 'Manage Colleges', action: () => console.log('Navigate to Manage Colleges') },
-      { label: 'Reports', action: () => console.log('Navigate to Reports') }
-    ]
+      {
+        label: "Add College",
+        action: () => console.log("Navigate to Add College"),
+      },
+      {
+        label: "Manage Colleges",
+        action: () => console.log("Navigate to Manage Colleges"),
+      },
+      { label: "Reports", action: () => console.log("Navigate to Reports") },
+    ],
   };
 
   useEffect(() => {
@@ -47,8 +62,8 @@ function CollapsableSidebar() {
       setIsOpen(screenWidth > 1024);
     };
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const toggleDropdown = (key) => {
@@ -65,12 +80,12 @@ function CollapsableSidebar() {
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate('/admin/dashboard')}
+                onClick={() => navigate("/admin/dashboard")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/admin/dashboard') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/admin/dashboard") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -87,52 +102,72 @@ function CollapsableSidebar() {
 
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate('/admin/teams')}
+                onClick={() => navigate("/admin/leads")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/admin/teams') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/admin/leads") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
                     <NotebookPenIcon className="w-5 h-5" />
+                    <span>Leads</span>
+                  </span>
+                ) : (
+                  <span className="flex justify-center items-center w-full">
+                    <NotebookPenIcon className="w-5 h-5" />
+                  </span>
+                )}
+              </Sidebar.Item>
+
+              <Sidebar.Item
+                onClick={() => navigate("/admin/students")}
+                className={`transition-colors duration-300 flex items-center ${
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/upcomingTrials") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+              >
+                {isOpen ? (
+                  <span className="flex flex-row items-center justify-start gap-2">
+                    <AlertCircle className="w-5 h-5" />
+                    <span>Students</span>
+                  </span>
+                ) : (
+                  <span className="flex justify-center items-center w-full">
+                    <AlertCircle className="w-5 h-5" />
+                  </span>
+                )}
+              </Sidebar.Item>
+
+              <Sidebar.Item
+                onClick={() => navigate("/admin/teams")}
+                className={`transition-colors duration-300 flex items-center ${
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/admin/teams") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+              >
+                {isOpen ? (
+                  <span className="flex flex-row items-center justify-start gap-2">
+                    <BookUserIcon className="w-5 h-5" />
                     <span>Teams</span>
                   </span>
                 ) : (
                   <span className="flex justify-center items-center w-full">
-                    <NotebookPenIcon className="w-5 h-5" />
-                  </span>
-                )}
-              </Sidebar.Item>
-
-              <Sidebar.Item
-                onClick={() => navigate('/admin/manageLeads')}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/admin/manageLeads') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
-              >
-                {isOpen ? (
-                  <span className="flex flex-row items-center justify-start gap-2">
-                    <BookUserIcon className="w-5 h-5" />
-                    <span>Manage Leads</span>
-                  </span>
-                ) : (
-                  <span className="flex justify-center items-center w-full">
                     <BookUserIcon className="w-5 h-5" />
                   </span>
                 )}
               </Sidebar.Item>
 
               <Sidebar.Item
-                onClick={() => navigate('/admin/nurtureLeads')}
+                onClick={() => navigate("/admin/nurtureLeads")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/invoices') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/invoices") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -147,12 +182,12 @@ function CollapsableSidebar() {
               </Sidebar.Item>
 
               <Sidebar.Item
-                onClick={() => navigate('/admin/onboarding')}
+                onClick={() => navigate("/admin/onboarding")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/customers') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/customers") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -169,32 +204,12 @@ function CollapsableSidebar() {
 
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate('/admin/students')}
+                onClick={() => navigate("/upcomingDeliveries")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/upcomingTrials') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
-              >
-                {isOpen ? (
-                  <span className="flex flex-row items-center justify-start gap-2">
-                    <AlertCircle className="w-5 h-5" />
-                    <span>Students</span>
-                  </span>
-                ) : (
-                  <span className="flex justify-center items-center w-full">
-                    <AlertCircle className="w-5 h-5" />
-                  </span>
-                )}
-              </Sidebar.Item>
-
-              <Sidebar.Item
-                onClick={() => navigate('/upcomingDeliveries')}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/upcomingDeliveries') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/upcomingDeliveries") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -210,12 +225,12 @@ function CollapsableSidebar() {
             </Sidebar.ItemGroup>
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate('/stores')}
+                onClick={() => navigate("/stores")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/stores') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/stores") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -230,12 +245,12 @@ function CollapsableSidebar() {
               </Sidebar.Item>
 
               <Sidebar.Item
-                onClick={() => navigate('/staff')}
+                onClick={() => navigate("/staff")}
                 className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? 'justify-start' : 'justify-center'
-                } hover:bg-primary-700 ${isActive('/staff') ? 'bg-primary-500' : ''} ${
-                  isOpen ? 'max-w-[200px] h-12' : 'max-w-[40px] h-12'
-                }`}
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/staff") ? "bg-primary-500" : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -259,8 +274,12 @@ function CollapsableSidebar() {
             />
             {isOpen && (
               <div className="text-left flex flex-col">
-                <div className="font-semibold leading-none text-gray-900 dark:text-white mb-0.5">User</div>
-                <div className="text-sm text-gray-500 dark:text-gray-400">Admin</div>
+                <div className="font-semibold leading-none text-gray-900 dark:text-white mb-0.5">
+                  User
+                </div>
+                <div className="text-sm text-gray-500 dark:text-gray-400">
+                  Admin
+                </div>
               </div>
             )}
           </div>
