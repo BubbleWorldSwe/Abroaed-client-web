@@ -22,6 +22,7 @@ function Teams() {
   };
 
   const handleDropdownToggle = (event, index) => {
+    console.log("index", index);
     const buttonElement = event.currentTarget;
     const rect = buttonElement.getBoundingClientRect();
 
@@ -314,13 +315,15 @@ function Teams() {
                   </thead>
                   <tbody>
                     {teamMembers.map((member, index) => (
-                      <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                      <tr
+                        key={index}
+                        className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
                         <td className="px-4 py-3 w-4">
                           <div className="flex items-center">
                             <input
                               id="checkbox-table-search-1"
                               type="checkbox"
-                              onClick="event.stopPropagation()"
                               className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                             />
                             <label
@@ -353,14 +356,17 @@ function Teams() {
                         <td className="px-4 py-3">
                           <button
                             className="focus:outline-none"
-                            onClick={(e) => handleDropdownToggle(e, 1)}
+                            onClick={(e) => handleDropdownToggle(e, index)}
                           >
                             <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
                           </button>
                           {dropdownVisible === index && (
                             <div
-                              id="apple-imac-27-dropdown"
-                              className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                              className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                                dropdownDirection === "up"
+                                  ? "bottom-full mb-2"
+                                  : "mt-2"
+                              }`}
                             >
                               <ul
                                 className="py-1 text-sm text-gray-700 dark:text-gray-200"
