@@ -38,15 +38,15 @@ function Header() {
     >
       <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
         <div className={`py-3   ${"bg-yellow-200"}`}>
-          <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
+          <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <a
               href="#"
               title=""
-              class="flex items-center justify-center gap-2  font-inter text-sm hover:underline text-yellow-700 dark:text-yellow-300"
+              className="flex items-center justify-center gap-2  font-inter text-sm hover:underline text-yellow-700 dark:text-yellow-300"
             >
               Improve Your IELTS Writing with Our Free Tool 🔍
               <svg
-                class="w-4 h-4 shrink-0"
+                className="w-4 h-4 shrink-0"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -56,9 +56,9 @@ function Header() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M19 12H5m14 0-4 4m4-4-4-4"
                 />
               </svg>
@@ -84,7 +84,7 @@ function Header() {
               <li>
                 <a
                   href="/"
-                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Home
                 </a>
@@ -153,7 +153,7 @@ function Header() {
                 <button
                   id="mega-menu-button"
                   onClick={() => toggleDropdown("exploreCourses")}
-                  class="flex  dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="flex  dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
                   <svg
@@ -173,16 +173,16 @@ function Header() {
                     id="mega-menu"
                     className="absolute left-0 top-full mt-2 w-full bg-white border border-gray-100 shadow-md z-50"
                   >
-                    <div class="p-2 text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
+                    <div className="p-2 text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
                       <ul>
                         <li>
                           <a
                             href="#"
-                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                            className="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                           >
-                            <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div className="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -191,10 +191,10 @@ function Header() {
                               </svg>
                             </div>
                             <div>
-                              <div class="font-semibold">
+                              <div className="font-semibold">
                                 Explore Design Work
                               </div>
-                              <div class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              <div className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Trending designs to inspire you
                               </div>
                             </div>
@@ -203,25 +203,27 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                            className="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                           >
-                            <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div className="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  fill-rule="evenodd"
+                                  fillRule="evenodd"
                                   d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                                  clip-rule="evenodd"
+                                  clipRule="evenodd"
                                 ></path>
                               </svg>
                             </div>
                             <div>
-                              <div class="font-semibold">New & Noteworthy</div>
-                              <div class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              <div className="font-semibold">
+                                New & Noteworthy
+                              </div>
+                              <div className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Up-and-coming designers
                               </div>
                             </div>
@@ -230,11 +232,11 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                            className="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                           >
-                            <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div className="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -244,8 +246,8 @@ function Header() {
                               </svg>
                             </div>
                             <div>
-                              <div class="font-semibold">Playoffs</div>
-                              <div class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              <div className="font-semibold">Playoffs</div>
+                              <div className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Work designers are riffing on
                               </div>
                             </div>
@@ -254,11 +256,11 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                            className="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                           >
-                            <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div className="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -268,8 +270,8 @@ function Header() {
                               </svg>
                             </div>
                             <div>
-                              <div class="font-semibold">Blog</div>
-                              <div class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              <div className="font-semibold">Blog</div>
+                              <div className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Interviews, tutorials, and more
                               </div>
                             </div>
@@ -278,25 +280,27 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                            className="flex items-center p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
                           >
-                            <div class="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
+                            <div className="p-2 mr-4 bg-white rounded-lg shadow dark:bg-gray-700">
                               <svg
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
                               >
                                 <path
-                                  fill-rule="evenodd"
+                                  fillRule="evenodd"
                                   d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                                  clip-rule="evenodd"
+                                  clipRule="evenodd"
                                 ></path>
                               </svg>
                             </div>
                             <div>
-                              <div class="font-semibold">Weekly Warm-up</div>
-                              <div class="text-sm font-light text-gray-500 dark:text-gray-400">
+                              <div className="font-semibold">
+                                Weekly Warm-up
+                              </div>
+                              <div className="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Prompt to flex your skills
                               </div>
                             </div>
@@ -304,15 +308,15 @@ function Header() {
                         </li>
                       </ul>
                     </div>
-                    <div class="py-5 px-5 bg-gray-50 lg:rounded-lg lg:col-span-1 dark:bg-gray-700">
-                      <h3 class="mb-4 text-sm font-semibold text-gray-900 dark:text-white">
+                    <div className="py-5 px-5 bg-gray-50 lg:rounded-lg lg:col-span-1 dark:bg-gray-700">
+                      <h3 className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">
                         Browse categories
                       </h3>
-                      <ul class="space-y-4 text-sm text-gray-500 dark:text-gray-400">
+                      <ul className="space-y-4 text-sm text-gray-500 dark:text-gray-400">
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Animation
                           </a>
@@ -320,7 +324,7 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Branding
                           </a>
@@ -328,7 +332,7 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Illustration
                           </a>
@@ -336,7 +340,7 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Mobile
                           </a>
@@ -344,7 +348,7 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Print
                           </a>
@@ -352,7 +356,7 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Product Design
                           </a>
@@ -360,7 +364,7 @@ function Header() {
                         <li>
                           <a
                             href="#"
-                            class="hover:text-primary-600 dark:hover:text-primary-500"
+                            className="hover:text-primary-600 dark:hover:text-primary-500"
                           >
                             Web Design
                           </a>
@@ -373,7 +377,7 @@ function Header() {
               <li>
                 <a
                   href="/blog"
-                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Blog
                 </a>
@@ -381,7 +385,7 @@ function Header() {
               <li>
                 <a
                   href="/destinations"
-                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Destinations
                 </a>
@@ -389,7 +393,7 @@ function Header() {
               <li>
                 <button
                   onClick={() => toggleDropdown("testPrep")}
-                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   TestPrep
                   <svg
@@ -474,7 +478,7 @@ function Header() {
               <li>
                 <a
                   href="/finance"
-                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Finance
                 </a>
@@ -482,7 +486,7 @@ function Header() {
               <li>
                 <a
                   href="/accomodation"
-                  class="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Accommodation
                 </a>

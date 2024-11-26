@@ -24,7 +24,7 @@ const testimonials = [
 const TestimonialsSection = () => {
   return (
     <div className="w-full overflow-hidden bg-gray-100 py-8">
-      <h2 class="mb-6 lg:mb-8 text-3xl lg:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+      <h2 className="mb-6 lg:mb-8 text-3xl lg:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
         Testimonials
       </h2>
       <InfiniteMovingCards

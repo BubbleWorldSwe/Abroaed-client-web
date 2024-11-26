@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function AccomodationLeadForm() {
   return (
@@ -58,7 +58,12 @@ function AccomodationLeadForm() {
                   className="capitalize hover:shadow-custom-white hover:shadow-gray-500 shadow-sm transition-all duration-300 ease-in-out font-medium lg:w-1/2 inline-flex gap-2 justify-center items-center active:translate-y-[6px] w-full bg-[#002CBF] rounded-xl px-2 py-3 text-white text-sm font-Poppins leading-6 tracking-wide"
                 >
                   Submit
-                  <svg className="size-4" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg
+                    className="size-4"
+                    viewBox="0 0 43 43"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path
                       d="M5.25516 14.5952C1.76076 20.3576 17.1664 25.532 17.1664 25.532C17.1664 25.532 22.3409 40.9376 28.1033 37.4432C34.2185 33.7136 41.5433 10.7984 36.7049 5.99359C31.8665 1.18879 8.98477 8.47997 5.25516 14.5952Z"
                       stroke="white"

@@ -62,13 +62,7 @@ function HomeLayout() {
       <Header />
       <HeroSection />
       <PromoSection />
-      <Tabs
-        tabs={tabData}
-        containerClassName="mb-4"
-        activeTabClassName="bg-gray-200 dark:bg-zinc-800"
-        tabClassName="hover:bg-gray-300 dark:hover:bg-zinc-700"
-        contentClassName="transition-opacity duration-500"
-      />
+
       <PartnerUnis />
       <TimelineSlider slides={slidesData} />
 

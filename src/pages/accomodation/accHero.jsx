@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function AccHero({ onNavigate }) {
   return (
@@ -66,20 +66,32 @@ function AccHero({ onNavigate }) {
         <div
           id="banner"
           tabindex="-1"
-          class="flex justify-between py-3 px-4 w-full bg-gray-50 border border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800"
+          className="flex justify-between py-3 px-4 w-full bg-gray-50 border border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800"
         >
-          <div class="flex items-center mx-auto">
+          <div className="flex items-center mx-auto">
             <div className="mx-auto grid max-w-screen-xl grid-cols-2 gap-8 text-gray-500 dark:text-gray-400 sm:grid-cols-3 sm:gap-12 lg:grid-cols-6 px-4">
-              <button onClick={onNavigate.popularCities} className="flex items-center md:justify-center">
+              <button
+                onClick={onNavigate.popularCities}
+                className="flex items-center md:justify-center"
+              >
                 Popular cities
               </button>
-              <button onClick={onNavigate.popularUnis} className="flex items-center md:justify-center">
+              <button
+                onClick={onNavigate.popularUnis}
+                className="flex items-center md:justify-center"
+              >
                 Popular Unis
               </button>
-              <button onClick={onNavigate.studentAccommodations} className="flex items-center md:justify-center">
+              <button
+                onClick={onNavigate.studentAccommodations}
+                className="flex items-center md:justify-center"
+              >
                 Student Accommodations
               </button>
-              <button onClick={onNavigate.faq} className="flex items-center md:justify-center">
+              <button
+                onClick={onNavigate.faq}
+                className="flex items-center md:justify-center"
+              >
                 FAQs
               </button>
             </div>
