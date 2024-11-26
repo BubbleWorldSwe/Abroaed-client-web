@@ -126,7 +126,7 @@ function CollapsableSidebar() {
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? "justify-start" : "justify-center"
                 } hover:bg-primary-700 ${
-                  isActive("/upcomingTrials") ? "bg-primary-500" : ""
+                  isActive("/admin/students") ? "bg-primary-500" : ""
                 } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (

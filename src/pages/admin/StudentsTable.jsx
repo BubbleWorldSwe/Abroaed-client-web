@@ -1,15 +1,61 @@
 import React, { useState } from "react";
 import FileUploadModal from "../../Components/Modals/UploadDocumentModal-admin";
+import { EllipsisVertical } from "lucide-react";
+
+const Students = [
+  {
+    name: "John Doe",
+    level: "UG",
+    planType: "Direct Standard",
+    counsellor: "Garvit",
+    appCount: 3,
+  },
+  {
+    name: "John Doe",
+    level: "UG",
+    planType: "Direct Standard",
+    counsellor: "Garvit",
+    appCount: 3,
+  },
+  {
+    name: "John Doe",
+    level: "UG",
+    planType: "Direct Standard",
+    counsellor: "Garvit",
+    appCount: 3,
+  },
+];
 
 function StudentsTable() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [dropdownDirection, setDropdownDirection] = useState(null);
+  const [dropdownVisible, setDropdownVisible] = useState(null);
 
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
+    setDropdownVisible(false);
   };
 
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
+  };
+
+  const handleDropdownToggle = (event, index) => {
+    console.log("index", index);
+    const buttonElement = event.currentTarget;
+    const rect = buttonElement.getBoundingClientRect();
+
+    const spaceAbove = rect.top; // Distance from button to top of the viewport
+    const spaceBelow = window.innerHeight - rect.bottom; // Distance from button to bottom of the viewport
+
+    // Adjust dropdownDirection based on available space
+    if (spaceBelow < 150 && spaceAbove > 150) {
+      setDropdownDirection("up"); // Show dropdown upwards
+    } else {
+      setDropdownDirection("down"); // Show dropdown downwards
+    }
+
+    setDropdownVisible(index === dropdownVisible ? null : index);
   };
   return (
     <>
@@ -120,126 +166,8 @@ function StudentsTable() {
                       </div>
                     </form>
                     <div className="flex items-center space-x-4">
-                      <div>
-                        <button
-                          id="filterDropdownButton"
-                          data-dropdown-toggle="filterDropdown"
-                          className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                          type="button"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                            className="h-4 w-4 mr-2 text-gray-400"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-                              clipRule="evenodd"
-                            />
-                          </svg>
-                          Filter
-                          <svg
-                            className="-mr-1 ml-1.5 w-5 h-5"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true"
-                          >
-                            <path
-                              clipRule="evenodd"
-                              fillRule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                            />
-                          </svg>
-                        </button>
-                        <div
-                          id="filterDropdown"
-                          className="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
-                        >
-                          <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-                            Choose brand
-                          </h6>
-                          <ul
-                            className="space-y-2 text-sm"
-                            aria-labelledby="filterDropdownButton"
-                          >
-                            <li className="flex items-center">
-                              <input
-                                id="apple"
-                                type="checkbox"
-                                value=""
-                                className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                              />
-                              <label
-                                htmlFor="apple"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                              >
-                                Apple (56)
-                              </label>
-                            </li>
-                            <li className="flex items-center">
-                              <input
-                                id="fitbit"
-                                type="checkbox"
-                                value=""
-                                className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                              />
-                              <label
-                                htmlFor="fitbit"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                              >
-                                Microsoft (16)
-                              </label>
-                            </li>
-                            <li className="flex items-center">
-                              <input
-                                id="razor"
-                                type="checkbox"
-                                value=""
-                                className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                              />
-                              <label
-                                htmlFor="razor"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                              >
-                                Razor (49)
-                              </label>
-                            </li>
-                            <li className="flex items-center">
-                              <input
-                                id="nikon"
-                                type="checkbox"
-                                value=""
-                                className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                              />
-                              <label
-                                htmlFor="nikon"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                              >
-                                Nikon (12)
-                              </label>
-                            </li>
-                            <li className="flex items-center">
-                              <input
-                                id="benq"
-                                type="checkbox"
-                                value=""
-                                className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                              />
-                              <label
-                                htmlFor="benq"
-                                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-                              >
-                                BenQ (74)
-                              </label>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div>
+                      <div></div>
+                      <div className="flex gap-2">
                         <button
                           id="configurationDropdownButton"
                           data-dropdown-toggle="configurationDropdown"
@@ -261,51 +189,31 @@ function StudentsTable() {
                           </svg>
                           Configurations
                         </button>
-                        <div
-                          id="configurationDropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                        <button
+                          id="configurationDropdownButton"
+                          data-dropdown-toggle="configurationDropdown"
+                          type="button"
+                          className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                         >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="configurationDropdownButton"
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            className="h-4 w-4 mr-2 text-gray-400"
+                            aria-hidden="true"
                           >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                By Category
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                By Brand
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Reset
-                            </a>
-                          </div>
-                        </div>
+                            <path
+                              fillRule="evenodd"
+                              d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 01-.517.608 7.45 7.45 0 00-.478.198.798.798 0 01-.796-.064l-.453-.324a1.875 1.875 0 00-2.416.2l-.243.243a1.875 1.875 0 00-.2 2.416l.324.453a.798.798 0 01.064.796 7.448 7.448 0 00-.198.478.798.798 0 01-.608.517l-.55.092a1.875 1.875 0 00-1.566 1.849v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 01-.064.796l-.324.453a1.875 1.875 0 00.2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 01.796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.092.55c.15.903.932 1.566 1.849 1.566h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 01.517-.608 7.52 7.52 0 00.478-.198.798.798 0 01.796.064l.453.324a1.875 1.875 0 002.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 01-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.55-.091a1.875 1.875 0 001.566-1.85v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 01-.608-.517 7.507 7.507 0 00-.198-.478.798.798 0 01.064-.796l.324-.453a1.875 1.875 0 00-.2-2.416l-.243-.243a1.875 1.875 0 00-2.416-.2l-.453.324a.798.798 0 01-.796.064 7.462 7.462 0 00-.478-.198.798.798 0 01-.517-.608l-.091-.55a1.875 1.875 0 00-1.85-1.566h-.344zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          Filter
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleOpenAddModal}
-                  className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-                >
-                  Add
-                </button>
               </div>
               <div className="mx-4 pb-3 flex flex-wrap">
                 <div className="hidden md:flex items-center text-sm font-medium text-gray-900 dark:text-white mr-4 mt-3">
@@ -378,23 +286,12 @@ function StudentsTable() {
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                      <th scope="col" className="p-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-all"
-                            type="checkbox"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label htmlFor="checkbox-all" className="sr-only">
-                            checkbox
-                          </label>
-                        </div>
-                      </th>
+                      <th scope="col" className="p-4"></th>
                       <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Product
+                        Student Name
                       </th>
                       <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Category
+                        Level
                         <svg
                           className="h-4 w-4 ml-1 inline-block"
                           fill="currentColor"
@@ -410,7 +307,7 @@ function StudentsTable() {
                         </svg>
                       </th>
                       <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                        Brand
+                        Plan Type
                         <svg
                           className="h-4 w-4 ml-1 inline-block"
                           fill="currentColor"
@@ -426,7 +323,7 @@ function StudentsTable() {
                         </svg>
                       </th>
                       <th scope="col" className="px-4 py-3 min-w-[6rem]">
-                        Price
+                        Counselleor
                         <svg
                           className="h-4 w-4 ml-1 inline-block"
                           fill="currentColor"
@@ -442,7 +339,7 @@ function StudentsTable() {
                         </svg>
                       </th>
                       <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                        Stock
+                        App Count
                         <svg
                           className="h-4 w-4 ml-1 inline-block"
                           fill="currentColor"
@@ -457,1034 +354,98 @@ function StudentsTable() {
                           />
                         </svg>
                       </th>
-                      <th scope="col" className="px-4 py-3 min-w-[12rem]">
-                        Total Sales
-                        <svg
-                          className="h-4 w-4 ml-1 inline-block"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                        >
-                          <path
-                            clipRule="evenodd"
-                            fillRule="evenodd"
-                            d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                          />
-                        </svg>
-                      </th>
-                      <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                        Status
-                        <svg
-                          className="h-4 w-4 ml-1 inline-block"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                        >
-                          <path
-                            clipRule="evenodd"
-                            fillRule="evenodd"
-                            d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                          />
-                        </svg>
-                      </th>
+
                       <th scope="col" className="px-4 py-3">
                         <span className="sr-only">Actions</span>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
+                    {Students.map((member, index) => (
+                      <tr
+                        key={index}
+                        className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Apple iMac 27&#34;
-                      </th>
-                      <td className="px-4 py-3">PC</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $2999
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        200
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        245
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                          Active
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="apple-imac-27-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="apple-imac-27-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="apple-imac-27-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="apple-imac-27-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        <td className="px-4 py-3 w-4">
+                          <div className="flex items-center">
+                            <input
+                              id="checkbox-table-search-1"
+                              type="checkbox"
+                              onClick="event.stopPropagation()"
+                              className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                            />
+                            <label
+                              htmlFor="checkbox-table-search-1"
+                              className="sr-only"
                             >
-                              Delete
-                            </a>
+                              checkbox
+                            </label>
                           </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        </td>
+                        <th
+                          scope="row"
+                          className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
+                        >
+                          <img
+                            src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
+                            alt="iMac Front Image"
+                            className="h-8 w-auto mr-3"
                           />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
+                          {member.name}
+                        </th>
+                        <td className="px-4 py-3"> {member.level}</td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {" "}
+                          {member.planType}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {member.counsellor}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                            {member.appCount}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3">
+                          <button
+                            className="focus:outline-none"
+                            onClick={(e) => handleDropdownToggle(e, index)}
                           >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Apple iMac 20&#34;
-                      </th>
-                      <td className="px-4 py-3">PC</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $1499
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        1237
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        2000
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                          Active
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="apple-imac-20-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="apple-imac-20-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="apple-imac-20-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="apple-imac-20-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                            <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                          </button>
+                          {dropdownVisible === index && (
+                            <div
+                              className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                                dropdownDirection === "up"
+                                  ? "bottom-full mb-2"
+                                  : "mt-2"
+                              }`}
                             >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/apple-iphone-14.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Apple iPhone 14
-                      </th>
-                      <td className="px-4 py-3">Phone</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $999
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        300
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        466
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                          Inactive
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="apple-iphone-14-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="apple-iphone-14-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="apple-iphone-14-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="apple-iphone-14-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/apple-ipad-air.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Apple iPad Air
-                      </th>
-                      <td className="px-4 py-3">Tablet</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $1199
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        4576
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        90
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                          Inactive
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="apple-ipad-air-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="apple-ipad-air-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="apple-ipad-air-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="apple-ipad-air-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/xbox-series-s.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Xbox Series S
-                      </th>
-                      <td className="px-4 py-3">Gaming/Console</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Microsoft
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $299
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        56
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        3087
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
-                          Pending
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="xbox-series-s-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="xbox-series-s-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="xbox-series-s-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="xbox-series-s-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/playstation-5.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        PlayStation 5
-                      </th>
-                      <td className="px-4 py-3">Gaming/Console</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Sony
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $799
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        78
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        2999
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                          Active
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="playstation-5-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="playstation-5-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="playstation-5-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="playstation-5-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/xbox-series-x.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Xbox Series X
-                      </th>
-                      <td className="px-4 py-3">Gaming/Console</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Microsoft
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $699
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        200
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        1870
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                          Active
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="xbox-series-x-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="xbox-series-x-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="xbox-series-x-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="xbox-series-x-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/apple-watch-se.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Apple Watch SE
-                      </th>
-                      <td className="px-4 py-3">Watch</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $399
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        657
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        5067
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-gray-100 text-gray-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-                          Inactive
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="apple-watch-se-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="apple-watch-se-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="apple-watch-se-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="apple-watch-se-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/nikon-d850.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        NIKON D850
-                      </th>
-                      <td className="px-4 py-3">Photo</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Nikon
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $599
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        465
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        1870
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
-                          Pending
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="nikon-d850-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="nikon-d850-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="nikon-d850-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="nikon-d850-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                      <td className="px-4 py-3 w-4">
-                        <div className="flex items-center">
-                          <input
-                            id="checkbox-table-search-1"
-                            type="checkbox"
-                            onClick="event.stopPropagation()"
-                            className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                          <label
-                            htmlFor="checkbox-table-search-1"
-                            className="sr-only"
-                          >
-                            checkbox
-                          </label>
-                        </div>
-                      </td>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                      >
-                        <img
-                          src="https://flowbite.s3.amazonaws.com/blocks/application-ui/devices/benq-ex2710q.png"
-                          alt="iMac Front Image"
-                          className="h-8 w-auto mr-3"
-                        />
-                        Monitor BenQ EX2710Q
-                      </th>
-                      <td className="px-4 py-3">TV/Monitor</td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        BenQ
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        $499
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        354
-                      </td>
-                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        76
-                      </td>
-                      <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                          Active
-                        </span>
-                      </td>
-                      <td className="px-4 py-3">
-                        <button
-                          id="benq-ex2710q-dropdown-button"
-                          type="button"
-                          data-dropdown-toggle="benq-ex2710q-dropdown"
-                          className="inline-flex items-center p-1 text-sm font-medium text-center text-gray-500 hover:text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            aria-hidden="true"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                          </svg>
-                        </button>
-                        <div
-                          id="benq-ex2710q-dropdown"
-                          className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
-                        >
-                          <ul
-                            className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="benq-ex2710q-dropdown-button"
-                          >
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Show
-                              </a>
-                            </li>
-                            <li>
-                              <a
-                                href="#"
-                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                Edit
-                              </a>
-                            </li>
-                          </ul>
-                          <div className="py-1">
-                            <a
-                              href="#"
-                              className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                            >
-                              Delete
-                            </a>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                              <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                <li>
+                                  <button
+                                    type="button"
+                                    onClick={handleOpenAddModal}
+                                    className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    View Profile
+                                  </button>
+                                </li>
+                                <li>
+                                  <button
+                                    type="button"
+                                    onClick={handleOpenAddModal}
+                                    className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    Upload Docs
+                                  </button>
+                                </li>
+                              </ul>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
