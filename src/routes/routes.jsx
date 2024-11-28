@@ -15,6 +15,7 @@ import StudentsTable from "../pages/admin/StudentsTable";
 import ManageLeadsTable from "../pages/admin/ManageLeadsTable";
 import HomeLayout from "../Components/Home";
 import LayoutBlogs from "../Components/LayoutBlogs";
+import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -23,6 +24,11 @@ const AppRoutes = () => {
     {
       path: "/destinations",
       element: <LayoutPageDestination />,
+      isPrivate: false,
+    },
+    {
+      path: "/comingsoon",
+      element: <ComingSoonPage />,
       isPrivate: false,
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
