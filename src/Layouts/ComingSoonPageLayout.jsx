@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { BackgroundGradient } from "../Components/bgGradient";
 import { motion } from "framer-motion";
 import slider1 from "../assets/slider1.png";
 import slider2 from "../assets/slider2.png";
 import slider3 from "../assets/slider3.png";
+import { Spotlight } from "../Components/SpotLight";
 
 function ComingSoonPageLayout() {
   const [email, setEmail] = useState("");
@@ -49,12 +49,16 @@ function ComingSoonPageLayout() {
 
   return (
     <div>
-      <section className="h-full flex items-center justify-center w-full bg-slate-950 px-4 sm:py-4 xl:px-0">
+      <section className="min-h-screen flex items-center justify-center w-full bg-slate-950 px-4 sm:py-4 xl:px-0">
         <div className=" h-full max-w-screen-xl px-4  sm:py-16 xl:px-0">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-24">
             <div className="w-1/2 md:w-full">
+              <Spotlight
+                className="-top-40 left-0 md:left-60 md:-top-20"
+                fill="white"
+              />
               <div>
-                <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+                <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-yellow-500 dark:text-white sm:text-5xl">
                   Coming Soon! Launching Early 2025.
                 </h1>
                 <p className="mb-6 flex items-center text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
@@ -74,7 +78,7 @@ function ComingSoonPageLayout() {
                     />
                     <button
                       type="submit"
-                      className="px-6 py-2 rounded-lg bg-primary-700 text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      className="px-6 py-2 rounded-lg bg-yellow-700 text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
                     >
                       Subscribe
                     </button>
@@ -85,7 +89,7 @@ function ComingSoonPageLayout() {
               <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
                 <div>
                   <svg
-                    className="mb-2 h-8 w-8 text-primary-700 dark:text-primary-500"
+                    className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -100,7 +104,7 @@ function ComingSoonPageLayout() {
                       d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
                     />
                   </svg>
-                  <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
+                  <h3 className="mb-2 font-semibold text-yellow-900 dark:text-white">
                     Personalized Counseling
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -110,7 +114,7 @@ function ComingSoonPageLayout() {
                 </div>
                 <div>
                   <svg
-                    className="mb-2 h-8 w-8 text-primary-700 dark:text-primary-500"
+                    className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -126,7 +130,7 @@ function ComingSoonPageLayout() {
                       d="M8.891 15.107 15.11 8.89m-5.183-.52h.01m3.089 7.254h.01M14.08 3.902a2.849 2.849 0 0 0 2.176.902 2.845 2.845 0 0 1 2.94 2.94 2.849 2.849 0 0 0 .901 2.176 2.847 2.847 0 0 1 0 4.16 2.848 2.848 0 0 0-.901 2.175 2.843 2.843 0 0 1-2.94 2.94 2.848 2.848 0 0 0-2.176.902 2.847 2.847 0 0 1-4.16 0 2.85 2.85 0 0 0-2.176-.902 2.845 2.845 0 0 1-2.94-2.94 2.848 2.848 0 0 0-.901-2.176 2.848 2.848 0 0 1 0-4.16 2.849 2.849 0 0 0 .901-2.176 2.845 2.845 0 0 1 2.941-2.94 2.849 2.849 0 0 0 2.176-.901 2.847 2.847 0 0 1 4.159 0Z"
                     />
                   </svg>
-                  <h3 className="mb-2 font-semibold text-gray-900 dark:text-white">
+                  <h3 className="mb-2 font-semibold text-yellow-900 dark:text-white">
                     Exclusive Updates
                   </h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -148,7 +152,7 @@ function ComingSoonPageLayout() {
                         : "translate-x-full"
                     }`}
                   >
-                    <BackgroundGradient className="rounded-[22px] p-4 bg-white dark:bg-zinc-900">
+                    <div className="rounded-[22px] p-4 bg-white dark:bg-zinc-900">
                       <a href="#">
                         <img
                           className="mx-auto mb-4 h-60 dark:hidden md:mb-6"
@@ -190,7 +194,7 @@ function ComingSoonPageLayout() {
                       <a
                         href="#"
                         title=""
-                        className="mt-4 inline-flex items-center gap-1.5 font-medium text-primary-700 hover:text-primary-600 hover:underline dark:text-primary-500 dark:hover:text-primary-400"
+                        className="mt-4 inline-flex items-center gap-1.5 font-medium text-yellow-700 hover:text-yellow-600 hover:underline dark:text-yellow-500 dark:hover:text-yellow-400"
                       >
                         Learn More
                         <svg
@@ -209,7 +213,7 @@ function ComingSoonPageLayout() {
                           ></path>
                         </svg>
                       </a>
-                    </BackgroundGradient>
+                    </div>
                   </motion.div>
                 ))}
 
