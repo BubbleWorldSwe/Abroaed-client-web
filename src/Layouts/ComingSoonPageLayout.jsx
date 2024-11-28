@@ -50,9 +50,9 @@ function ComingSoonPageLayout() {
   return (
     <div>
       <section className="min-h-screen flex items-center justify-center w-full bg-slate-950 px-4 sm:py-4 xl:px-0">
-        <div className=" h-full max-w-screen-xl px-4  sm:py-16 xl:px-0">
+        <div className=" h-full max-w-screen-xl px-4  py-2 sm:py-16 xl:px-0">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-24">
-            <div className="w-1/2 md:w-full">
+            <div className="lg:w-1/2 w-full">
               <Spotlight
                 className="-top-40 left-0 md:left-60 md:-top-20"
                 fill="white"
@@ -141,7 +141,7 @@ function ComingSoonPageLayout() {
               </div>
             </div>
 
-            <div className="w-1/2 md:w-full">
+            <div className="lg:w-1/2 :w-full">
               <div className="relative h-[500px] overflow-hidden">
                 {carouselItems.map((item, index) => (
                   <motion.div
