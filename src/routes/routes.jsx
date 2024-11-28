@@ -20,14 +20,14 @@ import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 const AppRoutes = () => {
   // Define all routes (public and private)
   const allRoutes = [
-    { path: "/", element: <HomeLayout />, isPrivate: false },
+    { path: "/home", element: <HomeLayout />, isPrivate: false },
     {
       path: "/destinations",
       element: <LayoutPageDestination />,
       isPrivate: false,
     },
     {
-      path: "/comingsoon",
+      path: "/",
       element: <ComingSoonPage />,
       isPrivate: false,
     },
