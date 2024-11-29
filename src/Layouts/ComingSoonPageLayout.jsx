@@ -47,21 +47,53 @@ function ComingSoonPageLayout() {
     alert(`Thanks for registering! We'll keep you updated at ${email}`);
   };
 
+  const words = ["Coming", "Soon!", "Launching", "Early", "2025."];
+
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, // Delay between each word
+      },
+    },
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <div>
-      <section className="min-h-screen flex items-center justify-center w-full bg-slate-950 px-4 sm:py-4 xl:px-0">
-        <div className=" h-full max-w-screen-xl px-4  py-2 sm:py-16 xl:px-0">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:gap-24">
+      <section className="min-h-screen flex items-center justify-center w-full bg-slate-950 px-6 sm:px-8 py-4">
+        <div className=" h-full ">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
             <div className="lg:w-1/2 w-full">
               <Spotlight
                 className="-top-40 left-0 md:left-60 md:-top-20"
                 fill="white"
               />
               <div>
-                <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-yellow-500 dark:text-white sm:text-5xl">
-                  Coming Soon! Launching Early 2025.
-                </h1>
-                <p className="mb-6 flex items-center text-gray-500 dark:text-gray-400 md:text-lg lg:mb-8 lg:text-xl">
+                <motion.h1
+                  className="mb-6 text-4xl font-inter font-bold text-yellow-500 sm:text-5xl"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {words.map((word, index) => (
+                    <motion.span
+                      key={index}
+                      className="inline-block mr-2"
+                      variants={wordVariants}
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.h1>
+                <p className="mb-8 text-lg font-inter text-gray-300 sm:text-xl">
+                  {" "}
                   Your Dream Study Abroad Journey Begins Here.
                   <br /> Personalized Counseling and Services Coming Soon.
                 </p>
@@ -78,7 +110,7 @@ function ComingSoonPageLayout() {
                     />
                     <button
                       type="submit"
-                      className="px-6 py-2 rounded-lg bg-yellow-700 text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
+                      className="px-6 py-2 font-inter rounded-lg bg-yellow-700 text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
                     >
                       Subscribe
                     </button>
@@ -104,10 +136,10 @@ function ComingSoonPageLayout() {
                       d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
                     />
                   </svg>
-                  <h3 className="mb-2 font-semibold text-yellow-900 dark:text-white">
+                  <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-900 dark:text-white">
                     Personalized Counseling
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-md font-inter text-white">
                     Get personalized guidance on choosing the right courses and
                     universities.
                   </p>
@@ -130,10 +162,10 @@ function ComingSoonPageLayout() {
                       d="M8.891 15.107 15.11 8.89m-5.183-.52h.01m3.089 7.254h.01M14.08 3.902a2.849 2.849 0 0 0 2.176.902 2.845 2.845 0 0 1 2.94 2.94 2.849 2.849 0 0 0 .901 2.176 2.847 2.847 0 0 1 0 4.16 2.848 2.848 0 0 0-.901 2.175 2.843 2.843 0 0 1-2.94 2.94 2.848 2.848 0 0 0-2.176.902 2.847 2.847 0 0 1-4.16 0 2.85 2.85 0 0 0-2.176-.902 2.845 2.845 0 0 1-2.94-2.94 2.848 2.848 0 0 0-.901-2.176 2.848 2.848 0 0 1 0-4.16 2.849 2.849 0 0 0 .901-2.176 2.845 2.845 0 0 1 2.941-2.94 2.849 2.849 0 0 0 2.176-.901 2.847 2.847 0 0 1 4.159 0Z"
                     />
                   </svg>
-                  <h3 className="mb-2 font-semibold text-yellow-900 dark:text-white">
+                  <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-900 dark:text-white">
                     Exclusive Updates
                   </h3>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-md font-inter text-white">
                     Sign up to receive exclusive news and updates about our
                     services.
                   </p>
@@ -152,67 +184,25 @@ function ComingSoonPageLayout() {
                         : "translate-x-full"
                     }`}
                   >
-                    <div className="rounded-[22px] p-4 bg-white dark:bg-zinc-900">
+                    <div className="rounded-[22px] p-8 bg-white dark:bg-zinc-900 shadow-lg flex flex-col items-center text-center space-y-6">
                       <a href="#">
                         <img
-                          className="mx-auto mb-4 h-60 dark:hidden md:mb-6"
+                          className="w-full max-w-xs mx-auto mb-4 h-60 object-cover rounded-lg"
                           src={item.imgSrc}
                           alt={item.title}
                         />
                       </a>
 
-                      <span className="me-2 inline-flex items-center rounded bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300">
-                        <svg
-                          className="me-1.5 h-3 w-3"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M8.9 15.1 15 9m-5-.6h0m3.1 7.2h0M14 4a2.8 2.8 0 0 0 2.3.9 2.8 2.8 0 0 1 2.9 3 2.8 2.8 0 0 0 .9 2.1 2.8 2.8 0 0 1 0 4.2 2.8 2.8 0 0 0-.9 2.2 2.8 2.8 0 0 1-3 2.9 2.8 2.8 0 0 0-2.1.9 2.8 2.8 0 0 1-4.2 0 2.8 2.8 0 0 0-2.2-.9 2.8 2.8 0 0 1-2.9-3 2.8 2.8 0 0 0-.9-2.1 2.8 2.8 0 0 1 0-4.2 2.8 2.8 0 0 0 .9-2.2 2.8 2.8 0 0 1 3-2.9A2.8 2.8 0 0 0 9.9 4a2.8 2.8 0 0 1 4.2 0Z"
-                          ></path>
-                        </svg>
-                        Service Available
-                      </span>
-
                       <a
                         href="#"
-                        className="mt-4 block font-medium text-gray-900 hover:underline dark:text-white"
+                        className="font-inter font-semibold text-2xl text-gray-900 hover:underline dark:text-white"
                       >
                         {item.title}
                       </a>
 
-                      <p className="mt-4 text-gray-600 dark:text-gray-300">
+                      <p className="font-inter text-gray-600 dark:text-gray-300 text-lg">
                         {item.description}
                       </p>
-
-                      <a
-                        href="#"
-                        title=""
-                        className="mt-4 inline-flex items-center gap-1.5 font-medium text-yellow-700 hover:text-yellow-600 hover:underline dark:text-yellow-500 dark:hover:text-yellow-400"
-                      >
-                        Learn More
-                        <svg
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M19 12H5m14 0-4 4m4-4-4-4"
-                          ></path>
-                        </svg>
-                      </a>
                     </div>
                   </motion.div>
                 ))}
