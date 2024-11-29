@@ -205,11 +205,11 @@ function CollapsableSidebar() {
             </Sidebar.ItemGroup>
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate("/stores")}
+                onClick={() => navigate("/admin/colleges")}
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? "justify-start" : "justify-center"
                 } hover:bg-primary-700 ${
-                  isActive("/stores") ? "bg-primary-500" : ""
+                  isActive("/admin/colleges") ? "bg-primary-500" : ""
                 } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (

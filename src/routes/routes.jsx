@@ -16,6 +16,7 @@ import ManageLeadsTable from "../pages/admin/ManageLeadsTable";
 import HomeLayout from "../Components/Home";
 import LayoutBlogs from "../Components/LayoutBlogs";
 import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
+import CollegePageLayout from "../Layouts/CollegePageLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -52,6 +53,7 @@ const AppRoutes = () => {
         { path: "nurtureLeads", element: <NurtureLeads /> },
         { path: "students", element: <StudentsTable /> },
         { path: "leads", element: <ManageLeadsTable /> },
+        { path: "colleges", element: <CollegePageLayout /> },
       ],
     },
   ];
