@@ -44,12 +44,20 @@ export default {
       },
       colors: {
         primary: {
-          "50": "#f5f3ff", "100": "#ede9fe", "200": "#ddd6fe",
-          "300": "#c4b5fd", "400": "#a78bfa", "500": "#8b5cf6",
-          "600": "#7c3aed", "700": "#6d28d9", "800": "#5b21b6",
-          "900": "#4c1d95", "950": "#2e1065"
+          "50": "#fffdea",
+          "100": "#fff3c4",
+          "200": "#ffe78e",
+          "300": "#ffdb5d",
+          "400": "#ffcd2b",
+          "500": "#ffc300",
+          "600": "#e6ad00",
+          "700": "#b38900",
+          "800": "#806400",
+          "900": "#4d3f00",
+          "950": "#2a2200"
         },
-      },
+      }
+      ,
       animation: {
         scroll:
           "scroll var(--animation-duration) linear infinite",
