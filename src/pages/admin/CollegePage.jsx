@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import AddDrawer from "../../Components/addDrawer";
 
 const sections = [
   {
@@ -13,15 +14,19 @@ const sections = [
 ];
 
 function CollegePage() {
-  // Function to handle Add button click (for demo purpose)
-  const handleAddContent = (index) => {
-    // Simulate adding content by setting a value (in real-world, this could trigger a modal or form)
-    sections[index].content = `Content added for ${sections[index].title}`;
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+
+  const handleOpenAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+
+  const handleCloseAddModal = () => {
+    setIsAddModalOpen(false);
   };
 
   return (
     <div>
-      {" "}
+      <AddDrawer isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
       {/* <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <header class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/background.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative">
           <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
@@ -254,7 +259,7 @@ function CollegePage() {
                       d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
                     />
                   </svg>
-                  Edit review
+                  Edit
                 </button>
                 <button
                   id="deleteReviewButton"
@@ -280,13 +285,14 @@ function CollegePage() {
                       d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
                     ></path>
                   </svg>
-                  Delete review
+                  Delete
                 </button>
               </div>
             ) : (
               <button
-                onClick={() => handleAddContent(index)}
-                className="text-green-600 hover:underline"
+                type="button"
+                onClick={handleOpenAddModal}
+                className="py-2 px-3 flex items-center text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Add
               </button>
