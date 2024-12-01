@@ -1,5 +1,6 @@
 import { EllipsisVertical } from "lucide-react";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Colleges = [
   {
@@ -48,7 +49,7 @@ function CollegeTable() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
-
+  const navigate = useNavigate();
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
     setDropdownVisible(false);
@@ -76,7 +77,7 @@ function CollegeTable() {
     setDropdownVisible(index === dropdownVisible ? null : index);
   };
   return (
-    <div className="min-h-screen flex flex-col p-2">
+    <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col p-2">
       {/* Header */}
       <header className="p-4 bg-white text-white">
         <nav className="flex" aria-label="Breadcrumb">
@@ -128,7 +129,7 @@ function CollegeTable() {
       </header>
 
       {/* Section - Takes the remaining space */}
-      <section className="bg-gray-300 dark:bg-gray-900 py-3 sm:py-5 flex-grow">
+      <section className=" py-3 sm:py-5 flex-grow">
         <div className="flex flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
           <div className="border-b dark:border-gray-700 mx-4">
             <div className="flex items-center justify-between space-x-4 pt-3">
@@ -387,7 +388,13 @@ function CollegeTable() {
                             <li>
                               <button
                                 type="button"
-                                onClick={handleOpenAddModal}
+                                onClick={() =>
+                                  navigate(
+                                    `/admin/colleges/${encodeURIComponent(
+                                      college.name
+                                    )}`
+                                  )
+                                }
                                 className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                               >
                                 View Details

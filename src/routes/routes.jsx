@@ -18,6 +18,7 @@ import LayoutBlogs from "../Components/LayoutBlogs";
 import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 import CollegePageLayout from "../Layouts/CollegePageLayout";
 import CollegeTable from "../pages/admin/CollegeTable";
+import CollegePage from "../pages/admin/CollegePage";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -55,6 +56,7 @@ const AppRoutes = () => {
         { path: "students", element: <StudentsTable /> },
         { path: "leads", element: <ManageLeadsTable /> },
         { path: "colleges", element: <CollegeTable /> },
+        { path: "colleges/:name", element: <CollegePage /> },
       ],
     },
   ];

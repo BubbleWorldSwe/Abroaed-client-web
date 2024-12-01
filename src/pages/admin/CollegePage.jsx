@@ -1,10 +1,28 @@
 import React from "react";
 
+const sections = [
+  {
+    title: "Overview",
+    content:
+      " Stunning graphics, lightning-fast load times, and an impressive game library. The new controller's haptic feedback adds a whole new level of immersion. Truly a next-gen experience!",
+  },
+  { title: "Media Gallery", content: "Some content for media gallery" },
+  { title: "Financial Aid and Scholarships", content: "" },
+  { title: "Courses", content: "Some content for courses" },
+  { title: "FAQs", content: "" },
+];
+
 function CollegePage() {
+  // Function to handle Add button click (for demo purpose)
+  const handleAddContent = (index) => {
+    // Simulate adding content by setting a value (in real-world, this could trigger a modal or form)
+    sections[index].content = `Content added for ${sections[index].title}`;
+  };
+
   return (
     <div>
       {" "}
-      <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+      {/* <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <header class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/background.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative">
           <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
           <div class="absolute top-20 left-1/2 px-4 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 xl:px-0">
@@ -104,115 +122,178 @@ function CollegePage() {
             </p>
           </article>
         </div>
-      </main>
-      <aside
-        aria-label="Related articles"
-        class="py-8 lg:py-24 bg-white dark:bg-gray-900"
-      >
-        <div class="px-4 mx-auto max-w-screen-xl">
-          <h2 class="mb-6 lg:mb-8 text-2xl font-bold text-gray-900 dark:text-white">
-            Related articles
-          </h2>
-          <div class="grid gap-6 lg:gap-12 md:grid-cols-2">
-            <article class="flex flex-col xl:flex-row">
-              <a href="#" class="mb-2 xl:mb-0">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-1.png"
-                  class="mr-5 max-w-sm"
-                  alt="Image 1"
-                />
-              </a>
-              <div class="flex flex-col justify-center">
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">Our first office</a>
-                </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400 max-w-sm">
-                  Over the past year, Volosoft has undergone many changes! After
-                  months of preparation.
-                </p>
-                <a
-                  href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
-                >
-                  Read in 2 minutes
-                </a>
+      </main> */}
+      <main className="min-h-screen flex flex-col gap-4 overflow-y-auto p-4 bg-gray-150 dark:bg-gray-900">
+        {sections.map((section, index) => (
+          <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <div class="items-start justify-between border-b border-gray-100 pb-4 dark:border-gray-700 md:flex">
+              <div class="mb-4 justify-between sm:flex sm:items-center md:mb-0 md:block lg:mb-4 lg:flex xl:mb-0 xl:block">
+                <div class="flex items-center gap-4">
+                  <a></a>
+                  <div>
+                    <span class="bg-gray-100 text-gray-800 text-xs font-medium mb-1.5 inline-flex items-center px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+                      <svg
+                        class="me-1 h-3 w-3"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"
+                        />
+                      </svg>
+                      19 Jan 2024
+                    </span>
+                    <a
+                      href="#"
+                      class="dark:text-white block hover:underline font-semibold mb-2 text-gray-900 sm:mb-0"
+                    >
+                      {section.title}
+                    </a>
+                  </div>
+                </div>
               </div>
-            </article>
-            <article class="flex flex-col xl:flex-row">
-              <a href="#" class="mb-2 xl:mb-0">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-2.png"
-                  class="mr-5 max-w-sm"
-                  alt="Image 2"
-                />
-              </a>
-              <div class="flex flex-col justify-center">
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">Enterprise design tips</a>
-                </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400 max-w-sm">
-                  Over the past year, Volosoft has undergone many changes! After
-                  months of preparation.
-                </p>
-                <a
-                  href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+              <div class="flex items-center space-x-0.5">
+                <svg
+                  class="w-5 h-5 text-yellow-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  Read in 12 minutes
-                </a>
-              </div>
-            </article>
-            <article class="flex flex-col xl:flex-row">
-              <a href="#" class="mb-2 xl:mb-0">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-3.png"
-                  class="mr-5 max-w-sm"
-                  alt="Image 3"
-                />
-              </a>
-              <div class="flex flex-col justify-center">
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">We partnered up with Google</a>
-                </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400 max-w-sm">
-                  Over the past year, Volosoft has undergone many changes! After
-                  months of preparation.
-                </p>
-                <a
-                  href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                  <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-yellow-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  Read in 8 minutes
-                </a>
-              </div>
-            </article>
-            <article class="flex flex-col xl:flex-row">
-              <a href="#" class="mb-2 xl:mb-0">
-                <img
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/article/blog-4.png"
-                  class="mr-5 max-w-sm"
-                  alt="Image 4"
-                />
-              </a>
-              <div class="flex flex-col justify-center">
-                <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
-                  <a href="#">Our first project with React</a>
-                </h2>
-                <p class="mb-4 text-gray-500 dark:text-gray-400 max-w-sm">
-                  Over the past year, Volosoft has undergone many changes! After
-                  months of preparation.
-                </p>
-                <a
-                  href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                  <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-yellow-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  Read in 12 minutes
-                </a>
+                  <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-yellow-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                </svg>
+                <svg
+                  class="w-5 h-5 text-yellow-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                </svg>
               </div>
-            </article>
+            </div>
+            <p class="mb-4 items-center sm:flex sm:flex-wrap xl:flex text-gray-500 dark:text-gray-400 pt-4">
+              {section.content ? (
+                <p className="text-gray-700 dark:text-gray-300">
+                  {section.content}
+                </p>
+              ) : (
+                <p className="text-gray-500 dark:text-gray-400">
+                  No content added
+                </p>
+              )}
+            </p>
+            {section.content ? (
+              <div class="flex items-center gap-4">
+                <button
+                  type="button"
+                  data-modal-target="editReviewModal"
+                  data-modal-toggle="editReviewModal"
+                  class="inline-flex text-sm items-center font-medium text-primary-700 hover:underline dark:text-primary-500"
+                >
+                  <svg
+                    class="me-1 h-4 w-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
+                    />
+                  </svg>
+                  Edit review
+                </button>
+                <button
+                  id="deleteReviewButton"
+                  data-modal-target="deleteReviewModal"
+                  data-modal-toggle="deleteReviewModal"
+                  type="button"
+                  class="inline-flex text-sm items-center font-medium text-red-600 hover:underline dark:text-red-500"
+                >
+                  <svg
+                    class="me-1 h-4 w-4"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
+                    ></path>
+                  </svg>
+                  Delete review
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => handleAddContent(index)}
+                className="text-green-600 hover:underline"
+              >
+                Add
+              </button>
+            )}
           </div>
-        </div>
-      </aside>
+        ))}
+      </main>
     </div>
   );
 }

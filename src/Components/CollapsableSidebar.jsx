@@ -209,7 +209,10 @@ function CollapsableSidebar() {
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? "justify-start" : "justify-center"
                 } hover:bg-primary-700 ${
-                  isActive("/admin/colleges") ? "bg-primary-500" : ""
+                  isActive("/admin/colleges") ||
+                  window.location.pathname.startsWith("/admin/colleges")
+                    ? "bg-primary-500"
+                    : ""
                 } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
