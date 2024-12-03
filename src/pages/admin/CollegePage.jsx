@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddDrawer from "../../Components/addDrawer";
+import DeleteModal from "../../Components/Modals/DeleteModal";
 
 const sections = [
   {
@@ -15,8 +16,23 @@ const sections = [
 
 function CollegePage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
+  const [titlecaller, setTitleCaller] = useState(false); // State to manage Add modal open/close
+  const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
 
-  const handleOpenAddModal = () => {
+  const handleOpenDeleteModal = (section) => {
+    setSelectedSection(section);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleDeleteCloseModal = () => {
+    setIsDeleteModalOpen(false);
+    setSelectedSection(null);
+  };
+
+  const handleOpenAddModal = (title) => {
+    console.log("title calling", title);
+    setTitleCaller(title);
     setIsAddModalOpen(true);
   };
 
@@ -26,7 +42,22 @@ function CollegePage() {
 
   return (
     <div>
-      <AddDrawer isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
+      <AddDrawer
+        title={titlecaller}
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+      />{" "}
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={handleDeleteCloseModal}
+        onConfirm={() => {
+          // if (selectedSection) {
+          //   handleCancelBooking(selectedBooking._id);
+          // }
+          handleDeleteCloseModal();
+        }}
+        title={selectedSection?.title}
+      />
       {/* <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <header class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/background.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative">
           <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
@@ -266,6 +297,7 @@ function CollegePage() {
                   data-modal-target="deleteReviewModal"
                   data-modal-toggle="deleteReviewModal"
                   type="button"
+                  onClick={() => handleOpenDeleteModal(section)}
                   class="inline-flex text-sm items-center font-medium text-red-600 hover:underline dark:text-red-500"
                 >
                   <svg
@@ -291,7 +323,7 @@ function CollegePage() {
             ) : (
               <button
                 type="button"
-                onClick={handleOpenAddModal}
+                onClick={() => handleOpenAddModal(section.title)}
                 className="py-2 px-3 flex items-center text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Add
