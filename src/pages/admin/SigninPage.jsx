@@ -12,22 +12,20 @@ function SigninPage() {
               class="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
               action="#"
             >
-              <h2 class="text-xl font-bold text-gray-900 dark:text-white">
+              <h2 class="text-xl font-bold font-inter text-gray-900 dark:text-white">
                 Please Sign In to Continue
               </h2>
 
               <div class="flex items-center">
                 <div class="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-                <div class="px-5 text-center text-gray-500 dark:text-gray-400">
-                  or
-                </div>
+
                 <div class="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
               </div>
 
               <div>
                 <label
                   for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  class="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
                 >
                   Your email
                 </label>
@@ -43,7 +41,7 @@ function SigninPage() {
               <div>
                 <label
                   for="password"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  class="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
                 >
                   Your password
                 </label>
@@ -70,19 +68,19 @@ function SigninPage() {
                   <div class="ml-3 text-sm">
                     <label
                       for="terms"
-                      class="font-light text-gray-500 dark:text-gray-300"
+                      class="font-light font-inter text-gray-500 dark:text-gray-300"
                     >
                       By signing up, you are creating a Flowbite account, and
                       you agree to Flowbite’s{" "}
                       <a
-                        class="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                        class="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
                       >
                         Terms of Use
                       </a>{" "}
                       and{" "}
                       <a
-                        class="font-medium text-primary-600 dark:text-primary-500 hover:underline"
+                        class="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
                       >
                         Privacy Policy
@@ -104,7 +102,7 @@ function SigninPage() {
                   <div class="ml-3 text-sm">
                     <label
                       for="newsletter"
-                      class="font-light text-gray-500 dark:text-gray-300"
+                      class="font-light font-inter text-gray-500 dark:text-gray-300"
                     >
                       Email me about product updates and resources.
                     </label>
@@ -116,7 +114,7 @@ function SigninPage() {
                 onClick={() => {
                   navigate("/admin/dashboard");
                 }}
-                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
+                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium font-inter rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
               >
                 Sign In
               </button>
@@ -272,12 +270,12 @@ function SigninPage() {
                     </linearGradient>
                   </defs>
                 </svg>
-                Flowbite
+                ABROAED
               </a>
-              <h1 class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-white xl:text-5xl">
-                Explore the world’s leading design portfolios.
+              <h1 class="mb-4 text-3xl font-extrabold font-inter tracking-tight leading-none text-white xl:text-5xl">
+                Explore the world’s leading study Abroad platform
               </h1>
-              <p class="mb-4 font-light text-primary-200 lg:mb-8">
+              <p class="mb-4 font-light font-inter text-primary-200 lg:mb-8">
                 Millions of designers and agencies around the world showcase
                 their portfolio work on Flowbite - the home to the world’s best
                 design and creative professionals.
@@ -307,8 +305,11 @@ function SigninPage() {
                 </div>
                 <a href="#" class="pl-3 text-white sm:pl-5 dark:text-white">
                   <span class="text-sm text-primary-200">
-                    Over <span class="font-medium text-white">15.7k</span> Happy
-                    Customers
+                    Over{" "}
+                    <span class="font-medium font-inter font-inter text-white">
+                      15.7k
+                    </span>{" "}
+                    Happy Customers
                   </span>
                 </a>
               </div>
