@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import DeleteModal from "../../Components/Modals/DeleteModal";
-import AddDrawer from "../../Components/addDrawer";
 
 const sections = [
   {
@@ -42,11 +41,6 @@ function CollegePage() {
 
   return (
     <div>
-      <AddDrawer
-        title={titlecaller}
-        isOpen={isAddModalOpen}
-        onClose={handleCloseAddModal}
-      />{" "}
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={handleDeleteCloseModal}
