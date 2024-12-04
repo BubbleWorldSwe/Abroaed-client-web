@@ -19,6 +19,7 @@ import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 import CollegePageLayout from "../Layouts/CollegePageLayout";
 import CollegeTable from "../pages/admin/CollegeTable";
 import CollegePage from "../pages/admin/CollegePage";
+import SigninPage from "../pages/admin/SigninPage";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -35,6 +36,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
+    { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     { path: "/blog", element: <LayoutBlogs />, isPrivate: false },
     { path: "/finance", element: <FinanceLayout />, isPrivate: false },
     {
