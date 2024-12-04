@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import AddDrawer from "../../Components/addDrawer";
 import DeleteModal from "../../Components/Modals/DeleteModal";
+import AddDrawer from "../../Components/addDrawer";
 
 const sections = [
   {
