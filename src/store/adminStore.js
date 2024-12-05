@@ -1,10 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userSlice from "../slices/userSlice"
-
+import { configureStore } from "@reduxjs/toolkit";
+import collegeSlice from "../slices/collegeSlice"; // Import the college slice
 
 const adminStore = configureStore({
     reducer: {
-        users: userSlice,
+        colleges: collegeSlice, // Add college reducer
     },
 });
 

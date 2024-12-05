@@ -1,52 +1,21 @@
 import { EllipsisVertical } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AddCollegeDrawer from "../../Components/AddCollegeDrawer";
-
-const Colleges = [
-  {
-    name: "Harvard University",
-    city: "Cambridge",
-    country: "USA",
-    website: "https://www.harvard.edu",
-    email: "admissions@harvard.edu",
-    contact: "+1 617-495-1000",
-  },
-  {
-    name: "University of Oxford",
-    city: "Oxford",
-    country: "UK",
-    website: "https://www.ox.ac.uk",
-    email: "info@ox.ac.uk",
-    contact: "+44 1865 270000",
-  },
-  {
-    name: "Stanford University",
-    city: "Stanford",
-    country: "USA",
-    website: "https://www.stanford.edu",
-    email: "admissions@stanford.edu",
-    contact: "+1 650-723-2300",
-  },
-  {
-    name: "University of Toronto",
-    city: "Toronto",
-    country: "Canada",
-    website: "https://www.utoronto.ca",
-    email: "admissions@utoronto.ca",
-    contact: "+1 416-978-2011",
-  },
-  {
-    name: "Australian National University",
-    city: "Canberra",
-    country: "Australia",
-    website: "https://www.anu.edu.au",
-    email: "admissions@anu.edu.au",
-    contact: "+61 2 6125 5111",
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { fetchColleges } from "../../slices/collegeSlice";
 
 function CollegeTable() {
+  const dispatch = useDispatch();
+  const { colleges, loading, error } = useSelector((state) => state.colleges);
+
+  useEffect(() => {
+    dispatch(fetchColleges());
+  }, [dispatch]);
+
+  // if (loading) return <p>Loading colleges...</p>;
+  // if (error) return <p>Error: {error}</p>;
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [dropdownDirection, setDropdownDirection] = useState(null);
 
@@ -331,7 +300,7 @@ function CollegeTable() {
                 </thead>
 
                 <tbody>
-                  {Colleges.map((college, index) => (
+                  {colleges.map((college, index) => (
                     <tr
                       key={index}
                       className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
