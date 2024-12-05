@@ -19,14 +19,17 @@ export const collegeSectionsSlice = createSlice({
     initialState,
     reducers: {
         addSection: (state, action) => {
-            state.sections.push(action.payload); // Adds new section to the array
+            state.sections.push(action.payload);
         },
         updateSection: (state, action) => {
             const { index, updatedSection } = action.payload;
-            state.sections[index] = updatedSection; // Updates section by index
+            state.sections[index] = updatedSection;
         },
         deleteSection: (state, action) => {
-            state.sections.splice(action.payload, 1); // Deletes section by index
+            const index = action.payload;
+            if (state.sections[index]) {
+                state.sections[index].content = ""; // Clear the content of the specified section
+            }
         },
     },
 });

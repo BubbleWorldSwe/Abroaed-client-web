@@ -27,10 +27,11 @@ function CollegePage() {
   };
 
   const handleDeleteSection = () => {
-    dispatch(deleteSection(selectedSectionIndex));
+    if (selectedSectionIndex !== null) {
+      dispatch(deleteSection(selectedSectionIndex));
+    }
     handleDeleteCloseModal();
   };
-
   const handleOpenAddModal = () => {
     console.log("title calling", title);
     setTitleCaller(title);
@@ -55,13 +56,8 @@ function CollegePage() {
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={handleDeleteCloseModal}
-        onConfirm={() => {
-          // if (selectedSection) {
-          //   handleCancelBooking(selectedBooking._id);
-          // }
-          handleDeleteCloseModal();
-        }}
-        title={selectedSection?.title}
+        onConfirm={handleDeleteSection}
+        title={sections[selectedSectionIndex]?.title || ""}
       />
 
       <main className="min-h-screen flex flex-col gap-4 overflow-y-auto p-4 bg-gray-150 dark:bg-gray-900">
@@ -202,7 +198,7 @@ function CollegePage() {
                   data-modal-target="deleteReviewModal"
                   data-modal-toggle="deleteReviewModal"
                   type="button"
-                  onClick={() => handleOpenDeleteModal(section)}
+                  onClick={() => handleOpenDeleteModal(index)}
                   class="inline-flex text-sm items-center font-medium text-red-600 hover:underline dark:text-red-500"
                 >
                   <svg
