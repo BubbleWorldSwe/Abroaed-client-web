@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addCollege, fetchColleges } from "../slices/collegeSlice";
 
 function AddCollegeDrawer({ isOpen, onClose }) {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     collegeName: "",
     city: "",
@@ -18,17 +21,19 @@ function AddCollegeDrawer({ isOpen, onClose }) {
   };
 
   const handleSubmit = async (e) => {
+    console.log("payload", formData);
     e.preventDefault();
-    try {
-      await axios.post("/api/colleges", formData);
-      alert("College added successfully!");
-      onClose();
-    } catch (error) {
-      console.error("Error adding college:", error);
-      alert("Failed to add college. Please try again.");
-    }
+    dispatch(addCollege(formData)) // Dispatch the addCollege action
+      .unwrap()
+      .then(() => {
+        alert("College added successfully!");
+        onClose();
+        dispatch(fetchColleges()); // Fetch the updated list
+      })
+      .catch((error) => {
+        alert("Error adding college: " + error.message);
+      });
   };
-
   return (
     <>
       {isOpen && (
