@@ -6,6 +6,7 @@ import {
   deleteSection,
   updateSection,
 } from "../../slices/collegeSectionSlice";
+import AddOverviewContentModal from "../../Components/Modals/AddOverviewContentModal";
 
 function CollegePage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -32,20 +33,7 @@ function CollegePage() {
     }
     handleDeleteCloseModal();
   };
-  const handleOpenAddModal = () => {
-    console.log("title calling", title);
-    setTitleCaller(title);
-    setIsAddModalOpen(true);
-  };
-
-  const handleAddSection = (newSection) => {
-    dispatch(addSection(newSection));
-    setIsAddModalOpen(false);
-  };
-
-  const handleUpdateSection = (index, updatedSection) => {
-    dispatch(updateSection({ index, updatedSection }));
-  };
+  const handleOpenAddModal = () => setIsAddModalOpen(true);
 
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
@@ -60,6 +48,10 @@ function CollegePage() {
         title={sections[selectedSectionIndex]?.title || ""}
       />
 
+      <AddOverviewContentModal
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+      />
       <main className="min-h-screen flex flex-col gap-4 overflow-y-auto p-4 bg-gray-150 dark:bg-gray-900">
         {sections.map((section, index) => (
           <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">

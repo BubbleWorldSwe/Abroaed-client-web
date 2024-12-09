@@ -9,6 +9,7 @@ import cover from "../assets/cover.jpg";
 import Header from "./Header";
 import Tabs, { HomeForm, VirtualForm, VisitUsForm } from "./AnimatedTabs";
 import Footer from "./Footer";
+import FAQsection from "./FAQsection";
 
 // Usage Example
 const slidesData = [
@@ -68,6 +69,8 @@ function HomeLayout() {
 
       <TestimonialsSection />
       <Pricing />
+      <FAQsection />
+
       <Footer />
     </>
   );
