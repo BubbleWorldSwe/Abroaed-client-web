@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -58,28 +58,48 @@ const testimonialData = [
 
 function Testimonials() {
   const swiperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+      setActiveIndex((prevIndex) =>
+        prevIndex === testimonialData.length - 1 ? 0 : prevIndex + 1
+      );
+    }
+  };
+
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+      setActiveIndex((prevIndex) =>
+        prevIndex === 0 ? testimonialData.length - 1 : prevIndex - 1
+      );
+    }
+  };
 
   return (
     <section
       aria-label="Testimonials"
-      className="py-8 bg-gray-100 dark:bg-gray-800"
+      className="py-8 relative h-[400px] bg-white dark:bg-gray-800"
     >
-      <div className="px-4 mx-auto max-w-screen-xl">
+      <div className="px-4 h-full mx-auto max-w-screen-xl">
         {/* Title and Navigation Buttons */}
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-            What People Say
+          <h2 className="text-2xl w-full flex items-center justify-center font-bold text-gray-900 dark:text-white">
+            Our Services
           </h2>
-          <div className="flex space-x-2">
+          <div className="flex  space-x-2">
+            {/* Navigation Buttons */}
             <button
-              onClick={() => swiperRef.current?.slidePrev()}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none"
+              onClick={handlePrev}
+              className="z-10 absolute left-2 top-1/2 -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-lg shadow-lg"
             >
               Prev
             </button>
             <button
-              onClick={() => swiperRef.current?.slideNext()}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none"
+              onClick={handleNext}
+              className="z-10 absolute right-2 top-1/2 -translate-y-1/2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-l-lg shadow-lg"
             >
               Next
             </button>
@@ -97,9 +117,16 @@ function Testimonials() {
           }}
           className="rounded-lg"
         >
-          {testimonialData.map((testimonial) => (
+          {testimonialData.map((testimonial, index) => (
             <SwiperSlide key={testimonial.id}>
-              <article className="p-6 max-w-sm bg-white rounded-lg shadow-md border border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+              <article
+                className={`p-6  max-w-sm bg-white rounded-lg shadow-md border transition-transform duration-300 ${
+                  index === activeIndex
+                    ? "h-[250px] border-blue-500"
+                    : "h-[200px] border-gray-200"
+                } dark:border-gray-700 dark:bg-gray-900`}
+              >
+                {" "}
                 <div className="flex items-center mb-4">
                   <img
                     className="w-16 h-16 rounded-full mr-4"
