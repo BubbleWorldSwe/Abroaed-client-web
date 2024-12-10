@@ -1,39 +1,39 @@
 import React, { useState } from "react";
 import DeleteModal from "../../Components/Modals/DeleteModal";
-
-const sections = [
-  {
-    title: "Overview",
-    content:
-      " Stunning graphics, lightning-fast load times, and an impressive game library. The new controller's haptic feedback adds a whole new level of immersion. Truly a next-gen experience!",
-  },
-  { title: "Media Gallery", content: "Some content for media gallery" },
-  { title: "Financial Aid and Scholarships", content: "" },
-  { title: "Courses", content: "Some content for courses" },
-  { title: "FAQs", content: "" },
-];
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addSection,
+  deleteSection,
+  updateSection,
+} from "../../slices/collegeSectionSlice";
+import AddOverviewContentModal from "../../Components/Modals/AddOverviewContentModal";
 
 function CollegePage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
   const [titlecaller, setTitleCaller] = useState(false); // State to manage Add modal open/close
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
+  const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
+  const dispatch = useDispatch();
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
 
-  const handleOpenDeleteModal = (section) => {
-    setSelectedSection(section);
+  const handleOpenDeleteModal = (index) => {
+    setSelectedSectionIndex(index);
     setIsDeleteModalOpen(true);
   };
 
   const handleDeleteCloseModal = () => {
     setIsDeleteModalOpen(false);
-    setSelectedSection(null);
+    setSelectedSectionIndex(null);
   };
 
-  const handleOpenAddModal = (title) => {
-    console.log("title calling", title);
-    setTitleCaller(title);
-    setIsAddModalOpen(true);
+  const handleDeleteSection = () => {
+    if (selectedSectionIndex !== null) {
+      dispatch(deleteSection(selectedSectionIndex));
+    }
+    handleDeleteCloseModal();
   };
+  const handleOpenAddModal = () => setIsAddModalOpen(true);
 
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
@@ -44,115 +44,14 @@ function CollegePage() {
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={handleDeleteCloseModal}
-        onConfirm={() => {
-          // if (selectedSection) {
-          //   handleCancelBooking(selectedBooking._id);
-          // }
-          handleDeleteCloseModal();
-        }}
-        title={selectedSection?.title}
+        onConfirm={handleDeleteSection}
+        title={sections[selectedSectionIndex]?.title || ""}
       />
-      {/* <main class="pb-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
-        <header class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/background.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative">
-          <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-          <div class="absolute top-20 left-1/2 px-4 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 xl:px-0">
-            <span class="block mb-4 text-gray-300">
-              Published in{" "}
-              <a href="#" class="font-semibold text-white hover:underline">
-                World News
-              </a>
-            </span>
-            <h1 class="mb-4 max-w-4xl text-2xl font-extrabold leading-none text-white sm:text-3xl lg:text-4xl">
-              Harvard University
-            </h1>
-            <p class="text-lg font-normal text-gray-300">Boston, USA</p>
-          </div>
-        </header>
-        <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-gray-800 rounded xl:-m-32 xl:p-9 xl:mx-auto">
-          <article class=" w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
-            <div class="flex flex-col lg:flex-row justify-between lg:items-center">
-              <div class="flex items-center space-x-3 text-gray-500 dark:text-gray-400 text-base mb-2 lg:mb-0">
-                <span>
-                  By{" "}
-                  <a
-                    href="#"
-                    class="text-gray-900 dark:text-white hover:underline no-underline font-semibold"
-                  >
-                    Jese Leos
-                  </a>
-                </span>
-                <span class="bg-gray-300 dark:bg-gray-400 w-2 h-2 rounded-full"></span>
-                <span>
-                  <time
-                    class="font-normal text-gray-500 dark:text-gray-400"
-                    pubdate
-                    datetime="2022-03-08"
-                    title="August 3rd, 2022"
-                  >
-                    August 3, 2022, 2:20am EDT
-                  </time>
-                </span>
-              </div>
-              <aside aria-label="Share social media">
-                <div className="flex items-center space-x-4">
-                  <button
-                    type="button"
-                    className="py-1.5 flex items-center text-sm font-medium text-center text-primary-700 rounded-lg hover:text-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:text-primary-500 dark:hover:text-primary-600 dark:focus:ring-primary-800"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    className="py-2 px-3 flex items-center text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </aside>
-            </div>
-            <p class="lead">
-              Flowbite is an open-source library of UI components built with the
-              utility-first classes from Tailwind CSS. It also includes
-              interactive elements such as dropdowns, modals, datepickers.
-            </p>
 
-            <h3>Understanding typography</h3>
-            <h4>Type properties</h4>
-            <p>
-              A typeface is a collection of letters. While each letter is
-              unique, certain shapes are shared across letters. A typeface
-              represents shared patterns across a collection of letters.
-            </p>
-            <h4>Baseline</h4>
-            <p>
-              A typeface is a collection of letters. While each letter is
-              unique, certain shapes are shared across letters. A typeface
-              represents shared patterns across a collection of letters.
-            </p>
-            <h4>Measurement from the baseline</h4>
-            <p>
-              A typeface is a collection of letters. While each letter is
-              unique, certain shapes are shared across letters. A typeface
-              represents shared patterns across a collection of letters.
-            </p>
-            <h3>Type classification</h3>
-            <h4>Serif</h4>
-            <p>
-              A serif is a small shape or projection that appears at the
-              beginning or end of a stroke on a letter. Typefaces with serifs
-              are called serif typefaces. Serif fonts are classified as one of
-              the following:
-            </p>
-            <h4>Old-Style serifs</h4>
-
-            <h3>Laying the best for successful prototyping</h3>
-            <p>
-              A serif is a small shape or projection that appears at the
-              beginning:
-            </p>
-          </article>
-        </div>
-      </main> */}
+      <AddOverviewContentModal
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+      />
       <main className="min-h-screen flex flex-col gap-4 overflow-y-auto p-4 bg-gray-150 dark:bg-gray-900">
         {sections.map((section, index) => (
           <div class="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -291,7 +190,7 @@ function CollegePage() {
                   data-modal-target="deleteReviewModal"
                   data-modal-toggle="deleteReviewModal"
                   type="button"
-                  onClick={() => handleOpenDeleteModal(section)}
+                  onClick={() => handleOpenDeleteModal(index)}
                   class="inline-flex text-sm items-center font-medium text-red-600 hover:underline dark:text-red-500"
                 >
                   <svg

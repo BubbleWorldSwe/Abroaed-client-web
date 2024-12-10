@@ -6,6 +6,7 @@ import AccomodationLeadForm from "./AccomodationLeadForm";
 import PopularUniversityCards from "./PopularUniversities";
 import FAQsection from "../../Components/FAQsection";
 import Header from "../../Components/Header";
+import Footer from "../../Components/Footer";
 
 function AccomodationLayout() {
   // Create refs for each section
@@ -34,15 +35,17 @@ function AccomodationLayout() {
       <div ref={popularCitiesRef}>
         <PopularCityCards />
       </div>
-      <div ref={studentAccommodationsRef}>
-        <AccomodationLeadForm />
-      </div>
+
       <div ref={popularUnisRef}>
         <PopularUniversityCards />
       </div>
       <div ref={faqRef}>
         <FAQsection />
       </div>
+      <div ref={studentAccommodationsRef}>
+        <AccomodationLeadForm />
+      </div>
+      <Footer />
     </div>
   );
 }

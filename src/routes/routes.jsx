@@ -4,7 +4,6 @@ import Dashboard from "../pages/admin/Dashboard";
 
 import PrivateRoute from "./privateRoute";
 import AccomodationLayout from "../pages/accomodation/AccomodationLayout";
-import TestPrepLayout from "../pages/TestPrep/Layout";
 import FinanceLayout from "../Layouts/FinanceLayout";
 import LayoutPageDestination from "../Layouts/DestinationLayout";
 import AdminLayout from "../Layouts/AdminLayout";
@@ -20,6 +19,7 @@ import CollegePageLayout from "../Layouts/CollegePageLayout";
 import CollegeTable from "../pages/admin/CollegeTable";
 import CollegePage from "../pages/admin/CollegePage";
 import SigninPage from "../pages/admin/SigninPage";
+import TestPrepLayout from "../Layouts/TestPrepLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -39,6 +39,7 @@ const AppRoutes = () => {
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     { path: "/blog", element: <LayoutBlogs />, isPrivate: false },
     { path: "/finance", element: <FinanceLayout />, isPrivate: false },
+    { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
     {
       path: "/accomodation",
       element: <AccomodationLayout />,

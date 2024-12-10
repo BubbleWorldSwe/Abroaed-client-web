@@ -1,15 +1,16 @@
 import React from "react";
 
+//grid styles dark:bg-grid-white/[0.2] bg-grid-yellow-500/[0.2]
 function Pricing() {
   return (
-    <div className="h-auto py-8 w-full dark:bg-black bg-white dark:bg-grid-white/[0.2] bg-grid-yellow-500/[0.2] relative flex items-center justify-center">
+    <div className="h-auto py-8 w-full dark:bg-black bg-white  relative flex items-center justify-center">
       <div
         className="absolute top-0 left-0 w-full h-32 z-10 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at top center, rgba(255, 223, 0, 0.5), transparent 70%)",
-          filter: "blur(40px)",
-        }}
+        // style={{
+        //   background:
+        //     "radial-gradient(circle at top center, rgba(255, 223, 0, 0.5), transparent 70%)",
+        //   filter: "blur(40px)",
+        // }}
       ></div>
       <div
         className="absolute bottom-0 left-0 w-full h-32 z-10 pointer-events-none"
