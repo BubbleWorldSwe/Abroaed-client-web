@@ -4,6 +4,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import TrendingCoursesSection from "./TrendingCoursesSection";
 
 const cardData = [
   {
@@ -198,6 +199,7 @@ function PopularCityCards() {
             </div>
           </article>
         </div>
+        <TrendingCoursesSection />
       </div>
     </aside>
   );

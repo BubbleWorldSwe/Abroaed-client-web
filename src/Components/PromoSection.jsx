@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import LampContainer from "./LampContainer";
-import man from "../assets/rb_7493.png";
+import man from "../assets/hands.png";
 import Tabs, { HomeForm, VirtualForm, VisitUsForm } from "./AnimatedTabs";
 const tabData = [
   { title: "Home", value: "home", content: <HomeForm /> },
@@ -13,9 +13,9 @@ function PromoSection() {
   return (
     <div>
       <section className="px-4 py-8 ">
-        <div className="flex flex-col lg:flex-row items-center mx-auto max-w-7xl space-y-8 lg:space-y-0 lg:space-x-8 rounded-lg">
+        <div className="flex flex-col  lg:flex-row items-center mx-auto max-w-7xl space-y-8 lg:space-y-0 lg:space-x-8 rounded-lg">
           {/* Left Side: Text and Image */}
-          <div className="flex flex-col w-full lg:w-1/2 space-y-8">
+          <div className="flex flex-col w-full lg:w-1/2">
             {/* Upper Div: Animation and Text */}
             <div className="text-center lg:text-left">
               <LampContainer>
@@ -53,7 +53,7 @@ function PromoSection() {
             {/* Bottom Div: Image */}
             <div className="flex justify-center lg:justify-start">
               <img
-                className="rounded-lg max-w-full h-auto"
+                className="rounded-lg max-w-full"
                 src={man}
                 alt="Counselling session"
               />

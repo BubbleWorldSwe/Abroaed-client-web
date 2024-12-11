@@ -3,7 +3,7 @@ import React from "react";
 function AccHero({ onNavigate }) {
   return (
     <div>
-      <section className="bg-white  antialiased dark:bg-gray-900 md:py-16">
+      <section className="bg-white  antialiased dark:bg-gray-900 ">
         <div className="bg-[url('https://www.ft.com/__origami/service/image/v2/images/raw/https://cms-image-bucket-production-ap-northeast-1-a7d2.s3.ap-northeast-1.amazonaws.com/images/6/6/5/0/42760566-3-eng-GB/Cropped-1666620503photo_SXM2022093000003848.jpg?width=700&fit=cover&gravity=faces&dpr=2&quality=medium&source=nar-cms')] bg-cover bg-center bg-no-repeat dark:bg-[url('https://flowbite.s3.amazonaws.com/blocks/e-commerce/hero-ecommcerce-image-dark.jpg')]">
           <div className="relative z-10 mx-auto max-w-2xl px-4 pb-32 pt-8 text-center text-white lg:pt-16 xl:px-0">
             <h1 className="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-black dark:text-white lg:text-6xl">
@@ -44,7 +44,19 @@ function AccHero({ onNavigate }) {
                 onClick={onNavigate.studentAccommodations}
                 className="flex items-center md:justify-center"
               >
-                Student Accommodations
+                Accommodations
+              </button>
+              <button
+                onClick={onNavigate.costs}
+                className="flex items-center md:justify-center"
+              >
+                Costs of Living
+              </button>
+              <button
+                onClick={onNavigate.costs}
+                className="flex items-center md:justify-center"
+              >
+                Work Oppurtunities
               </button>
               <button
                 onClick={onNavigate.faq}

@@ -7,9 +7,11 @@ import PopularUniversityCards from "./PopularUniversities";
 import FAQsection from "../../Components/FAQsection";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
+import Costs from "./Costs";
 
 function AccomodationLayout() {
   // Create refs for each section
+  const costsRef = useRef(null);
   const popularCitiesRef = useRef(null);
   const popularUnisRef = useRef(null);
   const studentAccommodationsRef = useRef(null);
@@ -27,6 +29,7 @@ function AccomodationLayout() {
       <AccHero
         onNavigate={{
           popularCities: () => handleScroll(popularCitiesRef),
+          costs: () => handleScroll(costsRef),
           popularUnis: () => handleScroll(popularUnisRef),
           studentAccommodations: () => handleScroll(studentAccommodationsRef),
           faq: () => handleScroll(faqRef),
@@ -38,6 +41,9 @@ function AccomodationLayout() {
 
       <div ref={popularUnisRef}>
         <PopularUniversityCards />
+      </div>
+      <div ref={costsRef}>
+        <Costs />
       </div>
       <div ref={faqRef}>
         <FAQsection />
