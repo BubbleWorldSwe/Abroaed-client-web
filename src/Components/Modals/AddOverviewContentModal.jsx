@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateSection } from "../../slices/collegeSectionSlice";
 
 function AddOverviewContentModal({ isOpen, onClose }) {
   const dispatch = useDispatch();
@@ -34,12 +33,12 @@ function AddOverviewContentModal({ isOpen, onClose }) {
       Male to Female Ratio: ${formData.maleToFemaleRatio}
     `;
 
-    dispatch(
-      updateSection({
-        index: 0,
-        updatedSection: { title: "Overview", content },
-      })
-    );
+    // dispatch(
+    //   updateSection({
+    //     index: 0,
+    //     updatedSection: { title: "Overview", content },
+    //   })
+    // );
     onClose(); // Close the modal after submitting
   };
 
