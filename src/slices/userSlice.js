@@ -1,44 +1,27 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
 
-// Async thunk to fetch users
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-    const response = await axios.get('/api/users');
-    return response.data;
-});
-
-// User slice
 const userSlice = createSlice({
-    name: 'users',
+    name: "user",
     initialState: {
-        users: [],
+        currentUser: {
+            id: 1,
+            name: "Dev",
+            age: 23,
+            email: "dev@example.com",
+            contact: "+1 123-456-7890",
+        }, // Mock logged-in user
         loading: false,
         error: null,
     },
     reducers: {
-        addUser(state, action) {
-            state.users.push(action.payload);
+        updateUser(state, action) {
+            state.currentUser = { ...state.currentUser, ...action.payload }; // Update logged-in user info
         },
-        removeUser(state, action) {
-            state.users = state.users.filter((user) => user.id !== action.payload);
+        clearUser(state) {
+            state.currentUser = null; // Clear user info (e.g., on logout)
         },
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(fetchUsers.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
-                state.loading = false;
-                state.users = action.payload;
-            })
-            .addCase(fetchUsers.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.error.message;
-            });
     },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const { updateUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;

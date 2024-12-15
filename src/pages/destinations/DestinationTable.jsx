@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AddCollegeDrawer from "../../Components/Modals/AddCollegeDrawer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDestinations } from "../../slices/destinationSlice";
+import AddDestination from "../../Components/Modals/AddDestination";
 
 function DestinationTable() {
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ function DestinationTable() {
   };
   return (
     <>
-      <AddCollegeDrawer isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
+      <AddDestination isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
       <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col p-2">
         {/* Header */}
         <header className="p-4 bg-white text-white">
