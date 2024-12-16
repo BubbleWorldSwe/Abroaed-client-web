@@ -37,15 +37,18 @@ function Tabs() {
       </div>
 
       {/* Active Form */}
-      <motion.div
-        key={activeTab}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3 }}
-        className="w-full max-w-screen-md"
-      >
-        {tabOptions.find((tab) => tab.value === activeTab)?.content}
-      </motion.div>
+      {/* Fixed Outer Container */}
+      <div className="w-full max-w-screen-md  md:max-h-[900px] overflow-y-auto bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="w-full h-full"
+        >
+          {tabOptions.find((tab) => tab.value === activeTab)?.content}
+        </motion.div>
+      </div>
     </div>
   );
 }
@@ -159,20 +162,7 @@ const FormFields = () => (
         required
       />
     </div>
-    <div>
-      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-        Preferred Study Destination
-      </label>
-      <select multiple className={`${inputStyles}`} required>
-        <option>USA</option>
-        <option>Canada</option>
-        <option>Australia</option>
-        <option>UK</option>
-        <option>Germany</option>
-        <option>France</option>
-        <option>Others</option>
-      </select>
-    </div>
+
     <div>
       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
         When Do You Plan to Study?

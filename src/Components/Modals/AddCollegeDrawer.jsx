@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { addCollege, fetchColleges } from "../slices/collegeSlice";
+import { addCollege, fetchColleges } from "../../slices/collegeSlice";
 
 function AddCollegeDrawer({ isOpen, onClose }) {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    collegeName: "",
+    name: "",
     city: "",
     country: "",
     entityType: "",
@@ -72,7 +72,7 @@ function AddCollegeDrawer({ isOpen, onClose }) {
             </button>
             <form onSubmit={handleSubmit} className="space-y-4">
               {[
-                { label: "College Name", name: "collegeName" },
+                { label: "College Name", name: "name" },
                 { label: "City", name: "city" },
                 { label: "Country", name: "country" },
                 { label: "Website", name: "website" },

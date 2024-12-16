@@ -1,43 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const OverviewContentType = {
-    content: {
-        about: "",
-        estYear: "",
-        qsWorldRanking: "",
-        intake: "",
-        totalStudents: "",
-        maleToFemaleRatio: "",
-        studentToTeacherRatio: "",
-    },
-}
-
-
 const initialState = {
     sections: [
         {
             title: "Overview",
-            content: [],
-        },
-        {
-            title: "Media Gallery",
             content: {
-                images: [], // Array of image URLs or objects with additional metadata (e.g., size)
+                description: "",
+                capital: "",
+                totalPopulation: "",
+                language: "",
+                totalStudents: "",
+                totalUniversities: "",
+                Currency: "USD",
+                DailingCode: "",
             },
         },
+
         {
-            title: "Courses",
+            title: "Expenses",
             content: [
                 {
-                    courseName: "",
-                    courseDesc: "",
-                    courseLevel: "",
-                    duration: "",
-                    school: "",
-                    dept: "",
-                    intake: "",
-                    feesPerYear: "",
-                    seats: "",
+                    AvgTutionFee: "",
+                    AvgRent: "",
+                    AvgFoodExpense: "",
+                    AvgTransportExpense: "",
+                    MiscExpense: "",
+
                 },
             ],
         },
@@ -45,26 +33,31 @@ const initialState = {
             title: "Financial Aid and Scholarships",
             content: [
                 {
-                    scholarshipName: "",
+                    scholarshipName: "xyz",
                     link: "",
                     description: "",
                 },
+
             ],
         },
         {
             title: "FAQs",
             content: [
                 {
-                    question: "",
-                    answer: "",
+                    question: "ques",
+                    answer: "ans1",
+                },
+                {
+                    question: "ques",
+                    answer: "ans2",
                 },
             ],
         },
     ],
 };
 
-export const collegeSectionsSlice = createSlice({
-    name: "collegeSections",
+export const destinationSectionsSlice = createSlice({
+    name: "destinationSections",
     initialState,
     reducers: {
         updateContent: (state, action) => {
@@ -105,6 +98,6 @@ export const collegeSectionsSlice = createSlice({
 });
 
 export const { updateContent, addItemToSection, updateItemInSection, deleteItemFromSection } =
-    collegeSectionsSlice.actions;
+    destinationSectionsSlice.actions;
 
-export default collegeSectionsSlice.reducer;
+export default destinationSectionsSlice.reducer;
