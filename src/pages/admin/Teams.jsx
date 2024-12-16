@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import AddTeamMember from "../../Components/Modals/AddTeamMember";
 import { EllipsisVertical } from "lucide-react";
-
-const teamMembers = [
-  { name: "John Doe", role: "Developer" },
-  { name: "Jane Smith", role: "Designer" },
-  { name: "Alice Johnson", role: "Project Manager" },
-];
+import { useSelector } from "react-redux";
 
 function Teams() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [dropdownDirection, setDropdownDirection] = useState(null);
 
+  const teamMembers = useSelector((state) => state.team.teamMembers);
+
+  console.log("team", teamMembers);
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
   };
@@ -334,23 +332,13 @@ function Teams() {
                             </label>
                           </div>
                         </td>
-                        <th
-                          scope="row"
-                          className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
-                        >
-                          <img
-                            src="https://flowbite.s3.amazonaws.com/blocks/application-ui/products/imac-front-image.png"
-                            alt="iMac Front Image"
-                            className="h-8 w-auto mr-3"
-                          />
-                          Apple iMac 27&#34;
-                        </th>
                         <td className="px-4 py-3">{member.name}</td>
                         <td className="px-4 py-3">{member.role}</td>
+                        <td className="px-4 py-3">{member.assignedTo}</td>
 
                         <td className="px-4 py-3 whitespace-nowrap">
                           <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                            Active
+                            {member.status}
                           </span>
                         </td>
                         <td className="px-4 py-3">

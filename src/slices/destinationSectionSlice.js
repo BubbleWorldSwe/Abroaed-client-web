@@ -19,14 +19,7 @@ const initialState = {
         {
             title: "Expenses",
             content: [
-                {
-                    AvgTutionFee: "",
-                    AvgRent: "",
-                    AvgFoodExpense: "",
-                    AvgTransportExpense: "",
-                    MiscExpense: "",
 
-                },
             ],
         },
         {
