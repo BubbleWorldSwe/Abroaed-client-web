@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateContent } from "../../slices/collegeSectionSlice";
 
-function AddOverviewContentModal({ isOpen, onClose }) {
+function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
   const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     about: "",
     establishmentYear: "",
@@ -13,6 +14,20 @@ function AddOverviewContentModal({ isOpen, onClose }) {
     maleToFemaleRatio: "",
   });
 
+  // Prepopulate form fields if in Edit mode
+  useEffect(() => {
+    if (isEditMode && editData) {
+      setFormData({
+        about: editData.about || "",
+        establishmentYear: editData.estYear || "",
+        qsRanking: editData.qsWorldRanking || "",
+        totalStudents: editData.totalStudents || "",
+        studentToTeacherRatio: editData.studentToTeacherRatio || "",
+        maleToFemaleRatio: editData.maleToFemaleRatio || "",
+      });
+    }
+  }, [isEditMode, editData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,10 +35,11 @@ function AddOverviewContentModal({ isOpen, onClose }) {
       [name]: value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Construct updated content for the Overview section
+    // Construct updated content for Overview
     const updatedContent = {
       about: formData.about,
       estYear: formData.establishmentYear,
@@ -33,7 +49,7 @@ function AddOverviewContentModal({ isOpen, onClose }) {
       maleToFemaleRatio: formData.maleToFemaleRatio,
     };
 
-    // Dispatch the updateContent action
+    // Dispatch action
     dispatch(
       updateContent({
         sectionTitle: "Overview",
@@ -41,7 +57,7 @@ function AddOverviewContentModal({ isOpen, onClose }) {
       })
     );
 
-    onClose(); // Close the modal after submission
+    onClose(); // Close the modal
   };
 
   if (!isOpen) return null;
@@ -49,7 +65,9 @@ function AddOverviewContentModal({ isOpen, onClose }) {
   return (
     <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-xl font-bold mb-4">Add Content to Overview</h2>
+        <h2 className="text-xl font-bold mb-4">
+          {isEditMode ? "Edit Overview Content" : "Add Content to Overview"}
+        </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block font-medium">About</label>
@@ -130,7 +148,7 @@ function AddOverviewContentModal({ isOpen, onClose }) {
               type="submit"
               className="px-4 py-2 bg-blue-600 text-white rounded"
             >
-              Submit
+              {isEditMode ? "Update" : "Submit"}
             </button>
           </div>
         </form>
