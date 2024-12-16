@@ -28,17 +28,7 @@ const initialState = {
         {
             title: "Courses",
             content: [
-                {
-                    courseName: "",
-                    courseDesc: "",
-                    courseLevel: "",
-                    duration: "",
-                    school: "",
-                    dept: "",
-                    intake: "",
-                    feesPerYear: "",
-                    seats: "",
-                },
+
             ],
         },
         {
