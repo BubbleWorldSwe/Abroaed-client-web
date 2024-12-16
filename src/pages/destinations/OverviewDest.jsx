@@ -1,67 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import AddOverviewContentModal from "../../Components/Modals/AddOverviewContentModal";
 
-function OverviewCard() {
+function OverviewDest() {
   const overview = useSelector((state) =>
-    state.collegeSections.sections.find(
+    state.destinationSections.sections.find(
       (section) => section.title === "Overview"
     )
   );
+  console.log("first", overview);
 
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
-
-  const handleOpenDeleteModal = (index) => {
-    setSelectedSectionIndex(index);
-    setIsDeleteModalOpen(true);
-  };
-
-  const handleDeleteCloseModal = () => {
-    setIsDeleteModalOpen(false);
-    setSelectedSectionIndex(null);
-  };
-
-  const handleOpenAddModal = () => {
-    setIsAddModalOpen(true);
-  };
-
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
-  };
-
-  if (!overview || !overview.content || overview.content.length === 0) {
+  if (!overview || !overview.content) {
     return (
-      <>
-        <AddOverviewContentModal
-          isOpen={isAddModalOpen}
-          onClose={handleCloseAddModal}
-        />
-        <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Overview
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400">No content added</p>
-          <button
-            type="button"
-            onClick={handleOpenAddModal}
-            className="mt-4 py-2 px-3 text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          >
-            Add
-          </button>
-        </div>
-      </>
+      <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+          Overview
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400">No content added</p>
+        <button
+          type="button"
+          onClick={() => handleOpenAddModal("Overview")}
+          className="mt-4 py-2 px-3 text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+        >
+          Add
+        </button>
+      </div>
     );
   }
 
   const {
-    about,
-    estYear,
-    qsWorldRanking,
-    intake,
+    description,
+    capital,
+    totalPopulation,
+    language,
     totalStudents,
-    maleToFemaleRatio,
-    studentToTeacherRatio,
+    totalUniversities,
+    Currency,
+    DailingCode,
   } = overview.content;
 
   return (
@@ -72,17 +46,17 @@ function OverviewCard() {
       <div class="border border-1 mb-2 border-gray-200 w-full "></div>
       {/* About Section */}
       <p className="text-gray-700 dark:text-gray-300 mb-6">
-        {about || "No details available"}
+        {description || "No details available"}
       </p>
       {/* Grid Section */}
       <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[
-          { key: "Established Year", value: estYear },
-          { key: "QS World Ranking", value: qsWorldRanking },
-          { key: "Intake", value: intake },
+          { key: "Capital", value: capital },
+          { key: "Total Population", value: totalPopulation },
+          { key: "Language", value: language },
           { key: "Total Students", value: totalStudents },
-          { key: "Male to Female Ratio", value: maleToFemaleRatio },
-          { key: "Student to Teacher Ratio", value: studentToTeacherRatio },
+          { key: "total Universities", value: totalUniversities },
+          { key: "Currency", value: Currency },
         ].map((item, index) => (
           <div key={index} className="text-left">
             <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -145,4 +119,4 @@ function OverviewCard() {
   );
 }
 
-export default OverviewCard;
+export default OverviewDest;

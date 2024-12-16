@@ -111,7 +111,6 @@ function DestinationTable() {
               <div className="flex items-center justify-between space-x-4 pt-3">
                 <div className="flex-1 flex items-center space-x-3">
                   <h5 className="dark:text-white font-semibold">
-                    {" "}
                     All Destinations
                   </h5>
                 </div>
@@ -266,7 +265,7 @@ function DestinationTable() {
                                   onClick={() =>
                                     navigate(
                                       `/admin/destinations/${encodeURIComponent(
-                                        destination.name
+                                        destination.pageName
                                       )}`
                                     )
                                   }

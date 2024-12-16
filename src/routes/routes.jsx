@@ -20,6 +20,7 @@ import SigninPage from "../pages/admin/SigninPage";
 import TestPrepLayout from "../Layouts/TestPrepLayout";
 import CollegePage from "../pages/Colleges/CollegePage";
 import DestinationTable from "../pages/destinations/DestinationTable";
+import DestinationPage from "../pages/destinations/DestinationPage";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -60,6 +61,7 @@ const AppRoutes = () => {
         { path: "leads", element: <ManageLeadsTable /> },
         { path: "colleges", element: <CollegeTable /> },
         { path: "colleges/:name", element: <CollegePage /> },
+        { path: "destinations/:name", element: <DestinationPage /> },
         { path: "destinations", element: <DestinationTable /> },
       ],
     },

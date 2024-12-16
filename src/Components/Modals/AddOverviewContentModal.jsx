@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { updateContent } from "../../slices/collegeSectionSlice";
 
 function AddOverviewContentModal({ isOpen, onClose }) {
   const dispatch = useDispatch();
@@ -19,27 +20,28 @@ function AddOverviewContentModal({ isOpen, onClose }) {
       [name]: value,
     }));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Construct content for the Overview section
-    const content = `
-      About: ${formData.about}\n
-      Established: ${formData.establishmentYear}\n
-      QS Ranking: ${formData.qsRanking}\n
-      Total Students: ${formData.totalStudents}\n
-      Student to Teacher Ratio: ${formData.studentToTeacherRatio}\n
-      Male to Female Ratio: ${formData.maleToFemaleRatio}
-    `;
+    // Construct updated content for the Overview section
+    const updatedContent = {
+      about: formData.about,
+      estYear: formData.establishmentYear,
+      qsWorldRanking: formData.qsRanking,
+      totalStudents: formData.totalStudents,
+      studentToTeacherRatio: formData.studentToTeacherRatio,
+      maleToFemaleRatio: formData.maleToFemaleRatio,
+    };
 
-    // dispatch(
-    //   updateSection({
-    //     index: 0,
-    //     updatedSection: { title: "Overview", content },
-    //   })
-    // );
-    onClose(); // Close the modal after submitting
+    // Dispatch the updateContent action
+    dispatch(
+      updateContent({
+        sectionTitle: "Overview",
+        updatedContent,
+      })
+    );
+
+    onClose(); // Close the modal after submission
   };
 
   if (!isOpen) return null;
