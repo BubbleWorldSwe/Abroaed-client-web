@@ -34,20 +34,13 @@ const initialState = {
         {
             title: "Financial Aid and Scholarships",
             content: [
-                {
-                    scholarshipName: "",
-                    link: "",
-                    description: "",
-                },
+
             ],
         },
         {
             title: "FAQs",
             content: [
-                {
-                    question: "",
-                    answer: "",
-                },
+
             ],
         },
     ],

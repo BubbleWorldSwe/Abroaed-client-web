@@ -127,7 +127,10 @@ function CoursesCard() {
                       >
                         <button
                           className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"
-                          onClick={() => handleOpenModal(course, index)}
+                          onClick={() => {
+                            handleOpenModal(course, index);
+                            setDropdownVisible(false);
+                          }}
                         >
                           Edit
                         </button>
