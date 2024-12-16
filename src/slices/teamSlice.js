@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     teamMembers: [
-        { name: "John Doe", role: "Counsellor", assignedTo: "rahul", status: "active" },
         // Add more team members as needed
     ],
 };

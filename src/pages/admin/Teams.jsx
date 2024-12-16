@@ -4,21 +4,30 @@ import { EllipsisVertical } from "lucide-react";
 import { useSelector } from "react-redux";
 
 function Teams() {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [dropdownDirection, setDropdownDirection] = useState(null);
-
+  const [editMode, setEditMode] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);
   const teamMembers = useSelector((state) => state.team.teamMembers);
 
   console.log("team", teamMembers);
   const handleOpenAddModal = () => {
-    setIsAddModalOpen(true);
+    setEditMode(false);
+    setSelectedMember(null);
+    setIsModalOpen(true);
   };
 
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
+  const handleOpenEditModal = (member) => {
+    setEditMode(true);
+    setSelectedMember(member);
+    setIsModalOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedMember(null);
+  };
   const handleDropdownToggle = (event, index) => {
     console.log("index", index);
     const buttonElement = event.currentTarget;
@@ -39,7 +48,12 @@ function Teams() {
 
   return (
     <>
-      <AddTeamMember isOpen={isAddModalOpen} onClose={handleCloseAddModal} />
+      <AddTeamMember
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        editMode={editMode}
+        memberToEdit={selectedMember}
+      />
 
       <div className="h-screen flex flex-col p-2">
         {/* Adjust padding and spacing */}
@@ -369,12 +383,13 @@ function Teams() {
                                   </a>
                                 </li>
                                 <li>
-                                  <a
+                                  <button
                                     href="#"
+                                    onClick={() => handleOpenEditModal(member)}
                                     className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                   >
                                     Edit
-                                  </a>
+                                  </button>
                                 </li>
                               </ul>
                               <div className="py-1">
