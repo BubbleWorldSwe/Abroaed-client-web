@@ -4,6 +4,7 @@ import destinationSlice from "../slices/destinationSlice"; // Import the college
 import collegeSectionsReducer from "../slices/collegeSectionSlice"; // Correct import
 import userSlice from "../slices/userSlice"; // Correct import
 import teamReducer from "../slices/teamSlice"; // Correct import
+import leadsReducer from "../slices/leadSlice"; // Correct import
 import destinationSectionsReducer from "../slices/destinationSectionSlice"; // Correct import
 
 const adminStore = configureStore({
@@ -14,6 +15,7 @@ const adminStore = configureStore({
         collegeSections: collegeSectionsReducer, // Add college reducer
         user: userSlice,
         team: teamReducer,
+        leads: leadsReducer,
     },
 });
 
