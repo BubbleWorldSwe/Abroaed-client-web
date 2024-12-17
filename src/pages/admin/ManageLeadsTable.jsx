@@ -3,6 +3,7 @@ import AssignTeamMemberModal from "../../Components/Modals/AssignTeamMemberModal
 import { EllipsisVertical } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { assignTeamMember } from "../../slices/leadSlice";
+import AppointmentModal from "../../Components/Modals/AppointmentModal";
 
 function ManageLeadsTable() {
   const dispatch = useDispatch();
@@ -21,6 +22,13 @@ function ManageLeadsTable() {
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
+
+  const [showAppointmentModal, setShowAppointmentModal] = useState(false);
+
+  const handleScheduleAppointment = (id) => {
+    setSelectedMember(id);
+    setShowAppointmentModal(true);
+  };
 
   const handleOpenAddModal = () => {
     setEditMode(false);
@@ -65,6 +73,12 @@ function ManageLeadsTable() {
         teamMembers={["Alice", "Bob", "Charlie", "Diana"]}
       />
 
+      {showAppointmentModal && (
+        <AppointmentModal
+          leadId={selectedMember}
+          onClose={() => setShowAppointmentModal(false)}
+        />
+      )}
       <div className="h-screen flex flex-col p-2">
         {/* Adjust padding and spacing */}
         <header className="p-4 bg-white text-white">
@@ -350,8 +364,10 @@ function ManageLeadsTable() {
                             {member.status}
                           </span>
                         </td>
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {member.appointment}
+                        <td className="px-4 py-3">
+                          {member.appointment.date
+                            ? `${member.appointment.date} at ${member.appointment.timeSlot} (${member.appointment.type})`
+                            : "No appointment"}
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap">
                           {member.createdAt}
@@ -376,12 +392,14 @@ function ManageLeadsTable() {
                                 aria-labelledby="apple-imac-27-dropdown-button"
                               >
                                 <li>
-                                  <a
-                                    href="#"
-                                    className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  <button
+                                    onClick={() =>
+                                      handleScheduleAppointment(member.id)
+                                    }
+                                    className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700"
                                   >
-                                    Show
-                                  </a>
+                                    Schedule Appointment
+                                  </button>
                                 </li>
                                 <li>
                                   <button

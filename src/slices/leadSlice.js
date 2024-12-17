@@ -5,52 +5,49 @@ const initialState = {
         {
             id: 1,
             name: "John Doe",
-            contact: "123-456-7890",
-            leadType: "Cold",
-            status: "New",
-            counsellor: "Alice Smith",
-            appointment: "2024-06-20",
+            contact: "+123456789",
+            leadType: "Hot",
+            status: "Open",
+            counsellor: "Jane Smith",
+            appointment: { date: "", timeSlot: "", type: "" },
             createdAt: "2024-06-15",
+
         },
         {
             id: 2,
-            name: "Jane Doe",
-            contact: "987-654-3210",
-            leadType: "Warm",
-            status: "Follow-up",
-            counsellor: "Bob Johnson",
-            appointment: "2024-06-21",
+            name: "Alice Johnson",
+            contact: "+987654321",
+            leadType: "Cold",
+            status: "Contacted",
+            counsellor: "Mike Brown",
+            appointment: { date: "12-12-2024", timeSlot: "10:00", type: "in-person" },
             createdAt: "2024-06-15",
+
         },
     ],
 };
 
-const leadsSlice = createSlice({
+export const leadsSlice = createSlice({
     name: "leads",
     initialState,
     reducers: {
-        addLead: (state, action) => {
-            state.leads.push(action.payload);
-        },
-        updateLead: (state, action) => {
-            const { id, updatedData } = action.payload;
-            const index = state.leads.findIndex((lead) => lead.id === id);
-            if (index !== -1) {
-                state.leads[index] = { ...state.leads[index], ...updatedData };
-            }
-        },
-        deleteLead: (state, action) => {
-            state.leads = state.leads.filter((lead) => lead.id !== action.payload);
-        },
         assignTeamMember: (state, action) => {
-            const { id, counsellor } = action.payload;
+            const { id, teamMember } = action.payload;
             const lead = state.leads.find((lead) => lead.id === id);
             if (lead) {
-                lead.counsellor = counsellor;
+                lead.counsellor = teamMember;
+            }
+        },
+        scheduleAppointment: (state, action) => {
+            const { id, appointmentData } = action.payload;
+            const lead = state.leads.find((lead) => lead.id === id);
+            if (lead) {
+                lead.appointment = appointmentData;
             }
         },
     },
 });
 
-export const { addLead, updateLead, deleteLead, assignTeamMember } = leadsSlice.actions;
+export const { assignTeamMember, scheduleAppointment } = leadsSlice.actions;
+
 export default leadsSlice.reducer;
