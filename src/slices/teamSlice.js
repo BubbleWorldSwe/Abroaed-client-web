@@ -18,8 +18,11 @@ const teamSlice = createSlice({
         // Update (Edit a team member)
         updateTeamMember: (state, action) => {
             const { index, updatedMember } = action.payload;
-            state.teamMembers[index] = updatedMember;
+            if (index >= 0 && index < state.teamMembers.length) {
+                state.teamMembers.splice(index, 1, updatedMember);
+            }
         },
+
         // Delete (Remove a team member)
         deleteTeamMember: (state, action) => {
             const index = action.payload;

@@ -349,12 +349,30 @@ function Teams() {
                         <td className="px-4 py-3">{member.name}</td>
                         <td className="px-4 py-3">{member.role}</td>
                         <td className="px-4 py-3">{member.assignedTo}</td>
-
                         <td className="px-4 py-3 whitespace-nowrap">
-                          <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-                            {member.status}
+                          {/* Read & Write Permission */}
+                          <span
+                            className={`${
+                              member.permissions.readWrite
+                                ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+                                : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
+                            } text-xs font-medium mr-2 px-2.5 py-0.5 rounded`}
+                          >
+                            Read & Write
+                          </span>
+
+                          {/* Read Only Permission */}
+                          <span
+                            className={`${
+                              member.permissions.readOnly
+                                ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+                                : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
+                            } text-xs font-medium px-2.5 py-0.5 rounded`}
+                          >
+                            Read Only
                           </span>
                         </td>
+
                         <td className="px-4 py-3">
                           <button
                             className="focus:outline-none"

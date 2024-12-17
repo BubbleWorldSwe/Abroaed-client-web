@@ -15,6 +15,8 @@ function AddTeamMember({
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("");
+  const [assignedTo, setAssignedTo] = useState("");
+
   const [permissions, setPermissions] = useState({
     readWrite: false,
     readOnly: false,
@@ -23,7 +25,9 @@ function AddTeamMember({
   // Populate fields in edit mode
   useEffect(() => {
     if (editMode && memberToEdit) {
-      const { name, email, phoneNumber, role, permissions } = memberToEdit;
+      const { name, email, assignedTo, phoneNumber, role, permissions } =
+        memberToEdit;
+      setAssignedTo(assignedTo || "");
       setName(name || "");
       setEmail(email || "");
       setPhoneNumber(phoneNumber || "");
@@ -32,6 +36,7 @@ function AddTeamMember({
     } else {
       // Reset fields for add mode
       setName("");
+      setAssignedTo("");
       setEmail("");
       setPhoneNumber("");
       setRole("");
@@ -55,6 +60,7 @@ function AddTeamMember({
     const newMember = {
       name,
       email,
+      assignedTo,
       phoneNumber,
       role,
       permissions,
@@ -101,6 +107,18 @@ function AddTeamMember({
                   />
                 </div>
               </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Assigned To
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full px-3 py-2 border rounded-md"
+                  value={assignedTo}
+                  onChange={(e) => setAssignedTo(e.target.value)}
+                />
+              </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Email
