@@ -30,6 +30,7 @@ const teamSlice = createSlice({
             const { teamMemberId, studentName } = action.payload;
             const member = state.teamMembers.find((tm) => tm.id === teamMemberId);
             if (member) {
+                console.log("adding student," + studentName, "to team member with id:", teamMemberId);
                 member.assignedStudents.push(studentName);
             }
         },

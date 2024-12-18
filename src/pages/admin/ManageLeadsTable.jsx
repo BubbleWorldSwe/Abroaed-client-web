@@ -58,6 +58,11 @@ function ManageLeadsTable() {
         <AssignTeamModal
           leadId={selectedMember.id}
           leadName={selectedMember.name}
+          team={{
+            counsellor: selectedMember.counsellor,
+            backendManager: selectedMember.backendManager,
+            mentor: selectedMember.mentor,
+          }}
           onClose={() => setshowTeamModal(false)}
         />
       )}

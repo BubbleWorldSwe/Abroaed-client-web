@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { assignStudentToTeamMember } from "../../slices/teamSlice";
 import { assignTeamMember } from "../../slices/leadSlice";
 
-const AssignTeamModal = ({ leadId, leadName, onClose }) => {
+const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
   const dispatch = useDispatch();
   const teamMembers = useSelector((state) => state.team.teamMembers);
 
+  // Initialize selectedTeam with empty values
   const [selectedTeam, setSelectedTeam] = useState({
     counsellor: "",
     backendManager: "",
     mentor: "",
   });
+
+  // Map team member names to their IDs when the modal opens
+  useEffect(() => {
+    const getTeamMemberIdByName = (name) =>
+      teamMembers.find((member) => member.name === name)?.id || "";
+
+    setSelectedTeam({
+      counsellor: getTeamMemberIdByName(team.counsellor),
+      backendManager: getTeamMemberIdByName(team.backendManager),
+      mentor: getTeamMemberIdByName(team.mentor),
+    });
+  }, [team, teamMembers]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -78,23 +91,56 @@ const AssignTeamModal = ({ leadId, leadName, onClose }) => {
         <h2 className="text-xl font-semibold mb-4">Assign Team Members</h2>
 
         <div className="space-y-4">
-          {["Counsellor", "Backend Manager", "Mentor"].map((role) => (
-            <div key={role}>
-              <label className="block text-gray-700">{role}</label>
-              <select
-                name={role.toLowerCase().replace(" ", "")}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border rounded-lg"
-              >
-                <option value="">Select {role}</option>
-                {getMembersByRole(role).map((member) => (
-                  <option key={member.id} value={member.id}>
-                    {member.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          ))}
+          <div>
+            <label className="block text-gray-700">Counsellor</label>
+            <select
+              name="counsellor"
+              value={selectedTeam.counsellor}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-lg"
+            >
+              <option value="">Select Counsellor</option>
+              {getMembersByRole("Counsellor").map((member) => (
+                <option key={member.id} value={member.id}>
+                  {member.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700">Backend Manager</label>
+            <select
+              name="backendManager"
+              value={selectedTeam.backendManager}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-lg"
+            >
+              <option value="">Select Backend Manager</option>
+              {getMembersByRole("Backend Manager").map((member) => (
+                <option key={member.id} value={member.id}>
+                  {member.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700">Mentor</label>
+            <select
+              name="mentor"
+              value={selectedTeam.mentor}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border rounded-lg"
+            >
+              <option value="">Select Mentor</option>
+              {getMembersByRole("Mentor").map((member) => (
+                <option key={member.id} value={member.id}>
+                  {member.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="flex justify-end space-x-2 mt-4">
