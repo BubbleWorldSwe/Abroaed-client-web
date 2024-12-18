@@ -382,7 +382,7 @@ function ManageLeadsTable() {
                               <li>
                                 <button
                                   onClick={() =>
-                                    handleScheduleAppointment(member.id)
+                                    handleScheduleAppointment(member)
                                   }
                                   className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >

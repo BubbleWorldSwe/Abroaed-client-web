@@ -49,9 +49,14 @@ export const leadsSlice = createSlice({
             const { id, appointmentData } = action.payload;
             const lead = state.leads.find((lead) => lead.id === id);
             if (lead) {
+                console.log("Before update:", lead.appointment);
                 lead.appointment = appointmentData;
+                console.log("After update:", lead.appointment);
+            } else {
+                console.error(`Lead with ID ${id} not found`);
             }
         },
+
     },
 });
 

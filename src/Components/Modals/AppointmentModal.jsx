@@ -17,6 +17,7 @@ const AppointmentModal = ({ leadId, onClose }) => {
   };
 
   const handleSubmit = () => {
+    console.log("Scheduling appointment:", { id: leadId, appointmentData });
     dispatch(scheduleAppointment({ id: leadId, appointmentData }));
     onClose();
   };
