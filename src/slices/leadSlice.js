@@ -8,7 +8,9 @@ const initialState = {
             contact: "+123456789",
             leadType: "Hot",
             status: "Open",
-            counsellor: "Jane Smith",
+            counsellor: "",
+            backendManager: "",
+            mentor: "",
             appointment: { date: "", timeSlot: "", type: "" },
             createdAt: "2024-06-15",
 
@@ -20,6 +22,8 @@ const initialState = {
             leadType: "Cold",
             status: "Contacted",
             counsellor: "Mike Brown",
+            backendManager: "",
+            mentor: "",
             appointment: { date: "12-12-2024", timeSlot: "10:00", type: "in-person" },
             createdAt: "2024-06-15",
 
@@ -32,10 +36,13 @@ export const leadsSlice = createSlice({
     initialState,
     reducers: {
         assignTeamMember: (state, action) => {
-            const { id, teamMember } = action.payload;
+            const { id, teamMembers } = action.payload;
+            console.log("team members", teamMembers);
             const lead = state.leads.find((lead) => lead.id === id);
             if (lead) {
-                lead.counsellor = teamMember;
+                lead.counsellor = teamMembers.counsellor || "";
+                lead.backendManager = teamMembers.backendManager || "";
+                lead.mentor = teamMembers.mentor || "";
             }
         },
         scheduleAppointment: (state, action) => {

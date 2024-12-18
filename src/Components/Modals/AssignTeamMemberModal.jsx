@@ -1,132 +1,119 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { assignStudentToTeamMember } from "../../slices/teamSlice";
+import { assignTeamMember } from "../../slices/leadSlice";
 
-const AssignTeamMemberModal = ({ isOpen, onClose, onSubmit, teamMembers }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTeamMember, setSelectedTeamMember] = useState(null);
-  const [remarks, setRemarks] = useState("");
-  const [preferredSlot, setPreferredSlot] = useState("");
+const AssignTeamModal = ({ leadId, leadName, onClose }) => {
+  const dispatch = useDispatch();
+  const teamMembers = useSelector((state) => state.team.teamMembers);
 
-  const handleSearch = () => {
-    return teamMembers.filter((member) =>
-      member.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const [selectedTeam, setSelectedTeam] = useState({
+    counsellor: "",
+    backendManager: "",
+    mentor: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSelectedTeam((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSelect = (member) => {
-    setSelectedTeamMember(member);
-    setSearchTerm("");
-  };
+  const getTeamMemberById = (id) =>
+    teamMembers.find((member) => member.id === +id);
 
-  const resetSelection = () => {
-    setSelectedTeamMember(null);
-    setSearchTerm("");
-  };
-
-  const handleSubmit = () => {
-    const data = {
-      teamMember: selectedTeamMember,
-      remarks,
-      preferredSlot,
+  const handleSave = () => {
+    const assignedTeam = {
+      counsellor: getTeamMemberById(selectedTeam.counsellor) || {},
+      backendManager: getTeamMemberById(selectedTeam.backendManager) || {},
+      mentor: getTeamMemberById(selectedTeam.mentor) || {},
     };
-    onSubmit(data);
+
+    // Dispatch action to update the lead slice
+    dispatch(
+      assignTeamMember({
+        id: leadId,
+        teamMembers: {
+          counsellor: assignedTeam.counsellor.name || "",
+          backendManager: assignedTeam.backendManager.name || "",
+          mentor: assignedTeam.mentor.name || "",
+        },
+      })
+    );
+
+    // Dispatch actions to update each team member with assigned student name
+    if (assignedTeam.counsellor.id) {
+      dispatch(
+        assignStudentToTeamMember({
+          teamMemberId: assignedTeam.counsellor.id,
+          studentName: leadName,
+        })
+      );
+    }
+    if (assignedTeam.backendManager.id) {
+      dispatch(
+        assignStudentToTeamMember({
+          teamMemberId: assignedTeam.backendManager.id,
+          studentName: leadName,
+        })
+      );
+    }
+    if (assignedTeam.mentor.id) {
+      dispatch(
+        assignStudentToTeamMember({
+          teamMemberId: assignedTeam.mentor.id,
+          studentName: leadName,
+        })
+      );
+    }
+
+    onClose();
   };
+
+  const getMembersByRole = (role) =>
+    teamMembers.filter((member) => member.role === role);
 
   return (
-    <>
-      {" "}
-      {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-md">
-            <h2 className="text-2xl font-bold mb-4 dark:text-white">
-              Assign Team Member
-            </h2>
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+      <div className="bg-white rounded-lg p-6 w-96">
+        <h2 className="text-xl font-semibold mb-4">Assign Team Members</h2>
 
-            {/* Search Input */}
-            <div className="relative mb-4">
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  className="border w-full p-2 rounded-md focus:outline-none"
-                  placeholder="Search team member..."
-                  value={selectedTeamMember || searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  disabled={!!selectedTeamMember}
-                />
-                {selectedTeamMember ? (
-                  <button
-                    className="text-red-500 font-semibold"
-                    onClick={resetSelection}
-                  >
-                    ✕
-                  </button>
-                ) : (
-                  <button
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                    onClick={handleSearch}
-                  >
-                    Search
-                  </button>
-                )}
-              </div>
-
-              {/* Dropdown for search results */}
-              {!selectedTeamMember && searchTerm && (
-                <div className="absolute bg-white border rounded-md w-full max-h-40 overflow-y-auto mt-2 z-10">
-                  {handleSearch().length ? (
-                    handleSearch().map((member, index) => (
-                      <div
-                        key={index}
-                        className="p-2 cursor-pointer hover:bg-gray-100"
-                        onClick={() => handleSelect(member)}
-                      >
-                        {member}
-                      </div>
-                    ))
-                  ) : (
-                    <div className="p-2 text-gray-500">No results found</div>
-                  )}
-                </div>
-              )}
-            </div>
-
-            {/* Details Section */}
-            <div className="flex flex-col gap-4">
-              <textarea
-                className="border p-2 rounded-md w-full resize-none focus:outline-none"
-                placeholder="Remarks"
-                rows={3}
-                value={remarks}
-                onChange={(e) => setRemarks(e.target.value)}
-              />
-              <input
-                type="datetime-local"
-                className="border p-2 rounded-md w-full focus:outline-none"
-                value={preferredSlot}
-                onChange={(e) => setPreferredSlot(e.target.value)}
-              />
-            </div>
-
-            {/* Buttons */}
-            <div className="flex justify-end gap-4 mt-6">
-              <button
-                className="bg-gray-300 px-4 py-2 rounded-md"
-                onClick={() => onClose()}
+        <div className="space-y-4">
+          {["Counsellor", "Backend Manager", "Mentor"].map((role) => (
+            <div key={role}>
+              <label className="block text-gray-700">{role}</label>
+              <select
+                name={role.toLowerCase().replace(" ", "")}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-lg"
               >
-                Cancel
-              </button>
-              <button
-                className="bg-blue-500 text-white px-4 py-2 rounded-md"
-                onClick={handleSubmit}
-                disabled={!selectedTeamMember || !preferredSlot}
-              >
-                Submit
-              </button>
+                <option value="">Select {role}</option>
+                {getMembersByRole(role).map((member) => (
+                  <option key={member.id} value={member.id}>
+                    {member.name}
+                  </option>
+                ))}
+              </select>
             </div>
-          </div>
+          ))}
         </div>
-      )}
-    </>
+
+        <div className="flex justify-end space-x-2 mt-4">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default AssignTeamMemberModal;
+export default AssignTeamModal;
