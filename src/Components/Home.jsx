@@ -10,6 +10,9 @@ import Header from "./Header";
 import Tabs, { HomeForm, VirtualForm, VisitUsForm } from "./AnimatedTabs";
 import Footer from "./Footer";
 import FAQsection from "./FAQsection";
+import DownloadApp from "./DownloadApp";
+import BlogsSection from "./BlogsSection";
+import OurPartners from "./OurPartners";
 
 // Usage Example
 const slidesData = [
@@ -67,7 +70,10 @@ function HomeLayout() {
       <PartnerUnis />
       <TimelineSlider slides={slidesData} />
 
+      <OurPartners />
       <TestimonialsSection />
+      <DownloadApp />
+      <BlogsSection />
       <Pricing />
       <FAQsection />
 
