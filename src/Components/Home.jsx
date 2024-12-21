@@ -13,6 +13,8 @@ import FAQsection from "./FAQsection";
 import DownloadApp from "./DownloadApp";
 import BlogsSection from "./BlogsSection";
 import OurPartners from "./OurPartners";
+import HomePageLeadForm from "./HomePageLeadForm";
+import { KpiMatrix } from "./KpiMatrix";
 
 // Usage Example
 const slidesData = [
@@ -66,7 +68,7 @@ function HomeLayout() {
       <Header />
       <HeroSection />
       <PromoSection />
-
+      <KpiMatrix />
       <PartnerUnis />
       <TimelineSlider slides={slidesData} />
 
@@ -76,7 +78,7 @@ function HomeLayout() {
       <BlogsSection />
       <Pricing />
       <FAQsection />
-
+      <HomePageLeadForm />
       <Footer />
     </>
   );
