@@ -13,6 +13,7 @@ import FAQsection from "./FAQsection";
 import DownloadApp from "./DownloadApp";
 import BlogsSection from "./BlogsSection";
 import OurPartners from "./OurPartners";
+import HomePageLeadForm from "./HomePageLeadForm";
 
 // Usage Example
 const slidesData = [
@@ -76,7 +77,7 @@ function HomeLayout() {
       <BlogsSection />
       <Pricing />
       <FAQsection />
-
+      <HomePageLeadForm />
       <Footer />
     </>
   );
