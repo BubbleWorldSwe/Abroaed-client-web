@@ -74,7 +74,7 @@ function HeroSection() {
             </HoverBorderGradient>
           </div>
 
-          <div
+          {/* <div
             ref={formRef}
             className={`w-full max-w-lg mx-auto p-6 rounded-lg shadow-lg border border-yellow-800 transition duration-500
               ${
@@ -137,7 +137,7 @@ function HeroSection() {
             >
               Send Message
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-gray-900 opacity-70"></div>
