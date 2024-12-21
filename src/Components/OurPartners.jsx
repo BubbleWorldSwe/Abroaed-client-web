@@ -39,6 +39,7 @@ function OurPartners() {
                 />
               </svg>
             </a>
+           
             <a href="#" class="flex justify-center items-center">
               <svg
                 class="h-8 hover:text-gray-900 dark:hover:text-white"
