@@ -68,7 +68,7 @@ function HomeLayout() {
       <Header />
       <HeroSection />
       <PromoSection />
-      <KpiMatrix/>
+      <KpiMatrix />
       <PartnerUnis />
       <TimelineSlider slides={slidesData} />
 
