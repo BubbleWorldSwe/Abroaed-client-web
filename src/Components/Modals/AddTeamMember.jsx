@@ -1,16 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { addTeamMember, updateTeamMember } from "../../slices/teamSlice";
+function AddTeamMember({
+  isOpen,
+  onClose,
+  editMode = false,
+  memberToEdit = null,
+}) {
+  const dispatch = useDispatch();
 
-function AddTeamMember({ isOpen, onClose }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  // State for input fields
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("");
+  const [assignedTo, setAssignedTo] = useState("");
+
   const [permissions, setPermissions] = useState({
     readWrite: false,
     readOnly: false,
   });
+
+  // Populate fields in edit mode
+  useEffect(() => {
+    if (editMode && memberToEdit) {
+      const { name, email, assignedTo, phoneNumber, role, permissions } =
+        memberToEdit;
+      setAssignedTo(assignedTo || "");
+      setName(name || "");
+      setEmail(email || "");
+      setPhoneNumber(phoneNumber || "");
+      setRole(role || "");
+      setPermissions(permissions || { readWrite: false, readOnly: false });
+    } else {
+      // Reset fields for add mode
+      setName("");
+      setAssignedTo("");
+      setEmail("");
+      setPhoneNumber("");
+      setRole("");
+      setPermissions({ readWrite: false, readOnly: false });
+    }
+  }, [editMode, memberToEdit]);
 
   const handlePermissionToggle = (permission) => {
     setPermissions((prev) => ({
@@ -19,13 +51,36 @@ function AddTeamMember({ isOpen, onClose }) {
     }));
   };
 
-  const handleAddStaff = () => {
-    // Example validation and submission logic
-    if (!firstName || !lastName || !email || !phoneNumber || !role) {
+  const handleSubmit = () => {
+    if (!name || !email || !phoneNumber || !role) {
       toast.error("Please fill out all fields");
       return;
     }
-    toast.success("Staff added successfully");
+
+    const newMember = {
+      name,
+      email,
+      assignedTo,
+      phoneNumber,
+      role,
+      permissions,
+    };
+
+    if (editMode) {
+      // Dispatch update action
+      dispatch(
+        updateTeamMember({
+          index: memberToEdit.index,
+          updatedMember: newMember,
+        })
+      );
+      toast.success("Team member updated successfully");
+    } else {
+      // Dispatch add action
+      dispatch(addTeamMember(newMember));
+      toast.success("Team member added successfully");
+    }
+
     onClose();
   };
 
@@ -35,34 +90,35 @@ function AddTeamMember({ isOpen, onClose }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
           <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-md">
             <h2 className="text-2xl font-bold mb-4 dark:text-white">
-              Add Team Member
+              {editMode ? "Edit Team Member" : "Add Team Member"}
             </h2>
             <div>
               {/* Input Fields */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className=" mb-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    First Name
+                    Name
                   </label>
                   <input
                     type="text"
                     className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
               </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Assigned To
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full px-3 py-2 border rounded-md"
+                  value={assignedTo}
+                  onChange={(e) => setAssignedTo(e.target.value)}
+                />
+              </div>
+
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Email
@@ -150,9 +206,9 @@ function AddTeamMember({ isOpen, onClose }) {
                 <button
                   type="button"
                   className="bg-blue-600 text-white px-4 py-2 rounded-md"
-                  onClick={handleAddStaff}
+                  onClick={handleSubmit}
                 >
-                  Add Staff
+                  {editMode ? "Update Member" : "Add Member"}
                 </button>
               </div>
             </div>

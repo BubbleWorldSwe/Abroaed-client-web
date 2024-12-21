@@ -28,36 +28,19 @@ const initialState = {
         {
             title: "Courses",
             content: [
-                {
-                    courseName: "",
-                    courseDesc: "",
-                    courseLevel: "",
-                    duration: "",
-                    school: "",
-                    dept: "",
-                    intake: "",
-                    feesPerYear: "",
-                    seats: "",
-                },
+
             ],
         },
         {
             title: "Financial Aid and Scholarships",
             content: [
-                {
-                    scholarshipName: "",
-                    link: "",
-                    description: "",
-                },
+
             ],
         },
         {
             title: "FAQs",
             content: [
-                {
-                    question: "",
-                    answer: "",
-                },
+
             ],
         },
     ],

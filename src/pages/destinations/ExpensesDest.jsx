@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import ExpensesDestModal from "../../Components/Modals/ExpensesDestModal";
 
 function ExpensesDest() {
   const expensesSection = useSelector((state) =>
@@ -8,38 +9,19 @@ function ExpensesDest() {
     )
   );
 
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editData, setEditData] = useState(null); // Data to be edited
 
-  const handleOpenAddModal = () => setIsAddModalOpen(true);
-  const handleCloseAddModal = () => setIsAddModalOpen(false);
+  const handleOpenModal = (data = null) => {
+    setEditData(data);
+    setIsModalOpen(true);
+  };
 
-  // If no expenses content exists
-  if (
-    !expensesSection ||
-    !expensesSection.content ||
-    expensesSection.content.length === 0
-  ) {
-    return (
-      <>
-        {/* Placeholder for Add Modal */}
-        <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Expenses
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400">No content added</p>
-          <button
-            type="button"
-            onClick={handleOpenAddModal}
-            className="mt-4 py-2 px-3 text-xs font-medium text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          >
-            Add
-          </button>
-        </div>
-      </>
-    );
-  }
+  const handleCloseModal = () => {
+    setEditData(null);
+    setIsModalOpen(false);
+  };
 
-  // Extract content fields
   const {
     AvgTutionFee,
     AvgRent,
@@ -54,29 +36,32 @@ function ExpensesDest() {
         Expenses
       </h2>
       <div className="border border-1 mb-2 border-gray-200 w-full"></div>
-      {/* Expenses Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {[
-          { key: "Average Tuition Fee", value: AvgTutionFee },
-          { key: "Average Rent", value: AvgRent },
-          { key: "Average Food Expense", value: AvgFoodExpense },
-          { key: "Average Transport Expense", value: AvgTransportExpense },
-          { key: "Miscellaneous Expense", value: MiscExpense },
-        ].map((item, index) => (
-          <div key={index} className="text-left">
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {item.key}
-            </p>
-            <p className="text-base font-semibold text-gray-900 dark:text-white">
-              {item.value || "N/A"}
-            </p>
-          </div>
-        ))}
-      </div>
-      {/* Actions */}
+      {expensesSection.content.length === 0 ? (
+        <p className="text-gray-500 dark:text-gray-400">No content added</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { key: "Average Tuition Fee", value: AvgTutionFee },
+            { key: "Average Rent", value: AvgRent },
+            { key: "Average Food Expense", value: AvgFoodExpense },
+            { key: "Average Transport Expense", value: AvgTransportExpense },
+            { key: "Miscellaneous Expense", value: MiscExpense },
+          ].map((item, index) => (
+            <div key={index} className="text-left">
+              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                {item.key}
+              </p>
+              <p className="text-base font-semibold text-gray-900 dark:text-white">
+                {item.value || "N/A"}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="flex items-center gap-4 mt-6">
         <button
           type="button"
+          onClick={() => handleOpenModal(expensesSection.content[0])}
           className="inline-flex text-sm items-center font-medium text-primary-700 hover:underline dark:text-primary-500"
         >
           <svg
@@ -97,25 +82,19 @@ function ExpensesDest() {
         </button>
         <button
           type="button"
-          className="inline-flex text-sm items-center font-medium text-red-600 hover:underline dark:text-red-500"
+          onClick={() => handleOpenModal()}
+          className="mt-4 py-2 px-3 text-xs font-medium text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
         >
-          <svg
-            className="mr-1 h-4 w-4"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"
-            />
-          </svg>
-          Delete
+          Add
         </button>
       </div>
+      {isModalOpen && (
+        <ExpensesDestModal
+          isOpen={isModalOpen}
+          closeModal={handleCloseModal}
+          editData={editData}
+        />
+      )}
     </div>
   );
 }

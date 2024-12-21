@@ -11,7 +11,8 @@ function OverviewCard() {
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
-
+  const [isEditMode, setIsEditMode] = useState(false); // Flag to determine Add/Edit
+  const [editData, setEditData] = useState(null); // Data for Edit mode
   const handleOpenDeleteModal = (index) => {
     setSelectedSectionIndex(index);
     setIsDeleteModalOpen(true);
@@ -23,11 +24,20 @@ function OverviewCard() {
   };
 
   const handleOpenAddModal = () => {
+    setIsEditMode(false); // Add mode
+    setEditData(null); // Clear data
+    setIsAddModalOpen(true);
+  };
+
+  const handleOpenEditModal = () => {
+    setIsEditMode(true); // Edit mode
+    setEditData(overview.content); // Pass existing content to modal
     setIsAddModalOpen(true);
   };
 
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
+    setEditData(null);
   };
 
   if (!overview || !overview.content || overview.content.length === 0) {
@@ -36,6 +46,8 @@ function OverviewCard() {
         <AddOverviewContentModal
           isOpen={isAddModalOpen}
           onClose={handleCloseAddModal}
+          isEditMode={isEditMode}
+          editData={editData}
         />
         <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -66,6 +78,12 @@ function OverviewCard() {
 
   return (
     <div className="mb-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+      <AddOverviewContentModal
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+        isEditMode={isEditMode}
+        editData={editData}
+      />
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
         Overview
       </h2>
@@ -97,6 +115,7 @@ function OverviewCard() {
       {/* Actions */}
       <div className="flex items-center gap-4 mt-6">
         <button
+          onClick={handleOpenEditModal}
           type="button"
           data-modal-target="editReviewModal"
           data-modal-toggle="editReviewModal"
