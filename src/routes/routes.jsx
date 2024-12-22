@@ -21,6 +21,8 @@ import TestPrepLayout from "../Layouts/TestPrepLayout";
 import CollegePage from "../pages/Colleges/CollegePage";
 import DestinationTable from "../pages/destinations/DestinationTable";
 import DestinationPage from "../pages/destinations/DestinationPage";
+import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
+import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -38,7 +40,13 @@ const AppRoutes = () => {
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
-    { path: "/blog", element: <LayoutBlogs />, isPrivate: false },
+    { path: "/blog/:id", element: <LayoutBlogs />, isPrivate: false },
+    { path: "/blog", element: <LayoutBlogHomePage />, isPrivate: false },
+    {
+      path: "/blog/category/:id",
+      element: <LayoutBlogsCategoryPage />,
+      isPrivate: false,
+    },
     { path: "/finance", element: <FinanceLayout />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
     {
