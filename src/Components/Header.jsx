@@ -107,42 +107,19 @@ function Header() {
                     <ul>
                       <li>
                         <a
-                          href="#"
+                          href="/aboutus"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           About Us
                         </a>
                       </li>
+
                       <li>
                         <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Services
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Blogs/Articles
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
+                          href="/careers"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           Career
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Get in Touch
                         </a>
                       </li>
                     </ul>

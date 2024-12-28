@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BlogHomePage() {
+  const navigate = useNavigate();
   return (
     <div>
       <div className=" p-16 rounded-lg">
@@ -369,9 +371,12 @@ function BlogHomePage() {
         <div className="px-4 mx-auto max-w-screen-xl">
           <div className="w-full  justify-between items-center py-8 flex ">
             <h2 className="mb-8 mt-8 text-2xl font-bold text-gray-900 dark:text-white">
-              Category Name
+              Latest from Finance
             </h2>
-            <button className="bg-yellow-300 h-[50px] hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+            <button
+              onClick={() => navigate("/blog/category/finance")}
+              className="bg-yellow-300 h-[50px] hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            >
               view all
             </button>
           </div>
@@ -438,9 +443,12 @@ function BlogHomePage() {
 
           <div className="w-full  justify-between items-center py-8 flex ">
             <h2 className="mb-8 mt-8 text-2xl font-bold text-gray-900 dark:text-white">
-              Category Name
+              Latest from Accomodation
             </h2>
-            <button className="bg-yellow-300 h-[50px] hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+            <button
+              onClick={() => navigate("/blog/category/Accomodation")}
+              className="bg-yellow-300 h-[50px] hover:bg-gray-100 text-gray-900 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            >
               view all
             </button>
           </div>
