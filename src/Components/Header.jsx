@@ -107,7 +107,7 @@ function Header() {
                     <ul>
                       <li>
                         <a
-                          href="#"
+                          href="/aboutus"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
                           About Us

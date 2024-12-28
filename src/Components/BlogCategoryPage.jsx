@@ -1,11 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 function BlogCategoryPage() {
+  const { id } = useParams();
   return (
     <div>
       <div className="">
         <p className="w-full flex items-center justify-center font-inter text-2xl font-bold ">
-          Category Name
+          {id} Blogs
         </p>
         <div className=" p-16 rounded-lg">
           <article
@@ -238,7 +240,7 @@ function BlogCategoryPage() {
           <div class="px-4 mx-auto max-w-screen-xl flex justify-between">
             <div className="w-3/4">
               <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
-                Trending Now
+                Trending Now in {id}
               </h2>
               <article class="flex mb-8">
                 <a href="#" class="shrink-0">
