@@ -24,6 +24,7 @@ import DestinationPage from "../pages/destinations/DestinationPage";
 import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
 import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import AboutUsLayout from "../Layouts/AboutUsLayout";
+import CareersLayout from "../Layouts/CareersLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -41,6 +42,7 @@ const AppRoutes = () => {
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
     { path: "/aboutus", element: <AboutUsLayout />, isPrivate: false },
+    { path: "/careers", element: <CareersLayout />, isPrivate: false },
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     { path: "/blog/:id", element: <LayoutBlogs />, isPrivate: false },
     { path: "/blog", element: <LayoutBlogHomePage />, isPrivate: false },
