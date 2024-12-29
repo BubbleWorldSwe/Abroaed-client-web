@@ -1,124 +1,179 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
+import { signInRequest } from '../../store/reducers/authSlice';
 
 function SigninPage() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.auth);
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+      terms: false,
+      newsletter: false,
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
+      password: Yup.string()
+        .min(8, 'Password must be at least 8 characters')
+        .required('Password is required'),
+      terms: Yup.bool()
+        .oneOf([true], 'You must accept the terms and conditions')
+        .required('You must accept the terms and conditions'),
+      newsletter: Yup.bool(),
+    }),
+    onSubmit: (values) => {
+      dispatch(signInRequest(values));
+      // Handle the form submission
+      console.log('Form data', values);
+      // Example navigation (you can replace with your logic)
+      // navigate('/admin/dashboard');
+    },
+  });
+
   return (
     <div>
       <section class="bg-white dark:bg-gray-900">
         <div class="grid lg:h-screen lg:grid-cols-2">
           <div class="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0">
-            <form
-              class="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
-              action="#"
+          <form
+      onSubmit={formik.handleSubmit}
+      className="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
+    >
+      <h2 className="text-xl font-bold font-inter text-gray-900 dark:text-white">
+        Please Sign In to Continue
+      </h2>
+
+      <div className="flex items-center">
+        <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
+      </div>
+
+      {/* Email */}
+      <div>
+        <label
+          htmlFor="email"
+          className="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
+        >
+          Your email
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          placeholder="name@company.com"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.email && formik.errors.email && (
+          <div className="text-red-500 text-xs mt-1">{formik.errors.email}</div>
+        )}
+      </div>
+
+      {/* Password */}
+      <div>
+        <label
+          htmlFor="password"
+          className="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
+        >
+          Your password
+        </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="••••••••"
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.password && formik.errors.password && (
+          <div className="text-red-500 text-xs mt-1">{formik.errors.password}</div>
+        )}
+      </div>
+
+      {/* Terms Checkbox */}
+      <div className="space-y-3">
+        <div className="flex items-start">
+          <div className="flex items-center h-5">
+            <input
+              id="terms"
+              aria-describedby="terms"
+              type="checkbox"
+              className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+              checked={formik.values.terms}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          </div>
+          <div className="ml-3 text-sm">
+            <label
+              htmlFor="terms"
+              className="font-light font-inter text-gray-500 dark:text-gray-300"
             >
-              <h2 class="text-xl font-bold font-inter text-gray-900 dark:text-white">
-                Please Sign In to Continue
-              </h2>
-
-              <div class="flex items-center">
-                <div class="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-
-                <div class="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-              </div>
-
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
-                >
-                  Your email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="name@company.com"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  for="password"
-                  class="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
-                >
-                  Your password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  required=""
-                />
-              </div>
-              <div class="space-y-3">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input
-                      id="terms"
-                      aria-describedby="terms"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
-                    />
-                  </div>
-                  <div class="ml-3 text-sm">
-                    <label
-                      for="terms"
-                      class="font-light font-inter text-gray-500 dark:text-gray-300"
-                    >
-                      By signing up, you are creating a Flowbite account, and
-                      you agree to Flowbite’s{" "}
-                      <a
-                        class="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
-                        href="#"
-                      >
-                        Terms of Use
-                      </a>{" "}
-                      and{" "}
-                      <a
-                        class="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
-                        href="#"
-                      >
-                        Privacy Policy
-                      </a>
-                      .
-                    </label>
-                  </div>
-                </div>
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input
-                      id="newsletter"
-                      aria-describedby="newsletter"
-                      type="checkbox"
-                      class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
-                    />
-                  </div>
-                  <div class="ml-3 text-sm">
-                    <label
-                      for="newsletter"
-                      class="font-light font-inter text-gray-500 dark:text-gray-300"
-                    >
-                      Email me about product updates and resources.
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <button
-                type="submit"
-                onClick={() => {
-                  navigate("/admin/dashboard");
-                }}
-                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium font-inter rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
+              By signing up, you are creating a Flowbite account, and you agree to
+              Flowbite’s{' '}
+              <a
+                className="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
+                href="#"
               >
-                Sign In
-              </button>
-            </form>
+                Terms of Use
+              </a>{' '}
+              and{' '}
+              <a
+                className="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
+                href="#"
+              >
+                Privacy Policy
+              </a>
+              .
+            </label>
+          </div>
+        </div>
+        {formik.touched.terms && formik.errors.terms && (
+          <div className="text-red-500 text-xs mt-1">{formik.errors.terms}</div>
+        )}
+
+        {/* Newsletter Checkbox */}
+        <div className="flex items-start">
+          <div className="flex items-center h-5">
+            <input
+              id="newsletter"
+              aria-describedby="newsletter"
+              type="checkbox"
+              className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+              checked={formik.values.newsletter}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          </div>
+          <div className="ml-3 text-sm">
+            <label
+              htmlFor="newsletter"
+              className="font-light font-inter text-gray-500 dark:text-gray-300"
+            >
+              Email me about product updates and resources.
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium font-inter rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
+      >
+        {loading ? 'Signing in...' : 'Sign In'}
+      </button>
+      {error && <div className="text-red-500 text-sm mt-3">{error}</div>}
+    </form>
           </div>
           <div class="flex justify-center items-center py-6 px-4 bg-primary-600 lg:py-0 sm:px-0">
             <div class="max-w-md xl:max-w-xl">

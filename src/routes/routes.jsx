@@ -23,8 +23,21 @@ import DestinationTable from "../pages/destinations/DestinationTable";
 import DestinationPage from "../pages/destinations/DestinationPage";
 import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
 import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
+import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 
 const AppRoutes = () => {
+
+  const navigate = useNavigate();
+
+  const { isRouteChange, redirectTo } = useSelector((state) => state.common);
+
+  useEffect(() => {
+    redirectTo && navigate(redirectTo)
+  }, [isRouteChange])
+
+
   // Define all routes (public and private)
   const allRoutes = [
     { path: "/home", element: <HomeLayout />, isPrivate: false },
