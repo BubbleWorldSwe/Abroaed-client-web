@@ -76,44 +76,44 @@ function BlogCategoryPage() {
             </div>
           </article>
         </div>
-        <div class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800 antialiased mx-auto ">
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 ">
-            <article class="p-4 mx-auto max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700">
+        <div className="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800 antialiased mx-auto ">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 ">
+            <article className="p-4 mx-auto max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700">
               <a href="#">
                 <img
-                  class="mb-5 rounded-lg"
+                  className="mb-5 rounded-lg"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png"
                   alt="office laptop working"
                 />
               </a>
-              <div class="flex items-center mb-3 space-x-2">
+              <div className="flex items-center mb-3 space-x-2">
                 <img
-                  class="w-8 h-8 rounded-full"
+                  className="w-8 h-8 rounded-full"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                   alt="Jese Leos avatar"
                 />
-                <div class="font-medium dark:text-white">
+                <div className="font-medium dark:text-white">
                   <div>Jese Leos</div>
-                  <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Aug 15, 2021 · 16 min read
                   </div>
                 </div>
               </div>
-              <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
+              <h3 className="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
                 <a href="#">Our first office</a>
               </h3>
-              <p class="mb-3 text-gray-500 dark:text-gray-400">
+              <p className="mb-3 text-gray-500 dark:text-gray-400">
                 Over the past year, Volosoft has undergone many changes! After
                 months of preparation and some hard work, we moved to our new
                 office.
               </p>
               <a
                 href="#"
-                class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline"
               >
                 Read more{" "}
                 <svg
-                  class="mt-px ml-1 w-3 h-3"
+                  className="mt-px ml-1 w-3 h-3"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -129,42 +129,42 @@ function BlogCategoryPage() {
                 </svg>
               </a>
             </article>
-            <article class="hidden p-4 mx-auto max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 sm:block">
+            <article className="hidden p-4 mx-auto max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 sm:block">
               <a href="#">
                 <img
-                  class="mb-5 rounded-lg"
+                  className="mb-5 rounded-lg"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
                   alt="google hq"
                 />
               </a>
-              <div class="flex items-center mb-3 space-x-2">
+              <div className="flex items-center mb-3 space-x-2">
                 <img
-                  class="w-8 h-8 rounded-full"
+                  className="w-8 h-8 rounded-full"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
                   alt="Roberta Casas avatar"
                 />
-                <div class="font-medium dark:text-white">
+                <div className="font-medium dark:text-white">
                   <div>Roberta Casas</div>
-                  <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Aug 15, 2021 · 16 min read
                   </div>
                 </div>
               </div>
-              <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
+              <h3 className="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
                 <a href="#">We partnered up with Google</a>
               </h3>
-              <p class="mb-3 text-gray-500 dark:text-gray-400">
+              <p className="mb-3 text-gray-500 dark:text-gray-400">
                 Over the past year, Volosoft has undergone many changes! After
                 months of preparation and some hard work, we moved to our new
                 office.
               </p>
               <a
                 href="#"
-                class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline"
               >
                 Read more{" "}
                 <svg
-                  class="mt-px ml-1 w-3 h-3"
+                  className="mt-px ml-1 w-3 h-3"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -180,42 +180,42 @@ function BlogCategoryPage() {
                 </svg>
               </a>
             </article>
-            <article class="hidden p-4 mx-auto max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 xl:block">
+            <article className="hidden p-4 mx-auto max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 xl:block">
               <a href="#">
                 <img
-                  class="mb-5 rounded-lg"
+                  className="mb-5 rounded-lg"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops-2.png"
                   alt="office laptop working"
                 />
               </a>
-              <div class="flex items-center mb-3 space-x-2">
+              <div className="flex items-center mb-3 space-x-2">
                 <img
-                  class="w-8 h-8 rounded-full"
+                  className="w-8 h-8 rounded-full"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png"
                   alt="Sofia McGuire avatar"
                 />
-                <div class="font-medium dark:text-white">
+                <div className="font-medium dark:text-white">
                   <div>Sofia McGuire</div>
-                  <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Aug 15, 2021 · 16 min read
                   </div>
                 </div>
               </div>
-              <h3 class="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
+              <h3 className="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
                 <a href="#">Our first project with React</a>
               </h3>
-              <p class="mb-3 text-gray-500 dark:text-gray-400">
+              <p className="mb-3 text-gray-500 dark:text-gray-400">
                 Over the past year, Volosoft has undergone many changes! After
                 months of preparation and some hard work, we moved to our new
                 office.
               </p>
               <a
                 href="#"
-                class="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline"
+                className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 hover:no-underline"
               >
                 Read more{" "}
                 <svg
-                  class="mt-px ml-1 w-3 h-3"
+                  className="mt-px ml-1 w-3 h-3"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -235,131 +235,131 @@ function BlogCategoryPage() {
         </div>
         <aside
           aria-label="Related articles"
-          class="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800 antialiased"
+          className="py-8 lg:py-24 bg-gray-50 dark:bg-gray-800 antialiased"
         >
-          <div class="px-4 mx-auto max-w-screen-xl flex justify-between">
+          <div className="px-4 mx-auto max-w-screen-xl flex justify-between">
             <div className="w-3/4">
-              <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
+              <h2 className="mb-8 text-2xl font-bold text-gray-900 dark:text-white">
                 Trending Now in {id}
               </h2>
-              <article class="flex mb-8">
-                <a href="#" class="shrink-0">
+              <article className="flex mb-8">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-1.png"
-                    class="mr-5 w-32 h-32 max-w-fullalign-middle rounded-full"
+                    className="mr-5 w-32 h-32 max-w-fullalign-middle rounded-full"
                     alt="Image 1"
                   />
                 </a>
-                <div class="flex flex-col justify-center">
-                  <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                <div className="flex flex-col justify-center">
+                  <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">Our first office</a>
                   </h2>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Over the past year, Volosoft has undergone many changes!
                     After months of preparation.
                   </p>
                   <a
                     href="#"
-                    class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                    className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                   >
                     Read in 2 minutes
                   </a>
                 </div>
               </article>
-              <article class="flex mb-8">
-                <a href="#" class="shrink-0">
+              <article className="flex mb-8">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-2.png"
-                    class="mr-5 w-32 h-32 max-w-full align-middle rounded-full"
+                    className="mr-5 w-32 h-32 max-w-full align-middle rounded-full"
                     alt="Image 2"
                   />
                 </a>
-                <div class="flex flex-col justify-center">
-                  <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                <div className="flex flex-col justify-center">
+                  <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">Enterprise design tips</a>
                   </h2>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Over the past year, Volosoft has undergone many changes!
                     After months of preparation.
                   </p>
                   <a
                     href="#"
-                    class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                    className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                   >
                     Read in 12 minutes
                   </a>
                 </div>
               </article>
-              <article class="flex">
-                <a href="#" class="shrink-0">
+              <article className="flex">
+                <a href="#" className="shrink-0">
                   <img
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-3.png"
-                    class="mr-5 w-32 h-32 max-w-full align-middle rounded-full"
+                    className="mr-5 w-32 h-32 max-w-full align-middle rounded-full"
                     alt="Image 3"
                   />
                 </a>
-                <div class="flex flex-col justify-center">
-                  <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
+                <div className="flex flex-col justify-center">
+                  <h2 className="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
                     <a href="#">We partnered up with Google</a>
                   </h2>
-                  <p class="mb-2 text-gray-500 dark:text-gray-400">
+                  <p className="mb-2 text-gray-500 dark:text-gray-400">
                     Over the past year, Volosoft has undergone many changes!
                     After months of preparation.
                   </p>
                   <a
                     href="#"
-                    class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                    className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                   >
                     Read in 8 minutes
                   </a>
                 </div>
               </article>
             </div>
-            <div class=" w-1/4 p-4 mb-6 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h4 class="mb-4 text-sm font-bold text-gray-900 dark:text-white uppercase">
+            <div className=" w-1/4 p-4 mb-6 rounded-lg border border-gray-200 dark:border-gray-700">
+              <h4 className="mb-4 text-sm font-bold text-gray-900 dark:text-white uppercase">
                 Latest news
               </h4>
-              <div class="mb-6">
-                <h5 class="mb-2 text-lg font-bold leading-tight text-gray-900 dark:text-white">
+              <div className="mb-6">
+                <h5 className="mb-2 text-lg font-bold leading-tight text-gray-900 dark:text-white">
                   Our first office
                 </h5>
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-gray-500 dark:text-gray-400">
                   Over the past year, Volosoft has undergone many changes! After
                   months of preparation.
                 </p>
                 <a
                   href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                  className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                 >
                   Read in 9 minutes
                 </a>
               </div>
-              <div class="mb-6">
-                <h5 class="mb-2 text-lg font-bold leading-tight text-gray-900 dark:text-white">
+              <div className="mb-6">
+                <h5 className="mb-2 text-lg font-bold leading-tight text-gray-900 dark:text-white">
                   Enterprise Design tips
                 </h5>
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-gray-500 dark:text-gray-400">
                   Over the past year, Volosoft has undergone many changes! After
                   months of preparation.
                 </p>
                 <a
                   href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                  className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                 >
                   Read in 14 minutes
                 </a>
               </div>
-              <div class="mb-6">
-                <h5 class="mb-2 text-lg font-bold leading-tight text-gray-900 dark:text-white">
+              <div className="mb-6">
+                <h5 className="mb-2 text-lg font-bold leading-tight text-gray-900 dark:text-white">
                   Our first project with React
                 </h5>
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
+                <p className="mb-2 text-gray-500 dark:text-gray-400">
                   Over the past year, Volosoft has undergone many changes! After
                   months of preparation.
                 </p>
                 <a
                   href="#"
-                  class="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
+                  className="inline-flex items-center font-medium underline underline-offset-4 text-primary-600 dark:text-primary-500 hover:no-underline"
                 >
                   Read in 4 minutes
                 </a>

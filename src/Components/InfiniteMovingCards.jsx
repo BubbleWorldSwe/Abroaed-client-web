@@ -68,16 +68,16 @@ const InfiniteMovingCards = ({
             key={idx}
             className="w-[350px] h-[250px] max-w-full bg-white relative rounded-2xl border border-b-0 flex-shrink-0  px-8 py-6 md:w-[450px]"
           >
-            <div class="gap-8 py-6 sm:flex sm:items-start">
-              <div class="min-w-0 flex-1 space-y-4">
-                <div class="space-y-2">
-                  <div class="flex items-center gap-2">
-                    <p class="text-base font-semibold text-gray-900 dark:text-white">
+            <div className="gap-8 py-6 sm:flex sm:items-start">
+              <div className="min-w-0 flex-1 space-y-4">
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <p className="text-base font-semibold text-gray-900 dark:text-white">
                       {item.name}
                     </p>
-                    <div class="flex items-center gap-0.5">
+                    <div className="flex items-center gap-0.5">
                       <svg
-                        class="h-4 w-4 shrink-0 text-yellow-300"
+                        className="h-4 w-4 shrink-0 text-yellow-300"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -89,7 +89,7 @@ const InfiniteMovingCards = ({
                       </svg>
 
                       <svg
-                        class="h-4 w-4 shrink-0 text-yellow-300"
+                        className="h-4 w-4 shrink-0 text-yellow-300"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -101,7 +101,7 @@ const InfiniteMovingCards = ({
                       </svg>
 
                       <svg
-                        class="h-4 w-4 shrink-0 text-yellow-300"
+                        className="h-4 w-4 shrink-0 text-yellow-300"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -113,7 +113,7 @@ const InfiniteMovingCards = ({
                       </svg>
 
                       <svg
-                        class="h-4 w-4 shrink-0 text-yellow-300"
+                        className="h-4 w-4 shrink-0 text-yellow-300"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -125,7 +125,7 @@ const InfiniteMovingCards = ({
                       </svg>
 
                       <svg
-                        class="h-4 w-4 shrink-0 text-yellow-300"
+                        className="h-4 w-4 shrink-0 text-yellow-300"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -137,12 +137,12 @@ const InfiniteMovingCards = ({
                       </svg>
                     </div>
                   </div>
-                  <p class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
                     {item.title}
                   </p>
                 </div>
 
-                <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                <p className="text-base font-normal text-gray-500 dark:text-gray-400">
                   It’s fancy, amazing keyboard, matching accessories. Super
                   fast, batteries last more than usual, everything runs perfect
                   in this computer. Highly recommend!

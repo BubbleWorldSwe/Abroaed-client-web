@@ -4,6 +4,7 @@ import DestinationInfo from "../pages/destinations/DestinationInfo";
 import FAQsection from "../Components/FAQsection";
 import Header from "../Components/Header";
 import { HomeForm } from "../Components/AnimatedTabs";
+import FunFacts from "../Components/FunFacts";
 
 function LayoutPageDestination() {
   return (
@@ -11,6 +12,8 @@ function LayoutPageDestination() {
       <Header />
       <DestinationHero />
       <DestinationInfo />
+
+      <FunFacts/>
       <HomeForm />
       <FAQsection />
     </div>

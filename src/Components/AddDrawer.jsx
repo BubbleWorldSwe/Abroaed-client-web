@@ -28,7 +28,7 @@ function AddDrawer({ isOpen, onClose, title }) {
           >
             <h5
               id="addReviewDrawer-label"
-              class="mb-6 inline-flex items-center text-sm font-semibold uppercase text-gray-500 dark:text-gray-400"
+              className="mb-6 inline-flex items-center text-sm font-semibold uppercase text-gray-500 dark:text-gray-400"
             >
               {title}
             </h5>
@@ -37,11 +37,11 @@ function AddDrawer({ isOpen, onClose, title }) {
               onClick={onClose}
               data-drawer-dismiss="addReviewDrawer"
               aria-controls="addReviewDrawer"
-              class="absolute right-2.5 top-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+              className="absolute right-2.5 top-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
             >
               <svg
                 aria-hidden="true"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,40 +52,40 @@ function AddDrawer({ isOpen, onClose, title }) {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-              <span class="sr-only">Close menu</span>
+              <span className="sr-only">Close menu</span>
             </button>
             <form action="#">
-              <h4 class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+              <h4 className="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
                 Please choose the product:
               </h4>
-              <div class="divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800 mb-4">
-                <div class="flex items-center gap-6 p-4">
+              <div className="divide-y divide-gray-200 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800 mb-4">
+                <div className="flex items-center gap-6 p-4">
                   <div>
                     <input
                       id="product4"
                       type="checkbox"
                       value=""
-                      class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
+                      className="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
                     />
-                    <label for="product4" class="sr-only">
+                    <label for="product4" className="sr-only">
                       {" "}
                       Product 4{" "}
                     </label>
                   </div>
 
-                  <div class="flex items-center gap-6">
+                  <div className="flex items-center gap-6">
                     <div>
                       <a
                         href="#"
-                        class="flex aspect-square h-14 w-14 shrink-0 items-center sm:mb-0"
+                        className="flex aspect-square h-14 w-14 shrink-0 items-center sm:mb-0"
                       >
                         <img
-                          class="h-auto max-h-full w-full dark:hidden"
+                          className="h-auto max-h-full w-full dark:hidden"
                           src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg"
                           alt="imac image"
                         />
                         <img
-                          class="hidden h-auto max-h-full w-full dark:block"
+                          className="hidden h-auto max-h-full w-full dark:block"
                           src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg"
                           alt="imac image"
                         />
@@ -95,17 +95,17 @@ function AddDrawer({ isOpen, onClose, title }) {
                     <div>
                       <a
                         href="#"
-                        class="font-medium text-gray-900 hover:underline dark:text-white sm:mt-0"
+                        className="font-medium text-gray-900 hover:underline dark:text-white sm:mt-0"
                       >
                         {" "}
                         PC APPLE iMac (2023)
                       </a>
-                      <dl class="mt-2 sm:flex items-center gap-2.5">
-                        <dt class="text-base font-normal text-gray-500 dark:text-gray-400 lg:w-36">
+                      <dl className="mt-2 sm:flex items-center gap-2.5">
+                        <dt className="text-base font-normal text-gray-500 dark:text-gray-400 lg:w-36">
                           Order Number:
                         </dt>
-                        <dd class="text-base font-normal text-gray-500 dark:text-gray-400">
-                          <a href="#" class="hover:underline">
+                        <dd className="text-base font-normal text-gray-500 dark:text-gray-400">
+                          <a href="#" className="hover:underline">
                             #737423642
                           </a>
                         </dd>
@@ -114,14 +114,14 @@ function AddDrawer({ isOpen, onClose, title }) {
                   </div>
                 </div>
               </div>
-              <div class="space-y-4">
+              <div className="space-y-4">
                 <div>
                   <label
                     for="title"
-                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Review title{" "}
-                    <span class="dark:text-gay-400 font-normal text-gray-500">
+                    <span className="dark:text-gay-400 font-normal text-gray-500">
                       (30-150 characters)
                     </span>
                   </label>
@@ -129,7 +129,7 @@ function AddDrawer({ isOpen, onClose, title }) {
                     type="text"
                     name="title"
                     id="title"
-                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                     placeholder="Type review title"
                     required=""
                   />
@@ -138,24 +138,24 @@ function AddDrawer({ isOpen, onClose, title }) {
                 <div>
                   <label
                     for="review"
-                    class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
+                    className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Review{" "}
-                    <span class="dark:text-gay-400 font-normal text-gray-500">
+                    <span className="dark:text-gay-400 font-normal text-gray-500">
                       (150-3000 characters)
                     </span>
                   </label>
                   <textarea
                     id="review"
                     rows="5"
-                    class="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                    className="mb-2 block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                     required=""
                   ></textarea>
-                  <p class="ms-auto text-xs text-gray-500 dark:text-gray-400">
+                  <p className="ms-auto text-xs text-gray-500 dark:text-gray-400">
                     Problems with the product or delivery?{" "}
                     <a
                       href="#"
-                      class="text-primary-600 hover:underline dark:text-primary-500"
+                      className="text-primary-600 hover:underline dark:text-primary-500"
                     >
                       Send a report
                     </a>
@@ -163,10 +163,10 @@ function AddDrawer({ isOpen, onClose, title }) {
                   </p>
                 </div>
 
-                <div class="flex w-full justify-center space-x-4 pb-4">
+                <div className="flex w-full justify-center space-x-4 pb-4">
                   <button
                     type="submit"
-                    class="w-full justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    className="w-full justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     Submit review
                   </button>
@@ -174,7 +174,7 @@ function AddDrawer({ isOpen, onClose, title }) {
                     type="button"
                     data-drawer-dismiss="addReviewDrawer"
                     aria-controls="addReviewDrawer"
-                    class="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 w-full"
+                    className="rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 w-full"
                   >
                     Cancel
                   </button>

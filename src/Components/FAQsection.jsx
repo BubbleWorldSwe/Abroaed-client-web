@@ -13,11 +13,7 @@ function FAQsection() {
       {/* Blurred Gradient Overlay */}
       <div
         className="absolute top-0 left-0 w-full h-32 z-10 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at top center, rgba(255, 223, 0, 0.5), transparent 70%)",
-          filter: "blur(40px)",
-        }}
+       
       ></div>
 
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>

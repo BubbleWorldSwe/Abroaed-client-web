@@ -14,10 +14,10 @@ function TestPrepRegistrationContent() {
                   </h1>
                 </header>
 
-                <ol class="space-y-4 text-gray-500 list-decimal list-inside dark:text-gray-400">
+                <ol className="space-y-4 text-gray-500 list-decimal list-inside dark:text-gray-400">
                   <li>
                     List item one
-                    <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
+                    <ul className="ps-5 mt-2 space-y-1 list-disc list-inside">
                       <li>
                         You might feel like you are being really "organized" o
                       </li>
@@ -33,7 +33,7 @@ function TestPrepRegistrationContent() {
                   </li>
                   <li>
                     List item two
-                    <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
+                    <ul className="ps-5 mt-2 space-y-1 list-disc list-inside">
                       <li>
                         I'm not sure if we'll bother styling more than two
                         levels deep.
@@ -49,7 +49,7 @@ function TestPrepRegistrationContent() {
                   </li>
                   <li>
                     List item three
-                    <ul class="ps-5 mt-2 space-y-1 list-disc list-inside">
+                    <ul className="ps-5 mt-2 space-y-1 list-disc list-inside">
                       <li>Again please don't nest lists if you want</li>
                       <li>Nobody wants to look at this.</li>
                       <li>
