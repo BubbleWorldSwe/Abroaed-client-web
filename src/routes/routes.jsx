@@ -26,6 +26,8 @@ import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
+import AboutUsLayout from "../Layouts/AboutUsLayout";
+import CareersLayout from "../Layouts/CareersLayout";
 
 const AppRoutes = () => {
 
@@ -52,6 +54,8 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
+    { path: "/aboutus", element: <AboutUsLayout />, isPrivate: false },
+    { path: "/careers", element: <CareersLayout />, isPrivate: false },
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     { path: "/blog/:id", element: <LayoutBlogs />, isPrivate: false },
     { path: "/blog", element: <LayoutBlogHomePage />, isPrivate: false },

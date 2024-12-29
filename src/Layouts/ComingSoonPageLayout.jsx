@@ -89,7 +89,7 @@ function ComingSoonPageLayout() {
 
   return (
     <div>
-      <section className="min-h-screen flex items-center justify-center w-full bg-slate-950 px-6 sm:px-8 py-4">
+      <section className="min-h-screen flex items-center justify-center w-full bg-[#252424] px-6 sm:px-8 py-4">
         <div className="w-full h-full">
           <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
             <div className="lg:w-1/2 w-full">
@@ -115,7 +115,7 @@ function ComingSoonPageLayout() {
                   ))}
                 </motion.h1>
                 <p className="mb-8 text-lg font-inter text-gray-300 sm:text-xl md:text-2xl">
-                  Your Dream Study Abroad Journey Begins Here.
+                  Your Dream Journey to study overseas begins here.
                   <br /> Personalized Counseling and Services Coming Soon.
                 </p>
                 <form className="w-full" onSubmit={handleSubmit}>
