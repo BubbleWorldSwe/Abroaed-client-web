@@ -33,7 +33,7 @@ function Header() {
       className={`w-full sticky top-0 z-[99999999] transition-all duration-300 ease-in-out ${
         isScrolled
           ? "bg-yellow-300 shadow-md opacity-100"
-          : "bg-transparent opacity-80"
+          : "bg-transparent "
       }`}
     >
       <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
@@ -133,24 +133,14 @@ function Header() {
                   className="flex  dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
-                  <svg
-                    className="ml-1 w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
+                
                 </button>
                 {dropdowns.exploreCourses && (
                   <div
                     id="mega-menu"
-                    className="absolute left-0 top-full mt-2 w-full bg-white border border-gray-100 shadow-md z-50"
+                    className="absolute left-0 top-full mt-2 w-full bg-white border border-gray-100 flex z-50"
                   >
-                    <div className="p-2 text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
+                    <div className="p-2 w-3/4 text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
                       <ul>
                         <li>
                           <a
@@ -285,7 +275,7 @@ function Header() {
                         </li>
                       </ul>
                     </div>
-                    <div className="py-5 px-5 bg-gray-50 lg:rounded-lg lg:col-span-1 dark:bg-gray-700">
+                    <div className="py-5 w-1/4 px-5 bg-gray-50 lg:rounded-lg lg:col-span-1 dark:bg-gray-700">
                       <h3 className="mb-4 text-sm font-semibold text-gray-900 dark:text-white">
                         Browse categories
                       </h3>
@@ -373,23 +363,7 @@ function Header() {
                   className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   TestPrep
-                  <svg
-                    className="w-4 h-4 ms-2 -me-0.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m19 9-7 7-7-7"
-                    ></path>
-                  </svg>
+                 
                 </button>
                 {dropdowns.testPrep && (
                   <div

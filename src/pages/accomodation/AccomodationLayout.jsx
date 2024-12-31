@@ -8,6 +8,8 @@ import FAQsection from "../../Components/FAQsection";
 import Header from "../../Components/Header";
 import Footer from "../../Components/Footer";
 import Costs from "./Costs";
+import AccommodationGrid from "./AccomodationCards";
+import HowItWorks from "../Finance/HowItWorks";
 
 function AccomodationLayout() {
   // Create refs for each section
@@ -35,6 +37,8 @@ function AccomodationLayout() {
           faq: () => handleScroll(faqRef),
         }}
       />
+      <AccommodationGrid/>
+      <HowItWorks/>
       <div ref={popularCitiesRef}>
         <PopularCityCards />
       </div>

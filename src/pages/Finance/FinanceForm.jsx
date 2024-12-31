@@ -4,18 +4,18 @@ function FinanceForm() {
   return (
     <div>
       <section className="bg-yellow-200 relative isolate overflow-hidden">
-        <div className="mx-auto md:max-w-6xl max-w-xl px-4 py-4 md:py-8">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-5 lg:gap-12">
-            <div className="px-4 py-4">
+        <div className="px-4 py-4 md:py-8">
+          <div className="flex justify-between lg:gap-12">
+            <div className="w-3/4 px-4 py-4">
               <h1 className="md:text-4xl text-xl font-Poppins text-black font-bold leading-6 tracking-wide">
-                We’re just a call away
+         Do culpa excepteur et consequat ex est dolor do eiusmod commodo proident amet.
               </h1>
               <p className="font-Poppins mt-3 md:mt-6 text-sm leading-6 tracking-wide text-black font-medium">
-                Share your contact details to speed up your accommodation hunt.
+             Aliquip nisi laboris cupidatat veniam duis laboris fugiat eiusmod ut commodo occaecat tempor excepteur.
               </p>
             </div>
 
-            <div className="px-4 py-4 md:pt-5 max-w-md bg-yellow-400 rounded-lg shadow-md">
+            <div className="w-1/4 px-4 py-4 md:pt-5 max-w-md bg-yellow-400 rounded-lg shadow-md">
               <form className="space-y-4">
                 <div className="relative">
                   <input

@@ -15,6 +15,7 @@ import BlogsSection from "./BlogsSection";
 import OurPartners from "./OurPartners";
 import HomePageLeadForm from "./HomePageLeadForm";
 import { KpiMatrix } from "./KpiMatrix";
+import AbroaedUpdatesCards from "./AbroaedUpdatesCards";
 
 // Usage Example
 const slidesData = [
@@ -78,6 +79,7 @@ function HomeLayout() {
       <BlogsSection />
       <Pricing />
       <FAQsection />
+      <AbroaedUpdatesCards/>
       <HomePageLeadForm />
       <Footer />
     </>

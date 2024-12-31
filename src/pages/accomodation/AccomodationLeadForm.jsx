@@ -3,84 +3,51 @@ import React from "react";
 function AccomodationLeadForm() {
   return (
     <div>
-      <section className="bg-yellow-200 relative isolate overflow-hidden">
-        <div className="mx-auto md:max-w-6xl max-w-xl px-4 py-4 md:py-8">
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-5 lg:gap-12">
-            <div className="px-4 py-4">
+      <section className="bg-white relative isolate overflow-hidden">
+        <div className="px-4 py-4 md:py-8">
+          <div className="flex justify-between lg:gap-6">
+            <div className="w-3/4 px-4 py-4">
               <h1 className="md:text-4xl text-xl font-Poppins text-black font-bold leading-6 tracking-wide">
-                We’re just a call away
+                Do culpa excepteur et consequat ex est dolor do eiusmod commodo proident amet.
               </h1>
               <p className="font-Poppins mt-3 md:mt-6 text-sm leading-6 tracking-wide text-black font-medium">
-                Share your contact details to speed up your accommodation hunt.
+                Aliquip nisi laboris cupidatat veniam duis laboris fugiat eiusmod ut commodo occaecat tempor excepteur.
               </p>
             </div>
 
-            <div className="px-4 py-4 md:pt-5 max-w-md bg-yellow-400 rounded-lg shadow-md">
-              <form className="space-y-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    placeholder="Full Name"
-                    className="rounded-xl px-3 py-2.5 placeholder:font-Poppins placeholder:text-xs leading-6 tracking-wide font-Poppins text-black text-xs focus:outline-none focus:ring-0 w-full focus:shadow-custom-white focus:shadow-gray-600 shadow-md transition-all duration-500 ease-in-out"
-                  />
+            <div className="w-1/4 ">
+
+
+              <form className="">
+                <div className="mb-5">
+                  <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                  <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500" placeholder="name@flowbite.com" required />
                 </div>
-                <div className="relative">
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Last Name"
-                    className="rounded-xl px-3 py-2.5 placeholder:font-Poppins placeholder:text-xs leading-6 tracking-wide font-Poppins text-black text-xs focus:outline-none focus:ring-0 w-full focus:shadow-custom-white focus:shadow-gray-600 shadow-md transition-all duration-500 ease-in-out"
-                  />
+                <div className="mb-5">
+                  <label for="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+                  <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-yellow-500 focus:border-yellow-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-yellow-500 dark:focus:border-yellow-500" required />
                 </div>
-                <div className="relative">
-                  <input
-                    type="text"
-                    id="phoneNumber"
-                    name="phoneNumber"
-                    placeholder="Phone Number"
-                    className="rounded-xl px-3 py-2.5 placeholder:font-Poppins placeholder:text-xs leading-6 tracking-wide font-Poppins text-black text-xs focus:outline-none focus:ring-0 w-full focus:shadow-custom-white focus:shadow-gray-600 shadow-md transition-all duration-500 ease-in-out"
-                  />
+                <div className="flex items-start mb-5">
+                  <div className="flex items-center h-5">
+                    <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-yellow-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
+                  </div>
+                  <label for="remember" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
                 </div>
-                <div className="relative">
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Email ID"
-                    className="rounded-xl px-3 py-2.5 placeholder:font-Poppins placeholder:text-xs leading-6 tracking-wide font-Poppins text-black text-xs focus:outline-none focus:ring-0 w-full focus:shadow-custom-white focus:shadow-gray-600 shadow-md transition-all duration-500 ease-in-out"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="capitalize hover:shadow-custom-white hover:shadow-gray-500 shadow-sm transition-all duration-300 ease-in-out font-medium lg:w-1/2 inline-flex gap-2 justify-center items-center active:translate-y-[6px] w-full bg-[#002CBF] rounded-xl px-2 py-3 text-white text-sm font-Poppins leading-6 tracking-wide"
-                >
-                  Submit
-                  <svg
-                    className="size-4"
-                    viewBox="0 0 43 43"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M5.25516 14.5952C1.76076 20.3576 17.1664 25.532 17.1664 25.532C17.1664 25.532 22.3409 40.9376 28.1033 37.4432C34.2185 33.7136 41.5433 10.7984 36.7049 5.99359C31.8665 1.18879 8.98477 8.47997 5.25516 14.5952Z"
-                      stroke="white"
-                      strokeWidth="3.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M26.8758 15.8216L17.1654 25.532"
-                      stroke="white"
-                      strokeWidth="3.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
+
+                <fieldset>
+
+                  <div className="flex items-center mb-4">
+                    <input checked id="checkbox-1" type="checkbox" value="" className="w-4 h-4 text-yellow-600 bg-gray-100 border-gray-300 rounded focus:ring-yellow-500 dark:focus:ring-yellow-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                    <label for="checkbox-1" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to the <a href="#" className="text-yellow-600 hover:underline dark:text-yellow-500">terms and conditions</a>.</label>
+                  </div>
+
+                
+                </fieldset>
+
+                <button type="submit" className="text-white mt-3 bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800">Submit</button>
+
               </form>
+
             </div>
           </div>
         </div>

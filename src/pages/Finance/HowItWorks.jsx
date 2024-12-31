@@ -1,40 +1,46 @@
-import React from 'react';
+import React from "react";
 
 function HowItWorks() {
   const steps = [
     {
       step: 1,
-      heading: 'Check for Loan',
+      heading: "Check for Loan",
       description:
-        'Start by checking your eligibility and loan options. This ensures you’re making the right financial decisions.',
+        "Start by checking your eligibility and loan options. This ensures you’re making the right financial decisions.Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt.",
     },
     {
       step: 2,
-      heading: 'Choose Your Lender',
+      heading: "Choose Your Lender",
       description:
-        'Select the lender that offers the best rates and terms for your specific needs. Compare carefully to maximize benefits.',
+        "Select the lender that offers the best rates and terms for your specific needs. Compare carefully to maximize benefits.Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt.",
+
     },
     {
       step: 3,
-      heading: 'Check Available Limit',
-      description:
-        'Confirm the amount you can borrow based on your financial profile. This step helps you plan effectively.',
+      heading: "Check Available Limit",
+      description:" Confirm the amount you can borrow based on your financial profile. This step helps you plan effectively.   Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt. ",
     },
   ];
 
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-          <div className="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
+        <div className="py-8 px-4 lg:py-16 lg:px-8">
+          <div className="text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
               How It Works?
             </h2>
             <p className="mb-4 font-light">
-              Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.
+              Track work across the enterprise through an open, collaborative
+              platform. Link issues across Jira and ingest data from other
+              software development tools, so your IT support and operations
+              teams have richer contextual information to rapidly respond to
+              requests, incidents, and changes.
             </p>
             <p className="mb-4 font-medium">
-              Deliver great service experiences fast - without the complexity of traditional ITSM solutions. Accelerate critical development work, eliminate toil, and deploy changes with ease.
+              Deliver great service experiences fast - without the complexity of
+              traditional ITSM solutions. Accelerate critical development work,
+              eliminate toil, and deploy changes with ease.
             </p>
             <a
               href="#"
@@ -56,19 +62,21 @@ function HowItWorks() {
             </a>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
             {steps.map((step) => (
               <div
                 key={step.step}
-                className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                className="flex flex-col justify-between h-200 w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
               >
-                <span className="block text-4xl font-bold text-primary-600 dark:text-primary-400">
-                  {step.step}
-                </span>
-                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  {step.heading}
-                </h5>
-                <p className="font-normal text-gray-700 dark:text-gray-400">
+                <div>
+                  <span className="block text-4xl font-bold text-primary-600 dark:text-primary-400">
+                    {step.step}
+                  </span>
+                  <h5 className="mb-2 text-xl font-bold tracking-tight text-white dark:text-white">
+                    {step.heading}
+                  </h5>
+                </div>
+                <p className="font-normal text-white dark:text-gray-400">
                   {step.description}
                 </p>
               </div>
