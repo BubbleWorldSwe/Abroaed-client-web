@@ -4,7 +4,7 @@ function ContentSection() {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 antialiased">
-        <div className="max-w-screen-xl flex flex-col gap-3 px-4 py-8 mx-auto sm:py-16 lg:py-24">
+        <div className="max-w-screen-2xl flex flex-col gap-3 px-4 py-8 mx-auto sm:py-16 lg:py-24">
           <div className="flex flex-col gap-2 py-4">
             <h2 className="text-3xl w-full items-center text-left  font-extrabold leading-tight text-black sm:text-4xl">
               Our Story

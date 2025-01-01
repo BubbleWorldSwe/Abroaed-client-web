@@ -83,7 +83,7 @@ function Header() {
             <ul className="flex flex-row mt-0 space-x-8 text-sm font-medium">
               <li>
                 <a
-                  href="/"
+                  href="/home"
                   className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Home

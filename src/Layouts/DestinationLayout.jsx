@@ -6,6 +6,9 @@ import Header from "../Components/Header";
 import { HomeForm } from "../Components/AnimatedTabs";
 import FunFacts from "../Components/FunFacts";
 import UniCoursersCard from "../pages/destinations/UniCoursersCard";
+import Footer from "../Components/Footer";
+import AccomodationLeadForm from "../pages/accomodation/AccomodationLeadForm";
+import AbroaedUpdatesCards from "../Components/AbroaedUpdatesCards";
 
 function LayoutPageDestination() {
   return (
@@ -16,8 +19,10 @@ function LayoutPageDestination() {
 
       <FunFacts/>
       <UniCoursersCard/>
-      <HomeForm />
       <FAQsection />
+      <AbroaedUpdatesCards/>
+      <AccomodationLeadForm/>
+      <Footer/>
     </div>
   );
 }
