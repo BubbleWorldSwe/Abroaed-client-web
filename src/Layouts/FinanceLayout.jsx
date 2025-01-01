@@ -6,6 +6,7 @@ import HowItWorks from "../pages/Finance/HowItWorks";
 import OurPartners from "../Components/OurPartners";
 import FAQsection from "../Components/FAQsection";
 import HeroSection from "../pages/Finance/FinanceHeader";
+import TestPrepForm from "../pages/TestPrep/TestPrepForm";
 
 function FinanceLayout() {
   return (
@@ -15,7 +16,8 @@ function FinanceLayout() {
       <HowItWorks/>
       <OurPartners/>
       <FAQsection/>
-      <FinanceForm />
+      <TestPrepForm />
+
       <Footer />
     </div>
   );
