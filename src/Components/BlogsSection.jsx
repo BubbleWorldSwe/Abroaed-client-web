@@ -1,17 +1,17 @@
-import React from "react";
+import vectorBelow from '../assets/vectorBelow.png'
 
 function BlogsSection() {
   return (
-    <div>
-      <section className="bg-yellow-300 dark:bg-gray-900">
+    <div className='relative'>
+      <section className=" dark:bg-gray-900 relative z-20">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-          <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              The Latest
-            </h2>
+          <div className=" max-w-screen-sm text-start mb-8 lg:mb-16 ">
             <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
               Blog Updates
             </p>
+            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+              The Latest
+            </h2>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <article className="p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
@@ -116,6 +116,13 @@ function BlogsSection() {
           </div>
         </div>
       </section>
+      <div className="absolute top-16 right-0 z-10" >
+        <img
+          className="rounded-lg max-w-full "
+          src={vectorBelow}
+          alt="Counselling session"
+        />
+      </div>
     </div>
   );
 }

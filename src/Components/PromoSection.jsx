@@ -1,7 +1,6 @@
-import React from "react";
-import { motion } from "framer-motion";
-import LampContainer from "./LampContainer";
-import man from "../assets/hands.png";
+
+import cover from "../assets/cover.jpg";
+import vectorDownNose from "../assets/vectorDownNose.png"
 import Tabs, { HomeForm, VirtualForm, VisitUsForm } from "./AnimatedTabs";
 const tabData = [
   { title: "Home", value: "home", content: <HomeForm /> },
@@ -12,66 +11,45 @@ const tabData = [
 function  PromoSection() {
   return (
     <div>
-      <section className="px-4 py-8 ">
-        <div className="flex flex-col  lg:flex-row items-center mx-auto max-w-7xl space-y-8 lg:space-y-0 lg:space-x-8 rounded-lg">
+      <section className="px-4 py-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-auto max-w-7xl ">
           {/* Left Side: Text and Image */}
-          <div className="flex flex-col w-full lg:w-1/2">
-            {/* Upper Div: Animation and Text */}
-            <div className="text-center lg:text-left">
-              <LampContainer>
-                <motion.h1
-                  initial={{ opacity: 0.5, y: 100 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.3,
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }}
-                  className="mb-3 text-2xl font-inter font-bold leading-tight tracking-tight text-black dark:text-white md:text-4xl bg-gradient-to-br from-slate-300 to-slate-500 bg-clip-text "
-                >
-                  We are here to help you. <br />
-                  Book your Home Counselling session today!
-                </motion.h1>
-                <motion.p
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.4,
-                    duration: 0.8,
-                    ease: "easeInOut",
-                  }}
-                  className="font-inter text-black dark:text-gray-400"
-                >
-                  Our counsellor will get in touch with you and will guide you
-                  through all the details of filling applications and preparing
-                  documents, so that you can focus on yourself, leaving all the
-                  hassle for us to handle.
-                </motion.p>
-              </LampContainer>
-            </div>
-
-            {/* Bottom Div: Image */}
-            <div className="flex justify-center lg:justify-start">
-              <img
-                className="rounded-lg max-w-full"
-                src={man}
-                alt="Counselling session"
-              />
+          <div className="flex flex-col justify-start items-start z-10">
+            <div className="text-start ">
+              <h1 className="text-5xl font-bold leading-tight tracking-tight text-black dark:text-white m-4">
+                Have Queries? Need Help
+              </h1>
+              <p className="text-#52525B ml-4 mb-3">
+                Our counsellor will get in touch with you and will guide you through all the details of filling applications and preparing documents, so that you can focus on yourself, leaving all the hassle for us to handle.
+              </p>
+              <div className="flex justify-center lg:justify-start mt-2 p-4" >
+                <img
+                  className="rounded-lg max-w-full"
+                  src={cover}
+                  alt="Counselling session"
+                />
+              </div>
             </div>
           </div>
-
+          <div className="absolute bottom-0 left-0" >
+            <img
+              className="rounded-lg max-w-full z-0"
+              src={vectorDownNose}
+              alt="Counselling session"
+            />
+          </div>
           {/* Right Side: Form */}
-          <div className="flex w-full lg:w-1/2 justify-center lg:justify-end">
+          <div className="flex flex-col justify-start items-end">
             <Tabs
               tabs={tabData}
-              containerClassName="mb-4"
-              activeTabClassName="bg-gray-200 dark:bg-zinc-800"
-              tabClassName="hover:bg-gray-300 dark:hover:bg-zinc-700"
-              contentClassName="transition-opacity duration-500"
+              className="w-full lg:w-auto"
             />
           </div>
         </div>
       </section>
+
+
+
     </div>
   );
 }

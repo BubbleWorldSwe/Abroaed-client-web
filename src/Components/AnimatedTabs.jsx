@@ -1,7 +1,7 @@
-"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { cn } from "../lib/utils";
+
 
 function Tabs() {
   const tabOptions = [
@@ -19,8 +19,8 @@ function Tabs() {
   return (
     <div className="flex flex-col items-center w-full rounded-lg p-8 bg-bal">
       {/* Tabs Row */}
-      <div className="flex   space-x-4 mb-8">
-        {tabOptions.map((tab) => (
+      <div className="text-4xl font-extrabold mb-4">
+        {/* {tabOptions.map((tab) => (
           <button
             key={tab.value}
             onClick={() => setActiveTab(tab.value)}
@@ -33,18 +33,19 @@ function Tabs() {
           >
             {tab.title}
           </button>
-        ))}
+        ))} */}
+         Book Counselling Now
       </div>
 
       {/* Active Form */}
       {/* Fixed Outer Container */}
-      <div >
+      <div  >
         <motion.div
           key={activeTab}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="w-full h-full"
+          className="w-full h-full mt-3"
         >
           {tabOptions.find((tab) => tab.value === activeTab)?.content}
         </motion.div>
@@ -120,7 +121,7 @@ const FormFields = () => (
         </div>
         <div className="mb-3">
           <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Highest Qualification
+            Highest Education Qualification
           </label>
           <input
             type="text"
@@ -159,10 +160,7 @@ const FormFields = () => (
             required
           />
         </div>
-
-
-
-        <div className="mb-3">
+ <div className="mb-3">
           <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
             Preferred Study Level
           </label>
@@ -174,14 +172,17 @@ const FormFields = () => (
           </select>
         </div>
         <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Preferred Date & Time Slot
+        <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
+            Mode of Counselling
           </label>
-          <input type="datetime-local" className={inputStyles} required />
-        </div>
+          <select className={inputStyles} required>
+            <option>Home Counselling</option>
+            <option>Virtual Counselling</option>
+            <option>Visit Us</option>
+             </select>
       </div>
     </div>
-
+</div>
 
   </>
 );
