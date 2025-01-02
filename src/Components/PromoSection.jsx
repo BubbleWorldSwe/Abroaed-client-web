@@ -9,7 +9,7 @@ const tabData = [
   { title: "Visit Us", value: "visit", content: <VisitUsForm /> },
 ];
 
-function PromoSection() {
+function  PromoSection() {
   return (
     <div>
       <section className="px-4 py-8 ">

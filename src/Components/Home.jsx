@@ -68,8 +68,8 @@ function HomeLayout() {
     <>
       <Header />
       <HeroSection />
-      <PromoSection />
       <KpiMatrix />
+      <PromoSection />
       <PartnerUnis />
       <TimelineSlider slides={slidesData} />
 

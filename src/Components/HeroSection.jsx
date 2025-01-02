@@ -44,8 +44,8 @@ function HeroSection() {
 
         <div className="absolute inset-0 bg-gradient-to-b from-yellow-500 to-gray-900 opacity-70 z-0"></div>
 
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen mx-auto px-8 lg:flex-row lg:space-x-8">
-          <div className="text-center lg:text-left text-white lg:w-1/2 px-4 lg:px-8">
+        <div className="relative z-10 flex flex-col items-end justify-start min-h-screen mx-auto px-8 lg:flex-row lg:space-x-8">
+          <div className="text-start lg:text-left text-white lg:w-1/2 px-4 lg:px-8">
             {textEffect}
 
             <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
