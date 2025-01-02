@@ -442,6 +442,14 @@ function Header() {
                   Accommodation
                 </a>
               </li>
+              <li>
+                <a
+                  href="/pathways"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
+                  Pathways
+                </a>
+              </li>
             </ul>
           </div>
 
