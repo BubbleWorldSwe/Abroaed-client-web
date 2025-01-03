@@ -4,9 +4,9 @@ function AccomodationLeadForm() {
   return (
     <div>
       <section className="bg-white relative isolate overflow-hidden">
-        <div className="px-4 py-4 md:py-8">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
           <div className="flex justify-between lg:gap-6">
-            <div className="w-3/4 px-4 py-4">
+            <div className="w-2/3 px-4 py-4">
               <h1 className="md:text-4xl text-xl font-Poppins text-black font-bold leading-6 tracking-wide">
                 Do culpa excepteur et consequat ex est dolor do eiusmod commodo proident amet.
               </h1>

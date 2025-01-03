@@ -99,7 +99,7 @@ function PopularUniversityCards() {
               <article className="p-4 max-w-sm bg-white rounded-lg shadow-md border border-gray-200 dark:border-gray-800 dark:bg-gray-800">
                 <a href="#">
                   <img
-                    className="mb-5 rounded-lg"
+                    className="mb-5    object-cover w-full rounded-lg"
                     src={card.img}
                     alt={card.name}
                   />

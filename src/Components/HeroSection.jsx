@@ -1,9 +1,8 @@
-import React, { useState, useRef, useMemo } from "react";
+import  { useState, useRef, useMemo } from "react";
 import { TextGenerateEffect } from "./TextGenerateEffect";
 import HoverBorderGradient from "./Button";
 import coverVideo from "../assets/video.mp4";
-import { Input } from "./Input";
-import { Label } from "./Label";
+
 
 function HeroSection() {
   const [isFormActive, setIsFormActive] = useState(false);
