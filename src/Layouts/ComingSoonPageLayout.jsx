@@ -69,8 +69,9 @@ function ComingSoonPageLayout() {
     }
   };
 
-  const words = ["Coming", "Soon!", "Launching", "Early", "2025."];
-
+  
+  const words = ["Coming", "Soon!"];
+  const belowWorld = ["Abroaed", "Launching", "Early", "2025."];
   // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,16 +90,9 @@ function ComingSoonPageLayout() {
 
   return (
     <div>
-      <section className="min-h-screen flex items-center justify-center w-full bg-[#252424] px-6 sm:px-8 py-4">
-        <div className="w-full h-full">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
-            <div className="lg:w-1/2 w-full">
-              <Spotlight
-                className="-top-40 left-0 md:left-60 md:-top-20"
-                fill="white"
-              />
-              <div>
-                <motion.h1
+      <section className="min-h-screen flex items-center flex-col justify-center w-full bg-[#252424] px-6 sm:px-8 py-1">
+          <div className="text-center  h-24">
+          <motion.h1
                   className="mb-6 text-4xl font-inter font-bold text-yellow-500 sm:text-5xl md:text-6xl lg:text-7xl"
                   variants={containerVariants}
                   initial="hidden"
@@ -114,6 +108,34 @@ function ComingSoonPageLayout() {
                     </motion.span>
                   ))}
                 </motion.h1>
+          </div>
+          <div className="text-center h-28">
+          <motion.h3
+                  className="mb-6 text-3xl font-inter font-bold text-yellow-500 sm:text-3xl md:text-6xl lg:text-6xl"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  {belowWorld.map((word, index) => (
+                    <motion.span
+                      key={index}
+                      className="inline-block mr-2"
+                      variants={wordVariants}
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.h3>
+          </div>
+        <div className="w-full h-full mx-auto">
+          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
+            <div className="lg:w-1/2 w-full">
+              <Spotlight
+                className="-top-40 left-0 md:left-60 md:-top-20"
+                fill="white"
+              />
+              <div>
+                
                 <p className="mb-8 text-lg font-inter text-gray-300 sm:text-xl md:text-2xl">
                   Your Dream Journey to study overseas begins here.
                   <br /> Personalized Counseling and Services Coming Soon.
@@ -194,7 +216,7 @@ function ComingSoonPageLayout() {
               </div>
             </div>
 
-            <div className="relative flex items-center justify-center w-full lg:w-1/2 mt-8 lg:mt-0">
+            <div className="relative flex items-center justify-center w-full lg:w-2/5 mt-8 lg:mt-0">
               <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px]  overflow-hidden rounded-lg shadow-lg relative">
                 {/* {carouselItems.map((item, index) => (
                   <motion.div
@@ -250,12 +272,12 @@ function ComingSoonPageLayout() {
                       <div className="rounded-[22px] border border-4 border-yellow-500 h-full p-8 bg-white dark:bg-zinc-900 shadow-lg flex flex-col items-center text-center space-y-6">
                         <a href="#">
                           <img
-                            className="w-full max-w-xs mx-auto mb-4 h-60 object-cover rounded-full bg-yellow-300"
+                            className="w-full max-w-xs mx-auto mb-4 h-60 object-fit rounded-full bg-yellow-300"
                             src={item.imgSrc}
                             alt={item.title}
                           />
                         </a>
-                        <p className="font-inter font-semibold text-2xl text-gray-900 hover:underline dark:text-white">
+                        <p className="font-inter font-semibold text-xl text-gray-900 hover:underline dark:text-white">
                           {item.title}
                         </p>
                         <p className="font-inter text-gray-600 dark:text-gray-300 text-lg">
