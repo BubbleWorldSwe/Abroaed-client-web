@@ -15,7 +15,7 @@ import BlogsSection from "./BlogsSection";
 import OurPartners from "./OurPartners";
 import HomePageLeadForm from "./HomePageLeadForm";
 import { KpiMatrix } from "./KpiMatrix";
-// import AbroaedUpdatesCards from "./AbroaedUpdatesCards";
+import AbroaedUpdatesCards from "./AbroaedUpdatesCards";
 import PathwaySection from "./PathwaySection";
 import HomeServicesCards from "./HomeServices";
 
@@ -84,6 +84,7 @@ function HomeLayout() {
       <FAQsection />
       <AbroaedUpdatesCards/>
       <HomePageLeadForm />
+      <AbroaedUpdatesCards/>
       <Footer />
     </>
   );
