@@ -87,7 +87,7 @@ function OverviewCard() {
       <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
         Overview
       </h2>
-      <div class="border border-1 mb-2 border-gray-200 w-full "></div>
+      <div className="border border-1 mb-2 border-gray-200 w-full "></div>
       {/* About Section */}
       <p className="text-gray-700 dark:text-gray-300 mb-6">
         {about || "No details available"}

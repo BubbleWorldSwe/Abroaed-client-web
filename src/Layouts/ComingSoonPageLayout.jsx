@@ -270,11 +270,11 @@ function ComingSoonPageLayout() {
                   <div className=" absolute top-1/2 left-0 transform -translate-y-1/2 text-white z-10">
                     <button
                       onClick={() => swiperRef.current?.slidePrev()}
-                      class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                      className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                     >
                       <svg
                         aria-hidden="true"
-                        class="h-7 w-7"
+                        className="h-7 w-7"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -285,16 +285,16 @@ function ComingSoonPageLayout() {
                           clip-rule="evenodd"
                         ></path>
                       </svg>
-                      <span class="sr-only">Previous</span>
+                      <span className="sr-only">Previous</span>
                     </button>
                   </div>
                   <div className="absolute top-1/2 right-0 transform -translate-y-1/2 text-white z-10">
                     <button
                       onClick={() => swiperRef.current?.slideNext()}
-                      class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                      className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
                     >
                       <svg
-                        class="w-7 h-7"
+                        className="w-7 h-7"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"

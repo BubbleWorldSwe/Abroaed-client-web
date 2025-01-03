@@ -5,6 +5,7 @@ import ContentSection from "../Components/ContentSection";
 import HeroSection from "../pages/AboutUs/HeroSection";
 import Footer from "../Components/Footer";
 import CtaSection from "../pages/AboutUs/CtaSection";
+import OurTeam from "../pages/AboutUs/OurTeam";
 
 function AboutUsLayout() {
   return (
@@ -12,6 +13,7 @@ function AboutUsLayout() {
       <Header />
       <HeroSection />
       <ContentSection />
+      <OurTeam/>
       <CtaSection />
       <Footer />
     </div>

@@ -14,7 +14,7 @@ function TestPrepTips() {
                   </h1>
                 </header>
 
-                <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
+                <ul className="max-w-md space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
                   <li>At least 10 characters (and up to 100 characters)</li>
                   <li>At least one lowercase character</li>
                   <li>
