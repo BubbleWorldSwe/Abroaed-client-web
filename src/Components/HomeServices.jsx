@@ -37,16 +37,7 @@ const HomeServicesCards = () => {
 
                 </div>
 
-                {/* <div className="absolute  top-2/4 right-0 z-0">
-                     <img
-                       className="rounded-lg w-full h-full object-cover"
-                       src={VectorleftNose}
-                       alt="Counselling session"
-                     />
-                   </div> */}
-
-
-            </section>
+                </section>
         </div>
     )
 }

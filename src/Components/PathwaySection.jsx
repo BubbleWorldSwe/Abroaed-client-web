@@ -1,5 +1,5 @@
 import cover from '../assets/cover.jpg'
-import VectorleftNose from '../assets/VectorleftNose.png'
+import VectorleftNose from '../assets/vectorleftNose.png'
 
 
 const PathwaySection = () => {
