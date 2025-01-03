@@ -1,6 +1,5 @@
-import React from "react";
 import image from "../../assets/dark.png";
-import blobImage from "../../assets/vector.png"; // Add your blob image here.
+import blobImage from "../../assets/Vector.png"; // Add your blob image here.
 
 const universities = [
   {
