@@ -1,4 +1,4 @@
-import React from "react";
+
 import TestimonialsSection from "./TestimonialsSection";
 import HeroSection from "./HeroSection";
 import Pricing from "./Pricing";
@@ -7,7 +7,7 @@ import PartnerUnis from "./PartnerUnis";
 import TimelineSlider from "./TimelineSlider";
 import cover from "../assets/cover.jpg";
 import Header from "./Header";
-import Tabs, { HomeForm, VirtualForm, VisitUsForm } from "./AnimatedTabs";
+// import { HomeForm, VirtualForm, VisitUsForm } from "./AnimatedTabs";
 import Footer from "./Footer";
 import FAQsection from "./FAQsection";
 import DownloadApp from "./DownloadApp";
@@ -16,6 +16,8 @@ import OurPartners from "./OurPartners";
 import HomePageLeadForm from "./HomePageLeadForm";
 import { KpiMatrix } from "./KpiMatrix";
 import AbroaedUpdatesCards from "./AbroaedUpdatesCards";
+import PathwaySection from "./PathwaySection";
+import HomeServicesCards from "./HomeServices";
 
 // Usage Example
 const slidesData = [
@@ -57,22 +59,23 @@ const slidesData = [
 ];
 
 // Tabs Content
-const tabData = [
-  { title: "Home", value: "home", content: <HomeForm /> },
-  { title: "Virtual", value: "virtual", content: <VirtualForm /> },
-  { title: "Visit Us", value: "visit", content: <VisitUsForm /> },
-];
+// const tabData = [
+//   { title: "Home", value: "home", content: <HomeForm /> },
+//   { title: "Virtual", value: "virtual", content: <VirtualForm /> },
+//   { title: "Visit Us", value: "visit", content: <VisitUsForm /> },
+// ];
 
 function HomeLayout() {
   return (
     <>
       <Header />
       <HeroSection />
-      <PromoSection />
       <KpiMatrix />
+      <PathwaySection />
+      <HomeServicesCards />
+      <PromoSection />
       <PartnerUnis />
       <TimelineSlider slides={slidesData} />
-
       <OurPartners />
       <TestimonialsSection />
       <DownloadApp />
@@ -81,6 +84,7 @@ function HomeLayout() {
       <FAQsection />
       <AbroaedUpdatesCards/>
       <HomePageLeadForm />
+      <AbroaedUpdatesCards/>
       <Footer />
     </>
   );

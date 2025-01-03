@@ -8,6 +8,7 @@ import FinanceLayout from "../Layouts/FinanceLayout";
 import LayoutPageDestination from "../Layouts/DestinationLayout";
 import AdminLayout from "../Layouts/AdminLayout";
 import Teams from "../pages/admin/Teams";
+import Onboarding from "../pages/admin/Onboarding";
 import NurtureLeads from "../pages/admin/NurtureLeads";
 import StudentsTable from "../pages/admin/StudentsTable";
 import ManageLeadsTable from "../pages/admin/ManageLeadsTable";
@@ -24,7 +25,6 @@ import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
 import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import AboutUsLayout from "../Layouts/AboutUsLayout";
 import CareersLayout from "../Layouts/CareersLayout";
-import PathwaysHomeLayout from "../Layouts/PathwaysHomeLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -38,7 +38,7 @@ const AppRoutes = () => {
     {
       path: "/",
       element: <ComingSoonPage />,
-      isPrivate: false,
+      isPrivate: false, 
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
     { path: "/aboutus", element: <AboutUsLayout />, isPrivate: false },
@@ -53,7 +53,6 @@ const AppRoutes = () => {
     },
     { path: "/finance", element: <FinanceLayout />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
-    { path: "/pathways", element: <PathwaysHomeLayout />, isPrivate: false },
     {
       path: "/accomodation",
       element: <AccomodationLayout />,
