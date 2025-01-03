@@ -1,5 +1,4 @@
-import React from "react";
-import image from "../../assets/dark.png";
+
 import AccomadationModal from "./AccomadationModal";
 import { accommodations } from "../../lib/data";
 

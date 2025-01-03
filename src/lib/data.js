@@ -1,3 +1,4 @@
+import image from '../assets/dark.png';
 export const accommodations = [
     {
         name: "Luxury Apartment",
