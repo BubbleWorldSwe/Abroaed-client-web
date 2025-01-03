@@ -1,5 +1,5 @@
 import React from "react";
-import blobImage from "../../assets/vector.png"; // Add your blob image here.
+import blobImage from "../../assets/Vector.png"; // Add your blob image here.
 
 function Hero() {
   return (
