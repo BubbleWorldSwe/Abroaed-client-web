@@ -11,8 +11,8 @@ const tabData = [
 function  PromoSection() {
   return (
     <div>
-      <section className="px-4 py-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-auto max-w-7xl ">
+      <section className="px-4 py-8 relative ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mx-auto max-w-7xl  ">
           {/* Left Side: Text and Image */}
           <div className="flex flex-col justify-start items-start z-10">
             <div className="text-start ">
@@ -31,9 +31,9 @@ function  PromoSection() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0" >
+          <div className="absolute top-96 left-0 z-0" >
             <img
-              className="rounded-lg max-w-full z-0"
+              className="rounded-lg max-w-full "
               src={vectorDownNose}
               alt="Counselling session"
             />

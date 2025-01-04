@@ -1,30 +1,25 @@
-import vector from "../assets/Vector.png"
-
+import vectorLeftFlat from "../assets/vectoreLeftFlat.png"
+import dark from '../assets/dark.png'
 
 const TeamMemberCard = ({ imgSrc, name, role, description, socialLinks }) => (
-  <div className="bg-white rounded-lg border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700 flex-grow">
-    <a href="#">
-      <img className="p-4 w-full rounded-lg" src={imgSrc} alt={`${name}'s profile`} />
-    </a>
-    <div className="px-5 pb-5">
-      <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-        <a href="#">{name}</a>
-      </h3>
-      <span className="text-gray-500">{role}</span>
-      <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">{description}</p>
-      <ul className="flex space-x-4 sm:mt-0">
-        {socialLinks.map((link, index) => (
-          <li key={index}>
-            <a href={link.href} className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d={link.iconPath} />
-              </svg>
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
+   <div className="w-full h-[20rem] relative">
+                                      {/* Adjust w-72 to control image width */}
+                                      <img
+                                          className="w-full h-full object-cover rounded-lg"
+                                          src={dark}
+                                          alt={`Profile cover `}
+                                      />
+                                      <div className="absolute top-10 left-20">
+                                          <h1 className="mb-4 text-3xl  font-bold text-white">
+                                              KPI Metric
+                                          </h1>
+                                      </div>
+                                      <div className="absolute bottom-2 left-2">
+                                      <p className="text-gray-100 lg:mb-2 sm:text-lg">Explore</p>
+
+  
+                                      </div>
+                                  </div>
 );
 
 
@@ -65,7 +60,7 @@ export const KpiMatrix = () => {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 relative">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 relative z-10 " >
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6 relative z-10 " >
           <div className="max-w-screen-sm text-left mb-8 lg:mb-16">
             <p className="font-light text-gray-500 lg:mb-2 sm:text-xl dark:text-gray-400">
               Why Abroaed
@@ -78,7 +73,7 @@ export const KpiMatrix = () => {
             </p>
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 ">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 overflow-hidden scroll-auto">
             {teamMembers.map((member, index) => (
               <TeamMemberCard key={index} {...member} />
             ))}
@@ -97,7 +92,7 @@ export const KpiMatrix = () => {
         <div className="absolute top-20 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
-            src={vector}
+            src={vectorLeftFlat}
             alt="Counselling session"
           />
         </div>

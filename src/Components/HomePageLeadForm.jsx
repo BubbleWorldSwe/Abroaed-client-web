@@ -1,11 +1,10 @@
-import React from "react";
-import { TermsAndConditions } from "./AnimatedTabs";
+
 
 function HomePageLeadForm() {
   return (
     <div>
-      <section className="bg-white relative isolate overflow-hidden">
-        <div className="mx-auto md:max-w-6xl max-w-xl px-4 py-4 md:py-8">
+      <section className=" relative isolate overflow-hidden z-10 ">
+        <div className="mx-auto md:max-w-6xl max-w-xl px-4 py-4 md:py-8 ">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-5 lg:gap-12">
             <div className="px-4 py-4 flex flex-col items-start justify-center">
               <h1 className="md:text-4xl text-xl font-Poppins text-black font-bold leading-6 tracking-wide">

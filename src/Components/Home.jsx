@@ -74,17 +74,16 @@ function HomeLayout() {
       <PathwaySection />
       <HomeServicesCards />
       <PromoSection />
-      <PartnerUnis />
-      <TimelineSlider slides={slidesData} />
+      {/* <PartnerUnis /> */}
+      {/* <TimelineSlider slides={slidesData} /> */}
       <OurPartners />
-      <TestimonialsSection />
-      <DownloadApp />
+      {/* <TestimonialsSection /> */}
       <BlogsSection />
-      <Pricing />
-      <FAQsection />
+      <DownloadApp />
+      {/* <Pricing /> */}
+      {/* <FAQsection /> */}
       <AbroaedUpdatesCards/>
       <HomePageLeadForm />
-      <AbroaedUpdatesCards/>
       <Footer />
     </>
   );
