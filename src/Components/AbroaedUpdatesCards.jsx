@@ -1,20 +1,19 @@
 
 import image from "../assets/dark.png";
-import vectorBelow from "../assets/vectorBelow.png";
 
 
 function AbroadUpdatesCards() {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 relative">
-        <div className="py-8 px-4 mx-auto  max-w-screen-xl lg:py-24 dark:bg-gray-800 antialiased  relative z-20">
+        <div className="py-8 px-4 mx-auto  max-w-screen-2xl lg:py-24 dark:bg-gray-800 antialiased  relative z-20">
           <div className="flex flex-col items-start justify-center ">
             <h2 className="text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
               Latest Updates
             </h2>
             <p>Laborum amet veniam proident non officia ullamco ullamco quis.</p>
           </div>
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mx-auto max-w-screen-xl">
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mx-auto max-w-screen-2xl">
             <article className="p-4 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700">
               <a href="#">
                 <img
@@ -147,13 +146,7 @@ function AbroadUpdatesCards() {
             {/* Repeat other articles */}
           </div>
         </div>
-        <div className="absolute top-16 right-0 z-10" >
-          <img
-            className="rounded-lg max-w-full"
-            src={vectorBelow}
-            alt="Counselling session"
-          />
-        </div>
+        
       </section>
     </div>
   );
