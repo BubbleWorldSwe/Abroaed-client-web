@@ -2,10 +2,10 @@ import vectorBelow from '../assets/vectorBelow.png'
 
 function BlogsSection() {
   return (
-    <div className='relative'>
+    <div >
       <section className=" dark:bg-gray-900 relative z-20">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-          <div className=" max-w-screen-sm text-start mb-8 lg:mb-16 ">
+        <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-8 lg:px-6">
+          <div className=" max-w-screen-sm text-start mb-4 lg:mb-16 ">
             <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
               Blog Updates
             </p>
@@ -14,7 +14,7 @@ function BlogsSection() {
             </h2>
           </div>
           <div className="grid  gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div class="max-w-sm h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-full h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img className= "object-cover h-4/5 rounded-t-lg"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
@@ -34,7 +34,7 @@ function BlogsSection() {
                 </div>
               </div>
             </div>
-            <div class="max-w-sm h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-full h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img className= "object-cover h-4/5 rounded-t-lg"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
@@ -54,7 +54,7 @@ function BlogsSection() {
                 </div>
               </div>
             </div>
-            <div class="max-w-sm h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-full h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img className= "object-cover h-4/5 rounded-t-lg"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"

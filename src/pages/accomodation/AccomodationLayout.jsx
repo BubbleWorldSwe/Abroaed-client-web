@@ -10,6 +10,8 @@ import Footer from "../../Components/Footer";
 import Costs from "./Costs";
 import AccommodationGrid from "./AccomodationCards";
 import HowItWorks from "../Finance/HowItWorks";
+import BlogsSection from "../../Components/BlogsSection";
+import HomePageLeadForm from "../../Components/HomePageLeadForm";
 
 function AccomodationLayout() {
   // Create refs for each section
@@ -17,6 +19,7 @@ function AccomodationLayout() {
   const popularCitiesRef = useRef(null);
   const popularUnisRef = useRef(null);
   const studentAccommodationsRef = useRef(null);
+  const studentStoryRef = useRef(null);
   const faqRef = useRef(null);
 
   // Scroll handler
@@ -39,21 +42,25 @@ function AccomodationLayout() {
       />
       <AccommodationGrid/>
       <HowItWorks/>
-      <div ref={popularCitiesRef}>
+      {/* <div ref={popularCitiesRef}>
         <PopularCityCards />
       </div>
 
       <div ref={popularUnisRef}>
         <PopularUniversityCards />
-      </div>
-      <div ref={costsRef}>
+      </div> */}
+      {/* <div ref={costsRef}>
         <Costs />
-      </div>
+      </div> */}
       <div ref={faqRef}>
         <FAQsection />
       </div>
+      <div ref={studentStoryRef}>
+        <BlogsSection />
+      </div>
       <div ref={studentAccommodationsRef}>
-        <AccomodationLeadForm />
+        {/* <AccomodationLeadForm /> */}
+        <HomePageLeadForm />
       </div>
       <Footer />
     </div>
