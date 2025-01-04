@@ -82,7 +82,7 @@ function DownloadApp() {
         </div>
         <div className="absolute bottom-5 left-0" >
           <img
-            className="rounded-lg w-4/5 z-0"
+            className="rounded-lg  z-0"
             src={vectorRightNoseCurve}
             alt="Counselling session"
           />

@@ -13,11 +13,73 @@ function BlogsSection() {
               The Latest
             </h2>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <article className="p-4 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+          <div className="grid  gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div class="max-w-sm h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                <img className= "object-cover h-4/5 rounded-t-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
+                  alt="" />
+              </a>
+              <div className="flex p-2 items-center space-x-4">
+                <img
+                  className="w-14 h-14 rounded-full"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                  alt="Jese Leos avatar"
+                />
+                <div className="font-medium dark:text-white">
+                  <div className='text-lg font-body'>Jese Leos</div>
+                  <div className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                    Aug 15, 2021 · 16 min read
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-sm h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                <img className= "object-cover h-4/5 rounded-t-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
+                  alt="" />
+              </a>
+              <div className="flex p-2 items-center space-x-4">
+                <img
+                  className="w-14 h-14 rounded-full"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                  alt="Jese Leos avatar"
+                />
+                <div className="font-medium dark:text-white">
+                  <div className='text-lg font-body'>Jese Leos</div>
+                  <div className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                    Aug 15, 2021 · 16 min read
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="max-w-sm h-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                <img className= "object-cover h-4/5 rounded-t-lg"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
+                  alt="" />
+              </a>
+              <div className="flex p-2 items-center space-x-4">
+                <img
+                  className="w-14 h-14 rounded-full"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+                  alt="Jese Leos avatar"
+                />
+                <div className="font-medium dark:text-white">
+                  <div className='text-lg font-body'>Jese Leos</div>
+                  <div className="text-sm font-semibold text-gray-500 dark:text-gray-400">
+                    Aug 15, 2021 · 16 min read
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <article className="p-2 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
               <a href="#">
                 <img
-                  className="mb-5 rounded-lg"
+                  className="mb-5 rounded-lg object-contain"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png"
                   alt="office laptop working"
                 />
@@ -35,13 +97,13 @@ function BlogsSection() {
               </p>
               <div className="flex items-center space-x-4">
                 <img
-                  className="w-10 h-10 rounded-full"
+                  className="w-14 h-14 rounded-full"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
                   alt="Jese Leos avatar"
                 />
                 <div className="font-medium dark:text-white">
-                  <div>Jese Leos</div>
-                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <div className='text-lg font-body'>Jese Leos</div>
+                  <div className="text-sm font-semibold text-gray-500 dark:text-gray-400">
                     Aug 15, 2021 · 16 min read
                   </div>
                 </div>
@@ -113,16 +175,16 @@ function BlogsSection() {
                 </div>
               </div>
             </article>
-          </div>
+          </div> */}
         </div>
       </section>
-      <div className="absolute top-16 right-0 z-10" >
+      {/* <div className="absolute top-16 right-0 z-10" >
         <img
           className="rounded-lg max-w-full "
           src={vectorBelow}
           alt="Counselling session"
         />
-      </div>
+      </div> */}
     </div>
   );
 }
