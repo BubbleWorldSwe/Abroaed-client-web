@@ -1,4 +1,3 @@
-import vectorBelow from '../assets/vectorBelow.png'
 
 function BlogsSection() {
   return (

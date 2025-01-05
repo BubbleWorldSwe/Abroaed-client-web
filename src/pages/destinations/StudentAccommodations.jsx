@@ -1,31 +1,23 @@
-
-import AccomadationModal from "./AccomadationModal";
 import { accommodations } from "../../lib/data";
 import locationIcon from "../../assets/locationIcon.png"
 
-
-function AccommodationGrid() {
+const StudentAccommodations = () => {
   return (
-    <div className="flex gap-4 px-6 py-8 bg-white">
-      {/* Search Bar Section */}
-      <div className="w-1/4  p-6 ">
-        <h3 className="text-lg font-bold mb-4 text-gray-900">Search</h3>
-        <input
-          type="text"
-          placeholder="Search by location"
-          className="w-full p-2 border rounded-lg shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
+    <div className="relative z-10">
+    <section className=" dark:bg-gray-900 relative">
+        <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
+            <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
+                <h2 className=" text-4xl  font-extrabold text-gray-900 dark:text-white">
+                Popular Student Accommodations
+                </h2>
+               <div className="my-5 border-t border-gray-300"></div>
+               </div>
 
-      {/* Cards Grid Section */}
-      <div className="w-3/4">
-        <h5 className=" text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Showing Results for USA</h5>
-        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-800"></hr>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
-          {accommodations.map((item, index) => (
+               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+               {accommodations.slice(0,4).map((item, index) => (
             <div
               key={index}
-              className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+              className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
             >
               <a href="#">
                 <img
@@ -35,8 +27,8 @@ function AccommodationGrid() {
                 />
               </a>
               <div className="p-5">
-                <div className="flex justify-between">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <div className="flex justify-between">
+                  <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                     {item.name}
                   </h5>
                   <div>
@@ -46,21 +38,20 @@ function AccommodationGrid() {
 
                   </div>
                 </div>
-                <div className="mb-2  flex justify-between text-center ">
-                  <div className="flex gap-2 justify-between">
-                  <img
-                  className="rounded-t-lg  object-contain"
-                  src={locationIcon}
-                  alt={item.name}
-                />
-
-                  <p className="font-bold  text-gray-500 dark:text-gray-400 py-1">
-
-                    {item.location}
-                  </p>
-                  </div>
-                  
-                </div>
+               <div className="mb-2  flex justify-between text-center ">
+                                 <div className="flex gap-2 justify-between">
+                                 <img
+                                 className="rounded-t-lg  object-contain"
+                                 src={locationIcon}
+                                 alt={item.name}
+                               />
+               
+                                 <p className="font-bold  text-gray-500 dark:text-gray-400 py-1">
+               {item.location}
+                                 </p>
+                                 </div>
+                                 
+</div>
                 <div className="mb-2  flex text-center">
                   <span className="mr-2">
                     <svg className="w-6 h-6 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -77,16 +68,32 @@ function AccommodationGrid() {
                 <div >
                   <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" className="py-2.5 w-full px-5 me-2 mb-2 text font-medium text-gray-700 focus:outline-none bg-white rounded-lg border border-gray-700 hover:bg-gray-100 hover:text-green-900 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Enquire Now</button>
                 </div>
-               <AccomadationModal  />
-                
-              </div>
+                              </div>
             </div>
           ))}
-        </div>
-      </div>
 
-    </div>
-  );
+
+                <div>
+
+
+                </div>
+
+
+
+            </div>
+
+        <div className="text-center ">
+        <button
+                  type="submit"
+                  className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                >
+                  View
+                </button>
+        </div>
+        </div>
+    </section>
+</div>
+  )
 }
 
-export default AccommodationGrid;
+export default StudentAccommodations;
