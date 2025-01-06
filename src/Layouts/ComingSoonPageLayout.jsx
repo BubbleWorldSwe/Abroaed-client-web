@@ -116,10 +116,11 @@ function ComingSoonPageLayout() {
                   initial="hidden"
                   animate="visible"
                 >
-                  <span className="text-white mr-10">
+                  <span className="text-white ">
                   
-                  ABROAed
+                  ABROA
                   </span>
+                  <span className="mr-10">ED</span>
                   {belowWorld.map((word, index) => (
                     <motion.span
                       key={index}
