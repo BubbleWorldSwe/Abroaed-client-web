@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "./Footer";
 import BlogPage from "./BlogPage";
 import Header from "./Header";
+import BlogHoro from "../pages/Blogs/BlogHoro";
 
 function LayoutBlogs() {
   document.head.insertAdjacentHTML(
@@ -12,6 +13,7 @@ function LayoutBlogs() {
     <div className="flex flex-col gap-3">
       <Header />
 
+      {/* <BlogHoro /> */}
       <BlogPage />
       <Footer />
     </div>

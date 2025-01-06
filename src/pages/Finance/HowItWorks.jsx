@@ -1,4 +1,3 @@
-import vectorLeftFlat from "../../assets/vectoreLeftFlat.png"
 
 function HowItWorks() {
   const steps = [
@@ -20,32 +19,35 @@ function HowItWorks() {
     {
       step: 3,
       heading: "Check Available Limit",
-      description:" Confirm the amount you can borrow based on your financial profile. This step helps you plan effectively.   Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt. ",
+      description: " Confirm the amount you can borrow based on your financial profile. This step helps you plan effectively.   Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt. ",
     },
   ];
 
   return (
     <div className="relative">
-<div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
-    <section className="dark:bg-gray-900">
-      <div className="py-8 lg:py-16">
-        <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-          <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-            How It Works?
-          </h2>
-          <p className="mb-4 font-light">
-            Track work across the enterprise through an open, collaborative
-            platform. Link issues across Jira and ingest data from other
-            software development tools, so your IT support and operations
-            teams have richer contextual information to rapidly respond to
-            requests, incidents, and changes.
-          </p>
-          <p className="mb-4 font-medium">
-            Deliver great service experiences fast - without the complexity of
-            traditional ITSM solutions. Accelerate critical development work,
-            eliminate toil, and deploy changes with ease.
-          </p>
-          <a
+      <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
+        <section className="dark:bg-gray-900">
+          <div className="py-8 lg:py-16">
+            <div className="text-gray-500 sm:text-lg dark:text-gray-400">
+              <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+                How It Works?
+              </h2>
+              <p className="mb-4 font-light">
+                Track work across the enterprise through an open, collaborative
+                platform. Link issues across Jira and ingest data from other
+                software development tools, so your IT support and operations
+                teams have richer contextual information to rapidly respond to
+                requests, incidents, and changes.
+              </p>
+              <p className="mb-4 font-medium">
+                Deliver great service experiences fast - without the complexity of
+                traditional ITSM solutions. Accelerate critical development work,
+                eliminate toil, and deploy changes with ease.
+                Deliver great service experiences fast - without the complexity of
+                traditional ITSM solutions. Accelerate critical development work,
+                eliminate toil, and deploy changes with ease.
+              </p>
+              {/* <a
             href="#"
             className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
           >
@@ -62,42 +64,36 @@ function HowItWorks() {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </a>
-        </div>
-  
-        <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3">
-          {steps.map((step) => (
-            <div
-              key={step.step}
-              className="flex flex-col justify-between h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
-            >
-              <div>
-                <span className="block text-4xl font-bold text-primary-600 dark:text-primary-400">
-                  {step.step}
-                </span>
-                <h5 className="mb-2 text-xl font-bold tracking-tight text-white dark:text-white">
-                  {step.heading}
-                </h5>
-              </div>
-              <p className="font-normal text-white dark:text-gray-400">
-                {step.description}
-              </p>
+          </a> */}
             </div>
-          ))}
-        </div>
-      </div>
-  
+
+            <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
+              {steps.map((step) => (
+                <div
+                  key={step.step}
+                  className="flex flex-col justify-between h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
+                >
+                  <div>
+                    <span className="block text-4xl font-bold text-primary-600 dark:text-primary-400">
+                      {step.step}
+                    </span>
+                    <h5 className="mb-2 text-xl font-bold tracking-tight text-white dark:text-white">
+                      {step.heading}
+                    </h5>
+                  </div>
+                  <p className="font-normal text-white dark:text-gray-400">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </section>
-  </div>
-      <div className="absolute top-10 left-0 z-0">
-        <img
-          className="rounded-lg w-full h-full object-cover"
-          src={vectorLeftFlat}
-          alt="Counselling session"
-        />
       </div>
+
     </div>
-  
+
   );
 }
 

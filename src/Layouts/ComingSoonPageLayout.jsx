@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import  { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import slider1 from "../assets/slider1.png";
 import slider2 from "../assets/slider2.png";
@@ -70,8 +70,8 @@ function ComingSoonPageLayout() {
   };
 
   
-  const words = ["Coming", "Soon!"];
-  const belowWorld = ["Abroaed", "Launching", "Early", "2025."];
+  const words = ["coming", "soon!"];
+  const belowWorld = [ "launching", "early", "2025."];
   // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -116,6 +116,11 @@ function ComingSoonPageLayout() {
                   initial="hidden"
                   animate="visible"
                 >
+                  <span className="text-white ">
+                  
+                  ABROA
+                  </span>
+                  <span className="mr-10">ED</span>
                   {belowWorld.map((word, index) => (
                     <motion.span
                       key={index}
