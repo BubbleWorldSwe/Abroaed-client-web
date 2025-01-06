@@ -5,9 +5,9 @@ function BlogHomePage() {
   const navigate = useNavigate();
   return (
     <div>
-      <div className=" p-16 rounded-lg">
+      <div className="  rounded-lg">
         <article
-          className="relative w-full h-screen bg-cover bg-center rounded-lg "
+          className="relative max-w-2xl h-screen bg-cover bg-center rounded-lg "
           style={{
             backgroundImage:
               "url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png')",

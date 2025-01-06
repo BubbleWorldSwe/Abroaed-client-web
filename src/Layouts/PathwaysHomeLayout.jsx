@@ -10,12 +10,22 @@ import BlogsSection from '../Components/BlogsSection'
 import PathwayProgramExplore from '../pages/Pathways/PathwayProgramExplore'
 import vectorDownNose from '../assets/vectorDownNose.png'
 import vectorLeftNoseSmall from '../assets/vectorLeftNoseSmall.png'
+import vectorLeftFlat from "../assets/vectoreLeftFlat.png"
 function PathwaysHomeLayout() {
     return (
         <div>
             <Header />
             <PathwaysHero />
-            <HowItWorks />
+            <div className='relative'>
+   <HowItWorks />
+            <div className="absolute bottom-20 left-0 z-0" >
+        <img
+          className="rounded-lg max-w-full "
+          src={vectorLeftFlat}
+          alt="Counselling session"
+        />
+      </div> 
+           </div>
             <OurPartners />
             <PathwayProgramExplore/>
            <div className='relative'>
