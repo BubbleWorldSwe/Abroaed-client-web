@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from "react";
 import { TextGenerateEffect } from "./TextGenerateEffect";
 import coverVideo from "../assets/video.mp4";
+import dark from "../assets/dark.png";
 
 function HeroSection() {
   const [isFormActive, setIsFormActive] = useState(false);
@@ -25,9 +26,11 @@ function HeroSection() {
 
   return (
     <div className="mb-4">
-      <section className="relative bg-gray-50 pb-8 antialiased dark:bg-gray-900 md:pb-16">
+      <section style={{
+        backgroundImage: `url(${dark})`,
+      }} className="relative bg-gray-50 pb-8 antialiased dark:bg-gray-900 md:pb-16">
         {/* Background Video */}
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -36,10 +39,11 @@ function HeroSection() {
         >
           <source src={coverVideo} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
+
 
         {/* Gradient Overlay (White to Black) */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-90 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
 
         <div className="relative z-10 flex flex-col items-end justify-start min-h-screen mx-auto px-8 lg:flex-row lg:space-x-8">
           <div className="text-start lg:text-left text-white lg:w-1/2 px-4 lg:px-8">
