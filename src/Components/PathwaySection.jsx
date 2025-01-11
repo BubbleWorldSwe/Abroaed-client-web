@@ -1,4 +1,4 @@
-import cover from '../assets/cover.jpg'
+import dark from '../assets/dark.png'
 import VectorleftNose from '../assets/vectorleftNose.png'
 
 
@@ -11,8 +11,8 @@ const PathwaySection = () => {
             {/* Left Child */}
             <div className="relative flex-grow basis-[50%] group hover:basis-[90%] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
               <img
-                className="w-full h-full object-cover"
-                src={cover}
+                className="w-full h-full object-dark"
+                src={dark}
                 alt="Direct"
               />
               <div className="absolute bottom-3 left-10">
@@ -23,7 +23,7 @@ const PathwaySection = () => {
                 <div
                   className="bg-opacity-50 flex items-center justify-center text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 >
-                  Discover tailored solutions for your journey.
+                  Disdark tailored solutions for your journey.
                 </div>
               </div>
             </div>
@@ -31,8 +31,8 @@ const PathwaySection = () => {
             {/* Right Child */}
             <div className="relative flex-grow basis-[50%] group hover:basis-[90%] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
               <img
-                className="w-full h-full object-cover"
-                src={cover}
+                className="w-full h-full object-dark"
+                src={dark}
                 alt="Pathways"
               />
               <div className="absolute bottom-3 left-10">
@@ -52,7 +52,7 @@ const PathwaySection = () => {
         </div>
         <div className="absolute top-96 right-0 z-0">
           <img
-            className="rounded-lg w-full h-full object-cover"
+            className="rounded-lg w-full h-full object-dark"
             src={VectorleftNose}
             alt="Counselling session"
           />
