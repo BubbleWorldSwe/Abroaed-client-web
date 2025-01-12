@@ -3,13 +3,13 @@
 function Footer() {
   return (
     <div>
-      <footer className="w-full bg-yellow-300 dark:bg-gray-800">
+      <footer className="w-full bg-black dark:bg-gray-800">
         <div className="p-4 py-6 mx-auto md:p-8 lg:-10">
           <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
             <div className="col-span-2">
               <a
                 href="#"
-                className="flex items-center mb-2 text-2xl font-semibold text-gray-900 sm:mb-0 dark:text-white"
+                className="flex items-center mb-2 text-2xl font-semibold text-yellow-300 sm:mb-0 dark:text-yellow-300"
               >
                 <svg
                   className="mr-2 h-8"
@@ -157,7 +157,7 @@ function Footer() {
                 </svg>
                 Abroaed
               </a>
-              <p className="my-4 font-light text-black">
+              <p className="my-4 font-light text-white">
                 Flowbite is a open-source library of over 400+ web components
                 and interactive elements built with the utility classes from
                 Tailwind CSS.
@@ -166,7 +166,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                    className="text-gray-500 hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
                     <svg
                       className="w-5 h-5"
@@ -185,7 +185,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                    className="text-gray-500 hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
                     <svg
                       className="w-5 h-5"
@@ -204,7 +204,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                    className="text-gray-500 hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
                     <svg
                       className="w-5 h-5"
@@ -219,7 +219,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                    className="text-gray-500 hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
                     <svg
                       className="w-5 h-5"
@@ -238,7 +238,7 @@ function Footer() {
                 <li>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
+                    className="text-gray-500 hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
                     <svg
                       className="w-5 h-5"
@@ -257,10 +257,10 @@ function Footer() {
               </ul>
             </div>
             <div className="lg:mx-auto">
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
                 Company
               </h2>
-              <ul className="text-black">
+              <ul className="text-white">
                 <li className="mb-4">
                   <a href="#" className=" hover:underline">
                     About
@@ -284,10 +284,10 @@ function Footer() {
               </ul>
             </div>
             <div className="lg:mx-auto">
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
                 Help center
               </h2>
-              <ul className="text-black">
+              <ul className="text-white">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Discord Server
@@ -311,10 +311,10 @@ function Footer() {
               </ul>
             </div>
             <div className="lg:mx-auto">
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
                 Legal
               </h2>
-              <ul className="text-black">
+              <ul className="text-white">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     Privacy Policy
@@ -333,10 +333,10 @@ function Footer() {
               </ul>
             </div>
             <div className="lg:mx-auto">
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+              <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
                 Download
               </h2>
-              <ul className="text-black">
+              <ul className="text-white">
                 <li className="mb-4">
                   <a href="#" className="hover:underline">
                     iOS
@@ -361,7 +361,7 @@ function Footer() {
             </div>
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-          <span className="block text-sm text-center text-black">
+          <span className="block text-sm text-center text-white">
             © 2021-2022{" "}
             <a href="#" className="hover:underline">
               Flowbite™

@@ -6,6 +6,12 @@ function BlogCategoryPage() {
   return (
     <div>
       <div className="">
+        <div
+          className="absolute top-0 left-0 right-0 p-24 z-0"
+          style={{
+            background: `linear-gradient(to bottom, rgba(253,224,71,0.7), rgba(253,224,71,0.5), rgba(255,255,255,0.2))`, // Yellow to White Fade
+          }}
+        ></div>
         <p className="w-full flex items-center justify-center font-inter text-2xl font-bold ">
           {id} Blogs
         </p>

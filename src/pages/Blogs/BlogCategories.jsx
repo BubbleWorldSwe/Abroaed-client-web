@@ -1,17 +1,19 @@
 
+import { useNavigate } from "react-router-dom";
 import dark from "../../assets/dark.png"
 
-const BlogCategories = () => {
+const BlogCategories = ({ categoryName }) => {
   return (
     <div>
       <section className=" dark:bg-gray-900 relative">
         <div className="py-2 px-4 mx-auto  max-w-screen-2xl lg:py-4   dark:bg-gray-800 antialiased">
           <div className="flex justify-between ">
             <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-              Category Name
+              {categoryName}
             </h2>
             <div className=" ">
-              <button
+              <a
+                href={`/blog/category/${categoryName}`} // Corrected template literal usage
                 type="submit"
                 className="flex items-center justify-center gap-2 py-3 px-5 mt-4 text-md font-bold text-gray-600 bg-yellow-200 rounded-lg hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
               >
@@ -29,7 +31,7 @@ const BlogCategories = () => {
                 >
                   <path d="M9 5l7 7-7 7" />
                 </svg>
-              </button>
+              </a>
             </div>
 
           </div>
@@ -68,8 +70,8 @@ const BlogCategories = () => {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   )
 }
 

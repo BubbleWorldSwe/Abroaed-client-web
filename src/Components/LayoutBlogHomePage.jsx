@@ -11,12 +11,12 @@ function LayoutBlogHomePage() {
   return (
     <div>
       <Header />
-      <BlogHoro/>
-      <BlogCardsSection/>
-      <BlogTranding/>
-      <BlogCategories />
-      <BlogCategories />
-      <BlogCategories />
+      <BlogHoro />
+      <BlogCardsSection />
+      <BlogTranding />
+      <BlogCategories categoryName="finance" />
+      <BlogCategories categoryName="Accomodation" />
+      <BlogCategories categoryName="Destinations" />
       {/* <BlogHomePage /> */}
       <Footer />
     </div>

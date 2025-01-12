@@ -7,7 +7,7 @@ const BlogHoro = () => {
                 <div
                     className="absolute top-0 left-0 right-0 p-24 z-0"
                     style={{
-                        background: `linear-gradient(to bottom, rgba(34,197,94,0.5), rgba(34,197,94,0.4), rgba(255,255,255,0.1))`, // Green at the top, light yellow at the bottom
+                        background: `linear-gradient(to bottom, rgba(253,224,71,0.7), rgba(253,224,71,0.5), rgba(255,255,255,0.2))`, // Yellow to White Fade
                     }}
                 ></div>
                 <div className="py-4 px-4 mx-auto  max-w-screen-2xl lg:py-14   dark:bg-gray-800 antialiased  relative z-20">
