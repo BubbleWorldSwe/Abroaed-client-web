@@ -1,7 +1,7 @@
 
 const ImmigrationDetails = () => {
   return (
-     <div className="relative ">
+     <div className="relative px-10 mx-auto">
          <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
     {/* Content */}
     <div className="relative z-10">

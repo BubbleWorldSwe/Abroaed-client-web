@@ -1,17 +1,21 @@
-import React from "react";
-import image from "../../assets/dark.png";
 
+import destinationHeroImg from "../../assets/destinationHeroImg.png"
 function DestinationHero() {
   return (
     <div>
       <section
-        className="relative h-screen bg-cover bg-center"
+        className="relative h-screen bg-cover bg-center "
         style={{
-          backgroundImage: `url(${image})`, 
+          backgroundImage: `url(${destinationHeroImg})`,
+          opacity:'4' 
         }}
       >
+        <div
+    className="absolute inset-0 bg-black opacity-60"
+    style={{ mixBlendMode: "multiply" }}
+  ></div>
         {/* Text Content */}
-        <div className="absolute bottom-8 left-8  p-6 rounded-lg shadow-lg max-w-2xl">
+        <div className="absolute bottom-8 left-11  p-6 rounded-lg shadow-lg max-w-2xl">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
             Study in USA
           </h1>
@@ -20,20 +24,6 @@ function DestinationHero() {
             occaecat sint occaecat consequat in fugiat dolor. Voluptate ea
             dolore duis amet Lorem.
             <br />
-            <a
-              className="font-medium text-primary-600 hover:underline"
-              href="#"
-            >
-              Twitter
-            </a>{" "}
-            or our{" "}
-            <a
-              className="font-medium text-primary-600 hover:underline"
-              href=""
-            >
-              blog
-            </a>{" "}
-            for the latest updates.
           </p>
         </div>
       </section>

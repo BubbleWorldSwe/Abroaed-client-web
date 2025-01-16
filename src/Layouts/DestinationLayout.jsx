@@ -22,6 +22,7 @@ import vectorBelow from "../assets/vectorBelow.png"
 import StudentAccommodations from "../pages/destinations/StudentAccommodations";
 import BlogsSection from "../Components/BlogsSection";
 import vectorNoseRightToLeft from "../assets/vectorNoseRightToLeft.png"
+import HomePageLeadForm from "../Components/HomePageLeadForm";
 function LayoutPageDestination() {
   return (
     <div>
@@ -85,7 +86,7 @@ function LayoutPageDestination() {
       </div>
           </div>
       <AbroaedUpdatesCards />
-      <AccomodationLeadForm />
+      <HomePageLeadForm />
       <Footer />
     </div>
   );
