@@ -7,7 +7,7 @@ import { HomeForm } from "../Components/AnimatedTabs";
 import FunFacts from "../Components/FunFacts";
 import UniCoursersCard from "../pages/destinations/UniCoursersCard";
 import Footer from "../Components/Footer";
-import AccomodationLeadForm from "../pages/accomodation/AccomodationLeadForm";
+import AccomodationLeadForm from "../pages/accommodation/AccomodationLeadForm";
 import AbroaedUpdatesCards from "../Components/AbroaedUpdatesCards";
 import DestinationRouting from "../pages/destinations/DestinationRouting";
 import vectorLeftFlat from "../assets/vectoreLeftFlat.png"

@@ -5,7 +5,7 @@ import {
   updateItemInSection,
 } from "../../slices/collegeSectionSlice";
 import FinancialAidModal from "../../Components/Modals/FinancialAidCollegeModal";
-
+import pencil from '../../assets/pencil.png'
 function FinancialAidTable() {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,81 +56,41 @@ function FinancialAidTable() {
   );
 
   return (
-    <div className="mb-4 rounded-lg border bg-white p-6 shadow-sm">
-      <h2 className="text-lg font-semibold mb-4">
-        Financial Aid and Scholarships
-      </h2>
-
-      {validScholarships && validScholarships.length > 0 ? (
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead>
-              <tr>
-                <th className="px-6 py-3 text-left text-sm font-medium">
-                  Scholarship Name
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-medium">
-                  Description
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-medium">
-                  Link
-                </th>
-                <th className="px-6 py-3 text-left text-sm font-medium">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {validScholarships.map((scholarship, index) => (
-                <tr key={index}>
-                  <td className="px-6 py-4">{scholarship.scholarshipName}</td>
-                  <td className="px-6 py-4">{scholarship.description}</td>
-                  <td className="px-6 py-4">
-                    {scholarship.link ? (
-                      <a
-                        href={scholarship.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline"
-                      >
-                        {scholarship.link}
-                      </a>
-                    ) : (
-                      "N/A"
-                    )}
-                  </td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => handleEditClick(index)}
-                      className="text-blue-500 hover:underline mr-2"
-                    >
-                      Edit
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ) : (
-        <p>No scholarships added yet.</p>
-      )}
-
-      <button
-        onClick={handleAddClick}
-        className="mt-4 py-2 px-4 bg-primary-700 text-white rounded hover:bg-primary-800"
-      >
-        Add Scholarship
-      </button>
-
-      {/* Modal */}
-      <FinancialAidModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSave={handleSave}
-        initialData={currentData}
-      />
-    </div>
+     <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">
+         <div class="overflow-x-auto">
+                  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                      <thead class="text-sm text-gray-700  bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                          <tr>
+                              <th  class="px-4 py-3">Scholarship Name</th>
+                              <th  class="px-4 py-3 whitespace-nowrap">Last Edited</th>
+                              <th  class="px-4 py-3">
+                                   </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                              <td class=" px-4 py-3">
+                                  <div class="flex items-center">
+                                  Scholarship - Engineering
+                                         </div>
+                              </td>
+                              <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                  <div class="flex items-center">
+                                      <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/avatar-10.png" alt="iMac Front Image" class="w-auto h-8 mr-3 rounded-full"/>
+                                      <span>Jan 12,2030</span>
+                                  </div>
+                              </th>
+                             
+                              <td className="px-4 py-3">
+                              <img src={pencil} alt="iMac Front Image" class="w-5 h-5 mr-3 "/>
+    
+    
+                                 </td>
+                              </tr>
+                          </tbody>
+                  </table>
+              </div>
+         </div>
   );
 }
 
