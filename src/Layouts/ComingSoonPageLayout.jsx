@@ -1,4 +1,4 @@
-import  { useRef, useState } from "react";
+import  { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import slider1 from "../assets/slider1.png";
 import slider2 from "../assets/slider2.png";
@@ -12,28 +12,52 @@ import "swiper/css/pagination";
 import comingSoon from '../assets/comingSoon.svg'
 function ComingSoonPageLayout() {
   const [email, setEmail] = useState("");
+
   const swiperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTickerPosition((prev) => (prev <= -100 ? 100 : prev - 1)); // Reset when it moves off-screen
+    }, 20); // Adjust the interval to control the speed
+
+    return () => clearInterval(interval);
+  }, []);
+
   const carouselItems = [
     {
       title: "Study Abroad Consultation",
-      description:
-        "Get expert guidance on selecting the right course and destination.",
+      description: "Get expert guidance on selecting the right course and destination.",
       imgSrc: slider1,
     },
     {
       title: "Visa Assistance",
-      description:
-        "Receive step-by-step support for your visa application process.",
+      description: "Receive step-by-step support for your visa application process.",
       imgSrc: slider2,
     },
     {
       title: "Document Management",
-      description:
-        "Efficiently manage and submit your application documents online.",
+      description: "Efficiently manage and submit your application documents online.",
+      imgSrc: slider3,
+    },
+    {
+      title: "Test Preparation",
+      description: "Prepare for language and standardized tests with expert coaching.",
+      imgSrc: slider1,
+    },
+    {
+      title: "Accommodation Assistance",
+      description: "Find the perfect accommodation near your university.",
+      imgSrc: slider2,
+    },
+    {
+      title: "Post-Arrival Support",
+      description: "Receive assistance with settling in after you arrive at your destination.",
       imgSrc: slider3,
     },
   ];
+  
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
@@ -89,20 +113,38 @@ function ComingSoonPageLayout() {
   };
 
   return (
-    <div  >
+    <div  className="relative w-full h-screen bg-[#252424] text-white overflow-hidden">
+      {/* <div
+        className="absolute top-0 w-full bg-black text-yellow-500 font-semibold py-2"
+        style={{
+          transform: `translateX(${tickerPosition}%)`,
+          whiteSpace: "nowrap",
+        }}
+      >
+        <div className="inline-block w-max">
+          COMING SOON. LAUNCHING EARLY 2025 &nbsp;&nbsp;&nbsp; COMING SOON.
+          LAUNCHING EARLY 2025 &nbsp;&nbsp;&nbsp; COMING SOON. LAUNCHING EARLY
+          2025
+        </div>
+      </div> */}
       <section className="min-h-screen flex   items-center flex-col justify-center w-full bg-[#252424] px-6 sm:px-8 py-1"
             style={{ backgroundImage: `url(${comingSoon})` }}
 
       >
           <div className="text-center  ">
-            <h3 className="mb-6 text-3xl font-inter font-bold text-yellow-500 sm:text-3xl md:text-6xl lg:text-6xl">
-          <span className="text-white ">ABROA</span>
-          <span className="mr-10">ED</span>
-              </h3>
-          <h5 className="text-white text-2xl font-semibold"> Coming Soon! </h5>
-          <h5 className="text-white text-2xl font-semibold">Launching Early 2025 </h5>
-          <h6 className="text-white text-2xl font-semibold opacity-35 mt-4">Your dream study abroad journey begins here</h6>
-          <p className="text-white text-lg mt-10 mb-2">Get notified when we get live!</p>
+          <h3 className="mb-6 text-center text-3xl  font-bold text-yellow-500 sm:text-3xl md:text-6xl lg:text-6xl">
+  <span
+    className="text-white font-cinzel tracking-[0.15em] text-[114px] font-extrabold leading-[128px]  decoration-skip-ink"
+    
+  >
+    ABROA
+  </span>
+  <span className=" text-yellow-500 font-cinzel text-[114px] font-extrabold leading-[128px] tracking-[0.05em]">ED</span>
+</h3>
+
+
+          <h5 className="text-white lg:text-3xl md:text-xl  font-semibold"> The World is Waiting </h5>
+                    <p className="text-white text-lg mt-5 mb-2">Get notified when we get live!</p>
           <form className="w-full" onSubmit={handleSubmit}>
                   <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <input
@@ -127,9 +169,7 @@ function ComingSoonPageLayout() {
         <h6 className="text-white text-xl font-semibold opacity-80 mb-5">What’s in store for you?</h6>
 <div className="overflow-x-auto">
                                   <div className="flex space-x-5" style={{ minWidth: 'max-content' }}>
-                                      {Array(6)
-                                          .fill(0)
-                                          .map((_, index) => (
+                                      {carouselItems.map((item, index) => (
                                               <div key={index} className="w-96  shadow-2xl bg-opacity-5 p-4 rounded-lg bg-slate-700 	">
                                                   <div>
                                 <div className="flex gap-3">
@@ -150,13 +190,13 @@ function ComingSoonPageLayout() {
                     />
                   </svg>
                   <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-500 dark:text-white">
-                    Personalized Counseling
+                  {item.title}
+
                   </h3>
 
                                 </div>
                   <p className="text-md font-inter text-white">
-                    Get personalized guidance on choosing the right courses and
-                    universities.
+                  {item.description}
                   </p>
                 </div> 
 
