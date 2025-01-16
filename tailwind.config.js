@@ -118,6 +118,7 @@ export default {
         'Noto Color Emoji',
       ],
       inter: ['Inter', 'sans-serif'],
+      cinzel: ['Cinzel', 'serif'],
     },
   },
 };
