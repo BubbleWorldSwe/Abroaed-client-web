@@ -139,45 +139,49 @@ function ComingSoonPageLayout() {
 
         </motion.div>
       </div>
-      <section className="min-h-screen flex   items-center flex-col justify-center w-full  px-6 sm:px-8 py-1"
-      >
-        <div className="text-center px-4 sm:px-8 lg:px-16">
-  <h3 className="mb-6 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
-    <span
-      className="text-white font-cinzel tracking-[0.15em] text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] decoration-skip-ink"
-    >
-      ABROA
-    </span>
-    <span className="text-yellow-500 font-cinzel text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] tracking-[0.05em]">
-      ED
-    </span>
-  </h3>
-  <h5 className="text-white lg:text-4xl md:text-xl font-rethink font-semibold mb-7">
-    The World is Waiting
-  </h5>
-  <p className="text-white text-lg mt-5 mb-2">Get notified when we get live!</p>
-  <form className="w-full" onSubmit={handleSubmit}>
-    <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-      <input
-        type="email"
-        id="email"
-        className="block w-full rounded-lg border border-gray-300 bg-black bg-opacity-50 p-2 text-sm text-gray-300 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 sm:rounded-md"
-        placeholder="johndoe@gmail.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <button
-        type="submit"
-        className="px-6 py-2 whitespace-nowrap font-inter rounded-lg bg-black bg-opacity-50 text-white focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
-      >
-        Notify Me
-      </button>
-    </div>
-  </form>
-</div>
+      <section className="min-h-screen flex   items-center flex-col justify-center w-full  px-6 sm:px-8 "
+     >
+        <div className="text-center px-4 sm:px-8 lg:px-16 mb-7">
+          <h3 className="mb-6 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
+            <span
+              className="text-white font-cinzel tracking-[0.15em] text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] decoration-skip-ink"
+            >
+              ABROA
+            </span>
+            <span
+              style={{ color: '#fbba18' }}
+              className="font-cinzel text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] tracking-[0.05em]"
+            >
+              ED
+            </span>
 
-        <div className="w-full h-full mx-auto mt-10">
+          </h3>
+          <h5 className="text-white lg:text-4xl md:text-xl font-rethink font-semibold mb-7">
+            The World is Waiting
+          </h5>
+          <p className="text-white text-lg mt-5 mb-2">Get notified when we get live!</p>
+          <form className="w-full mt-5" onSubmit={handleSubmit}>
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <input
+                type="email"
+                id="email"
+                className="block w-full rounded-lg border border-gray-300 bg-black bg-opacity-50 p-2 text-sm text-gray-300 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 sm:rounded-md"
+                placeholder="johndoe@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="px-6 py-2 whitespace-nowrap font-inter rounded-lg bg-black bg-opacity-50 text-white focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
+              >
+                Notify Me
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div className="w-full h-full mx-auto py-10">
           <h6 className="text-white text-xl font-semibold opacity-80 mb-5">What’s in store for you?</h6>
           <div className="overflow-x-auto">
             <div className="flex space-x-5" style={{ minWidth: 'max-content' }}>
@@ -186,7 +190,7 @@ function ComingSoonPageLayout() {
                   <div>
                     <div className="flex gap-3">
                       <svg
-                        className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
+                        className="mb-2 h-8 w-8 text-[#fbba18] dark:text-yellow-500"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -201,10 +205,13 @@ function ComingSoonPageLayout() {
                           d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
                         />
                       </svg>
-                      <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-500 dark:text-white">
+                      <h3
+                        
+                        className="mb-2 font-inter text-xl font-semibold  dark:text-white"
+                      >
                         {item.title}
-
                       </h3>
+
 
                     </div>
                     <p className="text-md font-inter text-white">
