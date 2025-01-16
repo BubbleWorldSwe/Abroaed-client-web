@@ -3,7 +3,7 @@ import locationIcon from "../../assets/locationIcon.png"
 
 const StudentAccommodations = () => {
   return (
-    <div className="relative z-10">
+    <div className="relative z-10 px-10 mx-auto">
     <section className=" dark:bg-gray-900 relative">
         <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
@@ -87,7 +87,7 @@ const StudentAccommodations = () => {
                   type="submit"
                   className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
                 >
-                  View
+                  View All
                 </button>
         </div>
         </div>
