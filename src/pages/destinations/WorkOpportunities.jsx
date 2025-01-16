@@ -1,14 +1,12 @@
-import React from 'react'
+
 
 const WorkOpportunities = () => {
     return (
-        <div className="relative ">
-
-
-            <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
+        <div className="relative px-10 mx-auto">
+ <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
                 {/* Content */}
                 <div className="relative z-10">
-                    <div className='py-10'>
+                    <div className='py-1'>
                         <h2 className="mb-2 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                             Work Opportunities in United Kingdom
                         </h2>
@@ -18,7 +16,7 @@ const WorkOpportunities = () => {
                         </p>
 
                     </div>
-                    <div className='py-5'>
+                    <div className='py-1'>
 
                         <h3 className="mb-2  text-3xl tracking-tight font-bold text-gray-900 dark:text-white">
                             Part-Time Work Opportunities
@@ -60,8 +58,7 @@ const WorkOpportunities = () => {
                 </div>
 
             </div>
-
-        </div>
+</div>
     )
 }
 
