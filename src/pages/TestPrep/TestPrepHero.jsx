@@ -61,7 +61,7 @@ function TestPrepHero() {
                 }}
               >
                 {/* Text Content */}
-                <div className="absolute bottom-8 left-8 p-6 rounded-lg shadow-lg max-w-2xl">
+                <div className="absolute bottom-8 left-11 p-6 rounded-lg shadow-lg max-w-2xl">
                   <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
              IELTS
                   </h1>
