@@ -119,6 +119,7 @@ export default {
       ],
       inter: ['Inter', 'sans-serif'],
       cinzel: ['Cinzel', 'serif'],
+      rethink: ['Rethink Sans', 'sans-serif']
     },
   },
 };
