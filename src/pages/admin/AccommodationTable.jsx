@@ -1,23 +1,58 @@
-import { EllipsisVertical } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AddCollegeDrawer from "../../Components/Modals/AddCollegeDrawer";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDestinations } from "../../slices/destinationSlice";
-import AddDestination from "../../Components/Modals/AddDestination";
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import AddDestination from '../../Components/Modals/AddDestination';
+import { EllipsisVertical } from 'lucide-react';
 
-function DestinationTable() {
-  const dispatch = useDispatch();
-  const { destinations, loading, error } = useSelector(
-    (state) => state.destinations
-  );
+const AccommodationTable = () => {
+  // const dispatch = useDispatch();
+  // const { destinations, loading, error } = useSelector(
+  //   (state) => state.destinations
+  // );
 
-  useEffect(() => {
-    dispatch(fetchDestinations());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchDestinations());
+  // }, [dispatch]);
 
   // if (loading) return <p>Loading destinations...</p>;
   // if (error) return <p>Error: {error}</p>;
+  const Accommodation = [
+    {
+        name: "Harvard Accommodation",
+        location: "Cambridge, USA",
+        price: "$1200 per month",
+        availability: "Available",
+        description: "Luxurious student accommodation near Harvard University with modern amenities and easy access to campus.",
+    },
+    {
+        name: "Oxford Residence",
+        location: "Oxford, UK",
+        price: "£1000 per month",
+        availability: "Limited",
+        description: "Historic residence offering cozy rooms and a vibrant student community near the University of Oxford.",
+    },
+    {
+        name: "Stanford Lodge",
+        location: "Stanford, USA",
+        price: "$1500 per month",
+        availability: "Available",
+        description: "Premium lodging for students with state-of-the-art facilities and proximity to Stanford University.",
+    },
+    {
+        name: "Toronto Apartments",
+        location: "Toronto, Canada",
+        price: "CAD 1300 per month",
+        availability: "Few Rooms Left",
+        description: "Spacious apartments located in downtown Toronto, ideal for students of the University of Toronto.",
+    },
+    {
+        name: "ANU Housing",
+        location: "Canberra, Australia",
+        price: "AUD 1100 per month",
+        availability: "Available",
+        description: "Affordable student housing with a vibrant atmosphere near the Australian National University.",
+    },
+];
+
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [dropdownDirection, setDropdownDirection] = useState(null);
@@ -178,20 +213,23 @@ function DestinationTable() {
 
             <div className="flex-grow overflow-auto bg-white dark:bg-gray-800">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-medium text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="p-4"></th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                      Page Name
+                      Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                      Author
+                      Location
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                      Status
+                      Price
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                      Created At
+                    Availability
+                    </th>
+                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
+                    Description
                     </th>
 
                     <th scope="col" className="px-4 py-3">
@@ -201,7 +239,7 @@ function DestinationTable() {
                 </thead>
 
                 <tbody>
-                  {destinations.map((destination, index) => (
+                  {Accommodation.map((accommodation, index) => (
                     <tr
                       key={index}
                       className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -227,12 +265,13 @@ function DestinationTable() {
                         scope="row"
                         className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
-                        {destination.pageName}
+                        {accommodation.name}
                       </th>
 
-                      <td className="px-4 py-3">{destination.author}</td>
-                      <td className="px-4 py-3">{destination.status}</td>
-                      <td className="px-4 py-3">{destination.createdAt}</td>
+                      <td className="px-4 py-3">{accommodation.location}</td>
+                      <td className="px-4 py-3">{accommodation.price}</td>
+                      <td className="px-4 py-3">{accommodation.availability}</td>
+                      <td className="px-4 py-3">{accommodation.description}</td>
 
                       <td className="px-4 py-3">
                         <button
@@ -255,8 +294,8 @@ function DestinationTable() {
                                   type="button"
                                   onClick={() =>
                                     navigate(
-                                      `/admin/destinations/${encodeURIComponent(
-                                        destination.pageName
+                                      `/admin/accommodation/${encodeURIComponent(
+                                        accommodation.name
                                       )}`
                                     )
                                   }
@@ -329,4 +368,4 @@ function DestinationTable() {
   );
 }
 
-export default DestinationTable;
+export default AccommodationTable;

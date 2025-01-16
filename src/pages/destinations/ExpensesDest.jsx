@@ -31,34 +31,34 @@ function ExpensesDest() {
   } = expensesSection.content[0] || {};
 
   return (
-    <div className="mb-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-        Expenses
-      </h2>
-      <div className="border border-1 mb-2 border-gray-200 w-full"></div>
-      {expensesSection.content.length === 0 ? (
+    <div className=" bg-white   dark:border-gray-700 dark:bg-gray-800">
+
+      
+      {/* {expensesSection.content.length === 0 ? (
         <p className="text-gray-500 dark:text-gray-400">No content added</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      ) : ( */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { key: "Average Tuition Fee", value: AvgTutionFee },
-            { key: "Average Rent", value: AvgRent },
+            { key: "Average Tuition Fee(per year)", value: AvgTutionFee },
+            { key: "Average Rental Expenses (per month)", value: AvgRent },
             { key: "Average Food Expense", value: AvgFoodExpense },
-            { key: "Average Transport Expense", value: AvgTransportExpense },
-            { key: "Miscellaneous Expense", value: MiscExpense },
+            { key: "Average Transport Costs (per month)", value: AvgTransportExpense },
+            { key: "Misc. Expenses", value: MiscExpense },
           ].map((item, index) => (
             <div key={index} className="text-left">
-              <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+              <p className="text-base font-semibold  text-gray-700 dark:text-gray-400">
                 {item.key}
               </p>
-              <p className="text-base font-semibold text-gray-900 dark:text-white">
+              <p className="text-sm font-medium text-gray-600 dark:text-white">
                 {item.value || "N/A"}
               </p>
             </div>
           ))}
         </div>
-      )}
-      <div className="flex items-center gap-4 mt-6">
+      {/* ) */}
+       {/* } */}
+      {/* <div className="flex items-center gap-4 mt-6">
         <button
           type="button"
           onClick={() => handleOpenModal(expensesSection.content[0])}
@@ -87,14 +87,14 @@ function ExpensesDest() {
         >
           Add
         </button>
-      </div>
-      {isModalOpen && (
+      </div> */}
+      {/* {isModalOpen && (
         <ExpensesDestModal
           isOpen={isModalOpen}
           closeModal={handleCloseModal}
           editData={editData}
         />
-      )}
+      )} */}
     </div>
   );
 }
