@@ -1,30 +1,27 @@
 
+import vectorRightRing from "../../assets/vectorRightRing.png"
+
 function HowItWorks() {
   const steps = [
     {
       step: 1,
-      heading: "Check for Loan",
-      description:
-        `Start by checking your eligibility and loan options. This ensures you’re making the right financial decisions.Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt
-        Start by checking your eligibility and loan options. This ensures you’re making the right financial decisions.Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt
-        Start by checking your eligibility and loan options. This ensures you’re making the right financial decisions.Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt`,
-    },
+      heading: "Lorem Ipsum Dolor",
+      description:"lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."
+           },
     {
       step: 2,
-      heading: "Choose Your Lender",
-      description:
-        "Select the lender that offers the best rates and terms for your specific needs. Compare carefully to maximize benefits.Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt.",
-
+      heading: "Lorem Ipsum Dolor",
+      description:"lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."
     },
     {
       step: 3,
-      heading: "Check Available Limit",
-      description: " Confirm the amount you can borrow based on your financial profile. This step helps you plan effectively.   Cillum sunt eiusmod ipsum eiusmod ut ea excepteur labore aute enim sint incididunt. ",
+      heading: "Lorem Ipsum Dolor",
+      description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
     },
   ];
 
   return (
-    <div className="relative">
+    <div className="relative mx-auto px-10">
       <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
         <section className="dark:bg-gray-900">
           <div className="py-8 lg:py-16">
@@ -47,43 +44,36 @@ function HowItWorks() {
                 traditional ITSM solutions. Accelerate critical development work,
                 eliminate toil, and deploy changes with ease.
               </p>
-              {/* <a
-            href="#"
-            className="inline-flex items-center font-medium text-primary-600 hover:text-primary-800 dark:text-primary-500 dark:hover:text-primary-700"
-          >
-            Learn more
-            <svg
-              className="ml-1 w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </a> */}
-            </div>
-
-            <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
+               </div>
+<div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
               {steps.map((step) => (
                 <div
                   key={step.step}
-                  className="flex flex-col justify-between h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
-                >
+                  className="flex relative flex-col gap-3 h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
+                  >
+                     <div
+            className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  pointer-events-none"
+            style={{
+              left: "auto", // Ensure it starts from the right edge
+              right: 0, // Anchor the gradient to the right
+              width: "70%", // Adjust the width of the gradient area
+              height: "100%", // Full height to cover the parent div
+            }}
+          ></div>
                   <div>
-                    <span className="block text-4xl font-bold text-primary-600 dark:text-primary-400">
+                    <span className="block text-4xl font-bold text-white dark:text-primary-400">
                       {step.step}
                     </span>
-                    <h5 className="mb-2 text-xl font-bold tracking-tight text-white dark:text-white">
+                  </div>
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
                       {step.heading}
                     </h5>
-                  </div>
                   <p className="font-normal text-white dark:text-gray-400">
                     {step.description}
                   </p>
+                  <div className="absolute top-0 right-0">
+                    <img src= {vectorRightRing} alt="vector" />
+                  </div>
                 </div>
               ))}
             </div>
