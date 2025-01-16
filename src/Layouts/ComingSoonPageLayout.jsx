@@ -1,4 +1,4 @@
-import  { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import slider1 from "../assets/slider1.png";
 import slider2 from "../assets/slider2.png";
@@ -57,7 +57,7 @@ function ComingSoonPageLayout() {
       imgSrc: slider3,
     },
   ];
-  
+
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
@@ -93,9 +93,9 @@ function ComingSoonPageLayout() {
     }
   };
 
-  
+
   const words = ["coming", "soon!"];
-  const belowWorld = [ "launching", "early", "2025."];
+  const belowWorld = ["launching", "early", "2025."];
   // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -111,99 +111,111 @@ function ComingSoonPageLayout() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
+  const text = "COMING SOON. LAUNCHING EARLY 2025";
 
   return (
-    <div  className="relative w-full h-screen bg-[#252424] text-white overflow-hidden">
-      {/* <div
-        className="absolute top-0 w-full bg-black text-yellow-500 font-semibold py-2"
-        style={{
-          transform: `translateX(${tickerPosition}%)`,
-          whiteSpace: "nowrap",
-        }}
+    <div className="relative w-full  text-white  overflow-hidden"
+      style={{ backgroundImage: `url(${comingSoon})` }}
+    >
+      <div className="overflow-hidden  text-white p-1">
+        <motion.div
+          className="flex space-x-8"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{
+            repeat: Infinity,
+            ease: "linear",
+            duration: 30,
+          }}
+          style={{ display: "flex", whiteSpace: "nowrap" }}
+
+        >
+          {/* Repeat the text to create the seamless scroll effect */}
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">{text}</span>
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">{text}</span>
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">{text}</span>
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">{text}</span>
+          <span className="text-sm sm:text-base md:text-lg lg:text-xl">{text}</span>
+
+
+        </motion.div>
+      </div>
+      <section className="min-h-screen flex   items-center flex-col justify-center w-full  px-6 sm:px-8 py-1"
       >
-        <div className="inline-block w-max">
-          COMING SOON. LAUNCHING EARLY 2025 &nbsp;&nbsp;&nbsp; COMING SOON.
-          LAUNCHING EARLY 2025 &nbsp;&nbsp;&nbsp; COMING SOON. LAUNCHING EARLY
-          2025
-        </div>
-      </div> */}
-      <section className="min-h-screen flex   items-center flex-col justify-center w-full bg-[#252424] px-6 sm:px-8 py-1"
-            style={{ backgroundImage: `url(${comingSoon})` }}
-
+        <div className="text-center px-4 sm:px-8 lg:px-16">
+  <h3 className="mb-6 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
+    <span
+      className="text-white font-cinzel tracking-[0.15em] text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] decoration-skip-ink"
+    >
+      ABROA
+    </span>
+    <span className="text-yellow-500 font-cinzel text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] tracking-[0.05em]">
+      ED
+    </span>
+  </h3>
+  <h5 className="text-white lg:text-4xl md:text-xl font-rethink font-semibold mb-7">
+    The World is Waiting
+  </h5>
+  <p className="text-white text-lg mt-5 mb-2">Get notified when we get live!</p>
+  <form className="w-full" onSubmit={handleSubmit}>
+    <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+      <input
+        type="email"
+        id="email"
+        className="block w-full rounded-lg border border-gray-300 bg-black bg-opacity-50 p-2 text-sm text-gray-300 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 sm:rounded-md"
+        placeholder="johndoe@gmail.com"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <button
+        type="submit"
+        className="px-6 py-2 whitespace-nowrap font-inter rounded-lg bg-black bg-opacity-50 text-white focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
       >
-          <div className="text-center  ">
-          <h3 className="mb-6 text-center text-3xl  font-bold text-yellow-500 sm:text-3xl md:text-6xl lg:text-6xl">
-  <span
-    className="text-white font-cinzel tracking-[0.15em] text-[114px] font-extrabold leading-[128px]  decoration-skip-ink"
-    
-  >
-    ABROA
-  </span>
-  <span className=" text-yellow-500 font-cinzel text-[114px] font-extrabold leading-[128px] tracking-[0.05em]">ED</span>
-</h3>
-
-
-          <h5 className="text-white lg:text-3xl md:text-xl  font-semibold"> The World is Waiting </h5>
-                    <p className="text-white text-lg mt-5 mb-2">Get notified when we get live!</p>
-          <form className="w-full" onSubmit={handleSubmit}>
-                  <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <input
-                      type="email"
-                      id="email"
-                      className="block w-full rounded-lg border border-gray-300 bg-black  bg-opacity-50 p-2 text-sm text-gray-300 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 sm:rounded-md"
-                      placeholder="johndoe@gmail.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                    />
-                    <button
-                      type="submit"
-                      className="px-6 py-2 whitespace-nowrap font-inter rounded-lg bg-black  bg-opacity-50 text-white  focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
-                    >
-                      Notify Me
-                    </button>
-                  </div>
-                </form>
+        Notify Me
+      </button>
+    </div>
+  </form>
 </div>
-           <div className="w-full h-full mx-auto mt-10">
-        <h6 className="text-white text-xl font-semibold opacity-80 mb-5">What’s in store for you?</h6>
-<div className="overflow-x-auto">
-                                  <div className="flex space-x-5" style={{ minWidth: 'max-content' }}>
-                                      {carouselItems.map((item, index) => (
-                                              <div key={index} className="w-96  shadow-2xl bg-opacity-5 p-4 rounded-lg bg-slate-700 	">
-                                                  <div>
-                                <div className="flex gap-3">
-                  <svg
-                    className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeWidth="2"
-                      d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
-                    />
-                  </svg>
-                  <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-500 dark:text-white">
-                  {item.title}
 
-                  </h3>
+        <div className="w-full h-full mx-auto mt-10">
+          <h6 className="text-white text-xl font-semibold opacity-80 mb-5">What’s in store for you?</h6>
+          <div className="overflow-x-auto">
+            <div className="flex space-x-5" style={{ minWidth: 'max-content' }}>
+              {carouselItems.map((item, index) => (
+                <div key={index} className="w-96  shadow-2xl bg-opacity-5 p-4 rounded-lg bg-slate-700 	">
+                  <div>
+                    <div className="flex gap-3">
+                      <svg
+                        className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeWidth="2"
+                          d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+                        />
+                      </svg>
+                      <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-500 dark:text-white">
+                        {item.title}
 
-                                </div>
-                  <p className="text-md font-inter text-white">
-                  {item.description}
-                  </p>
-                </div> 
+                      </h3>
 
-                                              </div>
-                                          ))}
-                                  </div>
-                              </div>
+                    </div>
+                    <p className="text-md font-inter text-white">
+                      {item.description}
+                    </p>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          </div>
           {/* <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
                 <div>
