@@ -3,28 +3,28 @@ import vectorleftNose from "../../assets/vectorleftNose.png"; // Add your blob i
 import locationIcon from "../../assets/locationIcon.png"
 const universities = [
   {
-    name: "Harvard University",
+    // name: "Harvard University",
     location: "Cambridge, MA, USA",
     fees: "$50,000/year",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
     imgUrl: image,
   },
   {
-    name: "Stanford University",
+    // name: "Stanford University",
     location: "Stanford, CA, USA",
     fees: "$55,000/year",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
     imgUrl: image,
   },
   {
-    name: "MIT",
+    // name: "MIT",
     location: "Cambridge, MA, USA",
     fees: "$52,000/year",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
     imgUrl: image,
   },
   {
-    name: "University of Oxford",
+    // name: "University of Oxford",
     location: "Oxford, UK",
     fees: "£30,000/year",
     description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
@@ -49,7 +49,7 @@ const courses = [
     duration: "2 Years",
     fees: "$30,000/year",
     intake: "Spring 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere.",
+    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Mechanical Engineering",
@@ -75,6 +75,7 @@ function UniCoursersCard() {
   return (
     <div className="relative">
       {/* Blob Background */}
+      <section className="px-10 mx-auto">
       <div
         className="absolute right-0 top-20 h-full w-1/2 bg-cover bg-no-repeat z-0"
         style={{
@@ -104,10 +105,11 @@ function UniCoursersCard() {
               <div className="p-5">
               <div className="flex justify-between">
                   <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                    {item.name}
+                    {/* {item.name} */}
+                    University Name
                   </h5>
                   <div>
-                    <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg className="w-8 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m17 21-5-4-5 4V3.889a.92.92 0 0 1 .244-.629.808.808 0 0 1 .59-.26h8.333a.81.81 0 0 1 .589.26.92.92 0 0 1 .244.63V21Z" />
                     </svg>
 
@@ -123,7 +125,8 @@ function UniCoursersCard() {
 
                   <p className="font-bold  text-gray-500 dark:text-gray-400 py-1">
 
-                    {item.location}
+                    {/* {item.location} */}
+                    New York, USA
                   </p>
                   </div>
                   <div className="font-bold text-gray-500">
@@ -157,6 +160,8 @@ function UniCoursersCard() {
               key={index}
               className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700"
             >
+              <div className="flex flex-col justify-between ">
+             <div >
                <div className="flex justify-between">
                   <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   {course.courseName}
@@ -168,7 +173,6 @@ function UniCoursersCard() {
 
                   </div>
                 </div>
-             
               <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                <strong>Domain:</strong>  {course.domain}
               </p>
@@ -187,15 +191,19 @@ function UniCoursersCard() {
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {course.description}
               </p>
+
+             </div>
               <div >
                   <button type="button" data-modal-target="default-modal" data-modal-toggle="default-modal" className="py-2.5 w-full px-5 me-2 mb-2 text font-medium text-gray-700 focus:outline-none bg-white rounded-lg border border-gray-700 hover:bg-gray-100 hover:text-green-900 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Enquire Now</button>
                 </div>
+ </div>
             </div>
           ))}
         </div>
       </div>
 
 </div>
+ </section>
       
     </div>
   );

@@ -3,16 +3,16 @@ import check_circle from '../../assets/check_circle.png'
 const AdmissionRequirement = () => {
   return (
     <div className="relative z-10">
-      <section className=" dark:bg-gray-900 relative">
-        <div className="gap-16 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
+      <section className=" dark:bg-gray-900 relative px-10 mx-auto">
+        <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
           <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Admission Requirements
             </h2>
-            <p className="mb-4 text-black ">
+            <p className=" text-black ">
             Here are the major requirements to study in the USA, which you need to ensure while applying to a USA university:            </p>
              </div>
-             <div className="grid grid-cols-2 ">
+             <div className="grid grid-cols-1 md:grid-cols-2  ">
             {/* Top Row: 3 Cards */}
             {Array(12).fill().map((_, idx) => (
               <div
@@ -34,9 +34,7 @@ const AdmissionRequirement = () => {
                                  </div>
               </div>
             ))}
-
-
-          </div>
+</div>
         </div>
       </section>
     </div>
