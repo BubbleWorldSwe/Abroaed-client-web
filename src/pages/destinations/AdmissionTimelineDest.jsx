@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react'
 
-function AdmissionTimelineDest() {
-  return <div>AdmissionTimelineDest</div>;
+const AdmissionTimelineDest = () => {
+  return (
+    <div>AdmissionTimelineDest</div>
+  )
 }
 
-export default AdmissionTimelineDest;
+export default AdmissionTimelineDest

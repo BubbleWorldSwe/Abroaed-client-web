@@ -39,37 +39,35 @@ function OverviewDest() {
   } = overview.content;
 
   return (
-    <div className="mb-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-        Overview
-      </h2>
-      <div className="border border-1 mb-2 border-gray-200 w-full "></div>
+    <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
+     
+     <h2 className="mb-2 font-semibold">Why Study in USA?</h2>
       {/* About Section */}
       <p className="text-gray-700 dark:text-gray-300 mb-6">
-        {description || "No details available"}
+      The United States of America is amongst the most popular study destinations globally, housing the world’s top-ranked institutions. It is known to host the highest number of international students from all over the globe. Studying in the USA offers a perfectly blended student experience with an exciting campus environment and cultural diversity.
+        {/* {description || "No details available"} */}
       </p>
       {/* Grid Section */}
-      <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-5 gap-4">
         {[
           { key: "Capital", value: capital },
-          { key: "Total Population", value: totalPopulation },
           { key: "Language", value: language },
-          { key: "Total Students", value: totalStudents },
-          { key: "total Universities", value: totalUniversities },
+          { key: "Total Population", value: totalPopulation },
           { key: "Currency", value: Currency },
-        ].map((item, index) => (
+          { key: "Dial Code", value: totalStudents },
+                  ].map((item, index) => (
           <div key={index} className="text-left">
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+            <p className="text-base font-semibold text-gray-900 dark:text-gray-400">
               {item.key}
             </p>
-            <p className="text-base font-semibold text-gray-900 dark:text-white">
+            <p className="text-sm font-medium text-gray-600 dark:text-white">
               {item.value || "N/A"}
             </p>
           </div>
         ))}
       </div>
       {/* Actions */}
-      <div className="flex items-center gap-4 mt-6">
+      {/* <div className="flex items-center gap-4 mt-6">
         <button
           type="button"
           data-modal-target="editReviewModal"
@@ -114,7 +112,7 @@ function OverviewDest() {
           </svg>
           Delete
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

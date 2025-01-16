@@ -16,7 +16,6 @@ import {
   BookUserIcon,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import ClipLoader from "react-spinners/ClipLoader";
 
 function CollapsableSidebar() {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -185,6 +184,28 @@ function CollapsableSidebar() {
             </Sidebar.ItemGroup>
             <Sidebar.ItemGroup>
               <Sidebar.Item
+                onClick={() => navigate("/admin/langPrep")}
+                className={`transition-colors duration-300 flex items-center ${
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/admin/langPrep") ||
+                  window.location.pathname.startsWith("/admin/langPrep")
+                    ? "bg-primary-500"
+                    : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+              >
+                {isOpen ? (
+                  <span className="flex flex-row items-center justify-start gap-2">
+                    <HouseIcon className="w-5 h-5" />
+                    <span>Language Prep</span>
+                  </span>
+                ) : (
+                  <span className="flex justify-center items-center w-full">
+                    <HouseIcon className="w-5 h-5" />
+                  </span>
+                )}
+              </Sidebar.Item>
+              <Sidebar.Item
                 onClick={() => navigate("/admin/colleges")}
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? "justify-start" : "justify-center"
@@ -222,6 +243,28 @@ function CollapsableSidebar() {
                   <span className="flex flex-row items-center justify-start gap-2">
                     <HouseIcon className="w-5 h-5" />
                     <span>Destinations</span>
+                  </span>
+                ) : (
+                  <span className="flex justify-center items-center w-full">
+                    <HouseIcon className="w-5 h-5" />
+                  </span>
+                )}
+              </Sidebar.Item>
+              <Sidebar.Item
+                onClick={() => navigate("/admin/accommodation")}
+                className={`transition-colors duration-300 flex items-center ${
+                  isOpen ? "justify-start" : "justify-center"
+                } hover:bg-primary-700 ${
+                  isActive("/admin/accommodation") ||
+                  window.location.pathname.startsWith("/admin/accommodation")
+                    ? "bg-primary-500"
+                    : ""
+                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+              >
+                {isOpen ? (
+                  <span className="flex flex-row items-center justify-start gap-2">
+                    <HouseIcon className="w-5 h-5" />
+                    <span>Accommodation</span>
                   </span>
                 ) : (
                   <span className="flex justify-center items-center w-full">

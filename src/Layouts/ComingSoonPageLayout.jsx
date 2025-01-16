@@ -9,7 +9,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
+import comingSoon from '../assets/comingSoon.svg'
 function ComingSoonPageLayout() {
   const [email, setEmail] = useState("");
   const swiperRef = useRef(null);
@@ -89,84 +89,83 @@ function ComingSoonPageLayout() {
   };
 
   return (
-    <div>
-      <section className="min-h-screen flex items-center flex-col justify-center w-full bg-[#252424] px-6 sm:px-8 py-1">
-          <div className="text-center  h-24">
-          <motion.h1
-                  className="mb-6 text-4xl font-inter font-bold text-yellow-500 sm:text-5xl md:text-6xl lg:text-7xl"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {words.map((word, index) => (
-                    <motion.span
-                      key={index}
-                      className="inline-block mr-2"
-                      variants={wordVariants}
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </motion.h1>
-          </div>
-          <div className="text-center h-28">
-          <motion.h3
-                  className="mb-6 text-3xl font-inter font-bold text-yellow-500 sm:text-3xl md:text-6xl lg:text-6xl"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  <span className="text-white ">
-                  
-                  ABROA
-                  </span>
-                  <span className="mr-10">ED</span>
-                  {belowWorld.map((word, index) => (
-                    <motion.span
-                      key={index}
-                      className="inline-block mr-2"
-                      variants={wordVariants}
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </motion.h3>
-          </div>
-        <div className="w-full h-full mx-auto">
-          <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
-            <div className="lg:w-1/2 w-full">
-              <Spotlight
-                className="-top-40 left-0 md:left-60 md:-top-20"
-                fill="white"
-              />
-              <div>
-                
-                <p className="mb-8 text-lg font-inter text-gray-300 sm:text-xl md:text-2xl">
-                  Your Dream Journey to study overseas begins here.
-                  <br /> Personalized Counseling and Services Coming Soon.
-                </p>
-                <form className="w-full" onSubmit={handleSubmit}>
+    <div  >
+      <section className="min-h-screen flex   items-center flex-col justify-center w-full bg-[#252424] px-6 sm:px-8 py-1"
+            style={{ backgroundImage: `url(${comingSoon})` }}
+
+      >
+          <div className="text-center  ">
+            <h3 className="mb-6 text-3xl font-inter font-bold text-yellow-500 sm:text-3xl md:text-6xl lg:text-6xl">
+          <span className="text-white ">ABROA</span>
+          <span className="mr-10">ED</span>
+              </h3>
+          <h5 className="text-white text-2xl font-semibold"> Coming Soon! </h5>
+          <h5 className="text-white text-2xl font-semibold">Launching Early 2025 </h5>
+          <h6 className="text-white text-2xl font-semibold opacity-35 mt-4">Your dream study abroad journey begins here</h6>
+          <p className="text-white text-lg mt-10 mb-2">Get notified when we get live!</p>
+          <form className="w-full" onSubmit={handleSubmit}>
                   <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
                     <input
                       type="email"
                       id="email"
-                      className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 text-base text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 sm:rounded-md"
-                      placeholder="Enter your email to stay updated"
+                      className="block w-full rounded-lg border border-gray-300 bg-black  bg-opacity-50 p-2 text-sm text-gray-300 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 sm:rounded-md"
+                      placeholder="johndoe@gmail.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
                     <button
                       type="submit"
-                      className="px-6 py-2 font-inter rounded-lg bg-yellow-700 text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
+                      className="px-6 py-2 whitespace-nowrap font-inter rounded-lg bg-black  bg-opacity-50 text-white  focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-primary-800"
                     >
-                      Subscribe
+                      Notify Me
                     </button>
                   </div>
                 </form>
-              </div>
+</div>
+           <div className="w-full h-full mx-auto mt-10">
+        <h6 className="text-white text-xl font-semibold opacity-80 mb-5">What’s in store for you?</h6>
+<div className="overflow-x-auto">
+                                  <div className="flex space-x-5" style={{ minWidth: 'max-content' }}>
+                                      {Array(6)
+                                          .fill(0)
+                                          .map((_, index) => (
+                                              <div key={index} className="w-96  shadow-2xl bg-opacity-5 p-4 rounded-lg bg-slate-700 	">
+                                                  <div>
+                                <div className="flex gap-3">
+                  <svg
+                    className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeWidth="2"
+                      d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
+                    />
+                  </svg>
+                  <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-500 dark:text-white">
+                    Personalized Counseling
+                  </h3>
 
-              <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
+                                </div>
+                  <p className="text-md font-inter text-white">
+                    Get personalized guidance on choosing the right courses and
+                    universities.
+                  </p>
+                </div> 
+
+                                              </div>
+                                          ))}
+                                  </div>
+                              </div>
+          {/* <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
+          <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
                 <div>
                   <svg
                     className="mb-2 h-8 w-8 text-yellow-700 dark:text-yellow-500"
@@ -219,125 +218,7 @@ function ComingSoonPageLayout() {
                   </p>
                 </div>
               </div>
-            </div>
-
-            <div className="relative flex items-center justify-center w-full lg:w-2/5 mt-8 lg:mt-0">
-              <div className="w-full h-[300px] sm:h-[400px] lg:h-[500px]  overflow-hidden rounded-lg shadow-lg relative">
-                {/* {carouselItems.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className={`absolute inset-0 z-10 transform transition-all duration-700 ease-in-out ${
-                      currentIndex === index
-                        ? "translate-x-0"
-                        : "translate-x-full"
-                    }`}
-                  >
-                    <div className="rounded-[22px] h-full p-8 bg-white dark:bg-zinc-900 shadow-lg flex flex-col items-center text-center space-y-6">
-                      <a href="#">
-                        <img
-                          className="w-full max-w-xs mx-auto mb-4 h-60 object-cover rounded-lg"
-                          src={item.imgSrc}
-                          alt={item.title}
-                        />
-                      </a>
-
-                      <a
-                        href="#"
-                        className="font-inter font-semibold text-2xl text-gray-900 hover:underline dark:text-white"
-                      >
-                        {item.title}
-                      </a>
-
-                      <p className="font-inter text-gray-600 dark:text-gray-300 text-lg">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))} */}
-                <Swiper
-                  modules={[Navigation, Autoplay]}
-                  spaceBetween={30}
-                  slidesPerView={1}
-                  autoplay={{
-                    delay: 2000, // Auto-slide every 2 seconds
-                    disableOnInteraction: false,
-                  }}
-                  navigation={{
-                    prevEl: ".swiper-button-prev",
-                    nextEl: ".swiper-button-next",
-                  }}
-                  loop={true}
-                  className="relative"
-                  onBeforeInit={(swiper) => {
-                    swiperRef.current = swiper;
-                  }}
-                >
-                  {carouselItems.map((item, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="rounded-[22px] border border-4 border-yellow-500 h-full p-8 bg-white dark:bg-zinc-900 shadow-lg flex flex-col items-center text-center space-y-6">
-                        <a href="#">
-                          <img
-                            className="w-full max-w-xs mx-auto mb-4 h-60 object-fit rounded-full bg-yellow-300"
-                            src={item.imgSrc}
-                            alt={item.title}
-                          />
-                        </a>
-                        <p className="font-inter font-semibold text-xl text-gray-900 hover:underline dark:text-white">
-                          {item.title}
-                        </p>
-                        <p className="font-inter text-gray-600 dark:text-gray-300 text-lg">
-                          {item.description}
-                        </p>
-                      </div>
-                    </SwiperSlide>
-                  ))}
-
-                  {/* Navigation buttons */}
-
-                  <div className=" absolute top-1/2 left-0 transform -translate-y-1/2 text-white z-10">
-                    <button
-                      onClick={() => swiperRef.current?.slidePrev()}
-                      className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      <svg
-                        aria-hidden="true"
-                        className="h-7 w-7"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                      <span className="sr-only">Previous</span>
-                    </button>
-                  </div>
-                  <div className="absolute top-1/2 right-0 transform -translate-y-1/2 text-white z-10">
-                    <button
-                      onClick={() => swiperRef.current?.slideNext()}
-                      className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      <svg
-                        className="w-7 h-7"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                    </button>
-                  </div>
-                </Swiper>
-              </div>
-            </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

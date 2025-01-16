@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import pencil from "../../assets/pencil.png"
 
 function ScholarshipsDest() {
   const scholarships = useSelector((state) =>
@@ -47,57 +48,41 @@ function ScholarshipsDest() {
   }
 
   return (
-    <div className="mb-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-      <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-        Financial Aid and Scholarships
-      </h2>
-      <ul>
-        {validScholarships.map((scholarship, index) => (
-          <li
-            key={index}
-            className="mb-4 border-b pb-2 last:border-none dark:border-gray-600"
-          >
-            <h3 className="text-md font-medium text-gray-800 dark:text-gray-200">
-              {scholarship.scholarshipName || "Unnamed Scholarship"}
-            </h3>
-            {scholarship.link && (
-              <a
-                href={scholarship.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline dark:text-blue-400"
-              >
-                View Details
-              </a>
-            )}
-            <p className="text-gray-600 dark:text-gray-400 mt-1">
-              {scholarship.description || "No description available."}
-            </p>
-            <div className="mt-2">
-              <button
-                onClick={() => handleEditScholarship(scholarship)}
-                className="mr-2 text-sm text-blue-600 hover:underline dark:text-blue-400"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleDeleteScholarship(scholarship)}
-                className="text-sm text-red-600 hover:underline dark:text-red-400"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <button
-        type="button"
-        onClick={() => handleOpenAddModal("Financial Aid and Scholarships")}
-        className="mt-4 py-2 px-3 text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-      >
-        Add
-      </button>
-    </div>
+    <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">
+     <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                  <thead class="text-sm text-gray-700  bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                      <tr>
+                          <th  class="px-4 py-3">Scholarship Name</th>
+                          <th  class="px-4 py-3 whitespace-nowrap">Last Edited</th>
+                          <th  class="px-4 py-3">
+                               </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                          <td class=" px-4 py-3">
+                              <div class="flex items-center">
+                              Scholarship - Engineering
+                                     </div>
+                          </td>
+                          <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                              <div class="flex items-center">
+                                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/avatar-10.png" alt="iMac Front Image" class="w-auto h-8 mr-3 rounded-full"/>
+                                  <span>Jan 12,2030</span>
+                              </div>
+                          </th>
+                         
+                          <td className="px-4 py-3">
+                          <img src={pencil} alt="iMac Front Image" class="w-5 h-5 mr-3 "/>
+
+
+                             </td>
+                          </tr>
+                      </tbody>
+              </table>
+          </div>
+     </div>
   );
 }
 

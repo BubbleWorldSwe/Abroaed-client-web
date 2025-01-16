@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "../pages/admin/Dashboard";
 
 import PrivateRoute from "./privateRoute";
-import AccomodationLayout from "../pages/accomodation/AccomodationLayout";
+import AccomodationLayout from "../pages/accommodation/AccomodationLayout";
 import FinanceLayout from "../Layouts/FinanceLayout";
 import LayoutPageDestination from "../Layouts/DestinationLayout";
 import AdminLayout from "../Layouts/AdminLayout";
@@ -26,6 +26,10 @@ import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import AboutUsLayout from "../Layouts/AboutUsLayout";
 import CareersLayout from "../Layouts/CareersLayout";
 import PathwaysHomeLayout from "../Layouts/PathwaysHomeLayout";
+import LanguagePrepTable from "../pages/admin/LanguagePrepTable";
+import LanguagePrepPage from "../pages/LanguagePrep/LanguagePrepPage";
+import AccommodationTable from "../pages/admin/AccommodationTable";
+import AccommodationPage from "../pages/accommodation/AccommodationPage";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -78,6 +82,10 @@ const AppRoutes = () => {
         { path: "students", element: <StudentsTable /> },
         { path: "leads", element: <ManageLeadsTable /> },
         { path: "colleges", element: <CollegeTable /> },
+        { path: "accommodation", element: <AccommodationTable /> },
+        { path: "accommodation/:name", element: <AccommodationPage /> },
+        { path: "langPrep/:name", element: < LanguagePrepPage/> },
+        { path: "langPrep", element: < LanguagePrepTable/> },
         { path: "colleges/:name", element: <CollegePage /> },
         { path: "destinations/:name", element: <DestinationPage /> },
         { path: "destinations", element: <DestinationTable /> },
@@ -96,7 +104,8 @@ const AppRoutes = () => {
             isPrivate ? (
               <PrivateRoute>{element}</PrivateRoute> // Wrap private routes in PrivateRoute
             ) : (
-              element // Render public routes directly
+              element // 
+              //  public routes directly
             )
           }
         >
