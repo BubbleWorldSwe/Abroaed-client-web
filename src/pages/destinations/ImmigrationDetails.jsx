@@ -36,8 +36,7 @@ const ImmigrationDetails = () => {
           </div>
     
            </div>
-          
-        </div>
+          </div>
   )
 }
 

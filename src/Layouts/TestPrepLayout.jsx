@@ -14,6 +14,7 @@ import vectorDownNose from "../assets/vectorDownNose.png"
 import vectorLeftNoseSmall from "../assets/vectorLeftNoseSmall.png"
 import FAQsection from "../Components/FAQsection";
 import BlogsSection from "../Components/BlogsSection";
+import HomePageLeadForm from "../Components/HomePageLeadForm";
 
 
 function TestPrepLayout() {
@@ -64,9 +65,8 @@ function TestPrepLayout() {
         </div>
       </div>
       {/* <LucideContactRound/> */}
-      <TestPrepForm />
-
-      <Footer />
+      <HomePageLeadForm />
+<Footer />
     </div>
   );
 }
