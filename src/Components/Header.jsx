@@ -69,6 +69,7 @@ function Header() {
         <nav className="flex items-center w-full px-6 py-4">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
+           
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               // src={logo}
