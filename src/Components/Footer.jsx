@@ -1,6 +1,7 @@
 import logoWithText from '../assets/logoWithText.png'
 import playStore from "../assets/playStore.png"
 import AppStore from "../assets/AppStore.png"
+
 function Footer() {
   return (
     <div>
@@ -218,5 +219,6 @@ function Footer() {
     </div>
   );
 }
+
 
 export default Footer;
