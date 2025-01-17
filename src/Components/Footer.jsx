@@ -1,5 +1,5 @@
 import logoWithText from '../assets/logoWithText.png'
-import playStore from "../assets/playStore.png"
+import playStore from "../assets/PlayStore.png"
 import AppStore from "../assets/AppStore.png"
 
 function Footer() {
