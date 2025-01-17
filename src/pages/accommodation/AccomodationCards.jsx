@@ -6,19 +6,34 @@ import locationIcon from "../../assets/locationIcon.png"
 
 function AccommodationGrid() {
   return (
-    <div className="flex gap-4 px-6 py-8 bg-white">
+    <div className="relative mx-auto px-10">
+<div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
+    <div className="flex  gap-4  py-8 bg-white  px-10 mx-auto">
       {/* Search Bar Section */}
-      <div className="w-1/4  p-6 ">
-        <h3 className="text-lg font-bold mb-4 text-gray-900">Search</h3>
-        <input
-          type="text"
-          placeholder="Search by location"
-          className="w-full p-2 border rounded-lg shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+      <div className="w-1/5  py-1 ">
+         <form class=" mx-auto">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" id="default-search" class="block w-full py-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search City, Country" required />
+        {/* <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> */}
+    </div>
+    <div className="flex flex-col gap-3 mt-3">
+      <p className="font-semibold text-lg ">Filter By Country</p>
+    <p className="text-gray-500"> US (230)</p>
+    <p className="text-gray-500"> UK (120)</p>
+    <p className="text-gray-500"> Canada (100)</p>
+    <p className="text-gray-500">Australia (100)</p>
+    </div>
+</form>
       </div>
 
       {/* Cards Grid Section */}
-      <div className="w-3/4">
+      <div className="w-4/5">
         <h5 className=" text-2xl font-bold tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">Showing Results for USA</h5>
         <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-800"></hr>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
@@ -37,7 +52,8 @@ function AccommodationGrid() {
               <div className="p-5">
                 <div className="flex justify-between">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {item.name}
+                    {/* {item.name} */}
+                    Accommodation Name
                   </h5>
                   <div>
                     <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -85,6 +101,8 @@ function AccommodationGrid() {
         </div>
       </div>
 
+    </div>
+ </div>
     </div>
   );
 }

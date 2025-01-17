@@ -1,4 +1,4 @@
-import React from "react";
+
 import DestinationHero from "../pages/destinations/DestinationHero";
 import DestinationInfo from "../pages/destinations/DestinationInfo";
 import FAQsection from "../Components/FAQsection";
