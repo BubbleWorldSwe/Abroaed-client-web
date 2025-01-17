@@ -1,5 +1,6 @@
 import { TableOfContents, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
+import logo from '../assets/logo.png';
 
 function Header() {
   const [nav, setNav] = useState(false);
@@ -70,6 +71,7 @@ function Header() {
           <div className="flex flex-grow-0 basis-[10%]">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
+              // src={logo}
               className="mr-3 h-6 sm:h-9"
               alt="Flowbite Logo"
             />
