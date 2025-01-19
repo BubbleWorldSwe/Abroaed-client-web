@@ -1,5 +1,4 @@
 
-import destinationHeroImg from "../../assets/destinationHeroImg.png"
 function DestinationHero({header,text,img}) {
   return (
     <div>

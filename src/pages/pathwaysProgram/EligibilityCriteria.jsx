@@ -31,7 +31,7 @@ function EligibilityCriteria() {
                                             University Name
                                         </h5>
 
-                                        <div className="mb-2 px-8 flex justify-between text-center ">
+                                        <div className="mb-2 px-8  ">
                                             <div>
                                                 <ul className="list-disc ">
                                                     <li>
