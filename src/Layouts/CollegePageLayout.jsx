@@ -3,27 +3,19 @@ import FAQsection from "../Components/FAQsection";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import HomePageLeadForm from "../Components/HomePageLeadForm";
-import { KpiMatrix } from "../Components/KpiMatrix";
-import AdmissionRequirement from "../pages/destinations/AdmissionRequirement";
-import DestinationExpanses from "../pages/destinations/DestinationExpanses";
 import DestinationHero from "../pages/destinations/DestinationHero";
 import DestinationScholarship from "../pages/destinations/DestinationScholarship";
-import ImmigrationDetails from "../pages/destinations/ImmigrationDetails";
 import StudentAccommodations from "../pages/destinations/StudentAccommodations";
-import WorkOpportunities from "../pages/destinations/WorkOpportunities";
-import EligibilityCriteria from "../pages/pathwaysProgram/EligibilityCriteria";
-import PathwaysProgram from "../pages/pathwaysProgram/PathwaysProgram";
 import dark from "../assets/dark.png"
 import locationIcon from '../assets/locationIcon.png'
 import worldIcon from "../assets/worldIcon.png"
 import DestinationInfo from "../pages/destinations/DestinationInfo";
 import FunFacts from "../Components/FunFacts"; 
 import vectorLeftFlat from "../assets/vectoreLeftFlat.png"
-import UniversityPlace from "../pages/CollegeWeb/universityPlace";
+import UniversityPlace from "../pages/CollegeWeb/UniversityPlace";
 import CourseOffer from "../pages/CollegeWeb/CourseOffer";
 import vectorleftNose from "../assets/vectorleftNose.png"
 import vectorDownNose from "../assets/vectorDownNose.png"
-import vectorBelow from '../assets/vectorBelow.png'
 import vectorLeftNoseSmall from '../assets/vectorLeftNoseSmall.png'
  import AbroaedUpdatesCards from "../Components/AbroaedUpdatesCards";
 //  import AbroaedUpdatesCards from "../Components/";
