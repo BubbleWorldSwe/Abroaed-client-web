@@ -23,11 +23,13 @@ import StudentAccommodations from "../pages/destinations/StudentAccommodations";
 import BlogsSection from "../Components/BlogsSection";
 import vectorNoseRightToLeft from "../assets/vectorNoseRightToLeft.png"
 import HomePageLeadForm from "../Components/HomePageLeadForm";
+import destinationHeroImg from "../assets/destinationHeroImg.png"
+
 function LayoutPageDestination() {
   return (
     <div>
       <Header />
-      <DestinationHero />
+      <DestinationHero header={'Study in United Kingdom'} text={`Learn more about the exciting places where you can study`}  img={destinationHeroImg}/>
       <DestinationRouting />
       <DestinationInfo />
       <div className="relative ">

@@ -70,7 +70,7 @@ function HomeLayout() {
     <>
       <Header />
       <HeroSection />
-      <KpiMatrix />
+      <KpiMatrix  title={"Why Abroad?"} header={"What sets us apart?"} subtitle={"Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind."}/>
       <PathwaySection />
       <HomeServicesCards />
       <PromoSection />
