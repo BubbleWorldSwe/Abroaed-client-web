@@ -3,11 +3,9 @@ import DestinationHero from "../pages/destinations/DestinationHero";
 import DestinationInfo from "../pages/destinations/DestinationInfo";
 import FAQsection from "../Components/FAQsection";
 import Header from "../Components/Header";
-import { HomeForm } from "../Components/AnimatedTabs";
 import FunFacts from "../Components/FunFacts";
 import UniCoursersCard from "../pages/destinations/UniCoursersCard";
 import Footer from "../Components/Footer";
-import AccomodationLeadForm from "../pages/accommodation/AccomodationLeadForm";
 import AbroaedUpdatesCards from "../Components/AbroaedUpdatesCards";
 import DestinationRouting from "../pages/destinations/DestinationRouting";
 import vectorLeftFlat from "../assets/vectoreLeftFlat.png"
@@ -26,14 +24,22 @@ import HomePageLeadForm from "../Components/HomePageLeadForm";
 import destinationHeroImg from "../assets/destinationHeroImg.png"
 
 function LayoutPageDestination() {
+   const items = [
+  { icon: "💻", title: "Laptops & Computers", desc: "Top brands and accessories" },
+  { icon: "📺", title: "TV", desc: "Smart and 4K TVs" },
+  { icon: "📱", title: "Tablets", desc: "Portable and powerful tablets" },
+  { icon: "🎵", title: "Audio", desc: "Headphones and speakers" },
+  { icon: "📷", title: "Cameras", desc: "Capture your best moments" },
+];
+ 
   return (
     <div>
       <Header />
       <DestinationHero header={'Study in United Kingdom'} text={`Learn more about the exciting places where you can study`}  img={destinationHeroImg}/>
       <DestinationRouting />
-      <DestinationInfo />
+      <DestinationInfo header={"Why Study in United Kingdom?"} text1={"lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."} />
       <div className="relative ">
-      <FunFacts />
+      <FunFacts items={items}/>
 <div className="absolute bottom-16 left-0 z-0">
         <img
           className="rounded-lg w-full h-full object-cover"
