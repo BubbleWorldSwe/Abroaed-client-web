@@ -30,6 +30,7 @@ import LanguagePrepTable from "../pages/admin/LanguagePrepTable";
 import LanguagePrepPage from "../pages/LanguagePrep/LanguagePrepPage";
 import AccommodationTable from "../pages/admin/AccommodationTable";
 import AccommodationPage from "../pages/accommodation/AccommodationPage";
+import PathwaysProgramLayout from "../Layouts/PathwaysProgramLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -40,7 +41,7 @@ const AppRoutes = () => {
       element: <LayoutPageDestination />,
       isPrivate: false,
     },
-    {
+   {
       path: "/",
       element: <ComingSoonPage />,
       isPrivate: false, 
@@ -68,7 +69,11 @@ const AppRoutes = () => {
       element: <PathwaysHomeLayout />,
       isPrivate: false,
     },
-
+    {
+      path: "/pathwaysProgram",
+      element: <PathwaysProgramLayout />,
+      isPrivate: false,
+    },
     // Admin Dashboard Routes (Private)
     {
       path: "/admin",
