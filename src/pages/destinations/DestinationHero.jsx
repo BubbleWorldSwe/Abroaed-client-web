@@ -18,6 +18,7 @@ function DestinationHero({header,text,img}) {
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
             {header}
           </h1>
+          
           <p className="font-light text-white md:text-lg xl:text-xl">
             {text}
             <br />
