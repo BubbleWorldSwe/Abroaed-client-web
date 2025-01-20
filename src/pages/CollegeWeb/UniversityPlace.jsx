@@ -1,25 +1,15 @@
-import { useState } from 'react';
-import dark from '../assets/dark.png'
-import HomeServiceModal from './Modals/HomeServiceModal';
+
+import dark from "../../assets/dark.png"
 
 
-
-const HomeServicesCards = () => {
-    const [modalOpen, setModalOpen] = useState(false);
-
+const UniversityPlace = () => {
     return (
         <div>
-            {modalOpen && (
-                <HomeServiceModal
-                    modalOpen={modalOpen}
-                    onClose={() => setModalOpen(false)}
-                />
-            )}
-<section className="dark:bg-gray-900 relative">
-                <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6 relative z-10">
-                    <div className="py-8">
+            <section className="dark:bg-gray-900 relative">
+                <div className="py-8 px-4 mx-auto  lg:py-24 lg:px-6 relative z-10">
+                    <div className="py-8 text-center">
                         <h1 className="mb-4 text-5xl tracking-tight font-extrabold">
-                            What we bring to the table (Services).
+                            Charles Darwin University at a Glance
                         </h1>
                     </div>
                     <div className="overflow-x-auto">
@@ -27,7 +17,8 @@ const HomeServicesCards = () => {
                             {Array(6)
                                 .fill(0)
                                 .map((_, index) => (
-                                    <div key={index} className="w-full lg:w-96 md:w-80 sm:w-72 h-[35rem] relative rounded-lg overflow-hidden">
+                                    <div key={index} className="w-full lg:w-96
+                                     md:w-80 sm:w-72 h-[35rem] relative rounded-lg overflow-hidden">
                                         {/* Background Image with Overlay */}
                                         <div className="relative w-full h-full">
                                             <img
@@ -39,15 +30,13 @@ const HomeServicesCards = () => {
                                         </div>
 
                                         {/* Text Content */}
-                                        <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                                        {/* <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
                                             <div>
                                                 <p className="text-gray-200 lg:mb-2 sm:text-xl">Explore</p>
                                                 <h1 className="mb-4 text-3xl font-bold text-white">
                                                     This is our service
                                                 </h1>
                                             </div>
-
-                                            {/* Button */}
                                             <button
                                                 type="button"
                                                 onClick={() => setModalOpen(true)}
@@ -69,16 +58,16 @@ const HomeServicesCards = () => {
                                                     />
                                                 </svg>
                                             </button>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 ))}
                         </div>
                     </div>
                 </div>
             </section>
+
         </div>
-    );
-};
+    )
+}
 
-
-export default HomeServicesCards;
+export default UniversityPlace

@@ -453,6 +453,22 @@ function Header() {
                   Pathways
                 </a>
               </li>
+              <li>
+                <a
+                  href="/pathwaysProgram"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
+                  Pathways Program
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/college"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
+                  College
+                </a>
+              </li>
             </ul>
           </div>
 
