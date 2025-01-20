@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import comingSoon from '../assets/comingSoon.svg'
 import AppStore from "../assets/AppStore.png"
-import playStore from "../assets/playStore.png"
+import playStore from "../assets/PlayStore.png"
 import InfiniteMovingCards from "../Components/InfiniteMovingCards";
 
 const carouselItems = [
