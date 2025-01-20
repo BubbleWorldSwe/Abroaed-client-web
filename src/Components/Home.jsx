@@ -77,7 +77,7 @@ function HomeLayout() {
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
       <OurPartners />
-      {/* <TestimonialsSection /> */}
+      <TestimonialsSection />
       <BlogsSection />
       <DownloadApp />
       {/* <Pricing /> */}
