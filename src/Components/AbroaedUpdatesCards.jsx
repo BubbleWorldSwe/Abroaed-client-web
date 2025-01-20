@@ -21,7 +21,7 @@ const articles = [
 ];
 
 
-function AbroadUpdatesCards() {
+function AbroaedUpdatesCards() {
   return (
     <div>
       <section className=" dark:bg-gray-900 relative px-10 mx-auto">
@@ -65,4 +65,4 @@ function AbroadUpdatesCards() {
   );
 }
 
-export default AbroadUpdatesCards;
+export default AbroaedUpdatesCards;

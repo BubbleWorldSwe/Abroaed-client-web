@@ -1,6 +1,4 @@
-import { TableOfContents, X } from "lucide-react";
 import  { useEffect, useState } from "react";
-import logo from '../assets/logo.png';
 
 function Header() {
   const [nav, setNav] = useState(false);
@@ -467,6 +465,14 @@ function Header() {
                   className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   College
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/homeCounselling"
+                  className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
+                >
+                  Home Counselling
                 </a>
               </li>
             </ul>

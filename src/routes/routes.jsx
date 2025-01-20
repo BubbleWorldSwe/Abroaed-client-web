@@ -32,6 +32,7 @@ import AccommodationTable from "../pages/admin/AccommodationTable";
 import AccommodationPage from "../pages/accommodation/AccommodationPage";
 import PathwaysProgramLayout from "../Layouts/PathwaysProgramLayout";
 import CollegePageLayout from "../Layouts/CollegePageLayout";
+import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
 
 const AppRoutes = () => {
   // Define all routes (public and private)
@@ -78,6 +79,11 @@ const AppRoutes = () => {
     {
       path: "/college",
       element: <CollegePageLayout />,
+      isPrivate: false,
+    },
+    {
+      path: "/homeCounselling",
+      element: <HomeCounsellingLayout />,
       isPrivate: false,
     },
     // Admin Dashboard Routes (Private)
