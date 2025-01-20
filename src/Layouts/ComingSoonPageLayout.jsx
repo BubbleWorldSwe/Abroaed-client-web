@@ -1,15 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import slider1 from "../assets/slider1.png";
 import slider2 from "../assets/slider2.png";
 import slider3 from "../assets/slider3.png";
-import { Spotlight } from "../Components/SpotLight";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import comingSoon from '../assets/comingSoon.svg'
 import AppStore from "../assets/AppStore.png"
 import playStore from "../assets/PlayStore.png"
 import InfiniteMovingCards from "../Components/InfiniteMovingCards";
@@ -46,6 +41,7 @@ const carouselItems = [
     imgSrc: slider3,
   },
 ];
+
 
 const SlidingComponent = () => {
   return (
