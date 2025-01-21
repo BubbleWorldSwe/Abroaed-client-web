@@ -18,7 +18,8 @@ const InfiniteMovingCards = ({
   const speedToDuration = {
     fast: "10s",
     normal: "20s",
-    slow: "110s",
+    slow: "150s",
+    superSlow: "20s"
   };
 
   // Function to duplicate items for infinite scroll effect

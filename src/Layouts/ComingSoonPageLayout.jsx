@@ -326,7 +326,7 @@ function ComingSoonPageLayout() {
           component={<SlidingHeader />}
           items={[]}
           direction="right"
-          speed="slow"
+          speed="superSlow"
           pauseOnHover={false}
         />
       </div>
