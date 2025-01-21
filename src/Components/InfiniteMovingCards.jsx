@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 
-import Marquee from "react-fast-marquee";
 // import MarqueeItem from 'react-marquee-line/lib/MarqueeItem';
 
 const InfiniteMovingCards = ({
@@ -21,24 +20,24 @@ const InfiniteMovingCards = ({
     if (containerRef.current && scrollerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
       const scrollerWidth = scrollerRef.current.scrollWidth;
-  
+
       // Calculate the number of times the content needs to be duplicated
       const repeatCount = Math.ceil(containerWidth / scrollerWidth) + 1;
-  
+
       // Duplicate the scroller content enough times
       for (let i = 0; i < repeatCount; i++) {
         Array.from(scrollerRef.current.children).forEach((item) => {
-          
+
           const duplicatedItem = item.cloneNode(true);
           scrollerRef.current.appendChild(duplicatedItem);
         });
       }
-  
- setAnimationProperties();
+
+      setAnimationProperties();
       setStart(true);
     }
   }, []);
-  
+
   // Set the direction and speed for the animation
   const setAnimationProperties = () => {
     if (containerRef.current) {
@@ -58,7 +57,7 @@ const InfiniteMovingCards = ({
   };
 
   return (
-<div
+    <div
       ref={containerRef}
       className={cn(
         "scroller relative z-20 max-w-screen overflow-hidden ",
@@ -66,19 +65,19 @@ const InfiniteMovingCards = ({
         className
       )}
     >
-       <div
-              ref={scrollerRef}
-              className={cn(
-                // "flex min-w-full gap-4 py-4 flex-nowrap",
-                "flex max-w-min  gap-4 py-2 flex-nowrap",
-                start && "animate-scroll",
-                pauseOnHover && "hover:[animation-play-state:paused]"
-                
-              )}
-            >
-      {component}
+      <div
+        ref={scrollerRef}
+        className={cn(
+          // "flex min-w-full gap-4 py-4 flex-nowrap",
+          "flex max-w-min  gap-4 py-2 flex-nowrap",
+          start && "animate-scroll",
+          pauseOnHover && "hover:[animation-play-state:paused]"
 
-            </div>
+        )}
+      >
+        {component}
+
+      </div>
     </div>
   );
 };
