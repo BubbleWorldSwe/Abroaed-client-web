@@ -7,7 +7,7 @@ const InfiniteMovingCards = ({
   component,
   items,
   direction = "left",
-  speed = "fast",
+  speed = "slow",
   pauseOnHover = true,
   className,
 }) => {
@@ -15,22 +15,27 @@ const InfiniteMovingCards = ({
   const scrollerRef = React.useRef(null);
   const [start, setStart] = useState(false);
 
+  const speedToDuration = {
+    fast: "10s",
+    normal: "20s",
+    slow: "110s",
+  };
+
   // Function to duplicate items for infinite scroll effect
   useEffect(() => {
     if (containerRef.current && scrollerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
       const scrollerWidth = scrollerRef.current.scrollWidth;
 
-      // Calculate the number of times the content needs to be duplicated
-      const repeatCount = Math.ceil(containerWidth / scrollerWidth) + 1;
-
-      // Duplicate the scroller content enough times
-      for (let i = 0; i < repeatCount; i++) {
-        Array.from(scrollerRef.current.children).forEach((item) => {
-
-          const duplicatedItem = item.cloneNode(true);
-          scrollerRef.current.appendChild(duplicatedItem);
-        });
+      // Only duplicate until content fills the viewport
+      if (scrollerWidth < containerWidth) {
+        const repeatCount = Math.ceil(containerWidth / scrollerWidth) + 1;
+        for (let i = 0; i < repeatCount; i++) {
+          Array.from(scrollerRef.current.children).forEach((item) => {
+            const duplicatedItem = item.cloneNode(true);
+            scrollerRef.current.appendChild(duplicatedItem);
+          });
+        }
       }
 
       setAnimationProperties();
@@ -42,8 +47,7 @@ const InfiniteMovingCards = ({
   const setAnimationProperties = () => {
     if (containerRef.current) {
       const directionValue = direction === "left" ? "forwards" : "reverse";
-      const durationValue =
-        speed === "fast" ? "20s" : speed === "normal" ? "40s" : "80s";
+      const durationValue = speedToDuration[speed] || "30s"; // Default to 'normal'
 
       containerRef.current.style.setProperty(
         "--animation-direction",
@@ -64,6 +68,7 @@ const InfiniteMovingCards = ({
         // "[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className
       )}
+      style={{ "--animation-duration": speedToDuration[speed] || "20s", }}
     >
       <div
         ref={scrollerRef}

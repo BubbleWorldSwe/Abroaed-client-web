@@ -24,7 +24,7 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
-    imgSrc: diversity ,
+    imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
@@ -35,7 +35,7 @@ const carouselItems = [
     title: "Visa & Accommodation",
     description: "End-to-end support for visa applications and finding comfortable housing overseas.",
     imgSrc: passport,
-      },
+  },
   {
     title: "Finance & FOREX",
     description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
@@ -54,7 +54,7 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
-    imgSrc: diversity ,
+    imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
@@ -65,7 +65,7 @@ const carouselItems = [
     title: "Visa & Accommodation",
     description: "End-to-end support for visa applications and finding comfortable housing overseas.",
     imgSrc: passport,
-      },
+  },
   {
     title: "Finance & FOREX",
     description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
@@ -84,7 +84,7 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
-    imgSrc: diversity ,
+    imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
@@ -95,7 +95,7 @@ const carouselItems = [
     title: "Visa & Accommodation",
     description: "End-to-end support for visa applications and finding comfortable housing overseas.",
     imgSrc: passport,
-      },
+  },
   {
     title: "Finance & FOREX",
     description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
@@ -114,7 +114,7 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
-    imgSrc: diversity ,
+    imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
@@ -125,7 +125,7 @@ const carouselItems = [
     title: "Visa & Accommodation",
     description: "End-to-end support for visa applications and finding comfortable housing overseas.",
     imgSrc: passport,
-      },
+  },
   {
     title: "Finance & FOREX",
     description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
@@ -144,7 +144,7 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
-    imgSrc: diversity ,
+    imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
@@ -155,7 +155,7 @@ const carouselItems = [
     title: "Visa & Accommodation",
     description: "End-to-end support for visa applications and finding comfortable housing overseas.",
     imgSrc: passport,
-      },
+  },
   {
     title: "Finance & FOREX",
     description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
@@ -176,9 +176,9 @@ const SlidingComponent = () => {
         <div key={index} className="w-96   shadow-2xl  p-4 rounded-lg bg-[#26262A] 	">
           <div>
             <div className="flex gap-3">
-            <div>
-              <img src={item.imgSrc} alt={`image-${index}`} />
-            </div>
+              <div>
+                <img src={item.imgSrc} alt={`image-${index}`} />
+              </div>
               <h3
 
                 className="mb-2  font-rethink text-base font-semibold  dark:text-white"
@@ -233,19 +233,19 @@ const texts = [
 const SlidingHeader = () => {
   return (
     <div className=" flex justify-between gap-4">
-    {texts.map((item, index) => (
-      <div
-        key={index}
-        className=" whitespace-nowrap  flex items-center justify-center text-center gap-4 "
-      >
-        <div className="p-1 w-2 h-2 bg-white rounded-full"></div>
-        <div className="text-white text-lg font-medium font-rethink flex-shrink-0 whitespace-nowrap overflow-visibl max-w-min">{item}</div>
-      </div>
-    ))}
-  </div>
-  
+      {texts.map((item, index) => (
+        <div
+          key={index}
+          className=" whitespace-nowrap  flex items-center justify-center text-center gap-4 "
+        >
+          <div className="p-1 w-2 h-2 bg-white rounded-full"></div>
+          <div className="text-white text-lg font-medium font-rethink flex-shrink-0 whitespace-nowrap overflow-visibl max-w-min">{item}</div>
+        </div>
+      ))}
+    </div>
 
-    )
+
+  )
 }
 
 function ComingSoonPageLayout() {
@@ -356,7 +356,7 @@ function ComingSoonPageLayout() {
           <div className="max-w-lg ">
             <form className="  mx-auto">
               <p className="text-white text-lg mt-5 mb-2 text-center font-rethink">Get notified when we get live!</p>
- <div className="mb-3">
+              <div className="mb-3">
                 <label htmlFor="name" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Name*</label>
                 <input
                   type="name"
@@ -420,7 +420,7 @@ function ComingSoonPageLayout() {
                 </div>
               </div>
               <div className="absolute bottom-0 md:hidden  sm:right-4 md:right-5 hidden h-80 lg:flex">
-              {/* <div className=""> */}
+                {/* <div className=""> */}
                 <img
                   className="hidden mx-auto w-64  md:flex object-contain"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/iphone-mockup.png"
@@ -446,20 +446,20 @@ function ComingSoonPageLayout() {
           </div>
 
           <div className="mt-10  lg:hidden bg-[#26262A] w-full py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl">
-  <div className="max-w-xs lg:block md:flex justify-center text-center md:px-5">
-    <h2 className="mb-4 text-center font-rethink md:px-6 lg:px-1 lg:text-start lg:text-3xl font-extrabold text-gray-300 dark:text-white">
-      Join Waitlist for ABROAED mobile app.
-    </h2>
-    <div className='flex gap-5 px-4'>
-      <div>
-        <img src={playStore} alt='googlePlayStoreIcon' className='' />
-      </div>
-      <div>
-        <img src={AppStore} alt='googlePlayStoreIcon' className='' />
-      </div>
-    </div>
-  </div>
-</div>
+            <div className="max-w-xs lg:block md:flex justify-center text-center md:px-5">
+              <h2 className="mb-4 text-center font-rethink md:px-6 lg:px-1 lg:text-start lg:text-3xl font-extrabold text-gray-300 dark:text-white">
+                Join Waitlist for ABROAED mobile app.
+              </h2>
+              <div className='flex gap-5 px-4'>
+                <div>
+                  <img src={playStore} alt='googlePlayStoreIcon' className='' />
+                </div>
+                <div>
+                  <img src={AppStore} alt='googlePlayStoreIcon' className='' />
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
