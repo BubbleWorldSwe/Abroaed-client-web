@@ -8,37 +8,163 @@ import "swiper/css/pagination";
 import AppStore from "../assets/AppStore.png"
 import playStore from "../assets/PlayStore.png"
 import InfiniteMovingCards from "../Components/InfiniteMovingCards";
+import documentAdd from "../assets/documentAdd.png"
+import handMoney from "../assets/handMoney.png"
+import homeSmileAngle from "../assets/homeSmileAngle.png"
+import passport from "../assets/passport.png"
+import squareAcademicCap from "../assets/squareAcademicCap.png"
+import diversity from "../assets/diversity.png"
 
 const carouselItems = [
   {
-    title: "Study Abroad Consultation",
+    title: "Home Counselling",
     description: "Get expert guidance on selecting the right course and destination.",
-    imgSrc: slider1,
+    imgSrc: homeSmileAngle,
   },
   {
-    title: "Visa Assistance",
-    description: "Receive step-by-step support for your visa application process.",
-    imgSrc: slider2,
+    title: "Personalised Mentor",
+    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+    imgSrc: diversity ,
   },
   {
-    title: "Document Management",
-    description: "Efficiently manage and submit your application documents online.",
-    imgSrc: slider3,
+    title: "Scholarship Assistance",
+    description: "Identify and secure scholarships for their study-abroad journey",
+    imgSrc: squareAcademicCap,
   },
   {
-    title: "Test Preparation",
-    description: "Prepare for language and standardized tests with expert coaching.",
-    imgSrc: slider1,
+    title: "Visa & Accommodation",
+    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
+    imgSrc: passport,
+      },
+  {
+    title: "Finance & FOREX",
+    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
+    imgSrc: handMoney,
   },
   {
-    title: "Accommodation Assistance",
-    description: "Find the perfect accommodation near your university.",
-    imgSrc: slider2,
+    title: "Customised SOP & LORs",
+    description: "Get guidance to craft personalized SOP and LORs that stand out.",
+    imgSrc: documentAdd,
   },
   {
-    title: "Post-Arrival Support",
-    description: "Receive assistance with settling in after you arrive at your destination.",
-    imgSrc: slider3,
+    title: "Home Counselling",
+    description: "Get expert guidance on selecting the right course and destination.",
+    imgSrc: homeSmileAngle,
+  },
+  {
+    title: "Personalised Mentor",
+    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+    imgSrc: diversity ,
+  },
+  {
+    title: "Scholarship Assistance",
+    description: "Identify and secure scholarships for their study-abroad journey",
+    imgSrc: squareAcademicCap,
+  },
+  {
+    title: "Visa & Accommodation",
+    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
+    imgSrc: passport,
+      },
+  {
+    title: "Finance & FOREX",
+    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
+    imgSrc: handMoney,
+  },
+  {
+    title: "Customised SOP & LORs",
+    description: "Get guidance to craft personalized SOP and LORs that stand out.",
+    imgSrc: documentAdd,
+  },
+  {
+    title: "Home Counselling",
+    description: "Get expert guidance on selecting the right course and destination.",
+    imgSrc: homeSmileAngle,
+  },
+  {
+    title: "Personalised Mentor",
+    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+    imgSrc: diversity ,
+  },
+  {
+    title: "Scholarship Assistance",
+    description: "Identify and secure scholarships for their study-abroad journey",
+    imgSrc: squareAcademicCap,
+  },
+  {
+    title: "Visa & Accommodation",
+    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
+    imgSrc: passport,
+      },
+  {
+    title: "Finance & FOREX",
+    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
+    imgSrc: handMoney,
+  },
+  {
+    title: "Customised SOP & LORs",
+    description: "Get guidance to craft personalized SOP and LORs that stand out.",
+    imgSrc: documentAdd,
+  },
+  {
+    title: "Home Counselling",
+    description: "Get expert guidance on selecting the right course and destination.",
+    imgSrc: homeSmileAngle,
+  },
+  {
+    title: "Personalised Mentor",
+    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+    imgSrc: diversity ,
+  },
+  {
+    title: "Scholarship Assistance",
+    description: "Identify and secure scholarships for their study-abroad journey",
+    imgSrc: squareAcademicCap,
+  },
+  {
+    title: "Visa & Accommodation",
+    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
+    imgSrc: passport,
+      },
+  {
+    title: "Finance & FOREX",
+    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
+    imgSrc: handMoney,
+  },
+  {
+    title: "Customised SOP & LORs",
+    description: "Get guidance to craft personalized SOP and LORs that stand out.",
+    imgSrc: documentAdd,
+  },
+  {
+    title: "Home Counselling",
+    description: "Get expert guidance on selecting the right course and destination.",
+    imgSrc: homeSmileAngle,
+  },
+  {
+    title: "Personalised Mentor",
+    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+    imgSrc: diversity ,
+  },
+  {
+    title: "Scholarship Assistance",
+    description: "Identify and secure scholarships for their study-abroad journey",
+    imgSrc: squareAcademicCap,
+  },
+  {
+    title: "Visa & Accommodation",
+    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
+    imgSrc: passport,
+      },
+  {
+    title: "Finance & FOREX",
+    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
+    imgSrc: handMoney,
+  },
+  {
+    title: "Customised SOP & LORs",
+    description: "Get guidance to craft personalized SOP and LORs that stand out.",
+    imgSrc: documentAdd,
   },
 ];
 
@@ -47,35 +173,22 @@ const SlidingComponent = () => {
   return (
     <div className="flex gap-10 justify-between" >
       {carouselItems.map((item, index) => (
-        <div key={index} className="w-96  shadow-2xl bg-opacity-5 p-4 rounded-lg bg-slate-700 	">
+        <div key={index} className="w-96   shadow-2xl  p-4 rounded-lg bg-[#26262A] 	">
           <div>
             <div className="flex gap-3">
-              <svg
-                className="mb-2 h-8 w-8 text-[#fbba18] dark:text-yellow-500"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeWidth="2"
-                  d="M8 7V6a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1M3 18v-7a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"
-                />
-              </svg>
+            <div>
+              <img src={item.imgSrc} alt={`image-${index}`} />
+            </div>
               <h3
 
-                className="mb-2 font-inter text-xl font-semibold  dark:text-white"
+                className="mb-2  font-rethink text-base font-semibold  dark:text-white"
               >
                 {item.title}
               </h3>
 
 
             </div>
-            <p className="text-md font-inter text-white">
+            <p className="text-md font-rethink text-white opacity-60">
               {item.description}
             </p>
           </div>
@@ -96,20 +209,43 @@ const texts = [
   "LAUNCHING EARLY 2025",
   "COMING SOON",
   "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
+  "COMING SOON",
+  "LAUNCHING EARLY 2025",
 ]
 const SlidingHeader = () => {
   return (
-    <div className="flex gap-10 " >
-      {texts.map((item, index) => (
-        <div key={index} className=" whitespace-nowrap space-x-8 	">
-          <div className="list-item list-disc text-white text-lg font-medium">
-            {item}
-          </div>
+    <div className=" flex justify-between gap-4">
+    {texts.map((item, index) => (
+      <div
+        key={index}
+        className=" whitespace-nowrap  flex items-center justify-center text-center gap-4 "
+      >
+        <div className="p-1 w-2 h-2 bg-white rounded-full"></div>
+        <div className="text-white text-lg font-medium font-rethink flex-shrink-0 whitespace-nowrap overflow-visibl max-w-min">{item}</div>
+      </div>
+    ))}
+  </div>
+  
 
-        </div>
-      ))}
-    </div>
-  )
+    )
 }
 
 function ComingSoonPageLayout() {
@@ -182,7 +318,7 @@ function ComingSoonPageLayout() {
   };
 
   return (
-    <div className="relative w-full  text-white  overflow-hidden bg-[#323030]"
+    <div className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
     // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80 text-white ">
@@ -194,10 +330,10 @@ function ComingSoonPageLayout() {
           pauseOnHover={false}
         />
       </div>
-      <section className="min-h-screen flex  mt-4 md:mt-16 items-center flex-col justify-center w-full px-1 sm:px-8 "
-      >
-        <div className="text-center px-4 sm:px-8 lg:px-16 mb-7">
-          <h3 className="mb-6 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
+      <section className="min-h-screen flex mt-4 md:mt-16 items-center flex-col lg:justify-center md:justify-between w-full px-10 ">
+
+        <div className="text-center mx-auto px-1  lg:px-16 sm:mb-2  md:mb-5">
+          <h3 className="mb-3 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
             <span
               className="text-white font-cinzel tracking-[0.15em] text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] decoration-skip-ink"
             >
@@ -211,44 +347,43 @@ function ComingSoonPageLayout() {
             </span>
 
           </h3>
-          <h5 className="text-white lg:text-4xl md:text-xl font-cinzel font-semibold mb-1 md:mb-7">
+          <h5 className="text-white lg:text-4xl md:text-xl font-taviraj font-medium mb-1 md:mb-3">
             The World is Waiting
           </h5>
         </div>
 
-        <div className="grid grid-col-1 md:grid-cols-2  gap-5 w-full px-20">
-          <div className=" ">
-            <form className="max-w-sm mx-auto">
-              <p className="text-white text-lg mt-5 mb-2 text-center">Get notified when we get live!</p>
-
-              <div className="mb-3">
-                <label htmlFor="name" className="block mb-2 text-base font-medium text-white dark:text-white">Name*</label>
+        <div className="grid w-full mx-auto grid-col-1 md:grid-cols-2 lg:gap-1 md:gap-8  lg:px-20 md:px-10">
+          <div className="max-w-lg ">
+            <form className="  mx-auto">
+              <p className="text-white text-lg mt-5 mb-2 text-center font-rethink">Get notified when we get live!</p>
+ <div className="mb-3">
+                <label htmlFor="name" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Name*</label>
                 <input
                   type="name"
                   id="name"
-                  className="bg-black border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+                  className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
                   placeholder="John"
                   required
                 />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="email" className="block mb-2 text-base font-medium text-white dark:text-white">Email*</label>
+                <label htmlFor="email" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Email*</label>
                 <input
                   type="email"
                   id="email"
-                  className="bg-black border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                  className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
                   placeholder="name@flowbite.com"
                   required
                 />
               </div>
 
               <div className="mb-3">
-                <label htmlFor="mobile" className="block mb-2 text-base font-medium text-white dark:text-white">Mobile*</label>
+                <label htmlFor="mobile" className="block mb-2 font-rethink text-base font-medium text-white dark:text-white">Mobile*</label>
                 <input
                   type="tel"
                   id="mobile"
-                  className="bg-black border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+                  className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
                   placeholder="+91 9999999999"
                   required
                 />
@@ -257,7 +392,7 @@ function ComingSoonPageLayout() {
               <div className="mt-7">
                 <button
                   type="submit"
-                  className="w-full  font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
+                  className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                   style={{
                     backgroundColor: '#FDDA24',
                     color: '#000', // Adjust text color for better contrast
@@ -269,10 +404,10 @@ function ComingSoonPageLayout() {
             </form>
 
           </div>
-          <div className="  flex flex-col justify-end ">
-            <div className=" relative  bg-black w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl ">
-              <div className="max-w-sm">
-                <h2 className="mb-4 text-lg  md:text-3xl  font-extrabold text-gray-300 dark:text-white">
+          <div className=" hidden lg:flex flex-col justify-end ">
+            <div className=" relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl ">
+              <div className="lg:max-w-xs  ">
+                <h2 className="mb-4 text-lg md:text-center  font-rethink md:px-6 lg:px-1 lg:text-start   lg:text-3xl  font-extrabold text-gray-300 dark:text-white">
                   Join Waitlist for ABROAED mobile app.
                 </h2>
                 <div className='flex flex-col md:flex-row gap-5 p-2 '>
@@ -284,7 +419,8 @@ function ComingSoonPageLayout() {
                   </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 right-12 hidden h-80 md:flex">
+              <div className="absolute bottom-0 md:hidden  sm:right-4 md:right-5 hidden h-80 lg:flex">
+              {/* <div className=""> */}
                 <img
                   className="hidden mx-auto w-64  md:flex object-contain"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/iphone-mockup.png"
@@ -295,18 +431,36 @@ function ComingSoonPageLayout() {
             </div>
           </div>
         </div>
-        <div className="w-full h-full mx-auto py-10">
-          <h6 className="text-white text-xl font-semibold opacity-80 mb-5">What’s in store for you?</h6>
+        <div className="w-full h-full mx-auto px-1 py-10">
+          <h6 className="text-white text-xl font-semibold opacity-70 mb-5 font-rethink">What’s in store for you?</h6>
           <div className="overflow-x-auto">
-            <div className="flex space-x-5" style={{ minWidth: 'max-content' }}>
+            <div className="flex " style={{ minWidth: 'max-content' }}>
               <InfiniteMovingCards
                 component={<SlidingComponent />}
                 items={[]}
                 direction="right"
                 speed="slow"
+                pauseOnHover={true}
               />
             </div>
           </div>
+
+          <div className="mt-10  lg:hidden bg-[#26262A] w-full py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl">
+  <div className="max-w-xs lg:block md:flex justify-center text-center md:px-5">
+    <h2 className="mb-4 text-center font-rethink md:px-6 lg:px-1 lg:text-start lg:text-3xl font-extrabold text-gray-300 dark:text-white">
+      Join Waitlist for ABROAED mobile app.
+    </h2>
+    <div className='flex gap-5 px-4'>
+      <div>
+        <img src={playStore} alt='googlePlayStoreIcon' className='' />
+      </div>
+      <div>
+        <img src={AppStore} alt='googlePlayStoreIcon' className='' />
+      </div>
+    </div>
+  </div>
+</div>
+
           {/* <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
                 <div>
@@ -363,6 +517,7 @@ function ComingSoonPageLayout() {
               </div>
           </div> */}
         </div>
+
       </section>
     </div>
   );
