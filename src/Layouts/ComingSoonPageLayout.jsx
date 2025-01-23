@@ -14,12 +14,43 @@ import homeSmileAngle from "../assets/homeSmileAngle.png"
 import passport from "../assets/passport.png"
 import squareAcademicCap from "../assets/squareAcademicCap.png"
 import diversity from "../assets/diversity.png"
-
+import iPhoneIcon from "../assets/iPhoneIcon.png"
+import homeIcon from '../assets/homeIcon.png'
 const carouselItems = [
   {
     title: "Home Counselling",
-    description: "Get expert guidance on selecting the right course and destination.",
-    imgSrc: homeSmileAngle,
+    description: "Expert guidance from the comfort of your home to kickstart your study overseas journey.",
+    imgSrc: homeIcon,
+  },
+  {
+    title: "Designated Mentor",
+    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+    imgSrc: diversity,
+  },
+  {
+    title: "Scholarship Assistance",
+    description: "Identify and secure scholarships for their study-abroad journey",
+    imgSrc: squareAcademicCap,
+  },
+  {
+    title: "Visa & Accommodation",
+    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
+    imgSrc: passport,
+  },
+  {
+    title: "Finance & FOREX",
+    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
+    imgSrc: handMoney,
+  },
+  {
+    title: "Customised SOP & LORs",
+    description: "Get guidance to craft personalized SOP and LORs that stand out.",
+    imgSrc: documentAdd,
+  },
+  {
+    title: "Home Counselling",
+    description: "Expert guidance from the comfort of your home to kickstart your study overseas journey.",
+    imgSrc: homeIcon,
   },
   {
     title: "Personalised Mentor",
@@ -48,8 +79,8 @@ const carouselItems = [
   },
   {
     title: "Home Counselling",
-    description: "Get expert guidance on selecting the right course and destination.",
-    imgSrc: homeSmileAngle,
+    description: "Expert guidance from the comfort of your home to kickstart your study overseas journey.",
+    imgSrc: homeIcon,
   },
   {
     title: "Personalised Mentor",
@@ -78,8 +109,8 @@ const carouselItems = [
   },
   {
     title: "Home Counselling",
-    description: "Get expert guidance on selecting the right course and destination.",
-    imgSrc: homeSmileAngle,
+    description: "Expert guidance from the comfort of your home to kickstart your study overseas journey.Get expert guidance on selecting the right course and destination.",
+    imgSrc: homeIcon,
   },
   {
     title: "Personalised Mentor",
@@ -108,38 +139,8 @@ const carouselItems = [
   },
   {
     title: "Home Counselling",
-    description: "Get expert guidance on selecting the right course and destination.",
-    imgSrc: homeSmileAngle,
-  },
-  {
-    title: "Personalised Mentor",
-    description: "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
-    imgSrc: diversity,
-  },
-  {
-    title: "Scholarship Assistance",
-    description: "Identify and secure scholarships for their study-abroad journey",
-    imgSrc: squareAcademicCap,
-  },
-  {
-    title: "Visa & Accommodation",
-    description: "End-to-end support for visa applications and finding comfortable housing overseas.",
-    imgSrc: passport,
-  },
-  {
-    title: "Finance & FOREX",
-    description: "Simplifying overseas payments and currency exchanges with tailored financial solutions.",
-    imgSrc: handMoney,
-  },
-  {
-    title: "Customised SOP & LORs",
-    description: "Get guidance to craft personalized SOP and LORs that stand out.",
-    imgSrc: documentAdd,
-  },
-  {
-    title: "Home Counselling",
-    description: "Get expert guidance on selecting the right course and destination.",
-    imgSrc: homeSmileAngle,
+    description: "Expert guidance from the comfort of your home to kickstart your study overseas journey.",
+    imgSrc: homeIcon,
   },
   {
     title: "Personalised Mentor",
@@ -321,7 +322,7 @@ function ComingSoonPageLayout() {
     <div className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
     // style={{ backgroundImage: `url(${comingSoon})` }}
     >
-      <div className="overflow-hidden bg-black  bg-opacity-80 text-white ">
+      <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards
           component={<SlidingHeader />}
           items={[]}
@@ -330,138 +331,144 @@ function ComingSoonPageLayout() {
           pauseOnHover={false}
         />
       </div>
-      <section className="min-h-screen flex mt-4 md:mt-16 items-center flex-col lg:justify-center md:justify-between w-full px-10 ">
 
-        <div className="text-center mx-auto px-1  lg:px-16 sm:mb-2  md:mb-5">
-          <h3 className="mb-3 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
-            <span
-              className="text-white font-cinzel tracking-[0.15em] text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] decoration-skip-ink"
-            >
-              ABROA
-            </span>
-            <span
-              style={{ color: '#fbba18' }}
-              className="font-cinzel text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] tracking-[0.05em]"
-            >
-              ED
-            </span>
+<div className=" w-full">
 
-          </h3>
-          <h5 className="text-white lg:text-4xl md:text-xl font-taviraj font-medium mb-1 md:mb-3">
-            The World is Waiting
-          </h5>
-        </div>
+      <div className="flex justify-center max-w-[1440px] mx-auto">
 
-        <div className="grid w-full mx-auto grid-col-1 md:grid-cols-2 lg:gap-1 md:gap-8  lg:px-20 md:px-10">
-          <div className="max-w-lg ">
-            <form className="  mx-auto">
-              <p className="text-white text-lg mt-5 mb-2 text-center font-rethink">Get notified when we get live!</p>
-              <div className="mb-3">
-                <label htmlFor="name" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Name*</label>
-                <input
-                  type="name"
-                  id="name"
-                  className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
-                  placeholder="John"
-                  required
-                />
-              </div>
+        <section className="min-h-screen  flex mt-4 md:mt-16 items-center flex-col lg:justify-center md:justify-between w-full px-10 ">
+          <div className="text-center mx-auto px-1  lg:px-16 sm:mb-2  md:mb-5">
+            <h3 className="mb-3 text-center text-3xl font-bold text-yellow-500 sm:text-3xl md:text-4xl lg:text-6xl">
+              <span
+                className="text-white font-cinzel tracking-[0.15em] text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] decoration-skip-ink"
+              >
+                ABROA
+              </span>
+              <span
+                style={{ color: '#fbba18' }}
+                className="font-cinzel text-[32px] sm:text-[42px] md:text-[64px] lg:text-[114px] font-extrabold leading-[40px] sm:leading-[52px] md:leading-[84px] lg:leading-[128px] tracking-[0.05em]"
+              >
+                ED
+              </span>
 
-              <div className="mb-3">
-                <label htmlFor="email" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Email*</label>
-                <input
-                  type="email"
-                  id="email"
-                  className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="name@flowbite.com"
-                  required
-                />
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="mobile" className="block mb-2 font-rethink text-base font-medium text-white dark:text-white">Mobile*</label>
-                <input
-                  type="tel"
-                  id="mobile"
-                  className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
-                  placeholder="+91 9999999999"
-                  required
-                />
-              </div>
-
-              <div className="mt-7">
-                <button
-                  type="submit"
-                  className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
-                  style={{
-                    backgroundColor: '#FDDA24',
-                    color: '#000', // Adjust text color for better contrast
-                  }}
-                >
-                  Notify Me
-                </button>
-              </div>
-            </form>
-
+            </h3>
+            <h5 className="text-white lg:text-4xl md:text-xl font-taviraj font-medium mb-1 md:mb-3">
+              The World is Waiting
+            </h5>
           </div>
-          <div className=" hidden lg:flex flex-col justify-end ">
-            <div className=" relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl ">
-              <div className="lg:max-w-xs  ">
-                <h2 className="mb-4 text-lg md:text-center  font-rethink md:px-6 lg:px-1 lg:text-start   lg:text-3xl  font-extrabold text-gray-300 dark:text-white">
+          <div className="grid w-full mx-auto grid-col-1 md:grid-cols-2 lg:gap-1 md:gap-10  lg:px-20 md:px-10  ">
+            <div className="max-w-lg ">
+              <form className="  ">
+                <p className="text-white text-lg mt-5 mb-2 text-center font-rethink">Get notified when we get live!</p>
+                <div className="mb-3">
+                  <label htmlFor="name" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Name*</label>
+                  <input
+                    type="name"
+                    id="name"
+                    className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+                    placeholder="John"
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="block font-rethink mb-2 text-base font-medium text-white dark:text-white">Email*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                    placeholder="name@flowbite.com"
+                    required
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="mobile" className="block mb-2 font-rethink text-base font-medium text-white dark:text-white">Mobile*</label>
+                  <input
+                    type="tel"
+                    id="mobile"
+                    className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
+                    placeholder="+91 9999999999"
+                    required
+                  />
+                </div>
+
+                <div className="mt-7">
+                  <button
+                    type="submit"
+                    className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
+                    style={{
+                      backgroundColor: '#FDDA24',
+                      color: '#000', // Adjust text color for better contrast
+                    }}
+                  >
+                    Notify Me
+                  </button>
+                </div>
+              </form>
+
+            </div>
+            {/* <div className=""> */}
+            <div className=" hidden lg:flex flex-col justify-end  ">
+              <div className=" relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl ">
+                <div className="lg:max-w-xs  ">
+                  <h2 className="mb-4 text-lg md:text-center  font-rethink md:px-6 lg:px-1 lg:text-start   lg:text-3xl  font-extrabold text-gray-300 dark:text-white">
+                    Join Waitlist for ABROAED mobile app.
+                  </h2>
+                  <div className='flex flex-col md:flex-row gap-5 p-2 '>
+                    <div >
+                      <img src={playStore} alt='googlePlayStoreIcon' className='' />
+                    </div>
+                    <div>
+                      <img src={AppStore} alt='googlePlayStoreIcon' className='' />
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 md:hidden  sm:right-4 md:right-5 hidden h-80 lg:flex">
+                  {/* <div className=""> */}
+                  <img
+                    className="hidden mx-auto w-64  md:flex object-contain"
+                    src={iPhoneIcon}
+                    alt="mobile app"
+                  />
+
+                </div>
+              </div>
+              {/* </div> */}
+
+            </div>
+          </div>
+          <div className="w-full h-full mx-auto px-1 py-10">
+            <h6 className="text-white text-xl font-semibold opacity-70 mb-5 font-rethink">What’s in store for you?</h6>
+            <div className="overflow-x-auto">
+              <div className="flex " style={{ minWidth: 'max-content' ,}}>
+                <InfiniteMovingCards
+                  component={<SlidingComponent />}
+                  items={[]}
+                  direction="right"
+                  speed="slow"
+                  pauseOnHover={true}
+                />
+              </div>
+            </div>
+
+            <div className="mt-10  lg:hidden bg-[#26262A] w-full py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl">
+              <div className="max-w-xs lg:block md:flex justify-center text-center md:px-5">
+                <h2 className="mb-4 text-center font-rethink md:px-6 lg:px-1 lg:text-start lg:text-3xl font-extrabold text-gray-300 dark:text-white">
                   Join Waitlist for ABROAED mobile app.
                 </h2>
-                <div className='flex flex-col md:flex-row gap-5 p-2 '>
-                  <div >
+                <div className='flex gap-5 px-4'>
+                  <div>
                     <img src={playStore} alt='googlePlayStoreIcon' className='' />
                   </div>
                   <div>
-                    <img src={AppStore} alt='googlePlayStoreIcon' className='' />
+                    <img src={AppStore} alt='googlePlayStoreIcon' className=' ' />
                   </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 md:hidden  sm:right-4 md:right-5 hidden h-80 lg:flex">
-                {/* <div className=""> */}
-                <img
-                  className="hidden mx-auto w-64  md:flex object-contain"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/iphone-mockup.png"
-                  alt="mobile app"
-                />
-
-              </div>
             </div>
-          </div>
-        </div>
-        <div className="w-full h-full mx-auto px-1 py-10">
-          <h6 className="text-white text-xl font-semibold opacity-70 mb-5 font-rethink">What’s in store for you?</h6>
-          <div className="overflow-x-auto">
-            <div className="flex " style={{ minWidth: 'max-content' }}>
-              <InfiniteMovingCards
-                component={<SlidingComponent />}
-                items={[]}
-                direction="right"
-                speed="slow"
-                pauseOnHover={true}
-              />
-            </div>
-          </div>
 
-          <div className="mt-10  lg:hidden bg-[#26262A] w-full py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl">
-            <div className="max-w-xs lg:block md:flex justify-center text-center md:px-5">
-              <h2 className="mb-4 text-center font-rethink md:px-6 lg:px-1 lg:text-start lg:text-3xl font-extrabold text-gray-300 dark:text-white">
-                Join Waitlist for ABROAED mobile app.
-              </h2>
-              <div className='flex gap-5 px-4'>
-                <div>
-                  <img src={playStore} alt='googlePlayStoreIcon' className='' />
-                </div>
-                <div>
-                  <img src={AppStore} alt='googlePlayStoreIcon' className='' />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
+            {/* <div className="flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-20">
           <div className="mt-8 grid grid-cols-2 gap-4 dark:border-gray-700 sm:mt-8 sm:border-t sm:border-gray-200 sm:pt-8 lg:gap-8">
                 <div>
                   <svg
@@ -516,9 +523,10 @@ function ComingSoonPageLayout() {
                 </div>
               </div>
           </div> */}
-        </div>
-
-      </section>
+          </div>
+        </section>
+      </div>
+</div>
     </div>
   );
 }
