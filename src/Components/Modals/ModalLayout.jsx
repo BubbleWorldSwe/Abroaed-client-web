@@ -9,8 +9,8 @@ const ModalLayout = ({openModal,onClose,component}) => {
     : null;
 
  return openModal ? (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-1/5 min-w-max relative">
+  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-full max-w-[90%] sm:max-w-[70%] md:max-w-[50%] lg:max-w-[40%] relative">
       {/* <button
         className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
         onClick={onClose}
