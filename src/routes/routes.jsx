@@ -35,7 +35,7 @@ import CollegePageLayout from "../Layouts/CollegePageLayout";
 import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
 
 const AppRoutes = () => {
-  // Define all routes (public and private)
+ 
   const allRoutes = [
     { path: "/home", element: <HomeLayout />, isPrivate: false },
     {
@@ -121,9 +121,8 @@ const AppRoutes = () => {
             isPrivate ? (
               <PrivateRoute>{element}</PrivateRoute> // Wrap private routes in PrivateRoute
             ) : (
-              element // 
-              //  public routes directly
-            )
+              element 
+                       )
           }
         >
           {/* Render child routes */}
