@@ -281,7 +281,7 @@ const SlidingHeader = () => {
 function ComingSoonPageLayout() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState(0);
+  const [phone, setPhone] = useState('');
   const swiperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
@@ -318,6 +318,9 @@ function ComingSoonPageLayout() {
         }
       );
       setOpenModal(true);
+      setEmail('');
+      setName('');
+      setPhone('');
     } catch (error) {
       console.error("Error:", error);
       alert("Error submitting data.");
@@ -415,6 +418,7 @@ function ComingSoonPageLayout() {
                       type="text"
                       id="name"
                       maxLength={30}
+                      value={name}
 onChange={(e) => setName(e.target.value)}
                       className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
                       placeholder="John"
@@ -432,6 +436,7 @@ onChange={(e) => setName(e.target.value)}
                     <input
                       type="email"
                       id="email"
+                      value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
                       placeholder="name@flowbite.com"
@@ -449,6 +454,7 @@ onChange={(e) => setName(e.target.value)}
                     <input
                       type="tel"
                       id="mobile"
+                      value={phone}
                       maxLength={10}
                       onChange={(e) => setPhone(e.target.value)}
                       className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
