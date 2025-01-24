@@ -16,6 +16,7 @@ import squareAcademicCap from "../assets/squareAcademicCap.png";
 import diversity from "../assets/diversity.png";
 import iPhoneIcon from "../assets/iPhoneIcon.png";
 import homeIcon from "../assets/homeIcon.png";
+import ModalLayout from "../Components/Modals/ModalLayout";
 const carouselItems = [
   {
     title: "Home Counselling",
@@ -275,15 +276,16 @@ const SlidingHeader = () => {
   );
 };
 
+
+
 function ComingSoonPageLayout() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState(0);
-
   const swiperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
-
+  const [openModal, setOpenModal] = useState(false);
   useEffect(() => {
     const interval = setInterval(() => {
       setTickerPosition((prev) => (prev <= -100 ? 100 : prev - 1)); // Reset when it moves off-screen
@@ -312,16 +314,19 @@ function ComingSoonPageLayout() {
           method: "POST",
           body: JSON.stringify({ name, email, phone }),
           headers: { "Content-Type": "application/json" },
-          mode: "no-cors", // This avoids CORS errors but suppresses response content
+          mode: "no-cors",
         }
       );
-
-      alert("Data submitted successfully!");
+      setOpenModal(true);
     } catch (error) {
       console.error("Error:", error);
       alert("Error submitting data.");
     }
   };
+  const handleClose = () => {
+    setOpenModal(false);
+  }
+
 
   const words = ["coming", "soon!"];
   const belowWorld = ["launching", "early", "2025."];
@@ -341,10 +346,28 @@ function ComingSoonPageLayout() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  const ConfirmModal = ({onClick}) => (
+    <div className="flex flex-col gap-3 justify-center ">
+    <p className="text-black text-2xl text-center">Thanks for submitting your information</p>
+    {/* <button
+      type="button"
+      onClick={onClick}
+      className="max-w-max font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
+      style={{
+        backgroundColor: "#FDDA24",
+        color: "#000",
+      }}
+    >
+      Ok
+    </button> */}
+  </div>
+  
+  )
+
   return (
     <div
       className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
-      // style={{ backgroundImage: `url(${comingSoon})` }}
+    // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards
@@ -377,7 +400,7 @@ function ComingSoonPageLayout() {
             </div>
             <div className="grid w-full mx-auto grid-col-1 md:grid-cols-2 lg:gap-1 md:gap-10  lg:px-20 md:px-10  ">
               <div className="max-w-lg ">
-                <form className="  ">
+                <form className="  " onSubmit={handleSubmit}>
                   <p className="text-white text-lg mt-5 mb-2 text-center font-rethink">
                     Get notified when we get live!
                   </p>
@@ -389,9 +412,10 @@ function ComingSoonPageLayout() {
                       Name*
                     </label>
                     <input
-                      type="name"
+                      type="text"
                       id="name"
-                      onChange={(e) => setName(e.target.value)}
+                      maxLength={30}
+onChange={(e) => setName(e.target.value)}
                       className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
                       placeholder="John"
                       required
@@ -425,6 +449,7 @@ function ComingSoonPageLayout() {
                     <input
                       type="tel"
                       id="mobile"
+                      maxLength={10}
                       onChange={(e) => setPhone(e.target.value)}
                       className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-white block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
                       placeholder="+91 9999999999"
@@ -435,7 +460,7 @@ function ComingSoonPageLayout() {
                   <div className="mt-7">
                     <button
                       type="submit"
-                      onClick={(e) => handleSubmit(e)}
+                      // onClick={(e) => handleSubmit(e)}
                       className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                       style={{
                         backgroundColor: "#FDDA24",
@@ -582,6 +607,14 @@ function ComingSoonPageLayout() {
           </section>
         </div>
       </div>
+
+      <ModalLayout
+        onClose={handleClose}
+        component={<ConfirmModal  onClick={handleClose} />}
+        openModal={openModal}
+
+      />
+
     </div>
   );
 }
