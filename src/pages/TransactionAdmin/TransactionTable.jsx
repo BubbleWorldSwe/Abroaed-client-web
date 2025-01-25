@@ -119,7 +119,7 @@ const handleCheckboxClick = (index) => {
     <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col ">
     {/* Section - Takes the remaining space */}
     <section className="   flex-grow">
-      <div className="flex flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
+      <div className="flex flex-col h-screen py-2 mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative ">
         <div className=" dark:border-gray-700 mx-4">
           <div className="  py-3">
             <div className="w-full  flex  space-y-3 md:space-y-0 md:flex-row ">
@@ -174,7 +174,7 @@ const handleCheckboxClick = (index) => {
 
 </div>
       
-        <div className="flex-grow overflow-auto bg-white dark:bg-gray-800">
+        <div className="flex-grow overflow-auto bg-white dark:bg-gray-800 px-5">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
               <tr>

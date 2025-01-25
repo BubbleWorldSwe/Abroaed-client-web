@@ -55,7 +55,7 @@ function AddDestination({ isOpen, onClose }) {
             <label className="block font-medium">Author</label>
             <input
               type="text"
-              value={currentUser?.name || "Anonymous"} 
+              value={currentUser?.name || "Anonymous"}
               readOnly
               className="w-full p-2 border rounded bg-gray-100"
             />

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AddTeamMember from "../../Components/Modals/AddTeamMember";
-import { EllipsisVertical } from "lucide-react";
+import { Edit, EllipsisVertical, Trash2 } from "lucide-react";
 import { useSelector } from "react-redux";
-
+import filter_list from '../../assets/filter_list.png'
+import UpdateTeamMember from "../../Components/Modals/UpdateTeamMember";
+import ConfirmModal from "../../Components/Modals/ConfirmModal";
 function Teams() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -10,16 +12,48 @@ function Teams() {
   const [editMode, setEditMode] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
   const teamMembers = useSelector((state) => state.team.teamMembers);
-
+  const [selectedRows, setSelectedRows] = useState({});
+  const [modalType, setModalType] = useState('');
   console.log("team", teamMembers);
+
+
   const handleOpenAddModal = () => {
     setEditMode(false);
+    setModalType('add');
     setSelectedMember(null);
     setIsModalOpen(true);
   };
+  const dropdownRef = useRef(null);  // Reference to the dropdown
+
+  const handleDropdownToggle = (e, index) => {
+    e.stopPropagation(); // Prevent the click from propagating
+    setDropdownVisible(dropdownVisible === index ? null : index);
+    // Optionally, you can adjust dropdown direction based on your layout
+    setDropdownDirection("down");
+  };
+
+  const handleClickOutside = (e) => {
+    // Close dropdown if the click is outside of the dropdown area
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setDropdownVisible(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  // const handleOpenEditModal = (member) => {
+  //   // Handle opening the edit modal
+  //   console.log('Edit member:', member);
+  // };
 
   const handleOpenEditModal = (member) => {
     setEditMode(true);
+    setModalType('edit');
     setSelectedMember(member);
     setIsModalOpen(true);
   };
@@ -28,95 +62,53 @@ function Teams() {
     setIsModalOpen(false);
     setSelectedMember(null);
   };
-  const handleDropdownToggle = (event, index) => {
-    console.log("index", index);
-    const buttonElement = event.currentTarget;
-    const rect = buttonElement.getBoundingClientRect();
+  // const handleDropdownToggle = (event, index) => {
+  //   console.log("index", index);
+  //   const buttonElement = event.currentTarget;
+  //   const rect = buttonElement.getBoundingClientRect();
 
-    const spaceAbove = rect.top; // Distance from button to top of the viewport
-    const spaceBelow = window.innerHeight - rect.bottom; // Distance from button to bottom of the viewport
+  //   const spaceAbove = rect.top; // Distance from button to top of the viewport
+  //   const spaceBelow = window.innerHeight - rect.bottom; // Distance from button to bottom of the viewport
 
-    // Adjust dropdownDirection based on available space
-    if (spaceBelow < 150 && spaceAbove > 150) {
-      setDropdownDirection("up"); // Show dropdown upwards
-    } else {
-      setDropdownDirection("down"); // Show dropdown downwards
-    }
+  //   // Adjust dropdownDirection based on available space
+  //   if (spaceBelow < 150 && spaceAbove > 150) {
+  //     setDropdownDirection("up"); // Show dropdown upwards
+  //   } else {
+  //     setDropdownDirection("down"); // Show dropdown downwards
+  //   }
 
-    setDropdownVisible(index === dropdownVisible ? null : index);
+  //   setDropdownVisible(index === dropdownVisible ? null : index);
+  // };
+  const handleCheckboxClick = (index) => {
+    setSelectedRows((prevState) => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
   };
-
   return (
     <>
       <AddTeamMember
-        isOpen={isModalOpen}
+        isOpen={isModalOpen && modalType === 'add'}
+        onClose={handleCloseModal}
+        editMode={editMode}
+        memberToEdit={selectedMember}
+      />
+      <UpdateTeamMember
+        isOpen={isModalOpen && modalType === 'edit'}
         onClose={handleCloseModal}
         editMode={editMode}
         memberToEdit={selectedMember}
       />
 
-      <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col p-2">
+
+      <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col ">
         {/* Adjust padding and spacing */}
-        <header className="p-4 bg-white text-white">
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-              <li className="inline-flex items-center">
-                <a
-                  href="#"
-                  className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-                >
-                  <svg
-                    className="w-3 h-3 me-2.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                  </svg>
-                  Admin
-                </a>
-              </li>
-              <li>
-                <div className="flex items-center">
-                  <svg
-                    className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  <a
-                    href="#"
-                    className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
-                  >
-                    Teams
-                  </a>
-                </div>
-              </li>
-            </ol>
-          </nav>
-        </header>
-        <section className=" py-3 sm:py-5 flex-grow">
-          <div className="flex flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
-            <div className="border-b dark:border-gray-700 mx-4">
-              <div className="flex items-center justify-between space-x-4 pt-3">
-                <div className="flex-1 flex items-center space-x-3">
-                  <h5 className="dark:text-white font-semibold">
-                    Team Members
-                  </h5>
-                </div>
-              </div>
-              <div className="flex flex-col-reverse md:flex-row items-center justify-between md:space-x-4 py-3">
-                <div className="w-full lg:w-2/3 flex flex-col space-y-3 md:space-y-0 md:flex-row md:items-center">
+
+        <section className=" flex-grow ">
+          <div className="flex py-5 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
+            <div className=" dark:border-gray-700 mx-4">
+              <div className="flex justify-between  py-3">
+                <div className="w-full  flex  space-y-3 md:space-y-0  ">
                   <form className="w-full md:max-w-sm flex-1 md:mr-4">
                     <label
                       htmlFor="default-search"
@@ -145,114 +137,37 @@ function Teams() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search..."
+                        className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg  focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Search Teams"
                         required=""
                       />
-                      <button
-                        type="submit"
-                        className="text-white absolute right-0 bottom-0 top-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-r-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                      >
-                        Search
-                      </button>
+
                     </div>
                   </form>
-                  <div className="flex items-center space-x-4"></div>
+                  <div className="flex items-center space-x-4">
+                    <img src={filter_list} alt="filterIcon" />
+                  </div>
                 </div>
-                <div className="w-full md:w-auto flex flex-col md:flex-row mb-3 md:mb-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                <div className="flex gap-2">
                   <button
-                    type="button"
                     onClick={handleOpenAddModal}
-                    className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                    type="button"
+                    className="w-full whitespace-nowrap md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
-                    <svg
-                      className="h-3.5 w-3.5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        clipRule="evenodd"
-                        fillRule="evenodd"
-                        d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                      />
+                    <svg class="w-6 h-6 p-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
                     </svg>
+
                     Add Team Member
                   </button>
                 </div>
               </div>
             </div>
-            <div className="mx-4 pb-3 flex flex-wrap">
-              <div className="hidden md:flex items-center text-sm font-medium text-gray-900 dark:text-white mr-4 mt-3">
-                Show only:
-              </div>
-              <div className="flex flex-wrap">
-                <div className="flex items-center mt-3 mr-4">
-                  <input
-                    id="inline-radio"
-                    type="radio"
-                    value=""
-                    name="inline-radio-group"
-                    className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="inline-radio"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    All
-                  </label>
-                </div>
-                <div className="flex items-center mr-4 mt-3">
-                  <input
-                    id="inline-2-radio"
-                    type="radio"
-                    value=""
-                    name="inline-radio-group"
-                    className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="inline-2-radio"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Active products
-                  </label>
-                </div>
-                <div className="flex items-center mr-4 mt-3">
-                  <input
-                    id="inline-3-radio"
-                    type="radio"
-                    value=""
-                    name="inline-radio-group"
-                    className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="inline-3-radio"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Pending products
-                  </label>
-                </div>
-                <div className="flex items-center mr-4 mt-3">
-                  <input
-                    id="inline-4-radio"
-                    type="radio"
-                    value=""
-                    name="inline-radio-group"
-                    className="w-4 h-4 text-primary-600 bg-gray-100 border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label
-                    htmlFor="inline-4-radio"
-                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    Inactive products
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="flex-grow overflow-auto bg-white dark:bg-gray-800">
+
+
+            <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="p-4">
                       <div className="flex items-center">
@@ -267,11 +182,11 @@ function Teams() {
                       </div>
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                      Name
+                      Member Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
                       Role Type
-                      <svg
+                      {/* <svg
                         className="h-4 w-4 ml-1 inline-block"
                         fill="currentColor"
                         viewBox="0 0 20 20"
@@ -283,10 +198,10 @@ function Teams() {
                           fillRule="evenodd"
                           d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
                         />
-                      </svg>
+                      </svg> */}
                     </th>
 
-                    <th scope="col" className="px-4 py-3 min-w-[6rem]">
+                    {/* <th scope="col" className="px-4 py-3 min-w-[6rem]">
                       Assigned To
                       <svg
                         className="h-4 w-4 ml-1 inline-block"
@@ -301,23 +216,10 @@ function Teams() {
                           d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
                         />
                       </svg>
-                    </th>
+                    </th> */}
 
                     <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                      Status
-                      <svg
-                        className="h-4 w-4 ml-1 inline-block"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          clipRule="evenodd"
-                          fillRule="evenodd"
-                          d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z"
-                        />
-                      </svg>
+                      Permissions
                     </th>
                     <th scope="col" className="px-4 py-3">
                       <span className="sr-only">Actions</span>
@@ -328,13 +230,19 @@ function Teams() {
                   {teamMembers.map((member, index) => (
                     <tr
                       key={index}
-                      className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedRows[index] ? "bg-[#FFFCC2]" : ""
+                        }`}
                     >
                       <td className="px-4 py-3 w-4">
                         <div className="flex items-center">
                           <input
-                            id="checkbox-table-search-1"
+                            id={`checkbox-college-${index}`}
                             type="checkbox"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleCheckboxClick(index);
+                            }}
+                            checked={selectedRows[index] || false}
                             className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                           />
                           <label
@@ -347,74 +255,59 @@ function Teams() {
                       </td>
                       <td className="px-4 py-3">{member.name}</td>
                       <td className="px-4 py-3">{member.role}</td>
-                      <td className="px-4 py-3">{member.assignedTo}</td>
+                      {/* <td className="px-4 py-3">{member.assignedTo}</td> */}
                       <td className="px-4 py-3 whitespace-nowrap">
                         {/* Read & Write Permission */}
                         <span
-                          className={`${
-                            member.permissions?.readWrite
-                              ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
-                              : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
-                          } text-xs font-medium mr-2 px-2.5 py-0.5 rounded`}
+                          className={`${member.permissions?.readWrite
+                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+                            : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
+                            } text-xs font-medium mr-2 px-2.5 py-0.5 rounded`}
                         >
                           Read & Write
                         </span>
 
                         {/* Read Only Permission */}
                         <span
-                          className={`${
-                            member.permissions?.readOnly
-                              ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
-                              : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
-                          } text-xs font-medium px-2.5 py-0.5 rounded`}
+                          className={`${member.permissions?.readOnly
+                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
+                            : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300"
+                            } text-xs font-medium px-2.5 py-0.5 rounded`}
                         >
                           Read Only
                         </span>
                       </td>
 
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3 relative">
                         <button
                           className="focus:outline-none"
-                          onClick={(e) => handleDropdownToggle(e, index)}
+                          onClick={(e) => handleDropdownToggle(e, 0)}  // Use your index logic
                         >
                           <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
                         </button>
                         {dropdownVisible === index && (
                           <div
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                              dropdownDirection === "up"
-                                ? "bottom-full mb-2"
-                                : "mt-2"
-                            }`}
+                            ref={dropdownRef}
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"}`}
                           >
-                            <ul
-                              className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                              aria-labelledby="apple-imac-27-dropdown-button"
-                            >
-                              <li>
-                                <a
-                                  href="#"
-                                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                  Show
-                                </a>
-                              </li>
+                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>
                                 <button
-                                  href="#"
-                                  onClick={() => handleOpenEditModal(member)}
-                                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  onClick={() => handleOpenEditModal('member')}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                  Edit
+                                  <Edit className="w-4 h-4" />
+                                  <span>Update Member</span>
                                 </button>
                               </li>
                             </ul>
                             <div className="py-1">
                               <a
                                 href="#"
-                                className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                className="flex items-center gap-2 py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                               >
-                                Delete
+                                <Trash2 className="w-4 h-4" />
+                                <span>Delete</span>
                               </a>
                             </div>
                           </div>
