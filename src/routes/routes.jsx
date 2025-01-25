@@ -33,6 +33,7 @@ import AccommodationPage from "../pages/accommodation/AccommodationPage";
 import PathwaysProgramLayout from "../Layouts/PathwaysProgramLayout";
 import CollegePageLayout from "../Layouts/CollegePageLayout";
 import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
+import TransactionTable from "../pages/TransactionAdmin/TransactionTable";
 
 const AppRoutes = () => {
  
@@ -98,11 +99,12 @@ const AppRoutes = () => {
         { path: "nurtureLeads", element: <NurtureLeads /> },
         { path: "students", element: <StudentsTable /> },
         { path: "leads", element: <ManageLeadsTable /> },
-        { path: "colleges", element: <CollegeTable /> },
         { path: "accommodation", element: <AccommodationTable /> },
         { path: "accommodation/:name", element: <AccommodationPage /> },
         { path: "langPrep/:name", element: < LanguagePrepPage/> },
         { path: "langPrep", element: < LanguagePrepTable/> },
+        { path: "transaction", element: < TransactionTable/> },
+        { path: "colleges", element: <CollegeTable /> },
         { path: "colleges/:name", element: <CollegePage /> },
         { path: "destinations/:name", element: <DestinationPage /> },
         { path: "destinations", element: <DestinationTable /> },
