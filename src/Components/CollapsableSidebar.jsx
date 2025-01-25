@@ -163,7 +163,7 @@ function CollapsableSidebar() {
 
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate("/upcomingDeliveries")}
+                onClick={() => navigate("/admin/transaction")}
                 className={`transition-colors duration-300 flex items-center ${
                   isOpen ? "justify-start" : "justify-center"
                 } hover:bg-primary-700 ${
