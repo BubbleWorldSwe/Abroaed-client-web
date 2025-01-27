@@ -101,11 +101,11 @@ function Teams() {
       />
 
 
-      <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col ">
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
         {/* Adjust padding and spacing */}
 
-        <section className=" flex-grow ">
-          <div className="flex py-5 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
+        <section className="py-5  flex-grow ">
+          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
             <div className=" dark:border-gray-700 mx-4">
               <div className="flex justify-between  py-3">
                 <div className="w-full  flex  space-y-3 md:space-y-0  ">
@@ -166,7 +166,7 @@ function Teams() {
 
 
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="p-4">
