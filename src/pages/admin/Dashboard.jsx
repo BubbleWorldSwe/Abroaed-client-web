@@ -1,11 +1,24 @@
-import React from 'react';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+
+  const handleSignOut = () => {
+    dispatch(logout(null));
+    localStorage.removeItem("token", token);
+    navigate("/home");
+  };
   return (
     <div className="h-screen flex flex-col p-2">
       {/* Adjust padding and spacing */}
-      <header className="p-4 bg-gray-800 text-white">
+      <header className="p-4 bg-gray-800 text-white flex justify-between items-center">
         <h1 className="text-lg font-bold">Dashboard</h1>
+        <button onClick={handleSignOut}>Sign Out</button>
       </header>
 
       <main className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900">

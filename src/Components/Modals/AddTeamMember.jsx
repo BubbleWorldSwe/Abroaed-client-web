@@ -1,93 +1,85 @@
 import React, { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { addTeamMember, updateTeamMember } from "../../slices/teamSlice";
-import { X } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
 import ConfirmModal from "./ConfirmModal";
+import { addTeamRequest } from "../../redux/actions/teamActions";
+
 function AddTeamMember({
   isOpen,
   onClose,
   editMode = false,
   memberToEdit = null,
 }) {
+  const { roles } = useSelector((state) => state.roles);
   const dispatch = useDispatch();
 
-  // State for input fields
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("");
-  const [assignedTo, setAssignedTo] = useState("");
-  const [confirmModalOpen, setConfirmModalOpen] = useState(false)
-  const [permissions, setPermissions] = useState({
-    readWrite: false,
-    readOnly: false,
-  });
+
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
+  const [permission, setPermission] = useState("");
 
   // Populate fields in edit mode
   useEffect(() => {
     if (editMode && memberToEdit) {
-      const { name, email, assignedTo, phoneNumber, role, permissions } =
+      const { firstName, lastName, email, phoneNumber, role, permission } =
         memberToEdit;
-      setAssignedTo(assignedTo || "");
-      setName(name || "");
+
+      setFirstName(firstName || "");
+      setLastName(lastName || "");
       setEmail(email || "");
       setPhoneNumber(phoneNumber || "");
       setRole(role || "");
-      setPermissions(permissions || { readWrite: false, readOnly: false });
+      setPermission(permission || "");
     } else {
       // Reset fields for add mode
-      setName("");
-      setAssignedTo("");
+      setFirstName("");
+      setLastName("");
+
       setEmail("");
       setPhoneNumber("");
       setRole("");
-      setPermissions({ readWrite: false, readOnly: false });
+      setPermission("");
     }
   }, [editMode, memberToEdit]);
 
-  const handlePermissionToggle = (permission) => {
-    setPermissions((prev) => ({
-      ...prev,
-      [permission]: !prev[permission],
-    }));
-  };
-
-  const handleSubmit = () => {
-
-    // if (!name || !email || !phoneNumber || !role) {
-    //   toast.error("Please fill out all fields");
-    //   return;
-    // }
+  const handleSubmit = (e) => {
+    console.log(firstName, lastName, email, phoneNumber, role, permission);
+    e.preventDefault();
+    if (
+      (!firstName || !lastName, !email || !phoneNumber || !role || !permission)
+    ) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
 
     const newMember = {
-      name,
       email,
-      assignedTo,
-      phoneNumber,
-      role,
-      permissions,
+      firstName,
+      lastName,
+      mobile: phoneNumber,
+      roleId: role,
+      isWriteAccess: permission === "2" ? true : false,
     };
 
-    setConfirmModalOpen(true)
-    // if (editMode) {
-    //   // Dispatch update action
-    //   // dispatch(
-    //   //   updateTeamMember({
-    //   //     index: memberToEdit.index,
-    //   //     updatedMember: newMember,
-    //   //   })
-    //   // );
-    //   toast.success("Team member updated successfully");
+    console.log(newMember);
 
-    // } else {
-    //   setConfirmModalOpen(true)
-    //   // Dispatch add action
-    //   // dispatch(addTeamMember(newMember));
-    //   toast.success("Team member added successfully");
-    // }  
+    if (editMode) {
+      /* dispatch(
+         updateTeamMember({ id: memberToEdit.id, updatedData: newMember })
+       ); */
+      toast.success("Team member updated successfully!");
+    } else {
+      console.log("add");
+      dispatch(addTeamRequest(newMember));
+      // toast.success("Team member added successfully!");
+    }
 
-    // onClose();
+    //setConfirmModalOpen(true);
+    onClose();
   };
 
   return (
@@ -113,18 +105,20 @@ function AddTeamMember({
                     {/* Full Name Input */}
                     <div>
                       <label
-                        htmlFor="full-name"
+                        htmlFor="firstName"
                         className="block text-sm font-medium text-gray-700"
                       >
-                        Full Name
+                        First Name
                       </label>
                       <input
                         type="text"
-                        id="full-name"
-                        name="fullName"
+                        id="firstName"
+                        name="firstName"
                         className="mt-1 border-none block w-full rounded-md bg-[#F4F4F5] focus:ring-indigo-500 sm:text-sm"
-                        placeholder="Enter your full name"
+                        placeholder="Enter your first name"
                         required
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
 
@@ -143,53 +137,54 @@ function AddTeamMember({
                         className="mt-1 block w-full rounded-md border-none bg-[#F4F4F5]  sm:text-sm"
                         placeholder="Enter your mobile number"
                         required
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                       />
                     </div>
 
-                    {/* Permissions */}
-                    <div className="w-full">
-                      {role && (
-                        <div className="mb-4">
-                          <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            Permissions
-                          </h3>
-                          <div className="flex space-x-2">
-                            <button
-                              type="button"
-                              className={`py-2 px-3 text-sm font-medium flex items-center justify-center space-x-2 rounded-xl ${permissions.readWrite
-                                ? "bg-green-700 text-white"
-                                : "bg-gray-200 text-gray-700"
-                                }`}
-                              onClick={() => handlePermissionToggle("readWrite")}
-                            >
-                              <span>Read & Write</span>
-                              <svg className="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                              </svg>
-                            </button>
+                    {/* Role */}
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
+                        Role Type
+                      </label>
+                      <select
+                        className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
+                      >
+                        <option value="">Select Role</option>
 
-                            <button
-                              type="button"
-                              className={`py-2 px-3 text-sm font-medium flex items-center justify-center space-x-2 rounded-xl ${permissions.readOnly
-                                ? "bg-green-700 text-white"
-                                : "bg-gray-200 text-gray-700"
-                                }`}
-                              onClick={() => handlePermissionToggle("readOnly")}
-                            >
-                              <span>Read Only</span>
-                              <svg className="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                              </svg>
-                            </button>
-
-                          </div>
-                        </div>
-                      )}
+                        {roles.map((data, i) => (
+                          <option key={i} value={`${data._id}`}>
+                            {data.roleName}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
                   {/* Second Child Container */}
                   <div className="space-y-4">
+                    {/* Last Name Input */}
+                    <div>
+                      <label
+                        htmlFor="lastName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        className="mt-1 border-none block w-full rounded-md bg-[#F4F4F5] focus:ring-indigo-500 sm:text-sm"
+                        placeholder="Enter your last name"
+                        required
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </div>
+
                     {/* Email Input */}
                     <div>
                       <label
@@ -205,29 +200,26 @@ function AddTeamMember({
                         className="mt-1 border-none block w-full rounded-md bg-[#F4F4F5] focus:ring-indigo-500 sm:text-sm"
                         placeholder="Enter your email"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
 
-                    {/* Role Select */}
+                    {/* Permission Select */}
+
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
-                        Role Type
+                        Permission
                       </label>
                       <select
                         className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
-                        value={role}
-                        onChange={(e) => setRole(e.target.value)}
+                        value={permission}
+                        onChange={(e) => setPermission(e.target.value)}
                       >
-                        <option value="">Select Role</option>
-                        <option value="content-manager">
-                          <div className="flex justify-between text-center">
-                            Content Manager
-                          </div>
-                        </option>
-                        <option value="counsel-manager">Counsel Manager</option>
-                        <option value="counsellor">Counsellor</option>
-                        <option value="backend-manager">Backend Manager</option>
-                        <option value="backend-associate">Backend Associate</option>
+                        <option value="">Select Permission</option>
+
+                        <option value="1">Read Only</option>
+                        <option value="2">Read & Write</option>
                       </select>
                     </div>
                   </div>
@@ -246,7 +238,7 @@ function AddTeamMember({
                     type="submit"
                     className="bg-blue-600 text-white px-4 py-2 rounded-md"
                   >
-                    Add
+                    {editMode ? "Update" : "Add"}
                   </button>
                 </div>
               </form>
@@ -258,8 +250,7 @@ function AddTeamMember({
       <ConfirmModal
         isOpen={confirmModalOpen}
         onClose={() => setConfirmModalOpen(false)}
-        text="Member Added!"
-
+        text={editMode ? "Member Updated!" : "Member Added!"}
       />
     </>
   );

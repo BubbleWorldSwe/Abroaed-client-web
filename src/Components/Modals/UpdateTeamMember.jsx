@@ -1,158 +1,122 @@
 import { useState } from "react";
-import { Toaster } from "react-hot-toast"
-
+import { Toaster } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { editTeamRequest } from "../../redux/actions/teamActions";
 
 const UpdateTeamMember = ({
-    isOpen,
-    onClose,
-    editMode = false,
-    memberToEdit = null,
+  isOpen,
+  onClose,
+  editMode = false,
+  memberToEdit = null,
+  data,
 }) => {
-    const [role, setRole] = useState("");
-    const [permissions, setPermissions] = useState({
-        readWrite: false,
-        readOnly: false,
-    });
+  const { roles } = useSelector((state) => state.roles);
 
+  const [permission, setPermission] = useState(data?.isWriteAccess ? "2" : "1");
+  const [role, setRole] = useState(data?.roleId?._id);
+  const dispatch = useDispatch();
 
-    const handleSubmit = () => {
+  const handleSubmit = () => {
+    dispatch(
+      editTeamRequest(data._id, {
+        roleId: data?.roleId?._id,
+      })
+    );
+    onClose();
+  };
 
-    }
+  return (
+    <>
+      {" "}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
+            <button
+              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              onClick={onClose}
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl  font-semibold mb-4 dark:text-white">
+              Update Team Member
+            </h2>
+            <div>
+              {/* Input Fields */}
+              <form onSubmit={handleSubmit} className="bg-white rounded-md">
+                <div className="grid grid-cols-1  gap-1">
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
+                      Select Member
+                    </label>
+                    <input
+                      type="text"
+                      className="mt-1 border-none block w-full rounded-md bg-[#F4F4F5] focus:ring-indigo-500 sm:text-sm"
+                      required
+                      value={`${data.firstName} ${data.lastName}`}
+                      disabled={true}
+                    />
+                  </div>
 
-    const handlePermissionToggle = (permission) => {
-        setPermissions((prev) => ({
-            ...prev,
-            [permission]: !prev[permission],
-        }));
-    };
-
-    return (<> {
-        isOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-                <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
-                    <button
-                        className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                        onClick={onClose}
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
+                      Select Role
+                    </label>
+                    <select
+                      className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
                     >
-                        &times;
-                    </button>
-                    <h2 className="text-2xl  font-semibold mb-4 dark:text-white">
-                        Update Team Member
-                    </h2>
-                    <div>
-                        {/* Input Fields */}
-                        <form onSubmit={handleSubmit} className="bg-white rounded-md">
-                            <div className="grid grid-cols-1  gap-1">
-                                <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
-                                        Select  Member
-                                    </label>
-                                    <select
-                                        className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
-                                        value={role}
-                                        onChange={(e) => setRole(e.target.value)}
-                                    >
-                                        <option value="">Member</option>
-                                        <option value="content-manager">
-                                            <div className="flex justify-between text-center">
-                                                Content Manager
-                                            </div>
-                                        </option>
-                                        <option value="counsel-manager">Counsel Manager</option>
-                                        <option value="counsellor">Counsellor</option>
-                                        <option value="backend-manager">Backend Manager</option>
-                                        <option value="backend-associate">Backend Associate</option>
-                                    </select>
-                                </div>
-                                <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
-                                        Select  Role
-                                    </label>
-                                    <select
-                                        className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
-                                        value={role}
-                                        onChange={(e) => setRole(e.target.value)}
-                                    >
-                                        <option value="">Role Type</option>
-                                        <option value="content-manager">
-                                            <div className="flex justify-between text-center">
-                                                Content Manager
-                                            </div>
-                                        </option>
-                                        <option value="counsel-manager">Counsel Manager</option>
-                                        <option value="counsellor">Counsellor</option>
-                                        <option value="backend-manager">Backend Manager</option>
-                                        <option value="backend-associate">Backend Associate</option>
-                                    </select>
-                                </div>
-                                <div className="w-full">
+                      <option value="">Role Type</option>
+                      {roles.map((data, i) => (
+                        <option key={i} value={`${data._id}`}>
+                          {data.roleName}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="w-full">
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
+                        Permission
+                      </label>
+                      <select
+                        className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
+                        value={permission}
+                        onChange={(e) => setPermission(e.target.value)}
+                      >
+                        <option value="">Select</option>
 
-                                    <div className="mb-4">
-                                        <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                            Permissions
-                                        </h3>
-                                        <div className="flex space-x-2">
-                                            <button
-                                                type="button"
-                                                className={`py-2 px-3 text-sm font-medium flex items-center justify-center space-x-2 rounded-xl ${permissions.readWrite
-                                                    ? "bg-green-700 text-white"
-                                                    : "bg-gray-200 text-gray-700"
-                                                    }`}
-                                                onClick={() => handlePermissionToggle("readWrite")}
-                                            >
-                                                <span>Read & Write</span>
-                                                <svg className="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                                                </svg>
-                                            </button>
-
-                                            <button
-                                                type="button"
-                                                className={`py-2 px-3 text-sm font-medium flex items-center justify-center space-x-2 rounded-xl ${permissions.readOnly
-                                                    ? "bg-green-700 text-white"
-                                                    : "bg-gray-200 text-gray-700"
-                                                    }`}
-                                                onClick={() => handlePermissionToggle("readOnly")}
-                                            >
-                                                <span>Read Only</span>
-                                                <svg className="w-4 h-4 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                                                </svg>
-                                            </button>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
-                            </div>
-
-                            {/* Submit Button */}
-                            <div className="flex justify-end mt-4">
-                                <button
-                                    type="button"
-                                    className="mr-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
-                                    onClick={onClose}
-                                >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    className="bg-blue-600 text-white px-4 py-2 rounded-md"
-                                >
-                                    Update
-                                </button>
-                            </div>
-                        </form>
+                        <option value="1">Read Only</option>
+                        <option value="2">Read & Write</option>
+                      </select>
                     </div>
+                  </div>
                 </div>
-            </div>
-        )
-    }
-        <Toaster position="top-center" reverseOrder={false} />
-    </>)
-}
 
-export default UpdateTeamMember
+                {/* Submit Button */}
+                <div className="flex justify-end mt-4">
+                  <button
+                    type="button"
+                    className="mr-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
+                    onClick={onClose}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-4 py-2 rounded-md"
+                  >
+                    Update
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+      <Toaster position="top-center" reverseOrder={false} />
+    </>
+  );
+};
+
+export default UpdateTeamMember;
