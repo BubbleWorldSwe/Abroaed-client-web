@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { assignStudentToTeamMember } from "../../slices/teamSlice";
 import { assignTeamMember } from "../../slices/leadSlice";
+import ConfirmModal from "./ConfirmModal";
 
 const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
   const dispatch = useDispatch();
   const teamMembers = useSelector((state) => state.team.teamMembers);
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false)
 
   // Initialize selectedTeam with empty values
   const [selectedTeam, setSelectedTeam] = useState({
@@ -35,6 +37,7 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
     teamMembers.find((member) => member.id === +id);
 
   const handleSave = () => {
+
     const assignedTeam = {
       counsellor: getTeamMemberById(selectedTeam.counsellor) || {},
       backendManager: getTeamMemberById(selectedTeam.backendManager) || {},
@@ -79,86 +82,92 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
       );
     }
 
-    onClose();
+    // onClose();
+    setConfirmModalOpen(true)
   };
 
   const getMembersByRole = (role) =>
     teamMembers.filter((member) => member.role === role);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-      <div className="bg-white rounded-lg p-6 w-96">
-        <h2 className="text-xl font-semibold mb-4">Assign Team Members</h2>
-
-        <div className="space-y-4">
-          <div>
-            <label className="block text-gray-700">Counsellor</label>
-            <select
-              name="counsellor"
-              value={selectedTeam.counsellor}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
-            >
-              <option value="">Select Counsellor</option>
-              {getMembersByRole("Counsellor").map((member) => (
-                <option key={member.id} value={member.id}>
-                  {member.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-gray-700">Backend Manager</label>
-            <select
-              name="backendManager"
-              value={selectedTeam.backendManager}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
-            >
-              <option value="">Select Backend Manager</option>
-              {getMembersByRole("Backend Manager").map((member) => (
-                <option key={member.id} value={member.id}>
-                  {member.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-gray-700">Mentor</label>
-            <select
-              name="mentor"
-              value={selectedTeam.mentor}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border rounded-lg"
-            >
-              <option value="">Select Mentor</option>
-              {getMembersByRole("Mentor").map((member) => (
-                <option key={member.id} value={member.id}>
-                  {member.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        <div className="flex justify-end space-x-2 mt-4">
+    <>
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
           <button
+            className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
             onClick={onClose}
-            className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
           >
-            Cancel
+            &times;
           </button>
-          <button
-            onClick={handleSave}
-            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            Save
-          </button>
+          <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
+          <h5 className="text-lg font-medium">
+            Assigned Members
+          </h5>
+          <p className="text-sm">
+            No members assigned. Assign below
+          </p>
+          <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Counsellor</label>
+              <select
+                name="counsellor"
+                value={selectedTeam.counsellor}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border-none bg-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+              >
+                <option value="">Select Counsellor</option>
+                {getMembersByRole("Counsellor").map((member) => (
+                  <option key={member.id} value={member.id}>
+                    {member.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">Backend Manager</label>
+              <select
+                name="backendManager"
+                value={selectedTeam.backendManager}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border-none bg-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+              >
+                <option value="">Select Backend Manager</option>
+                {getMembersByRole("Backend Manager").map((member) => (
+                  <option key={member.id} value={member.id}>
+                    {member.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+
+          </div>
+
+
+          <div className="flex justify-end space-x-2 mt-4">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Save
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      <ConfirmModal
+        isOpen={confirmModalOpen}
+        onClose={() => setConfirmModalOpen(false)}
+        text="Member Assigned!"
+
+      />
+    </>
   );
 };
 
