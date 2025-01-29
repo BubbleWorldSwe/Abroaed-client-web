@@ -67,16 +67,7 @@ function AddTeamMember({
 
     console.log(newMember);
 
-    if (editMode) {
-      /* dispatch(
-         updateTeamMember({ id: memberToEdit.id, updatedData: newMember })
-       ); */
-      toast.success("Team member updated successfully!");
-    } else {
-      console.log("add");
-      dispatch(addTeamRequest(newMember));
-      // toast.success("Team member added successfully!");
-    }
+    dispatch(addTeamRequest(newMember));
 
     //setConfirmModalOpen(true);
     onClose();
@@ -94,7 +85,7 @@ function AddTeamMember({
               &times;
             </button>
             <h2 className="text-2xl  font-semibold mb-4 dark:text-white">
-              {editMode ? "Edit Team Member" : "Add Team Member"}
+              Add Team Member
             </h2>
             <div>
               {/* Input Fields */}
@@ -152,7 +143,9 @@ function AddTeamMember({
                         value={role}
                         onChange={(e) => setRole(e.target.value)}
                       >
-                        <option value="">Select Role</option>
+                        <option disabled value="">
+                          Select
+                        </option>
 
                         {roles.map((data, i) => (
                           <option key={i} value={`${data._id}`}>
@@ -216,7 +209,9 @@ function AddTeamMember({
                         value={permission}
                         onChange={(e) => setPermission(e.target.value)}
                       >
-                        <option value="">Select Permission</option>
+                        <option disabled value="">
+                          Select
+                        </option>
 
                         <option value="1">Read Only</option>
                         <option value="2">Read & Write</option>
@@ -238,7 +233,7 @@ function AddTeamMember({
                     type="submit"
                     className="bg-blue-600 text-white px-4 py-2 rounded-md"
                   >
-                    {editMode ? "Update" : "Add"}
+                    Add
                   </button>
                 </div>
               </form>
@@ -250,7 +245,7 @@ function AddTeamMember({
       <ConfirmModal
         isOpen={confirmModalOpen}
         onClose={() => setConfirmModalOpen(false)}
-        text={editMode ? "Member Updated!" : "Member Added!"}
+        text={"Member Added!"}
       />
     </>
   );

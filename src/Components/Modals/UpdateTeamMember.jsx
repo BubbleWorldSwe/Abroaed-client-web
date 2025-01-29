@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { editTeamRequest } from "../../redux/actions/teamActions";
@@ -6,24 +6,30 @@ import { editTeamRequest } from "../../redux/actions/teamActions";
 const UpdateTeamMember = ({
   isOpen,
   onClose,
-  editMode = false,
-  memberToEdit = null,
+
   data,
 }) => {
   const { roles } = useSelector((state) => state.roles);
 
   const [permission, setPermission] = useState(data?.isWriteAccess ? "2" : "1");
   const [role, setRole] = useState(data?.roleId?._id);
+
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
     dispatch(
       editTeamRequest(data._id, {
-        roleId: data?.roleId?._id,
+        roleId: role,
+        isWriteAccess: permission === "2" ? true : false,
       })
     );
     onClose();
   };
+
+  useEffect(() => {
+    setRole(data?.roleId?._id || "");
+    setPermission(data?.isWriteAccess ? "2" : "1");
+  }, [data]);
 
   return (
     <>
@@ -52,7 +58,7 @@ const UpdateTeamMember = ({
                       type="text"
                       className="mt-1 border-none block w-full rounded-md bg-[#F4F4F5] focus:ring-indigo-500 sm:text-sm"
                       required
-                      value={`${data.firstName} ${data.lastName}`}
+                      value={`${data?.firstName} ${data?.lastName}`}
                       disabled={true}
                     />
                   </div>
@@ -66,10 +72,12 @@ const UpdateTeamMember = ({
                       value={role}
                       onChange={(e) => setRole(e.target.value)}
                     >
-                      <option value="">Role Type</option>
+                      <option disabled value="">
+                        Select
+                      </option>
                       {roles.map((data, i) => (
-                        <option key={i} value={`${data._id}`}>
-                          {data.roleName}
+                        <option key={i} value={`${data?._id}`}>
+                          {data?.roleName}
                         </option>
                       ))}
                     </select>
@@ -84,7 +92,9 @@ const UpdateTeamMember = ({
                         value={permission}
                         onChange={(e) => setPermission(e.target.value)}
                       >
-                        <option value="">Select</option>
+                        <option disabled value="">
+                          Select
+                        </option>
 
                         <option value="1">Read Only</option>
                         <option value="2">Read & Write</option>

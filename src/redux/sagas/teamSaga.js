@@ -6,7 +6,6 @@ import {
   addTeamSuccess,
   addTeamFailure,
   ADD_TEAM_REQUEST,
-  DELETE_TEAM_FAILURE,
   DELETE_TEAM_REQUEST,
   deleteTeamSuccess,
   deleteTeamFailure,
@@ -38,10 +37,10 @@ function* addNewTeam(action) {
   try {
     const response = yield call(setAddTeam, action.payload);
 
-    //  console.log(response);
+    console.log(response);
 
     if (response.status === 201) {
-      yield put(addTeamSuccess(action.payload));
+      yield put(addTeamSuccess(response.data.data));
       toast.success("Team added successfully!");
     } else {
       console.log("Error");
@@ -56,7 +55,6 @@ function* addNewTeam(action) {
 
 function* deleteTeam(action) {
   try {
-    // Call the API to delete the team
     const response = yield call(setDeleteTeam, action.payload);
 
     if (response.success) {
@@ -66,8 +64,7 @@ function* deleteTeam(action) {
       yield put(deleteTeamFailure(response.message));
     }
   } catch (error) {
-    // Dispatch the failure action with the error
-    yield put({ type: DELETE_TEAM_FAILURE, payload: error.message });
+    yield put(deleteTeamFailure(error.message));
   }
 }
 
@@ -76,10 +73,11 @@ function* handleEditTeam(action) {
     const { id, credentials } = action.payload;
     const response = yield call(setUpdateTeam, id, credentials);
     if (response && response.success) {
-      yield put(editTeamSuccess(response));
+      yield put(editTeamSuccess(response.data.data));
       toast.success("Team Updated successfully!");
     } else {
-      throw new Error(response.message || "Update failed");
+      put(editTeamFailure(error.message));
+      toast.error(response.message || "Update Failed");
     }
   } catch (error) {
     yield put(editTeamFailure(error.message));

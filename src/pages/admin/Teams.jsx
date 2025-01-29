@@ -338,7 +338,7 @@ function Teams() {
                       <td className="px-4 py-3 relative">
                         <button
                           className="focus:outline-none"
-                          onClick={(e) => handleDropdownToggle(e, 0)} // Use your index logic
+                          onClick={(e) => handleDropdownToggle(e, index)}
                         >
                           <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
                         </button>
@@ -381,18 +381,18 @@ function Teams() {
                   ))}
                 </tbody>
               </table>
-            </div>
 
-            {totalPages > page && (
-              <div class="flex justify-center items-center py-4">
-                <a
-                  class="text-center font-bold text-yellow-600 hover:underline"
-                  onClick={() => handleLoadMoreData(page + 1)}
-                >
-                  Load More
-                </a>
-              </div>
-            )}
+              {totalPages > page && (
+                <div class="flex justify-center items-center py-4">
+                  <a
+                    class="text-center font-bold text-yellow-600 hover:underline"
+                    onClick={() => handleLoadMoreData(page + 1)}
+                  >
+                    Load More
+                  </a>
+                </div>
+              )}
+            </div>
 
             <div
               className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 px-4 pt-3 pb-4"

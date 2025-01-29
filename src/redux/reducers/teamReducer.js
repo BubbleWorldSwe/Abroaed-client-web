@@ -46,16 +46,10 @@ const teamReducer = (state = initialState, action) => {
     case ADD_TEAM_REQUEST:
       return { ...state, loading: true };
     case ADD_TEAM_SUCCESS:
-      console.log("action.payload");
-      console.log(action.payload);
-      console.log("action.payload");
       return {
         ...state,
         loading: false,
-        teams: [
-          { ...action.payload, roleId: { _id: action.payload.roleId } },
-          ...state.teams,
-        ],
+        teams: [action.payload, ...state.teams],
       };
     case ADD_TEAM_FAILURE:
       return { ...state, loading: false, error: action.payload };
@@ -91,7 +85,9 @@ const teamReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         teams: state.teams.map((team) =>
-          team.id === action.payload.id ? { ...team, ...action.payload } : team
+          team._id === action.payload.data._id
+            ? { ...team, ...action.payload.data }
+            : team
         ),
       };
     case EDIT_TEAM_FAILURE:

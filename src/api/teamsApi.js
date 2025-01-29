@@ -22,7 +22,7 @@ export const getTeams = async (page) => {
 
 export const setAddTeam = async (credentials) => {
   try {
-    // console.log(credentials);
+    console.log(credentials);
 
     const data = await makePostRequest(
       `${BASE_URL}/api/v1/auth/signup`,
