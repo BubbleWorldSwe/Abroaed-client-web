@@ -23,15 +23,26 @@
 
 // export default App;
 
-import { BrowserRouter } from 'react-router-dom';
-import AppRoutes from './routes/routes';
-import 'swiper/swiper-bundle.css';  // Swiper CSS
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/routes";
+import "swiper/swiper-bundle.css"; // Swiper CSS
+
+import { toast, ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <>
+      <ToastContainer
+        autoClose={3000}
+        draggable
+        pauseOnHover
+        position="top-right"
+      />
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </>
+
   );
 };
 

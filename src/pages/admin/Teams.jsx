@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import AddTeamMember from "../../Components/Modals/AddTeamMember";
 import { Edit, EllipsisVertical, Trash2 } from "lucide-react";
-import { useSelector } from "react-redux";
-import filter_list from '../../assets/filter_list.png'
+import { useDispatch, useSelector } from "react-redux";
+import filter_list from "../../assets/filter_list.png";
 import UpdateTeamMember from "../../Components/Modals/UpdateTeamMember";
 import ConfirmModal from "../../Components/Modals/ConfirmModal";
+import {
+  deleteTeamRequest,
+  fetchTeamsRequest,
+} from "../../redux/actions/teamActions";
+import { fetchRolesRequest } from "../../redux/actions/rolesActions";
 
 function Teams() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,19 +17,28 @@ function Teams() {
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
-  const teamMembers = useSelector((state) => state.team.teamMembers);
-  const [selectedRows, setSelectedRows] = useState({});
-  const [modalType, setModalType] = useState('');
-  console.log("team", teamMembers);
 
+  const [selectedRows, setSelectedRows] = useState({});
+  const [modalType, setModalType] = useState("");
+
+  const [page, setPage] = useState(1);
+
+  const { loading, teams, totalPages } = useSelector((state) => state.team);
+
+  console.log(totalPages, page);
+
+  console.log(teams);
+  const [editData, setEditData] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleOpenAddModal = () => {
     setEditMode(false);
-    setModalType('add');
+    setModalType("add");
     setSelectedMember(null);
     setIsModalOpen(true);
   };
-  const dropdownRef = useRef(null);  // Reference to the dropdown
+  const dropdownRef = useRef(null); // Reference to the dropdown
 
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation(); // Prevent the click from propagating
@@ -41,9 +55,9 @@ function Teams() {
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -52,9 +66,12 @@ function Teams() {
   //   console.log('Edit member:', member);
   // };
 
-  const handleOpenEditModal = (member) => {
+  const handleOpenEditModal = (member, data) => {
+    console.log("handleOpenEditModal");
+
+    setEditData(data);
     setEditMode(true);
-    setModalType('edit');
+    setModalType("edit");
     setSelectedMember(member);
     setIsModalOpen(true);
   };
@@ -86,21 +103,47 @@ function Teams() {
       [index]: !prevState[index],
     }));
   };
+
+  const handleLoadMoreData = (page) => {
+    setPage(page);
+    dispatch(fetchTeamsRequest(page));
+  };
+
+  const handleDelete = (teamId) => {
+    console.log("handleDelete " + teamId);
+    dispatch(deleteTeamRequest(teamId));
+    setDropdownVisible(null);
+  };
+
+  useEffect(() => {
+    dispatch(fetchTeamsRequest(page));
+    dispatch(fetchRolesRequest());
+  }, []);
+
+  /*  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="spinner-border animate-spin h-10 w-10 border-t-4 border-yellow-600 rounded-full"></div>
+        <p className="ml-4 text-yellow-600">Loading...</p>
+      </div>
+    );
+  } */
+
   return (
     <>
       <AddTeamMember
-        isOpen={isModalOpen && modalType === 'add'}
+        isOpen={isModalOpen && modalType === "add"}
         onClose={handleCloseModal}
         editMode={editMode}
         memberToEdit={selectedMember}
       />
       <UpdateTeamMember
-        isOpen={isModalOpen && modalType === 'edit'}
+        isOpen={isModalOpen && modalType === "edit"}
         onClose={handleCloseModal}
         editMode={editMode}
         memberToEdit={selectedMember}
+        data={editData}
       />
-
 
       <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
         {/* Adjust padding and spacing */}
@@ -142,7 +185,6 @@ function Teams() {
                         placeholder="Search Teams"
                         required=""
                       />
-
                     </div>
                   </form>
                   <div className="flex items-center space-x-4">
@@ -155,16 +197,28 @@ function Teams() {
                     type="button"
                     className="w-full whitespace-nowrap md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
-                    <svg class="w-6 h-6 p-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+                    <svg
+                      class="w-6 h-6 p-1 text-gray-600 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 12h14m-7 7V5"
+                      />
                     </svg>
-
                     Add Team Member
                   </button>
                 </div>
               </div>
             </div>
-
 
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
@@ -228,7 +282,7 @@ function Teams() {
                   </tr>
                 </thead>
                 <tbody>
-                  {teamMembers.map((member, index) => (
+                  {teams.map((member, index) => (
                     <tr
                       key={index}
                       className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedRows[index] ? "bg-[#FFFCC2]" : ""
@@ -254,8 +308,8 @@ function Teams() {
                           </label>
                         </div>
                       </td>
-                      <td className="px-4 py-3">{member.name}</td>
-                      <td className="px-4 py-3">{member.role}</td>
+                      <td className="px-4 py-3">{`${member?.firstName} ${member?.lastName}`}</td>
+                      <td className="px-4 py-3">{member?.roleId?.roleName}</td>
                       {/* <td className="px-4 py-3">{member.assignedTo}</td> */}
                       <td className="px-4 py-3 whitespace-nowrap">
                         {/* Read & Write Permission */}
@@ -282,7 +336,7 @@ function Teams() {
                       <td className="px-4 py-3 relative">
                         <button
                           className="focus:outline-none"
-                          onClick={(e) => handleDropdownToggle(e, 0)}  // Use your index logic
+                          onClick={(e) => handleDropdownToggle(e, index)}
                         >
                           <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
                         </button>
@@ -294,7 +348,9 @@ function Teams() {
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>
                                 <button
-                                  onClick={() => handleOpenEditModal('member')}
+                                  onClick={() =>
+                                    handleOpenEditModal("member", member)
+                                  }
                                   className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                   <Edit className="w-4 h-4" />
@@ -305,6 +361,7 @@ function Teams() {
                             <div className="py-1">
                               <a
                                 href="#"
+                                onClick={() => handleDelete(member._id)}
                                 className="flex items-center gap-2 py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                               >
                                 <Trash2 className="w-4 h-4" />
@@ -318,7 +375,19 @@ function Teams() {
                   ))}
                 </tbody>
               </table>
+
+              {totalPages > page && (
+                <div class="flex justify-center items-center py-4">
+                  <a
+                    class="text-center font-bold text-yellow-600 hover:underline"
+                    onClick={() => handleLoadMoreData(page + 1)}
+                  >
+                    Load More
+                  </a>
+                </div>
+              )}
             </div>
+
             <div
               className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 px-4 pt-3 pb-4"
               aria-label="Table navigation"

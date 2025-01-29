@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addDestination } from "../../slices/destinationSlice";
 
 function AddDestination({ isOpen, onClose }) {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user); // Access logged-in user's data
+  // const { currentUser } = useSelector((state) => state.user); // Access logged-in user's data
 
   const [formData, setFormData] = useState({
     pageName: "",
@@ -18,20 +17,20 @@ function AddDestination({ isOpen, onClose }) {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    // Append additional fields programmatically
-    const newDestination = {
-      ...formData,
-      author: currentUser?.name || "Anonymous", // Fallback to "Anonymous"
-      status: "draft",
-      createdAt: new Date().toISOString(),
-    };
+  //   // Append additional fields programmatically
+  //   const newDestination = {
+  //     ...formData,
+  //     author: currentUser?.name || "Anonymous", // Fallback to "Anonymous"
+  //     status: "draft",
+  //     createdAt: new Date().toISOString(),
+  //   };
 
-    dispatch(addDestination(newDestination)); // Dispatch the action
-    onClose(); // Close the modal
-  };
+  //   dispatch(addDestination(newDestination)); // Dispatch the action
+  //   onClose(); // Close the modal
+  // };
 
   if (!isOpen) return null;
 
@@ -52,13 +51,13 @@ function AddDestination({ isOpen, onClose }) {
             />
           </div>
           <div>
-            <label className="block font-medium">Author</label>
+            {/* <label className="block font-medium">Author</label>
             <input
               type="text"
               value={currentUser?.name || "Anonymous"}
               readOnly
               className="w-full p-2 border rounded bg-gray-100"
-            />
+            /> */}
           </div>
           <div className="flex justify-end space-x-4">
             <button

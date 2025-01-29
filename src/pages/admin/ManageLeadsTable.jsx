@@ -1,15 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
-import { CalendarDays, Edit, EllipsisVertical, Pencil, Plus } from "lucide-react";
+import {
+} from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { assignTeamMember } from "../../slices/leadSlice";
 import AppointmentModal from "../../Components/Modals/AppointmentModal";
 import AssignTeamModal from "../../Components/Modals/AssignTeamMemberModal";
-import filter_list from '../../assets/filter_list.png'
+import filter_list from "../../assets/filter_list.png";
 import UpdateLeadStatus from "../../Components/Modals/UpdateLeadStatus";
 function ManageLeadsTable() {
   const dispatch = useDispatch();
+
   const leads = useSelector((state) => state.leads.leads);
-  console.log("leads", leads);
+  console.log(leads);
   const handleDelete = (id) => {
     dispatch(deleteLead(id));
   };
@@ -19,7 +20,7 @@ function ManageLeadsTable() {
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
-  const dropdownRef = useRef(null);  // Reference to the dropdown
+  const dropdownRef = useRef(null); // Reference to the dropdown
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
@@ -56,9 +57,9 @@ function ManageLeadsTable() {
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 
@@ -129,7 +130,6 @@ function ManageLeadsTable() {
                       placeholder="Search Teams"
                       required=""
                     />
-
                   </div>
                 </form>
                 <div className="flex items-center space-x-4">
@@ -171,7 +171,7 @@ function ManageLeadsTable() {
                 </tr>
               </thead>
               <tbody>
-                {leads.map((member, index) => (
+                {/* {leads.map((member, index) => (
                   <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                     <td className="px-4 py-3 w-4">
                       <div className="flex items-center">
@@ -197,8 +197,6 @@ function ManageLeadsTable() {
                     <td className="px-4 py-3"> {member.contact}</td>
                     <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       {member.leadType}
-
-
                     </td>
                     <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       {member.counsellor}
@@ -213,12 +211,10 @@ function ManageLeadsTable() {
                         {member.appointment.date
                           ? `${member.appointment.date} at ${member.appointment.timeSlot} (${member.appointment.type})`
                           : "No appointment"}
-
                       </span>
                     </td>
                     <td className="px-4 py-3 whitespace-nowrap">
                       <span className="text-[#111928] bg-gray-100 p-2 rounded-md">
-
                         {member.createdAt}
                       </span>
                     </td>
@@ -247,9 +243,7 @@ function ManageLeadsTable() {
                                 className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                               >
                                 <Plus className="w-5 h-5" />
-                                <span>
-                                  Assign Team
-                                </span>
+                                <span>Assign Team</span>
                               </button>
                             </li>
                             <li>
@@ -258,9 +252,7 @@ function ManageLeadsTable() {
                                 className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                               >
                                 <Pencil className="w-4 h-4" />
-                                <span>
-                                  Update Lead Status
-                                </span>
+                                <span>Update Lead Status</span>
                               </button>
                             </li>
 
@@ -272,24 +264,18 @@ function ManageLeadsTable() {
                                 className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                               >
                                 <CalendarDays className="w-4 h-4" />
-                                <span>
-                                  Schedule Appointment
-
-                                </span>
+                                <span>Schedule Appointment</span>
                               </button>
                             </li>
-
                           </ul>
-
                         </div>
                       )}
                     </td>
                   </tr>
-                ))}
+                ))} */}
               </tbody>
             </table>
           </div>
-
         </section>
       </div>
     </>

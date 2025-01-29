@@ -7,7 +7,7 @@ import { fetchColleges } from "../../slices/collegeSlice";
 
 function CollegeTable() {
   const dispatch = useDispatch();
-  const { colleges, loading, error } = useSelector((state) => state.colleges);
+  // const { colleges, loading, error } = useSelector((state) => state.colleges);
 
   useEffect(() => {
     dispatch(fetchColleges());
@@ -300,7 +300,7 @@ function CollegeTable() {
                 </thead>
 
                 <tbody>
-                  {colleges.map((college, index) => (
+                  {/* {colleges.map((college, index) => (
                     <tr
                       key={index}
                       className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -389,7 +389,7 @@ function CollegeTable() {
                         )}
                       </td>
                     </tr>
-                  ))}
+                  ))} */}
                 </tbody>
               </table>
             </div>
