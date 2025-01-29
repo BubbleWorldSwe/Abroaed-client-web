@@ -26,14 +26,12 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/routes";
 import "swiper/swiper-bundle.css"; // Swiper CSS
-import { Provider } from "react-redux";
-import store from "./redux/store";
 
 import { toast, ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <>
       <ToastContainer
         autoClose={3000}
         draggable
@@ -43,7 +41,8 @@ const App = () => {
       <BrowserRouter>
         <AppRoutes />
       </BrowserRouter>
-    </Provider>
+    </>
+
   );
 };
 

@@ -7,7 +7,6 @@ const PrivateRoute = ({ children, requiredRole }) => {
   const userRole = 'admin'; // Example: replace with the actual user role (e.g., 'admin', 'user')
 
   const navigate = useNavigate();
-  console.log('first');
 
   useEffect(() => {
     // Check if the user is authenticated and authorized

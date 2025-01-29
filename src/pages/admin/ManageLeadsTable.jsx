@@ -1,21 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
-  CalendarDays,
-  Edit,
-  EllipsisVertical,
-  Pencil,
-  Plus,
 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { assignTeamMember } from "../../slices/leadSlice";
 import AppointmentModal from "../../Components/Modals/AppointmentModal";
 import AssignTeamModal from "../../Components/Modals/AssignTeamMemberModal";
 import filter_list from "../../assets/filter_list.png";
 import UpdateLeadStatus from "../../Components/Modals/UpdateLeadStatus";
 function ManageLeadsTable() {
   const dispatch = useDispatch();
+
   const leads = useSelector((state) => state.leads.leads);
-  console.log("leads", leads);
+  console.log(leads);
   const handleDelete = (id) => {
     dispatch(deleteLead(id));
   };
@@ -176,7 +171,7 @@ function ManageLeadsTable() {
                 </tr>
               </thead>
               <tbody>
-                {leads.map((member, index) => (
+                {/* {leads.map((member, index) => (
                   <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                     <td className="px-4 py-3 w-4">
                       <div className="flex items-center">
@@ -233,11 +228,10 @@ function ManageLeadsTable() {
                       </button>
                       {dropdownVisible === index && (
                         <div
-                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                            dropdownDirection === "up"
-                              ? "bottom-full mb-2"
-                              : "mt-2"
-                          }`}
+                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
+                            ? "bottom-full mb-2"
+                            : "mt-2"
+                            }`}
                         >
                           <ul
                             className="py-1 text-sm text-gray-700 dark:text-gray-200"
@@ -278,7 +272,7 @@ function ManageLeadsTable() {
                       )}
                     </td>
                   </tr>
-                ))}
+                ))} */}
               </tbody>
             </table>
           </div>
