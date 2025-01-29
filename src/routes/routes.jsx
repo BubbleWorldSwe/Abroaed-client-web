@@ -34,9 +34,10 @@ import PathwaysProgramLayout from "../Layouts/PathwaysProgramLayout";
 import CollegePageLayout from "../Layouts/CollegePageLayout";
 import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
 import TransactionTable from "../pages/TransactionAdmin/TransactionTable";
+import AdminStudentProfileLayout from "../Layouts/AdminStudentProfileLayout";
 
 const AppRoutes = () => {
- 
+
   const allRoutes = [
     { path: "/home", element: <HomeLayout />, isPrivate: false },
     {
@@ -44,10 +45,10 @@ const AppRoutes = () => {
       element: <LayoutPageDestination />,
       isPrivate: false,
     },
-   {
+    {
       path: "/",
       element: <ComingSoonPage />,
-      isPrivate: false, 
+      isPrivate: false,
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
     { path: "/aboutus", element: <AboutUsLayout />, isPrivate: false },
@@ -98,12 +99,13 @@ const AppRoutes = () => {
         { path: "teams", element: <Teams /> },
         { path: "nurtureLeads", element: <NurtureLeads /> },
         { path: "students", element: <StudentsTable /> },
+        { path: "students/:name", element: <AdminStudentProfileLayout /> },
         { path: "leads", element: <ManageLeadsTable /> },
         { path: "accommodation", element: <AccommodationTable /> },
         { path: "accommodation/:name", element: <AccommodationPage /> },
-        { path: "langPrep/:name", element: < LanguagePrepPage/> },
-        { path: "langPrep", element: < LanguagePrepTable/> },
-        { path: "transaction", element: < TransactionTable/> },
+        { path: "langPrep/:name", element: < LanguagePrepPage /> },
+        { path: "langPrep", element: < LanguagePrepTable /> },
+        { path: "transaction", element: < TransactionTable /> },
         { path: "colleges", element: <CollegeTable /> },
         { path: "colleges/:name", element: <CollegePage /> },
         { path: "destinations/:name", element: <DestinationPage /> },
@@ -123,8 +125,8 @@ const AppRoutes = () => {
             isPrivate ? (
               <PrivateRoute>{element}</PrivateRoute> // Wrap private routes in PrivateRoute
             ) : (
-              element 
-                       )
+              element
+            )
           }
         >
           {/* Render child routes */}

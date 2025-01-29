@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import AddTeamMember from "../../Components/Modals/AddTeamMember";
 import { Edit, EllipsisVertical, Trash2 } from "lucide-react";
 import { useSelector } from "react-redux";
 import filter_list from '../../assets/filter_list.png'
 import UpdateTeamMember from "../../Components/Modals/UpdateTeamMember";
 import ConfirmModal from "../../Components/Modals/ConfirmModal";
+
 function Teams() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);

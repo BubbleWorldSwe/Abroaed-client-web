@@ -94,7 +94,6 @@ function ManageLeadsTable() {
         {/* Adjust padding and spacing */}
 
         <section className="font-rethink flex-grow py-5">
-
           <div className="flex flex-col  py-2 mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative ">
             <div className=" dark:border-gray-700 mx-4">
               <div className="w-full  flex  space-y-3 md:space-y-0  ">
