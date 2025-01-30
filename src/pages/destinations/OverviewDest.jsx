@@ -2,13 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function OverviewDest() {
-  const overview = useSelector((state) =>
-    state.destinationSections.sections.find(
-      (section) => section.title === "Overview"
-    )
-  );
-  console.log("first", overview);
-
+  const overview = {
+    content: {
+      description: "A beautiful country known for its rich culture and heritage.",
+      capital: "Sample City",
+      totalPopulation: "50 million",
+      language: "English, Spanish",
+      totalStudents: "1.2 million",
+      totalUniversities: "250",
+      Currency: "USD",
+      DailingCode: "+1",
+    },
+  };
   if (!overview || !overview.content) {
     return (
       <div className="mb-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -40,11 +45,11 @@ function OverviewDest() {
 
   return (
     <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
-     
-     <h2 className="mb-2 font-semibold">Why Study in USA?</h2>
+
+      <h2 className="mb-2 font-semibold">Why Study in USA?</h2>
       {/* About Section */}
       <p className="text-gray-700 dark:text-gray-300 mb-6">
-      The United States of America is amongst the most popular study destinations globally, housing the world’s top-ranked institutions. It is known to host the highest number of international students from all over the globe. Studying in the USA offers a perfectly blended student experience with an exciting campus environment and cultural diversity.
+        The United States of America is amongst the most popular study destinations globally, housing the world’s top-ranked institutions. It is known to host the highest number of international students from all over the globe. Studying in the USA offers a perfectly blended student experience with an exciting campus environment and cultural diversity.
         {/* {description || "No details available"} */}
       </p>
       {/* Grid Section */}
@@ -55,7 +60,7 @@ function OverviewDest() {
           { key: "Total Population", value: totalPopulation },
           { key: "Currency", value: Currency },
           { key: "Dial Code", value: totalStudents },
-                  ].map((item, index) => (
+        ].map((item, index) => (
           <div key={index} className="text-left">
             <p className="text-base font-semibold text-gray-900 dark:text-gray-400">
               {item.key}

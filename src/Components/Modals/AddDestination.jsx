@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function AddDestination({ isOpen, onClose }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const { currentUser } = useSelector((state) => state.user); // Access logged-in user's data
 
   const [formData, setFormData] = useState({
