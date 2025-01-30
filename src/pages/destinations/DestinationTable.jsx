@@ -7,14 +7,14 @@ import { fetchDestinations } from "../../slices/destinationSlice";
 import AddDestination from "../../Components/Modals/AddDestination";
 
 function DestinationTable() {
-  const dispatch = useDispatch();
-  const { destinations, loading, error } = useSelector(
-    (state) => state.destinations
-  );
+  // const dispatch = useDispatch();
+  // const { destinations, loading, error } = useSelector(
+  //   (state) => state.destinations
+  // );
 
-  useEffect(() => {
-    dispatch(fetchDestinations());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchDestinations());
+  // }, [dispatch]);
 
   // if (loading) return <p>Loading destinations...</p>;
   // if (error) return <p>Error: {error}</p>;
@@ -50,6 +50,39 @@ function DestinationTable() {
 
     setDropdownVisible(index === dropdownVisible ? null : index);
   };
+  const destinations = [
+    {
+      pageName: "Paris Travel Guide",
+      author: "John Doe",
+      status: "Published",
+      createdAt: "2024-01-15",
+    },
+    {
+      pageName: "Tokyo Adventure",
+      author: "Jane Smith",
+      status: "Draft",
+      createdAt: "2024-02-10",
+    },
+    {
+      pageName: "Exploring Rome",
+      author: "Emily Johnson",
+      status: "Published",
+      createdAt: "2024-03-05",
+    },
+    {
+      pageName: "New York City Highlights",
+      author: "Michael Brown",
+      status: "Pending Review",
+      createdAt: "2024-04-20",
+    },
+    {
+      pageName: "Discovering Sydney",
+      author: "Sarah Wilson",
+      status: "Published",
+      createdAt: "2024-05-12",
+    },
+  ];
+
   return (
     <>
       <AddDestination isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
@@ -256,11 +289,10 @@ function DestinationTable() {
                         </button>
                         {dropdownVisible === index && (
                           <div
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                              dropdownDirection === "up"
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
                                 ? "bottom-full mb-2"
                                 : "mt-2"
-                            }`}
+                              }`}
                           >
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>
