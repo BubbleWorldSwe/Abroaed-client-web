@@ -18,14 +18,19 @@ const LanguagePrepPage = () => {
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
     const [titlecaller, setTitleCaller] = useState(false); // State to manage Add modal open/close
     const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
-    const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
-    const dispatch = useDispatch();
+    // const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
+    // const dispatch = useDispatch();
     const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
     const [activeIndex, setActiveIndex] = useState(null);
     const [modalType, setModalType] = useState(null); // To manage which modal is open
     const [formData, setFormData] = useState({}); // To manage form inputs
     const [selectedType, setSelectedType] = useState("");
-
+    const sections = [
+        { title: "Introduction", content: "This is the introduction section." },
+        { title: "Chapter 1", content: "This is the first chapter." },
+        { title: "Chapter 2", content: "This is the second chapter." },
+        { title: "Conclusion", content: "This is the conclusion section." }
+    ];
     const handleOpenDeleteModal = (index) => {
         setSelectedSectionIndex(index);
         setIsDeleteModalOpen(true);
@@ -440,8 +445,8 @@ const LanguagePrepPage = () => {
                 onClose={handleCloseAddModal}
             />
             <div className="accordion space-y-4">
-                
-<LanguageImageSection/>
+
+                <LanguageImageSection />
                 {sectionConfig.map((sectionItem, index) => (
                     <div
                         key={index}
