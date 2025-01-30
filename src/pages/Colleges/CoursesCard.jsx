@@ -16,17 +16,17 @@ function CoursesCard() {
   const [currentCourse, setCurrentCourse] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
 
-  const dispatch = useDispatch();
-  const courses = useSelector((state) =>
-    state.collegeSections.sections.find(
-      (section) => section.title === "Courses"
-    )
-  );
+  // const dispatch = useDispatch();
+  // const courses = useSelector((state) =>
+  //   state.collegeSections.sections.find(
+  //     (section) => section.title === "Courses"
+  //   )
+  // );
 
   // Validate and filter valid courses
-  const validCourses = Array.isArray(courses?.content)
-    ? courses.content.filter((course) => course.courseName)
-    : [];
+  // const validCourses = Array.isArray(courses?.content)
+  //   ? courses.content.filter((course) => course.courseName)
+  //   : [];
 
   // Handle dropdown visibility
   const handleDropdownToggle = (event, index) => {
@@ -48,66 +48,66 @@ function CoursesCard() {
 
   // Add new course
   const handleAddCourse = (newCourse) => {
-    dispatch(addItemToSection({ sectionTitle: "Courses", newItem: newCourse }));
+    // dispatch(addItemToSection({ sectionTitle: "Courses", newItem: newCourse }));
   };
 
   // Update existing course
   const handleEditCourse = (updatedCourse) => {
-    dispatch(
-      updateItemInSection({
-        sectionTitle: "Courses",
-        itemIndex: currentIndex,
-        updatedItem: updatedCourse,
-      })
-    );
+    // dispatch(
+    //   updateItemInSection({
+    //     sectionTitle: "Courses",
+    //     itemIndex: currentIndex,
+    //     updatedItem: updatedCourse,
+    //   })
+    // );
   };
 
   // Delete a course
   const handleDeleteCourse = (index) => {
-    dispatch(
-      deleteItemFromSection({
-        sectionTitle: "Courses",
-        itemIndex: index,
-      })
-    );
+    // dispatch(
+    //   deleteItemFromSection({
+    //     sectionTitle: "Courses",
+    //     itemIndex: index,
+    //   })
+    // );
   };
 
   return (
- <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">
-         <div class="overflow-x-auto">
-                  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                      <thead class="text-sm text-gray-700  bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-                          <tr>
-                              <th  class="px-4 py-3">Scholarship Name</th>
-                              <th  class="px-4 py-3 whitespace-nowrap">Last Edited</th>
-                              <th  class="px-4 py-3">
-                                   </th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                              <td class=" px-4 py-3">
-                                  <div class="flex items-center">
-                                  Scholarship - Engineering
-                                         </div>
-                              </td>
-                              <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                  <div class="flex items-center">
-                                      <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/avatar-10.png" alt="iMac Front Image" class="w-auto h-8 mr-3 rounded-full"/>
-                                      <span>Jan 12,2030</span>
-                                  </div>
-                              </th>
-                             
-                              <td className="px-4 py-3">
-                              <img src={pencil} alt="iMac Front Image" class="w-5 h-5 mr-3 "/>
-    
-    
-                                 </td>
-                              </tr>
-                          </tbody>
-                  </table>
-              </div>
-         </div>
+    <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+          <thead class="text-sm text-gray-700  bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th class="px-4 py-3">Scholarship Name</th>
+              <th class="px-4 py-3 whitespace-nowrap">Last Edited</th>
+              <th class="px-4 py-3">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <td class=" px-4 py-3">
+                <div class="flex items-center">
+                  Scholarship - Engineering
+                </div>
+              </td>
+              <th scope="row" class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <div class="flex items-center">
+                  <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/avatar-10.png" alt="iMac Front Image" class="w-auto h-8 mr-3 rounded-full" />
+                  <span>Jan 12,2030</span>
+                </div>
+              </th>
+
+              <td className="px-4 py-3">
+                <img src={pencil} alt="iMac Front Image" class="w-5 h-5 mr-3 " />
+
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     // <div className="mb-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
     //   <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

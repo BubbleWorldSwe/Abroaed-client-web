@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addCollege, fetchColleges } from "../../slices/collegeSlice";
 
 function AddCollegeDrawer({ isOpen, onClose }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: "",
     city: "",
@@ -23,16 +23,16 @@ function AddCollegeDrawer({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     console.log("payload", formData);
     e.preventDefault();
-    dispatch(addCollege(formData)) // Dispatch the addCollege action
-      .unwrap()
-      .then(() => {
-        alert("College added successfully!");
-        onClose();
-        dispatch(fetchColleges()); // Fetch the updated list
-      })
-      .catch((error) => {
-        alert("Error adding college: " + error.message);
-      });
+    // dispatch(addCollege(formData)) // Dispatch the addCollege action
+    // .unwrap()
+    // .then(() => {
+    //   alert("College added successfully!");
+    //   onClose();
+    //   dispatch(fetchColleges()); // Fetch the updated list
+    // })
+    // .catch((error) => {
+    //   alert("Error adding college: " + error.message);
+    // });
   };
   return (
     <>

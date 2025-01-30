@@ -18,14 +18,26 @@ function CollegePage() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
   const [titlecaller, setTitleCaller] = useState(false); // State to manage Add modal open/close
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
-  const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
-  const dispatch = useDispatch();
-  const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
+  // const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
+  // const dispatch = useDispatch();
+  // const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [modalType, setModalType] = useState(null); // To manage which modal is open
   const [formData, setFormData] = useState({}); // To manage form inputs
   const [selectedType, setSelectedType] = useState("");
+  const sections = [
+    { title: "Introduction", content: "This is the introduction section." },
+    { title: "Chapter 1", content: "This is the first chapter." },
+    { title: "Chapter 2", content: "This is the second chapter." },
+    { title: "Conclusion", content: "This is the conclusion section." }
+  ];
 
+  const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
+
+  // Ensure sections exist before accessing them
+  const sectionTitle = sections[selectedSectionIndex]?.title || "Default Title";
+  const sectionContent = sections[selectedSectionIndex]?.content || "No content available";
+  // 
   const handleOpenDeleteModal = (index) => {
     setSelectedSectionIndex(index);
     setIsDeleteModalOpen(true);
@@ -53,7 +65,7 @@ function CollegePage() {
 
   };
   const sectionConfig = [
-    
+
     { name: "Overview", component: <OverviewCard /> },
     { name: "Media Gallery", component: < MediaGalleryCard /> },
     { name: "Courses", component: <CoursesCard /> },
@@ -309,7 +321,7 @@ function CollegePage() {
             <input id="dropzone-file" type="file" class="hidden" />
           </label>
         </div>
-         <div className="col-span-full text-end">
+        <div className="col-span-full text-end">
           <button
             type="button"
             className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded transition"
@@ -593,7 +605,7 @@ function CollegePage() {
         onClose={handleCloseAddModal}
       />
       <div className="accordion space-y-4">
-     <CollegeImageSection/>
+        <CollegeImageSection />
 
         {sectionConfig.map((sectionItem, index) => (
           <div

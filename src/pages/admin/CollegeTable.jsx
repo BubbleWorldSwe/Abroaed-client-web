@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchColleges } from "../../slices/collegeSlice";
 
 function CollegeTable() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const { colleges, loading, error } = useSelector((state) => state.colleges);
 
-  useEffect(() => {
-    dispatch(fetchColleges());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchColleges());
+  // }, [dispatch]);
 
   // if (loading) return <p>Loading colleges...</p>;
   // if (error) return <p>Error: {error}</p>;
@@ -47,6 +47,51 @@ function CollegeTable() {
 
     setDropdownVisible(index === dropdownVisible ? null : index);
   };
+
+  const colleges = [
+    {
+      name: "Harvard University",
+      city: "Cambridge",
+      country: "USA",
+      website: "https://www.harvard.edu",
+      email: "info@harvard.edu",
+      contact: "+1 617-495-1000",
+    },
+    {
+      name: "Stanford University",
+      city: "Stanford",
+      country: "USA",
+      website: "https://www.stanford.edu",
+      email: "info@stanford.edu",
+      contact: "+1 650-723-2300",
+    },
+    {
+      name: "University of Oxford",
+      city: "Oxford",
+      country: "UK",
+      website: "https://www.ox.ac.uk",
+      email: "info@ox.ac.uk",
+      contact: "+44 1865 270000",
+    },
+    {
+      name: "University of Cambridge",
+      city: "Cambridge",
+      country: "UK",
+      website: "https://www.cam.ac.uk",
+      email: "info@cam.ac.uk",
+      contact: "+44 1223 337733",
+    },
+    {
+      name: "Massachusetts Institute of Technology",
+      city: "Cambridge",
+      country: "USA",
+      website: "https://www.mit.edu",
+      email: "info@mit.edu",
+      contact: "+1 617-253-1000",
+    },
+  ];
+
+
   return (
     <>
       <AddCollegeDrawer isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
@@ -300,7 +345,7 @@ function CollegeTable() {
                 </thead>
 
                 <tbody>
-                  {/* {colleges.map((college, index) => (
+                  {colleges.map((college, index) => (
                     <tr
                       key={index}
                       className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -353,11 +398,10 @@ function CollegeTable() {
                         </button>
                         {dropdownVisible === index && (
                           <div
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                              dropdownDirection === "up"
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
                                 ? "bottom-full mb-2"
                                 : "mt-2"
-                            }`}
+                              }`}
                           >
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>
@@ -389,7 +433,7 @@ function CollegeTable() {
                         )}
                       </td>
                     </tr>
-                  ))} */}
+                  ))}
                 </tbody>
               </table>
             </div>

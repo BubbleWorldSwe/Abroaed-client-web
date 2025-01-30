@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { updateContent } from "../../slices/collegeSectionSlice";
 
 function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     about: "",
@@ -50,12 +50,12 @@ function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
     };
 
     // Dispatch action
-    dispatch(
-      updateContent({
-        sectionTitle: "Overview",
-        updatedContent,
-      })
-    );
+    // dispatch(
+    //   updateContent({
+    //     sectionTitle: "Overview",
+    //     updatedContent,
+    //   })
+    // );
 
     onClose(); // Close the modal
   };
