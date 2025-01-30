@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const [nav, setNav] = useState(false);
@@ -30,9 +30,7 @@ function Header() {
   return (
     <header
       className={`w-full sticky top-0 z-[99999999] transition-all duration-300 ease-in-out ${
-        isScrolled
-          ? "bg-yellow-300 shadow-md opacity-100"
-          : "bg-transparent "
+        isScrolled ? "bg-yellow-300 shadow-md opacity-100" : "bg-transparent "
       }`}
     >
       <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
@@ -43,7 +41,7 @@ function Header() {
               title=""
               className="flex items-center justify-center gap-2  font-inter text-sm hover:underline text-yellow-700 dark:text-yellow-300"
             >
-              Improve Your IELTS Writing with Our Free Tool 🔍
+              Improve Your IELTS Writing with Our Free Tool Now 🔍
               <svg
                 className="w-4 h-4 shrink-0"
                 aria-hidden="true"
@@ -67,7 +65,6 @@ function Header() {
         <nav className="flex items-center w-full px-6 py-4">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
-           
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               // src={logo}
@@ -134,7 +131,6 @@ function Header() {
                   className="flex  dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
-                
                 </button>
                 {dropdowns.exploreCourses && (
                   <div
@@ -364,7 +360,6 @@ function Header() {
                   className="block dark:text-white rounded text-yellow-700 dark:text-primary-500"
                 >
                   TestPrep
-                 
                 </button>
                 {dropdowns.testPrep && (
                   <div
