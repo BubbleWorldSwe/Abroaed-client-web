@@ -8,7 +8,6 @@ import FinanceLayout from "../Layouts/FinanceLayout";
 import LayoutPageDestination from "../Layouts/DestinationLayout";
 import AdminLayout from "../Layouts/AdminLayout";
 import Teams from "../pages/admin/Teams";
-import Onboarding from "../pages/admin/Onboarding";
 import NurtureLeads from "../pages/admin/NurtureLeads";
 import StudentsTable from "../pages/admin/StudentsTable";
 import ManageLeadsTable from "../pages/admin/ManageLeadsTable";
@@ -19,8 +18,7 @@ import CollegeTable from "../pages/admin/CollegeTable";
 import SigninPage from "../pages/admin/SigninPage";
 import TestPrepLayout from "../Layouts/TestPrepLayout";
 import CollegePage from "../pages/Colleges/CollegePage";
-import DestinationTable from "../pages/destinations/DestinationTable";
-import DestinationPage from "../pages/destinations/DestinationPage";
+
 import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
 import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import AboutUsLayout from "../Layouts/AboutUsLayout";
@@ -35,6 +33,8 @@ import CollegePageLayout from "../Layouts/CollegePageLayout";
 import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
 import TransactionTable from "../pages/TransactionAdmin/TransactionTable";
 import AdminStudentProfileLayout from "../Layouts/AdminStudentProfileLayout";
+import DestinationDetails from "../admin/destination/screens/destinationDetails";
+import Destinations from "../admin/destination/screens/Destinations";
 
 const AppRoutes = () => {
 
@@ -108,8 +108,8 @@ const AppRoutes = () => {
         { path: "transaction", element: < TransactionTable /> },
         { path: "colleges", element: <CollegeTable /> },
         { path: "colleges/:name", element: <CollegePage /> },
-        { path: "destinations/:name", element: <DestinationPage /> },
-        { path: "destinations", element: <DestinationTable /> },
+        { path: "destinations/:name", element: <DestinationDetails /> },
+        { path: "destinations", element: <Destinations /> },
       ],
     },
   ];

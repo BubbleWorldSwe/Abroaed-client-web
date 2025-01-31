@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
 
@@ -9,7 +10,7 @@ const FaqModal = ({ closeModal }) => {
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Form submitted with data:", formData, image);
+        // console.log("Form submitted with data:", formData, image);
         // You can handle the form submission here (e.g., API call, state update, etc.)
         closeModal();
     };

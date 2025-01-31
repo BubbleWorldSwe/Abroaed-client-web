@@ -1,35 +1,35 @@
-import React from "react";
+
 
 function AdmissionReqDest() {
-  return(
+  return (
     <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
-     
-         {/* About Section */}
-     <p className="text-gray-700 dark:text-gray-300 mb-6">
-     Comprehensive list of documents that you need to have while applying to universities in USA.       {/* {description || "No details available"} */}
-     </p>
-     {/* Grid Section */}
-     <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
-       {["Copy of a valid passport.","TOEFL/IELTS Test Sores","Academic Transcript","ACT/SAT/LSAT for UG Programs, GMAT/GRE scores for PG Programs",
-        "Academic Transcript","Academic Reference Letters (Numbers varies from university to university).","LORs","CV/ Resume",
-        "Statement of Purpose (SOP)","Essay","Portfolio"
-       ].map((item, index) => (
 
-              <li key={index}>
-                {item}
-              </li>
-        //  <div key={index} className="text-left flex ">
-        //    <p className="text-base font-semibold text-gray-900 dark:text-gray-400">
-        //      {item.key}
-        //    </p>
-        //    <p className="text-sm font-medium text-gray-600 dark:text-white">
-        //      {item|| "N/A"}
-        //    </p>
-        //  </div>
-       ))}
-     </div>
-     {/* Actions */}
-     {/* <div className="flex items-center gap-4 mt-6">
+      {/* About Section */}
+      <p className="text-gray-700 dark:text-gray-300 mb-6">
+        Comprehensive list of documents that you need to have while applying to universities in USA.       {/* {description || "No details available"} */}
+      </p>
+      {/* Grid Section */}
+      <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {["Copy of a valid passport.", "TOEFL/IELTS Test Sores", "Academic Transcript", "ACT/SAT/LSAT for UG Programs, GMAT/GRE scores for PG Programs",
+          "Academic Transcript", "Academic Reference Letters (Numbers varies from university to university).", "LORs", "CV/ Resume",
+          "Statement of Purpose (SOP)", "Essay", "Portfolio"
+        ].map((item, index) => (
+
+          <li key={index}>
+            {item}
+          </li>
+          //  <div key={index} className="text-left flex ">
+          //    <p className="text-base font-semibold text-gray-900 dark:text-gray-400">
+          //      {item.key}
+          //    </p>
+          //    <p className="text-sm font-medium text-gray-600 dark:text-white">
+          //      {item|| "N/A"}
+          //    </p>
+          //  </div>
+        ))}
+      </div>
+      {/* Actions */}
+      {/* <div className="flex items-center gap-4 mt-6">
        <button
          type="button"
          data-modal-target="editReviewModal"
@@ -75,8 +75,8 @@ function AdmissionReqDest() {
          Delete
        </button>
      </div> */}
-   </div>
-    );
+    </div>
+  );
 }
 
 export default AdmissionReqDest;

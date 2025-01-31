@@ -1,7 +1,4 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import pencil from "../../assets/pencil.png"
-
+import pencil from "../../../assets/pencil.png"
 function ScholarshipsDest() {
   const scholarships = {
     content: [

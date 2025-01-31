@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import AddDestination from '../../Components/Modals/AddDestination';
+import AddDestination from '../../admin/destination/modals/addDestinationModal';
 import { EllipsisVertical } from 'lucide-react';
 
 const AccommodationTable = () => {
@@ -17,41 +17,41 @@ const AccommodationTable = () => {
   // if (error) return <p>Error: {error}</p>;
   const Accommodation = [
     {
-        name: "Harvard Accommodation",
-        location: "Cambridge, USA",
-        price: "$1200 per month",
-        availability: "Available",
-        description: "Luxurious student accommodation near Harvard University with modern amenities and easy access to campus.",
+      name: "Harvard Accommodation",
+      location: "Cambridge, USA",
+      price: "$1200 per month",
+      availability: "Available",
+      description: "Luxurious student accommodation near Harvard University with modern amenities and easy access to campus.",
     },
     {
-        name: "Oxford Residence",
-        location: "Oxford, UK",
-        price: "£1000 per month",
-        availability: "Limited",
-        description: "Historic residence offering cozy rooms and a vibrant student community near the University of Oxford.",
+      name: "Oxford Residence",
+      location: "Oxford, UK",
+      price: "£1000 per month",
+      availability: "Limited",
+      description: "Historic residence offering cozy rooms and a vibrant student community near the University of Oxford.",
     },
     {
-        name: "Stanford Lodge",
-        location: "Stanford, USA",
-        price: "$1500 per month",
-        availability: "Available",
-        description: "Premium lodging for students with state-of-the-art facilities and proximity to Stanford University.",
+      name: "Stanford Lodge",
+      location: "Stanford, USA",
+      price: "$1500 per month",
+      availability: "Available",
+      description: "Premium lodging for students with state-of-the-art facilities and proximity to Stanford University.",
     },
     {
-        name: "Toronto Apartments",
-        location: "Toronto, Canada",
-        price: "CAD 1300 per month",
-        availability: "Few Rooms Left",
-        description: "Spacious apartments located in downtown Toronto, ideal for students of the University of Toronto.",
+      name: "Toronto Apartments",
+      location: "Toronto, Canada",
+      price: "CAD 1300 per month",
+      availability: "Few Rooms Left",
+      description: "Spacious apartments located in downtown Toronto, ideal for students of the University of Toronto.",
     },
     {
-        name: "ANU Housing",
-        location: "Canberra, Australia",
-        price: "AUD 1100 per month",
-        availability: "Available",
-        description: "Affordable student housing with a vibrant atmosphere near the Australian National University.",
+      name: "ANU Housing",
+      location: "Canberra, Australia",
+      price: "AUD 1100 per month",
+      availability: "Available",
+      description: "Affordable student housing with a vibrant atmosphere near the Australian National University.",
     },
-];
+  ];
 
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -200,8 +200,8 @@ const AccommodationTable = () => {
                         className="w-full  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-600 focus:outline-none bg-yellow-200 rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                       >
                         <svg class="w-6 h-6 p-1 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
-</svg>
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+                        </svg>
 
                         Add New Page
                       </button>
@@ -226,10 +226,10 @@ const AccommodationTable = () => {
                       Price
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                    Availability
+                      Availability
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                    Description
+                      Description
                     </th>
 
                     <th scope="col" className="px-4 py-3">
@@ -282,11 +282,10 @@ const AccommodationTable = () => {
                         </button>
                         {dropdownVisible === index && (
                           <div
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                              dropdownDirection === "up"
-                                ? "bottom-full mb-2"
-                                : "mt-2"
-                            }`}
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
+                              ? "bottom-full mb-2"
+                              : "mt-2"
+                              }`}
                           >
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>

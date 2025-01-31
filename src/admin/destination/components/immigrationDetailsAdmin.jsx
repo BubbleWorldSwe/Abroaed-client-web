@@ -1,4 +1,5 @@
-import pencil from "../../assets/pencil.png"
+// import pencil from "../../assets/pencil.png"
+import pencil from "../../../assets/pencil.png"
 
 const ImmigrationDetailsAdmin = () => {
   return (

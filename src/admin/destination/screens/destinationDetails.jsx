@@ -1,55 +1,27 @@
+/* eslint-disable no-constant-condition */
 import { useState } from "react";
-import OverviewDest from "./OverviewDest";
-
-import AdmissionReqDest from "./admissionReqDest";
-import ExpensesDest from "./ExpensesDest";
-import ScholarshipsDest from "./ScholarshipsDest";
-import DestinationFAQ from "./DestinationFAQ";
-import DestinationImage from "../../Components/DestinationImage";
+import OverviewDest from "../../../pages/destinations/OverviewDest";
+import AdmissionReqDest from "../components/admissionReqDest";
+import ExpensesDest from "../components/expensesDest";
+import ScholarshipsDest from "../components/scholarshipsDest";
+import DestinationFAQ from "../components/destinationFAQ";
+import DestinationImage from "../components/destinationImage";
 import { motion } from "framer-motion";
-import ImmigrationDetailsAdmin from "./ImmigrationDetailsAdmin"
-import WorkOpportunitiesAdmin from "./WorkOpportunitiesAdmin";
-import OverviewAddModal from "../../Components/Modals/DestinationModalsAdmin/OverviewAddModal";
-import AdmissionRequirementAddModal from "../../Components/Modals/DestinationModalsAdmin/AdmissionRequirementAddModal";
-import ExpensesAddModal from "../../Components/Modals/DestinationModalsAdmin/ExpensesAddModal";
-import ScholarshipModal from "../../Components/Modals/DestinationModalsAdmin/ScholarshipModal";
-import ImmigrationDetailsModal from "../../Components/Modals/DestinationModalsAdmin/ImmigrationDetailsModal";
-import WorkOpportunitiesModal from "../../Components/Modals/DestinationModalsAdmin/WorkOpportunitiesModal";
-import FaqModal from "../../Components/Modals/DestinationModalsAdmin/FaqModal";
+import ImmigrationDetailsAdmin from "../components/immigrationDetailsAdmin"
+import WorkOpportunitiesAdmin from "../components/workOpportunitiesAdmin";
+import OverviewAddModal from "../modals/overviewAddModal";
+import AdmissionRequirementAddModal from "../modals/admissionRequirementAddModal"
+import ExpensesAddModal from "../modals/expensesAddModal"
+import ScholarshipModal from "../modals/scholarshipModal"
+import ImmigrationDetailsModal from "../modals/immigrationDetailsModal"
+import WorkOpportunitiesModal from "../modals/workOpportunitiesModal"
+import FaqModal from "../modals/faqModal"
 
-function DestinationPage() {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State to manage Add modal open/close
-  const [titlecaller, setTitleCaller] = useState(false); // State to manage Add modal open/close
+function DestinationDetails() {
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
-  // const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
-  // const dispatch = useDispatch();
-  const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
-  const handleOpenDeleteModal = (index) => {
-    setSelectedSectionIndex(index);
-    setIsDeleteModalOpen(true);
-  };
-
-  const handleDeleteCloseModal = () => {
-    setIsDeleteModalOpen(false);
-    setSelectedSectionIndex(null);
-  };
-
-  const handleDeleteSection = () => {
-    handleDeleteCloseModal();
-  };
-  const handleOpenAddModal = () => setIsAddModalOpen(true);
-
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
-  };
   const [activeIndex, setActiveIndex] = useState(null);
-
-  const toggleFAQ = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-  const section = [
+  const sections = [
     { name: "Overview", component: <OverviewDest /> },
     { name: "Admission Requirements", component: <AdmissionReqDest /> },
     { name: "Expenses", component: <ExpensesDest /> },
@@ -58,33 +30,15 @@ function DestinationPage() {
     { name: "Work Opportunities", component: <WorkOpportunitiesAdmin /> },
     { name: "FAQs", component: <DestinationFAQ /> },
   ];
-  const [modalType, setModalType] = useState(null);
-  const [formData, setFormData] = useState({});
-  const [image, setImage] = useState(null);
-
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   const closeModal = () => {
-    setModalType('');
-    setImage(null);
     setSelectedSection(null);
-    setFormData({});
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted with data:", formData, image);
-    // You can handle the form submission here (e.g., API call, state update, etc.)
-    closeModal();
-  };
-  // Modals content for different sections
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
 
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
   const modals = {
     section0: (
       <OverviewAddModal closeModal={closeModal} />
@@ -106,22 +60,19 @@ function DestinationPage() {
     ),
     section6: (
       <FaqModal closeModal={closeModal} />
-
     ),
   };
 
   const openModal = (section, type, index) => {
     setSelectedSection(section);
     setActiveModalIndex(index)
-    setModalType(type);
-
   };
   return (
     <div>
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
           <DestinationImage />
-          {section.map((sectionItem, index) => (
+          {sections.map((sectionItem, index) => (
             <div
               key={index}
               className="rounded-2xl border-2 px-8 border-gray-400 dark:border-gray-700 shadow-md bg-white dark:bg-gray-800"
@@ -137,7 +88,6 @@ function DestinationPage() {
                 >
                   <span>{sectionItem.name}</span>
                   {true ? (
-                    // Add icon for adding new items
                     <button
                       className="px-4 py-4"
                       onClick={(e) => {
@@ -164,7 +114,6 @@ function DestinationPage() {
                       </svg>
                     </button>
                   ) : (
-                    // Pencil icon for editing
                     <button
                       className="px-4 py-4"
                       onClick={(e) => {
@@ -193,7 +142,6 @@ function DestinationPage() {
                   )}
                 </div>
               </h2>
-
               {/* Accordion Content */}
               <motion.div
                 id={`accordion-content-${index}`}
@@ -210,7 +158,6 @@ function DestinationPage() {
             </div>
           ))}
         </div>
-
         {/* Modal Rendering */}
         {selectedSection && (
           <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
@@ -222,32 +169,15 @@ function DestinationPage() {
                 &times;
               </button>
               <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2><div className="mt-4">
-                {/* Render the dynamic content based on modalType */}
                 {modals[`section${activeModalIndex}`]}
               </div>
             </div>
           </div>
         )}
-        {/* {modalType == "edit" && selectedSection && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-1/2 min-w-max relative">
-              <button
-                className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                onClick={closeModal}
-              >
-                &times;
-              </button>
-              <h2 className="text-2xl font-semibold mb-4">{modalType} Modal</h2>
-              <div className="mt-4">
-                hiii
-              </div>
-            </div>
-          </div>
-        )} */}
       </main>
     </div>
   );
 
 }
 
-export default DestinationPage;
+export default DestinationDetails;

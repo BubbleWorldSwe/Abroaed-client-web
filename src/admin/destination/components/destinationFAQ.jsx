@@ -1,4 +1,4 @@
-import pencil from '../../assets/pencil.png'
+import pencil from '../../../assets/pencil.png'
 
 function DestinationFAQ() {
 

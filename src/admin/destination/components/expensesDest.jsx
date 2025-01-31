@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import ExpensesDestModal from "../../Components/Modals/ExpensesDestModal";
+import ExpensesDestModal from "../../../Components/Modals/ExpensesDestModal";
 
 function ExpensesDest() {
   const expensesSection = {
