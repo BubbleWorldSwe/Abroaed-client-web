@@ -156,7 +156,6 @@ function DestinationTable() {
                 </div>
               </div>
             </div>
-
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">

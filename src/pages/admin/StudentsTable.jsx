@@ -288,7 +288,6 @@ function StudentsTable() {
                                   onClick={() => handleOpenAddModal('assign')}
                                   className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-
                                   <Plus className="w-4 h-4" />
                                   <span>
                                     Assign Member

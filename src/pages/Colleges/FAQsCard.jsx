@@ -80,99 +80,52 @@ function FAQsCard() {
     setShowModal(false);
   };
 
-  const validFAQs = faqs?.content?.filter((faq) => faq.question || faq.answer);
+  // const validFAQs = faqs?.content?.filter((faq) => faq.question || faq.answer);
 
-  if (!faqs || !validFAQs || validFAQs.length === 0) {
-    return (
-      <div className="  bg-white  ">
-        <div className="px-8">
-          <table className="table-auto w-full   bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg">
-            <tbody>
-              <tr className="border-b border-gray-300 dark:border-gray-700">
-                <td className="px-6 py-4 text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-700">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </td>
-                <td className=" text-center border-b  dark:border-gray-700">
-                  <img src={pencil} alt="Edit Icon" className="w-7 h-5 cursor-pointer" />
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  // if (!faqs || !validFAQs || validFAQs.length === 0) {
+  //   return (
+  //     <div className="  bg-white  ">
+  //       <div className="px-8">
+  //         <table className="table-auto w-full   bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg">
+  //           <tbody>
+  //             <tr className="border-b border-gray-300 dark:border-gray-700">
+  //               <td className="px-6 py-4 text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-700">
+  //                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  //               </td>
+  //               <td className=" text-center border-b  dark:border-gray-700">
+  //                 <img src={pencil} alt="Edit Icon" className="w-7 h-5 cursor-pointer" />
+  //               </td>
+  //             </tr>
+  //           </tbody>
+  //         </table>
+  //       </div>
 
-        {showModal && (
-          <FAQsCollegeModal
-            formData={formData}
-            setFormData={setFormData}
-            onClose={() => setShowModal(false)}
-            onSave={handleSaveFAQ}
-          />
-        )}
-      </div>
-    );
-  }
+  //       {showModal && (
+  //         <FAQsCollegeModal
+  //           formData={formData}
+  //           setFormData={setFormData}
+  //           onClose={() => setShowModal(false)}
+  //           onSave={handleSaveFAQ}
+  //         />
+  //       )}
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div className="mb-4 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
-      <h2 className="text-lg font-semibold mb-4">FAQs</h2>
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
-          <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-              Question
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-              Answer
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-              Actions
-            </th>
+    <div className="px-8 py-5">
+      <table className="table-auto w-full   bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg">
+        <tbody>
+          <tr className="border-b border-gray-300 dark:border-gray-700">
+            <td className="px-6 py-4 text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-700">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </td>
+            <td className=" text-center border-b  dark:border-gray-700">
+              <img src={pencil} alt="Edit Icon" className="w-7 h-5 cursor-pointer" />
+            </td>
           </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {validFAQs.map((faq, index) => (
-            <tr key={index}>
-              <td className="px-6 py-4">
-                {faq.question || "No question provided"}
-              </td>
-              <td className="px-6 py-4">
-                {faq.answer || "No answer provided"}
-              </td>
-              <td className="px-6 py-4 flex space-x-2">
-                <button
-                  onClick={() => handleEditFAQ(index)}
-                  className="text-blue-600 hover:underline"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDeleteFAQ(index)}
-                  className="text-red-600 hover:underline"
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
         </tbody>
       </table>
-
-      <button
-        type="button"
-        onClick={handleAddFAQ}
-        className="mt-6 py-2 px-3 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700"
-      >
-        Add FAQ
-      </button>
-
-      {showModal && (
-        <FAQsCollegeModal
-          formData={formData}
-          setFormData={setFormData}
-          onClose={() => setShowModal(false)}
-          onSave={handleSaveFAQ}
-        />
-      )}
     </div>
   );
 }

@@ -37,16 +37,16 @@ function AddCollegeDrawer({ isOpen, onClose }) {
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-30">
+        <div className="fixed font-rethink inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div
             id="addCollegeDrawer"
-            className="fixed right-0 top-0 z-40 h-screen w-full max-w-md overflow-y-auto bg-white p-4 transition-transform duration-300 ease-in-out antialiased dark:bg-gray-800"
+            className="bg-white py-4 dark:bg-gray-800 p-6 rounded-lg  min-w-max w-1/3 max-h-[600px] overflow-auto  relative"
             tabIndex="-1"
             aria-labelledby="addCollegeDrawer-label"
           >
             <h5
               id="addCollegeDrawer-label"
-              className="mb-6 text-sm font-semibold uppercase text-gray-500 dark:text-gray-400"
+              className="text-xl font-semibold mb-4"
             >
               Add New College
             </h5>
@@ -70,71 +70,91 @@ function AddCollegeDrawer({ isOpen, onClose }) {
               </svg>
               <span className="sr-only">Close menu</span>
             </button>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {[
-                { label: "College Name", name: "name" },
-                { label: "City", name: "city" },
-                { label: "Country", name: "country" },
-                { label: "Website", name: "website" },
-                { label: "Email", name: "email" },
-                { label: "Contact Number", name: "contactNo" },
-              ].map((field) => (
-                <div key={field.name}>
-                  <label
-                    htmlFor={field.name}
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    {field.label}
-                  </label>
-                  <input
-                    type="text"
-                    name={field.name}
-                    id={field.name}
-                    value={formData[field.name]}
-                    onChange={handleChange}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                    required
-                  />
-                </div>
-              ))}
-              <div>
+            <form className="flex flex-col gap-4 bg-white  w-full ">
+              {/* College Name */}
+              <div className="flex flex-col">
+                <label className="text-[#27272A] font-semibold font-sm">College Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter college name"
+                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
+                />
+              </div>
+
+              {/* Country */}
+              <div className="flex flex-col">
                 <label
-                  htmlFor="entityType"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Entity Type
-                </label>
+                  className="text-[#27272A] font-semibold font-sm"
+                >Country</label>
                 <select
-                  name="entityType"
-                  id="entityType"
-                  value={formData.entityType}
-                  onChange={handleChange}
-                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                  required
+                  className="py-2 px-3 text-[#27272A] bg-[#F4F4F5] border-none rounded-md focus:outline-none"
                 >
-                  <option value="" disabled>
-                    Select Entity Type
-                  </option>
-                  <option value="Public">Public</option>
-                  <option value="Private">Private</option>
-                  <option value="Community">Community</option>
+                  <option>Select country</option>
+                  <option>USA</option>
+                  <option>India</option>
+                  <option>Canada</option>
                 </select>
               </div>
-              <div className="flex justify-between">
-                <button
-                  type="submit"
-                  className="w-full rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-700"
+
+              {/* State */}
+              <div className="flex flex-col">
+                <label className="text-[#27272A] font-semibold font-sm">State</label>
+                <select
+                  className="py-2 px-3 text-[#27272A] bg-[#F4F4F5] border-none rounded-md focus:outline-none"
                 >
-                  Add College
-                </button>
+                  <option>Select state</option>
+                  <option>California</option>
+                  <option>New York</option>
+                  <option>Texas</option>
+                </select>
+              </div>
+
+              {/* Address */}
+              <div className="flex flex-col">
+                <label className="text-[#27272A] font-semibold font-sm">Address</label>
+                <input
+                  type="text"
+                  placeholder="Enter address"
+                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
+                />
+              </div>
+
+              {/* Entity Type */}
+              <div className="flex flex-col">
+                <label className="text-[#27272A] font-semibold font-sm">Entity Type</label>
+                <input
+                  type="text"
+                  placeholder="Enter entity type"
+                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
+                />
+              </div>
+
+              {/* Website */}
+              <div className="flex flex-col">
+                <label className="text-[#27272A] font-semibold font-sm">Website</label>
+                <input
+                  type="url"
+                  placeholder="Enter website URL"
+                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
+                />
+              </div>
+              {/* Action Buttons */}
+              <div className="flex gap-3 justify-end mt-4">
                 <button
                   type="button"
-                  onClick={onClose}
-                  className="w-full ml-4 rounded-lg border px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 dark:bg-gray-800 dark:text-white"
+                  className="bg-gray-300  text-gray-700 px-3 py-2 rounded-md"
+                // onClick={handleReset}
                 >
                   Cancel
                 </button>
+                <button
+                  type="submit"
+                  className="bg-blue-600 text-white px-3 py-2 rounded-md"
+                >
+                  Save & Next
+                </button>
               </div>
+
             </form>
           </div>
         </div>

@@ -9,13 +9,13 @@ import DestinationImage from "../../Components/DestinationImage";
 import { motion } from "framer-motion";
 import ImmigrationDetailsAdmin from "./ImmigrationDetailsAdmin"
 import WorkOpportunitiesAdmin from "./WorkOpportunitiesAdmin";
-import OverviewAddModal from "../../Components/Modals/DestinationModals.jsx/OverviewAddModal";
-import AdmissionRequirementAddModal from "../../Components/Modals/DestinationModals.jsx/AdmissionRequirementAddModal";
-import ExpensesAddModal from "../../Components/Modals/DestinationModals.jsx/ExpensesAddModal";
-import ScholarshipModal from "../../Components/Modals/DestinationModals.jsx/ScholarshipModal";
-import ImmigrationDetailsModal from "../../Components/Modals/DestinationModals.jsx/ImmigrationDetailsModal";
-import WorkOpportunitiesModal from "../../Components/Modals/DestinationModals.jsx/WorkOpportunitiesModal";
-import FaqModal from "../../Components/Modals/DestinationModals.jsx/FaqModal";
+import OverviewAddModal from "../../Components/Modals/DestinationModalsAdmin/OverviewAddModal";
+import AdmissionRequirementAddModal from "../../Components/Modals/DestinationModalsAdmin/AdmissionRequirementAddModal";
+import ExpensesAddModal from "../../Components/Modals/DestinationModalsAdmin/ExpensesAddModal";
+import ScholarshipModal from "../../Components/Modals/DestinationModalsAdmin/ScholarshipModal";
+import ImmigrationDetailsModal from "../../Components/Modals/DestinationModalsAdmin/ImmigrationDetailsModal";
+import WorkOpportunitiesModal from "../../Components/Modals/DestinationModalsAdmin/WorkOpportunitiesModal";
+import FaqModal from "../../Components/Modals/DestinationModalsAdmin/FaqModal";
 
 function DestinationPage() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -214,7 +214,7 @@ function DestinationPage() {
         {/* Modal Rendering */}
         {selectedSection && (
           <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-1/2 min-w-max max-h-[550px] overflow-auto  relative">
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-3/4 max-w-max max-h-[550px] overflow-auto  relative">
               <button
                 className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
                 onClick={closeModal}

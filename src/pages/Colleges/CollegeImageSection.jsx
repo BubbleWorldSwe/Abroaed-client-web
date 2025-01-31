@@ -10,7 +10,7 @@ const CollegeImageSection = () => {
     }
     return (
         <div className='flex flex-col'>
-            <div className="w-full h-96 relative rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500"
+            <div className="w-full h-72 relative rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500"
                 onClick={(e) => {
                     e.preventDefault()
                     setOpenModal(true);
@@ -27,7 +27,7 @@ const CollegeImageSection = () => {
                 </div>
             </div>
             <div
-                className="rounded-b-xl py-14 px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white  dark:bg-gray-800"
+                className="rounded-b-xl py-8 px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white  dark:bg-gray-800"
             >
                 <div className='flex flex-col gap-1'>
                     <div className='flex gap-5'>
@@ -98,36 +98,36 @@ const CollegeImageSection = () => {
                         >
                             &times;
                         </button>
-                    <div className='mb-4'>
-                    <h2 className="text-2xl font-semibold mb-4">Update Media Gallery</h2>
-                        <h3 className='text-lg font-semibold text-gray-700'>Update Banner</h3>
-                        <h5 className='text-gray-500'>Max size should be 2000 x  1800 px. Supported files JPG, PNG.</h5>
-                        <div
-                            className="bg-black w-48 relative flex-shrink-0"
-                            style={{ flex: "0 0 auto" }} // Prevent images from shrinking
-                        >
-                            {/* Image */}
-                            <img
-                                className="w-xl h-28 object-cover rounded-lg"
-                                src={dark}
-                                alt={`Profile cover `}
-                            />
-                            {/* Overlay */}
-                            <div className="absolute top-2 r-10">
+                        <div className='mb-4'>
+                            <h2 className="text-2xl font-semibold mb-4">Update Media Gallery</h2>
+                            <h3 className='text-lg font-semibold text-gray-700'>Update Banner</h3>
+                            <h5 className='text-gray-500'>Max size should be 2000 x  1800 px. Supported files JPG, PNG.</h5>
+                            <div
+                                className="bg-black w-48 relative flex-shrink-0"
+                                style={{ flex: "0 0 auto" }} // Prevent images from shrinking
+                            >
+                                {/* Image */}
+                                <img
+                                    className="w-xl h-28 object-cover rounded-lg"
+                                    src={dark}
+                                    alt={`Profile cover `}
+                                />
+                                {/* Overlay */}
+                                <div className="absolute top-2 r-10">
 
-                            </div>
-                            {/* Button */}
-                            <div className="absolute top-2 right-2">
-                                <button
-                                    type="button"
-                                    className=" items-center justify-center w-10 h-10 font-medium   hover:opacity-60 group focus:outline-none dark:focus:ring-blue-800"
-                                >
-                                    <svg class="text-white opacity-80 dark:text-gray-500 w-8 h-8 mb-3.5 mx-auto" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                                </div>
+                                {/* Button */}
+                                <div className="absolute top-2 right-2">
+                                    <button
+                                        type="button"
+                                        className=" items-center justify-center w-10 h-10 font-medium   hover:opacity-60 group focus:outline-none dark:focus:ring-blue-800"
+                                    >
+                                        <svg class="text-white opacity-80 dark:text-gray-500 w-8 h-8 mb-3.5 mx-auto" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
 
-                                </button>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         <h3 className='text-lg font-semibold text-gray-700'>Update Banner</h3>
                         <h5 className='text-gray-500'>Max size should be 2000 x  1800 px. Supported files JPG, PNG.</h5>
                         <div
