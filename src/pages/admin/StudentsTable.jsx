@@ -276,7 +276,6 @@ function StudentsTable() {
                         {dropdownVisible === index && (
                           <div
                             ref={dropdownRef}
-
                             className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
                               ? "bottom-full mb-2"
                               : "mt-2"
@@ -323,45 +322,7 @@ function StudentsTable() {
                 </tbody>
               </table>
             </div>
-            <div
-              className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 px-4 pt-3 pb-4"
-              aria-label="Table navigation"
-            >
-              <div className="text-xs flex items-center space-x-5">
-                <div>
-                  <div className="text-gray-500 dark:text-gray-400 mb-1">
-                    Purchase price
-                  </div>
-                  <div className="dark:text-white font-medium">$ 3,567,890</div>
-                </div>
-                <div>
-                  <div className="text-gray-500 dark:text-gray-400 mb-1">
-                    Total selling price
-                  </div>
-                  <div className="dark:text-white font-medium">$ 8,489,400</div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <button
-                  type="button"
-                  className="py-1.5 flex items-center text-sm font-medium text-center text-primary-700 rounded-lg hover:text-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:text-primary-500 dark:hover:text-primary-600 dark:focus:ring-primary-800"
-                >
-                  Print barcodes
-                </button>
-                <button
-                  type="button"
-                  className="py-1.5 flex items-center text-sm font-medium text-center text-primary-700 rounded-lg hover:text-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:text-primary-500 dark:hover:text-primary-600 dark:focus:ring-primary-800"
-                >
-                  Duplicate
-                </button>
-                <button
-                  type="button"
-                  className="py-2 px-3 flex items-center text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                >
-                  Export CSV
-                </button>
-              </div>
-            </div>
+
           </div>
         </section>
       </div>

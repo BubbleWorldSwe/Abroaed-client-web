@@ -26,7 +26,7 @@ const FaqModal = ({ closeModal }) => {
                             type="text"
                             id="question"
                             onChange={(e) => handleInputChange("question", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Question"
                         />
                     </div>
@@ -37,7 +37,7 @@ const FaqModal = ({ closeModal }) => {
                     id="description"
                     value={formData.description || ""}
                     onChange={(e) => handleInputChange(e, 'description')}
-                    className="w-full p-2 border border-gray-400 rounded mt-1"
+                    className="w-full p-2 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                     placeholder="Provide Answer"
                 ></textarea>
 

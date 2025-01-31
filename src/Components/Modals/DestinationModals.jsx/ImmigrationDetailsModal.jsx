@@ -1,9 +1,11 @@
 import { useState } from "react";
 
+const types = ["Scholarship", "Internship", "Job", "Course"];
 
 const ImmigrationDetailsModal = ({ closeModal }) => {
     const [formData, setFormData] = useState({});
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedType, setSelectedType] = useState("");
 
     const handleInputChange = (e, fieldName) => {
         setFormData({ ...formData, [fieldName]: e.target.value });
@@ -14,7 +16,13 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
         // You can handle the form submission here (e.g., API call, state update, etc.)
         closeModal();
     };
-
+    const toggleDropdown = () => {
+        setIsDropdownOpen((prev) => !prev);
+    };
+    const handleInputChangeDropDown = (value) => {
+        setSelectedType(value);
+        setIsDropdownOpen(false); // Close dropdown after selection
+    };
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -27,7 +35,7 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
                             type="text"
                             id="scholarshipName"
                             onChange={(e) => handleInputChange("scholarshipName", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Capital"
                         />
                     </div>
@@ -43,7 +51,7 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
                                 value={selectedType}
                                 onFocus={() => setIsDropdownOpen(true)} // Open dropdown on focus
                                 onChange={(e) => setSelectedType(e.target.value)} // Allow typing
-                                className="w-full p-2 pr-10 border border-gray-400 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                                 placeholder="Select type"
                             />
                             {/* Down arrow */}
@@ -98,7 +106,7 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
                     id="description"
                     value={formData.description || ""}
                     onChange={(e) => handleInputChange(e, 'description')}
-                    className="w-full p-2 border border-gray-400 rounded mt-1"
+                    className="w-full p-2 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                     placeholder="Add Description Brief"
                 ></textarea>
 

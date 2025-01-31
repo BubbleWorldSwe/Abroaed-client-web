@@ -26,7 +26,7 @@ const ScholarshipModal = ({ closeModal }) => {
                             type="text"
                             id="scholarshipName"
                             onChange={(e) => handleInputChange("scholarshipName", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Name"
                         />
                     </div>
@@ -38,7 +38,7 @@ const ScholarshipModal = ({ closeModal }) => {
                             type="url"
                             id="lang"
                             onChange={(e) => handleInputChange("lang", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="www.scholorship.com"
                         />
                     </div>
@@ -48,7 +48,7 @@ const ScholarshipModal = ({ closeModal }) => {
                     id="description"
                     value={formData.description || ""}
                     onChange={(e) => handleInputChange(e, 'description')}
-                    className="w-full p-2 border border-gray-400 rounded mt-1"
+                    className="w-full p-2 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                     placeholder="Add Description Brief"
                 ></textarea>
 

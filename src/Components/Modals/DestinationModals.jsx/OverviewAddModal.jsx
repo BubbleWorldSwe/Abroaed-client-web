@@ -21,7 +21,7 @@ const OverviewAddModal = ({ closeModal }) => {
                     id="description"
                     value={formData.description || ""}
                     onChange={(e) => handleInputChange(e, 'description')}
-                    className="w-full p-2 border border-gray-400 rounded mt-1"
+                    className="w-full p-2 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                     placeholder="Add Description Brief"
                 ></textarea>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -33,7 +33,7 @@ const OverviewAddModal = ({ closeModal }) => {
                             type="text"
                             id="capital"
                             onChange={(e) => handleInputChange("capital", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Capital"
                         />
                     </div>
@@ -45,7 +45,7 @@ const OverviewAddModal = ({ closeModal }) => {
                             type="text"
                             id="lang"
                             onChange={(e) => handleInputChange("lang", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter National Language"
                         />
                     </div>
@@ -57,7 +57,7 @@ const OverviewAddModal = ({ closeModal }) => {
                             type="text"
                             id="totalPopulation"
                             onChange={(e) => handleInputChange("totalPopulation", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Number"
                         />
                     </div>
@@ -69,7 +69,7 @@ const OverviewAddModal = ({ closeModal }) => {
                             type="text"
                             id="currency"
                             onChange={(e) => handleInputChange("currency", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Currency"
                         />
                     </div>
@@ -81,7 +81,7 @@ const OverviewAddModal = ({ closeModal }) => {
                             type="text"
                             id="currency"
                             onChange={(e) => handleInputChange("currency", e.target.value)}
-                            className="w-full p-1 border border-gray-400 rounded mt-1"
+                            className="w-full p-1 border-none bg-[#F4F4F5] px-3 rounded mt-1"
                             placeholder="Enter Dailing Code"
                         />
                     </div>

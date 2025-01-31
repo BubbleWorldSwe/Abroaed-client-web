@@ -50,10 +50,7 @@ const AdmissionRequirementAddModal = ({ closeModal }) => {
                         </div>
                     </>
                 ))}
-
-                {/* Add more checkbox items as needed */}
-
-                <div className=" col-span-full text-end">
+                {/* <div className=" col-span-full text-end">
                     <button
                         type="button"
                         className="mt-4  text-blue-500 px-4 py-1 mr-2 rounded transition flex items-center gap-2"
@@ -81,7 +78,7 @@ const AdmissionRequirementAddModal = ({ closeModal }) => {
 
 
 
-                </div>
+                </div> */}
                 <div className="col-span-full text-end">
                     <button
                         type="button"

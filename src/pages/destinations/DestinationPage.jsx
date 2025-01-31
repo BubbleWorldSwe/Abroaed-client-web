@@ -25,7 +25,7 @@ function DestinationPage() {
   // const sections = useSelector((state) => state.collegeSections.sections); // Access sections from Redux store
   // const dispatch = useDispatch();
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
-
+  const [activeModalIndex, setActiveModalIndex] = useState(null);
   const handleOpenDeleteModal = (index) => {
     setSelectedSectionIndex(index);
     setIsDeleteModalOpen(true);
@@ -66,7 +66,7 @@ function DestinationPage() {
     setActiveIndex(activeIndex === index ? null : index);
   };
   const closeModal = () => {
-    setModalType(null);
+    setModalType('');
     setImage(null);
     setSelectedSection(null);
     setFormData({});
@@ -78,15 +78,10 @@ function DestinationPage() {
     closeModal();
   };
   // Modals content for different sections
-  const [selectedType, setSelectedType] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const types = ["Scholarship", "Internship", "Job", "Course"];
 
-  const handleInputChangeDropDown = (value) => {
-    setSelectedType(value);
-    setIsDropdownOpen(false); // Close dropdown after selection
-  };
+
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
   };
@@ -115,8 +110,9 @@ function DestinationPage() {
     ),
   };
 
-  const openModal = (section, type) => {
+  const openModal = (section, type, index) => {
     setSelectedSection(section);
+    setActiveModalIndex(index)
     setModalType(type);
 
   };
@@ -134,14 +130,20 @@ function DestinationPage() {
               <h2 id={`accordion-header-${index}`}>
                 <div
                   className="flex justify-between items-center w-full px-4 py-1 text-2xl font-semibold text-left text-gray-600 dark:bg-gray-700 dark:text-white rounded-t-lg"
-                  onClick={() => toggleAccordion(index)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleAccordion(index)
+                  }}
                 >
                   <span>{sectionItem.name}</span>
                   {true ? (
                     // Add icon for adding new items
                     <button
                       className="px-4 py-4"
-                      onClick={() => openModal(sectionItem.name, "add")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(sectionItem.name, "add", index)
+                      }}
                     >
                       <svg
                         className="w-6 h-6 text-gray-800 dark:text-white"
@@ -165,7 +167,10 @@ function DestinationPage() {
                     // Pencil icon for editing
                     <button
                       className="px-4 py-4"
-                      onClick={() => openModal(sectionItem.name, "edit")}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openModal(sectionItem.name, "edit")
+                      }}
                     >
                       <svg
                         className="w-6 h-6 text-gray-800 dark:text-white"
@@ -207,7 +212,7 @@ function DestinationPage() {
         </div>
 
         {/* Modal Rendering */}
-        {modalType && selectedSection && (
+        {selectedSection && (
           <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
             <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-1/2 min-w-max max-h-[550px] overflow-auto  relative">
               <button
@@ -216,9 +221,9 @@ function DestinationPage() {
               >
                 &times;
               </button>
-              <h2 className="text-2xl font-semibold mb-4">{selectedSection} Modal</h2><div className="mt-4">
+              <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2><div className="mt-4">
                 {/* Render the dynamic content based on modalType */}
-                {modals[`section${activeIndex}`]}
+                {modals[`section${activeModalIndex}`]}
               </div>
             </div>
           </div>

@@ -1,10 +1,11 @@
-import { EllipsisVertical } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { EllipsisVertical, Eye } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AddCollegeDrawer from "../../Components/Modals/AddCollegeDrawer";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDestinations } from "../../slices/destinationSlice";
 import AddDestination from "../../Components/Modals/AddDestination";
+import filter_list from "../../assets/filter_list.png";
 
 function DestinationTable() {
   // const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function DestinationTable() {
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [dropdownDirection, setDropdownDirection] = useState(null);
+  const dropdownRef = useRef(null);
 
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
@@ -33,22 +35,24 @@ function DestinationTable() {
     setIsAddModalOpen(false);
   };
 
-  const handleDropdownToggle = (event, index) => {
-    console.log("index", index);
-    const buttonElement = event.currentTarget;
-    const rect = buttonElement.getBoundingClientRect();
-
-    const spaceAbove = rect.top; // Distance from button to top of the viewport
-    const spaceBelow = window.innerHeight - rect.bottom; // Distance from button to bottom of the viewport
-
-    // Adjust dropdownDirection based on available space
-    if (spaceBelow < 150 && spaceAbove > 150) {
-      setDropdownDirection("up"); // Show dropdown upwards
-    } else {
-      setDropdownDirection("down"); // Show dropdown downwards
+  const handleClickOutside = (e) => {
+    // Close dropdown if the click is outside of the dropdown area
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setDropdownVisible(null);
     }
+  };
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
-    setDropdownVisible(index === dropdownVisible ? null : index);
+  const handleDropdownToggle = (e, index) => {
+    e.stopPropagation(); // Prevent the click from propagating
+    setDropdownVisible(dropdownVisible === index ? null : index);
+    // Optionally, you can adjust dropdown direction based on your layout
+    setDropdownDirection("down");
   };
   const destinations = [
     {
@@ -86,70 +90,12 @@ function DestinationTable() {
   return (
     <>
       <AddDestination isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
-      <div className="min-h-screen bg-gray-150 dark:bg-gray-900 flex flex-col p-2">
-        {/* Header */}
-        <header className="p-4 bg-white text-white">
-          <nav className="flex" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-              <li className="inline-flex items-center">
-                <a
-                  href="#"
-                  className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-                >
-                  <svg
-                    className="w-3 h-3 me-2.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                  </svg>
-                  Admin
-                </a>
-              </li>
-              <li>
-                <div className="flex items-center">
-                  <svg
-                    className="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  <a
-                    href="#"
-                    className="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
-                  >
-                    All Destinations
-                  </a>
-                </div>
-              </li>
-            </ol>
-          </nav>
-        </header>
-
-        {/* Section - Takes the remaining space */}
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
         <section className=" py-3 sm:py-5 flex-grow">
-          <div className="flex flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg">
-            <div className="border-b dark:border-gray-700 mx-4">
-              <div className="flex items-center justify-between space-x-4 pt-3">
-                <div className="flex-1 flex items-center space-x-3">
-                  <h5 className="dark:text-white font-semibold">
-                    All Destinations
-                  </h5>
-                </div>
-              </div>
-              <div className="flex flex-col-reverse md:flex-row items-center justify-between md:space-x-4 py-3">
-                <div className="w-full  flex justify-between space-y-3 md:space-y-0 md:flex-row md:items-center">
+          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
+            <div className=" dark:border-gray-700 mx-4">
+              <div className="flex justify-between  py-3">
+                <div className="w-full  flex  space-y-3 md:space-y-0  ">
                   <form className="w-full md:max-w-sm flex-1 md:mr-4">
                     <label
                       htmlFor="default-search"
@@ -178,53 +124,42 @@ function DestinationTable() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search..."
+                        className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg  focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Search Teams"
                         required=""
                       />
-                      <button
-                        type="submit"
-                        className="text-white absolute right-0 bottom-0 top-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-r-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                      >
-                        Search
-                      </button>
+
                     </div>
                   </form>
                   <div className="flex items-center space-x-4">
-                    <div className="flex gap-2">
-                      <button
-                        onClick={handleOpenAddModal}
-                        type="button"
-                        className="w-full  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-600 focus:outline-none bg-yellow-200 rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                      >
-                        <svg
-                          class="w-6 h-6 p-1 text-gray-800 dark:text-white"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 12h14m-7 7V5"
-                          />
-                        </svg>
-                        Add New Page
-                      </button>
-                    </div>
+                    <img src={filter_list} alt="filterIcon" />
                   </div>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() =>
+                      navigate(
+                        `/admin/destinations/${encodeURIComponent(
+                          'newDestination'
+                        )}`
+                      )
+                    }
+                    type="button"
+                    className="w-full whitespace-nowrap md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg class="w-7 h-7 p-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+                    </svg>
+
+                    New Destination
+                  </button>
                 </div>
               </div>
             </div>
 
-            <div className="flex-grow overflow-auto bg-white dark:bg-gray-800">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
+              <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="p-4"></th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
@@ -289,9 +224,10 @@ function DestinationTable() {
                         </button>
                         {dropdownVisible === index && (
                           <div
+                            ref={dropdownRef}
                             className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
-                                ? "bottom-full mb-2"
-                                : "mt-2"
+                              ? "bottom-full mb-2"
+                              : "mt-2"
                               }`}
                           >
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
@@ -305,20 +241,25 @@ function DestinationTable() {
                                       )}`
                                     )
                                   }
-                                  className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                  View Details
+                                  <Eye className="w-4 h-4" />
+                                  <span>
+                                    View Details
+                                  </span>
                                 </button>
                               </li>
-                              <li>
+                              {/* <li>
                                 <button
                                   type="button"
                                   onClick={handleOpenAddModal}
-                                  className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                  Edit
+                                  <span>
+                                    Edit
+                                  </span>
                                 </button>
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         )}
@@ -328,45 +269,7 @@ function DestinationTable() {
                 </tbody>
               </table>
             </div>
-            <div
-              className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 px-4 pt-3 pb-4"
-              aria-label="Table navigation"
-            >
-              <div className="text-xs flex items-center space-x-5">
-                <div>
-                  <div className="text-gray-500 dark:text-gray-400 mb-1">
-                    Purchase price
-                  </div>
-                  <div className="dark:text-white font-medium">$ 3,567,890</div>
-                </div>
-                <div>
-                  <div className="text-gray-500 dark:text-gray-400 mb-1">
-                    Total selling price
-                  </div>
-                  <div className="dark:text-white font-medium">$ 8,489,400</div>
-                </div>
-              </div>
-              <div className="flex items-center space-x-4">
-                <button
-                  type="button"
-                  className="py-1.5 flex items-center text-sm font-medium text-center text-primary-700 rounded-lg hover:text-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:text-primary-500 dark:hover:text-primary-600 dark:focus:ring-primary-800"
-                >
-                  Print barcodes
-                </button>
-                <button
-                  type="button"
-                  className="py-1.5 flex items-center text-sm font-medium text-center text-primary-700 rounded-lg hover:text-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:text-primary-500 dark:hover:text-primary-600 dark:focus:ring-primary-800"
-                >
-                  Duplicate
-                </button>
-                <button
-                  type="button"
-                  className="py-2 px-3 flex items-center text-xs font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                >
-                  Export CSV
-                </button>
-              </div>
-            </div>
+
           </div>
         </section>
       </div>
