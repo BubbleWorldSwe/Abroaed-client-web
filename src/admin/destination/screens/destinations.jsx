@@ -5,7 +5,7 @@ import { destinationsData } from "../data"
 import DestinationTable from "../tables/destinationTable"
 
 function Destinations() {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
