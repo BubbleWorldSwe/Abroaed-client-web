@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import FAQsCard from "../Colleges/FAQsCard";
+import FAQsCard from "../../admin/college/components/faqsCard";
 import AboutLanguagePrep from "./AboutLanguagePrep";
 import Batches from "./Batches";
 import LanguageFaqs from "./LanguageFaqs";

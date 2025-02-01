@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye } from "lucide-react";
+import { EllipsisVertical } from "lucide-react"
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const DestinationTable = ({ destinations }) => {
+const AccommodationTable = ({ accommodationData }) => {
     const [dropdownDirection, setDropdownDirection] = useState(null);
     const [dropdownVisible, setDropdownVisible] = useState(null);
     const navigate = useNavigate();
@@ -14,6 +14,7 @@ const DestinationTable = ({ destinations }) => {
             setDropdownVisible(null);
         }
     };
+
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
         return () => {
@@ -33,16 +34,19 @@ const DestinationTable = ({ destinations }) => {
                 <tr>
                     <th scope="col" className="p-4"></th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Page Name
+                        Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Author
+                        Location
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Status
+                        Price
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Created At
+                        Availability
+                    </th>
+                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
+                        Description
                     </th>
                     <th scope="col" className="px-4 py-3">
                         <span className="sr-only">Actions</span>
@@ -50,7 +54,7 @@ const DestinationTable = ({ destinations }) => {
                 </tr>
             </thead>
             <tbody>
-                {destinations?.map((destination, index) => (
+                {accommodationData?.map((accommodation, index) => (
                     <tr
                         key={index}
                         className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -71,15 +75,19 @@ const DestinationTable = ({ destinations }) => {
                                 </label>
                             </div>
                         </td>
+
                         <th
                             scope="row"
                             className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
-                            {destination.pageName}
+                            {accommodation.name}
                         </th>
-                        <td className="px-4 py-3">{destination.author}</td>
-                        <td className="px-4 py-3">{destination.status}</td>
-                        <td className="px-4 py-3">{destination.createdAt}</td>
+
+                        <td className="px-4 py-3">{accommodation.location}</td>
+                        <td className="px-4 py-3">{accommodation.price}</td>
+                        <td className="px-4 py-3">{accommodation.availability}</td>
+                        <td className="px-4 py-3">{accommodation.description}</td>
+
                         <td className="px-4 py-3">
                             <button
                                 className="focus:outline-none"
@@ -101,30 +109,25 @@ const DestinationTable = ({ destinations }) => {
                                                 type="button"
                                                 onClick={() =>
                                                     navigate(
-                                                        `/admin/destinations/${encodeURIComponent(
-                                                            destination.pageName
+                                                        `/admin/accommodation/${encodeURIComponent(
+                                                            accommodation.name
                                                         )}`
                                                     )
                                                 }
-                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                <Eye className="w-4 h-4" />
-                                                <span>
-                                                    View Details
-                                                </span>
+                                                View Details
                                             </button>
                                         </li>
-                                        {/* <li>
-                        <button
-                          type="button"
-                          onClick={handleOpenAddModal}
-                          className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          <span>
-                            Edit
-                          </span>
-                        </button>
-                      </li> */}
+                                        <li>
+                                            <button
+                                                type="button"
+                                                onClick={''}
+                                                className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                Edit
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                             )}
@@ -132,7 +135,8 @@ const DestinationTable = ({ destinations }) => {
                     </tr>
                 ))}
             </tbody>
-        </table>)
+        </table>
+    )
 }
 
-export default DestinationTable
+export default AccommodationTable

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Toaster } from "react-hot-toast"
 
 
