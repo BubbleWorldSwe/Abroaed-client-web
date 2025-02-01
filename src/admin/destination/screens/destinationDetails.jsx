@@ -7,28 +7,46 @@ import ScholarshipsDest from "../components/scholarshipsDest";
 import DestinationFAQ from "../components/destinationFAQ";
 import DestinationImage from "../components/destinationImage";
 import { motion } from "framer-motion";
-import ImmigrationDetailsAdmin from "../components/immigrationDetailsAdmin"
+import ImmigrationDetailsAdmin from "../components/immigrationDetailsAdmin";
 import WorkOpportunitiesAdmin from "../components/workOpportunitiesAdmin";
 import OverviewAddModal from "../modals/overviewAddModal";
-import AdmissionRequirementAddModal from "../modals/admissionRequirementAddModal"
-import ExpensesAddModal from "../modals/expensesAddModal"
-import ScholarshipModal from "../modals/scholarshipModal"
-import ImmigrationDetailsModal from "../modals/immigrationDetailsModal"
-import WorkOpportunitiesModal from "../modals/workOpportunitiesModal"
-import FaqModal from "../modals/faqModal"
+import AdmissionRequirementAddModal from "../modals/admissionRequirementAddModal";
+import ExpensesAddModal from "../modals/expensesAddModal";
+import ScholarshipModal from "../modals/scholarshipModal";
+import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
+import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
+import FaqModal from "../modals/faqModal";
+import { useLocation } from "react-router-dom";
 
 function DestinationDetails() {
+  const { state } = useLocation();
+
+  const [destinationDetails, setDestinationDetails] = useState(state);
+
+  console.log(destinationDetails);
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
   const [activeModalIndex, setActiveModalIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const sections = [
-    { name: "Overview", component: <OverviewDest /> },
+    {
+      name: "Overview",
+      component: <OverviewDest details={destinationDetails} />,
+    },
     { name: "Admission Requirements", component: <AdmissionReqDest /> },
     { name: "Expenses", component: <ExpensesDest /> },
-    { name: "Scholarships", component: <ScholarshipsDest /> },
-    { name: "Immigration Details", component: <ImmigrationDetailsAdmin /> },
+    {
+      name: "Scholarships",
+      component: <ScholarshipsDest details={destinationDetails} />,
+    },
+    {
+      name: "Immigration Details",
+      component: <ImmigrationDetailsAdmin details={destinationDetails} />,
+    },
     { name: "Work Opportunities", component: <WorkOpportunitiesAdmin /> },
-    { name: "FAQs", component: <DestinationFAQ /> },
+    {
+      name: "FAQs",
+      component: <DestinationFAQ details={destinationDetails} />,
+    },
   ];
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -37,41 +55,46 @@ function DestinationDetails() {
     setSelectedSection(null);
   };
 
-
-
   const modals = {
     section0: (
-      <OverviewAddModal closeModal={closeModal} />
+      <OverviewAddModal details={destinationDetails} closeModal={closeModal} />
     ),
     section1: (
-      <AdmissionRequirementAddModal closeModal={closeModal} />
+      <AdmissionRequirementAddModal
+        details={destinationDetails}
+        closeModal={closeModal}
+      />
     ),
     section2: (
-      <ExpensesAddModal closeModal={closeModal} />
+      <ExpensesAddModal details={destinationDetails} closeModal={closeModal} />
     ),
     section3: (
-      <ScholarshipModal closeModal={closeModal} />
+      <ScholarshipModal details={destinationDetails} closeModal={closeModal} />
     ),
     section4: (
-      <ImmigrationDetailsModal closeModal={closeModal} />
+      <ImmigrationDetailsModal
+        details={destinationDetails}
+        closeModal={closeModal}
+      />
     ),
     section5: (
-      <WorkOpportunitiesModal closeModal={closeModal} />
+      <WorkOpportunitiesModal
+        details={destinationDetails}
+        closeModal={closeModal}
+      />
     ),
-    section6: (
-      <FaqModal closeModal={closeModal} />
-    ),
+    section6: <FaqModal details={destinationDetails} closeModal={closeModal} />,
   };
 
   const openModal = (section, type, index) => {
     setSelectedSection(section);
-    setActiveModalIndex(index)
+    setActiveModalIndex(index);
   };
   return (
     <div>
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
-          <DestinationImage />
+          <DestinationImage details={destinationDetails} />
           {sections.map((sectionItem, index) => (
             <div
               key={index}
@@ -83,7 +106,7 @@ function DestinationDetails() {
                   className="flex justify-between items-center w-full px-4 py-1 text-2xl font-semibold text-left text-gray-600 dark:bg-gray-700 dark:text-white rounded-t-lg"
                   onClick={(e) => {
                     e.preventDefault();
-                    toggleAccordion(index)
+                    toggleAccordion(index);
                   }}
                 >
                   <span>{sectionItem.name}</span>
@@ -92,7 +115,7 @@ function DestinationDetails() {
                       className="px-4 py-4"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(sectionItem.name, "add", index)
+                        openModal(sectionItem.name, "add", index);
                       }}
                     >
                       <svg
@@ -118,7 +141,7 @@ function DestinationDetails() {
                       className="px-4 py-4"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(sectionItem.name, "edit")
+                        openModal(sectionItem.name, "edit");
                       }}
                     >
                       <svg
@@ -168,16 +191,14 @@ function DestinationDetails() {
               >
                 &times;
               </button>
-              <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2><div className="mt-4">
-                {modals[`section${activeModalIndex}`]}
-              </div>
+              <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
+              <div className="mt-4">{modals[`section${activeModalIndex}`]}</div>
             </div>
           </div>
         )}
       </main>
     </div>
   );
-
 }
 
 export default DestinationDetails;

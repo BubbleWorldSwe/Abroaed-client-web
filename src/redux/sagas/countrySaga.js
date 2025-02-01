@@ -1,0 +1,21 @@
+import { takeLatest, call, put } from "redux-saga/effects";
+
+import {
+  FETCH_COUNTRIES_REQUEST,
+  fetchCountriesSuccess,
+  fetchCountriesFailure,
+} from "../actions/countryActions";
+import { getCountries } from "../../api/countriesApi";
+
+function* fetchCountries(action) {
+  try {
+    const response = yield call(getCountries, action.payload);
+    yield put(fetchCountriesSuccess(response.data)); // Assuming API response contains country data
+  } catch (error) {
+    yield put(fetchCountriesFailure(error.message));
+  }
+}
+
+export default function* countriesSaga() {
+  yield takeLatest(FETCH_COUNTRIES_REQUEST, fetchCountries);
+}

@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import authReducer from "./reducers/authReducer";
 import rootSaga from "./sagas/rootSaga";
-import teamReducer from "./reducers/teamReducer";
-import { rolesReducer } from "./reducers/rolesReducer";
+import { countriesReducer } from "./reducers/countryReducer";
+import { destnationReducer } from "./reducers/destinationReducer";
 import { leadsReducer } from "./reducers/leadReducer";
+import { rolesReducer } from "./reducers/rolesReducer";
+import { authReducer } from "./reducers/authReducer";
+import { teamReducer } from "./reducers/teamReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,6 +16,8 @@ const store = configureStore({
     team: teamReducer,
     roles: rolesReducer,
     leads: leadsReducer,
+    destinations: destnationReducer,
+    countries: countriesReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),

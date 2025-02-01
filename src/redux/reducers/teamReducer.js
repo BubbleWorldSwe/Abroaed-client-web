@@ -22,7 +22,7 @@ const initialState = {
   page: null,
 };
 
-const teamReducer = (state = initialState, action) => {
+export const teamReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_TEAMS_REQUEST:
       return { ...state, loading: true };
@@ -103,5 +103,3 @@ const teamReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default teamReducer;

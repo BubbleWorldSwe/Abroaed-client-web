@@ -8,6 +8,8 @@ export const ABORT_ERROR_MESSAGE = "Aborted";
 export const NETWORK_REQUEST_FAILED = "Network request failed";
 const REQUEST_METHOD_GET = "GET";
 const REQUEST_METHOD_POST = "POST";
+
+const REQUEST_METHOD_PATCH = "PATCH";
 const REQUEST_METHOD_PUT = "PUT";
 const REQUEST_METHOD_DELETE = "DELETE";
 const REQUEST_HEADER_JSON = "application/json";
@@ -30,6 +32,19 @@ export const constructPostRequestOptions = (payload) => {
 
   return {
     method: REQUEST_METHOD_POST,
+    headers: requestHeaders,
+    body: raw,
+  };
+};
+
+export const constructPatchRequestOptions = (payload) => {
+  var requestHeaders = new Headers();
+  requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+
+  var raw = JSON.stringify(payload);
+
+  return {
+    method: REQUEST_METHOD_PATCH,
     headers: requestHeaders,
     body: raw,
   };

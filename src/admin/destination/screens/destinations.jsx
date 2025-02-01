@@ -1,23 +1,73 @@
-import { useState } from "react";
-import AddDestination from "../modals/addDestinationModal";
+import { useEffect, useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
-import { destinationsData } from "../data"
-import DestinationTable from "../tables/destinationTable"
+import DestinationTable from "../tables/destinationTable";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addDestinationRequest,
+  fetchDestinationsRequest,
+} from "../../../redux/actions/destinationActions";
+import AddDestinationModal from "../modals/addDestinationModal";
+import { toast } from "react-toastify";
 
 function Destinations() {
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const dispatch = useDispatch();
+
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [query, setQuery] = useState("");
+
+  const { loading, destinations, totalPages, total } = useSelector(
+    (state) => state.destinations
+  );
+
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
+  const onAddDestination = (countryId) => {
+    if (!countryId) {
+      toast.error("Please select a country.");
+      return;
+    }
+
+    dispatch(addDestinationRequest({ countryId }));
+    dispatch(fetchDestinationsRequest(1)); // Fetch first page after adding
+    setIsAddModalOpen(false); // Close modal after adding destination
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      dispatch(fetchDestinationsRequest(currentPage + 1));
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      dispatch(fetchDestinationsRequest(currentPage - 1));
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (destinations?.length === 0) {
+      dispatch(fetchDestinationsRequest(currentPage));
+    }
+  }, [dispatch, destinations, currentPage]);
+
   return (
     <>
-      <AddDestination isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
-        <section className=" py-3 sm:py-5 flex-grow">
-          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
-            <div className=" dark:border-gray-700 mx-4">
-              <div className="flex justify-between  py-3">
-                <div className="w-full  flex  space-y-3 md:space-y-0  ">
+      <AddDestinationModal
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+        onAddDestination={onAddDestination}
+      />
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
+        <section className="py-3 sm:py-5 flex-grow">
+          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">
+            <div className="mx-4">
+              <div className="flex justify-between py-3">
+                <div className="w-full flex space-y-3 md:space-y-0">
                   <form className="w-full md:max-w-sm flex-1 md:mr-4">
                     <label
                       htmlFor="default-search"
@@ -46,11 +96,11 @@ function Destinations() {
                       <input
                         type="search"
                         id="default-search"
-                        className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg  focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Search Teams"
-                        required=""
+                        required
+                        onChange={(e) => setQuery(e.target.value)}
                       />
-
                     </div>
                   </form>
                   <div className="flex items-center space-x-4">
@@ -59,23 +109,40 @@ function Destinations() {
                 </div>
                 <div className="flex gap-2">
                   <button
-                    onClick={() =>
-                      setIsAddModalOpen(true)
-                    }
+                    onClick={() => setIsAddModalOpen(true)}
                     type="button"
-                    className="w-full whitespace-nowrap md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
-                    <svg className="w-7 h-7 p-1 text-gray-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-7 7V5" />
+                    <svg
+                      className="w-7 h-7 p-1 text-gray-600 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 12h14m-7 7V5"
+                      />
                     </svg>
-
                     New Destination
                   </button>
                 </div>
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
-              <DestinationTable destinations={destinationsData} />
+              <DestinationTable
+                destinations={destinations}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                handleNextPage={handleNextPage}
+                handlePrevPage={handlePrevPage}
+              />
             </div>
           </div>
         </section>
