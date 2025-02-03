@@ -1,5 +1,6 @@
 import { BASE_URL } from "../constants/baseUrl";
 import {
+  makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
@@ -8,7 +9,7 @@ import {
 export const getDestinations = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/destination?page=${page}`
+      `${BASE_URL}/api/v1/admin/destination/list?page=${page}`
     );
     console.log(data);
     if (data.success) {
@@ -47,6 +48,22 @@ export const setUpdateDestination = async (id, credentials) => {
     // console.log(data);
     if (data.success) {
       return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setDeleteDestination = async (id) => {
+  try {
+    console.log(id + " id");
+
+    const data = await makeDeleteRequest(
+      `${BASE_URL}/api/v1/admin/destination/${id}`
+    );
+    //  console.log(data);
+    if (data.success) {
+      return data;
     }
   } catch (error) {
     console.log(error);

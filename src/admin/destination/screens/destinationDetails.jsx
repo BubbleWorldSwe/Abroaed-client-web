@@ -1,5 +1,5 @@
 /* eslint-disable no-constant-condition */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OverviewDest from "../../../pages/destinations/OverviewDest";
 import AdmissionReqDest from "../components/admissionReqDest";
 import ExpensesDest from "../components/expensesDest";
@@ -17,10 +17,11 @@ import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
 import { useLocation } from "react-router-dom";
+import { getAdmissionDocuments } from "../../../api/api";
 
 function DestinationDetails() {
   const { state } = useLocation();
-
+  const [documentsList, setDocumentsList] = useState([]);
   const [destinationDetails, setDestinationDetails] = useState(state);
 
   console.log(destinationDetails);
@@ -61,8 +62,10 @@ function DestinationDetails() {
     ),
     section1: (
       <AdmissionRequirementAddModal
+        documentsList={documentsList}
         details={destinationDetails}
         closeModal={closeModal}
+        destinationId={destinationDetails._id}
       />
     ),
     section2: (
@@ -90,6 +93,23 @@ function DestinationDetails() {
     setSelectedSection(section);
     setActiveModalIndex(index);
   };
+
+  async function fetchData() {
+    try {
+      const docs = await getAdmissionDocuments();
+      console.log(docs);
+      if (docs.status === 200) {
+        setDocumentsList(docs.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div>
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
@@ -181,22 +201,23 @@ function DestinationDetails() {
             </div>
           ))}
         </div>
-        {/* Modal Rendering */}
-        {selectedSection && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-3/4 max-w-max max-h-[550px] overflow-auto  relative">
-              <button
-                className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                onClick={closeModal}
-              >
-                &times;
-              </button>
-              <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
-              <div className="mt-4">{modals[`section${activeModalIndex}`]}</div>
-            </div>
-          </div>
-        )}
       </main>
+      {/* Modal Rendering */}
+      {selectedSection && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          {/*  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-3/4 max-w-max max-h-[550px] overflow-auto  relative"> */}
+          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-3/4 max-w-max max-h-[550px] relative">
+            <button
+              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              onClick={closeModal}
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
+            <div className="mt-4">{modals[`section${activeModalIndex}`]}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

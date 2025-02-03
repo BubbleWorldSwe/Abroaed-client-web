@@ -1,14 +1,20 @@
-import { ChevronLeft, ChevronRight, EllipsisVertical, Eye } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  EllipsisVertical,
+  Eye,
+  Trash2,
+} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const DestinationTable = ({
   destinations,
   currentPage,
-
   totalPages,
   handleNextPage,
   handlePrevPage,
+  handleDelete,
 }) => {
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -41,6 +47,10 @@ const DestinationTable = ({
     // Optionally, you can adjust dropdown direction based on your layout
     setDropdownDirection("down");
   };
+
+  useEffect(() => {
+    console.log("destinations updated:", destinations);
+  }, [destinations, currentPage, totalPages]);
 
   return (
     <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
@@ -133,6 +143,15 @@ const DestinationTable = ({
                           >
                             <Eye className="w-4 h-4" />
                             <span>View Details</span>
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            onClick={() => handleDelete(destination._id)}
+                            className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                            <span>Delete</span>
                           </button>
                         </li>
                         {/* <li>

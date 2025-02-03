@@ -4,10 +4,12 @@ import DestinationTable from "../tables/destinationTable";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addDestinationRequest,
+  deleteDestinationRequest,
   fetchDestinationsRequest,
 } from "../../../redux/actions/destinationActions";
 import AddDestinationModal from "../modals/addDestinationModal";
 import { toast } from "react-toastify";
+import { deleteTeamRequest } from "../../../redux/actions/teamActions";
 
 function Destinations() {
   const dispatch = useDispatch();
@@ -31,20 +33,42 @@ function Destinations() {
     }
 
     dispatch(addDestinationRequest({ countryId }));
-    dispatch(fetchDestinationsRequest(1)); // Fetch first page after adding
-    setIsAddModalOpen(false); // Close modal after adding destination
+    setCurrentPage(1);
+    dispatch(fetchDestinationsRequest(1));
+    setIsAddModalOpen(false);
+  };
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteDestinationRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchDestinationsRequest(1));
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      dispatch(fetchDestinationsRequest(currentPage + 1));
+      const pageExists = destinations.some(
+        (item) => item.index === currentPage + 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchDestinationsRequest(currentPage + 1));
+      }
+
       setCurrentPage((prev) => prev + 1);
     }
   };
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      dispatch(fetchDestinationsRequest(currentPage - 1));
+      const pageExists = destinations.some(
+        (item) => item.index === currentPage - 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchDestinationsRequest(currentPage - 1));
+      }
+
       setCurrentPage((prev) => prev - 1);
     }
   };
@@ -111,7 +135,7 @@ function Destinations() {
                   <button
                     onClick={() => setIsAddModalOpen(true)}
                     type="button"
-                    className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className="flex items-center justify-center py-2 px-4 text-sm font-semibold text-gray-700 bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 whitespace-nowrap"
                   >
                     <svg
                       className="w-7 h-7 p-1 text-gray-600 dark:text-white"
@@ -130,7 +154,7 @@ function Destinations() {
                         d="M5 12h14m-7 7V5"
                       />
                     </svg>
-                    New Destination
+                    Add New Destination
                   </button>
                 </div>
               </div>
@@ -142,6 +166,7 @@ function Destinations() {
                 totalPages={totalPages}
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
+                handleDelete={handleDelete}
               />
             </div>
           </div>

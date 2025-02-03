@@ -1,16 +1,48 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { requireDocumentsData } from "../data";
+import { useDispatch } from "react-redux";
+import { editDestinationRequest } from "../../../redux/actions/destinationActions";
 
-const AdmissionRequirementAddModal = ({ closeModal }) => {
+const AdmissionRequirementAddModal = ({
+  closeModal,
+  documentsList,
+  destinationId,
+}) => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({});
   const handleInputChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    closeModal();
+
+  const [selectedDocuments, setSelectedDocuments] = useState([]);
+
+  const handleCheckboxChange = (e, docId) => {
+    if (e.target.checked) {
+      setSelectedDocuments((prev) => [...prev, docId]);
+    } else {
+      setSelectedDocuments((prev) => prev.filter((id) => id !== docId));
+    }
   };
+
+  const handleSubmit = (e) => {
+    try {
+      e.preventDefault();
+      console.log("Selected Document IDs:", selectedDocuments);
+
+      dispatch(
+        editDestinationRequest(destinationId, {
+          admissionRequirements: selectedDocuments,
+        })
+      );
+
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(documentsList.length);
 
   return (
     <div>
@@ -19,18 +51,18 @@ const AdmissionRequirementAddModal = ({ closeModal }) => {
         onSubmit={handleSubmit}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
-        {requireDocumentsData.map((docName, index) => (
+        {documentsList.map((docName, index) => (
           <>
             <div className="flex gap-2" key={index}>
               <input
                 type="checkbox"
-                id="title"
-                checked={formData.title || false}
-                onChange={(e) => handleInputChange(e, "title")}
+                id={docName._id}
+                checked={selectedDocuments.includes(docName._id)}
+                onChange={(e) => handleCheckboxChange(e, docName._id)}
                 className="p-1 border border-gray-400 rounded mt-1"
               />
               <label htmlFor="title" className="block text-gray-700">
-                {docName}
+                {docName.name}
               </label>
             </div>
           </>

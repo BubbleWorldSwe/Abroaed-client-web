@@ -1,9 +1,20 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getDestinations, setAddDestination } from "../../api/destinationApi";
+import {
+  getDestinations,
+  setAddDestination,
+  setDeleteDestination,
+  setUpdateDestination,
+} from "../../api/destinationApi";
 import {
   ADD_DESTINATION_REQUEST,
   addDestinationFailure,
   addDestinationSuccess,
+  DELETE_DESTINATION_REQUEST,
+  deleteDestinationFailure,
+  deleteDestinationSuccess,
+  EDIT_DESTINATION_REQUEST,
+  editDestinationFailure,
+  editDestinationSuccess,
   FETCH_DESTINATIONS_REQUEST,
   fetchDestinationsFailure,
   fetchDestinationsSuccess,
@@ -42,7 +53,42 @@ function* addNewDestination(action) {
   }
 }
 
+function* deleteDestination(action) {
+  try {
+    const response = yield call(setDeleteDestination, action.payload);
+
+    if (response.success) {
+      yield put(deleteDestinationSuccess(action.payload));
+      toast.success("Destination Deleted successfully!");
+    } else {
+      yield put(deleteDestinationFailure(response.message));
+    }
+  } catch (error) {
+    yield put(deleteDestinationFailure(error.message));
+  }
+}
+
+// Edit destination saga
+function* handleEditDestination(action) {
+  try {
+    const { id, destinationData } = action.payload;
+    const response = yield call(setUpdateDestination, id, destinationData);
+
+    if (response && response.success) {
+      yield put(editDestinationSuccess(response.data.data));
+      toast.success("Destination Updated successfully!");
+    } else {
+      put(editDestinationFailure(error.message));
+      toast.error(response.message || "Update Failed");
+    }
+  } catch (error) {
+    yield put(editDestinationFailure(error.message));
+  }
+}
+
 export default function* destinationSaga() {
   yield takeLatest(FETCH_DESTINATIONS_REQUEST, fetchDestinations);
   yield takeLatest(ADD_DESTINATION_REQUEST, addNewDestination);
+  yield takeLatest(DELETE_DESTINATION_REQUEST, deleteDestination);
+  yield takeLatest(EDIT_DESTINATION_REQUEST, handleEditDestination);
 }

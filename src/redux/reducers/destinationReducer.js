@@ -3,6 +3,12 @@ import {
   ADD_DESTINATION_FAILURE,
   ADD_DESTINATION_REQUEST,
   ADD_DESTINATION_SUCCESS,
+  DELETE_DESTINATION_FAILURE,
+  DELETE_DESTINATION_REQUEST,
+  DELETE_DESTINATION_SUCCESS,
+  EDIT_DESTINATION_FAILURE,
+  EDIT_DESTINATION_REQUEST,
+  EDIT_DESTINATION_SUCCESS,
   FETCH_DESTINATIONS_FAILURE,
   FETCH_DESTINATIONS_REQUEST,
   FETCH_DESTINATIONS_SUCCESS,
@@ -54,6 +60,49 @@ export const destnationReducer = (state = initialState, action) => {
 
     case ADD_DESTINATION_FAILURE:
       return { ...state, loading: false, error: action.payload };
+
+    case DELETE_DESTINATION_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case DELETE_DESTINATION_SUCCESS:
+      return initialState;
+
+    case DELETE_DESTINATION_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case EDIT_DESTINATION_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case EDIT_DESTINATION_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+
+        destinations: state.destinations.map((destination) => ({
+          ...destination,
+          data: destination.data.map((item) =>
+            item._id === action.payload.data._id
+              ? { ...item, ...action.payload.data }
+              : item
+          ),
+        })),
+      };
+    case EDIT_DESTINATION_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     case LOGOUT:
       return initialState;

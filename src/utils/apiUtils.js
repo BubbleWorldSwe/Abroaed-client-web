@@ -7,8 +7,6 @@ import {
   POST_REQUEST_TIMEOUT,
   constructGetRequestOptions,
   constructPostRequestOptions,
-  RESPONSE_SUCCESS,
-  RESPONSE_FAILURE,
   constructSuccessResponse,
   DELETE_REQUEST_TIMEOUT,
   constructDeleteRequestOptions,
