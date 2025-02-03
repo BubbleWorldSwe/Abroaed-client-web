@@ -1,11 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Pencil } from "lucide-react"
+import { EllipsisVertical, Eye, Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AccommodationTable = ({ accommodationData }) => {
+const StudentTable = ({ Students, handleOpenAddModal, setDropdownVisible, dropdownVisible }) => {
     const [dropdownDirection, setDropdownDirection] = useState(null);
-    const [dropdownVisible, setDropdownVisible] = useState(null);
     const navigate = useNavigate();
     const dropdownRef = useRef(null);
 
@@ -14,7 +14,6 @@ const AccommodationTable = ({ accommodationData }) => {
             setDropdownVisible(null);
         }
     };
-
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
         return () => {
@@ -34,19 +33,20 @@ const AccommodationTable = ({ accommodationData }) => {
                 <tr>
                     <th scope="col" className="p-4"></th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Name
+                        Student Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Location
+                        Level
                     </th>
-                    <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Price
+                    <th scope="col" className="px-4 py-3 min-w-[7rem]">
+                        Plan Type
                     </th>
-                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Availability
+                    <th scope="col" className="px-4 py-3 min-w-[6rem]">
+                        Counselleor
+
                     </th>
-                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Description
+                    <th scope="col" className="px-4 py-3 min-w-[7rem]">
+                        Application Counts
                     </th>
                     <th scope="col" className="px-4 py-3">
                         <span className="sr-only">Actions</span>
@@ -54,7 +54,7 @@ const AccommodationTable = ({ accommodationData }) => {
                 </tr>
             </thead>
             <tbody>
-                {accommodationData?.map((accommodation, index) => (
+                {Students?.map((member, index) => (
                     <tr
                         key={index}
                         className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -62,32 +62,37 @@ const AccommodationTable = ({ accommodationData }) => {
                         <td className="px-4 py-3 w-4">
                             <div className="flex items-center">
                                 <input
-                                    id={`checkbox-destination-${index}`}
+                                    id="checkbox-table-search-1"
                                     type="checkbox"
-                                    onClick={(e) => e.stopPropagation()}
+                                    onClick="event.stopPropagation()"
                                     className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                 />
                                 <label
-                                    htmlFor={`checkbox-destination-${index}`}
+                                    htmlFor="checkbox-table-search-1"
                                     className="sr-only"
                                 >
                                     checkbox
                                 </label>
                             </div>
                         </td>
-
                         <th
                             scope="row"
-                            className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                            className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
                         >
-                            {accommodation.name}
+                            {member.name}
                         </th>
-
-                        <td className="px-4 py-3">{accommodation.location}</td>
-                        <td className="px-4 py-3">{accommodation.price}</td>
-                        <td className="px-4 py-3">{accommodation.availability}</td>
-                        <td className="px-4 py-3">{accommodation.description}</td>
-
+                        <td className="px-4 py-3"> {member.level}</td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {member.planType}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {member.counsellor}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                                {member.appCount}
+                            </span>
+                        </td>
                         <td className="px-4 py-3">
                             <button
                                 className="focus:outline-none"
@@ -107,10 +112,22 @@ const AccommodationTable = ({ accommodationData }) => {
                                         <li>
                                             <button
                                                 type="button"
+                                                onClick={() => handleOpenAddModal('assign')}
+                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                <Plus className="w-4 h-4" />
+                                                <span>
+                                                    Assign Member
+                                                </span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button
+                                                type="button"
                                                 onClick={() =>
                                                     navigate(
-                                                        `/admin/accommodation/${encodeURIComponent(
-                                                            accommodation.name
+                                                        `/admin/students/${encodeURIComponent(
+                                                            member.name
                                                         )}`
                                                     )
                                                 }
@@ -118,19 +135,7 @@ const AccommodationTable = ({ accommodationData }) => {
                                             >
                                                 <Eye className="w-4 h-4" />
                                                 <span>
-                                                    View Details
-                                                </span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button
-                                                type="button"
-                                                onClick={''}
-                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            >
-                                                <Pencil className="w-4 h-4" />
-                                                <span>
-                                                    Edit
+                                                    View Profile
                                                 </span>
                                             </button>
                                         </li>
@@ -145,4 +150,4 @@ const AccommodationTable = ({ accommodationData }) => {
     )
 }
 
-export default AccommodationTable
+export default StudentTable;

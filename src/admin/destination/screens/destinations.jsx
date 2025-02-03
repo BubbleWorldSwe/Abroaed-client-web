@@ -9,6 +9,7 @@ function Destinations() {
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
   return (
     <>
       <AddDestination isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}

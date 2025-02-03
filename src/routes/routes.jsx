@@ -6,8 +6,8 @@ import FinanceLayout from "../Layouts/FinanceLayout";
 import LayoutPageDestination from "../Layouts/DestinationLayout";
 import AdminLayout from "../Layouts/AdminLayout";
 import NurtureLeads from "../pages/admin/NurtureLeads";
-import StudentsTable from "../pages/admin/StudentsTable";
-import ManageLeadsTable from "../pages/admin/ManageLeadsTable";
+import Student from "../admin/student/screens/student";
+import Leads from "../admin/lead/screens/leads";
 import HomeLayout from "../Components/Home";
 import LayoutBlogs from "../Components/LayoutBlogs";
 import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
@@ -18,13 +18,12 @@ import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import AboutUsLayout from "../Layouts/AboutUsLayout";
 import CareersLayout from "../Layouts/CareersLayout";
 import PathwaysHomeLayout from "../Layouts/PathwaysHomeLayout";
-import LanguagePrepTable from "../pages/admin/LanguagePrepTable";
-import LanguagePrepPage from "../pages/LanguagePrep/LanguagePrepPage";
+import LanguagePrep from "../admin/languagePrep/screens/languagePrep";
 import PathwaysProgramLayout from "../Layouts/PathwaysProgramLayout";
 import CollegePageLayout from "../Layouts/CollegePageLayout";
 import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
-import TransactionTable from "../pages/TransactionAdmin/TransactionTable";
-import AdminStudentProfileLayout from "../Layouts/AdminStudentProfileLayout";
+import Transaction from "../admin/transaction/screens/transaction";
+import StudentProfileLayout from "../admin/student/screens/studentProfileLayout";
 import DestinationDetails from "../admin/destination/screens/destinationDetails";
 import Destinations from "../admin/destination/screens/Destinations";
 import Teams from "../admin/team/screens/teams";
@@ -32,6 +31,7 @@ import College from "../admin/college/screens/college";
 import CollegDetails from "../admin/college/screens/collegeDetails";
 import AccommodationDetails from "../admin/accommodation/screens/accommodationDetails";
 import Accommodations from "../admin/accommodation/screens/accommodation";
+import LanguagePrepDetails from "../admin/languagePrep/screens/languagePrepDetails";
 
 const AppRoutes = () => {
 
@@ -95,14 +95,14 @@ const AppRoutes = () => {
         { path: "dashboard", element: <Dashboard /> },
         { path: "teams", element: <Teams /> },
         { path: "nurtureLeads", element: <NurtureLeads /> },
-        { path: "students", element: <StudentsTable /> },
-        { path: "students/:name", element: <AdminStudentProfileLayout /> },
-        { path: "leads", element: <ManageLeadsTable /> },
+        { path: "students", element: <Student /> },
+        { path: "students/:name", element: <StudentProfileLayout /> },
+        { path: "leads", element: <Leads /> },
         { path: "accommodation", element: <Accommodations /> },
         { path: "accommodation/:name", element: <AccommodationDetails /> },
-        { path: "langPrep/:name", element: < LanguagePrepPage /> },
-        { path: "langPrep", element: < LanguagePrepTable /> },
-        { path: "transaction", element: < TransactionTable /> },
+        { path: "langPrep/:name", element: < LanguagePrepDetails /> },
+        { path: "langPrep", element: < LanguagePrep /> },
+        { path: "transaction", element: < Transaction /> },
         { path: "colleges", element: <College /> },
         { path: "colleges/:name", element: <CollegDetails /> },
         { path: "destinations/:name", element: <DestinationDetails /> },

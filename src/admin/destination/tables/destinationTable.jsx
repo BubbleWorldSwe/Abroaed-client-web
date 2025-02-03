@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye } from "lucide-react";
+import { EllipsisVertical, Eye, Pencil } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -114,17 +114,18 @@ const DestinationTable = ({ destinations }) => {
                                                 </span>
                                             </button>
                                         </li>
-                                        {/* <li>
-                        <button
-                          type="button"
-                          onClick={handleOpenAddModal}
-                          className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          <span>
-                            Edit
-                          </span>
-                        </button>
-                      </li> */}
+                                        <li>
+                                            <button
+                                                type="button"
+                                                onClick={''}
+                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                <Pencil className="w-4 h-4" />
+                                                <span>
+                                                    Edit
+                                                </span>
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                             )}

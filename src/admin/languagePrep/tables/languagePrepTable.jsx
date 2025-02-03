@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Pencil } from "lucide-react"
+import { EllipsisVertical, Eye, Pencil } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AccommodationTable = ({ accommodationData }) => {
+
+const LanguagePrepTable = ({ languages }) => {
     const [dropdownDirection, setDropdownDirection] = useState(null);
     const [dropdownVisible, setDropdownVisible] = useState(null);
     const navigate = useNavigate();
@@ -14,7 +15,6 @@ const AccommodationTable = ({ accommodationData }) => {
             setDropdownVisible(null);
         }
     };
-
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
         return () => {
@@ -29,32 +29,31 @@ const AccommodationTable = ({ accommodationData }) => {
     };
 
     return (
-        <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
+        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead className="text-xs text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="p-4"></th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Name
+                        Product Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Location
+                        Language
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                        Price
+                        Created By
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Availability
+                        Last Updated
                     </th>
-                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                        Description
-                    </th>
+
                     <th scope="col" className="px-4 py-3">
                         <span className="sr-only">Actions</span>
                     </th>
                 </tr>
             </thead>
+
             <tbody>
-                {accommodationData?.map((accommodation, index) => (
+                {languages?.map((language, index) => (
                     <tr
                         key={index}
                         className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -62,13 +61,13 @@ const AccommodationTable = ({ accommodationData }) => {
                         <td className="px-4 py-3 w-4">
                             <div className="flex items-center">
                                 <input
-                                    id={`checkbox-destination-${index}`}
+                                    id={`checkbox-college-${index}`}
                                     type="checkbox"
                                     onClick={(e) => e.stopPropagation()}
                                     className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                 />
                                 <label
-                                    htmlFor={`checkbox-destination-${index}`}
+                                    htmlFor={`checkbox-college-${index}`}
                                     className="sr-only"
                                 >
                                     checkbox
@@ -80,14 +79,21 @@ const AccommodationTable = ({ accommodationData }) => {
                             scope="row"
                             className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
-                            {accommodation.name}
+                            {language.name}
                         </th>
 
-                        <td className="px-4 py-3">{accommodation.location}</td>
-                        <td className="px-4 py-3">{accommodation.price}</td>
-                        <td className="px-4 py-3">{accommodation.availability}</td>
-                        <td className="px-4 py-3">{accommodation.description}</td>
-
+                        <td className="px-4 py-3">{language.city}</td>
+                        <td className="px-4 py-3">{language.country}</td>
+                        <td className="px-4 py-3">
+                            <a
+                                href={language.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:underline"
+                            >
+                                {language.website}
+                            </a>
+                        </td>
                         <td className="px-4 py-3">
                             <button
                                 className="focus:outline-none"
@@ -101,16 +107,15 @@ const AccommodationTable = ({ accommodationData }) => {
                                     className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
                                         ? "bottom-full mb-2"
                                         : "mt-2"
-                                        }`}
-                                >
+                                        }`}>
                                     <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                                         <li>
                                             <button
                                                 type="button"
                                                 onClick={() =>
                                                     navigate(
-                                                        `/admin/accommodation/${encodeURIComponent(
-                                                            accommodation.name
+                                                        `/admin/langPrep/${encodeURIComponent(
+                                                            language.name
                                                         )}`
                                                     )
                                                 }
@@ -145,4 +150,4 @@ const AccommodationTable = ({ accommodationData }) => {
     )
 }
 
-export default AccommodationTable
+export default LanguagePrepTable;

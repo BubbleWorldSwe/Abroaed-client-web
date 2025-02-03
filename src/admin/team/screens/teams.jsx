@@ -3,7 +3,7 @@ import AddTeamMember from "../modals/addTeamMemberModal";
 import { useDispatch, useSelector } from "react-redux";
 import filter_list from "../../../assets/filter_list.png";
 import UpdateTeamMember from "../modals/updateTeamMemberModal";
-import ConfirmModal from "../../../Components/Modals/ConfirmModal";
+import ConfirmModal from "../../../common/modal/confirmModal";
 import {
   deleteTeamRequest,
   fetchTeamsRequest,
