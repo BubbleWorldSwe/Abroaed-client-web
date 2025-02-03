@@ -13,7 +13,7 @@ function Destinations() {
   return (
     <>
       <AddDestination isOpen={isAddModalOpen} onClose={handleCloseAddModal} />{" "}
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
+      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">
         <section className=" py-3 sm:py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
             <div className=" dark:border-gray-700 mx-4">
