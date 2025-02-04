@@ -8,14 +8,14 @@ const AdmissionRequirementAddModal = ({
   closeModal,
   documentsList,
   destinationId,
+  details,
+  onSuccess,
 }) => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({});
-  const handleInputChange = (e, fieldName) => {
-    setFormData({ ...formData, [fieldName]: e.target.value });
-  };
 
-  const [selectedDocuments, setSelectedDocuments] = useState([]);
+  const [selectedDocuments, setSelectedDocuments] = useState(
+    details.admissionRequirements.map((item) => item._id)
+  );
 
   const handleCheckboxChange = (e, docId) => {
     if (e.target.checked) {
@@ -35,14 +35,13 @@ const AdmissionRequirementAddModal = ({
           admissionRequirements: selectedDocuments,
         })
       );
-
+      onSuccess();
       closeModal();
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(documentsList.length);
+  console.log(selectedDocuments);
 
   return (
     <div>

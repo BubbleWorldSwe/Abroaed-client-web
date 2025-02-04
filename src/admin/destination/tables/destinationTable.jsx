@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { formatDate, formatDateTime } from "../../../utils/helper";
 
 const DestinationTable = ({
   destinations,
@@ -111,7 +112,9 @@ const DestinationTable = ({
 
                 <td className="px-4 py-3">{destination?.author}</td>
                 <td className="px-4 py-3">{destination?.status}</td>
-                <td className="px-4 py-3">{destination.createdAt}</td>
+                <td className="px-4 py-3">
+                  {formatDateTime(destination.createdAt)}
+                </td>
 
                 <td className="px-4 py-3">
                   <button

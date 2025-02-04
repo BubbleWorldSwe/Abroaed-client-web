@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import filter_list from "../../../assets/filter_list.png"
-import { accommodationData } from '../data';
-import AccommodationTable from '../tables/accommodationTable';
-import AddAccommodationModal from '../modals/addAccommodationModal';
-import ConfirmModal from '../../../Components/Modals/ConfirmModal';
+import { useState } from "react";
+import filter_list from "../../../assets/filter_list.png";
+import { accommodationData } from "../data";
+import AccommodationTable from "../tables/accommodationTable";
+import AddAccommodationModal from "../modals/addAccommodationModal";
+import ConfirmModal from "../../../commons/modal/confirmModal";
 
 const Accommodations = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -16,7 +16,11 @@ const Accommodations = () => {
   };
   return (
     <>
-      <AddAccommodationModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} setIsDone={setIsDone} />
+      <AddAccommodationModal
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+        setIsDone={setIsDone}
+      />
       <ConfirmModal
         isOpen={isDone}
         onClose={() => setIsDone(false)}
@@ -70,10 +74,24 @@ const Accommodations = () => {
                   <button
                     onClick={handleOpenAddModal}
                     type="button"
-                    className="w-full whitespace-nowrap  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-600 focus:outline-none bg-yellow-200 rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className="w-full whitespace-nowrap  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
-                    <svg className="w-6 h-6 p-1 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-7 7V5" />
+                    <svg
+                      className="w-6 h-6 p-1 text-gray-800 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 12h14m-7 7V5"
+                      />
                     </svg>
                     New Accommodation
                   </button>
@@ -88,6 +106,6 @@ const Accommodations = () => {
       </div>
     </>
   );
-}
+};
 
 export default Accommodations;

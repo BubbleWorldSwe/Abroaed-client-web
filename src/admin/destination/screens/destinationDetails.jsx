@@ -17,13 +17,16 @@ import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
 import { useLocation } from "react-router-dom";
-import { getAdmissionDocuments } from "../../../api/api";
+import { getAdmissionDocuments, getCurrencyList } from "../../../api/api";
+import { getDestinationDetailsById } from "../../../api/destinationApi";
+import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
+import { useSelector } from "react-redux";
 
 function DestinationDetails() {
   const { state } = useLocation();
   const [documentsList, setDocumentsList] = useState([]);
   const [destinationDetails, setDestinationDetails] = useState(state);
-
+  const [currencyList, setCurrencyList] = useState([]);
   console.log(destinationDetails);
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
   const [activeModalIndex, setActiveModalIndex] = useState(null);
@@ -49,16 +52,22 @@ function DestinationDetails() {
       component: <DestinationFAQ details={destinationDetails} />,
     },
   ];
+
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
   const closeModal = () => {
     setSelectedSection(null);
   };
 
   const modals = {
     section0: (
-      <OverviewAddModal details={destinationDetails} closeModal={closeModal} />
+      <OverviewAddModal
+        details={destinationDetails}
+        currencyList={currencyList}
+        closeModal={closeModal}
+      />
     ),
     section1: (
       <AdmissionRequirementAddModal
@@ -66,6 +75,7 @@ function DestinationDetails() {
         details={destinationDetails}
         closeModal={closeModal}
         destinationId={destinationDetails._id}
+        onSuccess={fetchDestnationDetails}
       />
     ),
     section2: (
@@ -94,12 +104,32 @@ function DestinationDetails() {
     setActiveModalIndex(index);
   };
 
+  async function fetchDestnationDetails() {
+    try {
+      const data = await getDestinationDetailsById(destinationDetails?._id);
+      console.log(data);
+
+      if (data.status === 200) {
+        console.log("updated");
+        setDestinationDetails(data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function fetchData() {
     try {
+      fetchDestnationDetails();
       const docs = await getAdmissionDocuments();
-      console.log(docs);
+      const currency = await getCurrencyList();
+
       if (docs.status === 200) {
         setDocumentsList(docs.data.result);
+      }
+
+      if (currency.status === 200) {
+        setCurrencyList(currency.data.result);
       }
     } catch (error) {
       console.log(error);

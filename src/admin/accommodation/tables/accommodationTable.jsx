@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical } from "lucide-react"
+import { EllipsisVertical, Eye, Pencil } from "lucide-react"
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -114,18 +114,24 @@ const AccommodationTable = ({ accommodationData }) => {
                                                         )}`
                                                     )
                                                 }
-                                                className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                View Details
+                                                <Eye className="w-4 h-4" />
+                                                <span>
+                                                    View Details
+                                                </span>
                                             </button>
                                         </li>
                                         <li>
                                             <button
                                                 type="button"
                                                 onClick={''}
-                                                className="block py-2 px-4 w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                             >
-                                                Edit
+                                                <Pencil className="w-4 h-4" />
+                                                <span>
+                                                    Edit
+                                                </span>
                                             </button>
                                         </li>
                                     </ul>

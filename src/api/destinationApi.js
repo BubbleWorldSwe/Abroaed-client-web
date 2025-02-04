@@ -69,3 +69,18 @@ export const setDeleteDestination = async (id) => {
     console.log(error);
   }
 };
+
+export const getDestinationDetailsById = async (id) => {
+  try {
+    console.log(id);
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/destination/${id}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AddTeamMember from "../modals/addTeamMemberModal";
 import UpdateTeamMember from "../modals/updateTeamMemberModal";
-import ConfirmModal from "../../../Components/Modals/ConfirmModal";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteTeamRequest,
@@ -10,6 +10,7 @@ import {
 import { fetchRolesRequest } from "../../../redux/actions/rolesActions";
 import TeamTable from "../tables/teamTable";
 import filter_list from "../../../assets/filter_list.png";
+import { AddButton } from "../../../commons/components/buttons/addButton";
 
 function Teams() {
   const dispatch = useDispatch();
@@ -149,28 +150,10 @@ function Teams() {
                     <img src={filter_list} alt="Filter" />
                   </div>
                 </div>
-                <button
+                <AddButton
                   onClick={handleOpenAddModal}
-                  type="button"
-                  className="flex items-center justify-center py-2 px-4 text-sm font-semibold text-gray-700 bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 whitespace-nowrap"
-                >
-                  <svg
-                    className="w-6 h-6 p-1 text-gray-600 dark:text-white"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 12h14m-7 7V5"
-                    />
-                  </svg>
-                  Add New Team Member
-                </button>
+                  label={" Add New Team Member"}
+                />
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

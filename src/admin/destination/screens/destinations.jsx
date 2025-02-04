@@ -10,6 +10,7 @@ import {
 import AddDestinationModal from "../modals/addDestinationModal";
 import { toast } from "react-toastify";
 import { deleteTeamRequest } from "../../../redux/actions/teamActions";
+import { AddButton } from "../../../commons/components/buttons/addButton";
 
 function Destinations() {
   const dispatch = useDispatch();
@@ -131,32 +132,11 @@ function Destinations() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setIsAddModalOpen(true)}
-                    type="button"
-                    className="flex items-center justify-center py-2 px-4 text-sm font-semibold text-gray-700 bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 whitespace-nowrap"
-                  >
-                    <svg
-                      className="w-7 h-7 p-1 text-gray-600 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 12h14m-7 7V5"
-                      />
-                    </svg>
-                    Add New Destination
-                  </button>
-                </div>
+
+                <AddButton
+                  onClick={() => setIsAddModalOpen(true)}
+                  label={"Add New Destination"}
+                />
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

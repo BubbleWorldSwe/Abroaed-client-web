@@ -6,8 +6,9 @@ import {
   addTeamRequest,
   fetchTeamsRequest,
 } from "../../../redux/actions/teamActions";
-import { InputField } from "../../../commons/components/inputField";
-import { SelectField } from "../../../commons/components/selectField";
+
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
 function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
   const { roles } = useSelector((state) => state.roles);
@@ -76,7 +77,7 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {/* Left Column */}
-              <InputField
+              <TextInputField
                 label="First Name"
                 name="firstName"
                 type="text"
@@ -85,7 +86,7 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
                 placeholder="Enter first name"
                 required
               />
-              <InputField
+              <TextInputField
                 label="Last Name"
                 name="lastName"
                 type="text"
@@ -94,7 +95,7 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
                 placeholder="Enter last name"
                 required
               />
-              <InputField
+              <TextInputField
                 label="Email"
                 name="email"
                 type="email"
@@ -103,7 +104,7 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
                 placeholder="Enter email"
                 required
               />
-              <InputField
+              <TextInputField
                 label="Mobile Number"
                 name="phoneNumber"
                 type="tel"
@@ -137,9 +138,9 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
                 required
               />
             </div>
-
+            <div style={{ marginTop: 30 }} />
             {/* Buttons */}
-            <div className="flex justify-end mt-10">
+            <div className="flex justify-end mt-5">
               <button
                 type="button"
                 className="mr-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md"

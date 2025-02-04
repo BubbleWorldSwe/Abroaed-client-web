@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { editTeamRequest } from "../../../redux/actions/teamActions";
-import { InputField } from "../../../commons/components/inputField";
-import { SelectField } from "../../../commons/components/selectField";
+
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
 const UpdateTeamMember = ({ isOpen, onClose, data }) => {
   const { roles } = useSelector((state) => state.roles);
@@ -55,7 +56,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data }) => {
               <form onSubmit={handleSubmit} className="bg-white rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {/* First Name */}
-                  <InputField
+                  <TextInputField
                     label="First Name"
                     name="firstName"
                     type="text"
@@ -67,7 +68,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data }) => {
 
                   {/* Last Name */}
 
-                  <InputField
+                  <TextInputField
                     label="Last Name"
                     name="lastName"
                     type="text"
@@ -78,7 +79,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data }) => {
                   />
 
                   {/* Mobile Number */}
-                  <InputField
+                  <TextInputField
                     label="Mobile Number"
                     name="mobile"
                     type="text"
@@ -88,7 +89,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data }) => {
                   />
 
                   {/* Email ID */}
-                  <InputField
+                  <TextInputField
                     label="Email ID"
                     name="email"
                     type="text"

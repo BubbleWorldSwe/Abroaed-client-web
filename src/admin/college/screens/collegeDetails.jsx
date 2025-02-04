@@ -10,7 +10,7 @@ import FAQsCard from "../components/faqsCard";
 import { useState } from "react";
 import CollegeImageSection from "../components/collegeImageSection";
 import OverviewModal from "../modals/overviewModal";
-import MediaGallery from "../modals/mediaGallery";
+import MediaGallery from "../modals/mediaGalleryModal";
 import CoursesModal from "../modals/coursesModal";
 import FinancialAidScholarshipsModal from "../modals/financialAidScholarshipsModal";
 import FaqModalCollege from "../modals/faqModalCollege";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import AddTeamMember from "../modals/addTeamMemberModal";
 import UpdateTeamMember from "../modals/updateTeamMemberModal";
-import ConfirmModal from "../../../Components/Modals/ConfirmModal";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteTeamRequest,

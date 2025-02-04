@@ -1,0 +1,132 @@
+/* eslint-disable react/prop-types */
+import { useState } from "react";
+import { Toaster } from "react-hot-toast"
+
+const AssignTeamMemberStudent = ({ isOpen, onClose, setDone }) => {
+    const [formData, setFormData] = useState({
+        counsellor: "",
+        backendManager: "",
+        mentor: "",
+    });
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleReset = () => {
+        setFormData({
+            counsellor: "",
+            backendManager: "",
+            mentor: "",
+        });
+    }
+
+    const handleAssign = () => {
+        onClose();
+        setDone(true);
+
+    }
+
+
+    return (
+        <>
+            {isOpen && (
+                <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+                    <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
+                        <button
+                            className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+                            onClick={onClose}
+                        >
+                            &times;
+                        </button>
+                        <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
+
+                        <div>
+                            <div className="mb-5">
+                                <h5 className="block text-sm font-semibold text-[#27272A] ">Assigned Members</h5>
+                                <p className="text-sm text-[#3F3F46]">No members assigned. Assign below</p>
+                            </div>
+                            <form onSubmit={handleAssign} className="space-y-6">
+                                <div className="grid font-rethink grid-cols-1 gap-4">
+                                    {/* Counsellor Dropdown */}
+                                    <div>
+                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                                            Counsellor
+                                        </label>
+                                        <select
+                                            name="counsellor"
+                                            value={formData.counsellor}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-1 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="">Member Name</option>
+                                            <option value="John Doe">John Doe</option>
+                                            <option value="Jane Smith">Jane Smith</option>
+                                            <option value="Alice Johnson">Alice Johnson</option>
+                                        </select>
+                                    </div>
+
+                                    {/* Backend Manager Dropdown */}
+                                    <div>
+                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                                            Backend Manager
+                                        </label>
+                                        <select
+                                            name="backendManager"
+                                            value={formData.backendManager}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-1 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="">Member Name</option>
+                                            <option value="Mike Brown">Mike Brown</option>
+                                            <option value="Sara Wilson">Sara Wilson</option>
+                                            <option value="Tom Lee">Tom Lee</option>
+                                        </select>
+                                    </div>
+
+                                    {/* Mentor Dropdown */}
+                                    <div>
+                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                                            Mentor
+                                        </label>
+                                        <select
+                                            name="mentor"
+                                            value={formData.mentor}
+                                            onChange={handleChange}
+                                            className="w-full px-3 py-1 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        >
+                                            <option value="">Member Name</option>
+                                            <option value="Emily White">Emily White</option>
+                                            <option value="Robert Green">Robert Green</option>
+                                            <option value="Sophia Adams">Sophia Adams</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div className="flex gap-3 justify-end mt-4">
+                                    <button
+                                        type="button"
+                                        className="bg-gray-300 text-gray-700 px-3 py-1 rounded-md"
+                                        onClick={handleReset}
+                                    >
+                                        Reset
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        className="bg-blue-600 text-white px-3 py-1 rounded-md"
+                                    >
+                                        Assign
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <Toaster position="top-center" reverseOrder={false} />
+        </>
+    )
+}
+
+export default AssignTeamMemberStudent
