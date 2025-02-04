@@ -4,6 +4,8 @@ import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import SearchDropdownField from "../../../commons/components/inputFields/searchDropdownFields";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
   const dispatch = useDispatch();
@@ -53,20 +55,8 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
         />
 
         <div className="flex justify-end space-x-4 mt-10">
-          <button
-            type="button"
-            onClick={onClose}
-            className="px-4 py-2 bg-gray-300 rounded"
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            onClick={handleAddDestination}
-            className="px-4 py-2 bg-blue-600 text-white rounded"
-          >
-            Add Destination
-          </button>
+          <ModalCloseButton label={"Cancel"} onClick={onClose} />
+          <ModalSubmitButton label={"Add"} onClick={handleAddDestination} />
         </div>
       </div>
     </div>

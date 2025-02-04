@@ -3,6 +3,8 @@ import { useState } from "react";
 import { requireDocumentsData } from "../data";
 import { useDispatch } from "react-redux";
 import { editDestinationRequest } from "../../../redux/actions/destinationActions";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 const AdmissionRequirementAddModal = ({
   closeModal,
@@ -67,19 +69,12 @@ const AdmissionRequirementAddModal = ({
           </>
         ))}
         <div className="col-span-full text-end">
-          <button
-            type="button"
-            className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded transition"
-            onClick={closeModal}
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Save
-          </button>
+          <ModalCloseButton label={"Cancel"} onClick={closeModal} />
+
+          <ModalSubmitButton
+            label={"Save"}
+            //  onClick={handleAddDestination}
+          />
         </div>
       </form>
     </div>

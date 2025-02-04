@@ -1,19 +1,39 @@
 import { useState } from "react";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 const WorkOpportunitiesModal = ({ closeModal }) => {
   const [formData, setFormData] = useState({});
+  const [professions, setProfessions] = useState([{ name: "", salary: "" }]);
 
   const handleInputChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
+
+  const handleProfessionChange = (index, field, value) => {
+    const updatedProfessions = professions.map((prof, i) =>
+      i === index ? { ...prof, [field]: value } : prof
+    );
+    setProfessions(updatedProfessions);
+  };
+
+  const addProfession = () => {
+    setProfessions([...professions, { name: "", salary: "" }]);
+  };
+
+  const removeProfession = (index) => {
+    setProfessions(professions.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData, image);
-    // You can handle the form submission here (e.g., API call, state update, etc.)
+    console.log("Form submitted with data:", formData, professions);
     closeModal();
   };
+
+  console.log(professions);
 
   return (
     <div>
@@ -23,46 +43,71 @@ const WorkOpportunitiesModal = ({ closeModal }) => {
             label="Part-time options for Students"
             name="description"
             type="text"
-            value={formData?.description}
+            value={formData?.description || ""}
             onChange={(e) => handleInputChange(e, "description")}
             required
           />
         </div>
         <div className="mt-5 mb-5">
           <TextareaInputField
-            label=" Part-degree popular work opportunities"
+            label="Part-degree popular work opportunities"
             name="opportunities"
             type="text"
-            value={formData?.opportunities}
+            value={formData?.opportunities || ""}
             onChange={(e) => handleInputChange(e, "opportunities")}
             required
           />
         </div>
-        <p className="font-semibold mb-5">Professions</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <TextInputField
-            label=" Profession Name"
-            name="profession"
-            type="text"
-            value={formData.profession}
-            onChange={(e) => handleInputChange(e, "profession")}
-            required
-          />
-          <TextInputField
-            label=" Avarage Salary"
-            name="avgSalary"
-            type="text"
-            value={formData.avgSalary}
-            onChange={(e) => handleInputChange(e, "avgSalary")}
-            required
-          />
-        </div>
 
+        <p className="font-semibold mb-5">Professions</p>
+        <div className="grid gap-4">
+          {professions.map((profession, index) => (
+            <div key={index} className="flex gap-4 items-center">
+              <TextInputField
+                label="Profession Name"
+                name={`profession-${index}`}
+                type="text"
+                value={profession.name}
+                onChange={(e) =>
+                  handleProfessionChange(index, "name", e.target.value)
+                }
+                required
+              />
+              <TextInputField
+                label="Average Salary"
+                name={`salary-${index}`}
+                type="text"
+                value={profession.salary}
+                onChange={(e) =>
+                  handleProfessionChange(index, "salary", e.target.value)
+                }
+                required
+              />
+              {index === 0 ? (
+                <button
+                  type="button"
+                  className="text-red-500"
+                  onClick={addProfession}
+                >
+                  Add
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="text-red-500"
+                  onClick={() => removeProfession(index)}
+                >
+                  Remove
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
         <div className="col-span-full text-end mb-5">
           <button
             type="button"
             className="mt-4 text-blue-500 px-4 py-1 mr-2 rounded transition flex items-center gap-2"
-            onClick={closeModal}
+            onClick={addProfession}
           >
             + Add Profession
           </button>
@@ -72,25 +117,14 @@ const WorkOpportunitiesModal = ({ closeModal }) => {
           label="Additional Information"
           name="additionalInfo"
           type="text"
-          value={formData?.additionalInfo}
+          value={formData?.additionalInfo || ""}
           onChange={(e) => handleInputChange(e, "additionalInfo")}
           required
         />
 
         <div className="text-end">
-          <button
-            type="button"
-            className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-            onClick={closeModal}
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Save
-          </button>
+          <ModalCloseButton label={"Cancel"} onClick={closeModal} />
+          <ModalSubmitButton label={"Save"} />
         </div>
       </form>
     </div>

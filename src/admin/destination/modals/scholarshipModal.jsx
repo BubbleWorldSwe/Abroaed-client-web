@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 const ScholarshipModal = ({ closeModal }) => {
   const [formData, setFormData] = useState({});
@@ -51,20 +53,13 @@ const ScholarshipModal = ({ closeModal }) => {
           required
         />
 
-        <div className="text-end">
-          <button
-            type="button"
-            className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-            onClick={closeModal}
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Save
-          </button>
+        <div className="text-end mt-10">
+          <ModalCloseButton label={"Cancel"} onClick={closeModal} />
+
+          <ModalSubmitButton
+            label={"Save"}
+            //  onClick={onSubmit}
+          />
         </div>
       </form>
     </div>
