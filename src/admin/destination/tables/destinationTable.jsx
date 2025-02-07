@@ -8,7 +8,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDate, formatDateTime } from "../../../utils/helper";
-import { setSelectedCountry } from "../../../redux/actions/destinationActions";
+import { setSelectedDestination } from "../../../redux/actions/destinationActions";
 import { useDispatch } from "react-redux";
 
 const DestinationTable = ({
@@ -39,7 +39,7 @@ const DestinationTable = ({
   };
 
   const handleViewDetails = (destination) => {
-    dispatch(setSelectedCountry(destination)); // Set selected country in Redux store
+    dispatch(setSelectedDestination(destination)); // Set selected country in Redux store
     navigate(`/admin/destinations/${encodeURIComponent(destination._id)}`, {
       state: destination,
     });

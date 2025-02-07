@@ -16,7 +16,7 @@ import ScholarshipModal from "../modals/scholarshipModal";
 import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getAdmissionDocuments, getVisaTypesList } from "../../../api/api";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import {
@@ -29,16 +29,20 @@ import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function DestinationDetails() {
   const dispatch = useDispatch();
-  const { state, id } = useLocation();
+
+  const { state } = useLocation();
+  const { id } = useParams();
 
   const [documentsList, setDocumentsList] = useState([]);
+
+  const { selectedDestination } = useSelector((state) => state.destinations);
 
   const destinationDetails = useSelector(
     (state) => state.destinations.selectedDestination
   );
 
   console.log("selectedDestination in main page");
-  console.log(destinationDetails);
+  console.log(selectedDestination);
   console.log("selectedDestination in main page");
 
   const [visaTypes, setVisaTypes] = useState([]);
@@ -84,7 +88,6 @@ function DestinationDetails() {
         <ScholarshipsDest
           details={destinationDetails}
           onEdit={onEditScholarship}
-          onUpdate={onUpdate}
         />
       ),
     },
@@ -94,7 +97,6 @@ function DestinationDetails() {
         <ImmigrationDetailsAdmin
           details={destinationDetails}
           onEdit={onEditImmigration}
-          onUpdate={onUpdate}
         />
       ),
     },
@@ -105,11 +107,7 @@ function DestinationDetails() {
     {
       name: "FAQs",
       component: (
-        <DestinationFAQ
-          details={destinationDetails}
-          onEdit={onEditFaq}
-          onUpdate={onUpdate}
-        />
+        <DestinationFAQ details={destinationDetails} onEdit={onEditFaq} />
       ),
     },
   ];
@@ -192,6 +190,7 @@ function DestinationDetails() {
 
   async function onUpdate(data) {
     try {
+      console.log(id, data);
       dispatch(editDestinationRequest(destinationDetails._id, data));
       fetchDestnationDetails();
       closeModal();
@@ -206,27 +205,26 @@ function DestinationDetails() {
 
       if (data.status === 200) {
         dispatch(setSelectedDestination(data.data));
+        //  setDestinationDetails(data.data);
       }
     } catch (error) {
       console.log(error);
     }
   }
 
+  console.log(destinationDetails);
+
   async function fetchData() {
     try {
       fetchDestnationDetails();
       const statesList = await getStatesByCountryId(
-        destinationDetails?.countryId?._id
+        destinationDetails.countryId._id
       );
       const docs = await getAdmissionDocuments();
       const visa = await getVisaTypesList();
 
       if (statesList.status === 200) {
         setStates(statesList.data.result.states);
-      }
-
-      if (docs.status === 200) {
-        setDocumentsList(docs.data.result);
       }
 
       if (docs.status === 200) {
@@ -242,11 +240,21 @@ function DestinationDetails() {
   }
 
   useEffect(() => {
+    if (!destinationDetails || destinationDetails._id !== id) {
+      dispatch(setSelectedDestination(state));
+    }
+  }, [id, state, destinationDetails, dispatch]);
+
+  useEffect(() => {
     fetchData();
   }, [
     dispatch,
     // selectedDestination
   ]);
+
+  if (!destinationDetails) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>

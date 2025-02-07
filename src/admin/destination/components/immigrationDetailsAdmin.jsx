@@ -1,10 +1,28 @@
 import pencil from "../../../assets/pencil.png";
+import trash from "../../../assets/delete.png";
 
-const ImmigrationDetailsAdmin = ({ details, onEdit }) => {
+const ImmigrationDetailsAdmin = ({ details, onEdit, onUpdate }) => {
   const handleEditClick = (data) => {
     onEdit(data);
   };
 
+  function handleDeleteClick(id) {
+    console.log("Delete immigrations : " + id);
+
+    const updatedImmigrations = details.immigrations.filter(
+      (scholarship) => scholarship._id !== id
+    );
+    const immigrationWithoutId = updatedImmigrations.map(
+      ({ _id, ...rest }) => ({
+        ...rest,
+        visaType:
+          typeof rest.visaType === "object" ? rest.visaType._id : rest.visaType,
+      })
+    );
+    // console.log(immigrationWithoutId);
+
+    onUpdate({ immigrations: immigrationWithoutId });
+  }
   return (
     <div className="bg-white py-0 dark:border-gray-700 dark:bg-gray-800">
       {details?.immigrations?.length > 0 ? (
@@ -20,6 +38,13 @@ const ImmigrationDetailsAdmin = ({ details, onEdit }) => {
                 className="p-0 bg-transparent border-0"
               >
                 <img src={pencil} alt="edit Icon" className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                onClick={() => handleDeleteClick(data?._id)}
+                className="p-0 bg-transparent border-0"
+              >
+                <img src={trash} alt="edit Icon" className="w-4 h-4" />
               </button>
             </div>
             <p className="text-gray-700 dark:text-gray-300">

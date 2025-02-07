@@ -7,6 +7,7 @@ export function CurrencyInputField({
   placeholder,
   required,
   disabled,
+  currency,
 }) {
   return (
     <div>
@@ -23,7 +24,7 @@ export function CurrencyInputField({
           disabled={disabled}
         />
         <span className="flex items-center px-10 text-gray-800 bg-gray-200 rounded-r-md text-sm w-auto max-w-20 whitespace-nowrap justify-center">
-          INR
+          {currency}
         </span>
       </div>
     </div>

@@ -1,16 +1,11 @@
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
 
-function ScholarshipsDest({ onEdit, onUpdate, details }) {
+function ScholarshipsDest({ details, onEdit, onUpdate }) {
   const handleEditClick = (data) => {
     onEdit(data);
   };
-
-  /* const details = useSelector(
-    (state) => state.destinations.selectedDestination
-  ); */
 
   function handleDeleteClick(id) {
     console.log("Delete scholarships : " + id);

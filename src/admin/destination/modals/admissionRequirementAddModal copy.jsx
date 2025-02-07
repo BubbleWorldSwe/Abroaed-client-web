@@ -2,18 +2,13 @@
 import { useState } from "react";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
-import { useSelector } from "react-redux";
 
 const AdmissionRequirementAddModal = ({
   closeModal,
   documentsList,
-  // details,
+  details,
   onUpdate,
 }) => {
-  const details = useSelector(
-    (state) => state.destinations.selectedDestination
-  );
-
   const [selectedDocuments, setSelectedDocuments] = useState(
     details.admissionRequirements.map((item) => item._id)
   );

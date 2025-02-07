@@ -77,7 +77,7 @@ export const editDestinationFailure = (error) => ({
   payload: error,
 });
 
-export const setSelectedCountry = (country) => ({
+export const setSelectedDestination = (country) => ({
   type: SET_SELECTED_DESTINATION,
   payload: country,
 });

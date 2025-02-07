@@ -3,8 +3,17 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { CurrencyInputField } from "../components/currencyInputField";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const ExpensesAddModal = ({ closeModal, details, onUpdate }) => {
+const ExpensesAddModal = ({
+  closeModal,
+
+  // details,
+  onUpdate,
+}) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const defaultFormData = [
     { id: 1, label: "Average Tuition Fees (per year)", value: "" },
     { id: 2, label: "Average Rent (per month)", value: "" },
@@ -69,6 +78,7 @@ const ExpensesAddModal = ({ closeModal, details, onUpdate }) => {
             onChange={(e) => handleInputChange(e, field.id)}
             placeholder="Enter Amount"
             required
+            currency={details?.countryId?.currency}
           />
         ))}
 
