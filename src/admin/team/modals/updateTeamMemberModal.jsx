@@ -6,6 +6,8 @@ import { editTeamRequest } from "../../../redux/actions/teamActions";
 
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 const UpdateTeamMember = ({ isOpen, onClose, data }) => {
   const { roles } = useSelector((state) => state.roles);
@@ -128,20 +130,9 @@ const UpdateTeamMember = ({ isOpen, onClose, data }) => {
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-end mt-3">
-                  <button
-                    type="button"
-                    className="mr-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
-                    onClick={onClose}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md"
-                  >
-                    Update
-                  </button>
+                <div className="flex justify-end mt-10">
+                  <ModalCloseButton label={"Cancel"} onClick={onClose} />
+                  <ModalSubmitButton type="submit" label={"Update"} />
                 </div>
               </form>
             </div>

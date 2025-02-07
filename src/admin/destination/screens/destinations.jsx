@@ -27,13 +27,10 @@ function Destinations() {
     setIsAddModalOpen(false);
   };
 
-  const onAddDestination = (countryId) => {
-    if (!countryId) {
-      toast.error("Please select a country.");
-      return;
-    }
+  const onAddDestination = (countryId, capitalId) => {
+    console.log(countryId, capitalId);
 
-    dispatch(addDestinationRequest({ countryId }));
+    dispatch(addDestinationRequest({ countryId, capitalId }));
     setCurrentPage(1);
     dispatch(fetchDestinationsRequest(1));
     setIsAddModalOpen(false);

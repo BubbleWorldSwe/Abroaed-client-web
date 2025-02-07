@@ -1,36 +1,75 @@
 import { useState } from "react";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import SearchDropdownField from "../../../commons/components/inputFields/searchDropdownFields";
+
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-const types = ["Scholarship", "Internship", "Job", "Course"];
-
-const ImmigrationDetailsModal = ({ closeModal }) => {
-  const [formData, setFormData] = useState({});
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedType, setSelectedType] = useState("");
+const ImmigrationDetailsModal = ({
+  closeModal,
+  filledData,
+  visaTypes,
+  onUpdate,
+  details,
+}) => {
+  const [formData, setFormData] = useState(
+    {
+      visaName: filledData?.visaName,
+      visaType: filledData?.visaType._id,
+      description: filledData?.description,
+    } || {
+      visaName: "",
+      visaType: "",
+      description: "",
+    }
+  );
 
   const handleInputChange = (e, fieldName) => {
-    setFormData({ ...formData, [fieldName]: e.target.value });
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted with data:", formData, image);
-    // You can handle the form submission here (e.g., API call, state update, etc.)
-    closeModal();
-  };
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-  const handleInputChangeDropDown = (value) => {
-    setSelectedType(value);
-    setIsDropdownOpen(false); // Close dropdown after selection
+    setFormData({ ...formData, [fieldName]: e?.target?.value || e });
   };
 
-  console.log(formData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Check if all fields are filled
+    if (
+      !formData.visaName.trim() ||
+      !formData.visaType.trim() ||
+      !formData.description.trim()
+    ) {
+      toast.error("Please fill in all fields before submitting.");
+      return;
+    }
+
+    let updatedImmigrations = [];
+
+    if (filledData) {
+      // Edit Mode
+      updatedImmigrations = details.immigrations.map((visa) =>
+        visa._id === filledData._id ? formData : visa
+      );
+    } else {
+      // Add Mode
+      const newVisa = { ...formData };
+      updatedImmigrations = [...details.immigrations, newVisa];
+    }
+
+    const immigrationWithoutId = updatedImmigrations.map(
+      ({ _id, ...rest }) => ({
+        ...rest,
+        visaType:
+          typeof rest.visaType === "object" ? rest.visaType._id : rest.visaType,
+      })
+    );
+
+    console.log(immigrationWithoutId);
+
+    onUpdate({ immigrations: immigrationWithoutId });
+
+    // closeModal();
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -47,10 +86,10 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
 
           <SelectField
             label="Visa Type"
-            name="type"
-            value={formData.type}
-            onChange={(e) => handleInputChange("type", data.value)}
-            options={[].map((data) => ({
+            name="visaType"
+            value={formData.visaType}
+            onChange={(e) => handleInputChange(e, "visaType")}
+            options={visaTypes.map((data) => ({
               label: data.name,
               value: data._id,
             }))}
@@ -62,7 +101,7 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
           label="Brief Description"
           name="description"
           type="text"
-          value={formData?.description}
+          value={formData.description}
           onChange={(e) => handleInputChange(e, "description")}
           placeholder="Enter description"
           required
@@ -70,11 +109,7 @@ const ImmigrationDetailsModal = ({ closeModal }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-
-          <ModalSubmitButton
-            label={"Save"}
-            //  onClick={onSubmit}
-          />
+          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
         </div>
       </form>
     </div>

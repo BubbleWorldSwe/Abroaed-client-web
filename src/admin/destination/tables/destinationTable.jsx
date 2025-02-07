@@ -8,6 +8,8 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDate, formatDateTime } from "../../../utils/helper";
+import { setSelectedCountry } from "../../../redux/actions/destinationActions";
+import { useDispatch } from "react-redux";
 
 const DestinationTable = ({
   destinations,
@@ -20,6 +22,7 @@ const DestinationTable = ({
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const dropdownRef = useRef(null);
 
@@ -35,12 +38,12 @@ const DestinationTable = ({
     return pageData?.data?.length || 0;
   };
 
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  const handleViewDetails = (destination) => {
+    dispatch(setSelectedCountry(destination)); // Set selected country in Redux store
+    navigate(`/admin/destinations/${encodeURIComponent(destination._id)}`, {
+      state: destination,
+    });
+  };
 
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation(); // Prevent the click from propagating
@@ -48,6 +51,13 @@ const DestinationTable = ({
     // Optionally, you can adjust dropdown direction based on your layout
     setDropdownDirection("down");
   };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     console.log("destinations updated:", destinations);
@@ -134,14 +144,7 @@ const DestinationTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={() =>
-                              navigate(
-                                `/admin/destinations/${encodeURIComponent(
-                                  destination._id
-                                )}`,
-                                { state: destination }
-                              )
-                            }
+                            onClick={() => handleViewDetails(destination)}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <Eye className="w-4 h-4" />
@@ -157,17 +160,6 @@ const DestinationTable = ({
                             <span>Delete</span>
                           </button>
                         </li>
-                        {/* <li>
-                        <button
-                          type="button"
-                          onClick={handleOpenAddModal}
-                          className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          <span>
-                            Edit
-                          </span>
-                        </button>
-                      </li> */}
                       </ul>
                     </div>
                   )}

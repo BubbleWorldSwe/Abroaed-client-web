@@ -1,20 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { requireDocumentsData } from "../data";
-import { useDispatch } from "react-redux";
-import { editDestinationRequest } from "../../../redux/actions/destinationActions";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 const AdmissionRequirementAddModal = ({
   closeModal,
   documentsList,
-  destinationId,
   details,
-  onSuccess,
+  onUpdate,
 }) => {
-  const dispatch = useDispatch();
-
   const [selectedDocuments, setSelectedDocuments] = useState(
     details.admissionRequirements.map((item) => item._id)
   );
@@ -32,13 +26,10 @@ const AdmissionRequirementAddModal = ({
       e.preventDefault();
       console.log("Selected Document IDs:", selectedDocuments);
 
-      dispatch(
-        editDestinationRequest(destinationId, {
-          admissionRequirements: selectedDocuments,
-        })
-      );
-      onSuccess();
-      closeModal();
+      // closeModal();
+      onUpdate({
+        admissionRequirements: selectedDocuments,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -71,10 +62,7 @@ const AdmissionRequirementAddModal = ({
         <div className="col-span-full text-end">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
 
-          <ModalSubmitButton
-            label={"Save"}
-            //  onClick={handleAddDestination}
-          />
+          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
         </div>
       </form>
     </div>

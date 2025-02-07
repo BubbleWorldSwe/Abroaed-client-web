@@ -9,15 +9,34 @@ import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-const OverviewAddModal = ({ closeModal, currencyList }) => {
+const OverviewAddModal = ({
+  closeModal,
+
+  details,
+  onUpdate,
+  states,
+}) => {
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({});
+
   const { countries, loading } = useSelector((state) => state.countries);
+
+  const [formData, setFormData] = useState({
+    description: details?.description,
+    capitalId: details?.capitalId?._id,
+    language: details?.language,
+    totalPopulation: details?.totalPopulation,
+    currency: details?.countryId?.currency,
+    dialcode: details?.dialcode,
+  });
+
+  console.log(details);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData, image);
-    closeModal();
+    console.log("Form submitted with data:", formData);
+    // closeModal();
+
+    onUpdate(formData);
   };
 
   const handleInputChange = (e, fieldName) => {
@@ -25,11 +44,7 @@ const OverviewAddModal = ({ closeModal, currencyList }) => {
     setFormData({ ...formData, [fieldName]: e?.target?.value || e });
   };
 
-  const fetchCountries = (q) => {
-    dispatch(fetchCountriesRequest(q));
-  };
-
-  console.log(currencyList);
+  console.log(formData);
 
   useEffect(() => {
     console.log("Countries Updated " + countries.length);
@@ -38,7 +53,7 @@ const OverviewAddModal = ({ closeModal, currencyList }) => {
   return (
     <form onSubmit={handleSubmit}>
       <TextareaInputField
-        label="Why Study in USA?"
+        label={`Why Study in ${details?.countryId?.name}? `}
         name="description"
         type="text"
         value={formData?.description}
@@ -48,20 +63,26 @@ const OverviewAddModal = ({ closeModal, currencyList }) => {
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
-        <SearchDropdownField
+        <SelectField
           label="Capital"
-          options={countries.map((data) => ({
-            label: `${data.emoji} ${data.name}`,
-            //  label: data.name,
+          name="capitalId"
+          value={formData.capitalId}
+          onChange={(e) => handleInputChange(e, "capitalId")}
+          options={states.map((data) => ({
+            label: data.name,
             value: data._id,
           }))}
-          value={formData.capital}
-          onSelect={(data) => {
-            console.log(data);
+          required
+        />
 
-            handleInputChange(data.value, "capital");
-          }}
-          onSearch={fetchCountries}
+        <TextInputField
+          label="Currency"
+          name="currency"
+          type="text"
+          value={details?.countryId?.currency}
+          onChange={(e) => handleInputChange(e, "currency")}
+          placeholder="Enter Capital"
+          disabled
         />
 
         <TextInputField
@@ -84,28 +105,6 @@ const OverviewAddModal = ({ closeModal, currencyList }) => {
           required
         />
 
-        <SelectField
-          label="Currency"
-          name="currency"
-          value={formData.currency}
-          onChange={(e) => handleInputChange(e, "currency")}
-          options={currencyList.map((data) => ({
-            label: data.name,
-            value: data._id,
-          }))}
-          required
-        />
-
-        <TextInputField
-          label="Currency"
-          name="currency"
-          type="text"
-          value={formData.currency}
-          onChange={(e) => handleInputChange(e, "currency")}
-          placeholder="Enter Currency"
-          required
-        />
-
         <TextInputField
           label="Dailing Code"
           name="dialcode"
@@ -119,10 +118,7 @@ const OverviewAddModal = ({ closeModal, currencyList }) => {
       <div className="text-end">
         <ModalCloseButton label={"Cancel"} onClick={closeModal} />
 
-        <ModalSubmitButton
-          label={"Save"}
-          //  onClick={handleAddDestination}
-        />
+        <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
       </div>
     </form>
   );

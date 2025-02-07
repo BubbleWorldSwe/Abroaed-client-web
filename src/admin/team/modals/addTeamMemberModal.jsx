@@ -9,6 +9,8 @@ import {
 
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
   const { roles } = useSelector((state) => state.roles);
@@ -141,19 +143,8 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
             <div style={{ marginTop: 30 }} />
             {/* Buttons */}
             <div className="flex justify-end mt-5">
-              <button
-                type="button"
-                className="mr-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
-                onClick={onClose}
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="bg-blue-600 text-white px-4 py-2 rounded-md"
-              >
-                Add
-              </button>
+              <ModalCloseButton label={"Cancel"} onClick={onClose} />
+              <ModalSubmitButton type="submit" label={"Add"} />
             </div>
           </form>
         </div>

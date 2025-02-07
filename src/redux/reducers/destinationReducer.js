@@ -12,6 +12,7 @@ import {
   FETCH_DESTINATIONS_FAILURE,
   FETCH_DESTINATIONS_REQUEST,
   FETCH_DESTINATIONS_SUCCESS,
+  SET_SELECTED_COUNTRY,
 } from "../actions/destinationActions";
 
 const initialState = {
@@ -23,6 +24,7 @@ const initialState = {
   page: 1,
   limit: null,
   total: null,
+  selectedCountry: {},
 };
 
 export const destnationReducer = (state = initialState, action) => {
@@ -96,6 +98,7 @@ export const destnationReducer = (state = initialState, action) => {
               : item
           ),
         })),
+        // selectedCountry: action.payload.data,
       };
     case EDIT_DESTINATION_FAILURE:
       return {
@@ -103,6 +106,9 @@ export const destnationReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+
+    case SET_SELECTED_COUNTRY:
+      return { ...state, selectedCountry: action.payload };
 
     case LOGOUT:
       return initialState;

@@ -73,13 +73,17 @@ function* handleEditDestination(action) {
   try {
     const { id, destinationData } = action.payload;
     const response = yield call(setUpdateDestination, id, destinationData);
+    console.log("response");
+    console.log(response);
+    console.log("response");
 
-    if (response && response.success) {
+    if (response.status === 200) {
       yield put(editDestinationSuccess(response.data.data));
       toast.success("Destination Updated successfully!");
     } else {
-      put(editDestinationFailure(error.message));
-      toast.error(response.message || "Update Failed");
+      //  console.log(response.message);
+      put(editDestinationFailure(response.message));
+      toast.error(response.message);
     }
   } catch (error) {
     yield put(editDestinationFailure(error.message));

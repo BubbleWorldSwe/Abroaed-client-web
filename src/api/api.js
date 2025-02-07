@@ -6,7 +6,7 @@ export const getAdmissionDocuments = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/documents/list`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -20,7 +20,21 @@ export const getCurrencyList = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/currency/list`
     );
-    console.log(data);
+
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getVisaTypesList = async () => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/destination/visaType/list`
+    );
+
     if (data.success) {
       return data.data;
     }

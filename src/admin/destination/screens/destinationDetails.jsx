@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-import OverviewDest from "../../../pages/destinations/OverviewDest";
+
 import AdmissionReqDest from "../components/admissionReqDest";
 import ExpensesDest from "../components/expensesDest";
 import ScholarshipsDest from "../components/scholarshipsDest";
@@ -17,41 +17,31 @@ import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
 import { useLocation } from "react-router-dom";
-import { getAdmissionDocuments, getCurrencyList } from "../../../api/api";
+import { getAdmissionDocuments, getVisaTypesList } from "../../../api/api";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
-import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
-import { useSelector } from "react-redux";
+import { editDestinationRequest } from "../../../redux/actions/destinationActions";
+import { useDispatch, useSelector } from "react-redux";
+import OverviewDest from "../components/OverviewDest";
+import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function DestinationDetails() {
+  const dispatch = useDispatch();
   const { state } = useLocation();
   const [documentsList, setDocumentsList] = useState([]);
   const [destinationDetails, setDestinationDetails] = useState(state);
-  const [currencyList, setCurrencyList] = useState([]);
-  console.log(destinationDetails);
+
+  const [visaTypes, setVisaTypes] = useState([]);
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
   const [activeModalIndex, setActiveModalIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
-  const sections = [
-    {
-      name: "Overview",
-      component: <OverviewDest details={destinationDetails} />,
-    },
-    { name: "Admission Requirements", component: <AdmissionReqDest /> },
-    { name: "Expenses", component: <ExpensesDest /> },
-    {
-      name: "Scholarships",
-      component: <ScholarshipsDest details={destinationDetails} />,
-    },
-    {
-      name: "Immigration Details",
-      component: <ImmigrationDetailsAdmin details={destinationDetails} />,
-    },
-    { name: "Work Opportunities", component: <WorkOpportunitiesAdmin /> },
-    {
-      name: "FAQs",
-      component: <DestinationFAQ details={destinationDetails} />,
-    },
-  ];
+  const [states, setStates] = useState([]);
+  const [formdata, setFormdata] = useState(null);
+
+  const { selectedCountry } = useSelector((state) => state.destinations);
+
+  console.log(selectedCountry);
+
+  //const destinationDetails = selectedCountry;
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -59,14 +49,64 @@ function DestinationDetails() {
 
   const closeModal = () => {
     setSelectedSection(null);
+    setFormdata(null);
   };
+
+  const openModal = (section, type, index) => {
+    setSelectedSection(section);
+    setActiveModalIndex(index);
+
+    if (type === "add") {
+      setFormdata(null);
+    }
+  };
+  const sections = [
+    {
+      name: "Overview",
+      component: <OverviewDest details={destinationDetails} />,
+    },
+    {
+      name: "Admission Requirements",
+      component: <AdmissionReqDest details={destinationDetails} />,
+    },
+    {
+      name: "Expenses",
+      component: <ExpensesDest details={destinationDetails} />,
+    },
+    {
+      name: "Scholarships",
+      component: (
+        <ScholarshipsDest
+          details={destinationDetails}
+          onEdit={onEditScholarship}
+        />
+      ),
+    },
+    {
+      name: "Immigration Details",
+      component: (
+        <ImmigrationDetailsAdmin
+          details={destinationDetails}
+          onEdit={onEditImmigration}
+        />
+      ),
+    },
+    { name: "Work Opportunities", component: <WorkOpportunitiesAdmin /> },
+    {
+      name: "FAQs",
+      component: (
+        <DestinationFAQ details={destinationDetails} onEdit={onEditFaq} />
+      ),
+    },
+  ];
 
   const modals = {
     section0: (
       <OverviewAddModal
         details={destinationDetails}
-        currencyList={currencyList}
         closeModal={closeModal}
+        onUpdate={onUpdate}
+        states={states}
       />
     ),
     section1: (
@@ -74,39 +114,85 @@ function DestinationDetails() {
         documentsList={documentsList}
         details={destinationDetails}
         closeModal={closeModal}
-        destinationId={destinationDetails._id}
-        onSuccess={fetchDestnationDetails}
+        onUpdate={onUpdate}
       />
     ),
     section2: (
-      <ExpensesAddModal details={destinationDetails} closeModal={closeModal} />
+      <ExpensesAddModal
+        onUpdate={onUpdate}
+        details={destinationDetails}
+        closeModal={closeModal}
+      />
     ),
     section3: (
-      <ScholarshipModal details={destinationDetails} closeModal={closeModal} />
+      <ScholarshipModal
+        details={destinationDetails}
+        closeModal={closeModal}
+        filledData={formdata}
+        onUpdate={onUpdate}
+      />
     ),
     section4: (
       <ImmigrationDetailsModal
         details={destinationDetails}
         closeModal={closeModal}
+        filledData={formdata}
+        visaTypes={visaTypes}
+        onUpdate={onUpdate}
       />
     ),
     section5: (
       <WorkOpportunitiesModal
         details={destinationDetails}
         closeModal={closeModal}
+        onUpdate={onUpdate}
       />
     ),
-    section6: <FaqModal details={destinationDetails} closeModal={closeModal} />,
+    section6: (
+      <FaqModal
+        details={destinationDetails}
+        formdata={formdata}
+        closeModal={closeModal}
+        filledData={formdata}
+        onUpdate={onUpdate}
+      />
+    ),
   };
+  function onEditFaq(params) {
+    console.log("Edit FAQ");
+    setFormdata(params);
+    openModal("FAQs", "edit", 6);
+  }
 
-  const openModal = (section, type, index) => {
-    setSelectedSection(section);
-    setActiveModalIndex(index);
-  };
+  function onEditScholarship(params) {
+    console.log("Edit onEditScholarship");
+    setFormdata(params);
+    openModal("Scholarships", "edit", 3);
+  }
+
+  function onEditImmigration(params) {
+    console.log("Edit onEditImmigration");
+    setFormdata(params);
+    openModal("Immigration Details", "edit", 4);
+  }
+
+  async function onUpdate(data) {
+    try {
+      console.log("data");
+      console.log(data);
+      console.log("data");
+
+      dispatch(editDestinationRequest(destinationDetails._id, data));
+      fetchDestnationDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async function fetchDestnationDetails() {
     try {
-      const data = await getDestinationDetailsById(destinationDetails?._id);
+      const data = await getDestinationDetailsById(state?._id);
       console.log(data);
 
       if (data.status === 200) {
@@ -121,15 +207,28 @@ function DestinationDetails() {
   async function fetchData() {
     try {
       fetchDestnationDetails();
+      const statesList = await getStatesByCountryId(
+        destinationDetails.countryId._id
+      );
       const docs = await getAdmissionDocuments();
-      const currency = await getCurrencyList();
+      const visa = await getVisaTypesList();
+
+      console.log(statesList);
+
+      if (statesList.status === 200) {
+        setStates(statesList.data.result.states);
+      }
 
       if (docs.status === 200) {
         setDocumentsList(docs.data.result);
       }
 
-      if (currency.status === 200) {
-        setCurrencyList(currency.data.result);
+      if (docs.status === 200) {
+        setDocumentsList(docs.data.result);
+      }
+
+      if (visa.status === 200) {
+        setVisaTypes(visa.data.result);
       }
     } catch (error) {
       console.log(error);
@@ -137,8 +236,9 @@ function DestinationDetails() {
   }
 
   useEffect(() => {
+    console.log("Dispatch");
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -236,7 +336,7 @@ function DestinationDetails() {
       {selectedSection && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
           {/*  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-3/4 max-w-max max-h-[550px] overflow-auto  relative"> */}
-          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-3/4 max-w-max max-h-[550px] relative">
+          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-3/4 max-w-max max-h-[550px] relative overflow-y-auto">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={closeModal}

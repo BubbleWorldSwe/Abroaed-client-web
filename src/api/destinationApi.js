@@ -9,7 +9,7 @@ import {
 export const getDestinations = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/destination/list?page=${page}`
+      `${BASE_URL}/api/v1/admin/destination/list?page=${page}&limit=20`
     );
     console.log(data);
     if (data.success) {
@@ -76,7 +76,7 @@ export const getDestinationDetailsById = async (id) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/${id}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

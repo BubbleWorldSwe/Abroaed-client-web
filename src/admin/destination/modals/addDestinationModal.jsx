@@ -1,20 +1,40 @@
-import { useState, useEffect } from "react";
-import { Combobox } from "@headlessui/react";
-import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 import { toast } from "react-toastify";
 import SearchDropdownField from "../../../commons/components/inputFields/searchDropdownFields";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
 function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
   const dispatch = useDispatch();
   const { countries } = useSelector((state) => state.countries);
 
   const [selectedCountry, setSelectedCountry] = useState(null);
+  const [statesList, setStatesList] = useState([]); // Stores states of selected country
+  const [filteredStates, setFilteredStates] = useState([]); // For search functionality
+  const [selectedState, setSelectedState] = useState(null);
 
   const fetchCountries = (q) => {
     dispatch(fetchCountriesRequest(q));
+  };
+
+  const handleCountrySelect = (data) => {
+    setSelectedCountry(data);
+
+    setStatesList(data.states || []); // Extract states from selected country
+    setFilteredStates(data.states || []); // Reset search results
+    setSelectedState(null); // Reset state selection
+  };
+
+  const handleStateSearch = (query) => {
+    if (!statesList.length) return;
+    setFilteredStates(
+      statesList.filter((state) =>
+        state.name.toLowerCase().includes(query.toLowerCase())
+      )
+    );
   };
 
   const handleAddDestination = () => {
@@ -22,8 +42,19 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
       toast.error("Please select a country.");
       return;
     }
-    onAddDestination(selectedCountry);
+    if (!selectedState) {
+      toast.error("Please Select Capital.");
+      return;
+    }
+    onAddDestination(selectedCountry?._id, selectedState);
+    setSelectedCountry(null);
+    setSelectedState(null);
+    setStatesList([]);
+    setFilteredStates([]);
   };
+  console.log(selectedCountry, selectedState);
+
+  useEffect(() => {}, [selectedState, selectedCountry]);
 
   if (!isOpen) return null;
 
@@ -38,25 +69,47 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
         </button>
         <h2 className="text-xl font-bold mb-4">Add New Destination</h2>
 
+        {/* Country Selection */}
         <SearchDropdownField
           label="Select Country"
           options={countries.map((data) => ({
             label: `${data.emoji} ${data.name}`,
-            //  label: data.name,
             value: data._id,
+            ...data,
           }))}
-          // options={countries}
           value={selectedCountry}
-          onSelect={(data) => {
-            console.log(data);
-            setSelectedCountry(data.value);
-          }}
+          onSelect={handleCountrySelect}
           onSearch={fetchCountries}
         />
 
+        {/* Currency Input */}
+        <div className="my-5">
+          <TextInputField
+            label="Currency"
+            name="currency"
+            type="text"
+            value={selectedCountry?.currency}
+            disabled={true}
+            placeholder={"Enter"}
+          />
+        </div>
+
+        {/* State Selection */}
+        <SearchDropdownField
+          label="Select Capital"
+          options={filteredStates.map((data) => ({
+            label: data.name,
+            value: data._id,
+          }))}
+          value={selectedState}
+          onSelect={(data) => setSelectedState(data.value)}
+          onSearch={handleStateSearch}
+        />
+        {/* Currency */}
+
         <div className="flex justify-end space-x-4 mt-10">
-          <ModalCloseButton label={"Cancel"} onClick={onClose} />
-          <ModalSubmitButton label={"Add"} onClick={handleAddDestination} />
+          <ModalCloseButton label="Cancel" onClick={onClose} />
+          <ModalSubmitButton label="Add" onClick={handleAddDestination} />
         </div>
       </div>
     </div>
