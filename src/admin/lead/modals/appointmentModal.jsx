@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { scheduleAppointment } from "../../../slices/leadSlice";
-import ConfirmModal from "../../../common/modal/confirmModal";
+
 import Flatpickr from "react-flatpickr";
-import "flatpickr/dist/themes/material_green.css";
+import ConfirmModal from "../../../commons/modal/confirmModal";
 
 const AppointmentModal = ({ leadId, onClose }) => {
   const dispatch = useDispatch();
-  const [confirmModalOpen, setConfirmModalOpen] = useState(false)
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
 
   const [appointmentData, setAppointmentData] = useState({
@@ -23,7 +23,7 @@ const AppointmentModal = ({ leadId, onClose }) => {
   };
 
   const handleSubmit = () => {
-    setConfirmModalOpen(true)
+    setConfirmModalOpen(true);
     dispatch(scheduleAppointment({ id: leadId, appointmentData }));
   };
 
@@ -38,9 +38,7 @@ const AppointmentModal = ({ leadId, onClose }) => {
             &times;
           </button>
           <h2 className="text-xl font-semibold mb-4">Schedule Appointment</h2>
-          <h5 className="text-sm font-semibold mb-1">
-            Student Name
-          </h5>
+          <h5 className="text-sm font-semibold mb-1">Student Name</h5>
           <div className="mbss-4">
             <input
               placeholder="Garvit Singh"
@@ -50,7 +48,9 @@ const AppointmentModal = ({ leadId, onClose }) => {
           <div className="space-y-4 mt-4">
             <div className=" mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2">
               <div>
-                <label className="text-sm font-semibold mb-1">Appointment Type</label>
+                <label className="text-sm font-semibold mb-1">
+                  Appointment Type
+                </label>
                 <select
                   name="type"
                   value={appointmentData.type}
@@ -63,7 +63,9 @@ const AppointmentModal = ({ leadId, onClose }) => {
                 </select>
               </div>
               <div>
-                <label className="text-sm font-semibold mb-1">Preferred Slot</label>
+                <label className="text-sm font-semibold mb-1">
+                  Preferred Slot
+                </label>
                 <Flatpickr
                   value={dateTime}
                   onChange={(date) => setDateTime(date[0])}

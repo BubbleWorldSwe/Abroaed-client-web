@@ -7,12 +7,11 @@ import {
   POST_REQUEST_TIMEOUT,
   constructGetRequestOptions,
   constructPostRequestOptions,
-  RESPONSE_SUCCESS,
-  RESPONSE_FAILURE,
   constructSuccessResponse,
   DELETE_REQUEST_TIMEOUT,
   constructDeleteRequestOptions,
   constructPutRequestOptions,
+  constructPatchRequestOptions,
 } from "./serviceUtils";
 
 export const makeGetRequest = async (url) => {
@@ -56,6 +55,33 @@ export const makePostRequest = async (url, payload) => {
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(url, constructPostRequestOptions(payload), {
+      signal: controller.signal,
+    });
+
+    const json = await response.json();
+    console.log(json);
+
+    if (json.status) return constructSuccessResponse(json);
+    else return constructFailureResponse(json.message);
+  } catch (error) {
+    if (
+      error.message === ABORT_ERROR_MESSAGE ||
+      error.message === NETWORK_REQUEST_FAILED
+    ) {
+      return constructNetworkErrorResponse();
+    }
+    return constructFailureResponse(error.message);
+  }
+};
+
+export const makePatchRequest = async (url, payload) => {
+  try {
+    console.log("make PATCH request FINAL= " + url);
+
+    console.log(payload);
+    let controller = new AbortController();
+    setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
+    const response = await fetch(url, constructPatchRequestOptions(payload), {
       signal: controller.signal,
     });
 

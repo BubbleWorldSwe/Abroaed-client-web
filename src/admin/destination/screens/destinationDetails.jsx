@@ -1,77 +1,248 @@
 /* eslint-disable no-constant-condition */
-import { useState } from "react";
-import OverviewDest from "../../../pages/destinations/OverviewDest";
+import { useEffect, useState } from "react";
+
 import AdmissionReqDest from "../components/admissionReqDest";
 import ExpensesDest from "../components/expensesDest";
 import ScholarshipsDest from "../components/scholarshipsDest";
 import DestinationFAQ from "../components/destinationFAQ";
 import DestinationImage from "../components/destinationImage";
 import { motion } from "framer-motion";
-import ImmigrationDetailsAdmin from "../components/immigrationDetailsAdmin"
+import ImmigrationDetailsAdmin from "../components/immigrationDetailsAdmin";
 import WorkOpportunitiesAdmin from "../components/workOpportunitiesAdmin";
 import OverviewAddModal from "../modals/overviewAddModal";
-import AdmissionRequirementAddModal from "../modals/admissionRequirementAddModal"
-import ExpensesAddModal from "../modals/expensesAddModal"
-import ScholarshipModal from "../modals/scholarshipModal"
-import ImmigrationDetailsModal from "../modals/immigrationDetailsModal"
-import WorkOpportunitiesModal from "../modals/workOpportunitiesModal"
-import FaqModal from "../modals/faqModal"
+import AdmissionRequirementAddModal from "../modals/admissionRequirementAddModal";
+import ExpensesAddModal from "../modals/expensesAddModal";
+import ScholarshipModal from "../modals/scholarshipModal";
+import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
+import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
+import FaqModal from "../modals/faqModal";
+import { useLocation } from "react-router-dom";
+import { getAdmissionDocuments, getVisaTypesList } from "../../../api/api";
+import { getDestinationDetailsById } from "../../../api/destinationApi";
+import { editDestinationRequest } from "../../../redux/actions/destinationActions";
+import { useDispatch, useSelector } from "react-redux";
+import OverviewDest from "../components/OverviewDest";
+import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function DestinationDetails() {
+  const dispatch = useDispatch();
+  const { state } = useLocation();
+  const [documentsList, setDocumentsList] = useState([]);
+  const { selectedDestination } = useSelector((state) => state.destinations);
+
+  const [destinationDetails, setDestinationDetails] =
+    useState(selectedDestination);
+
+  console.log("selectedDestination in main page");
+  console.log(selectedDestination);
+  console.log("selectedDestination in main page");
+
+  const [visaTypes, setVisaTypes] = useState([]);
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
   const [activeModalIndex, setActiveModalIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
-  const sections = [
-    { name: "Overview", component: <OverviewDest /> },
-    { name: "Admission Requirements", component: <AdmissionReqDest /> },
-    { name: "Expenses", component: <ExpensesDest /> },
-    { name: "Scholarships", component: <ScholarshipsDest /> },
-    { name: "Immigration Details", component: <ImmigrationDetailsAdmin /> },
-    { name: "Work Opportunities", component: <WorkOpportunitiesAdmin /> },
-    { name: "FAQs", component: <DestinationFAQ /> },
-  ];
+  const [states, setStates] = useState([]);
+  const [formdata, setFormdata] = useState(null);
+
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
   const closeModal = () => {
     setSelectedSection(null);
-  };
-
-
-
-  const modals = {
-    section0: (
-      <OverviewAddModal closeModal={closeModal} />
-    ),
-    section1: (
-      <AdmissionRequirementAddModal closeModal={closeModal} />
-    ),
-    section2: (
-      <ExpensesAddModal closeModal={closeModal} />
-    ),
-    section3: (
-      <ScholarshipModal closeModal={closeModal} />
-    ),
-    section4: (
-      <ImmigrationDetailsModal closeModal={closeModal} />
-    ),
-    section5: (
-      <WorkOpportunitiesModal closeModal={closeModal} />
-    ),
-    section6: (
-      <FaqModal closeModal={closeModal} />
-    ),
+    setFormdata(null);
   };
 
   const openModal = (section, type, index) => {
     setSelectedSection(section);
-    setActiveModalIndex(index)
+    setActiveModalIndex(index);
+
+    if (type === "add") {
+      setFormdata(null);
+    }
   };
+  const sections = [
+    {
+      name: "Overview",
+      component: <OverviewDest details={destinationDetails} />,
+    },
+    {
+      name: "Admission Requirements",
+      component: <AdmissionReqDest details={destinationDetails} />,
+    },
+    {
+      name: "Expenses",
+      component: <ExpensesDest details={destinationDetails} />,
+    },
+    {
+      name: "Scholarships",
+      component: (
+        <ScholarshipsDest
+          details={destinationDetails}
+          onEdit={onEditScholarship}
+        />
+      ),
+    },
+    {
+      name: "Immigration Details",
+      component: (
+        <ImmigrationDetailsAdmin
+          details={destinationDetails}
+          onEdit={onEditImmigration}
+        />
+      ),
+    },
+    {
+      name: "Work Opportunities",
+      component: <WorkOpportunitiesAdmin details={destinationDetails} />,
+    },
+    {
+      name: "FAQs",
+      component: (
+        <DestinationFAQ details={destinationDetails} onEdit={onEditFaq} />
+      ),
+    },
+  ];
+
+  const modals = {
+    section0: (
+      <OverviewAddModal
+        details={destinationDetails}
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+        states={states}
+      />
+    ),
+    section1: (
+      <AdmissionRequirementAddModal
+        documentsList={documentsList}
+        details={destinationDetails}
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+      />
+    ),
+    section2: (
+      <ExpensesAddModal
+        onUpdate={onUpdate}
+        details={destinationDetails}
+        closeModal={closeModal}
+      />
+    ),
+    section3: (
+      <ScholarshipModal
+        details={destinationDetails}
+        closeModal={closeModal}
+        filledData={formdata}
+        onUpdate={onUpdate}
+      />
+    ),
+    section4: (
+      <ImmigrationDetailsModal
+        details={destinationDetails}
+        closeModal={closeModal}
+        filledData={formdata}
+        visaTypes={visaTypes}
+        onUpdate={onUpdate}
+      />
+    ),
+    section5: (
+      <WorkOpportunitiesModal
+        details={destinationDetails}
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+      />
+    ),
+    section6: (
+      <FaqModal
+        details={destinationDetails}
+        formdata={formdata}
+        closeModal={closeModal}
+        filledData={formdata}
+        onUpdate={onUpdate}
+      />
+    ),
+  };
+  function onEditFaq(params) {
+    console.log("Edit FAQ");
+    setFormdata(params);
+    openModal("FAQs", "edit", 6);
+  }
+
+  function onEditScholarship(params) {
+    console.log("Edit onEditScholarship");
+    setFormdata(params);
+    openModal("Scholarships", "edit", 3);
+  }
+
+  function onEditImmigration(params) {
+    console.log("Edit onEditImmigration");
+    setFormdata(params);
+    openModal("Immigration Details", "edit", 4);
+  }
+
+  async function onUpdate(data) {
+    try {
+      dispatch(editDestinationRequest(destinationDetails._id, data));
+      fetchDestnationDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchDestnationDetails() {
+    try {
+      const data = await getDestinationDetailsById(state?._id);
+
+      if (data.status === 200) {
+        setDestinationDetails(data.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchData() {
+    try {
+      fetchDestnationDetails();
+      const statesList = await getStatesByCountryId(
+        destinationDetails.countryId._id
+      );
+      const docs = await getAdmissionDocuments();
+      const visa = await getVisaTypesList();
+
+      if (statesList.status === 200) {
+        setStates(statesList.data.result.states);
+      }
+
+      if (docs.status === 200) {
+        setDocumentsList(docs.data.result);
+      }
+
+      if (docs.status === 200) {
+        setDocumentsList(docs.data.result);
+      }
+
+      if (visa.status === 200) {
+        setVisaTypes(visa.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [
+    dispatch,
+    // selectedDestination
+  ]);
+
   return (
     <div>
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
-          <DestinationImage />
+          <DestinationImage details={destinationDetails} />
           {sections.map((sectionItem, index) => (
             <div
               key={index}
@@ -83,7 +254,7 @@ function DestinationDetails() {
                   className="flex justify-between items-center w-full px-4 py-1 text-2xl font-semibold text-left text-gray-600 dark:bg-gray-700 dark:text-white rounded-t-lg"
                   onClick={(e) => {
                     e.preventDefault();
-                    toggleAccordion(index)
+                    toggleAccordion(index);
                   }}
                 >
                   <span>{sectionItem.name}</span>
@@ -92,7 +263,7 @@ function DestinationDetails() {
                       className="px-4 py-4"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(sectionItem.name, "add", index)
+                        openModal(sectionItem.name, "add", index);
                       }}
                     >
                       <svg
@@ -118,7 +289,7 @@ function DestinationDetails() {
                       className="px-4 py-4"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(sectionItem.name, "edit")
+                        openModal(sectionItem.name, "edit");
                       }}
                     >
                       <svg
@@ -158,26 +329,25 @@ function DestinationDetails() {
             </div>
           ))}
         </div>
-        {/* Modal Rendering */}
-        {selectedSection && (
-          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-3/4 max-w-max max-h-[550px] overflow-auto  relative">
-              <button
-                className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                onClick={closeModal}
-              >
-                &times;
-              </button>
-              <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2><div className="mt-4">
-                {modals[`section${activeModalIndex}`]}
-              </div>
-            </div>
-          </div>
-        )}
       </main>
+      {/* Modal Rendering */}
+      {selectedSection && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          {/*  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg w-3/4 max-w-max max-h-[550px] overflow-auto  relative"> */}
+          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-3/4 max-w-max max-h-[550px] relative overflow-y-auto">
+            <button
+              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              onClick={closeModal}
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
+            <div className="mt-4">{modals[`section${activeModalIndex}`]}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
-
 }
 
 export default DestinationDetails;

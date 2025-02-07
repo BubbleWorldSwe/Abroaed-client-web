@@ -2,10 +2,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { teamMembers } from "../../student/data";
-import ConfirmModal from "../../../common/modal/confirmModal";
+import ConfirmModal from "../../../commons/modal/confirmModal";
 
 const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
-  const [confirmModalOpen, setConfirmModalOpen] = useState(false)
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState({
     counsellor: "",
     backendManager: "",
@@ -19,7 +19,7 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
 
   const handleSave = () => {
     // onClose();
-    setConfirmModalOpen(true)
+    setConfirmModalOpen(true);
   };
   const getMembersByRole = (role) =>
     teamMembers.filter((member) => member.role === role);
@@ -35,15 +35,13 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
             &times;
           </button>
           <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
-          <h5 className="text-lg font-medium">
-            Assigned Members
-          </h5>
-          <p className="text-sm">
-            No members assigned. Assign below
-          </p>
+          <h5 className="text-lg font-medium">Assigned Members</h5>
+          <p className="text-sm">No members assigned. Assign below</p>
           <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
             <div>
-              <label className="block text-gray-700 font-medium mb-1">Counsellor</label>
+              <label className="block text-gray-700 font-medium mb-1">
+                Counsellor
+              </label>
               <select
                 name="counsellor"
                 value={selectedTeam.counsellor}
@@ -60,7 +58,9 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
             </div>
 
             <div>
-              <label className="block text-gray-700 font-medium mb-1">Backend Manager</label>
+              <label className="block text-gray-700 font-medium mb-1">
+                Backend Manager
+              </label>
               <select
                 name="backendManager"
                 value={selectedTeam.backendManager}
@@ -96,7 +96,6 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
         isOpen={confirmModalOpen}
         onClose={() => setConfirmModalOpen(false)}
         text="Member Assigned!"
-
       />
     </>
   );

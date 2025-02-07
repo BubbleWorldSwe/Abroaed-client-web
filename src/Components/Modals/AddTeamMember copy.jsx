@@ -3,7 +3,8 @@ import { toast, Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { addTeamMember, updateTeamMember } from "../../slices/teamSlice";
 import { X } from "lucide-react";
-import ConfirmModal from "./ConfirmModal";
+import ConfirmModal from "../../commons/modal/confirmModal";
+
 function AddTeamMember({
   isOpen,
   onClose,

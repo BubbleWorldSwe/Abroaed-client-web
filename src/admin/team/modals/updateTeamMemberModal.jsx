@@ -4,15 +4,19 @@ import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { editTeamRequest } from "../../../redux/actions/teamActions";
 
-const UpdateTeamMember = ({
-  isOpen,
-  onClose,
-  data,
-}) => {
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+
+const UpdateTeamMember = ({ isOpen, onClose, data }) => {
   const { roles } = useSelector((state) => state.roles);
 
   const [permission, setPermission] = useState(data?.isWriteAccess ? "2" : "1");
   const [role, setRole] = useState(data?.roleId?._id);
+
+  const [firstName, setFirstName] = useState(data?.firstName);
+  const [lastName, setLastName] = useState(data?.lastName);
 
   const dispatch = useDispatch();
 
@@ -21,6 +25,8 @@ const UpdateTeamMember = ({
       editTeamRequest(data._id, {
         roleId: role,
         isWriteAccess: permission === "2" ? true : false,
+        firstName,
+        lastName,
       })
     );
     onClose();
@@ -29,6 +35,8 @@ const UpdateTeamMember = ({
   useEffect(() => {
     setRole(data?.roleId?._id || "");
     setPermission(data?.isWriteAccess ? "2" : "1");
+    setFirstName(data?.firstName || "");
+    setLastName(data?.lastName || "");
   }, [data]);
 
   return (
@@ -48,75 +56,83 @@ const UpdateTeamMember = ({
             <div>
               {/* Input Fields */}
               <form onSubmit={handleSubmit} className="bg-white rounded-md">
-                <div className="grid grid-cols-1  gap-1">
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
-                      Select Member
-                    </label>
-                    <input
-                      type="text"
-                      className="mt-1 border-none block w-full rounded-md bg-[#F4F4F5] focus:ring-indigo-500 sm:text-sm"
-                      required
-                      value={`${data?.firstName} ${data?.lastName}`}
-                      disabled={true}
-                    />
-                  </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {/* First Name */}
+                  <TextInputField
+                    label="First Name"
+                    name="firstName"
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    placeholder="Enter first name"
+                    required
+                  />
 
-                  <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
-                      Select Role
-                    </label>
-                    <select
-                      className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
-                    >
-                      <option disabled value="">
-                        Select
-                      </option>
-                      {roles.map((data, i) => (
-                        <option key={i} value={`${data?._id}`}>
-                          {data?.roleName}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="w-full">
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-500 dark:text-gray-300">
-                        Permission
-                      </label>
-                      <select
-                        className="mt-1  focus:bg-[#F4F4F5]  border-none block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:outline-none focus:ring-[#F4F4F5] sm:text-sm"
-                        value={permission}
-                        onChange={(e) => setPermission(e.target.value)}
-                      >
-                        <option disabled value="">
-                          Select
-                        </option>
+                  {/* Last Name */}
 
-                        <option value="1">Read Only</option>
-                        <option value="2">Read & Write</option>
-                      </select>
-                    </div>
-                  </div>
+                  <TextInputField
+                    label="Last Name"
+                    name="lastName"
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Enter first name"
+                    required
+                  />
+
+                  {/* Mobile Number */}
+                  <TextInputField
+                    label="Mobile Number"
+                    name="mobile"
+                    type="text"
+                    value={`${data?.mobile}`}
+                    disabled
+                    placeholder="Enter Mobile Number"
+                  />
+
+                  {/* Email ID */}
+                  <TextInputField
+                    label="Email ID"
+                    name="email"
+                    type="text"
+                    value={`${data?.email}`}
+                    disabled
+                    placeholder="Enter Email ID"
+                  />
+
+                  {/* Select Role */}
+
+                  <SelectField
+                    label="Role Type"
+                    name="role"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    options={roles.map((data) => ({
+                      label: data.roleName,
+                      value: data._id,
+                    }))}
+                    required
+                  />
+
+                  {/* Permission */}
+
+                  <SelectField
+                    label="Permission"
+                    name="permission"
+                    value={permission}
+                    onChange={(e) => setPermission(e.target.value)}
+                    options={[
+                      { value: "1", label: "Read Only" },
+                      { value: "2", label: "Read & Write" },
+                    ]}
+                    required
+                  />
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-end mt-4">
-                  <button
-                    type="button"
-                    className="mr-2 bg-gray-300 text-gray-700 px-4 py-2 rounded-md"
-                    onClick={onClose}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md"
-                  >
-                    Update
-                  </button>
+                <div className="flex justify-end mt-10">
+                  <ModalCloseButton label={"Cancel"} onClick={onClose} />
+                  <ModalSubmitButton type="submit" label={"Update"} />
                 </div>
               </form>
             </div>

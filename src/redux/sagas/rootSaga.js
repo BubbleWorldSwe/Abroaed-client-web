@@ -2,7 +2,15 @@ import { all } from "redux-saga/effects";
 import authSaga from "./authSaga";
 import teamSaga from "./teamSaga";
 import { rolesSaga } from "./rolesSaga";
+import destinationSaga from "./destinationSaga";
+import countriesSaga from "./countrySaga";
 
 export default function* rootSaga() {
-  yield all([authSaga(), teamSaga(), rolesSaga()]);
+  yield all([
+    authSaga(),
+    teamSaga(),
+    rolesSaga(),
+    destinationSaga(),
+    countriesSaga(),
+  ]);
 }

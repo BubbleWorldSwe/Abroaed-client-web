@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function OverviewDest() {
+function OverviewDest({ details }) {
   const overview = {
     content: {
-      description: "A beautiful country known for its rich culture and heritage.",
+      description:
+        "A beautiful country known for its rich culture and heritage.",
       capital: "Sample City",
       totalPopulation: "50 million",
       language: "English, Spanish",
@@ -45,21 +46,22 @@ function OverviewDest() {
 
   return (
     <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
-
-      <h2 className="mb-2 font-semibold">Why Study in USA?</h2>
+      <h2 className="mb-2 font-semibold">
+        Why Study in {details?.countryId?.name}?
+      </h2>
       {/* About Section */}
       <p className="text-gray-700 dark:text-gray-300 mb-6">
-        The United States of America is amongst the most popular study destinations globally, housing the world’s top-ranked institutions. It is known to host the highest number of international students from all over the globe. Studying in the USA offers a perfectly blended student experience with an exciting campus environment and cultural diversity.
+        {details?.description}
         {/* {description || "No details available"} */}
       </p>
       {/* Grid Section */}
       <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-5 gap-4">
         {[
-          { key: "Capital", value: capital },
-          { key: "Language", value: language },
-          { key: "Total Population", value: totalPopulation },
-          { key: "Currency", value: Currency },
-          { key: "Dial Code", value: totalStudents },
+          { key: "Capital", value: details?.capital },
+          { key: "Language", value: details?.language },
+          { key: "Total Population", value: details?.totalPopulation },
+          { key: "Currency", value: details?.currency },
+          { key: "Dial Code", value: details?.dialcode },
         ].map((item, index) => (
           <div key={index} className="text-left">
             <p className="text-base font-semibold text-gray-900 dark:text-gray-400">
