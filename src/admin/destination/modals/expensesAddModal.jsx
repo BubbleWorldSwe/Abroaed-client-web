@@ -45,7 +45,7 @@ const ExpensesAddModal = ({ closeModal, details, onUpdate }) => {
   useEffect(() => {
     if (details?.expenses) {
       const updatedFormData = defaultFormData.map((field) => {
-        const existingExpense = details.expenses.find(
+        const existingExpense = details?.expenses?.find(
           (expense) => expense.label === field.label
         );
         return existingExpense

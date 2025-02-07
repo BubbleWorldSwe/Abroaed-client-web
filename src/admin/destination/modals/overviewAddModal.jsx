@@ -16,20 +16,16 @@ const OverviewAddModal = ({
   onUpdate,
   states,
 }) => {
-  const dispatch = useDispatch();
-
   const { countries, loading } = useSelector((state) => state.countries);
 
   const [formData, setFormData] = useState({
-    description: details?.description,
-    capitalId: details?.capitalId?._id,
-    language: details?.language,
-    totalPopulation: details?.totalPopulation,
-    currency: details?.countryId?.currency,
-    dialcode: details?.dialcode,
+    description: details?.description || "",
+    capitalId: details?.capitalId?._id || "",
+    language: details?.language || "",
+    totalPopulation: details?.totalPopulation || "",
+    currency: details?.countryId?.currency || "",
+    dialcode: details?.dialcode || "",
   });
-
-  console.log(details);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,15 +36,8 @@ const OverviewAddModal = ({
   };
 
   const handleInputChange = (e, fieldName) => {
-    console.log(e);
-    setFormData({ ...formData, [fieldName]: e?.target?.value || e });
+    setFormData({ ...formData, [fieldName]: e });
   };
-
-  console.log(formData);
-
-  useEffect(() => {
-    console.log("Countries Updated " + countries.length);
-  }, [countries]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -57,7 +46,7 @@ const OverviewAddModal = ({
         name="description"
         type="text"
         value={formData?.description}
-        onChange={(e) => handleInputChange(e, "description")}
+        onChange={(e) => handleInputChange(e?.target?.value, "description")}
         placeholder="Enter description"
         required
       />
@@ -67,7 +56,11 @@ const OverviewAddModal = ({
           label="Capital"
           name="capitalId"
           value={formData.capitalId}
-          onChange={(e) => handleInputChange(e, "capitalId")}
+          onChange={(e) => {
+            console.log("e");
+            console.log(e);
+            handleInputChange(e?.target?.value, "capitalId");
+          }}
           options={states.map((data) => ({
             label: data.name,
             value: data._id,
@@ -80,8 +73,8 @@ const OverviewAddModal = ({
           name="currency"
           type="text"
           value={details?.countryId?.currency}
-          onChange={(e) => handleInputChange(e, "currency")}
-          placeholder="Enter Capital"
+          //onChange={(e) => handleInputChange(e?.target?.value, "currency")}
+          //    placeholder="Enter Capital"
           disabled
         />
 
@@ -90,7 +83,7 @@ const OverviewAddModal = ({
           name="language"
           type="text"
           value={formData.language}
-          onChange={(e) => handleInputChange(e, "language")}
+          onChange={(e) => handleInputChange(e?.target?.value, "language")}
           placeholder="Enter Capital"
           required
         />
@@ -100,7 +93,9 @@ const OverviewAddModal = ({
           name="totalPopulation"
           type="text"
           value={formData.totalPopulation}
-          onChange={(e) => handleInputChange(e, "totalPopulation")}
+          onChange={(e) =>
+            handleInputChange(e?.target?.value, "totalPopulation")
+          }
           placeholder="Enter Total Population"
           required
         />
@@ -110,7 +105,7 @@ const OverviewAddModal = ({
           name="dialcode"
           type="text"
           value={formData.dialcode}
-          onChange={(e) => handleInputChange(e, "dialcode")}
+          onChange={(e) => handleInputChange(e?.target?.value, "dialcode")}
           placeholder="Enter Dailing Code"
           required
         />

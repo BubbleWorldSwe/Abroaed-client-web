@@ -28,14 +28,7 @@ function DestinationDetails() {
   const dispatch = useDispatch();
   const { state } = useLocation();
   const [documentsList, setDocumentsList] = useState([]);
-  const { selectedDestination } = useSelector((state) => state.destinations);
-
-  const [destinationDetails, setDestinationDetails] =
-    useState(selectedDestination);
-
-  console.log("selectedDestination in main page");
-  console.log(selectedDestination);
-  console.log("selectedDestination in main page");
+  const [destinationDetails, setDestinationDetails] = useState(state);
 
   const [visaTypes, setVisaTypes] = useState([]);
   const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
@@ -43,6 +36,8 @@ function DestinationDetails() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [states, setStates] = useState([]);
   const [formdata, setFormdata] = useState(null);
+
+  //const { destinationDetails } = useSelector((state) => state.destinations);
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -235,7 +230,7 @@ function DestinationDetails() {
     fetchData();
   }, [
     dispatch,
-    // selectedDestination
+    // destinationDetails
   ]);
 
   return (

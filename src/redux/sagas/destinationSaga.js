@@ -73,12 +73,12 @@ function* handleEditDestination(action) {
   try {
     const { id, destinationData } = action.payload;
     const response = yield call(setUpdateDestination, id, destinationData);
-    console.log("response");
+    console.log("handleEditDestination in Saga");
     console.log(response);
-    console.log("response");
+    console.log("handleEditDestination in Saga");
 
     if (response.status === 200) {
-      yield put(editDestinationSuccess(response.data.data));
+      yield put(editDestinationSuccess(response.data));
       toast.success("Destination Updated successfully!");
     } else {
       //  console.log(response.message);

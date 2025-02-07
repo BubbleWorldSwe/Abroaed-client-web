@@ -14,7 +14,7 @@ export const EDIT_DESTINATION_REQUEST = "EDIT_DESTINATION_REQUEST";
 export const EDIT_DESTINATION_SUCCESS = "EDIT_DESTINATION_SUCCESS";
 export const EDIT_DESTINATION_FAILURE = "EDIT_DESTINATION_FAILURE";
 
-export const SET_SELECTED_COUNTRY = "SET_SELECTED_COUNTRY";
+export const SET_SELECTED_DESTINATION = "SET_SELECTED_DESTINATION";
 
 export const fetchDestinationsRequest = (page) => ({
   type: FETCH_DESTINATIONS_REQUEST,
@@ -78,6 +78,6 @@ export const editDestinationFailure = (error) => ({
 });
 
 export const setSelectedCountry = (country) => ({
-  type: SET_SELECTED_COUNTRY,
+  type: SET_SELECTED_DESTINATION,
   payload: country,
 });

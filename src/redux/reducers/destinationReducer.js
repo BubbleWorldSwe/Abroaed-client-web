@@ -12,7 +12,7 @@ import {
   FETCH_DESTINATIONS_FAILURE,
   FETCH_DESTINATIONS_REQUEST,
   FETCH_DESTINATIONS_SUCCESS,
-  SET_SELECTED_COUNTRY,
+  SET_SELECTED_DESTINATION,
 } from "../actions/destinationActions";
 
 const initialState = {
@@ -24,7 +24,7 @@ const initialState = {
   page: 1,
   limit: null,
   total: null,
-  selectedCountry: {},
+  selectedDestination: {},
 };
 
 export const destnationReducer = (state = initialState, action) => {
@@ -93,12 +93,12 @@ export const destnationReducer = (state = initialState, action) => {
         destinations: state.destinations.map((destination) => ({
           ...destination,
           data: destination.data.map((item) =>
-            item._id === action.payload.data._id
-              ? { ...item, ...action.payload.data }
+            item._id === action.payload._id
+              ? { ...item, ...action.payload }
               : item
           ),
         })),
-        // selectedCountry: action.payload.data,
+        selectedDestination: action.payload,
       };
     case EDIT_DESTINATION_FAILURE:
       return {
@@ -107,8 +107,10 @@ export const destnationReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
-    case SET_SELECTED_COUNTRY:
-      return { ...state, selectedCountry: action.payload };
+    case SET_SELECTED_DESTINATION:
+      console.log(action.payload);
+      console.log("action.payload");
+      return { ...state, selectedDestination: action.payload };
 
     case LOGOUT:
       return initialState;
