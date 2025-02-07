@@ -1,7 +1,7 @@
-import React from "react";
-import Header from "./Header";
+
+import Footer from "../website/comman/sections/footerSection";
+import Header from "../website/comman/sections/headerSection";
 import BlogCategoryPage from "./BlogCategoryPage";
-import Footer from "./Footer";
 
 function LayoutBlogsCategoryPage() {
   document.head.insertAdjacentHTML(

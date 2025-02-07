@@ -1,8 +1,7 @@
-import React from "react";
-import Footer from "./Footer";
-import BlogPage from "./BlogPage";
-import Header from "./Header";
+
 import BlogHoro from "../pages/Blogs/BlogHoro";
+import Footer from "../website/comman/sections/footerSection";
+import Header from "../website/comman/sections/headerSection";
 
 function LayoutBlogs() {
   document.head.insertAdjacentHTML(
@@ -14,7 +13,7 @@ function LayoutBlogs() {
       <Header />
 
       {/* <BlogHoro /> */}
-      <BlogPage />
+      {/* <BlogPage /> */}
       <Footer />
     </div>
   );
