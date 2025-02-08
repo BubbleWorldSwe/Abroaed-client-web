@@ -80,11 +80,9 @@ function CollapsableSidebar() {
             <Sidebar.ItemGroup>
               <Sidebar.Item
                 onClick={() => navigate("/admin/dashboard")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/dashboard") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/dashboard") ? "bg-primary-500" : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -102,11 +100,9 @@ function CollapsableSidebar() {
             <Sidebar.ItemGroup>
               <Sidebar.Item
                 onClick={() => navigate("/admin/leads")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/leads") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/leads") ? "bg-primary-500" : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -122,11 +118,9 @@ function CollapsableSidebar() {
 
               <Sidebar.Item
                 onClick={() => navigate("/admin/students")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/students") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/students") ? "bg-primary-500" : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -142,11 +136,9 @@ function CollapsableSidebar() {
 
               <Sidebar.Item
                 onClick={() => navigate("/admin/teams")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/teams") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/teams") ? "bg-primary-500" : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -164,11 +156,9 @@ function CollapsableSidebar() {
             <Sidebar.ItemGroup>
               <Sidebar.Item
                 onClick={() => navigate("/admin/transaction")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/upcomingDeliveries") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/upcomingDeliveries") ? "bg-primary-500" : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -184,15 +174,33 @@ function CollapsableSidebar() {
             </Sidebar.ItemGroup>
             <Sidebar.ItemGroup>
               <Sidebar.Item
-                onClick={() => navigate("/admin/langPrep")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/langPrep") ||
-                  window.location.pathname.startsWith("/admin/langPrep")
+                onClick={() => navigate("/admin/testPrep")}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/testPrep") ||
+                    window.location.pathname.startsWith("/admin/testPrep")
                     ? "bg-primary-500"
                     : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+              >
+                {isOpen ? (
+                  <span className="flex flex-row items-center justify-start gap-2">
+                    <HouseIcon className="w-5 h-5" />
+                    <span>Test Prep</span>
+                  </span>
+                ) : (
+                  <span className="flex justify-center items-center w-full">
+                    <HouseIcon className="w-5 h-5" />
+                  </span>
+                )}
+              </Sidebar.Item>
+              <Sidebar.Item
+                onClick={() => navigate("/admin/langPrep")}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/langPrep") ||
+                    window.location.pathname.startsWith("/admin/langPrep")
+                    ? "bg-primary-500"
+                    : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -207,14 +215,12 @@ function CollapsableSidebar() {
               </Sidebar.Item>
               <Sidebar.Item
                 onClick={() => navigate("/admin/colleges")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/colleges") ||
-                  window.location.pathname.startsWith("/admin/colleges")
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/colleges") ||
+                    window.location.pathname.startsWith("/admin/colleges")
                     ? "bg-primary-500"
                     : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -230,14 +236,12 @@ function CollapsableSidebar() {
 
               <Sidebar.Item
                 onClick={() => navigate("/admin/destinations")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/destinations") ||
-                  window.location.pathname.startsWith("/admin/destinations")
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/destinations") ||
+                    window.location.pathname.startsWith("/admin/destinations")
                     ? "bg-primary-500"
                     : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -252,14 +256,12 @@ function CollapsableSidebar() {
               </Sidebar.Item>
               <Sidebar.Item
                 onClick={() => navigate("/admin/accommodation")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/admin/accommodation") ||
-                  window.location.pathname.startsWith("/admin/accommodation")
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/admin/accommodation") ||
+                    window.location.pathname.startsWith("/admin/accommodation")
                     ? "bg-primary-500"
                     : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">
@@ -274,11 +276,9 @@ function CollapsableSidebar() {
               </Sidebar.Item>
               <Sidebar.Item
                 onClick={() => navigate("/staff")}
-                className={`transition-colors duration-300 flex items-center ${
-                  isOpen ? "justify-start" : "justify-center"
-                } hover:bg-primary-700 ${
-                  isActive("/staff") ? "bg-primary-500" : ""
-                } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
+                className={`transition-colors duration-300 flex items-center ${isOpen ? "justify-start" : "justify-center"
+                  } hover:bg-primary-700 ${isActive("/staff") ? "bg-primary-500" : ""
+                  } ${isOpen ? "max-w-[200px] h-12" : "max-w-[40px] h-12"}`}
               >
                 {isOpen ? (
                   <span className="flex flex-row items-center justify-start gap-2">

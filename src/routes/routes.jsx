@@ -33,6 +33,8 @@ import LanguagePrepDetails from "../admin/languagePrep/screens/languagePrepDetai
 import CareerPage from "../website/career/webpages/careerPage";
 import PathwaysHomePage from "../website/pathways/home/webpages/pathwaysHomePage";
 import IvyLeaguesPage from "../website/ivyLeagues/webpages/ivyLeaguesPage";
+import TestPrep from "../admin/testPrep/screens/testPrep";
+import TestPrepDetails from "../admin/testPrep/screens/testPrepDetails";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -105,6 +107,8 @@ const AppRoutes = () => {
         { path: "leads", element: <Leads /> },
         { path: "accommodation", element: <Accommodations /> },
         { path: "accommodation/:name", element: <AccommodationDetails /> },
+        { path: "testPrep/:name", element: < TestPrepDetails /> },
+        { path: "testPrep", element: < TestPrep /> },
         { path: "langPrep/:name", element: < LanguagePrepDetails /> },
         { path: "langPrep", element: < LanguagePrep /> },
         { path: "transaction", element: < Transaction /> },

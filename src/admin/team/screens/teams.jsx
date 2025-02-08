@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import AddTeamMember from "../modals/addTeamMemberModal";
 import UpdateTeamMember from "../modals/updateTeamMemberModal";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteTeamRequest,
@@ -11,11 +10,11 @@ import { fetchRolesRequest } from "../../../redux/actions/rolesActions";
 import TeamTable from "../tables/teamTable";
 import filter_list from "../../../assets/filter_list.png";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import ConfirmModal from "../../../commons/modal/confirmModal";
 
 function Teams() {
   const dispatch = useDispatch();
   const { teams, totalPages, page } = useSelector((state) => state.team);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -105,11 +104,11 @@ function Teams() {
         memberToEdit={selectedMember}
         data={editData}
       />
-      {/*  <ConfirmModal
+      <ConfirmModal
         isOpen={isDone}
         onClose={() => setIsDone(false)}
         text="Member Added!"
-      /> */}
+      />
       <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
         <section className="py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">

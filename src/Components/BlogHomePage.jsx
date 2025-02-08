@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function BlogHomePage() {
@@ -13,10 +12,7 @@ function BlogHomePage() {
               "url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png')",
           }}
         >
-          {/* Overlay for the background image */}
           <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg"></div>
-
-          {/* Content Box */}
           <div className="absolute bottom-0 left-0 z-10 p-6 bg-white text-black max-w-lg rounded-lg shadow-lg m-4">
             {/* Author Details */}
             <div className="flex items-center mb-3 space-x-2">
@@ -117,9 +113,9 @@ function BlogHomePage() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
@@ -168,9 +164,9 @@ function BlogHomePage() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
@@ -219,9 +215,9 @@ function BlogHomePage() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M1 5h12m0 0L9 1m4 4L9 9"
                 />
               </svg>
