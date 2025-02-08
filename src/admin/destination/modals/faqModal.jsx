@@ -4,8 +4,12 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const FaqModal = ({ closeModal, filledData, details, onUpdate }) => {
+const FaqModal = ({ closeModal, filledData, onUpdate }) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const [formData, setFormData] = useState(
     filledData || { question: "", answer: "" }
   );

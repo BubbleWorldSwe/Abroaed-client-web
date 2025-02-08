@@ -31,18 +31,16 @@ function DestinationDetails() {
   const dispatch = useDispatch();
   const { state, id } = useLocation();
 
+  console.log(id);
+
   const [documentsList, setDocumentsList] = useState([]);
 
   const destinationDetails = useSelector(
     (state) => state.destinations.selectedDestination
   );
 
-  console.log("selectedDestination in main page");
-  console.log(destinationDetails);
-  console.log("selectedDestination in main page");
-
   const [visaTypes, setVisaTypes] = useState([]);
-  const [selectedSection, setSelectedSection] = useState(null); // State to manage Add modal open/close
+  const [selectedSection, setSelectedSection] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [states, setStates] = useState([]);
@@ -68,31 +66,26 @@ function DestinationDetails() {
   const sections = [
     {
       name: "Overview",
-      component: <OverviewDest details={destinationDetails} />,
+      component: <OverviewDest />,
     },
     {
       name: "Admission Requirements",
-      component: <AdmissionReqDest details={destinationDetails} />,
+      component: <AdmissionReqDest />,
     },
     {
       name: "Expenses",
-      component: <ExpensesDest details={destinationDetails} />,
+      component: <ExpensesDest />,
     },
     {
       name: "Scholarships",
       component: (
-        <ScholarshipsDest
-          details={destinationDetails}
-          onEdit={onEditScholarship}
-          onUpdate={onUpdate}
-        />
+        <ScholarshipsDest onEdit={onEditScholarship} onUpdate={onUpdate} />
       ),
     },
     {
       name: "Immigration Details",
       component: (
         <ImmigrationDetailsAdmin
-          details={destinationDetails}
           onEdit={onEditImmigration}
           onUpdate={onUpdate}
         />
@@ -100,24 +93,17 @@ function DestinationDetails() {
     },
     {
       name: "Work Opportunities",
-      component: <WorkOpportunitiesAdmin details={destinationDetails} />,
+      component: <WorkOpportunitiesAdmin />,
     },
     {
       name: "FAQs",
-      component: (
-        <DestinationFAQ
-          details={destinationDetails}
-          onEdit={onEditFaq}
-          onUpdate={onUpdate}
-        />
-      ),
+      component: <DestinationFAQ onEdit={onEditFaq} onUpdate={onUpdate} />,
     },
   ];
 
   const modals = {
     section0: (
       <OverviewAddModal
-        details={destinationDetails}
         closeModal={closeModal}
         onUpdate={onUpdate}
         states={states}
@@ -126,21 +112,13 @@ function DestinationDetails() {
     section1: (
       <AdmissionRequirementAddModal
         documentsList={documentsList}
-        details={destinationDetails}
         closeModal={closeModal}
         onUpdate={onUpdate}
       />
     ),
-    section2: (
-      <ExpensesAddModal
-        onUpdate={onUpdate}
-        details={destinationDetails}
-        closeModal={closeModal}
-      />
-    ),
+    section2: <ExpensesAddModal onUpdate={onUpdate} closeModal={closeModal} />,
     section3: (
       <ScholarshipModal
-        details={destinationDetails}
         closeModal={closeModal}
         filledData={formdata}
         onUpdate={onUpdate}
@@ -148,7 +126,6 @@ function DestinationDetails() {
     ),
     section4: (
       <ImmigrationDetailsModal
-        details={destinationDetails}
         closeModal={closeModal}
         filledData={formdata}
         visaTypes={visaTypes}
@@ -156,15 +133,10 @@ function DestinationDetails() {
       />
     ),
     section5: (
-      <WorkOpportunitiesModal
-        details={destinationDetails}
-        closeModal={closeModal}
-        onUpdate={onUpdate}
-      />
+      <WorkOpportunitiesModal closeModal={closeModal} onUpdate={onUpdate} />
     ),
     section6: (
       <FaqModal
-        details={destinationDetails}
         formdata={formdata}
         closeModal={closeModal}
         filledData={formdata}
@@ -172,6 +144,7 @@ function DestinationDetails() {
       />
     ),
   };
+
   function onEditFaq(params) {
     console.log("Edit FAQ");
     setFormdata(params);
@@ -243,16 +216,13 @@ function DestinationDetails() {
 
   useEffect(() => {
     fetchData();
-  }, [
-    dispatch,
-    // selectedDestination
-  ]);
+  }, [dispatch]);
 
   return (
     <div>
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
-          <DestinationImage details={destinationDetails} />
+          <DestinationImage />
           {sections.map((sectionItem, index) => (
             <div
               key={index}

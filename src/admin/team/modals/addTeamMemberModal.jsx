@@ -2,10 +2,7 @@
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addTeamRequest,
-  fetchTeamsRequest,
-} from "../../../redux/actions/teamActions";
+import { addTeamRequest } from "../../../redux/actions/teamActions";
 
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";

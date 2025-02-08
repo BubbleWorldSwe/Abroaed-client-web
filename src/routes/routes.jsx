@@ -1,27 +1,25 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "../pages/admin/Dashboard";
 import PrivateRoute from "./privateRoute";
-import AccomodationLayout from "../pages/accommodation/AccomodationLayout";
-import FinanceLayout from "../Layouts/FinanceLayout";
-import LayoutPageDestination from "../Layouts/DestinationLayout";
+import AccomodationPage from "../website/accommodation/webscreens/accommodationPage";
+import FinancePage from "../website/finance/webpages/financePage";
+import DestinationPage from "../website/destination/webpages/destinationPage";
 import AdminLayout from "../Layouts/AdminLayout";
 import NurtureLeads from "../pages/admin/NurtureLeads";
 import Student from "../admin/student/screens/student";
 import Leads from "../admin/lead/screens/leads";
-import HomeLayout from "../Components/Home";
+import HomeLayout from "../website/home/webpages/homePage";
 import LayoutBlogs from "../Components/LayoutBlogs";
 import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 import SigninPage from "../pages/admin/SigninPage";
-import TestPrepLayout from "../Layouts/TestPrepLayout";
+import TestPrepLayout from "../website/testPrep/webpages/testPrepPage";
 import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
 import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
-import AboutUsLayout from "../Layouts/AboutUsLayout";
-import CareersLayout from "../Layouts/CareersLayout";
-import PathwaysHomeLayout from "../Layouts/PathwaysHomeLayout";
+import AboutUsPage from "../website/aboutUs/webpages/aboutUsPage";
 import LanguagePrep from "../admin/languagePrep/screens/languagePrep";
-import PathwaysProgramLayout from "../Layouts/PathwaysProgramLayout";
-import CollegePageLayout from "../Layouts/CollegePageLayout";
-import HomeCounsellingLayout from "../Layouts/HomeCounsellingLayout";
+import PathwaysProgramPage from "../website/pathways/program/webpages/pathwaysProgramPage";
+import CollegePage from "../website/college/webpages/collegePage";
+import HomeCounsellingPage from "../website/homeCounselling/webpages/homeCounsellingPage";
 import Transaction from "../admin/transaction/screens/transaction";
 import StudentProfileLayout from "../admin/student/screens/studentProfileLayout";
 import DestinationDetails from "../admin/destination/screens/destinationDetails";
@@ -32,14 +30,16 @@ import CollegDetails from "../admin/college/screens/collegeDetails";
 import AccommodationDetails from "../admin/accommodation/screens/accommodationDetails";
 import Accommodations from "../admin/accommodation/screens/accommodation";
 import LanguagePrepDetails from "../admin/languagePrep/screens/languagePrepDetails";
+import CareerPage from "../website/career/webpages/careerPage";
+import PathwaysHomePage from "../website/pathways/home/webpages/pathwaysHomePage";
+import IvyLeaguesPage from "../website/ivyLeagues/webpages/ivyLeaguesPage";
 
 const AppRoutes = () => {
-
   const allRoutes = [
     { path: "/home", element: <HomeLayout />, isPrivate: false },
     {
       path: "/destinations",
-      element: <LayoutPageDestination />,
+      element: <DestinationPage />,
       isPrivate: false,
     },
     {
@@ -48,8 +48,8 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
-    { path: "/aboutus", element: <AboutUsLayout />, isPrivate: false },
-    { path: "/careers", element: <CareersLayout />, isPrivate: false },
+    { path: "/aboutus", element: <AboutUsPage />, isPrivate: false },
+    { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     { path: "/blog/:id", element: <LayoutBlogs />, isPrivate: false },
     { path: "/blog", element: <LayoutBlogHomePage />, isPrivate: false },
@@ -58,31 +58,36 @@ const AppRoutes = () => {
       element: <LayoutBlogsCategoryPage />,
       isPrivate: false,
     },
-    { path: "/finance", element: <FinanceLayout />, isPrivate: false },
+    { path: "/finance", element: <FinancePage />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
     {
       path: "/accomodation",
-      element: <AccomodationLayout />,
+      element: <AccomodationPage />,
+      isPrivate: false,
+    },
+    {
+      path: "/ivyLeagues",
+      element: <IvyLeaguesPage />,
       isPrivate: false,
     },
     {
       path: "/pathways",
-      element: <PathwaysHomeLayout />,
+      element: <PathwaysHomePage />,
       isPrivate: false,
     },
     {
       path: "/pathwaysProgram",
-      element: <PathwaysProgramLayout />,
+      element: <PathwaysProgramPage />,
       isPrivate: false,
     },
     {
       path: "/college",
-      element: <CollegePageLayout />,
+      element: <CollegePage />,
       isPrivate: false,
     },
     {
       path: "/homeCounselling",
-      element: <HomeCounsellingLayout />,
+      element: <HomeCounsellingPage />,
       isPrivate: false,
     },
     // Admin Dashboard Routes (Private)

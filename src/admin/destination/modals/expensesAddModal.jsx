@@ -5,12 +5,7 @@ import { CurrencyInputField } from "../components/currencyInputField";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
-const ExpensesAddModal = ({
-  closeModal,
-
-  // details,
-  onUpdate,
-}) => {
+const ExpensesAddModal = ({ closeModal, onUpdate }) => {
   const details = useSelector(
     (state) => state.destinations.selectedDestination
   );

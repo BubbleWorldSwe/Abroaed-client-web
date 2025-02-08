@@ -2,13 +2,18 @@ import { useState } from "react";
 import pencil from "../../../assets/pencil.png";
 import deleteIcon from "../../../assets/deleteIcon.png";
 import dark from "../../../assets/dark.png";
-const DestinationImage = ({ details }) => {
+import { useSelector } from "react-redux";
+
+const DestinationImage = ({}) => {
   const [openMadal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState(null);
   const closeModal = () => {
     setOpenModal(false);
     setModalType(null);
   };
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   return (
     <div className="flex flex-col">
       <div

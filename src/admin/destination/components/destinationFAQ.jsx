@@ -1,7 +1,11 @@
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
+import { useSelector } from "react-redux";
 
-function DestinationFAQ({ details, onEdit, onUpdate }) {
+function DestinationFAQ({ onEdit, onUpdate }) {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const handleEditClick = (faq) => {
     onEdit(faq);
   };

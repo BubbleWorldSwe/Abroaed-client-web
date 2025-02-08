@@ -8,8 +8,6 @@ import {
   fetchDestinationsRequest,
 } from "../../../redux/actions/destinationActions";
 import AddDestinationModal from "../modals/addDestinationModal";
-import { toast } from "react-toastify";
-import { deleteTeamRequest } from "../../../redux/actions/teamActions";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 
 function Destinations() {

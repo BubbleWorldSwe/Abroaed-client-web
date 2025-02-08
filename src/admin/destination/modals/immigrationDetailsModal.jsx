@@ -5,14 +5,17 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { useSelector } from "react-redux";
 
 const ImmigrationDetailsModal = ({
   closeModal,
   filledData,
   visaTypes,
   onUpdate,
-  details,
 }) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const [formData, setFormData] = useState(
     {
       visaName: filledData?.visaName,

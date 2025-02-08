@@ -1,7 +1,11 @@
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
+import { useSelector } from "react-redux";
 
-const ImmigrationDetailsAdmin = ({ details, onEdit, onUpdate }) => {
+const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const handleEditClick = (data) => {
     onEdit(data);
   };

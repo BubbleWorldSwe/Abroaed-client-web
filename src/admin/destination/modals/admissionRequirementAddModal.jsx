@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const AdmissionRequirementAddModal = ({
   closeModal,
   documentsList,
-  // details,
   onUpdate,
 }) => {
   const details = useSelector(

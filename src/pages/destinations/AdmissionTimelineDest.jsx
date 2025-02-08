@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AdmissionTimelineDest = () => {
-  return (
-    <div>AdmissionTimelineDest</div>
-  )
-}
+  return <div>AdmissionTimelineDest</div>;
+};
 
-export default AdmissionTimelineDest
+export default AdmissionTimelineDest;

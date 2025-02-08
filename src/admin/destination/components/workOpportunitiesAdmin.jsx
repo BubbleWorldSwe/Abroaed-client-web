@@ -1,4 +1,9 @@
-const WorkOpportunitiesAdmin = ({ details }) => {
+import { useSelector } from "react-redux";
+
+const WorkOpportunitiesAdmin = ({}) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   return (
     <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
       <div className="flex items-center  gap-3 ">

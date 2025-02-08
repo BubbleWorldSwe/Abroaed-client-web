@@ -8,16 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { toast } from "react-toastify";
 
-const OverviewAddModal = ({
-  closeModal,
-
-  details,
-  onUpdate,
-  states,
-}) => {
-  const { countries, loading } = useSelector((state) => state.countries);
-
+const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const [formData, setFormData] = useState({
     description: details?.description || "",
     capitalId: details?.capitalId?._id || "",
@@ -29,9 +25,36 @@ const OverviewAddModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted with data:", formData);
-    // closeModal();
 
+    // List of required fields
+    const requiredFields = [
+      "description",
+      "capitalId",
+      "language",
+      "totalPopulation",
+      "dialcode",
+    ];
+
+    // Check if any required field is missing or empty
+    const missingFields = requiredFields.filter((field) => {
+      const value = formData[field];
+
+      // Check for empty string, undefined, null, or zero-length array
+      return (
+        value === undefined ||
+        value === null ||
+        (typeof value === "string" && value.trim() === "")
+      );
+    });
+
+    if (missingFields.length > 0) {
+      toast.error(
+        `Please fill all required fields: ${missingFields.join(", ")}`
+      );
+      return;
+    }
+
+    console.log("Form submitted with data:", formData);
     onUpdate(formData);
   };
 

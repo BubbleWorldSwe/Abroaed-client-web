@@ -4,8 +4,12 @@ import { TextareaInputField } from "../../../commons/components/inputFields/text
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const ScholarshipModal = ({ closeModal, filledData, details, onUpdate }) => {
+const ScholarshipModal = ({ closeModal, filledData, onUpdate }) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const [formData, setFormData] = useState(
     filledData || { name: "", link: "", description: "" }
   );

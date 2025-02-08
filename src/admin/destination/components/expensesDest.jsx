@@ -1,11 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-function ExpensesDest(
-  {
-    //details
-  }
-) {
+function ExpensesDest({}) {
   const details = useSelector(
     (state) => state.destinations.selectedDestination
   );

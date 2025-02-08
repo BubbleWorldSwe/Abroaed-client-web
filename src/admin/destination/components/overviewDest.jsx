@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 
-function OverviewDest({ details }) {
+function OverviewDest({}) {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   return (
     <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
       <h2 className="mb-2 font-semibold">

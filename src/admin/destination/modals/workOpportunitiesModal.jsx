@@ -5,8 +5,12 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { Trash2Icon } from "lucide-react";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
-const WorkOpportunitiesModal = ({ closeModal, details, onUpdate }) => {
+const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
+  const details = useSelector(
+    (state) => state.destinations.selectedDestination
+  );
   const [formData, setFormData] = useState({
     partTimeStudents: details?.workOpportunities?.partTimeStudents,
     postDegreeOpportunity: details?.workOpportunities?.postDegreeOpportunity,
