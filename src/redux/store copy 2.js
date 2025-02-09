@@ -16,16 +16,24 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "selectedDestination", "selectedTestPrep"],
+  whitelist: [
+    "auth",
+    "team",
+    "roles",
+    "leads",
+    "destinations",
+    "countries",
+    // "testPreps",
+  ],
 };
 
 const rootReducer = {
   auth: persistReducer(persistConfig, authReducer),
-  team: teamReducer,
-  roles: rolesReducer,
-  leads: leadsReducer,
+  team: persistReducer(persistConfig, teamReducer),
+  roles: persistReducer(persistConfig, rolesReducer),
+  leads: persistReducer(persistConfig, leadsReducer),
   destinations: persistReducer(persistConfig, destnationReducer),
-  countries: countriesReducer,
+  countries: persistReducer(persistConfig, countriesReducer),
   testPreps: persistReducer(persistConfig, testPrepsReducer),
 };
 

@@ -1,6 +1,9 @@
 import {
   ChevronLeft,
   ChevronRight,
+  Edit,
+  Edit2,
+  Edit2Icon,
   EllipsisVertical,
   Eye,
   Trash2,
@@ -9,16 +12,20 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatDate } from "../../../utils/helper";
 import { setSelectedDestination } from "../../../redux/actions/destinationActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { TableFooter } from "../../../commons/components/table/tableFooter";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 
 const DestinationTable = ({
-  destinations,
   currentPage,
-  totalPages,
   handleNextPage,
   handlePrevPage,
   handleDelete,
+  onUpdate,
 }) => {
+  const { destinations, totalPages } = useSelector(
+    (state) => state.destinations
+  );
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
@@ -33,11 +40,6 @@ const DestinationTable = ({
     }
   };
 
-  const getDataLength = () => {
-    const pageData = destinations?.find((item) => item.index === currentPage);
-    return pageData?.data?.length || 0;
-  };
-
   const handleViewDetails = (destination) => {
     dispatch(setSelectedDestination(destination)); // Set selected country in Redux store
     navigate(`/admin/destinations/${encodeURIComponent(destination._id)}`, {
@@ -50,6 +52,15 @@ const DestinationTable = ({
     setDropdownVisible(dropdownVisible === index ? null : index);
     // Optionally, you can adjust dropdown direction based on your layout
     setDropdownDirection("down");
+  };
+
+  const handleSubmit = (status, id) => {
+    try {
+      onUpdate({ status: status }, id);
+      setDropdownVisible(null);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -67,7 +78,13 @@ const DestinationTable = ({
     <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
       <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" className="p-4"></th>
+          <th scope="col" className="p-4">
+            <CheckboxField
+              onClick={(e) => e.stopPropagation()}
+              id={`checkbox-college-all`}
+              htmlFor={`checkbox-college-all`}
+            />
+          </th>
           <th scope="col" className="px-4 py-3 min-w-[14rem]">
             Country Name
           </th>
@@ -97,20 +114,11 @@ const DestinationTable = ({
                 className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <td className="px-4 py-3 w-4">
-                  <div className="flex items-center">
-                    <input
-                      id={`checkbox-destination-${index}`}
-                      type="checkbox"
-                      onClick={(e) => e.stopPropagation()}
-                      className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label
-                      htmlFor={`checkbox-destination-${index}`}
-                      className="sr-only"
-                    >
-                      checkbox
-                    </label>
-                  </div>
+                  <CheckboxField
+                    onClick={(e) => e.stopPropagation()}
+                    id={`checkbox-college-${index}`}
+                    htmlFor={`checkbox-college-${index}`}
+                  />
                 </td>
 
                 <th
@@ -121,7 +129,9 @@ const DestinationTable = ({
                 </th>
 
                 <td className="px-4 py-3">{destination?.author}</td>
-                <td className="px-4 py-3">{destination?.status}</td>
+                <td className="px-4 py-3">
+                  {destination?.status === "draft" ? "Draft" : "Published"}
+                </td>
                 <td className="px-4 py-3">
                   {formatDate(destination.createdAt)}
                 </td>
@@ -160,6 +170,26 @@ const DestinationTable = ({
                             <span>Delete</span>
                           </button>
                         </li>
+                        <li>
+                          <button
+                            onClick={() =>
+                              handleSubmit(
+                                destination?.status === "draft"
+                                  ? "complete"
+                                  : "draft",
+                                destination._id
+                              )
+                            }
+                            className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                          >
+                            <Edit className="w-4 h-4" />
+                            <span>
+                              {destination?.status === "draft"
+                                ? "Publish Page"
+                                : "Withdraw Page"}
+                            </span>
+                          </button>
+                        </li>
                       </ul>
                     </div>
                   )}
@@ -168,46 +198,13 @@ const DestinationTable = ({
             ))
         )}
       </tbody>
-      <tfoot>
-        <tr className="bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-          <td className="px-4 py-3" colSpan="7">
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600 dark:text-gray-300">
-                Showing {getDataLength()} results
-              </span>
-              <div className="flex items-center justify-center gap-4 mt-4">
-                <button
-                  onClick={handlePrevPage}
-                  disabled={currentPage === 1}
-                  className={`p-2 rounded-full ${
-                    currentPage === 1
-                      ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-gray-300 dark:hover:bg-gray-600"
-                  }`}
-                >
-                  <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                </button>
-
-                <span className="text-gray-600 dark:text-gray-300">
-                  Page {currentPage} of {totalPages}
-                </span>
-
-                <button
-                  onClick={handleNextPage}
-                  disabled={currentPage === totalPages}
-                  className={`p-2 rounded-full ${
-                    currentPage === totalPages
-                      ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-gray-300 dark:hover:bg-gray-600"
-                  }`}
-                >
-                  <ChevronRight className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                </button>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
+      <TableFooter
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        tableData={destinations}
+      />
     </table>
   );
 };

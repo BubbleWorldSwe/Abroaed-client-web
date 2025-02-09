@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addDestinationRequest,
   deleteDestinationRequest,
+  editDestinationRequest,
   fetchDestinationsRequest,
 } from "../../../redux/actions/destinationActions";
 import AddDestinationModal from "../modals/addDestinationModal";
@@ -40,6 +41,15 @@ function Destinations() {
     setCurrentPage(1);
     dispatch(fetchDestinationsRequest(1));
   };
+
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editDestinationRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -136,12 +146,11 @@ function Destinations() {
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <DestinationTable
-                destinations={destinations}
                 currentPage={currentPage}
-                totalPages={totalPages}
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
+                onUpdate={onUpdate}
               />
             </div>
           </div>

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
-import { CurrencyInputField } from "../components/currencyInputField";
+
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { CurrencyInputField } from "../../../commons/components/inputFields/currencyInputField";
 
 const ExpensesAddModal = ({ closeModal, onUpdate }) => {
   const details = useSelector(

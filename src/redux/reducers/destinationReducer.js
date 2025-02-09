@@ -20,7 +20,7 @@ const initialState = {
   destinations: [],
   error: null,
   totalPages: null,
-  page: null,
+
   page: 1,
   limit: null,
   total: null,
@@ -108,8 +108,6 @@ export const destnationReducer = (state = initialState, action) => {
       };
 
     case SET_SELECTED_DESTINATION:
-      console.log(action.payload);
-      console.log("action.payload");
       return { ...state, selectedDestination: action.payload };
 
     case LOGOUT:

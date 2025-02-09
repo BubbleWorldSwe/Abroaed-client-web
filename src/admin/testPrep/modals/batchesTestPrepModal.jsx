@@ -1,163 +1,154 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+import { CurrencyInputField } from "../../../commons/components/inputFields/currencyInputField";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { toast } from "react-toastify";
 
+const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
+  const [formData, setFormData] = useState(
+    filledData || {
+      batchName: "",
+      batchBrief: "",
+      mode: "",
+      isSold: false,
+      duration: "",
+      fees: "",
+    }
+  );
 
-const BatchesTestPrepModal = ({ closeModal }) => {
-    const [formData, setFormData] = useState({});
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const testPrepDetails = useSelector(
+    (state) => state.testPreps.selectedTestPrep
+  );
 
-    const currencies = [
-        { code: "USD", name: "United States Dollar", icon: "🇺🇸" },
-        { code: "EUR", name: "Euro", icon: "🇪🇺" },
-        { code: "GBP", name: "British Pound", icon: "🇬🇧" },
-        { code: "INR", name: "Indian Rupee", icon: "🇮🇳" },
-        { code: "JPY", name: "Japanese Yen", icon: "🇯🇵" },
-        { code: "AUD", name: "Australian Dollar", icon: "🇦🇺" },
-    ];
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        closeModal();
-    };
-    const handleInputChange = (e, fieldName) => {
-        setFormData({ ...formData, [fieldName]: e.target.value });
-    };
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="batchName" className="block text-gray-500 mt-4 font-semibold">
-                        Batch Name
-                    </label>
-                    <input
-                        type="text"
-                        id="batchName"
-                        onChange={(e) => handleInputChange("batchName", e.target.value)}
-                        className=" py-1 px-4  bg-gray-100 rounded mt-1 border-none"
-                        placeholder="Batch Name"
-                    />
-                </div>
-                <label htmlFor="batchBrief" className="block font-semibold text-gray-500 mt-4">Course Brief</label>
-                <textarea
-                    id="batchBrief"
-                    value={formData.description || ""}
-                    onChange={(e) => handleInputChange(e, 'batchBrief')}
-                    className="w-full py-2 px-4 bg-gray-100 rounded mt-1 border-none"
-                    placeholder="Add  Brief"
-                ></textarea>
+    if (
+      !formData.batchName.trim() ||
+      !formData.batchBrief.trim() ||
+      !formData.mode.trim() ||
+      !String(formData.duration).trim() ||
+      !String(formData.fees).trim()
+    ) {
+      toast.error("Please fill in all fields before submitting.");
+      return;
+    }
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-                    <div>
-                        <label htmlFor="mode" className="block text-gray-500 mt-4 font-semibold">
-                            Mode
-                        </label>
-                        <select
-                            id="mode"
-                            onChange={(e) => handleInputChange("mode", e.target.value)}
-                            className="w-full p-1 bg-gray-100 text-gray-500 rounded mt-1 border-none"
-                        >
-                            <option value="" disabled selected>
-                                Select Mode
-                            </option>
-                            <option value="Online">Online</option>
-                            <option value="Offline">Offline</option>
-                            <option value="Hybrid">Hybrid</option>
-                        </select>
-                    </div>
-                    <div className="flex items-end py-2 justify-center text-center gap-3">
-                        <input
-                            type="checkbox"
-                            id="soldOut"
-                            onChange={(e) => handleInputChange("soldOut", e.target.checked)}
-                            className=""
-                        />
-                        <label htmlFor="soldOut" className="text-gray-500  font-semibold">
-                            Mark as Sold Out
-                        </label>
-                    </div>
-                    <div></div>
-                    <div>
-                        <label htmlFor="duration" className="block text-gray-500 mt-4 font-semibold">
-                            Duration (Months)
-                        </label>
-                        <input
-                            type="text"
-                            id="duration"
-                            onChange={(e) => handleInputChange("duration", e.target.value)}
-                            className="w-full p-1 bg-gray-100 rounded mt-1 border-none"
-                            placeholder="Enter Duration"
-                        />
-                    </div>
-                    <div className="mt-4">
-                        <label htmlFor="fees" className="block font-semibold text-gray-500">
-                            Fees
-                        </label>
-                        <div className="flex">
-                            <div className="relative w-full">
-                                <input
-                                    type="text"
-                                    id="fees"
-                                    onChange={(e) => handleInputChange("fees", e.target.value)}
-                                    className="block p-1 w-full bg-gray-100 text-gray-500 rounded mt-1 border-none"
-                                    placeholder="Enter Amount"
-                                    required
-                                />
-                            </div>
-                            <div className="relative inline-block">
-                                {/* Button */}
-                                <button
-                                    id="currency-dropdown"
-                                    className="flex-shrink-0 z-10 inline-flex items-center py-1 px-4 bg-gray-100 text-gray-500 mt-1 border-none rounded-md"
-                                    type="button"
-                                    onMouseEnter={() => setIsDropdownOpen(true)}
-                                    onMouseLeave={() => setTimeout(() => setIsDropdownOpen(false), 300)}
-                                >
-                                    {selectedCurrency}{" "}
-                                    <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                                    </svg>
-                                </button>
-                                {isDropdownOpen && (
-                                    <div
-                                        className="absolute left-0 mt-1  bg-white border rounded-lg shadow-lg z-20"
-                                        onMouseEnter={() => setIsDropdownOpen(true)}
-                                        onMouseLeave={() => setIsDropdownOpen(false)}
-                                    >
-                                        <ul className="py-2 text-gray-700">
-                                            {currencies.map((currency) => (
-                                                <li
-                                                    key={currency.code}
-                                                    className="flex items-center px-4 py-2 cursor-pointer hover:bg-gray-100"
-                                                    onClick={() => {
-                                                        setSelectedCurrency(currency.code);
-                                                        setIsDropdownOpen(false);
-                                                    }}
-                                                >
-                                                    <span className="mr-2">{currency.icon}</span>
-                                                    {currency.code}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    let updatedBatches = [];
 
-                <div className="text-end">
-                    <button
-                        type="button"
-                        className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-                        onClick={closeModal}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                </div>
-            </form>
-        </div>)
-}
+    if (filledData) {
+      updatedBatches = testPrepDetails.batches.map((batches) =>
+        batches._id === filledData._id ? formData : batches
+      );
+    } else {
+      const newBatches = { ...formData };
+      updatedBatches = [...testPrepDetails.batches, newBatches];
+    }
 
-export default BatchesTestPrepModal
+    const batchesWithoutId = updatedBatches.map(({ _id, ...rest }) => rest);
+    console.log(batchesWithoutId);
+
+    onUpdate({ batches: batchesWithoutId });
+  };
+
+  const handleInputChange = (e, fieldName) => {
+    setFormData({ ...formData, [fieldName]: e.target.value });
+  };
+
+  console.log(formData);
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <TextInputField
+          label="Batch Name"
+          name="batchName"
+          type="text"
+          value={formData.batchName}
+          onChange={(e) => handleInputChange(e, "batchName")}
+          required
+          placeholder="Enter Batch Name"
+        />
+        <div className="my-5">
+          <TextareaInputField
+            label="Course Brief"
+            name="batchBrief"
+            type="text"
+            value={formData.batchBrief}
+            onChange={(e) => handleInputChange(e, "batchBrief")}
+            required
+            placeholder="Enter Course Brief"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 ">
+          <SelectField
+            label="Mode"
+            name="mode"
+            value={formData.mode}
+            onChange={(e) => handleInputChange(e, "mode")}
+            options={["Online", "Offline"].map((data) => ({
+              label: data,
+              value: data,
+            }))}
+            required
+          />
+
+          <div className="flex items-center text-center gap-3 mt-5">
+            <CheckboxField
+              id="isSold"
+              checked={formData.isSold || false}
+              onChange={(e) =>
+                handleInputChange(
+                  { target: { value: e.target.checked } },
+                  "isSold"
+                )
+              }
+            />
+
+            <label
+              htmlFor="isSold"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Mark as Sold Out
+            </label>
+          </div>
+
+          <TextInputField
+            label="Duration (Months)"
+            name="duration"
+            type="text"
+            value={formData.duration}
+            onChange={(e) => handleInputChange(e, "duration")}
+            required
+            placeholder="Enter Duration"
+          />
+
+          <TextInputField
+            label="Fees"
+            name="fees"
+            type="text"
+            value={formData.fees}
+            onChange={(e) => handleInputChange(e, "fees")}
+            required
+            placeholder="Enter Fees"
+            currency={"INR"}
+          />
+        </div>
+
+        <div className="text-end mt-10">
+          <ModalCloseButton label={"Cancel"} onClick={closeModal} />
+          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default BatchesTestPrepModal;

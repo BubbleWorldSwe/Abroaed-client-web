@@ -21,7 +21,7 @@ export function TextareaInputField({
         required={required}
         disabled={disabled}
         multiple
-        rows={4}
+        rows={3}
       />
     </div>
   );

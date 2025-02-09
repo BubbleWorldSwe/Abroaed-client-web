@@ -1,11 +1,7 @@
-import {
-  ChevronLeft,
-  ChevronRight,
-  Edit,
-  EllipsisVertical,
-  Trash2,
-} from "lucide-react";
+import { Edit, EllipsisVertical, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
+import { TableFooter } from "../../../commons/components/table/tableFooter";
 
 const TeamTable = ({
   teams,
@@ -63,17 +59,11 @@ const TeamTable = ({
       <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="p-4">
-            <div className="flex items-center">
-              <input
-                readOnly
-                id="checkbox-all"
-                type="checkbox"
-                className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label htmlFor="checkbox-all" className="sr-only">
-                checkbox
-              </label>
-            </div>
+            <CheckboxField
+              onClick={(e) => e.stopPropagation()}
+              id={`checkbox-college-all`}
+              htmlFor={`checkbox-college-all`}
+            />
           </th>
           <th className="px-4 py-3">Member Name</th>
           <th className="px-4 py-3">Phone Number</th>
@@ -95,20 +85,11 @@ const TeamTable = ({
                 }`}
               >
                 <td className="px-4 py-3 w-4">
-                  <div className="flex items-center">
-                    <input
-                      readOnly
-                      id={`checkbox-college-${index}`}
-                      type="checkbox"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCheckboxClick(index);
-                      }}
-                      checked={selectedRows[index] || false}
-                      className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label className="sr-only">checkbox</label>
-                  </div>
+                  <CheckboxField
+                    onClick={(e) => e.stopPropagation()}
+                    id={`checkbox-teams-${index}`}
+                    htmlFor={`checkbox-teams-${index}`}
+                  />
                 </td>
                 <td className="px-4 py-3">{`${member?.firstName} ${member?.lastName}`}</td>
                 <td className="px-4 py-3">+91 {member?.mobile}</td>
@@ -173,46 +154,13 @@ const TeamTable = ({
             ))
         )}
       </tbody>
-      <tfoot>
-        <tr className="bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-          <td className="px-4 py-3" colSpan="7">
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600 dark:text-gray-300">
-                Showing {getDataLength()} results
-              </span>
-              <div className="flex items-center justify-center gap-4 mt-4">
-                <button
-                  onClick={handlePrevPage}
-                  disabled={currentPage === 1}
-                  className={`p-2 rounded-full ${
-                    currentPage === 1
-                      ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-gray-300 dark:hover:bg-gray-600"
-                  }`}
-                >
-                  <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                </button>
-
-                <span className="text-gray-600 dark:text-gray-300">
-                  Page {currentPage} of {totalPages}
-                </span>
-
-                <button
-                  onClick={handleNextPage}
-                  disabled={currentPage === totalPages}
-                  className={`p-2 rounded-full ${
-                    currentPage === totalPages
-                      ? "opacity-50 cursor-not-allowed"
-                      : "hover:bg-gray-300 dark:hover:bg-gray-600"
-                  }`}
-                >
-                  <ChevronRight className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-                </button>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
+      <TableFooter
+        totalPages={totalPages}
+        currentPage={currentPage}
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+        tableData={teams}
+      />
     </table>
   );
 };

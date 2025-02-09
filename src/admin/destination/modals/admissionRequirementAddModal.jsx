@@ -38,6 +38,7 @@ const AdmissionRequirementAddModal = ({
       console.log(error);
     }
   };
+
   console.log(selectedDocuments);
 
   return (

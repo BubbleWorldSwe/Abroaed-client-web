@@ -55,7 +55,7 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddSuccess }) {
     );
 
     onAddSuccess();
-    setIsDone(true);
+    //setIsDone(true);
     onClose();
   };
 

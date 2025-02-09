@@ -29,9 +29,7 @@ import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function DestinationDetails() {
   const dispatch = useDispatch();
-  const { state, id } = useLocation();
-
-  console.log(id);
+  const { state } = useLocation();
 
   const [documentsList, setDocumentsList] = useState([]);
 
@@ -63,6 +61,7 @@ function DestinationDetails() {
       setFormdata(null);
     }
   };
+
   const sections = [
     {
       name: "Overview",

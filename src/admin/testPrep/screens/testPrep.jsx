@@ -1,11 +1,25 @@
-
 import { testData } from "../data";
 import TestPrepTable from "../tables/testPrepTable";
-import filter_list from "../../../assets/filter_list.png"
-import { useState } from "react";
+import filter_list from "../../../assets/filter_list.png";
+import { useEffect, useState } from "react";
 import AddProductTestPrepModal from "../modals/addProductTestPrepModal";
-import ConfirmModal from "../../../commons/modal/confirmModal"
+import ConfirmModal from "../../../commons/modal/confirmModal";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addTestPrepRequest,
+  deleteTestPrepRequest,
+  fetchTestPrepsRequest,
+} from "../../../redux/actions/testPrepsActions";
+
 const TestPrep = () => {
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [query, setQuery] = useState("");
+
+  const { loading, testPreps, totalPages, total } = useSelector(
+    (state) => state.testPreps
+  );
+
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [isDone, setIsDone] = useState(false);
   const handleOpenAddModal = () => {
@@ -15,12 +29,66 @@ const TestPrep = () => {
     setIsAddModalOpen(false);
   };
 
+  const handleAddTestPrep = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddTestPrep");
+    console.log(data);
+
+    dispatch(addTestPrepRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchTestPrepsRequest(1));
+    handleCloseAddModal();
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = testPreps.some(
+        (item) => item.index === currentPage + 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchTestPrepsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = testPreps.some(
+        (item) => item.index === currentPage - 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchTestPrepsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteTestPrepRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchTestPrepsRequest(1));
+  };
+
+  useEffect(() => {
+    if (testPreps?.length === 0) {
+      console.log("fetchTestPrepsRequest");
+      dispatch(fetchTestPrepsRequest(currentPage));
+    }
+  }, [dispatch, testPreps, currentPage]);
+
   return (
     <>
       <AddProductTestPrepModal
         isOpen={isAddModalOpen}
         onClose={handleCloseAddModal}
         setIsDone={setIsDone}
+        onAddTestPreps={handleAddTestPrep}
       />
       <ConfirmModal
         isOpen={isDone}
@@ -100,13 +168,19 @@ const TestPrep = () => {
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
-              <TestPrepTable tests={testData} />
+              <TestPrepTable
+                tests={testData}
+                currentPage={currentPage}
+                handleNextPage={handleNextPage}
+                handlePrevPage={handlePrevPage}
+                handleDelete={handleDelete}
+              />
             </div>
           </div>
         </section>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default TestPrep;
