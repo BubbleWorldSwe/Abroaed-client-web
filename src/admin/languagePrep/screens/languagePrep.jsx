@@ -1,9 +1,74 @@
-
 import { languagesData } from "../data";
 import LanguagePrepTable from "../tables/languagePrepTable";
-import filter_list from "../../../assets/filter_list.png"
+import filter_list from "../../../assets/filter_list.png";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {
+  addLanguagePrepRequest,
+  deleteLanguagePrepRequest,
+  fetchLanguagePrepsRequest,
+} from "../../../redux/actions/languagePrepsActions";
 
 const LanguagePrep = () => {
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { languagePreps, totalPages } = useSelector(
+    (state) => state.languagePreps
+  );
+
+  const handleAddLanguagePrep = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddLanguagePrep");
+    console.log(data);
+
+    dispatch(addLanguagePrepRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchLanguagePrepsRequest(1));
+    // handleCloseAddModal();
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = languagePreps.some(
+        (item) => item.index === currentPage + 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchLanguagePrepsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = languagePreps.some(
+        (item) => item.index === currentPage - 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchLanguagePrepsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteLanguagePrepRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchLanguagePrepsRequest(1));
+  };
+
+  useEffect(() => {
+    if (languagePreps?.length === 0) {
+      console.log("fetchLanguagePrepsRequest");
+      dispatch(fetchLanguagePrepsRequest(currentPage));
+    }
+  }, [dispatch, languagePreps, currentPage]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
@@ -44,23 +109,27 @@ const LanguagePrep = () => {
                       placeholder="Search Teams"
                       required=""
                     />
-
                   </div>
                 </form>
                 <div className="flex items-center space-x-4">
                   <img src={filter_list} alt="filterIcon" />
                 </div>
               </div>
-
             </div>
           </div>
           <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
-            <LanguagePrepTable languages={languagesData} />
+            <LanguagePrepTable
+              currentPage={currentPage}
+              languages={languagePreps}
+              handleNextPage={handleNextPage}
+              handlePrevPage={handlePrevPage}
+              handleDelete={handleDelete}
+            />
           </div>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
 export default LanguagePrep;

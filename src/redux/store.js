@@ -10,13 +10,19 @@ import { teamReducer } from "./reducers/teamReducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { testPrepsReducer } from "./reducers/testPrepsReducer";
+import { languagePrepsReducer } from "./reducers/languagePrepsReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "selectedDestination", "selectedTestPrep"],
+  whitelist: [
+    "auth",
+    "selectedDestination",
+    "selectedTestPrep",
+    "selectedLanguagePrep",
+  ],
 };
 
 const rootReducer = {
@@ -27,6 +33,7 @@ const rootReducer = {
   destinations: persistReducer(persistConfig, destnationReducer),
   countries: countriesReducer,
   testPreps: persistReducer(persistConfig, testPrepsReducer),
+  languagePreps: persistReducer(persistConfig, languagePrepsReducer),
 };
 
 const store = configureStore({

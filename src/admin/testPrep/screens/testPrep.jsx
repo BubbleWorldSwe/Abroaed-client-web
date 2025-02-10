@@ -14,11 +14,8 @@ import {
 const TestPrep = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-  const [query, setQuery] = useState("");
 
-  const { loading, testPreps, totalPages, total } = useSelector(
-    (state) => state.testPreps
-  );
+  const { testPreps, totalPages } = useSelector((state) => state.testPreps);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [isDone, setIsDone] = useState(false);
