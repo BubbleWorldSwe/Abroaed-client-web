@@ -10,6 +10,7 @@ import {
 } from "../../../redux/actions/languagePrepsActions";
 import AddProductLanguagePrepModal from "../modals/addProductLanguagePrepModal";
 import ConfirmModal from "../../../commons/modal/confirmModal";
+import { AddButton } from "../../../commons/components/buttons/addButton";
 
 const LanguagePrep = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const LanguagePrep = () => {
   );
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [isDone, setIsDone] = useState(false);
+
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
   };
@@ -34,7 +36,7 @@ const LanguagePrep = () => {
     dispatch(addLanguagePrepRequest(data));
     setCurrentPage(1);
     dispatch(fetchLanguagePrepsRequest(1));
-    // handleCloseAddModal();
+    handleCloseAddModal();
   };
 
   const handleNextPage = () => {
@@ -79,21 +81,13 @@ const LanguagePrep = () => {
     }
   }, [dispatch, languagePreps, currentPage]);
 
-  const handleAddTestPrep = (data) => {
-    //  setIsAddModalOpen(false);
-    console.log("handleAddTestPrep");
-    console.log(data);
-    handleCloseAddModal();
-  };
-
   return (
     <>
       <AddProductLanguagePrepModal
         isOpen={isAddModalOpen}
         onClose={handleCloseAddModal}
         setIsDone={setIsDone}
-        onAddTestPreps={handleAddTestPrep}
-
+        onAddLanguagePreps={handleAddLanguagePrep}
       />
       <ConfirmModal
         isOpen={isDone}
@@ -144,32 +138,8 @@ const LanguagePrep = () => {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <div className="flex gap-2 font-rethink">
-                  <button
-                    onClick={handleOpenAddModal}
-                    type="button"
-                    className="w-full whitespace-nowrap  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                  >
-                    <svg
-                      className="w-6 h-6 p-1 text-gray-800 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 12h14m-7 7V5"
-                      />
-                    </svg>
-                    New Product
-                  </button>
-                </div>
+
+                <AddButton onClick={handleOpenAddModal} label={"New Product"} />
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

@@ -1,22 +1,80 @@
-import pencil from '../../../assets/pencil.png'
+import { useSelector } from "react-redux";
 
-const LanguageFaqs = () => {
+import pencil from "../../../assets/pencil.png";
+import trash from "../../../assets/delete.png";
+
+const LanguageFaqs = ({ onEdit, onUpdate }) => {
+  const languagePrepDetails = useSelector(
+    (state) => state.languagePreps.selectedLanguagePrep
+  );
+
+  const handleEditClick = (faq) => {
+    onEdit(faq);
+  };
+
+  function handleDeleteClick(id) {
+    console.log("Delete onDeleteFaq : " + id);
+
+    const updatedFaqs = languagePrepDetails.faqs.filter(
+      (faq) => faq._id !== id
+    );
+    const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
+    console.log(faqWithoutId);
+
+    //  onUpdate({ faqs: faqWithoutId });
+  }
+
   return (
-    <div className="px-8">
-      <table className="table-auto w-full   bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg">
-        <tbody>
-          <tr className="border-b border-gray-300 dark:border-gray-700">
-            <td className="px-6 py-4 text-gray-600 dark:text-gray-300 border-b border-gray-300 dark:border-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </td>
-            <td className=" text-center border-b  dark:border-gray-700">
-              <img src={pencil} alt="Edit Icon" className="w-7 h-5 cursor-pointer" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="px-1">
+      {languagePrepDetails?.faqs?.length > 0 ? (
+        languagePrepDetails?.faqs.map((data, i) => (
+          <table
+            key={i}
+            className="table-auto w-full bg-white dark:bg-gray-800 dark:border-gray-700 rounded-lg mb-5"
+          >
+            <thead className="bg-gray-200 dark:bg-gray-700">
+              <tr>
+                <th
+                  colSpan={"2"}
+                  className="px-6 py-3 text-left text-gray-700 dark:text-gray-300"
+                >
+                  {data.question}
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr className="border-b border-gray-300 dark:border-gray-700">
+                <td className="px-4 py-4 text-gray-600 dark:text-gray-300">
+                  {data.answer}
+                </td>
+                <td className="text-center w-[100px]">
+                  <div className="flex items-center justify-center space-x-5">
+                    <img
+                      src={pencil}
+                      alt="Edit"
+                      className="w-5 h-5 cursor-pointer"
+                      onClick={() => handleEditClick(data)}
+                    />
+                    <img
+                      src={trash}
+                      alt="Delete"
+                      className="w-5 h-5 cursor-pointer"
+                      onClick={() => handleDeleteClick(data?._id)}
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        ))
+      ) : (
+        <div className="flex justify-center items-center h-full">
+          <p className="text-center py-4 text-gray-500">No Records</p>
+        </div>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default LanguageFaqs;

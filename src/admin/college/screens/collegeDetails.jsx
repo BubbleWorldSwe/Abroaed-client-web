@@ -39,11 +39,11 @@ function CollegDetails() {
   };
   const openModal = (section, type, index) => {
     setSelectedSection(section);
-    setActiveModalIndex(index)
+    setActiveModalIndex(index);
   };
   const sectionConfig = [
     { name: "Overview", component: <OverviewCard /> },
-    { name: "Media Gallery", component: < MediaGalleryCard /> },
+    { name: "Media Gallery", component: <MediaGalleryCard /> },
     { name: "Courses", component: <CoursesCard /> },
     { name: "Financial Aid & Scholarships", component: <FinancialAidCard /> },
     { name: "Section 6 - FAQs", component: <FAQsCard /> },
@@ -54,25 +54,15 @@ function CollegDetails() {
   };
 
   const modals = {
-    section0: (
-      <OverviewModal closeModal={closeModal} />
-    ),
-    section1: (
-      <MediaGallery closeModal={closeModal} />
-    ),
-    section2: (
-      <CoursesModal closeModal={closeModal} />
-    ),
-    section3: (
-      <FinancialAidScholarshipsModal closeModal={closeModal} />
-    ),
-    section4: (
-      <FaqModalCollege closeModal={closeModal} />
-    ),
+    section0: <OverviewModal closeModal={closeModal} />,
+    section1: <MediaGallery closeModal={closeModal} />,
+    section2: <CoursesModal closeModal={closeModal} />,
+    section3: <FinancialAidScholarshipsModal closeModal={closeModal} />,
+    section4: <FaqModalCollege closeModal={closeModal} />,
   };
 
   return (
-    <div >
+    <div>
       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={handleDeleteCloseModal}
@@ -85,7 +75,6 @@ function CollegDetails() {
         onClose={handleCloseAddModal}
       />
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
-
         <div className="accordion space-y-4">
           <CollegeImageSection />
           {sectionConfig.map((sectionItem, index) => (
@@ -99,7 +88,7 @@ function CollegDetails() {
                   className="flex justify-between items-center w-full px-4 py-1 text-2xl font-semibold text-left text-gray-600 dark:bg-gray-700 dark:text-white rounded-t-lg"
                   onClick={(e) => {
                     e.preventDefault();
-                    toggleAccordion(index)
+                    toggleAccordion(index);
                   }}
                 >
                   <span>{sectionItem.name}</span>
@@ -108,7 +97,7 @@ function CollegDetails() {
                       className="px-4 py-4"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(sectionItem.name, "add", index)
+                        openModal(sectionItem.name, "add", index);
                       }}
                     >
                       <svg
@@ -135,7 +124,7 @@ function CollegDetails() {
                       className="px-4 py-4"
                       onClick={(e) => {
                         e.stopPropagation();
-                        openModal(sectionItem.name, "edit", index)
+                        openModal(sectionItem.name, "edit", index);
                       }}
                     >
                       <svg
@@ -184,7 +173,9 @@ function CollegDetails() {
               >
                 &times;
               </button>
-              <h2 className="text-2xl font-semibold mb-4">{selectedSection} Modal</h2>
+              <h2 className="text-2xl font-semibold mb-4">
+                {selectedSection} Modal
+              </h2>
               <div className="mt-4">
                 {/* Render the dynamic content based on modalType */}
                 {modals[`section${activeModalIndex}`]}

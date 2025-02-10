@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Pencil } from "lucide-react";
+import { EllipsisVertical, Eye, Pencil, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { formatDate, formatDateTime } from "../../../utils/helper";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
+import { setSelectedLanguagePrep } from "../../../redux/actions/languagePrepsActions";
 
 const LanguagePrepTable = ({
   currentPage,
@@ -16,6 +18,8 @@ const LanguagePrepTable = ({
     (state) => state.languagePreps
   );
 
+  const dispatch = useDispatch();
+
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
@@ -26,18 +30,26 @@ const LanguagePrepTable = ({
       setDropdownVisible(null);
     }
   };
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+
+  const handleViewDetails = (languagePrep) => {
+    dispatch(setSelectedLanguagePrep(languagePrep));
+    navigate(`/admin/langPrep/${encodeURIComponent(languagePrep._id)}`, {
+      state: languagePrep,
+    });
+  };
 
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
     setDropdownDirection("down");
   };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -73,20 +85,11 @@ const LanguagePrepTable = ({
                 className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <td className="px-4 py-3 w-4">
-                  <div className="flex items-center">
-                    <input
-                      id={`checkbox-college-${index}`}
-                      type="checkbox"
-                      onClick={(e) => e.stopPropagation()}
-                      className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label
-                      htmlFor={`checkbox-college-${index}`}
-                      className="sr-only"
-                    >
-                      checkbox
-                    </label>
-                  </div>
+                  <CheckboxField
+                    onClick={(e) => e.stopPropagation()}
+                    id={`checkbox-college-${index}`}
+                    htmlFor={`checkbox-college-${index}`}
+                  />
                 </td>
 
                 <th
@@ -126,13 +129,7 @@ const LanguagePrepTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={() =>
-                              navigate(
-                                `/admin/langPrep/${encodeURIComponent(
-                                  language.name
-                                )}`
-                              )
-                            }
+                            onClick={() => handleViewDetails(language)}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <Eye className="w-4 h-4" />
@@ -142,11 +139,14 @@ const LanguagePrepTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={""}
+                            onClick={() => {
+                              handleDelete(language._id);
+                              setDropdownVisible(null);
+                            }}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
-                            <Pencil className="w-4 h-4" />
-                            <span>Edit</span>
+                            <Trash2 className="w-4 h-4" />
+                            <span>Delete</span>
                           </button>
                         </li>
                       </ul>
