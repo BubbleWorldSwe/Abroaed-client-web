@@ -1,70 +1,102 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
+const FinancialAidScholarshipsModal = ({
+  closeModal,
+  filledData,
+  onUpdate,
+}) => {
+  const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
 
-const FinancialAidScholarshipsModal = ({ closeModal }) => {
-    const [formData, setFormData] = useState({}); // To manage form inputs
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form submitted with data:", formData, image);
-        // You can handle the form submission here (e.g., API call, state update, etc.)
-        closeModal();
-    };
-    const handleInputChange = (e, fieldName) => {
-        setFormData({ ...formData, [fieldName]: e.target.value });
-    };
+  const [formData, setFormData] = useState(
+    filledData || { name: "", link: "", description: "" }
+  );
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div>
-                        <label htmlFor="capital" className="block text-gray-500 mt-4 font-semibold">
-                            Scholarship Name
-                        </label>
-                        <input
-                            type="text"
-                            id="scholarshipName"
-                            onChange={(e) => handleInputChange("scholarshipName", e.target.value)}
-                            className="w-full p-1 border-none bg-gray-100  rounded mt-1"
-                            placeholder="Scholarship - Engineering"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="lang" className="block text-gray-500 mt-4 font-semibold">
-                            Link
-                        </label>
-                        <input
-                            type="url"
-                            id="lang"
-                            onChange={(e) => handleInputChange("lang", e.target.value)}
-                            className="w-full p-1 border-none bg-gray-100 rounded mt-1"
-                            placeholder="www.scholorship.com"
-                        />
-                    </div>
-                </div>
-                <label htmlFor="description" className="block font-semibold text-gray-500 mt-4">Brief Description</label>
-                <textarea
-                    id="description"
-                    value={formData.description || ""}
-                    onChange={(e) => handleInputChange(e, 'description')}
-                    className="w-full p-2 bg-gray-100 border-none rounded mt-1"
-                    placeholder="Add Description Brief"
-                ></textarea>
+  const handleInputChange = (e, fieldName) => {
+    setFormData({ ...formData, [fieldName]: e.target.value });
+  };
 
-                <div className="text-end">
-                    <button
-                        type="button"
-                        className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-                        onClick={closeModal}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                </div>
-            </form>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        </div>
-    )
-}
+    if (
+      !formData.name.trim() ||
+      !formData.link.trim() ||
+      !formData.description.trim()
+    ) {
+      toast.error("Please fill in all fields before submitting.");
+      return;
+    }
 
-export default FinancialAidScholarshipsModal
+    let updatedScholarships = [];
+
+    if (filledData) {
+      // Edit Mode
+      updatedScholarships = collegeDetails.scholarships.map((scholarship) =>
+        scholarship._id === filledData._id ? formData : scholarship
+      );
+    } else {
+      // Add Mode
+      const newScholarship = { ...formData };
+      updatedScholarships = [newScholarship, ...collegeDetails.scholarships];
+    }
+
+    const scholarshipsWithoutId = updatedScholarships.map(
+      ({ _id, ...rest }) => rest
+    );
+
+    // console.log(scholarshipsWithoutId);
+
+    onUpdate({ scholarships: scholarshipsWithoutId });
+
+    //  closeModal();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-5">
+        <TextInputField
+          label="Scholarship Name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={(e) => handleInputChange(e, "name")}
+          placeholder="Enter Scholarship Name"
+          required
+        />
+
+        <TextInputField
+          label="Link"
+          name="link"
+          type="text"
+          value={formData.link}
+          onChange={(e) => handleInputChange(e, "link")}
+          placeholder="www.scholarship.com"
+          required
+        />
+      </div>
+
+      <TextareaInputField
+        label="Brief Description"
+        name="description"
+        type="text"
+        value={formData.description}
+        onChange={(e) => handleInputChange(e, "description")}
+        placeholder="Enter description"
+        required
+      />
+
+      <div className="text-end mt-10">
+        <ModalCloseButton label="Cancel" onClick={closeModal} />
+        <ModalSubmitButton label="Save" onClick={handleSubmit} />
+      </div>
+    </form>
+  );
+};
+
+export default FinancialAidScholarshipsModal;

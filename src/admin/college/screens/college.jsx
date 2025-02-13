@@ -1,19 +1,127 @@
 import { Plus, Upload } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddCollegeModal from "../modals/addCollegeModal";
 import filter_list from "../../../assets/filter_list.png";
 import { colleges } from "../data";
 import CollegeTable from "../tables/collegeTable";
+import { AddButton } from "../../../commons/components/buttons/addButton";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addCollegeRequest,
+  deleteCollegeRequest,
+  fetchCollegesRequest,
+} from "../../../redux/actions/collegeActions";
+import {
+  getAllDestinations,
+  getDestinationDetailsById,
+} from "../../../api/destinationApi";
+import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function College() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
 
+  const [destinationsList, setDestinationsList] = useState([]);
+
+  const { colleges, totalPages } = useSelector((state) => state.colleges);
+
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [statesList, setStatesList] = useState([]);
+
+  const handleAddCollege = (data) => {
+    console.log("handleAddCollege");
+    console.log(data);
+
+    dispatch(addCollegeRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchCollegesRequest(1));
+    handleCloseAddModal();
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = colleges.some(
+        (item) => item.index === currentPage + 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchCollegesRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = colleges.some(
+        (item) => item.index === currentPage - 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchCollegesRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteCollegeRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchCollegesRequest(1));
+  };
+
+  async function fetchData() {
+    try {
+      const list = await getAllDestinations();
+
+      if (list.status === 200) {
+        setDestinationsList(list.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(statesList);
+
+  async function fetchStatesList(countryId) {
+    try {
+      setStatesList([]);
+      const statesList = await getStatesByCountryId(countryId);
+
+      if (statesList.status === 200) {
+        setStatesList(statesList.data.result.states);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if (colleges?.length === 0) {
+      console.log("fetchCollegesRequest");
+      dispatch(fetchCollegesRequest(currentPage));
+    }
+    fetchData();
+  }, [dispatch, colleges, currentPage]);
+
   return (
     <>
-      <AddCollegeModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} />
+      <AddCollegeModal
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+        onAddCollege={handleAddCollege}
+        destinationsList={destinationsList}
+        getStatesList={fetchStatesList}
+        statesList={statesList}
+      />
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">
         <section className=" py-3 sm:py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
@@ -58,15 +166,12 @@ function College() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
+
                 <div className="flex gap-4">
-                  <button
+                  <AddButton
                     onClick={() => setIsAddModalOpen(true)}
-                    type="button"
-                    className="w-full whitespace-nowrap md:w-auto flex items-center gap-2  py-1 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                  >
-                    <Plus className="w-4 h-4" />
-                    New College
-                  </button>
+                    label={"Add New College"}
+                  />
                   <button
                     onClick={() => {}}
                     type="button"
@@ -80,8 +185,10 @@ function College() {
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <CollegeTable
-                colleges={colleges}
-                setIsAddModalOpen={setIsAddModalOpen}
+                currentPage={currentPage}
+                handleNextPage={handleNextPage}
+                handlePrevPage={handlePrevPage}
+                handleDelete={handleDelete}
               />
             </div>
           </div>

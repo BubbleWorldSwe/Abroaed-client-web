@@ -3,7 +3,7 @@ import { TextareaInputField } from "../../../commons/components/inputFields/text
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
-import { PlusSquare } from "lucide-react";
+import { Trash2Icon } from "lucide-react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import trash from "../../../assets/delete.png";
@@ -143,24 +143,13 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
                 required
                 placeholder="Enter"
               />
-              {index !== 0 ? (
+              {index !== 0 && (
                 <button
                   type="button"
                   className="text-red-500 mb-2"
                   onClick={() => removeProfession(index)}
                 >
                   <img src={trash} alt="delete Icon" className="w-5 h-5" />
-                </button>
-              ) : (
-                <button
-                  disabled
-                  className="mb-2"
-                  type="button"
-                  onClick={addProfession}
-                >
-                  <div className="bg-white rounded">
-                    <PlusSquare className="h-5 w-5 text-white" />
-                  </div>
                 </button>
               )}
             </div>

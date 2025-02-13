@@ -6,6 +6,7 @@ export function TableFooter({
   handlePrevPage,
   handleNextPage,
   tableData,
+  colSpan,
 }) {
   const getDataLength = () => {
     const pageData = tableData?.find((item) => item.index === currentPage);
@@ -13,9 +14,9 @@ export function TableFooter({
   };
 
   return (
-    <tfoot>
+    <tfoot className="w-full">
       <tr className="bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-        <td className="px-4 py-3" colSpan="7">
+        <td className="px-4 py-3" colSpan={colSpan}>
           <div className="flex justify-between items-center">
             <span className="text-gray-600 dark:text-gray-300">
               Showing {getDataLength()} results

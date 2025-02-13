@@ -36,7 +36,7 @@ const FaqTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
         );
       } else {
         const newFaq = { ...formData };
-        updatedFaqs = [...testPrepDetails.faqs, newFaq];
+        updatedFaqs = [newFaq, ...testPrepDetails.faqs];
       }
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);

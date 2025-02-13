@@ -1,8 +1,48 @@
 /* eslint-disable react/prop-types */
 
+import { useState } from "react";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { useSelector } from "react-redux";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { toast } from "react-toastify";
 
-function AddCollegeModal({ isOpen, onClose }) {
+function AddCollegeModal({
+  isOpen,
+  onClose,
+  onAddCollege,
+  destinationsList,
+  getStatesList,
+  statesList,
+}) {
+  const [formData, setFormData] = useState({});
 
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleAddCollege = () => {
+    const { name, destinationId, stateId, city, address, entityType, website } =
+      formData;
+
+    if (
+      !name ||
+      !destinationId ||
+      !stateId ||
+      !city ||
+      !address ||
+      !entityType ||
+      !website
+    ) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    console.log(formData);
+    onAddCollege(formData);
+  };
 
   return (
     <>
@@ -42,82 +82,108 @@ function AddCollegeModal({ isOpen, onClose }) {
             </button>
             <form className="flex flex-col gap-4 bg-white  w-full ">
               {/* College Name */}
-              <div className="flex flex-col">
-                <label className="text-[#27272A] font-semibold font-sm">College Name</label>
-                <input
-                  type="text"
-                  placeholder="Enter college name"
-                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
-                />
-              </div>
-              {/* Country */}
-              <div className="flex flex-col">
-                <label
-                  className="text-[#27272A] font-semibold font-sm"
-                >Country</label>
-                <select
-                  className="py-2 px-3 text-[#27272A] bg-[#F4F4F5] border-none rounded-md focus:outline-none"
-                >
-                  <option>Select country</option>
-                  <option>USA</option>
-                  <option>India</option>
-                  <option>Canada</option>
-                </select>
-              </div>
-              {/* State */}
-              <div className="flex flex-col">
-                <label className="text-[#27272A] font-semibold font-sm">State</label>
-                <select
-                  className="py-2 px-3 text-[#27272A] bg-[#F4F4F5] border-none rounded-md focus:outline-none"
-                >
-                  <option>Select state</option>
-                  <option>California</option>
-                  <option>New York</option>
-                  <option>Texas</option>
-                </select>
-              </div>
-              {/* Address */}
-              <div className="flex flex-col">
-                <label className="text-[#27272A] font-semibold font-sm">Address</label>
-                <input
-                  type="text"
-                  placeholder="Enter address"
-                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
-                />
-              </div>
+              <TextInputField
+                label="College Name"
+                name="name"
+                type="text"
+                value={formData.name}
+                onChange={(e) => handleInputChange(e, "name")}
+                placeholder="Enter College Name"
+                required
+              />
+
               {/* Entity Type */}
-              <div className="flex flex-col">
-                <label className="text-[#27272A] font-semibold font-sm">Entity Type</label>
-                <input
-                  type="text"
-                  placeholder="Enter entity type"
-                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
-                />
-              </div>
+              <TextInputField
+                label="Entity Type"
+                name="entityType"
+                type="text"
+                value={formData.entityType}
+                onChange={(e) => handleInputChange(e, "entityType")}
+                placeholder="Enter Entity Type"
+                required
+              />
+
               {/* Website */}
-              <div className="flex flex-col">
-                <label className="text-[#27272A] font-semibold font-sm">Website</label>
-                <input
-                  type="url"
-                  placeholder="Enter website URL"
-                  className="py-2 px-3 bg-[#F4F4F5] border-none rounded-md focus:outline-none"
-                />
-              </div>
+              <TextInputField
+                label="Website"
+                name="website"
+                type="text"
+                value={formData.website}
+                onChange={(e) => handleInputChange(e, "website")}
+                placeholder="Enter Website URL"
+                required
+              />
+
+              {/* Country */}
+
+              <SelectField
+                label="Country"
+                name="destinationId"
+                value={formData.destinationId}
+                onChange={(e) => {
+                  handleInputChange(e, "destinationId");
+
+                  const selectedCountry = destinationsList.find(
+                    (data) => data?._id === e.target.value
+                  );
+
+                  console.log(
+                    "Selected Country Object:",
+                    selectedCountry._id,
+                    selectedCountry?.countryId?._id
+                  );
+
+                  getStatesList(selectedCountry?.countryId?._id);
+                }}
+                options={destinationsList.map((data) => ({
+                  label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                  value: data?._id,
+                  ...data,
+                }))}
+                required
+              />
+
+              {/* State */}
+
+              <SelectField
+                label="State"
+                name="stateId"
+                value={formData.stateId}
+                onChange={(e) => handleInputChange(e, "stateId")}
+                options={statesList.map((data) => ({
+                  label: data?.name,
+                  value: data?._id,
+                }))}
+                required
+              />
+
+              {/* City */}
+              <TextInputField
+                label="City"
+                name="city"
+                type="text"
+                value={formData.city}
+                onChange={(e) => handleInputChange(e, "city")}
+                placeholder="Enter State"
+                required
+              />
+
+              {/* Address */}
+
+              <TextareaInputField
+                label="Address"
+                name="address"
+                type="text"
+                value={formData.Address}
+                onChange={(e) => handleInputChange(e, "address")}
+                placeholder="Enter Address"
+                required
+              />
+
               {/* Action Buttons */}
-              <div className="flex gap-3 justify-end mt-4">
-                <button
-                  type="button"
-                  className="bg-gray-300  text-gray-700 px-3 py-2 rounded-md"
-                // onClick={handleReset}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-blue-600 text-white px-3 py-2 rounded-md"
-                >
-                  Save & Next
-                </button>
+              <div className="flex justify-end space-x-4 mt-10">
+                <ModalCloseButton label="Cancel" onClick={onClose} />
+                <ModalSubmitButton label="Add" onClick={handleAddCollege} />
               </div>
             </form>
           </div>

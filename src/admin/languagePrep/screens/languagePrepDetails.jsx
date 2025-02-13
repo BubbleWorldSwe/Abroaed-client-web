@@ -35,20 +35,6 @@ const LanguagePrepDetails = () => {
     }
   }
 
-  async function fetchLanguagePrepsDetails() {
-    try {
-      const data = await getLanguagePrepDetailsById(state?._id);
-
-      if (data.status === 200) {
-        console.log("data.data");
-        console.log(data.data);
-        dispatch(setSelectedTestPrep(data.data));
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };

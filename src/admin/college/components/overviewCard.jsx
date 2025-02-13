@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
 import { overview } from "../data";
+import { useSelector } from "react-redux";
 
 function OverviewCard() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -13,15 +14,7 @@ function OverviewCard() {
     setEditData(null);
   };
 
-  const {
-    about,
-    estYear,
-    qsWorldRanking,
-    intake,
-    totalStudents,
-    maleToFemaleRatio,
-    studentToTeacherRatio,
-  } = overview.content;
+  const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
 
   return (
     <>
@@ -33,16 +26,28 @@ function OverviewCard() {
       />
       <div className="   bg-white  py-0  dark:border-gray-700 dark:bg-gray-800">
         <p className="text-gray-700 dark:text-gray-300 mb-6">
-          The United States of America is amongst the most popular study destinations globally, housing the world’s top-ranked institutions. It is known to host the highest number of international students from all over the globe. Studying in the USA offers a perfectly blended student experience with an exciting campus environment and cultural diversity.
+          {collegeDetails?.description}
         </p>
         <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-4 gap-4">
           {[
-            { key: "Established Year", value: estYear },
-            { key: "QS World Ranking", value: qsWorldRanking },
-            { key: "Intake", value: intake },
-            { key: "Total Students", value: totalStudents },
-            { key: "Student to Teacher Ratio", value: studentToTeacherRatio },
-            { key: "International Students", value: maleToFemaleRatio },
+            {
+              key: "Established Year",
+              value: collegeDetails?.establishmentYear,
+            },
+            { key: "QS World Ranking", value: collegeDetails?.ranking },
+            { key: "Intake", value: collegeDetails?.intake },
+            {
+              key: "Total Students",
+              value: collegeDetails?.totalStudents,
+            },
+            {
+              key: "Student to Teacher Ratio",
+              value: collegeDetails?.studentTeacherRatio,
+            },
+            {
+              key: "International Students",
+              value: collegeDetails?.internationalStudent,
+            },
           ].map((item, index) => (
             <div key={index} className="text-left">
               <p className="text-base font-semibold text-gray-700 dark:text-gray-400">

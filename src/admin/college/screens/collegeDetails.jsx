@@ -15,8 +15,12 @@ import CoursesModal from "../modals/coursesModal";
 import FinancialAidScholarshipsModal from "../modals/financialAidScholarshipsModal";
 import FaqModalCollege from "../modals/faqModalCollege";
 import { sections } from "../data";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { editCollegeRequest } from "../../../redux/actions/collegeActions";
 
 function CollegDetails() {
+  const dispatch = useDispatch();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
@@ -24,19 +28,56 @@ function CollegDetails() {
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
 
+  const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
+  const { state } = useLocation();
+
+  const [formdata, setFormdata] = useState(null);
+
+  async function onUpdate(data) {
+    try {
+      dispatch(editCollegeRequest(state?._id, data));
+
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function onEditFaq(params) {
+    console.log("Edit FAQ");
+    setFormdata(params);
+    openModal("FAQs", "edit", 4);
+  }
+
+  function onEditCourses(params) {
+    console.log("Edit Courses");
+    setFormdata(params);
+    openModal("Courses", "edit", 2);
+  }
+
+  function onEditScholarship(params) {
+    console.log("Edit Scholarship");
+    setFormdata(params);
+    openModal("Financial Aid & Scholarships", "edit", 3);
+  }
+
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+
   const handleDeleteCloseModal = () => {
     setIsDeleteModalOpen(false);
     setSelectedSectionIndex(null);
   };
+
   const handleDeleteSection = () => {
     handleDeleteCloseModal();
   };
+
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
   const openModal = (section, type, index) => {
     setSelectedSection(section);
     setActiveModalIndex(index);
@@ -44,9 +85,20 @@ function CollegDetails() {
   const sectionConfig = [
     { name: "Overview", component: <OverviewCard /> },
     { name: "Media Gallery", component: <MediaGalleryCard /> },
-    { name: "Courses", component: <CoursesCard /> },
-    { name: "Financial Aid & Scholarships", component: <FinancialAidCard /> },
-    { name: "Section 6 - FAQs", component: <FAQsCard /> },
+    {
+      name: "Courses",
+      component: <CoursesCard onEdit={onEditCourses} onUpdate={onUpdate} />,
+    },
+    {
+      name: "Financial Aid & Scholarships",
+      component: (
+        <FinancialAidCard onEdit={onEditScholarship} onUpdate={onUpdate} />
+      ),
+    },
+    {
+      name: "FAQs",
+      component: <FAQsCard onEdit={onEditFaq} onUpdate={onUpdate} />,
+    },
   ];
 
   const closeModal = () => {
@@ -54,11 +106,29 @@ function CollegDetails() {
   };
 
   const modals = {
-    section0: <OverviewModal closeModal={closeModal} />,
-    section1: <MediaGallery closeModal={closeModal} />,
-    section2: <CoursesModal closeModal={closeModal} />,
-    section3: <FinancialAidScholarshipsModal closeModal={closeModal} />,
-    section4: <FaqModalCollege closeModal={closeModal} />,
+    section0: <OverviewModal closeModal={closeModal} onUpdate={onUpdate} />,
+    section1: <MediaGallery closeModal={closeModal} onUpdate={onUpdate} />,
+    section2: (
+      <CoursesModal
+        closeModal={closeModal}
+        filledData={formdata}
+        onUpdate={onUpdate}
+      />
+    ),
+    section3: (
+      <FinancialAidScholarshipsModal
+        closeModal={closeModal}
+        filledData={formdata}
+        onUpdate={onUpdate}
+      />
+    ),
+    section4: (
+      <FaqModalCollege
+        filledData={formdata}
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+      />
+    ),
   };
 
   return (

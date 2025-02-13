@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Pencil, Trash2 } from "lucide-react";
+import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { setSelectedTestPrep } from "../../../redux/actions/testPrepsActions";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 
 const TestPrepTable = ({
   currentPage,
@@ -19,6 +20,9 @@ const TestPrepTable = ({
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -47,8 +51,8 @@ const TestPrepTable = ({
   };
 
   return (
-    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead className="text-xs text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+    <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
         <tr>
           <th scope="col" className="px-4 py-3 ">
             <CheckboxField
@@ -129,9 +133,14 @@ const TestPrepTable = ({
                           <button
                             type="button"
                             onClick={() => {
+                              setDeleteId(test._id);
+                              setIsModalOpen(!isModalOpen);
+                              //setDropdownVisible(null);
+                            }}
+                            /* onClick={() => {
                               handleDelete(test._id);
                               setDropdownVisible(null);
-                            }}
+                            }} */
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -152,6 +161,16 @@ const TestPrepTable = ({
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         tableData={testPreps}
+        colSpan={5}
+      />
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleDelete(deleteId);
+          setIsModalOpen(false);
+        }}
       />
     </table>
   );

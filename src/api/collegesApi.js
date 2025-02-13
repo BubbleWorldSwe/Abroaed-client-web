@@ -6,10 +6,10 @@ import {
   makePostRequest,
 } from "../utils/apiUtils";
 
-export const getDestinations = async (page) => {
+export const getColleges = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/destination/list?page=${page}&limit=20`
+      `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=10`
     );
     console.log(data);
     if (data.success) {
@@ -20,26 +20,12 @@ export const getDestinations = async (page) => {
   }
 };
 
-export const getAllDestinations = async () => {
-  try {
-    const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/destination/list`
-    );
-    console.log(data);
-    if (data.success) {
-      return data.data;
-    }
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const setAddDestination = async (credentials) => {
+export const setAddCollege = async (credentials) => {
   try {
     console.log(credentials);
 
     const data = await makePostRequest(
-      `${BASE_URL}/api/v1/admin/destination/create`,
+      `${BASE_URL}/api/v1/admin/colleges/create`,
       credentials
     );
     // console.log(data);
@@ -51,12 +37,12 @@ export const setAddDestination = async (credentials) => {
   }
 };
 
-export const setUpdateDestination = async (id, credentials) => {
+export const setUpdateCollege = async (id, credentials) => {
   try {
     console.log(credentials);
 
     const data = await makePatchRequest(
-      `${BASE_URL}/api/v1/admin/destination/${id}`,
+      `${BASE_URL}/api/v1/admin/colleges/${id}`,
       credentials
     );
     // console.log(data);
@@ -68,27 +54,27 @@ export const setUpdateDestination = async (id, credentials) => {
   }
 };
 
-export const setDeleteDestination = async (id) => {
+export const setDeleteCollege = async (id) => {
   try {
     console.log(id + " id");
 
     const data = await makeDeleteRequest(
-      `${BASE_URL}/api/v1/admin/destination/${id}`
+      `${BASE_URL}/api/v1/admin/colleges/${id}`
     );
-    //  console.log(data);
+    // console.log(data);
     if (data.success) {
-      return data;
+      return data.data;
     }
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getDestinationDetailsById = async (id) => {
+export const getCollegeDetailsById = async (id) => {
   try {
     console.log(id);
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/destination/${id}`
+      `${BASE_URL}/api/v1/admin/colleges/${id}`
     );
 
     if (data.success) {

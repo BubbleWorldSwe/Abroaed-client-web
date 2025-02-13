@@ -35,7 +35,7 @@ const FaqLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
         );
       } else {
         const newFaq = { ...formData };
-        updatedFaqs = [...languagePrepDetails.faqs, newFaq];
+        updatedFaqs = [newFaq, ...languagePrepDetails.faqs];
       }
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);

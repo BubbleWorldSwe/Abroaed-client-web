@@ -11,6 +11,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { testPrepsReducer } from "./reducers/testPrepsReducer";
 import { languagePrepsReducer } from "./reducers/languagePrepsReducer";
+import { collegesReducer } from "./reducers/collegeReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,6 +23,7 @@ const persistConfig = {
     "selectedDestination",
     "selectedTestPrep",
     "selectedLanguagePrep",
+    "selectedCollege",
   ],
 };
 
@@ -34,6 +36,7 @@ const rootReducer = {
   countries: countriesReducer,
   testPreps: persistReducer(persistConfig, testPrepsReducer),
   languagePreps: persistReducer(persistConfig, languagePrepsReducer),
+  colleges: persistReducer(persistConfig, collegesReducer),
 };
 
 const store = configureStore({

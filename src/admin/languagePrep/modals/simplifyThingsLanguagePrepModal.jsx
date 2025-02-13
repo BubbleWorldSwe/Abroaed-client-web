@@ -39,8 +39,8 @@ const SimplifyThingsModal = ({ closeModal, filledData, onUpdate }) => {
     } else {
       const newSimplifyThings = { ...formData };
       updatedSimplifyThings = [
-        ...languagePrepDetails.simplifyThings,
         newSimplifyThings,
+        ...languagePrepDetails.simplifyThings,
       ];
     }
 

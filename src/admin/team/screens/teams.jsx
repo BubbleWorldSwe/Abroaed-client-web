@@ -1,48 +1,44 @@
 import { useEffect, useState } from "react";
 import AddTeamMember from "../modals/addTeamMemberModal";
 import UpdateTeamMember from "../modals/updateTeamMemberModal";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addTeamRequest,
   deleteTeamRequest,
+  editTeamRequest,
   fetchTeamsRequest,
 } from "../../../redux/actions/teamActions";
 import { fetchRolesRequest } from "../../../redux/actions/rolesActions";
 import TeamTable from "../tables/teamTable";
 import filter_list from "../../../assets/filter_list.png";
 import { AddButton } from "../../../commons/components/buttons/addButton";
-import ConfirmModal from "../../../commons/modal/confirmModal";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 
 function Teams() {
   const dispatch = useDispatch();
   const { teams, totalPages, page } = useSelector((state) => state.team);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
-  const [editMode, setEditMode] = useState(false);
-  const [selectedMember, setSelectedMember] = useState(null);
+
   const [modalType, setModalType] = useState("");
   const [editData, setEditData] = useState(null);
   const [isDone, setIsDone] = useState(false);
 
   const handleOpenAddModal = () => {
-    setEditMode(false);
     setModalType("add");
-    setSelectedMember(null);
     setIsModalOpen(true);
   };
 
-  const handleOpenEditModal = (member, data) => {
-    setDropdownVisible(false);
-    setEditMode(true);
+  const handleOpenEditModal = () => {
     setModalType("edit");
-    setSelectedMember(member);
-    setEditData(data);
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedMember(null);
   };
 
   const handleDelete = (teamId) => {
@@ -75,10 +71,19 @@ function Teams() {
       setCurrentPage((prev) => prev - 1);
     }
   };
-  const handleAddSuccess = () => {
+  const handleAddTeam = (data) => {
+    dispatch(addTeamRequest(data));
     // Reset currentPage to 1 and fetch the updated teams
     setCurrentPage(1);
     dispatch(fetchTeamsRequest(1));
+  };
+
+  const handleUpdateTeam = (id, data) => {
+    dispatch(editTeamRequest(id, data));
+  };
+
+  const handleSetEditData = (data) => {
+    setEditData(data);
   };
 
   useEffect(() => {
@@ -87,7 +92,7 @@ function Teams() {
       setCurrentPage(1);
     }
     dispatch(fetchRolesRequest());
-  }, [dispatch, page, teams]);
+  }, [dispatch, page, teams, editData]);
 
   return (
     <>
@@ -95,20 +100,15 @@ function Teams() {
         isOpen={isModalOpen && modalType === "add"}
         onClose={handleCloseModal}
         setIsDone={setIsDone}
-        onAddSuccess={handleAddSuccess}
+        onAddTeam={handleAddTeam}
       />
       <UpdateTeamMember
         isOpen={isModalOpen && modalType === "edit"}
         onClose={handleCloseModal}
-        editMode={editMode}
-        memberToEdit={selectedMember}
         data={editData}
+        onUpdateTeam={handleUpdateTeam}
       />
-      <ConfirmModal
-        isOpen={isDone}
-        onClose={() => setIsDone(false)}
-        text="Member Added!"
-      />
+
       <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
         <section className="py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">
@@ -157,7 +157,6 @@ function Teams() {
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <TeamTable
-                teams={teams}
                 handleDelete={handleDelete}
                 handleOpenEditModal={handleOpenEditModal}
                 dropdownVisible={dropdownVisible}
@@ -165,7 +164,7 @@ function Teams() {
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 currentPage={currentPage}
-                totalPages={totalPages}
+                onSetEditData={handleSetEditData}
               />
             </div>
           </div>

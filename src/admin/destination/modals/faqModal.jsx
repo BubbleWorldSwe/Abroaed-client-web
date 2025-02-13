@@ -47,19 +47,17 @@ const FaqModal = ({ closeModal, filledData, onUpdate }) => {
   };
 
   return (
-    <div>
+    <div className="w-[700px] max-w-full mx-auto">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-3 gap-6 mb-5">
-          <TextInputField
-            label="Question"
-            name="question"
-            type="text"
-            value={formData.question}
-            onChange={(e) => handleInputChange(e, "question")}
-            required
-            placeholder="Enter Question"
-          />
-        </div>
+        <TextInputField
+          label="Question"
+          name="question"
+          type="text"
+          value={formData.question}
+          onChange={(e) => handleInputChange(e, "question")}
+          required
+          placeholder="Enter Question"
+        />
 
         <TextareaInputField
           label="Answer"

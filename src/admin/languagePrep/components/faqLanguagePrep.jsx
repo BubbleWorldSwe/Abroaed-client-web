@@ -2,12 +2,15 @@ import { useSelector } from "react-redux";
 
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { useState } from "react";
 
 const LanguageFaqs = ({ onEdit, onUpdate }) => {
   const languagePrepDetails = useSelector(
     (state) => state.languagePreps.selectedLanguagePrep
   );
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const handleEditClick = (faq) => {
     onEdit(faq);
   };
@@ -21,7 +24,7 @@ const LanguageFaqs = ({ onEdit, onUpdate }) => {
     const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
     console.log(faqWithoutId);
 
-    //  onUpdate({ faqs: faqWithoutId });
+    onUpdate({ faqs: faqWithoutId });
   }
 
   return (
@@ -60,7 +63,11 @@ const LanguageFaqs = ({ onEdit, onUpdate }) => {
                       src={trash}
                       alt="Delete"
                       className="w-5 h-5 cursor-pointer"
-                      onClick={() => handleDeleteClick(data?._id)}
+                      //  onClick={() => handleDeleteClick(data?._id)}
+                      onClick={() => {
+                        setDeleteId(data?._id);
+                        setIsModalOpen(!isModalOpen);
+                      }}
                     />
                   </div>
                 </td>
@@ -73,6 +80,15 @@ const LanguageFaqs = ({ onEdit, onUpdate }) => {
           <p className="text-center py-4 text-gray-500">No Records</p>
         </div>
       )}
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleDeleteClick(deleteId);
+          setIsModalOpen(false);
+        }}
+      />
     </div>
   );
 };

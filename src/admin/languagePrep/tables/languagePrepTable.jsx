@@ -7,6 +7,7 @@ import { formatDate, formatDateTime } from "../../../utils/helper";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { setSelectedLanguagePrep } from "../../../redux/actions/languagePrepsActions";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 
 const LanguagePrepTable = ({
   currentPage,
@@ -19,6 +20,9 @@ const LanguagePrepTable = ({
   );
 
   const dispatch = useDispatch();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
 
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -52,10 +56,16 @@ const LanguagePrepTable = ({
   }, []);
 
   return (
-    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead className="text-xs text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+    <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" className="p-4"></th>
+          <th scope="col" className="p-4">
+            <CheckboxField
+              onClick={(e) => e.stopPropagation()}
+              id={`checkbox-college-all`}
+              htmlFor={`checkbox-college-all`}
+            />
+          </th>
           <th scope="col" className="px-4 py-3 min-w-[14rem]">
             Product Name
           </th>
@@ -139,9 +149,15 @@ const LanguagePrepTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={() => {
+                            /*  onClick={() => {
                               handleDelete(language._id);
                               setDropdownVisible(null);
+                            }} */
+
+                            onClick={() => {
+                              setDeleteId(language._id);
+                              setIsModalOpen(!isModalOpen);
+                              //setDropdownVisible(null);
                             }}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
@@ -163,6 +179,17 @@ const LanguagePrepTable = ({
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         tableData={languagePreps}
+        colSpan={6}
+      />
+
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleDelete(deleteId);
+          setIsModalOpen(false);
+        }}
       />
     </table>
   );

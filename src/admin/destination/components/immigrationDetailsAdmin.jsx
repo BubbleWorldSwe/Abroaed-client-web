@@ -1,11 +1,17 @@
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
 import { useSelector } from "react-redux";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { useState } from "react";
 
 const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
   const details = useSelector(
     (state) => state.destinations.selectedDestination
   );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+
   const handleEditClick = (data) => {
     onEdit(data);
   };
@@ -45,10 +51,14 @@ const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
               </button>
               <button
                 type="button"
-                onClick={() => handleDeleteClick(data?._id)}
+                // onClick={() => handleDeleteClick(data?._id)}
+                onClick={() => {
+                  setDeleteId(data?._id);
+                  setIsModalOpen(!isModalOpen);
+                }}
                 className="p-0 bg-transparent border-0"
               >
-                <img src={trash} alt="edit Icon" className="w-4 h-4" />
+                <img src={trash} alt="delete Icon" className="w-4 h-4" />
               </button>
             </div>
             <p className="text-gray-700 dark:text-gray-300">
@@ -61,6 +71,16 @@ const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
           <p className="text-center py-4 text-gray-500">No Records</p>
         </div>
       )}
+
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleDeleteClick(deleteId);
+          setIsModalOpen(false);
+        }}
+      />
     </div>
   );
 };

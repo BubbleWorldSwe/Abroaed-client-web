@@ -9,6 +9,7 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
+import { testMode } from "../../../constants/values";
 
 const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
   const [formData, setFormData] = useState(
@@ -48,7 +49,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
       );
     } else {
       const newBatches = { ...formData };
-      updatedBatches = [...testPrepDetails.batches, newBatches];
+      updatedBatches = [newBatches, ...testPrepDetails.batches];
     }
 
     const batchesWithoutId = updatedBatches.map(({ _id, ...rest }) => rest);
@@ -93,7 +94,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
             name="mode"
             value={formData.mode}
             onChange={(e) => handleInputChange(e, "mode")}
-            options={["Online", "Offline"].map((data) => ({
+            options={testMode.map((data) => ({
               label: data,
               value: data,
             }))}
@@ -123,7 +124,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
           <TextInputField
             label="Duration (Months)"
             name="duration"
-            type="text"
+            type="number"
             value={formData.duration}
             onChange={(e) => handleInputChange(e, "duration")}
             required
@@ -131,9 +132,9 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
           />
 
           <TextInputField
-            label="Fees"
+            label="Fees (in ₹)"
             name="fees"
-            type="text"
+            type="number"
             value={formData.fees}
             onChange={(e) => handleInputChange(e, "fees")}
             required

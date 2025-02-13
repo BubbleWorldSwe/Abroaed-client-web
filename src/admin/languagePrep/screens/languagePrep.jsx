@@ -145,7 +145,6 @@ const LanguagePrep = () => {
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <LanguagePrepTable
                 currentPage={currentPage}
-                languages={languagePreps}
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}

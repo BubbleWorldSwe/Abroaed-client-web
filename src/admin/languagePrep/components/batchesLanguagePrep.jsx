@@ -1,12 +1,15 @@
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
 import { useSelector } from "react-redux";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { useState } from "react";
 
 const Batches = ({ onEdit, onUpdate }) => {
   const languagePrepDetails = useSelector(
     (state) => state.languagePreps.selectedLanguagePrep
   );
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const handleEditClick = (batches) => {
     console.log(batches);
     onEdit(batches);
@@ -58,7 +61,11 @@ const Batches = ({ onEdit, onUpdate }) => {
                         src={trash}
                         alt="Delete"
                         className="w-5 h-5 cursor-pointer"
-                        onClick={() => handleDeleteClick(data?._id)}
+                        //    onClick={() => handleDeleteClick(data?._id)}
+                        onClick={() => {
+                          setDeleteId(data?._id);
+                          setIsModalOpen(!isModalOpen);
+                        }}
                       />
                     </div>
                   </td>
@@ -77,6 +84,15 @@ const Batches = ({ onEdit, onUpdate }) => {
           </tbody>
         </table>
       </div>
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleDeleteClick(deleteId);
+          setIsModalOpen(false);
+        }}
+      />
     </div>
   );
 };

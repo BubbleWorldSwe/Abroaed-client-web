@@ -1,58 +1,85 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
+const FaqModalCollege = ({ closeModal, filledData, onUpdate }) => {
+  const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
 
-const FaqModalCollege = ({ closeModal }) => {
-    const [formData, setFormData] = useState({}); // To manage form inputs
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form submitted with data:", formData, image);
-        // You can handle the form submission here (e.g., API call, state update, etc.)
-        closeModal();
-    };
-    const handleInputChange = (e, fieldName) => {
-        setFormData({ ...formData, [fieldName]: e.target.value });
-    };
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div>
-                        <label htmlFor="question" className="block text-gray-500 mt-4 font-semibold">
-                            Question
-                        </label>
-                        <input
-                            type="text"
-                            id="question"
-                            onChange={(e) => handleInputChange("question", e.target.value)}
-                            className="w-full py-2 px-3 border-none bg-gray-100 rounded mt-1"
-                            placeholder="Enter Question"
-                        />
-                    </div>
+  const [formData, setFormData] = useState(
+    filledData || { question: "", answer: "" }
+  );
 
-                </div>
-                <label htmlFor="description" className="block font-semibold text-gray-500 mt-4">Answer </label>
-                <textarea
-                    id="description"
-                    value={formData.description || ""}
-                    onChange={(e) => handleInputChange(e, 'description')}
-                    className="w-full py-2 px-3 border-none bg-gray-100 rounded mt-1"
-                    placeholder="Provide Answer"
-                ></textarea>
+  const handleInputChange = (e, fieldName) => {
+    setFormData({ ...formData, [fieldName]: e.target.value });
+  };
 
-                <div className="text-end">
-                    <button
-                        type="button"
-                        className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-                        onClick={closeModal}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                </div>
-            </form>
+  const handleSubmit = (e) => {
+    try {
+      e.preventDefault();
 
+      if (!formData.question.trim() || !formData.answer.trim()) {
+        toast.error("Please fill in all fields before submitting.");
+        return;
+      }
+
+      let updatedFaqs = [];
+
+      if (filledData) {
+        updatedFaqs = collegeDetails.faqSchema.map((faq) =>
+          faq._id === filledData._id ? formData : faq
+        );
+      } else {
+        const newFaq = { ...formData };
+        updatedFaqs = [newFaq, ...collegeDetails.faqSchema];
+      }
+
+      const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
+
+      //   console.log(faqWithoutId);
+
+      onUpdate({ faqSchema: faqWithoutId });
+
+      // closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <div className="w-[700px] max-w-full mx-auto">
+      <form onSubmit={handleSubmit}>
+        <div className="mb-5">
+          <TextInputField
+            label="Question"
+            name="question"
+            type="text"
+            value={formData.question}
+            onChange={(e) => handleInputChange(e, "question")}
+            required
+            placeholder="Enter Question"
+          />
         </div>
-    )
-}
 
-export default FaqModalCollege
+        <TextareaInputField
+          label="Answer"
+          name="answer"
+          type="text"
+          value={formData.answer}
+          onChange={(e) => handleInputChange(e, "answer")}
+          required
+          placeholder="Enter Answer"
+        />
+
+        <div className="text-end mt-10">
+          <ModalCloseButton label="Cancel" onClick={closeModal} />
+          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default FaqModalCollege;

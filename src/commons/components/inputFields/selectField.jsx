@@ -16,7 +16,7 @@ export function SelectField({
         onChange={onChange}
         required={required}
       >
-        <option value="" className="text-gray-100">
+        <option value="" className="text-gray-400">
           Select
         </option>
         {options.map((data, i) => (

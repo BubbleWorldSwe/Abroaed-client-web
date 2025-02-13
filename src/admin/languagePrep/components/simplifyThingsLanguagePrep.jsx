@@ -1,12 +1,15 @@
 import { useSelector } from "react-redux";
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { useState } from "react";
 
 const SimplifyThings = ({ onEdit, onUpdate }) => {
   const languagePrepDetails = useSelector(
     (state) => state.languagePreps.selectedLanguagePrep
   );
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
   const handleEditClick = (data) => {
     console.log(data);
     onEdit(data);
@@ -64,7 +67,11 @@ const SimplifyThings = ({ onEdit, onUpdate }) => {
                     src={trash}
                     alt="Delete"
                     className="w-5 h-5 cursor-pointer"
-                    onClick={() => handleDeleteClick(item?._id)}
+                    //    onClick={() => handleDeleteClick(item?._id)}
+                    onClick={() => {
+                      setDeleteId(item?._id);
+                      setIsModalOpen(!isModalOpen);
+                    }}
                   />
                 </div>
               </td>
@@ -78,6 +85,15 @@ const SimplifyThings = ({ onEdit, onUpdate }) => {
           </tr>
         )}
       </tbody>
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleDeleteClick(deleteId);
+          setIsModalOpen(false);
+        }}
+      />
     </table>
   );
 };

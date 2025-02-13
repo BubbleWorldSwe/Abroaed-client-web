@@ -6,6 +6,7 @@ import { TextareaInputField } from "../../../commons/components/inputFields/text
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { languages } from "../../../constants/values";
 
 const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
   const languagePrepDetails = useSelector(
@@ -46,7 +47,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
       );
     } else {
       const newBatches = { ...formData };
-      updatedBatches = [...languagePrepDetails.batches, newBatches];
+      updatedBatches = [newBatches, ...languagePrepDetails.batches];
     }
 
     const batchesWithoutId = updatedBatches.map(({ _id, ...rest }) => rest);
@@ -91,7 +92,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             name="language"
             value={formData.language}
             onChange={(e) => handleInputChange(e, "language")}
-            options={["French", "English", "Dutch"].map((data) => ({
+            options={languages.map((data) => ({
               label: data,
               value: data,
             }))}
@@ -101,7 +102,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
           <TextInputField
             label="Seats"
             name="seats"
-            type="text"
+            type="number"
             value={formData.seats}
             onChange={(e) => handleInputChange(e, "seats")}
             required
@@ -112,7 +113,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
           <TextInputField
             label="Duration (Months)"
             name="duration"
-            type="text"
+            type="number"
             value={formData.duration}
             onChange={(e) => handleInputChange(e, "duration")}
             required
@@ -120,9 +121,9 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
           />
 
           <TextInputField
-            label="Fees"
+            label="Fees (in ₹)"
             name="fees"
-            type="text"
+            type="number"
             value={formData.fees}
             onChange={(e) => handleInputChange(e, "fees")}
             required
