@@ -1,4 +1,3 @@
-import { languagesData } from "../data";
 import LanguagePrepTable from "../tables/languagePrepTable";
 import filter_list from "../../../assets/filter_list.png";
 import { useDispatch, useSelector } from "react-redux";

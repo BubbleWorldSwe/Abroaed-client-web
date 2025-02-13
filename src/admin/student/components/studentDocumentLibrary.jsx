@@ -24,7 +24,7 @@ const StudentDocumentLibrary = () => {
                 {/* Header with title and pencil icon button */}
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold">Document Library</h2>
-                    <img src={pencil} alt="pencil-pic" />
+                    <img src={pencil} alt="pencil-pic" className="w-6 h-6" />
                 </div>
                 <div>
                     <div className="mb-4 dark:border-gray-700">

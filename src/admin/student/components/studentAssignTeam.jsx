@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, useState } from 'react';
 import pencil from '../../../assets/pencil.png'
 
@@ -62,7 +63,7 @@ const StudentAssignTeam = () => {
             {/* Header with title and pencil icon button */}
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold">Assigned Team</h2>
-                <img src={pencil} alt='pencil-pic' />
+                <img src={pencil} alt='pencil-pic' className='w-6 h-6' />
             </div>
 
             {/* Grid container for team details */}
