@@ -5,7 +5,7 @@ const StudentPersonDetails = () => {
         <div className="w-full mx-auto   p-5 bg-white rounded-lg shadow-lg">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-bold">Personal Information</h2>
-                <img src={pencil} alt="pencil-img" />
+                <img src={pencil} alt="pencil-img" className='w-6 h-6' />
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="flex flex-col">
