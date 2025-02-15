@@ -24,7 +24,7 @@ import {
   setSelectedDestination,
 } from "../../../redux/actions/destinationActions";
 import { useDispatch, useSelector } from "react-redux";
-import OverviewDest from "../components/OverviewDest";
+import OverviewDest from "../components/overviewDest";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function DestinationDetails() {
