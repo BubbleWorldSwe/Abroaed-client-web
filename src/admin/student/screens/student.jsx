@@ -2,10 +2,9 @@ import { useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import StudentTable from "../tables/studentTable";
 import { studentsData } from "../data";
-import AddStudentModal from "../modals/AddStudentModal";
-import ServiceTypePlanStudent from "../modals/ServiceTypePlanStudent";
-
-import AssignTeamMemberStudent from "../modals/AssignTeamMemberStudent";
+import AddStudentModal from "../modals/addStudentModal";
+import ServiceTypePlanStudent from "../modals/serviceTypePlanStudent";
+import AssignTeamMemberStudent from "../modals/assignTeamMemberStudent";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 
 function Student() {
