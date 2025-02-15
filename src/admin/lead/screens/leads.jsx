@@ -3,7 +3,7 @@ import AssignTeamModal from "../modals/assignTeamMemberModal";
 import filter_list from "../../../assets/filter_list.png";
 import { leadsData } from "../data";
 import LeadTable from "../tables/leadTable";
-import AppointmentModal from "../modals/AppointmentModal";
+import AppointmentModal from "../modals/appointmentModal";
 import UpdateLeadStatus from "../modals/updateLeadStatusModal";
 
 function Leads() {
