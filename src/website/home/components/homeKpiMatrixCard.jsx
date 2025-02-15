@@ -18,7 +18,7 @@ const HomeKpiMatrixCard = ({ imgSrc, name, role, description, socialLinks }) => 
         >
             KPI Metric
         </h1>
-        <p className="text-gray-100 lg:mb-2 sm:text-lg z-10 mt-2">Explore</p>
+        <p className="text-gray-100 lg:mb-2 sm:text-lg  mt-2">Explore</p>
     </div>
 );
 

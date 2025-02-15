@@ -27,7 +27,7 @@ import DestinationLeadForm from "./sections/destinationLeadForm";
 function DestinationPage() {
 
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <DestinationHeroSection header={'Study in United Kingdom'} text={`Learn more about the exciting places where you can study`} img={destinationHeroImg} />
       <DestinationRoutingSection />

@@ -20,8 +20,8 @@ const NavigationItems = () => {
       <p>
         Get personalized, one-on-one counseling with experienced consultants to help you navigate your study abroad plans for free.
       </p>
-      <div className="flex gap-2 mt-10 whitespace-nowrap">
-        <button className="px-3 py-2 mb-5 rounded-lg text-gray-500  bg-[#FDDA24] " >Book Counselling Now</button>
+      <div className="flex gap-2 mt-5 whitespace-nowrap">
+        <button className="p-3 text-base mb-2 rounded-lg text-[#432205]  bg-[#FDDA24] " >Book Counselling Now</button>
       </div>
     </div>
   );
@@ -29,7 +29,7 @@ const NavigationItems = () => {
 
 const HomeCounsellingPage = () => {
   return (
-    <div>
+    <div className='font-rethink'>
       <Header />
       <HomeCounsellingHeroSection
         header="Start Your Journey From the Comfort of Home!"

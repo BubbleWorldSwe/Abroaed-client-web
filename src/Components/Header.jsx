@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+
   const [dropdowns, setDropdowns] = useState({
     whyAbroad: false,
     exploreCourses: false,
@@ -15,28 +16,26 @@ function Header() {
     }));
   };
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setIsScrolled(window.scrollY > 0);
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
-      className={`w-full sticky top-0 z-[30] transition-all duration-300 ease-in-out ${isScrolled
-        ? "bg-yellow-300 shadow-md opacity-100"
-        : "bg-transparent "
-        }`}
+      className={`w-full z-[30] transition-all duration-300 ease-in-out bg-yellow-300 shadow-md opacity-100`}
     >
       <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
-        <div className={`py-3   ${"bg-yellow-300 shadow-md opacity-100"}`}>
+        <div className={`py-3   ${"bg-yellow-200"}`}>
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <a
               href="#"
               title=""
-              className="flex items-center justify-center gap-2  font-inter text-sm hover:underline text-white dark:text-yellow-300"
+              className="flex items-cent+er justify-center gap-2  font-inter text-sm hover:underline text-yellow-700 dark:text-yellow-300"
             >
               Improve Your IELTS Writing with Our Free Tool 🔍
               <svg
@@ -59,7 +58,7 @@ function Header() {
             </a>
           </div>
         </div>
-        <nav className="flex items-center w-full px-6 py-4 bg-white">
+        <nav className="flex items-center w-full px-6 py-4">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
 
@@ -75,7 +74,7 @@ function Header() {
           </div>
 
           {/* Second Div: Links Section */}
-          <div className="flex-grow basis-[80%] flex items-center justify-center relative text-yellow-500">
+          <div className="flex-grow basis-[80%] flex items-center justify-center relative">
             <ul className="flex flex-row mt-0 space-x-8 text-sm font-medium">
               <li>
                 <a
@@ -126,7 +125,7 @@ function Header() {
                 <button
                   id="mega-menu-button"
                   onClick={() => toggleDropdown("exploreCourses")}
-                  className="flex   rounded text-yellow-700 dark:text-primary-500"
+                  className="flex rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
 
@@ -354,14 +353,6 @@ function Header() {
                 </a>
               </li>
               <li>
-                <a
-                  href="/ivyLeagues"
-                  className="block  rounded text-yellow-700 dark:text-primary-500"
-                >
-                  Ivy Leagues
-                </a>
-              </li>
-              <li>
                 <button
                   onClick={() => toggleDropdown("testPrep")}
                   className="block  rounded text-yellow-700 dark:text-primary-500"
@@ -441,7 +432,7 @@ function Header() {
               <li>
                 <a
                   href="/accomodation"
-                  className="block dark:text-white rounded text-yellow-700 "
+                  className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
                   Accommodation
                 </a>
@@ -449,7 +440,7 @@ function Header() {
               <li>
                 <a
                   href="/pathways"
-                  className="block "
+                  className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
                   Pathways
                 </a>
@@ -457,7 +448,7 @@ function Header() {
               <li>
                 <a
                   href="/pathwaysProgram"
-                  className="block  rounded  dark:text-primary-500"
+                  className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
                   Pathways Program
                 </a>
@@ -465,7 +456,7 @@ function Header() {
               <li>
                 <a
                   href="/college"
-                  className="block  rounded  dark:text-primary-500"
+                  className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
                   College
                 </a>
@@ -480,8 +471,6 @@ function Header() {
               </li>
             </ul>
           </div>
-
-          {/* Third Div: Social Media Links */}
           <div className="flex flex-grow-0 basis-[10%] justify-end gap-2">
             <a
               href="/admin/signin"
@@ -489,8 +478,6 @@ function Header() {
             >
               Login
             </a>
-
-            {/* Additional social media icons */}
           </div>
         </nav>
       </nav>

@@ -23,7 +23,7 @@ import PathwaysProgramLeadFormSection from "./sections/pathwaysProgramLeadFormSe
 
 const PathwaysProgramPage = () => {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <PathwaysProgramHeroSection header={'Pathways Program Name'} text={'Batch Starts: Jan 1, 2025 | Abroad Intake: Aug’ 2025'} img={dark} />
       <PathwaysProgramKpiMatrixSection title={""} header={"Key Benefits of Program"} subtitle={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "} />

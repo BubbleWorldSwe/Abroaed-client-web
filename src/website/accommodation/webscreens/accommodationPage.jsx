@@ -9,7 +9,7 @@ import AccommodationLeadFormSection from "./sections/accommodationLeadFormSectio
 
 function AccomodationPage() {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <AccommodationHeroSection />
       <AccommodationResultForCountry />

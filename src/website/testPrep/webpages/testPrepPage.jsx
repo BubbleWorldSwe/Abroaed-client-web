@@ -19,7 +19,7 @@ import TestPrepLeadFormSection from "./sections/testPrepLeadFormSection";
 
 function TestPrepLayout() {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <TestPrepHero />
       <div className='relative '>

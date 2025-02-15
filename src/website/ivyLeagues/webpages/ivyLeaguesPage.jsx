@@ -57,7 +57,7 @@ function IvyLeaguesPage() {
       </div>
       <div className="relative">
         <IvyLeagueAdmissionRequirementSection />
-        <div className="absolute  bottom-28 -right-10 z-0">
+        <div className="absolute bottom-28 right-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorleftNose}

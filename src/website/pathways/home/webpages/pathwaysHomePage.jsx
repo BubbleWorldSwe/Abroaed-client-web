@@ -15,7 +15,7 @@ import PathwaysHomeLeadForm from './sections/pathwaysHomeLeadFormSection'
 
 function PathwaysHomePage() {
   return (
-    <div>
+    <div className='font-rethink'>
       <Header />
       <PathwaysHomeHero />
       <div className='relative'>

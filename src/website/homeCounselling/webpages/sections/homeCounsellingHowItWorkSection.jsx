@@ -3,7 +3,7 @@ import vectorRightRing from "../../../../assets/vectorRightRing.png"
 
 const HomeCounsellingHowItWork = () => {
     return (
-        <div className="relative mx-auto px-10">
+        <div className="relative mx-auto px-10 bg-white">
             <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
                 <section className="dark:bg-gray-900">
                     <div className="py-8 lg:py-16">

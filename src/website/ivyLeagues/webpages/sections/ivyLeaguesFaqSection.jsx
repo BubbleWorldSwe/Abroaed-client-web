@@ -10,13 +10,10 @@ const IvyLeaguesFaqSection = () => {
 
     return (
         <div className="h-auto py-8 w-full dark:bg-black relative flex items-center justify-center">
-            {/* Blurred Gradient Overlay */}
             <div
-                className="absolute top-0 left-0 w-full h-32 z-10 pointer-events-none"
-
-            ></div>
+                className="absolute top-0 left-0 w-full h-32 z-10 pointer-events-none"></div>
             <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-            <section className="z-[999] bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
+            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
                 <h2 className="mb-6 font-inter lg:mb-8 text-3xl lg:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
                     Frequently Asked Questions
                 </h2>
@@ -50,7 +47,6 @@ const IvyLeaguesFaqSection = () => {
                             answer:
                                 "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
                         },
-                        // Add more FAQs here
                     ].map((faq, index) => (
                         <div key={index}>
                             <h2 id={`accordion-flush-heading-${index}`}>

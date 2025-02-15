@@ -11,7 +11,7 @@ import FinanceForm from "./sections/financeForm";
 
 function FinancePage() {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <FinanceHeroSection />
       <FinanceHowItWorks />

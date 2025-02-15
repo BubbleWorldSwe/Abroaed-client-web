@@ -22,7 +22,7 @@ import CollegeLeadFormSection from "./sections/collegeLeadFormSection";
 
 const NavigationItems = () => {
   return (
-    <div className="text-white px-2 mt-10 opacity-70 text-xl flex justify-between">
+    <div className="text-white px-2 mt-8 opacity-70 text-xl flex justify-between">
       <p>
         Private
       </p>
@@ -42,7 +42,7 @@ const NavigationItems = () => {
 
 function CollegePage() {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <CollegeHeroSection
         header="Charles Darwin University"

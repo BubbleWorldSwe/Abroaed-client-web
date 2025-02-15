@@ -13,12 +13,12 @@ const TextPrepFaqSection = () => {
         <div className="h-auto py-8 w-full dark:bg-black relative flex items-center justify-center">
             {/* Blurred Gradient Overlay */}
             <div
-                className="absolute top-0 left-0 w-full h-32 z-10 pointer-events-none"
+                className="absolute top-0 left-0 w-full h-32  pointer-events-none"
 
             ></div>
 
             <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-            <section className="z-[999] bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
+            <section className="z-[10] bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
                 <h2 className="mb-6 font-inter lg:mb-8 text-3xl lg:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
                     Frequently Asked Questions
                 </h2>

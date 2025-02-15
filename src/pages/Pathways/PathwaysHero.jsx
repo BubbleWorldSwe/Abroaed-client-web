@@ -1,11 +1,11 @@
 
-import image from "../../../../../assets/dark.png";
+import image from "../../assets/dark.png";
 
-function PathwaysHomeHero() {
+function PathwaysHero() {
     return (
         <div className="font-rethink">
             <section
-                className="relative h-[75vh] bg-cover bg-center"
+                className="relative h-[92vh] bg-cover bg-center"
                 style={{
                     backgroundImage: `url(${image})`,
                 }}
@@ -41,4 +41,4 @@ function PathwaysHomeHero() {
     )
 }
 
-export default PathwaysHomeHero
+export default PathwaysHero

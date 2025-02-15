@@ -3,9 +3,9 @@ import image from "../../../../assets/dark.png";
 
 function FinanceHeroSection() {
   return (
-    <div>
+    <div className="font-rethink">
       <section
-        className="relative h-screen bg-cover bg-center"
+        className="relative h-[75vh] bg-cover bg-center"
         style={{
           backgroundImage: `url(${image})`,
         }}
