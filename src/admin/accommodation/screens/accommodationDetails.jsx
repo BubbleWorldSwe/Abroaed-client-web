@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import DeleteModal from "../../../Components/Modals/DeleteModal";
 import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
-import AccommodationImageSection from "../components/accommodationImageSection";
+import AccommodationImageSection from "../components/accommodationImgSection";
 import AccommodationDescription from "../components/accommodationDescription";
 import AccommodationLocation from "../components/accommodationLocation";
 import AccommodationPrice from "../components/accommodationPrice";
