@@ -4,7 +4,7 @@ import StudentAssignTeam from "../components/studentAssignTeam";
 import StudentDocumentLibrary from "../components/studentDocumentLibrary";
 import StudentPersonDetails from "../components/studentPersonDetails";
 import StudentProfile from "../components/studentProfile";
-import StudentSavedPreference from "../components/StudentSavedPreference";
+import StudentSavedPreference from "../components/studentSavedPreference";
 import StudentTransaction from "../components/studentTransaction";
 
 
