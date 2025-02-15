@@ -9,7 +9,7 @@ import AboutUsContentSection from "./sections/aboutUsContentSection";
 
 function AboutUsPage() {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <AboutUsHeroSection />
       <AboutUsContentSection />

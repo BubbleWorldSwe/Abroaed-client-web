@@ -23,7 +23,7 @@ import HomeCounsellingPage from "../website/homeCounselling/webpages/homeCounsel
 import Transaction from "../admin/transaction/screens/transaction";
 import StudentProfileLayout from "../admin/student/screens/studentProfileLayout";
 import DestinationDetails from "../admin/destination/screens/destinationDetails";
-import Destinations from "../admin/destination/screens/Destinations";
+import Destinations from "../admin/destination/screens/destinations";
 import Teams from "../admin/team/screens/teams";
 import College from "../admin/college/screens/college";
 import CollegDetails from "../admin/college/screens/collegeDetails";

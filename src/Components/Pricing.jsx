@@ -1,4 +1,3 @@
-import React from "react";
 
 //grid styles dark:bg-grid-white/[0.2] bg-grid-yellow-500/[0.2]
 function Pricing() {
