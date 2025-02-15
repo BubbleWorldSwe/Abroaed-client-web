@@ -1,47 +1,59 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import toast from "react-hot-toast";
 
-const AvailabilityModal = ({ closeModal }) => {
-    const [formData, setFormData] = useState({});
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        closeModal();
-    };
-    const handleInputChange = (e, fieldName) => {
-        setFormData({ ...formData, [fieldName]: e.target.value });
-    };
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1  gap-1">
-                    <div>
-                        <label htmlFor="availability" className="block text-gray-500 mt-4 font-semibold">
-                            Availability
-                        </label>
-                        <input
-                            type="text"
-                            id="availability"
-                            onChange={(e) => handleInputChange("availability", e.target.value)}
-                            className="w-full p-1 border-none bg-gray-100  rounded mt-1"
-                            placeholder="Enter Availability"
-                        />
-                    </div>
+const AvailabilityModal = ({ closeModal, onUpdate }) => {
+  const accommodationDetails = useSelector(
+    (state) => state?.accommodations?.selectedAccommodation
+  );
 
-                </div>
-                <div className="text-end">
-                    <button
-                        type="button"
-                        className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-                        onClick={closeModal}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                </div>
-            </form>
+  const [formData, setFormData] = useState({
+    availablity: accommodationDetails?.availablity,
+  });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { availablity } = formData;
+
+    if (!availablity) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+    onUpdate({
+      availablity: availablity,
+    });
+  };
+
+  const handleInputChange = (e, fieldName) => {
+    setFormData({ ...formData, [fieldName]: e.target.value });
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 gap-1">
+          <TextInputField
+            label="Availability"
+            name="availablity"
+            type="text"
+            value={formData?.availablity || ""}
+            onChange={(e) => handleInputChange(e, "availablity")}
+            required
+            placeholder="Enter"
+          />
         </div>
-    )
-}
 
-export default AvailabilityModal
+        <div className="text-end mt-10">
+          <ModalCloseButton label={"Cancel"} onClick={closeModal} />
+          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AvailabilityModal;

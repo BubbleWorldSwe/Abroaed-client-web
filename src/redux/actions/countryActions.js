@@ -1,12 +1,18 @@
 // Action Types
 export const FETCH_COUNTRIES_REQUEST = "FETCH_COUNTRIES_REQUEST";
+export const FETCH_ALL_COUNTRIES_REQUEST = "FETCH_ALL_COUNTRIES_REQUEST";
 export const FETCH_COUNTRIES_SUCCESS = "FETCH_COUNTRIES_SUCCESS";
 export const FETCH_COUNTRIES_FAILURE = "FETCH_COUNTRIES_FAILURE";
+export const FETCH_ALL_COUNTRIES_SUCCESS = "FETCH_ALL_COUNTRIES_SUCCESS";
 
 // Action Creators
 export const fetchCountriesRequest = (searchTerm = "") => ({
   type: FETCH_COUNTRIES_REQUEST,
   payload: searchTerm,
+});
+
+export const fetchAllCountriesRequest = () => ({
+  type: FETCH_ALL_COUNTRIES_REQUEST,
 });
 
 export const fetchCountriesSuccess = (countries) => ({

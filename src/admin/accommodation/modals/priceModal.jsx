@@ -1,73 +1,81 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { CurrencyInputField } from "../../../commons/components/inputFields/currencyInputField";
 
-const PriceModal = ({ closeModal }) => {
-    const [formData, setFormData] = useState({});
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        closeModal();
-    };
-    const handleInputChange = (e, fieldName) => {
-        setFormData({ ...formData, [fieldName]: e.target.value });
-    };
+const PriceModal = ({ closeModal, onUpdate }) => {
+  const accommodationDetails = useSelector(
+    (state) => state?.accommodations?.selectedAccommodation
+  );
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1  gap-1">
-                    <div>
-                        <label htmlFor="currency" className="block text-gray-500 mt-4 font-semibold">
-                            Currency
-                        </label>
-                        <select
-                            id="currency"
-                            onChange={(e) => handleInputChange("currency", e.target.value)}
-                            className="py-1 px-4 w-full bg-gray-100 rounded mt-1 border border-gray-300 text-gray-500"
-                            defaultValue=""
-                        >
-                            <option value="" disabled>
-                                Select Currency
-                            </option>
-                            <option value="USD">USD - United States Dollar</option>
-                            <option value="GBP">GBP - British Pound Sterling</option>
-                            <option value="EUR">EUR - Euro</option>
-                            <option value="AUD">AUD - Australian Dollar</option>
-                            <option value="INR">INR - Indian Rupee</option>
-                            <option value="CAD">CAD - Canadian Dollar</option>
-                            <option value="JPY">JPY - Japanese Yen</option>
-                            <option value="CNY">CNY - Chinese Yuan</option>
-                        </select>
-                    </div>
+  const [formData, setFormData] = useState({
+    price: accommodationDetails?.price,
+    // currency: accommodationDetails.currency,
+  });
 
-                    <div>
-                        <label htmlFor="amount" className="block text-gray-500 mt-4 font-semibold">
-                            Amount
-                        </label>
-                        <input
-                            type="text"
-                            id="amount"
-                            onChange={(e) => handleInputChange("amount", e.target.value)}
-                            className="w-full p-1 border-none bg-gray-100  rounded mt-1"
-                            placeholder="Enter Amount/monthly"
-                        />
-                    </div>
+  const handleInputChange = (e, fieldName) => {
+    setFormData({ ...formData, [fieldName]: e.target.value });
+  };
 
-                </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { price } = formData;
 
-                <div className="text-end">
-                    <button
-                        type="button"
-                        className="mt-4 border-2 border-gray-500 text-gray-700 px-4 py-2 mr-2 rounded   transition"
-                        onClick={closeModal}
-                    >
-                        Cancel
-                    </button>
-                    <button type="submit" className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-                </div>
-            </form>
+    if (!price) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+    onUpdate({
+      price: price,
+    });
+  };
 
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 gap-5">
+          {/*  <TextInputField
+            label="Currency"
+            name="currency"
+            type="text"
+            value={formData?.currency || ""}
+            onChange={(e) => handleInputChange(e, "currency")}
+            disabled
+          />
+
+          <TextInputField
+            label="Price"
+            name="price"
+            type="text"
+            value={formData?.price || ""}
+            onChange={(e) => handleInputChange(e, "price")}
+            required
+            placeholder="Enter"
+          /> */}
+
+          <CurrencyInputField
+            label="Amount (Monthly)"
+            name="price"
+            type="text"
+            value={formData?.price || ""}
+            onChange={(e) => handleInputChange(e, "price")}
+            required
+            placeholder="Enter Amount (Monthly)"
+            currency={`${accommodationDetails?.currency}`}
+          />
         </div>
-    )
-}
 
-export default PriceModal
+        <div className="text-end mt-10">
+          <ModalCloseButton label={"Cancel"} onClick={closeModal} />
+          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default PriceModal;

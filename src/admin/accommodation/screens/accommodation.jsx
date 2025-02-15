@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import { accommodationData } from "../data";
 import AccommodationTable from "../tables/accommodationTable";
 import AddAccommodationModal from "../modals/addAccommodationModal";
 import ConfirmModal from "../../../commons/modal/confirmModal";
+import {
+  addAccommodationRequest,
+  deleteAccommodationRequest,
+  fetchAccommodationsRequest,
+} from "../../../redux/actions/accommodationActions";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 
 const Accommodations = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -14,12 +21,79 @@ const Accommodations = () => {
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { accommodations, totalPages } = useSelector(
+    (state) => state.accommodations
+  );
+
+  const handleAddAccommodation = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddAccommodation");
+    console.log(data);
+
+    dispatch(addAccommodationRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchAccommodationsRequest(1));
+    handleCloseAddModal();
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = accommodations.some(
+        (item) => item.index === currentPage + 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchAccommodationsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = accommodations.some(
+        (item) => item.index === currentPage - 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchAccommodationsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const fetchCountries = (q) => {
+    dispatch(fetchCountriesRequest(q));
+  };
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteAccommodationRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchAccommodationsRequest(1));
+  };
+
+  useEffect(() => {
+    if (accommodations?.length === 0) {
+      console.log("fetchAccommodationsRequest");
+      dispatch(fetchAccommodationsRequest(currentPage));
+    }
+  }, [dispatch, accommodations, currentPage]);
+
   return (
     <>
       <AddAccommodationModal
         isOpen={isAddModalOpen}
         onClose={handleCloseAddModal}
         setIsDone={setIsDone}
+        onAddAccommodation={handleAddAccommodation}
+        fetchCountries={fetchCountries}
       />
       <ConfirmModal
         isOpen={isDone}
@@ -99,7 +173,13 @@ const Accommodations = () => {
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
-              <AccommodationTable accommodationData={accommodationData} />
+              <AccommodationTable
+                accommodationData={accommodationData}
+                currentPage={currentPage}
+                handleNextPage={handleNextPage}
+                handlePrevPage={handlePrevPage}
+                handleDelete={handleDelete}
+              />
             </div>
           </div>
         </section>

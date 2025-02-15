@@ -9,7 +9,7 @@ import {
 export const getTestPreps = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/test-preps/list?page=${page}&limit=10`
+      `${BASE_URL}/api/v1/admin/test-preps/list?page=${page}&limit=20`
     );
     console.log(data);
     if (data.success) {

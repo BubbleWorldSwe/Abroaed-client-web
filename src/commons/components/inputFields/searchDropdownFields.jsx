@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 const SearchDropdownField = ({ label, options, onSelect, onSearch, value }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
+
+  useEffect(() => {
+    if (value) {
+      setQuery(value.label); // Set input value when prefilled
+    }
+  }, [value]);
 
   const handleSelect = (data) => {
     setQuery(data.label);
@@ -13,19 +16,9 @@ const SearchDropdownField = ({ label, options, onSelect, onSearch, value }) => {
     setIsDropdownOpen(false);
   };
 
-  const onSearchQuery = (data) => {
-    console.log(data);
-    setQuery(data);
-    onSearch(data);
-  };
-
   const filteredOptions = options.filter((option) =>
-    option.label.toLowerCase().includes(query.toLowerCase())
+    option.label.toLowerCase().includes(query?.toLowerCase())
   );
-
-  useEffect(() => {
-    console.log("options Updated " + options.length);
-  }, []);
 
   return (
     <div className="relative">
@@ -35,13 +28,16 @@ const SearchDropdownField = ({ label, options, onSelect, onSearch, value }) => {
           type="text"
           value={query}
           onFocus={() => setIsDropdownOpen(true)}
-          onChange={(e) => onSearchQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            onSearch(e.target.value);
+          }}
           placeholder="Search"
           className="mt-1 block w-full rounded-md bg-[#F4F4F5] border-none focus:ring-indigo-500 sm:text-sm"
         />
         <button
           type="button"
-          onClick={toggleDropdown}
+          onClick={() => setIsDropdownOpen((prev) => !prev)}
           className="absolute inset-y-0 right-2 flex items-center text-gray-400 focus:outline-none"
         >
           <svg

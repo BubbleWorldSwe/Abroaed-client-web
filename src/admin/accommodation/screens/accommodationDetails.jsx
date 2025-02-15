@@ -1,20 +1,24 @@
 /* eslint-disable no-constant-condition */
-import { useState } from 'react'
-import DeleteModal from '../../../Components/Modals/DeleteModal';
-import AddOverviewContentModal from '../../../Components/Modals/AddOverviewContentModal';
-import AccommodationImageSection from '../components/AccommodationImageSection';
-import AccommodationDescription from '../components/accommodationDescription';
-import AccommodationLocation from '../components/accommodationLocation';
-import AccommodationPrice from '../components/accommodationPrice';
+import { useEffect, useState } from "react";
+import DeleteModal from "../../../Components/Modals/DeleteModal";
+import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
+import AccommodationImageSection from "../components/AccommodationImageSection";
+import AccommodationDescription from "../components/accommodationDescription";
+import AccommodationLocation from "../components/accommodationLocation";
+import AccommodationPrice from "../components/accommodationPrice";
 import { motion } from "framer-motion";
-import DescriptionModal from '../modals/descriptionModal';
-import LocationModal from '../modals/locationModal';
-import PriceModal from '../modals/priceModal';
-import AvailabilityModal from '../modals/availabilityModal';
-import { sectionsData } from '../data';
-import AccommodationAvailability from '../components/AccommodationAvailability';
+import DescriptionModal from "../modals/descriptionModal";
+import LocationModal from "../modals/locationModal";
+import PriceModal from "../modals/priceModal";
+import AvailabilityModal from "../modals/availabilityModal";
+import { sectionsData } from "../data";
+import AccommodationAvailability from "../components/AccommodationAvailability";
+import { useDispatch, useSelector } from "react-redux";
+import { editAccommodationRequest } from "../../../redux/actions/accommodationActions";
+import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 
 const AccommodationDetails = () => {
+  const dispatch = useDispatch();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
@@ -22,7 +26,9 @@ const AccommodationDetails = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [modalType, setModalType] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
-
+  const accommodationDetails = useSelector(
+    (state) => state?.accommodations?.selectedAccommodation
+  );
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -39,11 +45,11 @@ const AccommodationDetails = () => {
   const openModal = (section, type, index) => {
     setSelectedSection(section);
     setModalType(type);
-    setActiveModalIndex(index)
+    setActiveModalIndex(index);
   };
   const sectionComponents = [
     { name: "Description", component: <AccommodationDescription /> },
-    { name: "Location", component: < AccommodationLocation /> },
+    { name: "Location", component: <AccommodationLocation /> },
     { name: "Price", component: <AccommodationPrice /> },
     { name: "Availability", component: <AccommodationAvailability /> },
   ];
@@ -52,20 +58,36 @@ const AccommodationDetails = () => {
     setSelectedSection(null);
   };
 
-  const modals = {
-    section0: (
-      <DescriptionModal closeModal={closeModal} />
-    ),
-    section1: (
-      <LocationModal closeModal={closeModal} />
-    ),
-    section2: (
-      <PriceModal closeModal={closeModal} />
-    ),
-    section3: (
-      <AvailabilityModal closeModal={closeModal} />
-    ),
+  const fetchCountries = (q) => {
+    dispatch(fetchCountriesRequest(q));
   };
+
+  async function onUpdate(data) {
+    try {
+      dispatch(editAccommodationRequest(accommodationDetails._id, data));
+
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const modals = {
+    section0: <DescriptionModal closeModal={closeModal} onUpdate={onUpdate} />,
+    section1: (
+      <LocationModal
+        fetchCountries={fetchCountries}
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+      />
+    ),
+    section2: <PriceModal closeModal={closeModal} onUpdate={onUpdate} />,
+    section3: <AvailabilityModal closeModal={closeModal} onUpdate={onUpdate} />,
+  };
+
+  useEffect(() => {
+    fetchCountries(accommodationDetails?.countryId?.name);
+  }, []);
 
   return (
     <div className="p-6 font-rethink">
@@ -98,7 +120,7 @@ const AccommodationDetails = () => {
                     className="px-4 py-4"
                     onClick={(e) => {
                       e.stopPropagation();
-                      openModal(sectionItem.name, "add", index)
+                      openModal(sectionItem.name, "add", index);
                     }}
                   >
                     <svg
@@ -125,7 +147,7 @@ const AccommodationDetails = () => {
                     className="px-4 py-4"
                     onClick={(e) => {
                       e.stopPropagation();
-                      openModal(sectionItem.name, "edit")
+                      openModal(sectionItem.name, "edit");
                     }}
                   >
                     <svg
@@ -173,7 +195,7 @@ const AccommodationDetails = () => {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-semibold mb-4">{selectedSection} Modal</h2>
+            <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
             <div className="mt-4">
               {/* Render the dynamic content based on modalType */}
               {modals[`section${activeModalIndex}`]}
@@ -183,6 +205,6 @@ const AccommodationDetails = () => {
       )}
     </div>
   );
-}
+};
 
 export default AccommodationDetails;

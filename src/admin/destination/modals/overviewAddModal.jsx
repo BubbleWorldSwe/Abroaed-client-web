@@ -114,7 +114,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         <TextInputField
           label="Total Population"
           name="totalPopulation"
-          type="text"
+          type="number"
           value={formData.totalPopulation}
           onChange={(e) =>
             handleInputChange(e?.target?.value, "totalPopulation")

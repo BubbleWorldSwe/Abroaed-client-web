@@ -135,7 +135,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
               <TextInputField
                 label="Average Salary"
                 name={`salary-${index}`}
-                type="text"
+                type="number"
                 value={profession.salary}
                 onChange={(e) =>
                   handleProfessionChange(index, "salary", e.target.value)

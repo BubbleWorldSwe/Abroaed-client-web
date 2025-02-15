@@ -6,10 +6,10 @@ import {
   makePostRequest,
 } from "../utils/apiUtils";
 
-export const getColleges = async (page) => {
+export const getAccommodations = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=20`
+      `${BASE_URL}/api/v1/admin/accomodation/list?page=${page}&limit=20`
     );
     console.log(data);
     if (data.success) {
@@ -20,12 +20,12 @@ export const getColleges = async (page) => {
   }
 };
 
-export const setAddCollege = async (credentials) => {
+export const setAddAccommodation = async (credentials) => {
   try {
     console.log(credentials);
 
     const data = await makePostRequest(
-      `${BASE_URL}/api/v1/admin/colleges/create`,
+      `${BASE_URL}/api/v1/admin/accomodation/create`,
       credentials
     );
     // console.log(data);
@@ -37,12 +37,12 @@ export const setAddCollege = async (credentials) => {
   }
 };
 
-export const setUpdateCollege = async (id, credentials) => {
+export const setUpdateAccommodation = async (id, credentials) => {
   try {
     console.log(credentials);
 
     const data = await makePatchRequest(
-      `${BASE_URL}/api/v1/admin/colleges/${id}`,
+      `${BASE_URL}/api/v1/admin/accomodation/${id}`,
       credentials
     );
     // console.log(data);
@@ -54,14 +54,14 @@ export const setUpdateCollege = async (id, credentials) => {
   }
 };
 
-export const setDeleteCollege = async (id) => {
+export const setDeleteAccommodation = async (id) => {
   try {
     console.log(id + " id");
 
     const data = await makeDeleteRequest(
-      `${BASE_URL}/api/v1/admin/colleges/${id}`
+      `${BASE_URL}/api/v1/admin/accomodation/${id}`
     );
-    // console.log(data);
+    console.log(data);
     if (data.success) {
       return data.data;
     }
@@ -70,11 +70,11 @@ export const setDeleteCollege = async (id) => {
   }
 };
 
-export const getCollegeDetailsById = async (id) => {
+export const getAccommodationDetailsById = async (id) => {
   try {
     console.log(id);
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/colleges/${id}`
+      `${BASE_URL}/api/v1/admin/accomodation/${id}`
     );
 
     if (data.success) {

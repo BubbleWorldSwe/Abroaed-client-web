@@ -69,7 +69,7 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
             key={field.id}
             label={field.label}
             name={`field-${field.id}`}
-            type="text"
+            type="number"
             value={field.value}
             onChange={(e) => handleInputChange(e, field.id)}
             placeholder="Enter Amount"
