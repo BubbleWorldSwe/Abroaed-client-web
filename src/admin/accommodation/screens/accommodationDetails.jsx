@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import DeleteModal from "../../../Components/Modals/DeleteModal";
 import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
-import AccommodationImageSection from "../components/AccommodationImageSection";
+import AccommodationImageSection from "../components/accommodationImageSection";
 import AccommodationDescription from "../components/accommodationDescription";
 import AccommodationLocation from "../components/accommodationLocation";
 import AccommodationPrice from "../components/accommodationPrice";
@@ -12,7 +12,7 @@ import LocationModal from "../modals/locationModal";
 import PriceModal from "../modals/priceModal";
 import AvailabilityModal from "../modals/availabilityModal";
 import { sectionsData } from "../data";
-import AccommodationAvailability from "../components/AccommodationAvailability";
+import AccommodationAvailability from "../components/accommodationAvailability";
 import { useDispatch, useSelector } from "react-redux";
 import { editAccommodationRequest } from "../../../redux/actions/accommodationActions";
 import { fetchCountriesRequest } from "../../../redux/actions/countryActions";

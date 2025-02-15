@@ -12,7 +12,7 @@ import IvyLeagueAdmissionRequirementSection from "./sections/ivyLeaguesAdmission
 import IvyLeaguesEligibilityCriteria from "./sections/ivyLeaguesEligibilityCriteria";
 import IvyLeaguesExpensesSection from "./sections/ivyLeaguesExpensesSection";
 import vectorDownNose from "../../../assets/vectorDownNose.png"
-import IvyLeaguesScholarshipSection from "./sections/IvyLeaguesScholarshipSection";
+import IvyLeaguesScholarshipSection from "./sections/ivyLeaguesScholarshipSection";
 import IvyLeaguesImmigrationDetailSection from "./sections/ivyLeaguesImmigrationDetailSection";
 import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png"
 import IvyLeaguesWorkOpportunitiesSection from "./sections/ivyLeaguesWorkOpportunitiesSection";
@@ -20,7 +20,7 @@ import vectorFoot from "../../../assets/vectorFoot.png"
 import IvyLeaguesStudentAccommodationSection from "./sections/ivyLeaguesStudentAccommodation";
 import IvyLeaguesFaqSection from "./sections/ivyLeaguesFaqSection";
 import IvyLeaguesBlogSection from "./sections/ivyLeaguesBlogSection";
-import IvyLeaguesAbroaedUpdateSection from "./sections/IvyLeaguesAbroaedUpdateSection";
+import IvyLeaguesAbroaedUpdateSection from "./sections/ivyLeaguesAbroaedUpdateSection";
 import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png"
 import IvyLeaguesLeadFormSection from "./sections/ivyLeaguesLeadFormSection";
 
