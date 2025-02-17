@@ -8,8 +8,10 @@ import {
 
 export const getDestinations = async (page) => {
   try {
+    const path = page ? `?page=${page}&limit=20` : "";
+
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/destination/list?page=${page}&limit=20`
+      `${BASE_URL}/api/v1/admin/destination/list${path}`
     );
     console.log(data);
     if (data.success) {

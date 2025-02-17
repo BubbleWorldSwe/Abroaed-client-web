@@ -18,7 +18,6 @@ import {
 const initialState = {
   loading: false,
   destinations: [],
-  allDestinations: [],
   error: null,
   totalPages: null,
 
@@ -47,11 +46,6 @@ export const destnationReducer = (state = initialState, action) => {
 
         totalPages: action.payload.totalPages,
         page: action.payload.page,
-
-        allDestinations:
-          action.payload.page && action.payload.totalPages
-            ? action.payload.result
-            : [],
       };
     case FETCH_DESTINATIONS_FAILURE:
       return {

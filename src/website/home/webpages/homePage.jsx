@@ -15,8 +15,34 @@ import HomeDownloadApp from "./sections/homeDownloadAppSection";
 import HomeAbroaedUpdateSection from "./sections/homeAbroaedUpdateSection";
 import HomeBlogsSection from "./sections/homeBlogsSection";
 import HomeLeadForm from "./sections/homeLeadForm";
+import { fetchDestinationsRequest } from "../../../redux/actions/destinationActions";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import PageLoader from "../../../commons/components/loader/pageLoader";
+import { fetchTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
 
 function HomeLayout() {
+  const dispatch = useDispatch();
+
+  const { loading } = useSelector((state) => state.destinations);
+
+  async function fetchData() {
+    try {
+      dispatch(fetchTestPrepsRequest(1));
+      dispatch(fetchDestinationsRequest(1));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
   return (
     <div className="font-rethink">
       <Header />
