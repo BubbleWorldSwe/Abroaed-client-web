@@ -8,7 +8,7 @@ const DeleteConfirmationModal = ({ isOpen, onClose, heading, onDelete }) => {
     <>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white py-8 px-10 font-rethink dark:bg-gray-900 rounded-lg shadow-lg w-full max-w-max relative">
+          <div className="bg-white py-8 px-8 font-rethink dark:bg-gray-900 rounded-lg shadow-lg w-full max-w-max relative">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-gray-700 dark:text-white">
                 {heading}

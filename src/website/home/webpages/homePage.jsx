@@ -1,4 +1,3 @@
-
 // import Pricing from "../../../Components/Pricing";
 // import PartnerUnis from "../../../Components/PartnerUnis";
 // import TimelineSlider from "../../../Components/TimelineSlider";
@@ -22,7 +21,13 @@ function HomeLayout() {
     <div className="font-rethink">
       <Header />
       <HomeHeroSection />
-      <HomeKpiMatrixSection title={"Why Abroad?"} header={"What sets us apart?"} subtitle={"Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind."} />
+      <HomeKpiMatrixSection
+        title={"Why Abroad?"}
+        header={"What sets us apart?"}
+        subtitle={
+          "Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind."
+        }
+      />
       <HomePathwaySection />
       <HomeServicesSection />
       <HomePromoSection />

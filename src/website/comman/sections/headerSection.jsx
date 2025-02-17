@@ -25,10 +25,9 @@ function Header() {
 
   return (
     <header
-      className={`w-full sticky top-0 z-[30] transition-all duration-300 ease-in-out ${isScrolled
-        ? "bg-yellow-300 shadow-md opacity-100"
-        : "bg-transparent "
-        }`}
+      className={`w-full sticky top-0 z-[30] transition-all duration-300 ease-in-out ${
+        isScrolled ? "bg-yellow-300 shadow-md opacity-100" : "bg-transparent "
+      }`}
     >
       <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
         <div className={`py-3   ${"bg-yellow-300 shadow-md opacity-100"}`}>
@@ -62,7 +61,6 @@ function Header() {
         <nav className="flex items-center w-full px-6 py-4 bg-white">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
-
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               // src={logo}
@@ -129,7 +127,6 @@ function Header() {
                   className="flex   rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
-
                 </button>
                 {dropdowns.exploreCourses && (
                   <div
@@ -367,7 +364,6 @@ function Header() {
                   className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
                   TestPrep
-
                 </button>
                 {dropdowns.testPrep && (
                   <div
@@ -447,10 +443,7 @@ function Header() {
                 </a>
               </li>
               <li>
-                <a
-                  href="/pathways"
-                  className="block "
-                >
+                <a href="/pathways" className="block ">
                   Pathways
                 </a>
               </li>
