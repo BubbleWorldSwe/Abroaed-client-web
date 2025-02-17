@@ -35,3 +35,72 @@ export const destinationMenuItems = [
     { name: "Spain", flag: "🇪🇸", link: "/spain" },
     { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
 ];
+
+export const exploreDomains = [
+    { domainName: "Management" },
+    { domainName: "Data Science" },
+    { domainName: "Computer Science" },
+    { domainName: "Engineering" },
+    { domainName: "Marketing" },
+    { domainName: "Finance" },
+    { domainName: "Healthcare" },
+    { domainName: "Education" },
+    { domainName: "Artificial Intelligence" },
+    { domainName: "Cybersecurity" }
+];
+
+export const exploreCountries = [
+    { countryName: "United States" },
+    { countryName: "Canada" },
+
+    { countryName: "Italy" },
+    { countryName: "Japan" },
+    { countryName: "South Korea" }
+];
+export const exploreUniversities = [
+    {
+        id: 1,
+        logo: "https://cdn.pixabay.com/photo/2017/09/01/13/56/university-2704306_640.jpg",
+        name: "Harvard University",
+        course: "Computer Science",
+        country: "United States",
+        online: "Yes",
+        onCampus: "Yes"
+    },
+    {
+        id: 2,
+        logo: "https://cdn.pixabay.com/photo/2017/09/01/13/56/university-2704306_640.jpg",
+        name: "Stanford University",
+        course: "Data Science",
+        country: "United States",
+        online: "Yes",
+        onCampus: "Yes"
+    },
+    {
+        id: 3,
+        logo: "https://cdn.pixabay.com/photo/2017/09/01/13/56/university-2704306_640.jpg",
+        name: "University of Oxford",
+        course: "Engineering",
+        country: "United Kingdom",
+        online: "No",
+        onCampus: "Yes"
+    },
+    {
+        id: 4,
+        logo: "https://cdn.pixabay.com/photo/2017/09/01/13/56/university-2704306_640.jpg",
+        name: "MIT",
+        course: "Artificial Intelligence",
+        country: "United States",
+        online: "Yes",
+        onCampus: "Yes"
+    },
+    {
+        id: 5,
+        logo: "https://cdn.pixabay.com/photo/2017/09/01/13/56/university-2704306_640.jpg",
+        name: "MIT",
+        course: "Artificial Intelligence",
+        country: "United States",
+        online: "Yes",
+        onCampus: "Yes"
+    },
+];
