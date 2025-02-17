@@ -18,3 +18,20 @@ export const articles = [
         content: "We have successfully launched several new projects, aiming to improve our services and reach more clients around the globe.",
     }
 ];
+
+export const destinationMenuItems = [
+    { name: "UK", flag: "🇬🇧", link: "/uk" },
+    { name: "Ireland", flag: "🇮🇪", link: "/ireland" },
+    { name: "Germany", flag: "🇩🇪", link: "/germany" },
+    { name: "France", flag: "🇫🇷", link: "/france" },
+    { name: "Italy", flag: "🇮🇹", link: "/italy" },
+    { name: "Poland", flag: "🇵🇱", link: "/poland" },
+    { name: "Australia", flag: "🇦🇺", link: "/australia" },
+    { name: "USA", flag: "🇺🇸", link: "/usa" },
+    { name: "Canada", flag: "🇨🇦", link: "/canada" },
+    { name: "Dubai", flag: "🇦🇪", link: "/dubai" },
+    { name: "Europe", flag: "🇪🇺", link: "/europe" },
+    { name: "Netherlands", flag: "🇳🇱", link: "/netherlands" },
+    { name: "Spain", flag: "🇪🇸", link: "/spain" },
+    { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
+];

@@ -1,19 +1,46 @@
 import { useState } from "react";
+import DestinationNavItemModal from "../modals/destinationNavItemModal";
+import { destinationMenuItems } from "../data";
 
 function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [dropdowns, setDropdowns] = useState({
     whyAbroad: false,
     exploreCourses: false,
     testPrep: false,
+    pathways: false
   });
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
+
+  // Open dropdown
+  const handleMouseEnter = (key) => {
+    setActiveDropdown(key);
+  };
+
+  // Close dropdown when leaving both nav link & modal
+  const handleMouseLeave = () => {
+    setActiveDropdown(null);
+  };
   const toggleDropdown = (key) => {
     setDropdowns((prev) => ({
       ...prev,
       [key]: !prev[key],
     }));
   };
+  // const handleMouseEnter = (key) => {
+  //   setDropdowns((prev) => ({
+  //     ...prev,
+  //     [key]: true, // Open the dropdown
+  //   }));
+  // };
+
+  // // Close dropdown when mouse leaves
+  // const handleMouseLeave = (key) => {
+  //   setDropdowns((prev) => ({
+  //     ...prev,
+  //     [key]: false, // Close the dropdown
+  //   }));
+  // };
 
   // useEffect(() => {
   //   const handleScroll = () => {
@@ -25,12 +52,9 @@ function Header() {
 
   return (
     <header
-      className={`w-full sticky top-0 z-[30] transition-all duration-300 ease-in-out ${isScrolled
-        ? "bg-yellow-300 shadow-md opacity-100"
-        : "bg-transparent "
-        }`}
+      className={`w-full sticky top-0 z-[30] border-b-2 border-gray-400 transition-all duration-300 ease-in-out bg-white`}
     >
-      <nav className="border-gray-200 dark:border-gray-600 dark:bg-gray-800 relative">
+      <nav className="border-gray-900  dark:border-gray-600 dark:bg-gray-800 ">
         <div className={`py-3   ${"bg-yellow-300 shadow-md opacity-100"}`}>
           <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
             <a
@@ -59,7 +83,7 @@ function Header() {
             </a>
           </div>
         </div>
-        <nav className="flex items-center w-full px-6 py-4 bg-white">
+        <nav className="flex items-center w-full px-6 py-4 bg-white ">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
 
@@ -345,14 +369,23 @@ function Header() {
                   Blog
                 </a>
               </li>
-              <li>
-                <a
-                  href="/destinations"
-                  className="block  rounded text-yellow-700 dark:text-primary-500"
-                >
+              <li
+                onMouseEnter={() => handleMouseEnter("destinations")}
+                onMouseLeave={handleMouseLeave}
+                className="relative cursor-pointer"
+              >
+                <a className="block px-4 py-2">
                   Destinations
                 </a>
+                {activeDropdown === "destinations" && (
+                  <DestinationNavItemModal
+                    menuItems={destinationMenuItems}
+                    handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                  />
+                )}
               </li>
+
               <li>
                 <a
                   href="/ivyLeagues"
@@ -446,11 +479,9 @@ function Header() {
                   Accommodation
                 </a>
               </li>
-              <li>
-                <a
-                  href="/pathways"
-                  className="block "
-                >
+              <li
+              >
+                <a href="/pathways" className="block px-4 py-2 ">
                   Pathways
                 </a>
               </li>
