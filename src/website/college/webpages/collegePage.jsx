@@ -1,7 +1,7 @@
-import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png"
-import vectorleftNose from "../../../assets/vectorleftNose.png"
-import vectorDownNose from "../../../assets/vectorDownNose.png"
-import vectorLeftNoseSmall from '../../../assets/vectorLeftNoseSmall.png'
+import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
+import vectorleftNose from "../../../assets/vectorleftNose.png";
+import vectorDownNose from "../../../assets/vectorDownNose.png";
+import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
@@ -23,9 +23,7 @@ import CollegeLeadFormSection from "./sections/collegeLeadFormSection";
 const NavigationItems = () => {
   return (
     <div className="text-white px-2 mt-8 opacity-70 text-xl flex justify-between">
-      <p>
-        Private
-      </p>
+      <p>Private</p>
       <div className="flex gap-2 whitespace-nowrap">
         <img src={locationIcon} alt="pic-location " />
         <p className="text-white">Melbourne, Australia</p>
@@ -33,8 +31,7 @@ const NavigationItems = () => {
       <div className="flex gap-2 whitespace-nowrap">
         <img src={worldIcon} alt="pic-location" />
         <p className="text-white">www.website.com</p>
-        <div>
-        </div>
+        <div></div>
       </div>
     </div>
   );
@@ -49,7 +46,12 @@ function CollegePage() {
         text={<NavigationItems />}
         img={dark}
       />
-      <CollegeInfoSection header={"Why Study in United Kingdom?"} text1={"lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."} />
+      <CollegeInfoSection
+        header={"Why Study in United Kingdom?"}
+        text1={
+          "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."
+        }
+      />
       <div className="relative ">
         <CollegeFunFactSection items={items} />
         <div className="absolute bottom-16 left-0 z-0">
