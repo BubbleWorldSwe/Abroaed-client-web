@@ -1,4 +1,5 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { pageDataLimit } from "../constants/values";
 import {
   makeDeleteRequest,
   makeGetRequest,
@@ -8,7 +9,7 @@ import {
 
 export const getDestinations = async (page) => {
   try {
-    const path = page ? `?page=${page}&limit=20` : "";
+    const path = page ? `?page=${page}&limit=${pageDataLimit}` : "";
 
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/list${path}`

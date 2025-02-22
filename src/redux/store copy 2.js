@@ -10,39 +10,52 @@ import { teamReducer } from "./reducers/teamReducer";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { testPrepsReducer } from "./reducers/testPrepsReducer";
+import { languagePrepsReducer } from "./reducers/languagePrepsReducer";
+import { collegesReducer } from "./reducers/collegeReducer";
+import { accommodationsReducer } from "./reducers/accommodationReducer";
 
 const sagaMiddleware = createSagaMiddleware();
+
+const destinationPersistConfig = {
+  key: "destinations",
+  storage,
+  whitelist: ["destinations", "allDestinations", "totalPages", "total", "page"],
+};
 
 const persistConfig = {
   key: "root",
   storage,
   whitelist: [
     "auth",
-    "team",
-    "roles",
-    "leads",
-    "destinations",
-    "countries",
-    // "testPreps",
+    "selectedTestPrep",
+    "selectedLanguagePrep",
+    "selectedCollege",
+    "selectedAccommodation",
+    "allTestPreps",
+    "allDestinations",
   ],
 };
 
 const rootReducer = {
   auth: persistReducer(persistConfig, authReducer),
-  team: persistReducer(persistConfig, teamReducer),
-  roles: persistReducer(persistConfig, rolesReducer),
-  leads: persistReducer(persistConfig, leadsReducer),
-  destinations: persistReducer(persistConfig, destnationReducer),
-  countries: persistReducer(persistConfig, countriesReducer),
+  team: teamReducer,
+  roles: rolesReducer,
+  leads: leadsReducer,
+  destinations: persistReducer(persistConfig, destnationReducer), // Applying persist specifically to destinations
+  countries: countriesReducer,
   testPreps: persistReducer(persistConfig, testPrepsReducer),
+  languagePreps: persistReducer(persistConfig, languagePrepsReducer),
+  colleges: persistReducer(persistConfig, collegesReducer),
+  accommodations: persistReducer(persistConfig, accommodationsReducer),
 };
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(
-      sagaMiddleware
-    ),
+    getDefaultMiddleware({
+      thunk: false,
+      serializableCheck: false,
+    }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
-function TestPrepBatchDetaileSection({ testPrepsDetails }) {
+function LanguagePrepBatchDetaileSection({ languagePrepsDetails }) {
   return (
     <div className="relative mx-auto px-10">
       <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
@@ -11,7 +11,7 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
           </h2>
           <div className="my-4 border-t border-gray-300"></div>
           <div className="grid grid-cols-1 md:grid-cols-3  gap-3 py-10 ">
-            {testPrepsDetails?.batches?.map((data, index) => (
+            {languagePrepsDetails?.batches?.map((data, index) => (
               <div
                 key={index}
                 className="flex flex-col p-6 mx-auto w-full text-start text-gray-900 bg-white rounded-lg border border-gray-200 shadow-xl dark:border-gray-700 xl:p-8 dark:text-white dark:bg-gray-800"
@@ -29,7 +29,7 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                 >
                   Enroll Now
                 </a>
-                <div className="flex justify-between items-baseline my-4 w-9/12 ">
+                <div className="flex justify-between items-baseline mt-5 mb-2 w-9/12 ">
                   <p className="">
                     <strong>Duration :</strong>{" "}
                     <span className="text-gray-500">
@@ -38,7 +38,13 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                   </p>
                   <p className="">
                     <strong>Seats:</strong>{" "}
-                    <span className="text-gray-500">100</span>
+                    <span className="text-gray-500">{data.seats}</span>
+                  </p>
+                </div>
+                <div className="flex justify-between items-baseline mb-5 w-9/12 ">
+                  <p className="">
+                    <strong>Language:</strong>{" "}
+                    <span className="text-gray-500">{data.language}</span>
                   </p>
                 </div>
                 <p className="font-semibold text-lg mb-3 mt-2">
@@ -72,4 +78,4 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
   );
 }
 
-export default TestPrepBatchDetaileSection;
+export default LanguagePrepBatchDetaileSection;

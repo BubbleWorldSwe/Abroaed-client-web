@@ -2,6 +2,10 @@ export const FETCH_DESTINATIONS_REQUEST = "FETCH_DESTINATIONS_REQUEST";
 export const FETCH_DESTINATIONS_SUCCESS = "FETCH_DESTINATIONS_SUCCESS";
 export const FETCH_DESTINATIONS_FAILURE = "FETCH_DESTINATIONS_FAILURE";
 
+export const FETCH_ALL_DESTINATIONS_REQUEST = "FETCH_ALL_DESTINATIONS_REQUEST";
+export const FETCH_ALL_DESTINATIONS_SUCCESS = "FETCH_ALL_DESTINATIONS_SUCCESS";
+export const FETCH_ALL_DESTINATIONS_FAILURE = "FETCH_ALL_DESTINATIONS_FAILURE";
+
 export const ADD_DESTINATION_REQUEST = "ADD_DESTINATION_REQUEST";
 export const ADD_DESTINATION_SUCCESS = "ADD_DESTINATION_SUCCESS";
 export const ADD_DESTINATION_FAILURE = "ADD_DESTINATION_FAILURE";
@@ -28,6 +32,20 @@ export const fetchDestinationsSuccess = (data) => ({
 
 export const fetchDestinationsFailure = (error) => ({
   type: FETCH_DESTINATIONS_FAILURE,
+  payload: error,
+});
+
+export const fetchAllDestinationsRequest = () => ({
+  type: FETCH_ALL_DESTINATIONS_REQUEST,
+});
+
+export const fetchAllDestinationsSuccess = (data) => ({
+  type: FETCH_ALL_DESTINATIONS_SUCCESS,
+  payload: data,
+});
+
+export const fetchAllDestinationsFailure = (error) => ({
+  type: FETCH_ALL_DESTINATIONS_FAILURE,
   payload: error,
 });
 

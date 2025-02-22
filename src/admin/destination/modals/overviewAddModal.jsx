@@ -107,7 +107,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           type="text"
           value={formData.language}
           onChange={(e) => handleInputChange(e?.target?.value, "language")}
-          placeholder="Enter Capital"
+          placeholder="Enter Language"
           required
         />
 

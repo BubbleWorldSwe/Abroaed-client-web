@@ -1,6 +1,6 @@
-import check_circle from '../../../../assets/check_circle.png'
+import check_circle from "../../../../assets/check_circle.png";
 
-const DestinationAdmissionRequirementSection = () => {
+const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
   return (
     <div className="relative z-10">
       <section className=" dark:bg-gray-900 relative px-10 mx-auto">
@@ -10,16 +10,16 @@ const DestinationAdmissionRequirementSection = () => {
               Admission Requirements
             </h2>
             <p className=" text-black ">
-              Here are the major requirements to study in the USA, which you need to ensure while applying to a USA university:            </p>
+              Here are the major requirements to study in the{" "}
+              {destinationDetails?.countryId?.name}, which you need to ensure
+              while applying to a {destinationDetails?.countryId?.name}{" "}
+              university:{" "}
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2  ">
             {/* Top Row: 3 Cards */}
-            {Array(12).fill().map((_, idx) => (
-              <div
-                key={idx}
-                className="flex items-center space-x-4 p-2"
-              >
-
+            {destinationDetails?.admissionRequirements?.map((data, index) => (
+              <div key={index} className="flex items-center space-x-4 p-2">
                 <div className="flex space-x-8 justify-between">
                   <img
                     className=" object-contain"
@@ -28,8 +28,7 @@ const DestinationAdmissionRequirementSection = () => {
                   />
 
                   <p className="  text-gray-900 dark:text-gray-400 py-1">
-
-                    ACT/SAT/LSAT for UG programs, GMAT/GRE scores for PG programs
+                    {data.name}
                   </p>
                 </div>
               </div>
@@ -38,7 +37,7 @@ const DestinationAdmissionRequirementSection = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
 export default DestinationAdmissionRequirementSection;

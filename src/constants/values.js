@@ -33,3 +33,5 @@ export const languages = [
   "Japanese",
 ];
 export const testMode = ["Online", "Offline"];
+
+export const pageDataLimit = 20;

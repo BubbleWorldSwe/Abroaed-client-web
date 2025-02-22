@@ -1,4 +1,5 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { pageDataLimit } from "../constants/values";
 import {
   makeDeleteRequest,
   makeGetRequest,
@@ -7,11 +8,14 @@ import {
 } from "../utils/apiUtils";
 
 export const getTestPreps = async (page) => {
+  console.log(page + " getTestPreps");
   try {
+    const path = page ? `?page=${page}&limit=${pageDataLimit}` : "";
+
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/test-preps/list?page=${page}&limit=20`
+      `${BASE_URL}/api/v1/admin/test-preps/list${path}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

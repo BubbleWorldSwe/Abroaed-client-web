@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 
-function DestinationHeroSection({ header, text, img }) {
+function DestinationHeroSection({ destinationDetails, img }) {
   return (
     <div className="font-rethink">
       <section
         className="relative h-[65vh] bg-cover bg-center "
         style={{
           backgroundImage: `url(${img})`,
-          opacity: '1'
+          opacity: "1",
         }}
       >
         <div
@@ -19,13 +19,14 @@ function DestinationHeroSection({ header, text, img }) {
 
         <div className="absolute bottom-8 left-12  p-6 rounded-lg shadow-lg max-w-2xl">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
-            {header}
+            {destinationDetails?.countryId?.emoji} Study in{" "}
+            {destinationDetails?.countryId?.name}
           </h1>
 
-          <p className="font-light text-white md:text-lg xl:text-xl">
+          {/*  <p className="font-light text-white md:text-lg xl:text-xl">
             {text}
             <br />
-          </p>
+          </p> */}
         </div>
       </section>
     </div>

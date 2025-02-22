@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
+  getAllLanguagePreps,
   getLanguagePreps,
   setAddLanguagePrep,
   setDeleteLanguagePrep,
@@ -15,7 +16,10 @@ import {
   EDIT_LANGUAGEPREP_REQUEST,
   editLanguagePrepFailure,
   editLanguagePrepSuccess,
+  FETCH_ALL_LANGUAGEPREPS_REQUEST,
   FETCH_LANGUAGEPREPS_REQUEST,
+  fetchAllLanguagePrepsFailure,
+  fetchAllLanguagePrepsSuccess,
   fetchLanguagePrepsFailure,
   fetchLanguagePrepsSuccess,
 } from "../actions/languagePrepsActions";
@@ -28,6 +32,16 @@ function* fetchLanguagePreps(action) {
     yield put(fetchLanguagePrepsSuccess(data.data));
   } catch (error) {
     yield put(fetchLanguagePrepsFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
+function* fetchAllLanguagePreps() {
+  try {
+    const data = yield call(getAllLanguagePreps);
+    yield put(fetchAllLanguagePrepsSuccess(data.data));
+  } catch (error) {
+    yield put(fetchAllLanguagePrepsFailure(error.message));
     toast.error(error.message);
   }
 }
@@ -91,6 +105,7 @@ function* handleEditLanguagePrep(action) {
 // Root saga for language preps
 export default function* languagePrepsSaga() {
   yield takeLatest(FETCH_LANGUAGEPREPS_REQUEST, fetchLanguagePreps);
+  yield takeLatest(FETCH_ALL_LANGUAGEPREPS_REQUEST, fetchAllLanguagePreps);
   yield takeLatest(ADD_LANGUAGEPREP_REQUEST, addNewLanguagePrep);
   yield takeLatest(DELETE_LANGUAGEPREP_REQUEST, deleteLanguagePrep);
   yield takeLatest(EDIT_LANGUAGEPREP_REQUEST, handleEditLanguagePrep);

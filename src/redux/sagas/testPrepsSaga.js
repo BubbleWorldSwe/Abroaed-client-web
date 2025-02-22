@@ -15,7 +15,10 @@ import {
   EDIT_TESTPREP_REQUEST,
   editTestPrepFailure,
   editTestPrepSuccess,
+  FETCH_ALL_TESTPREPS_REQUEST,
   FETCH_TESTPREPS_REQUEST,
+  fetchAllTestPrepsFailure,
+  fetchAllTestPrepsSuccess,
   fetchTestPrepsFailure,
   fetchTestPrepsSuccess,
 } from "../actions/testPrepsActions";
@@ -23,11 +26,23 @@ import { toast } from "react-toastify";
 
 // Fetch test preps
 function* fetchTestPreps(action) {
+  console.log(action);
   try {
     const data = yield call(getTestPreps, action.payload);
     yield put(fetchTestPrepsSuccess(data.data));
   } catch (error) {
     yield put(fetchTestPrepsFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
+// Fetch test preps
+function* fetchAllTestPreps(action) {
+  try {
+    const data = yield call(getTestPreps);
+    yield put(fetchAllTestPrepsSuccess(data.data));
+  } catch (error) {
+    yield put(fetchAllTestPrepsFailure(error.message));
     toast.error(error.message);
   }
 }
@@ -91,6 +106,7 @@ function* handleEditTestPrep(action) {
 // Root saga for test preps
 export default function* testPrepsSaga() {
   yield takeLatest(FETCH_TESTPREPS_REQUEST, fetchTestPreps);
+  yield takeLatest(FETCH_ALL_TESTPREPS_REQUEST, fetchAllTestPreps);
   yield takeLatest(ADD_TESTPREP_REQUEST, addNewTestPrep);
   yield takeLatest(DELETE_TESTPREP_REQUEST, deleteTestPrep);
   yield takeLatest(EDIT_TESTPREP_REQUEST, handleEditTestPrep);

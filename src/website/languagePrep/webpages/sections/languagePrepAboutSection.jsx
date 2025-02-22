@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 
-function TextPrepAbout({ testPrepsDetails }) {
+function LanguagePrepAbout({ languagePrepsDetails }) {
   return (
     <div className="relative z-10 mx-auto px-10">
       <div className="mx-auto  max-w-screen-2xl mt-8 py-4 flex flex-col gap-6">
         <header className="mb-4 lg:mb-6 not-format">
           <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-            About {testPrepsDetails?.productName}
+            About {languagePrepsDetails?.productName}
           </h2>
           <p className="mt-3 font-inter text-lg text-gray-800">
-            {testPrepsDetails?.about}
+            {languagePrepsDetails?.about}
           </p>
         </header>
         <div className="relative overflow-x-auto ">
@@ -31,18 +31,11 @@ function TextPrepAbout({ testPrepsDetails }) {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    Exam
-                  </th>
-                  <td className="px-6 py-4">{testPrepsDetails?.exam}</td>
-                </tr>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
                     Language
                   </th>
-                  <td className="px-6 py-4">{testPrepsDetails?.language}</td>
+                  <td className="px-6 py-4">
+                    {languagePrepsDetails?.language}
+                  </td>
                 </tr>
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th
@@ -51,7 +44,9 @@ function TextPrepAbout({ testPrepsDetails }) {
                   >
                     Exam Types
                   </th>
-                  <td className="px-6 py-4">{testPrepsDetails?.exampTypes}</td>
+                  <td className="px-6 py-4">
+                    {languagePrepsDetails?.exampTypes}
+                  </td>
                 </tr>
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                   <th
@@ -61,7 +56,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                     Exam Components
                   </th>
                   <td className="px-6 py-4">
-                    {testPrepsDetails?.exampComponents}
+                    {languagePrepsDetails?.exampComponents}
                   </td>
                 </tr>
               </tbody>
@@ -86,7 +81,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                 Exam Types
               </h2>
               <p className="mt-3 font-inter text-lg text-gray-700">
-                {testPrepsDetails?.exampTypes}
+                {languagePrepsDetails?.exampTypes}
               </p>
             </header>
             <header className="mb-4 lg:mb-6 not-format">
@@ -94,7 +89,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                 Exam Components
               </h2>
               <p className="mt-3 font-inter text-lg text-gray-500">
-                {testPrepsDetails?.exampComponents}
+                {languagePrepsDetails?.exampComponents}
               </p>
             </header>
           </div>
@@ -104,4 +99,4 @@ function TextPrepAbout({ testPrepsDetails }) {
   );
 }
 
-export default TextPrepAbout;
+export default LanguagePrepAbout;

@@ -1,4 +1,3 @@
-
 import DestinationHeroSection from "./sections/destinationHeroSection";
 import DestinationInfoSection from "./sections/destinationInfoSection";
 import DestinationUniCoursersSection from "./sections/destinationUniCourseSection";
@@ -8,12 +7,12 @@ import DestinationExpansesSection from "./sections/destinationExpanseSection";
 import DestinationScholarshipSection from "./sections/destinationScholarshipSection";
 import DestinationImmigrationDetailsSection from "./sections/destinationImmigrationDetailSection";
 import DestinationWorkOpportunitiesSection from "./sections/destinationWorkOpportunitiesSection";
-import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png"
-import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png"
-import vectorDownNose from "../../../assets/vectorDownNose.png"
-import vectorBelow from "../../../assets/vectorBelow.png"
-import destinationHeroImg from "../../../assets/destinationHeroImg.png"
-import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png"
+import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
+import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
+import vectorDownNose from "../../../assets/vectorDownNose.png";
+import vectorBelow from "../../../assets/vectorBelow.png";
+import destinationHeroImg from "../../../assets/destinationHeroImg.png";
+import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
 import DestinationStudentAccommodationsSection from "./sections/destinationStudentAccommodationSection";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
@@ -23,17 +22,53 @@ import DestinationBlogSection from "./sections/destinationBlogSection";
 import DestinationAbroaedUpdateSection from "./sections/destinationAbroaedUpdateSection";
 import DestinationFunFactSection from "./sections/destinationFunFactSection";
 import DestinationLeadForm from "./sections/destinationLeadForm";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getDestinationDetailsById } from "../../../api/destinationApi";
+import PageLoader from "../../../commons/components/loader/pageLoader";
 
 function DestinationPage() {
+  const { id } = useParams();
+
+  const [destinationDetails, setDestinationDetails] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  async function fetchData() {
+    try {
+      const data = await getDestinationDetailsById(id);
+
+      if (data.status === 200) {
+        setDestinationDetails(data.data);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    // window.scrollTo(0, 0);
+    fetchData();
+  }, [id]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <div className="font-rethink">
       <Header />
-      <DestinationHeroSection header={'Study in United Kingdom'} text={`Learn more about the exciting places where you can study`} img={destinationHeroImg} />
+      <DestinationHeroSection
+        destinationDetails={destinationDetails}
+        img={destinationHeroImg}
+      />
       <DestinationRoutingSection />
-      <DestinationInfoSection header={"Why Study in United Kingdom?"} text1={"lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."} />
+      <DestinationInfoSection destinationDetails={destinationDetails} />
       <div className="relative ">
-        <DestinationFunFactSection items={items} />
+        <DestinationFunFactSection
+          destinationDetails={destinationDetails}
+          items={items}
+        />
         <div className="absolute bottom-16 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -44,7 +79,9 @@ function DestinationPage() {
       </div>
       <DestinationUniCoursersSection />
       <div className="relative">
-        <DestinationAdmissionRequirementSection />
+        <DestinationAdmissionRequirementSection
+          destinationDetails={destinationDetails}
+        />
         <div className="absolute -bottom-44 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -53,10 +90,12 @@ function DestinationPage() {
           />
         </div>
       </div>
-      <DestinationExpansesSection />
-      <DestinationScholarshipSection />
+      <DestinationExpansesSection destinationDetails={destinationDetails} />
+      <DestinationScholarshipSection destinationDetails={destinationDetails} />
       <div className="relative">
-        <DestinationImmigrationDetailsSection />
+        <DestinationImmigrationDetailsSection
+          destinationDetails={destinationDetails}
+        />
         <div className="absolute bottom-0 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -66,7 +105,9 @@ function DestinationPage() {
         </div>
       </div>
       <div className="relative">
-        <DestinationWorkOpportunitiesSection />
+        <DestinationWorkOpportunitiesSection
+          destinationDetails={destinationDetails}
+        />
         <div className="absolute top-0 right-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -76,7 +117,7 @@ function DestinationPage() {
         </div>
       </div>
       <DestinationStudentAccommodationsSection />
-      <DestinationFaqSection />
+      <DestinationFaqSection destinationDetails={destinationDetails} />
       <div className="relative">
         <DestinationBlogSection />
         <div className="absolute top-64 left-48 z-0">

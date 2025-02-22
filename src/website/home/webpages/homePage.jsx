@@ -15,11 +15,15 @@ import HomeDownloadApp from "./sections/homeDownloadAppSection";
 import HomeAbroaedUpdateSection from "./sections/homeAbroaedUpdateSection";
 import HomeBlogsSection from "./sections/homeBlogsSection";
 import HomeLeadForm from "./sections/homeLeadForm";
-import { fetchDestinationsRequest } from "../../../redux/actions/destinationActions";
+import {
+  fetchAllDestinationsRequest,
+  fetchDestinationsRequest,
+} from "../../../redux/actions/destinationActions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PageLoader from "../../../commons/components/loader/pageLoader";
-import { fetchTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
+import { fetchAllTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
+import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePrepsActions";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -28,8 +32,9 @@ function HomeLayout() {
 
   async function fetchData() {
     try {
-      dispatch(fetchTestPrepsRequest(1));
-      dispatch(fetchDestinationsRequest(1));
+      dispatch(fetchAllTestPrepsRequest());
+      dispatch(fetchAllLanguagePrepsRequest());
+      dispatch(fetchAllDestinationsRequest());
     } catch (error) {
       console.log(error);
     }

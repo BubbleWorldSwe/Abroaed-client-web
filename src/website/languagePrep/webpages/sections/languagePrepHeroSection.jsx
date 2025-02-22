@@ -1,6 +1,6 @@
 import image from "../../../../assets/dark.png";
 
-function TestPrepHero({ testPrepsDetails }) {
+function LanguagePrepHero({ languagePrepsDetails }) {
   return (
     <div className="font-rethink">
       <section
@@ -11,7 +11,7 @@ function TestPrepHero({ testPrepsDetails }) {
       >
         <div className="absolute bottom-8 left-11 p-6 rounded-lg shadow-lg max-w-2xl">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
-            {testPrepsDetails?.productName}
+            {languagePrepsDetails?.productName}
           </h1>
         </div>
       </section>
@@ -19,4 +19,4 @@ function TestPrepHero({ testPrepsDetails }) {
   );
 }
 
-export default TestPrepHero;
+export default LanguagePrepHero;

@@ -1,4 +1,5 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { pageDataLimit } from "../constants/values";
 import {
   makeDeleteRequest,
   makeGetRequest,
@@ -9,7 +10,21 @@ import {
 export const getLanguagePreps = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/language-preps/list?page=${page}&limit=20`
+      `${BASE_URL}/api/v1/admin/language-preps/list?page=${page}&limit=${pageDataLimit}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAllLanguagePreps = async () => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/language-preps/list`
     );
     console.log(data);
     if (data.success) {
@@ -71,6 +86,7 @@ export const setDeleteLanguagePrep = async (id) => {
 };
 
 export const getLanguagePrepDetailsById = async (id) => {
+  console.log(" hElllo    ID ");
   try {
     console.log(id);
     const data = await makeGetRequest(

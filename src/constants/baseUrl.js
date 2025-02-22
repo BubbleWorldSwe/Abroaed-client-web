@@ -1,3 +1,3 @@
-//export const BASE_URL = "https://server.hoteliorooms.com";
+//export const BASE_URL = "https://abroaed-server.bubbleworld.in";
 
-export const BASE_URL = "https://abroaed-server.bubbleworld.in";
+export const BASE_URL = "https://abroad-server-usfk.onrender.com";

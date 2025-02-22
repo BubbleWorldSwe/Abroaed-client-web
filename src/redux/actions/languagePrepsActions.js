@@ -2,6 +2,13 @@ export const FETCH_LANGUAGEPREPS_REQUEST = "FETCH_LANGUAGEPREPS_REQUEST";
 export const FETCH_LANGUAGEPREPS_SUCCESS = "FETCH_LANGUAGEPREPS_SUCCESS";
 export const FETCH_LANGUAGEPREPS_FAILURE = "FETCH_LANGUAGEPREPS_FAILURE";
 
+export const FETCH_ALL_LANGUAGEPREPS_REQUEST =
+  "FETCH_ALL_LANGUAGEPREPS_REQUEST";
+export const FETCH_ALL_LANGUAGEPREPS_SUCCESS =
+  "FETCH_ALL_LANGUAGEPREPS_SUCCESS";
+export const FETCH_ALL_LANGUAGEPREPS_FAILURE =
+  "FETCH_ALL_LANGUAGEPREPS_FAILURE";
+
 export const ADD_LANGUAGEPREP_REQUEST = "ADD_LANGUAGEPREP_REQUEST";
 export const ADD_LANGUAGEPREP_SUCCESS = "ADD_LANGUAGEPREP_SUCCESS";
 export const ADD_LANGUAGEPREP_FAILURE = "ADD_LANGUAGEPREP_FAILURE";
@@ -28,6 +35,20 @@ export const fetchLanguagePrepsSuccess = (data) => ({
 
 export const fetchLanguagePrepsFailure = (error) => ({
   type: FETCH_LANGUAGEPREPS_FAILURE,
+  payload: error,
+});
+
+export const fetchAllLanguagePrepsRequest = () => ({
+  type: FETCH_ALL_LANGUAGEPREPS_REQUEST,
+});
+
+export const fetchAllLanguagePrepsSuccess = (data) => ({
+  type: FETCH_ALL_LANGUAGEPREPS_SUCCESS,
+  payload: data,
+});
+
+export const fetchAllLanguagePrepsFailure = (error) => ({
+  type: FETCH_ALL_LANGUAGEPREPS_FAILURE,
   payload: error,
 });
 

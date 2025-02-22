@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
+  getAllDestinations,
   getDestinations,
   setAddDestination,
   setDeleteDestination,
@@ -15,7 +16,10 @@ import {
   EDIT_DESTINATION_REQUEST,
   editDestinationFailure,
   editDestinationSuccess,
+  FETCH_ALL_DESTINATIONS_REQUEST,
   FETCH_DESTINATIONS_REQUEST,
+  fetchAllDestinationsFailure,
+  fetchAllDestinationsSuccess,
   fetchDestinationsFailure,
   fetchDestinationsSuccess,
 } from "../actions/destinationActions";
@@ -25,10 +29,20 @@ function* fetchDestinations(action) {
   try {
     const data = yield call(getDestinations, action.payload);
 
-    console.log(data.data);
     yield put(fetchDestinationsSuccess(data.data));
   } catch (error) {
     yield put(fetchDestinationsFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
+function* fetchAllDestinations(action) {
+  try {
+    const data = yield call(getAllDestinations);
+
+    yield put(fetchAllDestinationsSuccess(data.data));
+  } catch (error) {
+    yield put(fetchAllDestinationsFailure(error.message));
     toast.error(error.message);
   }
 }
@@ -92,6 +106,7 @@ function* handleEditDestination(action) {
 
 export default function* destinationSaga() {
   yield takeLatest(FETCH_DESTINATIONS_REQUEST, fetchDestinations);
+  yield takeLatest(FETCH_ALL_DESTINATIONS_REQUEST, fetchAllDestinations);
   yield takeLatest(ADD_DESTINATION_REQUEST, addNewDestination);
   yield takeLatest(DELETE_DESTINATION_REQUEST, deleteDestination);
   yield takeLatest(EDIT_DESTINATION_REQUEST, handleEditDestination);

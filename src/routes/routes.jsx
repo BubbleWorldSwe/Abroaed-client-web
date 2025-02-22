@@ -35,12 +35,13 @@ import PathwaysHomePage from "../website/pathways/home/webpages/pathwaysHomePage
 import IvyLeaguesPage from "../website/ivyLeagues/webpages/ivyLeaguesPage";
 import TestPrep from "../admin/testPrep/screens/testPrep";
 import TestPrepDetails from "../admin/testPrep/screens/testPrepDetails";
+import LanguagePrepLayout from "../website/languagePrep/webpages/languagePrepPage";
 
 const AppRoutes = () => {
   const allRoutes = [
     { path: "/home", element: <HomeLayout />, isPrivate: false },
     {
-      path: "/destinations",
+      path: "/destinations/:id",
       element: <DestinationPage />,
       isPrivate: false,
     },
@@ -50,6 +51,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
+
     { path: "/aboutus", element: <AboutUsPage />, isPrivate: false },
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
@@ -62,6 +64,11 @@ const AppRoutes = () => {
     },
     { path: "/finance", element: <FinancePage />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
+    {
+      path: "/languageprep/:id",
+      element: <LanguagePrepLayout />,
+      isPrivate: false,
+    },
     {
       path: "/accomodation",
       element: <AccomodationPage />,
@@ -107,11 +114,11 @@ const AppRoutes = () => {
         { path: "leads", element: <Leads /> },
         { path: "accommodation", element: <Accommodations /> },
         { path: "accommodation/:name", element: <AccommodationDetails /> },
-        { path: "testPrep/:name", element: < TestPrepDetails /> },
-        { path: "testPrep", element: < TestPrep /> },
-        { path: "langPrep/:name", element: < LanguagePrepDetails /> },
-        { path: "langPrep", element: < LanguagePrep /> },
-        { path: "transaction", element: < Transaction /> },
+        { path: "testPrep/:name", element: <TestPrepDetails /> },
+        { path: "testPrep", element: <TestPrep /> },
+        { path: "langPrep/:name", element: <LanguagePrepDetails /> },
+        { path: "langPrep", element: <LanguagePrep /> },
+        { path: "transaction", element: <Transaction /> },
         { path: "colleges", element: <College /> },
         { path: "colleges/:name", element: <CollegDetails /> },
         { path: "destinations/:name", element: <DestinationDetails /> },

@@ -58,6 +58,7 @@ const FaqModal = ({ closeModal, filledData, onUpdate }) => {
           required
           placeholder="Enter Question"
         />
+        <div className="mt-5" />
 
         <TextareaInputField
           label="Answer"

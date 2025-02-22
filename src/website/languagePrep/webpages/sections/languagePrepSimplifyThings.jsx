@@ -1,7 +1,6 @@
 import vectorRightRing from "../../../../assets/vectorRightRing.png";
-import { steps } from "../../data";
 
-const TestPrepWorkSection = ({ testPrepsDetails }) => {
+const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
   return (
     <div className="relative mx-auto px-10">
       <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
@@ -12,13 +11,13 @@ const TestPrepWorkSection = ({ testPrepsDetails }) => {
                 How We Simplify Things?
               </h2>
               <p className="mb-4 font-light">
-                {testPrepsDetails?.simplifyThings}
+                {/*    {languagePrepsDetails?.simplifyThings} */}
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
-              {steps.map((step) => (
+              {languagePrepsDetails?.simplifyThings?.map((data, i) => (
                 <div
-                  key={step.step}
+                  key={i}
                   className="flex relative flex-col gap-3 h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
                 >
                   <div
@@ -32,14 +31,14 @@ const TestPrepWorkSection = ({ testPrepsDetails }) => {
                   ></div>
                   <div>
                     <span className="block text-4xl font-bold text-white dark:text-primary-400">
-                      {step.step}
+                      {i + 1}
                     </span>
                   </div>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
-                    {step.heading}
+                    {data.title}
                   </h5>
                   <p className="font-normal text-white dark:text-gray-400">
-                    {step.description}
+                    {data.description}
                   </p>
                   <div className="absolute top-0 right-0">
                     <img src={vectorRightRing} alt="vector" />
@@ -54,4 +53,4 @@ const TestPrepWorkSection = ({ testPrepsDetails }) => {
   );
 };
 
-export default TestPrepWorkSection;
+export default LanguagePrepSimplifyThings;

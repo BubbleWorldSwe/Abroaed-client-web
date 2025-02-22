@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const TextPrepFaqSection = ({ testPrepsDetails }) => {
+const LanguagePrepFaqSection = ({ languagePrepsDetails }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -19,7 +19,7 @@ const TextPrepFaqSection = ({ testPrepsDetails }) => {
           Frequently Asked Questions
         </h2>
         <div className="flex-1 overflow-auto">
-          {testPrepsDetails?.faqs?.map((faq, index) => (
+          {languagePrepsDetails?.faqs?.map((faq, index) => (
             <div key={index}>
               <h2 id={`accordion-flush-heading-${index}`}>
                 <button
@@ -70,4 +70,4 @@ const TextPrepFaqSection = ({ testPrepsDetails }) => {
   );
 };
 
-export default TextPrepFaqSection;
+export default LanguagePrepFaqSection;

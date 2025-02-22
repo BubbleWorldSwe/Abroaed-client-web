@@ -21,11 +21,14 @@ const persistConfig = {
   storage,
   whitelist: [
     "auth",
-    "selectedDestination",
     "selectedTestPrep",
     "selectedLanguagePrep",
     "selectedCollege",
     "selectedAccommodation",
+    "allTestPreps",
+    "allDestinations",
+    "allDestinations",
+    "allLanguagePreps",
   ],
 };
 
@@ -45,9 +48,10 @@ const rootReducer = {
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false, serializableCheck: false }).concat(
-      sagaMiddleware
-    ),
+    getDefaultMiddleware({
+      thunk: false,
+      serializableCheck: false,
+    }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(rootSaga);

@@ -218,6 +218,7 @@ const DestinationTable = ({
           colSpan={6}
         />
       </table>
+
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

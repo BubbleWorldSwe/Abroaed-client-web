@@ -6,7 +6,7 @@ import { exploreCountries, exploreDomains, exploreUniversities } from "../data";
 const ExploreCourseNavItemModal = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   return (
-    <div className="absolute left-0 top-full mt-2 min-w-max h-[60vh] bg-white border border-gray-100 flex z-50 overflow-hidden">
+    <div className="absolute  left-1/2 transform -translate-x-1/2 top-full w-[70%] min-w-max h-[60vh] bg-white border border-gray-100 flex z-50 overflow-hidden">
       {/* Left Sidebar: Domain List */}
       <div className="p-3 w-1/4 overflow-y-auto text-gray-900 bg-white lg:rounded-lg dark:dark:text-white lg:col-span-2 dark:bg-gray-800">
         <h3 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">

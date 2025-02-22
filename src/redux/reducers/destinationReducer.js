@@ -9,6 +9,9 @@ import {
   EDIT_DESTINATION_FAILURE,
   EDIT_DESTINATION_REQUEST,
   EDIT_DESTINATION_SUCCESS,
+  FETCH_ALL_DESTINATIONS_FAILURE,
+  FETCH_ALL_DESTINATIONS_REQUEST,
+  FETCH_ALL_DESTINATIONS_SUCCESS,
   FETCH_DESTINATIONS_FAILURE,
   FETCH_DESTINATIONS_REQUEST,
   FETCH_DESTINATIONS_SUCCESS,
@@ -18,10 +21,9 @@ import {
 const initialState = {
   loading: false,
   destinations: [],
-  allDestinations: [],
   error: null,
   totalPages: null,
-
+  allDestinations: [],
   page: 1,
   limit: null,
   total: null,
@@ -31,7 +33,12 @@ const initialState = {
 export const destnationReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DESTINATIONS_REQUEST:
+    case FETCH_ALL_DESTINATIONS_REQUEST:
+    case ADD_DESTINATION_REQUEST:
+    case DELETE_DESTINATION_REQUEST:
+    case EDIT_DESTINATION_REQUEST:
       return { ...state, loading: true };
+
     case FETCH_DESTINATIONS_SUCCESS:
       return {
         ...state,
@@ -47,50 +54,15 @@ export const destnationReducer = (state = initialState, action) => {
 
         totalPages: action.payload.totalPages,
         page: action.payload.page,
-
-        allDestinations:
-          action.payload.page && action.payload.totalPages
-            ? action.payload.result
-            : [],
       };
-    case FETCH_DESTINATIONS_FAILURE:
+
+    case FETCH_ALL_DESTINATIONS_SUCCESS:
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        allDestinations: action.payload.result,
       };
 
-    case ADD_DESTINATION_REQUEST:
-      return { ...state, loading: true };
-
-    case ADD_DESTINATION_SUCCESS:
-      return initialState;
-
-    case ADD_DESTINATION_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case DELETE_DESTINATION_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
-
-    case DELETE_DESTINATION_SUCCESS:
-      return initialState;
-
-    case DELETE_DESTINATION_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-
-    case EDIT_DESTINATION_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
     case EDIT_DESTINATION_SUCCESS:
       return {
         ...state,
@@ -106,6 +78,21 @@ export const destnationReducer = (state = initialState, action) => {
         })),
         selectedDestination: action.payload,
       };
+
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+
+    case ADD_DESTINATION_SUCCESS:
+    case DELETE_DESTINATION_SUCCESS:
+      return initialState;
+
+    case FETCH_DESTINATIONS_FAILURE:
+    case FETCH_ALL_DESTINATIONS_FAILURE:
+    case DELETE_DESTINATION_FAILURE:
+    case ADD_DESTINATION_FAILURE:
     case EDIT_DESTINATION_FAILURE:
       return {
         ...state,
@@ -118,6 +105,7 @@ export const destnationReducer = (state = initialState, action) => {
 
     case LOGOUT:
       return initialState;
+
     default:
       return state;
   }

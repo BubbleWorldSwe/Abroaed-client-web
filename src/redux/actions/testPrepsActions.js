@@ -2,6 +2,10 @@ export const FETCH_TESTPREPS_REQUEST = "FETCH_TESTPREPS_REQUEST";
 export const FETCH_TESTPREPS_SUCCESS = "FETCH_TESTPREPS_SUCCESS";
 export const FETCH_TESTPREPS_FAILURE = "FETCH_TESTPREPS_FAILURE";
 
+export const FETCH_ALL_TESTPREPS_REQUEST = "FETCH_ALL_TESTPREPS_REQUEST";
+export const FETCH_ALL_TESTPREPS_SUCCESS = "FETCH_ALL_TESTPREPS_SUCCESS";
+export const FETCH_ALL_TESTPREPS_FAILURE = "FETCH_ALL_TESTPREPS_FAILURE";
+
 export const ADD_TESTPREP_REQUEST = "ADD_TESTPREP_REQUEST";
 export const ADD_TESTPREP_SUCCESS = "ADD_TESTPREP_SUCCESS";
 export const ADD_TESTPREP_FAILURE = "ADD_TESTPREP_FAILURE";
@@ -21,13 +25,27 @@ export const fetchTestPrepsRequest = (page) => ({
   payload: page,
 });
 
+export const fetchAllTestPrepsRequest = () => ({
+  type: FETCH_ALL_TESTPREPS_REQUEST,
+});
+
 export const fetchTestPrepsSuccess = (data) => ({
   type: FETCH_TESTPREPS_SUCCESS,
   payload: data,
 });
 
+export const fetchAllTestPrepsSuccess = (data) => ({
+  type: FETCH_ALL_TESTPREPS_SUCCESS,
+  payload: data,
+});
+
 export const fetchTestPrepsFailure = (error) => ({
   type: FETCH_TESTPREPS_FAILURE,
+  payload: error,
+});
+
+export const fetchAllTestPrepsFailure = (error) => ({
+  type: FETCH_ALL_TESTPREPS_FAILURE,
   payload: error,
 });
 

@@ -86,7 +86,6 @@ export const makePatchRequest = async (url, payload) => {
     });
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);

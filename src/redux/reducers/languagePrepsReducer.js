@@ -12,11 +12,15 @@ import {
   EDIT_LANGUAGEPREP_SUCCESS,
   EDIT_LANGUAGEPREP_FAILURE,
   SET_SELECTED_LANGUAGEPREP,
+  FETCH_ALL_LANGUAGEPREPS_REQUEST,
+  FETCH_ALL_LANGUAGEPREPS_FAILURE,
+  FETCH_ALL_LANGUAGEPREPS_SUCCESS,
 } from "../actions/languagePrepsActions";
 
 const initialState = {
   loading: false,
   languagePreps: [],
+  allLanguagePreps: [],
   error: null,
   totalPages: null,
 
@@ -30,6 +34,10 @@ const initialState = {
 export const languagePrepsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LANGUAGEPREPS_REQUEST:
+    case FETCH_ALL_LANGUAGEPREPS_REQUEST:
+    case ADD_LANGUAGEPREP_REQUEST:
+    case DELETE_LANGUAGEPREP_REQUEST:
+    case EDIT_LANGUAGEPREP_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_LANGUAGEPREPS_SUCCESS:
@@ -47,29 +55,12 @@ export const languagePrepsReducer = (state = initialState, action) => {
         page: action.payload.page,
       };
 
-    case FETCH_LANGUAGEPREPS_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case ADD_LANGUAGEPREP_REQUEST:
-      return { ...state, loading: true };
-
-    case ADD_LANGUAGEPREP_SUCCESS:
-      return initialState;
-
-    case ADD_LANGUAGEPREP_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case DELETE_LANGUAGEPREP_REQUEST:
-      return { ...state, loading: true };
-
-    case DELETE_LANGUAGEPREP_SUCCESS:
-      return initialState;
-
-    case DELETE_LANGUAGEPREP_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case EDIT_LANGUAGEPREP_REQUEST:
-      return { ...state, loading: true };
+    case FETCH_ALL_LANGUAGEPREPS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        allLanguagePreps: action.payload.result,
+      };
 
     case EDIT_LANGUAGEPREP_SUCCESS:
       return {
@@ -86,6 +77,14 @@ export const languagePrepsReducer = (state = initialState, action) => {
         selectedLanguagePrep: action.payload,
       };
 
+    case DELETE_LANGUAGEPREP_SUCCESS:
+    case ADD_LANGUAGEPREP_SUCCESS:
+      return initialState;
+
+    case FETCH_LANGUAGEPREPS_FAILURE:
+    case FETCH_ALL_LANGUAGEPREPS_FAILURE:
+    case ADD_LANGUAGEPREP_FAILURE:
+    case DELETE_LANGUAGEPREP_FAILURE:
     case EDIT_LANGUAGEPREP_FAILURE:
       return { ...state, loading: false, error: action.payload };
 

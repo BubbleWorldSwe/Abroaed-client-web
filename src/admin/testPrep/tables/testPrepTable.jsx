@@ -15,11 +15,17 @@ const TestPrepTable = ({
   handleDelete,
 }) => {
   const { testPreps, totalPages } = useSelector((state) => state.testPreps);
+
+  const { testPreps: data } = useSelector((state) => state);
+
+  console.log(data);
   const dispatch = useDispatch();
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+
+  console.log(testPreps);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
@@ -51,118 +57,122 @@ const TestPrepTable = ({
   };
 
   return (
-    <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
-      <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-          <th scope="col" className="px-4 py-3 ">
-            <CheckboxField
-              onClick={(e) => e.stopPropagation()}
-              id={`checkbox-college-all`}
-              htmlFor={`checkbox-college-all`}
-            />
-          </th>
-          <th scope="col" className="px-4 py-1 min-w-[14rem]">
-            Product Name
-          </th>
-          <th scope="col" className="px-4 py-1 min-w-[10rem]">
-            Exam
-          </th>
-          <th scope="col" className="px-4 py-1 min-w-[10rem]">
-            Language
-          </th>
-          <th scope="col" className="px-4 py-3">
-            <span className="sr-only">Actions</span>
-          </th>
-        </tr>
-      </thead>
+    <>
+      <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" className="px-4 py-3 ">
+              <CheckboxField
+                onClick={(e) => e.stopPropagation()}
+                id={`checkbox-college-all`}
+                htmlFor={`checkbox-college-all`}
+              />
+            </th>
+            <th scope="col" className="px-4 py-1 min-w-[14rem]">
+              Product Name
+            </th>
+            <th scope="col" className="px-4 py-1 min-w-[10rem]">
+              Exam
+            </th>
+            <th scope="col" className="px-4 py-1 min-w-[10rem]">
+              Language
+            </th>
+            <th scope="col" className="px-4 py-3">
+              <span className="sr-only">Actions</span>
+            </th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {testPreps.map(
-          (item) =>
-            item?.index === currentPage &&
-            item?.data.map((test, index) => (
-              <tr
-                key={index}
-                className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <td className="px-4 py-3 w-4">
-                  <CheckboxField
-                    onClick={(e) => e.stopPropagation()}
-                    id={`checkbox-college-${index}`}
-                    htmlFor={`checkbox-college-${index}`}
-                  />
-                </td>
-
-                <th
-                  scope="row"
-                  className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        <tbody>
+          {testPreps.map(
+            (item) =>
+              item?.index === currentPage &&
+              item?.data.map((test, index) => (
+                <tr
+                  key={index}
+                  className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  {test.productName}
-                </th>
+                  <td className="px-4 py-3 w-4">
+                    <CheckboxField
+                      onClick={(e) => e.stopPropagation()}
+                      id={`checkbox-college-${index}`}
+                      htmlFor={`checkbox-college-${index}`}
+                    />
+                  </td>
 
-                <td className="px-4 py-3">{test.exam}</td>
-                <td className="px-4 py-3">{test.language}</td>
-
-                <td className="px-4 py-3">
-                  <button
-                    className="focus:outline-none"
-                    onClick={(e) => handleDropdownToggle(e, index)}
+                  <th
+                    scope="row"
+                    className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                  </button>
-                  {dropdownVisible === index && (
-                    <div
-                      ref={dropdownRef}
-                      className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                        dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
-                      }`}
-                    >
-                      <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                        <li>
-                          <button
-                            type="button"
-                            onClick={() => handleViewDetails(test)}
-                            className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Eye className="w-4 h-4" />
-                            <span>View Details</span>
-                          </button>
-                        </li>
+                    {test.productName}
+                  </th>
 
-                        <li>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setDeleteId(test._id);
-                              setIsModalOpen(!isModalOpen);
-                              //setDropdownVisible(null);
-                            }}
-                            /* onClick={() => {
+                  <td className="px-4 py-3">{test.exam}</td>
+                  <td className="px-4 py-3">{test.language}</td>
+
+                  <td className="px-4 py-3">
+                    <button
+                      className="focus:outline-none"
+                      onClick={(e) => handleDropdownToggle(e, index)}
+                    >
+                      <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                    </button>
+                    {dropdownVisible === index && (
+                      <div
+                        ref={dropdownRef}
+                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                          dropdownDirection === "up"
+                            ? "bottom-full mb-2"
+                            : "mt-2"
+                        }`}
+                      >
+                        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                          <li>
+                            <button
+                              type="button"
+                              onClick={() => handleViewDetails(test)}
+                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              <Eye className="w-4 h-4" />
+                              <span>View Details</span>
+                            </button>
+                          </li>
+
+                          <li>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setDeleteId(test._id);
+                                setIsModalOpen(!isModalOpen);
+                                //setDropdownVisible(null);
+                              }}
+                              /* onClick={() => {
                               handleDelete(test._id);
                               setDropdownVisible(null);
                             }} */
-                            className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                            <span>Delete</span>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))
-        )}
-      </tbody>
-      <TableFooter
-        totalPages={totalPages}
-        currentPage={currentPage}
-        handleNextPage={handleNextPage}
-        handlePrevPage={handlePrevPage}
-        tableData={testPreps}
-        colSpan={5}
-      />
+                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                              <span>Delete</span>
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))
+          )}
+        </tbody>
+        <TableFooter
+          totalPages={totalPages}
+          currentPage={currentPage}
+          handleNextPage={handleNextPage}
+          handlePrevPage={handlePrevPage}
+          tableData={testPreps}
+          colSpan={5}
+        />
+      </table>
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -172,7 +182,7 @@ const TestPrepTable = ({
           setIsModalOpen(false);
         }}
       />
-    </table>
+    </>
   );
 };
 
