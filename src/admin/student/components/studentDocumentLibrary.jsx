@@ -55,7 +55,7 @@ const StudentDocumentLibrary = () => {
 
                 </div>
                 <div className="black flex gap-5 px-2 cursor-pointer" onClick={handleOpenUploadModal}>
-                    <button className="">
+                    <button >
                         <Upload />
                     </button>
                     <p className="text-lg font-semibold">Upload Document </p>

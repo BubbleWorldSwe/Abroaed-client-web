@@ -36,6 +36,12 @@ import IvyLeaguesPage from "../website/ivyLeagues/webpages/ivyLeaguesPage";
 import TestPrep from "../admin/testPrep/screens/testPrep";
 import TestPrepDetails from "../admin/testPrep/screens/testPrepDetails";
 import LanguagePrepLayout from "../website/languagePrep/webpages/languagePrepPage";
+import StudentLayout from "../student/studentLayout";
+import StudentHome from "../student/studentComponent/studentHome";
+import StudentDocuments from "../student/studentComponent/studentDocuments";
+import StudentProfile from "../student/studentComponent/studentProfile";
+import StudentApplications from "../student/studentComponent/studentApplications";
+import StudentTransactions from "../student/studentComponent/studentTransactions";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -123,6 +129,21 @@ const AppRoutes = () => {
         { path: "colleges/:name", element: <CollegDetails /> },
         { path: "destinations/:name", element: <DestinationDetails /> },
         { path: "destinations", element: <Destinations /> },
+      ],
+    },
+    // Student Routes (Private)
+    {
+      path: "/student",
+      element: < StudentLayout />,
+      isPrivate: true,
+      requiredRole: "admin",
+      children: [
+        { path: "home", element: <StudentHome /> },
+        { path: "documents", element: <StudentDocuments /> },
+        { path: "profile", element: <StudentProfile /> },
+        { path: "application", element: <StudentApplications /> },
+        { path: "transactions", element: <StudentTransactions /> },
+
       ],
     },
   ];

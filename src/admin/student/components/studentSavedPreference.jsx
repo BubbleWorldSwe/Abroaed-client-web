@@ -36,7 +36,7 @@ function StudentSavedPreference() {
                 </div>
 
                 {/* Card Container with Horizontal Scroll */}
-                <div className="flex gap-5 overflow-x-auto pb-6">
+                <div className="flex  gap-5 overflow-x-auto pb-6">
                     {Array(6).fill().map((tab, index) => (
                         <StudentPreferenceCard key={index} />
                     ))}

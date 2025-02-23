@@ -43,7 +43,6 @@ const StudentTable = ({ Students, handleOpenAddModal, setDropdownVisible, dropdo
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[6rem]">
                         Counselleor
-
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[7rem]">
                         Application Counts

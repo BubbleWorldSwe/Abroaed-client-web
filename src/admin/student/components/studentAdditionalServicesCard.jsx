@@ -9,8 +9,6 @@ const StudentAdditionalServicesCard = () => {
                     <h5 className=" text-xl whitespace-nowrap font-semibold tracking-tight text-gray-900 dark:text-white">
                         University of Glassgow
                     </h5>
-                    <>
-                    </>
                 </div>
             </div>
         </div>

@@ -120,7 +120,9 @@ function Student() {
                 </div>
               </div>
             </div>
-            <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
+            <div
+              className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5"
+            >
               <StudentTable
                 Students={studentsData}
                 handleOpenAddModal={handleOpenAddModal}
