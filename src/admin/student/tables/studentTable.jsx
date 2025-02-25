@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { Tooltip } from "flowbite-react";
 import { EllipsisVertical, Eye, Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 
 const StudentTable = ({ Students, handleOpenAddModal, setDropdownVisible, dropdownVisible }) => {
     const [dropdownDirection, setDropdownDirection] = useState(null);
@@ -26,20 +28,37 @@ const StudentTable = ({ Students, handleOpenAddModal, setDropdownVisible, dropdo
         setDropdownVisible(dropdownVisible === index ? null : index);
         setDropdownDirection("down");
     };
+    const TooltipContent = () => {
+        return (
+            <div className="flex justify-between w-96 py-3">
+                <div>College Name</div>
+                <div>
+                    <span className="px-3 py-2 bg-[#FFFCC2]">
+                        Verifying Documents
+                    </span>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" className="p-4"></th>
-                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
+                    <th scope="col" className="p-4">
+                        <CheckboxField
+                            onClick={(e) => e.stopPropagation()}
+                            id={`checkbox-college-all`}
+                            htmlFor={`checkbox-college-all`}
+                        />
+                    </th>                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
                         Student Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
                         Level
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                        Plan Type
+                        Service
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[6rem]">
                         Counselleor
@@ -58,6 +77,7 @@ const StudentTable = ({ Students, handleOpenAddModal, setDropdownVisible, dropdo
                         key={index}
                         className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
+
                         <td className="px-4 py-3 w-4">
                             <div className="flex items-center">
                                 <input
@@ -88,9 +108,17 @@ const StudentTable = ({ Students, handleOpenAddModal, setDropdownVisible, dropdo
                             {member.counsellor}
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
-                                {member.appCount}
-                            </span>
+                            <Tooltip
+                                content={<TooltipContent />}
+                                placement="bottom"
+                                className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
+
+                            >
+
+                                <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                                    {member.appCount}
+                                </span>
+                            </Tooltip>
                         </td>
                         <td className="px-4 py-3">
                             <button

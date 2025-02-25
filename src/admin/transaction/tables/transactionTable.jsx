@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { EllipsisVertical, Eye, Pencil } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 
 const TransactionTable = ({
   studentPayments,
@@ -17,12 +19,7 @@ const TransactionTable = ({
     setDropdownVisible(dropdownVisible === index ? null : index);
     setDropdownDirection("down");
   };
-  const handleCheckboxClick = (index) => {
-    setSelectedRows((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }));
-  };
+
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setDropdownVisible(null);
@@ -36,15 +33,21 @@ const TransactionTable = ({
     };
   }, []);
   return (
-    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <table className="w-full text-sm border-2 rounded-lg text-left text-gray-500 dark:text-gray-400">
       <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" className="p-4"></th>
+          <th scope="col" className="p-4">
+            <CheckboxField
+              onClick={(e) => e.stopPropagation()}
+              id={`checkbox-college-all`}
+              htmlFor={`checkbox-college-all`}
+            />
+          </th>
           <th scope="col" className="px-4 py-3 min-w-[14rem]">
             Student Name
           </th>
           <th scope="col" className="px-4 py-3 min-w-[10rem]">
-            Services
+            Plan Type
           </th>
           <th scope="col" className="px-4 py-3 min-w-[10rem]">
             Amount Paid
@@ -52,7 +55,9 @@ const TransactionTable = ({
           <th scope="col" className="px-4 py-3 min-w-[14rem]">
             Payment Method
           </th>
-
+          <th scope="col" className="px-4 py-3 min-w-[10rem]">
+            Balance
+          </th>
           <th scope="col" className="px-4 py-3 min-w-[10rem]">
             Payment Date
           </th>
@@ -61,15 +66,20 @@ const TransactionTable = ({
           </th>
         </tr>
       </thead>
-
       <tbody>
         {studentPayments?.map((transaction, index) => (
           <tr
             key={index}
-            className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 ${
-              selectedRows[index] ? "bg-[#FFFCC2]" : ""
-            }`}
+            className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedRows[index] ? "bg-[#FFFCC2]" : ""
+              }`}
           >
+            <td className="px-4 py-3 w-4">
+              <CheckboxField
+                onClick={(e) => e.stopPropagation()}
+                id={`checkbox-teams-${index}`}
+                htmlFor={`checkbox-teams-${index}`}
+              />
+            </td>
             <th
               scope="row"
               className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -78,9 +88,22 @@ const TransactionTable = ({
             </th>
 
             <td className="px-4 py-3">{transaction.planType}</td>
-            <td className="px-4 py-3">{`$ ${transaction.amountPaid}`}</td>
+            <td className="px-4 py-3">
+              <span className="p-2  bg-gray-100 rounded">
+                {transaction.amountPaid}
+              </span>
+            </td>
             <td className="px-4 py-3">{transaction.paymentMethod}</td>
-            <td className="px-4 py-3">{transaction.paymentDate}</td>
+            <td className="px-4 py-3">
+              <span className="p-2  bg-gray-100 rounded">
+                Balance: $250
+              </span>
+            </td>
+            <td className="px-4 py-3">
+              <span className="p-2  bg-gray-100 rounded">
+                {transaction.paymentDate}
+              </span>
+            </td>
 
             <td className="px-4 py-3">
               <button
@@ -92,9 +115,8 @@ const TransactionTable = ({
               </button>
               {dropdownVisible === index && (
                 <div
-                  className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                    dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
-                  }`}
+                  className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
+                    }`}
                 >
                   <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                     <li>

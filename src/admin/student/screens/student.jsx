@@ -2,9 +2,9 @@ import { useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import StudentTable from "../tables/studentTable";
 import { studentsData } from "../data";
-import AddStudentModal from "../modals/addStudentModal";
-import ServiceTypePlanStudent from "../modals/serviceTypePlanStudent";
-import AssignTeamMemberStudent from "../modals/assignTeamMemberStudent";
+// import AddStudentModal from "../modals/addStudentModal";
+import ServiceTypePlanStudent from "../modals/serviceTypePlanStudentModal";
+import AssignTeamMemberStudentModal from "../modals/assignTeamMemberStudentModal";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 
 function Student() {
@@ -26,11 +26,11 @@ function Student() {
 
   return (
     <>
-      <AddStudentModal
+      {/* <AddStudentModal
         isOpen={isAddModalOpen && modalType === "add"}
         onClose={handleCloseAddModal}
         setNext={setNext}
-      />
+      /> */}
       <ServiceTypePlanStudent
         isOpen={next}
         setIsOpen={setNext}
@@ -43,7 +43,7 @@ function Student() {
         onClose={() => setDone(false)}
         text={modalType === "add" ? "Student Added!" : "Team Assigned!"}
       />
-      <AssignTeamMemberStudent
+      <AssignTeamMemberStudentModal
         isOpen={isAddModalOpen && modalType === "assign"}
         onClose={handleCloseAddModal}
         setDone={setDone}
@@ -92,7 +92,7 @@ function Student() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <div className="flex gap-2">
+                {/* <div className="flex gap-2">
                   <button
                     onClick={() => handleOpenAddModal("add")}
                     type="button"
@@ -117,7 +117,7 @@ function Student() {
                     </svg>
                     Add Student
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
             <div

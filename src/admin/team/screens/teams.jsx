@@ -13,16 +13,13 @@ import { fetchRolesRequest } from "../../../redux/actions/rolesActions";
 import TeamTable from "../tables/teamTable";
 import filter_list from "../../../assets/filter_list.png";
 import { AddButton } from "../../../commons/components/buttons/addButton";
-import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 
 function Teams() {
   const dispatch = useDispatch();
   const { teams, totalPages, page } = useSelector((state) => state.team);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
-
   const [modalType, setModalType] = useState("");
   const [editData, setEditData] = useState(null);
   const [isDone, setIsDone] = useState(false);
@@ -109,7 +106,7 @@ function Teams() {
         onUpdateTeam={handleUpdateTeam}
       />
 
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
+      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">
             <div className="dark:border-gray-700 mx-4">
@@ -151,7 +148,7 @@ function Teams() {
                 </div>
                 <AddButton
                   onClick={handleOpenAddModal}
-                  label={" Add New Team Member"}
+                  label={" New Team Member"}
                 />
               </div>
             </div>

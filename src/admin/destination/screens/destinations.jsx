@@ -140,7 +140,7 @@ function Destinations() {
 
                 <AddButton
                   onClick={() => setIsAddModalOpen(true)}
-                  label={"Add New Destination"}
+                  label={"New Destination"}
                 />
               </div>
             </div>

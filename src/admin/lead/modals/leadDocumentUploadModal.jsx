@@ -1,11 +1,8 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
+import { Search, Upload } from "lucide-react"
+import { Toaster } from "react-hot-toast"
 
-import { Search, Upload } from "lucide-react";
-import { Toaster } from "react-hot-toast";
-
-const StudentUploadDocument = ({ isOpen, onClose }) => {
-
+const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
     return (
         <>
             {isOpen && (
@@ -23,7 +20,7 @@ const StudentUploadDocument = ({ isOpen, onClose }) => {
                                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-3">
                                     {/* Highest Education Qualification (Dropdown) */}
                                     <div>
-                                        <label className="block text-sm font-semibold text-[#27272A] mb-1"> Document Category</label>
+                                        <label className="block text-sm font-semibold text-[#27272A] mb-1"> Document Type</label>
                                         <select
                                             name="education"
                                             // value={formData.education}
@@ -33,14 +30,14 @@ const StudentUploadDocument = ({ isOpen, onClose }) => {
                                             <option value="">Gov/Acad/Fin/Clg Name</option>
                                             <option value="High School">High School</option>
                                             <option value="Diploma">Diploma</option>
-                                            <option value="Bachelor's Degree">Bachelor's Degree</option>
-                                            <option value="Master's Degree">Master's Degree</option>
+                                            <option value="Bachelor's Degree">Bachelor&apos;s Degree</option>
+                                            <option value="Master's Degree">Master&apos;s Degree</option>
                                             <option value="PhD">PhD</option>
                                         </select>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">College</label>
+                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">Select Document Name</label>
                                         <select
                                             name="studyDestination"
                                             // value={formData.studyDestination}
@@ -98,5 +95,4 @@ const StudentUploadDocument = ({ isOpen, onClose }) => {
         </>
     )
 }
-
-export default StudentUploadDocument;
+export default LeadDocumentUploadModal

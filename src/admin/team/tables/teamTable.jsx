@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import {
-  ChevronLeft,
-  ChevronRight,
   Edit,
   EllipsisVertical,
   Trash2,
@@ -22,14 +22,10 @@ const TeamTable = ({
   onSetEditData,
 }) => {
   const { teams, totalPages } = useSelector((state) => state.team);
-
   const [deleteId, setDeleteId] = useState(null);
-
   const dropdownRef = useRef(null);
   const [dropdownDirection, setDropdownDirection] = useState(null);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
@@ -51,8 +47,6 @@ const TeamTable = ({
   useEffect(() => {
     console.log("Teams updated:", teams);
   }, []);
-
-  console.log(deleteId + " Delete ID");
 
   return (
     <>
@@ -123,11 +117,10 @@ const TeamTable = ({
                     {dropdownVisible === index && (
                       <div
                         ref={dropdownRef}
-                        className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${
-                          dropdownDirection === "up"
-                            ? "bottom-full mb-2"
-                            : "top-full mt-2"
-                        }`}
+                        className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${dropdownDirection === "up"
+                          ? "bottom-full mb-2"
+                          : "top-full mt-2"
+                          }`}
                       >
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                           <li>

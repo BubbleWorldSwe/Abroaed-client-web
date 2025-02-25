@@ -2,15 +2,11 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { scheduleAppointment } from "../../../slices/leadSlice";
-
-import Flatpickr from "react-flatpickr";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 
 const AppointmentModal = ({ leadId, onClose }) => {
   const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
-  const [dateTime, setDateTime] = useState(new Date());
-
   const [appointmentData, setAppointmentData] = useState({
     date: "",
     timeSlot: "",
@@ -38,13 +34,6 @@ const AppointmentModal = ({ leadId, onClose }) => {
             &times;
           </button>
           <h2 className="text-xl font-semibold mb-4">Schedule Appointment</h2>
-          <h5 className="text-sm font-semibold mb-1">Student Name</h5>
-          <div className="mbss-4">
-            <input
-              placeholder="Garvit Singh"
-              className="w-1/2 px-3 py-1 border border-[#D4D4D8] rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-            />
-          </div>
           <div className="space-y-4 mt-4">
             <div className=" mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2">
               <div>
@@ -66,7 +55,12 @@ const AppointmentModal = ({ leadId, onClose }) => {
                 <label className="text-sm font-semibold mb-1">
                   Preferred Slot
                 </label>
-                <Flatpickr
+                <input
+                  type="datetime-local"
+                  placeholder="DD/MM/YYYY"
+                  className="w-full px-3 py-1 border-none bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                {/* <Flatpickr
                   value={dateTime}
                   onChange={(date) => setDateTime(date[0])}
                   options={{
@@ -74,7 +68,7 @@ const AppointmentModal = ({ leadId, onClose }) => {
                     dateFormat: "Y-m-d H:i",
                   }}
                   className="w-full border-none bg-[#F4F4F5] rounded-lg p-1 px-3"
-                />
+                /> */}
               </div>
             </div>
             <div className="flex justify-end space-x-2">
@@ -83,6 +77,12 @@ const AppointmentModal = ({ leadId, onClose }) => {
                 className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
               >
                 Reset
+              </button>
+              <button
+                onClick={onClose}
+                className="px-4 py-2 bg-[#C80E41] text-white rounded-lg hover:bg-red-700"
+              >
+                Cancel Appointment
               </button>
               <button
                 onClick={handleSubmit}

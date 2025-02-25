@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Sidebar } from "flowbite-react";
 import {
-    BookUserIcon,
     CreditCard,
     File,
     FileText,

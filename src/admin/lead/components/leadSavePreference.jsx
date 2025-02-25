@@ -1,7 +1,7 @@
 import { useState } from "react";
-import StudentPreferenceCard from "./studentPreferenceCard";
+import LeadSavePreferanceCard from "./leadSavePreferanceCard";
 
-function StudentSavedPreference() {
+const LeadSavePreference = () => {
     const [activeTab, setActiveTab] = useState(0); // State to keep track of the active tab
     const tabs = ['Colleges', 'Course', 'Accommodations'];
 
@@ -38,7 +38,7 @@ function StudentSavedPreference() {
                 {/* Card Container with Horizontal Scroll */}
                 <div className="flex  gap-5 overflow-x-auto pb-6">
                     {Array(6).fill().map((tab, index) => (
-                        <StudentPreferenceCard key={index} />
+                        <LeadSavePreferanceCard key={index} />
                     ))}
                 </div>
 
@@ -49,4 +49,4 @@ function StudentSavedPreference() {
     );
 }
 
-export default StudentSavedPreference
+export default LeadSavePreference

@@ -42,6 +42,7 @@ import StudentDocuments from "../student/studentComponent/studentDocuments";
 import StudentProfile from "../student/studentComponent/studentProfile";
 import StudentApplications from "../student/studentComponent/studentApplications";
 import StudentTransactions from "../student/studentComponent/studentTransactions";
+import LeadProfileLayout from "../admin/lead/screens/leadProfile";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -118,6 +119,7 @@ const AppRoutes = () => {
         { path: "students", element: <Student /> },
         { path: "students/:name", element: <StudentProfileLayout /> },
         { path: "leads", element: <Leads /> },
+        { path: "leads/:name", element: <LeadProfileLayout /> },
         { path: "accommodation", element: <Accommodations /> },
         { path: "accommodation/:name", element: <AccommodationDetails /> },
         { path: "testPrep/:name", element: <TestPrepDetails /> },
