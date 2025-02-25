@@ -1,7 +1,10 @@
-
 import cover from "../../../../assets/cover.jpg";
-import vectorDownNose from "../../../../assets/vectorDownNose.png"
-import Tabs, { HomeForm, VirtualForm, VisitUsForm } from "../../../../Components/AnimatedTabs";
+import vectorDownNose from "../../../../assets/vectorDownNose.png";
+import Tabs, {
+  HomeForm,
+  VirtualForm,
+  VisitUsForm,
+} from "../../../../Components/AnimatedTabs";
 const tabData = [
   { title: "Home", value: "home", content: <HomeForm /> },
   { title: "Virtual", value: "virtual", content: <VirtualForm /> },
@@ -20,9 +23,12 @@ function HomePromoSection() {
                 Have Queries? Need Help
               </h1>
               <p className="text-#52525B ml-4 mb-3">
-                Our counsellor will get in touch with you and will guide you through all the details of filling applications and preparing documents, so that you can focus on yourself, leaving all the hassle for us to handle.
+                Our counsellor will get in touch with you and will guide you
+                through all the details of filling applications and preparing
+                documents, so that you can focus on yourself, leaving all the
+                hassle for us to handle.
               </p>
-              <div className="flex justify-center lg:justify-start mt-2 p-4" >
+              <div className="flex justify-center lg:justify-start mt-2 p-4">
                 <img
                   className="rounded-lg max-w-full"
                   src={cover}
@@ -31,7 +37,7 @@ function HomePromoSection() {
               </div>
             </div>
           </div>
-          <div className="absolute top-96 left-0 z-0" >
+          <div className="absolute top-96 left-0 z-0">
             <img
               className="rounded-lg max-w-full "
               src={vectorDownNose}
@@ -40,16 +46,10 @@ function HomePromoSection() {
           </div>
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start items-end">
-            <Tabs
-              tabs={tabData}
-              className="w-full lg:w-auto"
-            />
+            <Tabs tabs={tabData} className="w-full lg:w-auto" />
           </div>
         </div>
       </section>
-
-
-
     </div>
   );
 }

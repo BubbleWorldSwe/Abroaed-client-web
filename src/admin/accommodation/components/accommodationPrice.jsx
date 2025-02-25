@@ -9,7 +9,10 @@ const AccommodationPrice = () => {
     <div>
       <div className="flex gap-10">
         {[
-          { label: "Currency", value: accommodationDetails?.currency },
+          {
+            label: "Currency",
+            value: accommodationDetails?.destinationId?.countryId?.currency,
+          },
           { label: "Amount", value: accommodationDetails?.price },
         ].map((item, index) => (
           <div className="" key={index}>

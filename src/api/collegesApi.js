@@ -20,6 +20,20 @@ export const getColleges = async (page) => {
   }
 };
 
+export const getCollegesByDestinationId = async (destId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/colleges/list?filter={"destinationId":"${destId}"}`
+    );
+
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const setAddCollege = async (credentials) => {
   try {
     console.log(credentials);

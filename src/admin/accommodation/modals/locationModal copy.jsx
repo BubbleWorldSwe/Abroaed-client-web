@@ -13,47 +13,92 @@ const LocationModal = ({
   onUpdate,
   destinationsList,
   getStatesList,
-  statesList,
+  // statesList,
 }) => {
   const accommodationDetails = useSelector(
     (state) => state?.accommodations?.selectedAccommodation
   );
 
+  console.log(accommodationDetails.destinationId);
+
   const [formData, setFormData] = useState({
-    destinationId: accommodationDetails?.destinationId?._id,
+    countryId: accommodationDetails?.countryId?._id,
     stateId: accommodationDetails?.stateId?._id,
     city: accommodationDetails?.city,
     streetName: accommodationDetails?.streetName,
   });
+  const { countries } = useSelector((state) => state.countries);
 
-  console.log(formData);
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [statesList, setStatesList] = useState([]);
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));
   };
 
+  const handleCountrySelect = (data) => {
+    setSelectedCountry(data);
+    setFormData((prev) => ({
+      ...prev,
+      countryId: data.value,
+      stateId:
+        data.value === accommodationDetails.countryId
+          ? accommodationDetails.stateId
+          : null,
+    }));
+    setStatesList(data.states || []);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { destinationId, stateId, city, streetName } = formData;
+    const { countryId, stateId, city, streetName } = formData;
 
-    if (!destinationId || !stateId || !city || !streetName) {
+    if (!countryId || !stateId || !city || !streetName) {
       toast.error("Please fill out all fields.");
       return;
     }
     onUpdate(formData);
   };
 
+  useEffect(() => {
+    if (accommodationDetails?.countryId) {
+      const country = countries.find(
+        (c) => c._id === accommodationDetails.countryId._id
+      );
+
+      if (country) {
+        setSelectedCountry({
+          label: `${country.emoji} ${country.name}`,
+          value: country._id,
+          ...country,
+        });
+        setStatesList(country.states || []);
+      }
+    }
+  }, [accommodationDetails]);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-5">
+          <SearchDropdownField
+            label="Select Country"
+            options={countries.map((data) => ({
+              label: `${data.emoji} ${data.name}`,
+              value: data._id,
+              ...data,
+            }))}
+            value={selectedCountry} // Prefilled value
+            onSelect={handleCountrySelect}
+            onSearch={fetchCountries}
+          />
+
           <SelectField
             label="Country"
             name="destinationId"
             value={formData.destinationId}
             onChange={(e) => {
-              // handleChange(e);
-              handleInputChange("destinationId", e.target.value);
+              handleChange(e);
 
               const selectedCountry = destinationsList.find(
                 (data) => data?._id === e.target.value

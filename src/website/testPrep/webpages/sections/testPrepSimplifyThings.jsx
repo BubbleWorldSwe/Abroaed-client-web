@@ -1,6 +1,7 @@
 import vectorRightRing from "../../../../assets/vectorRightRing.png";
+import { steps } from "../../data";
 
-const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
+const TestPrepSimplifyThings = ({ testPrepsDetails }) => {
   return (
     <div className="relative mx-auto px-10">
       <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
@@ -24,9 +25,9 @@ const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
-              {languagePrepsDetails?.simplifyThings?.map((data, i) => (
+              {steps.map((step) => (
                 <div
-                  key={i}
+                  key={step.step}
                   className="flex relative flex-col gap-3 h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
                 >
                   <div
@@ -40,14 +41,14 @@ const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
                   ></div>
                   <div>
                     <span className="block text-4xl font-bold text-white dark:text-primary-400">
-                      {i + 1}
+                      {step.step}
                     </span>
                   </div>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
-                    {data.title}
+                    {step.heading}
                   </h5>
                   <p className="font-normal text-white dark:text-gray-400">
-                    {data.description}
+                    {step.description}
                   </p>
                   <div className="absolute top-0 right-0">
                     <img src={vectorRightRing} alt="vector" />
@@ -62,4 +63,4 @@ const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
   );
 };
 
-export default LanguagePrepSimplifyThings;
+export default TestPrepSimplifyThings;

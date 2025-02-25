@@ -65,7 +65,7 @@ const PriceModal = ({ closeModal, onUpdate }) => {
             onChange={(e) => handleInputChange(e, "price")}
             required
             placeholder="Enter Amount (Monthly)"
-            currency={`${accommodationDetails?.currency}`}
+            currency={`${accommodationDetails?.destinationId?.countryId?.currency}`}
           />
         </div>
 

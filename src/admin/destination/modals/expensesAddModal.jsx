@@ -11,11 +11,13 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
     (state) => state.destinations.selectedDestination
   );
   const defaultFormData = [
-    { id: 1, label: "Average Tuition Fees (per year)", value: "" },
-    { id: 2, label: "Average Rent (per month)", value: "" },
-    { id: 3, label: "Average Food Expenses (per month)", value: "" },
-    { id: 4, label: "Average Transport Expenses (per month)", value: "" },
-    { id: 5, label: "Misc. Expenses (per month)", value: "" },
+    { id: 1, label: "Average Tuition Fees UG (per year)", value: "" },
+    { id: 2, label: "Average Tuition Fees PG (per year)", value: "" },
+    { id: 3, label: "Average Tuition Fees PhD (per year)", value: "" },
+    { id: 4, label: "Average Rent (per month)", value: "" },
+    { id: 5, label: "Average Food Expenses (per month)", value: "" },
+    { id: 6, label: "Average Transport Expenses (per month)", value: "" },
+    { id: 7, label: "Misc. Expenses (per month)", value: "" },
   ];
 
   const [formData, setFormData] = useState(defaultFormData);
@@ -62,7 +64,7 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
   }, [details]);
 
   return (
-    <div>
+    <div className="w-[400px] mx-auto">
       <form className="flex flex-col gap-4">
         {formData.map((field) => (
           <CurrencyInputField

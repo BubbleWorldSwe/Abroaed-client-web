@@ -24,6 +24,8 @@ import { useDispatch, useSelector } from "react-redux";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import { fetchAllTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
 import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePrepsActions";
+import ContactUsForm from "../../comman/components/contactUsForm";
+import Blogs from "../../comman/components/blogs";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ function HomeLayout() {
   }, []);
 
   if (loading) {
-    return <PageLoader />;
+    // return <PageLoader />;
   }
 
   return (
@@ -70,8 +72,9 @@ function HomeLayout() {
       <HomeDownloadApp />
       {/* <Pricing /> */}
       {/* <FAQsection /> */}
-      <HomeAbroaedUpdateSection />
-      <HomeLeadForm />
+
+      <Blogs />
+      <ContactUsForm />
       <Footer />
     </div>
   );

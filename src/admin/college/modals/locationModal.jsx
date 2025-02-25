@@ -6,27 +6,29 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { toast } from "react-toastify";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 
 const LocationModal = ({
   closeModal,
-  fetchCountries,
   onUpdate,
   destinationsList,
   getStatesList,
   statesList,
 }) => {
-  const accommodationDetails = useSelector(
-    (state) => state?.accommodations?.selectedAccommodation
-  );
+  const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
 
   const [formData, setFormData] = useState({
-    destinationId: accommodationDetails?.destinationId?._id,
-    stateId: accommodationDetails?.stateId?._id,
-    city: accommodationDetails?.city,
-    streetName: accommodationDetails?.streetName,
+    destinationId: collegeDetails?.destinationId?._id,
+    stateId: collegeDetails?.stateId?._id,
+    city: collegeDetails?.city,
+    address: collegeDetails?.address,
   });
 
   console.log(formData);
+
+  console.log(collegeDetails.destinationId);
+
+  console.log(destinationsList);
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));
@@ -34,9 +36,9 @@ const LocationModal = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { destinationId, stateId, city, streetName } = formData;
+    const { destinationId, stateId, city, address } = formData;
 
-    if (!destinationId || !stateId || !city || !streetName) {
+    if (!destinationId || !stateId || !city || !address) {
       toast.error("Please fill out all fields.");
       return;
     }
@@ -46,7 +48,7 @@ const LocationModal = ({
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 gap-5">
+        <div className="grid grid-cols-1 gap-5 w-[400px]">
           <SelectField
             label="Country"
             name="destinationId"
@@ -95,12 +97,12 @@ const LocationModal = ({
             placeholder={"Enter City"}
           />
 
-          <TextInputField
-            label="Street Name"
-            name="streetName"
-            value={formData?.streetName}
-            onChange={(e) => handleInputChange("streetName", e.target.value)}
-            placeholder={"Enter Street Name"}
+          <TextareaInputField
+            label="Address"
+            name="address"
+            value={formData?.address}
+            onChange={(e) => handleInputChange("address", e.target.value)}
+            placeholder={"Enter Address"}
           />
         </div>
 

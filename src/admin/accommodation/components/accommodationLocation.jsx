@@ -8,7 +8,10 @@ const AccommodationLocation = () => {
     <div>
       <div className="flex gap-10">
         {[
-          { label: "Country", value: accommodationDetails?.countryId?.name },
+          {
+            label: "Country",
+            value: accommodationDetails?.destinationId?.countryId?.name,
+          },
           { label: "State", value: accommodationDetails?.stateId?.name },
           { label: "City", value: accommodationDetails?.city },
           {

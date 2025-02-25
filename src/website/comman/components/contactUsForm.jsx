@@ -9,8 +9,6 @@ const ContactUsForm = () => {
           {/* Left Section - 60% Width */}
           <div className="lg:w-3/5 px-4 py-4 flex flex-col justify-center">
             <h1 className="text-[45px] font-black text-black leading-tight tracking-wide">
-              Lorem Ipsum Dolor.
-              <br />
               Need Help?
             </h1>
 

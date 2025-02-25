@@ -3,7 +3,8 @@ import { courses, universities } from "../../data";
 import UniversityDetailsCard from "../../components/destinationUniversityDetailsCard";
 import CourseCard from "../../components/destinationCourseCard";
 
-function DestinationUniCoursersSection() {
+function DestinationUniCoursersSection({ destinationDetails, collegesList }) {
+  console.log(collegesList);
   return (
     <div className="relative">
       {/* Blob Background */}
@@ -22,7 +23,7 @@ function DestinationUniCoursersSection() {
             </h2>
             <div className="my-4 border-t border-gray-300"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-10">
-              {universities.map((item, index) => (
+              {collegesList.map((item, index) => (
                 <UniversityDetailsCard item={item} key={index} />
               ))}
             </div>
@@ -35,9 +36,11 @@ function DestinationUniCoursersSection() {
             <div className="my-4 border-t border-gray-300"></div>
             <p className="font-light text-gray-700 text-lg ">
               With world-class universities, experienced faculties, and multiple
-              opportunities in different fields, the UK is a top choice among
+              opportunities in different fields, the{" "}
+              {destinationDetails?.countryId?.name} is a top choice among
               international students. Know all the popular study abroad courses
-              of UK universities so you can make the best of your career choice
+              of {destinationDetails?.countryId?.name} universities so you can
+              make the best of your career choice
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-10">
               {courses.map((course, index) => (

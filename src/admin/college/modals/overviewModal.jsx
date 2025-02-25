@@ -12,6 +12,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
 
   const [formData, setFormData] = useState({
     description: collegeDetails?.description || "",
+    name: collegeDetails?.name || "",
     establishmentYear: collegeDetails?.establishmentYear || "",
     ranking: collegeDetails?.ranking || "",
     intake: collegeDetails?.intake || "",
@@ -27,6 +28,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
     const requiredFields = [
       "description",
       "establishmentYear",
+      "name",
       "ranking",
       "intake",
       "internationalStudent",
@@ -66,12 +68,24 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <div className="mb-5">
+          <TextInputField
+            label="College Name"
+            name="College Name"
+            type="text"
+            value={formData.name}
+            onChange={(e) => handleInputChange(e, "name")}
+            placeholder="Enter"
+            required
+          />
+        </div>
+
         <TextareaInputField
           label={`Description `}
           name="description"
           type="text"
           value={formData?.description}
-          onChange={(e) => handleInputChange(e?.target?.value, "description")}
+          onChange={(e) => handleInputChange(e, "description")}
           placeholder="Enter description"
           required
         />

@@ -3,10 +3,8 @@ import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import { getLanguagePrepDetailsById } from "../../../api/languagePrepsApi";
 import LanguagePrepHero from "./sections/languagePrepHeroSection";
 import LanguagePrepAbout from "./sections/languagePrepAboutSection";
@@ -49,8 +47,11 @@ function LanguagePrepLayout() {
     <div className="font-rethink">
       <Header />
       <LanguagePrepHero languagePrepsDetails={languagePrepsDetails} />
+      <LanguagePrepAbout languagePrepsDetails={languagePrepsDetails} />
       <div className="relative ">
-        <LanguagePrepAbout languagePrepsDetails={languagePrepsDetails} />
+        <LanguagePrepSimplifyThings
+          languagePrepsDetails={languagePrepsDetails}
+        />
         <div className="absolute bottom-20 left-0 z-0">
           <img
             className="rounded-lg max-w-full "
@@ -60,7 +61,7 @@ function LanguagePrepLayout() {
         </div>
       </div>
       <div className="relative ">
-        <LanguagePrepSimplifyThings
+        <LanguagePrepBatchDetaileSection
           languagePrepsDetails={languagePrepsDetails}
         />
         <div className="absolute bottom-0 right-0 z-0">
@@ -71,9 +72,7 @@ function LanguagePrepLayout() {
           />
         </div>
       </div>
-      <LanguagePrepBatchDetaileSection
-        languagePrepsDetails={languagePrepsDetails}
-      />
+
       <div className="relative ">
         <LanguagePrepFaqSection languagePrepsDetails={languagePrepsDetails} />
         <div className="absolute -top-10 left-0 z-0">

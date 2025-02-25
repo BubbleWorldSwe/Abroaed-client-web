@@ -18,10 +18,10 @@ function TextPrepAbout({ testPrepsDetails }) {
               <thead className="text-xs text-gray-600 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3">
-                    Heading
+                    Particular
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Value
+                    Detail
                   </th>
                 </tr>
               </thead>
@@ -31,7 +31,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    Exam
+                    Exam Date
                   </th>
                   <td className="px-6 py-4">{testPrepsDetails?.exam}</td>
                 </tr>
@@ -40,7 +40,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    Language
+                    Exam Centre
                   </th>
                   <td className="px-6 py-4">{testPrepsDetails?.language}</td>
                 </tr>
@@ -49,7 +49,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    Exam Types
+                    Registration
                   </th>
                   <td className="px-6 py-4">{testPrepsDetails?.exampTypes}</td>
                 </tr>
@@ -58,7 +58,29 @@ function TextPrepAbout({ testPrepsDetails }) {
                     scope="row"
                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    Exam Components
+                    Fees
+                  </th>
+                  <td className="px-6 py-4">
+                    {testPrepsDetails?.exampComponents}
+                  </td>
+                </tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Syllabus
+                  </th>
+                  <td className="px-6 py-4">
+                    {testPrepsDetails?.exampComponents}
+                  </td>
+                </tr>
+                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    Scoring & Results
                   </th>
                   <td className="px-6 py-4">
                     {testPrepsDetails?.exampComponents}
@@ -76,27 +98,6 @@ function TextPrepAbout({ testPrepsDetails }) {
                 </tr>
               </tfoot>
             </table>
-          </div>
-
-          {/*  Delete this record  */}
-
-          <div className="flex flex-col gap-6 mt-8">
-            <header className="mb-4 lg:mb-6 not-format">
-              <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-                Exam Types
-              </h2>
-              <p className="mt-3 font-inter text-lg text-gray-700">
-                {testPrepsDetails?.exampTypes}
-              </p>
-            </header>
-            <header className="mb-4 lg:mb-6 not-format">
-              <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
-                Exam Components
-              </h2>
-              <p className="mt-3 font-inter text-lg text-gray-500">
-                {testPrepsDetails?.exampComponents}
-              </p>
-            </header>
           </div>
         </div>
       </div>

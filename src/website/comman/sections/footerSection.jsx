@@ -1,6 +1,6 @@
-import logoWithText from '../../../assets/logoWithText.png'
-import playStore from "../../../assets/PlayStore.png"
-import AppStore from "../../../assets/AppStore.png"
+import logoWithText from "../../../assets/logoWithText.png";
+import playStore from "../../../assets/PlayStore.png";
+import AppStore from "../../../assets/AppStore.png";
 
 function Footer() {
   return (
@@ -9,10 +9,12 @@ function Footer() {
         <div className=" py-6 mx-auto md:p-8 lg:-10 p-6">
           <div className="grid grid-cols-2 gap-8 p-4">
             <div className="w-2/5 flex flex-col items-center justify-center h-full text-center">
-              <a
-                href="#"
-              >
-                <img src={logoWithText} alt="logo" className='w-24 h-24 object-contain' />
+              <a href="#">
+                <img
+                  src={logoWithText}
+                  alt="logo"
+                  className="w-24 h-24 object-contain"
+                />
               </a>
 
               <ul className="flex mt-5 space-x-6">
@@ -21,10 +23,21 @@ function Footer() {
                     href="#"
                     className="text-white hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
-                    <svg className="w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z" clipRule="evenodd" />
+                    <svg
+                      className="w-12 h-12 "
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
+                        clipRule="evenodd"
+                      />
                     </svg>
-
                   </a>
                 </li>
                 <li>
@@ -32,8 +45,20 @@ function Footer() {
                     href="#"
                     className="text-white hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
-                    <svg className="w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clipRule="evenodd" />
+                    <svg
+                      className="w-12 h-12 "
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z"
+                        clipRule="evenodd"
+                      />
                       <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
                     </svg>
                   </a>
@@ -81,10 +106,17 @@ function Footer() {
                     href="#"
                     className="text-white hover:text-yellow-300 dark:hover:text-yellow-300 dark:text-gray-400"
                   >
-                    <svg className="w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <svg
+                      className="w-12 h-12"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
                       <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
                     </svg>
-
                   </a>
                 </li>
               </ul>
@@ -92,16 +124,24 @@ function Footer() {
                 Lorem Ipsum Dolor Sit Amet
               </p>
 
-              <div className='flex flex-col gap-5 p-2 w-'>
-                <div >
-                  <img src={playStore} alt='googlePlayStoreIcon' className='w-full' />
+              <div className="flex flex-col gap-5 p-2 w-">
+                <div>
+                  <img
+                    src={playStore}
+                    alt="googlePlayStoreIcon"
+                    className="w-full"
+                  />
                 </div>
                 <div>
-                  <img src={AppStore} alt='googlePlayStoreIcon' className='w-full' />
+                  <img
+                    src={AppStore}
+                    alt="googlePlayStoreIcon"
+                    className="w-full"
+                  />
                 </div>
               </div>
             </div>
-            <div className='flex sm:flex-col lg:flex-row'>
+            <div className="flex sm:flex-col lg:flex-row">
               <div className="lg:mx-auto">
                 <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
                   Company
@@ -219,6 +259,5 @@ function Footer() {
     </div>
   );
 }
-
 
 export default Footer;

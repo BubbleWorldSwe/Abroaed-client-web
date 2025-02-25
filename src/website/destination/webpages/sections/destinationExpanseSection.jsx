@@ -8,8 +8,8 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
               Expenses
             </h2>
             <p className=" text-black ">
-              Here’s a list of the minimum monthly amount you should expect for
-              living expenses in the {destinationDetails?.countryId?.name}:
+              Here’s a list of the minimum amount you should expect for living
+              expenses in the {destinationDetails?.countryId?.name}:
             </p>
           </div>
           <div className="grid grid-cols-2 gap-10 ">
@@ -18,8 +18,8 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 Cost of Studying
               </h2>
               <p className="mb-1 text-lg w-10/12 text-gray-700 ">
-                Here’s a list of the minimum monthly amount you should expect
-                for studying in the {destinationDetails?.countryId?.name}:
+                Here’s a list of the minimum amount you should expect for
+                studying in the {destinationDetails?.countryId?.name}:
               </p>
               <section className=" dark:bg-gray-900 py-3 sm:py-5">
                 <div className=" w-11/12 ">
@@ -29,29 +29,32 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                         <thead className="text-xs  text-gray-700  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                           <tr>
                             <th scope="col" className="px-4 py-3">
-                              Title
+                              Degree Type
                             </th>
                             <th scope="col" className="px-4 py-3">
-                              Price (in{" "}
+                              Average Annual Fees (in{" "}
                               {destinationDetails?.countryId?.currency})
                             </th>
                           </tr>
                         </thead>
                         <tbody>
-                          {destinationDetails?.expenses?.map((data, i) => (
-                            <tr
-                              key={i}
-                              className="border-b dark:border-gray-700"
-                            >
-                              <th
-                                scope="row"
-                                className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                              >
-                                {data.label}
-                              </th>
-                              <td className="px-4 py-3"> {data.value}</td>
-                            </tr>
-                          ))}
+                          {destinationDetails?.expenses?.map(
+                            (data, i) =>
+                              i < 3 && (
+                                <tr
+                                  key={i}
+                                  className="border-b dark:border-gray-700"
+                                >
+                                  <th
+                                    scope="row"
+                                    className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                  >
+                                    {data.label}
+                                  </th>
+                                  <td className="px-4 py-3"> {data.value}</td>
+                                </tr>
+                              )
+                          )}
                         </tbody>
                       </table>
                       <nav
@@ -65,11 +68,11 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
             </div>
             <div>
               <h2 className="mb-4 text-2xl  font-semibold text-gray-900 dark:text-white">
-                Cost of Studying
+                Cost of Living
               </h2>
               <p className="mb-1 text-lg w-10/12 text-gray-700 ">
-                Here’s a list of the minimum monthly amount you should expect
-                for studying in the UK:
+                Here’s the basic cost of living.
+                <br /> <br />
               </p>
               <section className=" dark:bg-gray-900 py-3 sm:py-5">
                 <div className=" w-11/12 ">
@@ -79,44 +82,32 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                         <thead className="text-xs  text-gray-700  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                           <tr>
                             <th scope="col" className="px-4 py-3">
-                              Description
+                              Heading
                             </th>
                             <th scope="col" className="px-4 py-3">
-                              Price
-                            </th>
-                            <th scope="col" className="px-4 py-3">
-                              <span className="sr-only">Actions</span>
+                              Monthly Costs (in{" "}
+                              {destinationDetails?.countryId?.currency})
                             </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr className="border-b dark:border-gray-700">
-                            <th
-                              scope="row"
-                              className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                            >
-                              Apple iMac 27&#34;
-                            </th>
-                            <td className="px-4 py-3">PC</td>
-                          </tr>
-                          <tr className="border-b dark:border-gray-700">
-                            <th
-                              scope="row"
-                              className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                            >
-                              Apple iMac 20&#34;
-                            </th>
-                            <td className="px-4 py-3">PC</td>
-                          </tr>
-                          <tr className="border-b dark:border-gray-700">
-                            <th
-                              scope="row"
-                              className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                            >
-                              Apple iPhone 14
-                            </th>
-                            <td className="px-4 py-3">Phone</td>
-                          </tr>
+                          {destinationDetails?.expenses?.map(
+                            (data, i) =>
+                              i >= 3 && (
+                                <tr
+                                  key={i}
+                                  className="border-b dark:border-gray-700"
+                                >
+                                  <th
+                                    scope="row"
+                                    className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                  >
+                                    {data.label}
+                                  </th>
+                                  <td className="px-4 py-3"> {data.value}</td>
+                                </tr>
+                              )
+                          )}
                         </tbody>
                       </table>
                       <nav

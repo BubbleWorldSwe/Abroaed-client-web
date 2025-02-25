@@ -23,10 +23,12 @@ function DestinationHeroSection({ destinationDetails, img }) {
             {destinationDetails?.countryId?.name}
           </h1>
 
-          {/*  <p className="font-light text-white md:text-lg xl:text-xl">
-            {text}
+          <p className="font-light text-white md:text-lg xl:text-xl">
+            Learn more about the exciting places where
             <br />
-          </p> */}
+            you can study
+            <br />
+          </p>
         </div>
       </section>
     </div>

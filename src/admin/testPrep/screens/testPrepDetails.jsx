@@ -64,7 +64,7 @@ const TestPrepDetails = () => {
 
   const sectionConfig = [
     { name: "About Exam", component: <AboutExamTestPrep /> },
-    { name: "How we simplify things", component: <SimplifyThings /> },
+    // { name: "How we simplify things", component: <SimplifyThings /> },
     {
       name: "Batches",
       component: <Batches onEdit={onEditBatches} onUpdate={onUpdate} />,

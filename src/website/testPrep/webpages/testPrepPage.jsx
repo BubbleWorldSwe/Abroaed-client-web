@@ -18,6 +18,9 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getTestPrepDetailsById } from "../../../api/testPrepsApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
+import ContactUsForm from "../../comman/components/contactUsForm";
+import TestPrepSimplifyThings from "./sections/testPrepSimplifyThings";
+import Blogs from "../../comman/components/blogs";
 
 function TestPrepLayout() {
   const { id } = useParams();
@@ -29,7 +32,7 @@ function TestPrepLayout() {
     try {
       const data = await getTestPrepDetailsById(id);
 
-      if (data.status === 200) {
+      if (data?.status === 200) {
         setTestPrepsDetails(data.data);
       }
       setIsLoading(false);
@@ -53,8 +56,9 @@ function TestPrepLayout() {
     <div className="font-rethink">
       <Header testPrepsDetails={testPrepsDetails} />
       <TestPrepHero testPrepsDetails={testPrepsDetails} />
+      <TextPrepAbout testPrepsDetails={testPrepsDetails} />
       <div className="relative ">
-        <TextPrepAbout testPrepsDetails={testPrepsDetails} />
+        <TestPrepSimplifyThings testPrepsDetails={testPrepsDetails} />
         <div className="absolute bottom-20 left-0 z-0">
           <img
             className="rounded-lg max-w-full "
@@ -64,7 +68,7 @@ function TestPrepLayout() {
         </div>
       </div>
       <div className="relative ">
-        <TestPrepWorkSection testPrepsDetails={testPrepsDetails} />
+        <TestPrepBatchDetaileSection testPrepsDetails={testPrepsDetails} />
         <div className="absolute bottom-0 right-0 z-0">
           <img
             className="rounded-lg max-w-full "
@@ -73,7 +77,7 @@ function TestPrepLayout() {
           />
         </div>
       </div>
-      <TestPrepBatchDetaileSection testPrepsDetails={testPrepsDetails} />
+
       <div className="relative ">
         <TextPrepFaqSection testPrepsDetails={testPrepsDetails} />
         <div className="absolute -top-10 left-0 z-0">
@@ -84,7 +88,7 @@ function TestPrepLayout() {
           />
         </div>
       </div>
-      <TestPrepBlogSection />
+      {/*  <TestPrepBlogSection />
       <div className="relative ">
         <TestPrepAbroaedUpdateSection />
         <div className="absolute -top-20 right-0 z-0">
@@ -94,9 +98,11 @@ function TestPrepLayout() {
             alt="Counselling session"
           />
         </div>
-      </div>
+      </div> */}
       {/* <LucideContactRound/> */}
-      <TestPrepLeadFormSection />
+      <Blogs />
+      <ContactUsForm />
+
       <Footer />
     </div>
   );

@@ -11,6 +11,8 @@ import {
 } from "../../../redux/actions/accommodationActions";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
+import { getAllDestinations } from "../../../api/destinationApi";
+import { getStatesByCountryId } from "../../../api/countriesApi";
 
 const Accommodations = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -24,6 +26,8 @@ const Accommodations = () => {
 
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  const [destinationsList, setDestinationsList] = useState([]);
+  const [statesList, setStatesList] = useState([]);
 
   const { accommodations, totalPages } = useSelector(
     (state) => state.accommodations
@@ -79,11 +83,39 @@ const Accommodations = () => {
     dispatch(fetchAccommodationsRequest(1));
   };
 
+  async function fetchData() {
+    try {
+      const list = await getAllDestinations();
+
+      if (list.status === 200) {
+        setDestinationsList(list.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(statesList);
+
+  async function fetchStatesList(countryId) {
+    try {
+      setStatesList([]);
+      const statesList = await getStatesByCountryId(countryId);
+
+      if (statesList.status === 200) {
+        setStatesList(statesList.data.result.states);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     if (accommodations?.length === 0) {
       console.log("fetchAccommodationsRequest");
       dispatch(fetchAccommodationsRequest(currentPage));
     }
+    fetchData();
   }, [dispatch, accommodations, currentPage]);
 
   return (
@@ -94,6 +126,9 @@ const Accommodations = () => {
         setIsDone={setIsDone}
         onAddAccommodation={handleAddAccommodation}
         fetchCountries={fetchCountries}
+        destinationsList={destinationsList}
+        getStatesList={fetchStatesList}
+        statesList={statesList}
       />
       <ConfirmModal
         isOpen={isDone}

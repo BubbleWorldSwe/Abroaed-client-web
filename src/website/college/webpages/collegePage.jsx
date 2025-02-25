@@ -19,41 +19,65 @@ import CollegeFaqSection from "./sections/collegeFaqSection";
 import CollegeBlogSection from "./sections/collegeBlogSection";
 import CollegeAbroaedUpdateSection from "./sections/collegeAbroaedUpdateSection";
 import CollegeLeadFormSection from "./sections/collegeLeadFormSection";
-
-const NavigationItems = () => {
-  return (
-    <div className="text-white px-2 mt-8 opacity-70 text-xl flex justify-between">
-      <p>Private</p>
-      <div className="flex gap-2 whitespace-nowrap">
-        <img src={locationIcon} alt="pic-location " />
-        <p className="text-white">Melbourne, Australia</p>
-      </div>
-      <div className="flex gap-2 whitespace-nowrap">
-        <img src={worldIcon} alt="pic-location" />
-        <p className="text-white">www.website.com</p>
-        <div></div>
-      </div>
-    </div>
-  );
-};
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import PageLoader from "../../../commons/components/loader/pageLoader";
+import { getDestinationDetailsById } from "../../../api/destinationApi";
+import { getCollegeDetailsById } from "../../../api/collegesApi";
+import ContactUsForm from "../../comman/components/contactUsForm";
+import { getAccommodationsByStateId } from "../../../api/accomodationApi";
+import Blogs from "../../comman/components/blogs";
+import Testimonials from "../../comman/components/testimonials";
 
 function CollegePage() {
+  const { id } = useParams();
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [collegeDetails, setCollegeDetails] = useState(null);
+  const [accList, setAccList] = useState([]);
+
+  async function fetchData() {
+    try {
+      const data = await getCollegeDetailsById(id);
+
+      if (data.status === 200) {
+        setCollegeDetails(data.data);
+
+        const acc = await getAccommodationsByStateId(data?.data?.stateId);
+
+        if (acc.status === 200) {
+          setAccList(acc.data.result);
+        }
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [id]);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
+
   return (
     <div className="font-rethink">
       <Header />
-      <CollegeHeroSection
-        header="Charles Darwin University"
-        text={<NavigationItems />}
-        img={dark}
-      />
+      <CollegeHeroSection collegeDetails={collegeDetails} img={dark} />
       <CollegeInfoSection
+        collegeDetails={collegeDetails}
         header={"Why Study in United Kingdom?"}
         text1={
           "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."
         }
       />
       <div className="relative ">
-        <CollegeFunFactSection items={items} />
+        <CollegeFunFactSection collegeDetails={collegeDetails} />
         <div className="absolute bottom-16 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -62,9 +86,12 @@ function CollegePage() {
           />
         </div>
       </div>
-      <CollegeUniversitySection />
+      <CollegeUniversitySection collegeDetails={collegeDetails} />
       <div className="relative">
-        <CollegeCourseOfferSection />
+        {collegeDetails?.courses.length > 0 && (
+          <CollegeCourseOfferSection collegeDetails={collegeDetails} />
+        )}
+
         <div className="absolute top-0 -right-10 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -74,7 +101,10 @@ function CollegePage() {
         </div>
       </div>
       <div className="relative">
-        <CollegeScholarshipSection />
+        {collegeDetails?.scholarships.length > 0 && (
+          <CollegeScholarshipSection collegeDetails={collegeDetails} />
+        )}
+
         <div className="absolute -top-60 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -84,7 +114,13 @@ function CollegePage() {
         </div>
       </div>
       <div className="relative">
-        <CollegeStudentAccommodation />
+        {accList.length > 0 && (
+          <CollegeStudentAccommodation
+            collegeDetails={collegeDetails}
+            accommodationList={accList}
+          />
+        )}
+
         <div className="absolute top-0 right-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -93,10 +129,13 @@ function CollegePage() {
           />
         </div>
       </div>
-      <CollegeFaqSection />
-      <CollegeBlogSection />
-      <CollegeAbroaedUpdateSection />
-      <CollegeLeadFormSection />
+      {collegeDetails?.faqSchema.length > 0 && (
+        <CollegeFaqSection collegeDetails={collegeDetails} />
+      )}
+
+      <Testimonials />
+      <Blogs />
+      <ContactUsForm />
       <Footer />
     </div>
   );

@@ -124,6 +124,18 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         />
 
         <TextInputField
+          label="International Students"
+          name="totalPopulation"
+          type="number"
+          value={formData.totalPopulation}
+          onChange={(e) =>
+            handleInputChange(e?.target?.value, "totalPopulation")
+          }
+          placeholder="Enter Total Population"
+          required
+        />
+
+        <TextInputField
           label="Dailing Code"
           name="dialcode"
           type="text"

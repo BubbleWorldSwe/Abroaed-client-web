@@ -2,7 +2,6 @@ import { articles } from "../../home/data";
 
 function AbroaedUpdatesSection() {
   return (
-
     <section className=" dark:bg-gray-900 relative px-10 mx-auto">
       <div className="py-8 px-4 mx-auto  max-w-screen-2xl lg:py-24 dark:bg-gray-800 antialiased  relative z-20">
         <div className="flex flex-col items-start justify-center ">
@@ -13,7 +12,10 @@ function AbroaedUpdatesSection() {
         </div>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mx-auto max-w-screen-2xl">
           {articles.map((article, idx) => (
-            <article key={idx} className="p-4 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700">
+            <article
+              key={idx}
+              className="p-4 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700"
+            >
               <a href="#">
                 <img
                   className="mb-5 rounded-lg"
@@ -37,7 +39,6 @@ function AbroaedUpdatesSection() {
         </div>
       </div>
     </section>
-
   );
 }
 

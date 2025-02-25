@@ -28,7 +28,8 @@ const DropdownMenu = ({
                 className="block px-4 py-2 hover:bg-gray-100"
               >
                 {data?.productName ||
-                  `${data?.countryId?.emoji} ${data?.countryId?.name}`}
+                  `${data?.countryId?.emoji} ${data?.countryId?.name}` ||
+                  data?.menu}
               </a>
             </li>
           ))}
@@ -50,15 +51,6 @@ function Header() {
   const { allDestinations } = useSelector((state) => state.destinations);
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
-
-  console.log(allDestinations);
-  console.log("allDestinations");
-
-  console.log(allTestPreps);
-  console.log("allTestPreps");
-
-  console.log(allLanguagePreps);
-  console.log("allLanguagePreps");
 
   const toggleDropdown = (key) => {
     setDropdowns((prev) => {
@@ -87,7 +79,7 @@ function Header() {
           </div>
           <div className="flex-grow basis-[80%] flex justify-center">
             <ul className="flex space-x-8 text-sm font-medium">
-              <li>
+              {/*   <li>
                 <button
                   id="mega-menu-button"
                   onClick={() => toggleDropdown("exploreCourses")}
@@ -97,7 +89,7 @@ function Header() {
                   <ChevronDown />
                 </button>
                 {dropdowns.exploreCourses && <ExploreCourseNavItemModal />}
-              </li>
+              </li> */}
 
               <li>
                 <a href="/home" className="text-yellow-700 mt-5">
@@ -105,8 +97,49 @@ function Header() {
                 </a>
               </li>
               <li>
+                <button
+                  onClick={() => toggleDropdown("whyAbroad")}
+                  className="block  rounded text-yellow-700 dark:text-primary-500"
+                >
+                  Why Abroaed?
+                </button>
+
+                {dropdowns.whyAbroad && (
+                  <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] bg-white border shadow-md">
+                    <ul>
+                      <li>
+                        <a
+                          href="/aboutus"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
+                          About Us
+                        </a>
+                      </li>
+
+                      <li>
+                        <a
+                          href="/careers"
+                          className="block px-4 py-2 hover:bg-gray-100"
+                        >
+                          Career
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </li>
+
+              <li>
                 <a href="/blog" className="text-yellow-700">
                   Blog
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/accomodation"
+                  className="block dark:text-white rounded text-yellow-700 "
+                >
+                  Accommodation
                 </a>
               </li>
               <DropdownMenu

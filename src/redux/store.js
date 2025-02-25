@@ -16,33 +16,59 @@ import { accommodationsReducer } from "./reducers/accommodationReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const persistConfig = {
-  key: "root",
+const authPersistConfig = {
+  key: "auth",
   storage,
-  whitelist: [
-    "auth",
-    "selectedTestPrep",
-    "selectedLanguagePrep",
-    "selectedCollege",
-    "selectedAccommodation",
-    "allTestPreps",
-    "allDestinations",
-    "allDestinations",
-    "allLanguagePreps",
-  ],
+  whitelist: ["auth"],
+};
+
+const destinationPersistConfig = {
+  key: "destinations",
+  storage,
+  whitelist: ["allDestinations"],
+};
+
+const testPrepsPersistConfig = {
+  key: "testPreps",
+  storage,
+  whitelist: ["selectedTestPrep", "allTestPreps"],
+};
+
+const languagePrepsPersistConfig = {
+  key: "languagePreps",
+  storage,
+  whitelist: ["selectedLanguagePrep", "allLanguagePreps"],
+};
+
+const collegesPersistConfig = {
+  key: "colleges",
+  storage,
+  whitelist: ["selectedCollege"],
+};
+
+const accommodationsPersistConfig = {
+  key: "accommodations",
+  storage,
+  whitelist: ["selectedAccommodation"],
 };
 
 const rootReducer = {
-  auth: persistReducer(persistConfig, authReducer),
+  auth: persistReducer(authPersistConfig, authReducer),
   team: teamReducer,
   roles: rolesReducer,
   leads: leadsReducer,
-  destinations: persistReducer(persistConfig, destnationReducer),
+  destinations: persistReducer(destinationPersistConfig, destnationReducer),
   countries: countriesReducer,
-  testPreps: persistReducer(persistConfig, testPrepsReducer),
-  languagePreps: persistReducer(persistConfig, languagePrepsReducer),
-  colleges: persistReducer(persistConfig, collegesReducer),
-  accommodations: persistReducer(persistConfig, accommodationsReducer),
+  testPreps: persistReducer(testPrepsPersistConfig, testPrepsReducer),
+  languagePreps: persistReducer(
+    languagePrepsPersistConfig,
+    languagePrepsReducer
+  ),
+  colleges: persistReducer(collegesPersistConfig, collegesReducer),
+  accommodations: persistReducer(
+    accommodationsPersistConfig,
+    accommodationsReducer
+  ),
 };
 
 const store = configureStore({

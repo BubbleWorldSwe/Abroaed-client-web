@@ -1,7 +1,7 @@
-
 import { useState } from "react";
 import { motion } from "framer-motion";
-
+import { BorderTextInputField } from "../commons/components/inputFields/borderTextInputField";
+import { BorderSelectField } from "../commons/components/inputFields/borderSelectField";
 
 function Tabs() {
   const tabOptions = [
@@ -34,12 +34,10 @@ function Tabs() {
             {tab.title}
           </button>
         ))} */}
-         Book Counselling Now
+        Book Counselling Now
       </div>
 
-      {/* Active Form */}
-      {/* Fixed Outer Container */}
-      <div  >
+      <div className="">
         <motion.div
           key={activeTab}
           initial={{ opacity: 0 }}
@@ -63,16 +61,16 @@ const inputStyles =
 
 // Home Counselling Form
 export const HomeForm = () => (
-  <form >
+  <form>
     <FormFields />
     <TermsAndConditions />
-    <BookButton />  
+    <BookButton />
   </form>
 );
 
 // Virtual Counselling Form
 export const VirtualForm = () => (
-  <form >
+  <form>
     <FormFields />
     {/* <CalendarField /> */}
     <TermsAndConditions />
@@ -82,12 +80,11 @@ export const VirtualForm = () => (
 
 // Visit Us Form
 export const VisitUsForm = () => (
-  <form >
+  <form>
     <FormFields />
     {/* <CalendarField /> */}
     <TermsAndConditions />
     <BookButton />
-
   </form>
 );
 
@@ -96,94 +93,44 @@ const FormFields = () => (
   <>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            First Name
-          </label>
-          <input
-            type="text"
-            className={inputStyles}
-            placeholder="First Name"
-            required
-          />
-        </div>
-
-        <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Email ID
-          </label>
-          <input
-            type="email"
-            className={inputStyles}
-            placeholder="Email ID"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Highest Education Qualification
-          </label>
-          <input
-            type="text"
-            className={inputStyles}
-            placeholder="Highest Qualification"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            When Do You Plan to Study?
-          </label>
-          <input type="month" className={inputStyles} required />
-        </div>
+        <BorderTextInputField label={"First Name"} placeholder="Enter" />
+        <BorderTextInputField label={"Email ID"} placeholder="Enter" />
+        <BorderTextInputField
+          label={"Highest Education Qualification"}
+          placeholder="Enter"
+        />
+        <BorderTextInputField
+          label={"  When Do You Plan to Study?"}
+          placeholder="Enter"
+        />
       </div>
-      <div >
-        <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Last Name
-          </label>
-          <input
-            type="text"
-            className={inputStyles}
-            placeholder="Last Name"
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Contact Number
-          </label>
-          <input
-            type="tel"
-            className={inputStyles}
-            placeholder="Contact Number"
-            required
-          />
-        </div>
- <div className="mb-3">
-          <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Preferred Study Level
-          </label>
-          <select className={inputStyles} required>
-            <option>UG</option>
-            <option>PG</option>
-            <option>PHD</option>
-            <option>Others</option>
-          </select>
-        </div>
-        <div className="mb-3">
-        <label className="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">
-            Mode of Counselling
-          </label>
-          <select className={inputStyles} required>
-            <option>Home Counselling</option>
-            <option>Virtual Counselling</option>
-            <option>Visit Us</option>
-             </select>
+      <div>
+        <BorderTextInputField label={"Last Name"} placeholder="Enter" />
+        <BorderTextInputField label={"Contact Number"} placeholder="Enter" />
+
+        <BorderSelectField
+          label={"Preferred Study Level"}
+          options={[
+            { value: "UG", label: "UG" },
+            { value: "PG", label: "PG" },
+            { value: "PhD", label: "PhD" },
+            { value: "Others", label: "Others" },
+          ]}
+          required
+        />
+
+        <BorderSelectField
+          label={"Mode of Counselling"}
+          options={[
+            { value: "1", label: "Home Counselling" },
+            { value: "2", label: "Virtual Counselling" },
+            { value: "3", label: "Visit Us" },
+            { value: "4", label: "Others" },
+          ]}
+          required
+        />
       </div>
     </div>
-</div>
-
   </>
 );
 // const FormFields = () => (
@@ -267,17 +214,15 @@ const FormFields = () => (
 const BookButton = () => {
   return (
     <div className="flex items-center justify-center">
-    <button
-      type="submit"
-      className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-    >
-      Book Now
-    </button>
-  </div>
-  
-
-  )
-}
+      <button
+        type="submit"
+        className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+      >
+        Book Now
+      </button>
+    </div>
+  );
+};
 
 // Calendar component for date and time slot selection (used in Virtual and Visit Us forms)
 const CalendarField = () => (
@@ -298,11 +243,10 @@ export const TermsAndConditions = () => (
         className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
         required
       />
-     <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-  I agree to Abroaed <span className="font-bold">Terms of Service</span> and <span className="font-bold">Privacy Policy</span>.
-</label>
-
-
+      <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
+        I agree to Abroaed <span className="font-bold">Terms of Service</span>{" "}
+        and <span className="font-bold">Privacy Policy</span>.
+      </label>
     </div>
     <div className="flex items-start mt-4">
       <input

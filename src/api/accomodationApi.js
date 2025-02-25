@@ -20,6 +20,34 @@ export const getAccommodations = async (page) => {
   }
 };
 
+export const getAccommodationsByDestinationId = async (destId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/accomodation/list?filter={"destinationId":"${destId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAccommodationsByStateId = async (stateId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/accomodation/list?filter={"stateId":"${stateId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const setAddAccommodation = async (credentials) => {
   try {
     console.log(credentials);

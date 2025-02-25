@@ -17,20 +17,31 @@ const AddAccommodationModal = ({
   onClose,
   setIsDone,
   onAddAccommodation,
-
-  destinationsList,
-  getStatesList,
-  statesList,
+  fetchCountries,
 }) => {
   const [formData, setFormData] = useState({});
   const { countries } = useSelector((state) => state.countries);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsDone(true);
     onClose();
   };
 
+  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [statesList, setStatesList] = useState([]); // Stores states of selected country
+
+  const handleCountrySelect = (data) => {
+    console.log(data);
+    setSelectedCountry(data);
+    setFormData({
+      ...formData,
+      countryId: data.value,
+      currency: data.currency,
+    });
+    setStatesList(data.states || []); // Extract states from selected country
+  };
+
+  console.log(formData);
   const handleChange = (e) => {
     console.log(e.target.name);
     console.log("e.target.name");
@@ -42,7 +53,7 @@ const AddAccommodationModal = ({
       accomodationName,
       availablity,
       city,
-      destinationId,
+      countryId,
       stateId,
       price,
       description,
@@ -52,7 +63,7 @@ const AddAccommodationModal = ({
       !accomodationName ||
       !availablity ||
       !city ||
-      !destinationId ||
+      !countryId ||
       !stateId ||
       !price ||
       !description
@@ -84,31 +95,17 @@ const AddAccommodationModal = ({
                 onChange={handleChange}
                 placeholder={"Enter Accommodation Name"}
               />
-              <SelectField
-                label="Country"
-                name="destinationId"
-                value={formData.destinationId}
-                onChange={(e) => {
-                  handleChange(e);
-
-                  const selectedCountry = destinationsList.find(
-                    (data) => data?._id === e.target.value
-                  );
-
-                  console.log(
-                    "Selected Country Object:",
-                    selectedCountry._id,
-                    selectedCountry?.countryId?._id
-                  );
-
-                  getStatesList(selectedCountry?.countryId?._id);
-                }}
-                options={destinationsList.map((data) => ({
-                  label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                  value: data?._id,
+              {/* Country Selection */}
+              <SearchDropdownField
+                label="Select Country"
+                options={countries.map((data) => ({
+                  label: `${data.emoji} ${data.name}`,
+                  value: data._id,
                   ...data,
                 }))}
-                required
+                value={selectedCountry}
+                onSelect={handleCountrySelect}
+                onSearch={fetchCountries}
               />
 
               <SelectField

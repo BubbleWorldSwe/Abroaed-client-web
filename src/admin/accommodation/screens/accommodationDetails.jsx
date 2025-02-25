@@ -15,7 +15,8 @@ import { sectionsData } from "../data";
 import AccommodationAvailability from "../components/accommodationAvailability";
 import { useDispatch, useSelector } from "react-redux";
 import { editAccommodationRequest } from "../../../redux/actions/accommodationActions";
-import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
+import { getAllDestinations } from "../../../api/destinationApi";
+import { getStatesByCountryId } from "../../../api/countriesApi";
 
 const AccommodationDetails = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,10 @@ const AccommodationDetails = () => {
   const accommodationDetails = useSelector(
     (state) => state?.accommodations?.selectedAccommodation
   );
+
+  const [destinationsList, setDestinationsList] = useState([]);
+  const [statesList, setStatesList] = useState([]);
+
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -58,10 +63,6 @@ const AccommodationDetails = () => {
     setSelectedSection(null);
   };
 
-  const fetchCountries = (q) => {
-    dispatch(fetchCountriesRequest(q));
-  };
-
   async function onUpdate(data) {
     try {
       dispatch(editAccommodationRequest(accommodationDetails._id, data));
@@ -76,17 +77,52 @@ const AccommodationDetails = () => {
     section0: <DescriptionModal closeModal={closeModal} onUpdate={onUpdate} />,
     section1: (
       <LocationModal
-        fetchCountries={fetchCountries}
         closeModal={closeModal}
         onUpdate={onUpdate}
+        destinationsList={destinationsList}
+        statesList={statesList}
+        getStatesList={fetchStatesList}
       />
     ),
     section2: <PriceModal closeModal={closeModal} onUpdate={onUpdate} />,
     section3: <AvailabilityModal closeModal={closeModal} onUpdate={onUpdate} />,
   };
 
+  async function fetchData() {
+    try {
+      const list = await getAllDestinations();
+
+      if (list.status === 200) {
+        setDestinationsList(list.data.result);
+
+        let cId = accommodationDetails?.destinationId?.countryId?._id;
+
+        if (cId) {
+          fetchStatesList(cId);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(statesList);
+
+  async function fetchStatesList(countryId) {
+    try {
+      setStatesList([]);
+      const statesList = await getStatesByCountryId(countryId);
+
+      if (statesList.status === 200) {
+        setStatesList(statesList.data.result.states);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    fetchCountries(accommodationDetails?.countryId?.name);
+    fetchData();
   }, []);
 
   return (

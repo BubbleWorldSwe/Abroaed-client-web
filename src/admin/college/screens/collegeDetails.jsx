@@ -7,7 +7,7 @@ import MediaGalleryCard from "../components/mediaGalleryCard";
 import CoursesCard from "../components/coursesCard";
 import FinancialAidCard from "../components/financialAidCard";
 import FAQsCard from "../components/faqsCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CollegeImageSection from "../components/collegeImageSection";
 import OverviewModal from "../modals/overviewModal";
 import MediaGallery from "../modals/mediaGalleryModal";
@@ -18,6 +18,10 @@ import { sections } from "../data";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { editCollegeRequest } from "../../../redux/actions/collegeActions";
+import { getStatesByCountryId } from "../../../api/countriesApi";
+import { getAllDestinations } from "../../../api/destinationApi";
+import LocationModal from "../modals/locationModal";
+import CollegeLocation from "../components/collegeLocation";
 
 function CollegDetails() {
   const dispatch = useDispatch();
@@ -27,6 +31,9 @@ function CollegDetails() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
+
+  const [destinationsList, setDestinationsList] = useState([]);
+  const [statesList, setStatesList] = useState([]);
 
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
   const { state } = useLocation();
@@ -85,6 +92,7 @@ function CollegDetails() {
   const sectionConfig = [
     { name: "Overview", component: <OverviewCard /> },
     { name: "Media Gallery", component: <MediaGalleryCard /> },
+    { name: "Location", component: <CollegeLocation /> },
     {
       name: "Courses",
       component: <CoursesCard onEdit={onEditCourses} onUpdate={onUpdate} />,
@@ -109,20 +117,29 @@ function CollegDetails() {
     section0: <OverviewModal closeModal={closeModal} onUpdate={onUpdate} />,
     section1: <MediaGallery closeModal={closeModal} onUpdate={onUpdate} />,
     section2: (
+      <LocationModal
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+        destinationsList={destinationsList}
+        statesList={statesList}
+        getStatesList={fetchStatesList}
+      />
+    ),
+    section3: (
       <CoursesModal
         closeModal={closeModal}
         filledData={formdata}
         onUpdate={onUpdate}
       />
     ),
-    section3: (
+    section4: (
       <FinancialAidScholarshipsModal
         closeModal={closeModal}
         filledData={formdata}
         onUpdate={onUpdate}
       />
     ),
-    section4: (
+    section5: (
       <FaqModalCollege
         filledData={formdata}
         closeModal={closeModal}
@@ -130,6 +147,43 @@ function CollegDetails() {
       />
     ),
   };
+
+  async function fetchData() {
+    try {
+      const list = await getAllDestinations();
+
+      if (list.status === 200) {
+        setDestinationsList(list.data.result);
+
+        let cId = collegeDetails?.destinationId?.countryId?._id;
+
+        if (cId) {
+          fetchStatesList(cId);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  console.log(statesList);
+
+  async function fetchStatesList(countryId) {
+    try {
+      setStatesList([]);
+      const statesList = await getStatesByCountryId(countryId);
+
+      if (statesList.status === 200) {
+        setStatesList(statesList.data.result.states);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div>
@@ -162,60 +216,31 @@ function CollegDetails() {
                   }}
                 >
                   <span>{sectionItem.name}</span>
-                  {true ? (
-                    <button
-                      className="px-4 py-4"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(sectionItem.name, "add", index);
-                      }}
+                  <button
+                    className="px-4 py-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openModal(sectionItem.name, "add", index);
+                    }}
+                  >
+                    <svg
+                      className="w-6 h-6 text-gray-800 dark:text-white"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
                     >
-                      <svg
-                        className="w-6 h-6 text-gray-800 dark:text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5 12h14m-7 7V5"
-                        ></path>
-                      </svg>
-                    </button>
-                  ) : (
-                    // Pencil icon for editing
-                    <button
-                      className="px-4 py-4"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openModal(sectionItem.name, "edit", index);
-                      }}
-                    >
-                      <svg
-                        className="w-6 h-6 text-gray-800 dark:text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M10.779 17.779L4.36 19.918 6.5 13.5m4.279 4.279l8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14l6.213-6.504M12.75 7.04L17 11.28"
-                        ></path>
-                      </svg>
-                    </button>
-                  )}
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 12h14m-7 7V5"
+                      ></path>
+                    </svg>
+                  </button>
                 </div>
               </h2>
               {/* Accordion Content */}
@@ -243,9 +268,7 @@ function CollegDetails() {
               >
                 &times;
               </button>
-              <h2 className="text-2xl font-semibold mb-4">
-                {selectedSection} Modal
-              </h2>
+              <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
               <div className="mt-4">
                 {/* Render the dynamic content based on modalType */}
                 {modals[`section${activeModalIndex}`]}

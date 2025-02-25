@@ -90,7 +90,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     {
-      path: "/college",
+      path: "/college/:id",
       element: <CollegePage />,
       isPrivate: false,
     },

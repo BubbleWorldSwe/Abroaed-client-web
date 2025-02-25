@@ -18,14 +18,17 @@ import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
 import DestinationFaqSection from "./sections/destinationFaqSection";
-import DestinationBlogSection from "./sections/destinationBlogSection";
 import DestinationAbroaedUpdateSection from "./sections/destinationAbroaedUpdateSection";
 import DestinationFunFactSection from "./sections/destinationFunFactSection";
-import DestinationLeadForm from "./sections/destinationLeadForm";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
+import ContactUsForm from "../../comman/components/contactUsForm";
+import Blogs from "../../comman/components/blogs";
+import { getCollegesByDestinationId } from "../../../api/collegesApi";
+import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
+import Testimonials from "../../comman/components/testimonials";
 
 function DestinationPage() {
   const { id } = useParams();
@@ -33,13 +36,27 @@ function DestinationPage() {
   const [destinationDetails, setDestinationDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [collegesList, setCollegesList] = useState([]);
+  const [accList, setAccList] = useState([]);
+
   async function fetchData() {
     try {
       const data = await getDestinationDetailsById(id);
+      const college = await getCollegesByDestinationId(id);
+      const acc = await getAccommodationsByDestinationId(id);
 
       if (data.status === 200) {
         setDestinationDetails(data.data);
       }
+
+      if (college.status === 200) {
+        setCollegesList(college.data.result);
+      }
+
+      if (acc.status === 200) {
+        setAccList(acc.data.result);
+      }
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -77,7 +94,10 @@ function DestinationPage() {
           />
         </div>
       </div>
-      <DestinationUniCoursersSection />
+      <DestinationUniCoursersSection
+        destinationDetails={destinationDetails}
+        collegesList={collegesList}
+      />
       <div className="relative">
         <DestinationAdmissionRequirementSection
           destinationDetails={destinationDetails}
@@ -116,10 +136,14 @@ function DestinationPage() {
           />
         </div>
       </div>
-      <DestinationStudentAccommodationsSection />
+
+      <DestinationStudentAccommodationsSection
+        destinationDetails={destinationDetails}
+        accommodationList={accList}
+      />
       <DestinationFaqSection destinationDetails={destinationDetails} />
       <div className="relative">
-        <DestinationBlogSection />
+        <Testimonials />
         <div className="absolute top-64 left-48 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -128,8 +152,9 @@ function DestinationPage() {
           />
         </div>
       </div>
-      <DestinationAbroaedUpdateSection />
-      <DestinationLeadForm />
+
+      <Blogs />
+      <ContactUsForm />
       <Footer />
     </div>
   );
