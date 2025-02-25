@@ -1,13 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { CalendarDays, EllipsisVertical, Pencil, Plus } from "lucide-react"
+import { CalendarDays, EllipsisVertical, Eye, Pencil, Plus } from "lucide-react"
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Tooltip } from 'flowbite-react';
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 
 
 const LeadTable = ({ leads, handleAssignTeamMember, handleUpdateTeamMember, handleScheduleAppointment, dropdownVisible, setDropdownVisible }) => {
     const [dropdownDirection, setDropdownDirection] = useState(null);
     const dropdownRef = useRef(null);
-
+    const navigate = useNavigate();
     const handleDropdownToggle = (e, index) => {
         e.stopPropagation();
         setDropdownVisible(dropdownVisible === index ? null : index);
@@ -32,15 +35,20 @@ const LeadTable = ({ leads, handleAssignTeamMember, handleUpdateTeamMember, hand
         <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                    <th scope="col" className="p-4"></th>
-                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
+                    <th scope="col" className="p-4">
+                        <CheckboxField
+                            onClick={(e) => e.stopPropagation()}
+                            id={`checkbox-college-all`}
+                            htmlFor={`checkbox-college-all`}
+                        />
+                    </th>                    <th scope="col" className="px-4 py-3 min-w-[14rem]">
                         Student Name
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[10rem]">
                         Contact number
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                        Lead Type
+                        Lead Source
                     </th>
                     <th scope="col" className="px-4 py-3 min-w-[6rem]">
                         Counsellor
@@ -85,13 +93,21 @@ const LeadTable = ({ leads, handleAssignTeamMember, handleUpdateTeamMember, hand
                         </th>
                         <td className="px-4 py-3"> {member.contact}</td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {member.leadType}
+                            <Tooltip
+                                content="Entity Name"
+                                placement="bottom"
+                                className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
+                            >
+                                <span className="cursor-pointer">{member.leadType}</span>
+                            </Tooltip>
+
                         </td>
+
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {member.counsellor}
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <span className="bg-[#FDF6B2] text-green-800  font-medium mr-2 p-2 rounded dark:bg-green-900 dark:text-green-300">
+                            <span className={`font-medium mr-2 p-2 rounded ${member.status === "Nurture" ? "bg-[#FDF6B2]" : member.status === "Converted" ? "bg-[#DEF7EC]" : member.status === "Lost" ? "bg-[#FDE8E8]" : "bg-gray-200"} text-green-800 dark:bg-green-900 dark:text-green-300`}>
                                 {member.status}
                             </span>
                         </td>
@@ -144,7 +160,6 @@ const LeadTable = ({ leads, handleAssignTeamMember, handleUpdateTeamMember, hand
                                                 <span>Update Lead Status</span>
                                             </button>
                                         </li>
-
                                         <li>
                                             <button
                                                 onClick={() =>
@@ -156,6 +171,24 @@ const LeadTable = ({ leads, handleAssignTeamMember, handleUpdateTeamMember, hand
                                                 <span>Schedule Appointment</span>
                                             </button>
                                         </li>
+                                        <li>
+                                            <button
+                                                type="button"
+                                                onClick={() =>
+                                                    navigate(
+                                                        `/admin/leads/${encodeURIComponent(
+                                                            member.name
+                                                        )}`
+                                                    )
+                                                }
+                                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            >
+                                                <Eye className="w-4 h-4" />
+                                                <span>
+                                                    View Profile
+                                                </span>
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                             )}
@@ -163,7 +196,7 @@ const LeadTable = ({ leads, handleAssignTeamMember, handleUpdateTeamMember, hand
                     </tr>
                 ))}
             </tbody>
-        </table>
+        </table >
     )
 }
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import filter_list from "../../../assets/filter_list.png"
-import { Download } from "lucide-react";
 import { studentPayments } from "../data";
 import TransactionTable from "../tables/transactionTable";
 
@@ -56,16 +55,6 @@ const Transaction = () => {
               </div>
             </div>
           </div>
-          <div className="mb-5 px-4">
-            <button
-              className="flex items-center justify-center gap-2 w-[115px] h-[32px] max-w-[762px] px-2 py-1 border border-black rounded-sm opacity-100 hover:opacity-90 transition"
-            >
-              <Download className="w-4 h-4" />
-              <span className="text-sm font-medium">Download</span>
-            </button>
-
-          </div>
-
           <div className="flex-grow overflow-auto bg-white dark:bg-gray-800 px-5">
             <TransactionTable
               studentPayments={studentPayments}

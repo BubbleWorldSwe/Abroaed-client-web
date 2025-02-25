@@ -151,11 +151,10 @@ const DestinationTable = ({
                     {dropdownVisible === index && (
                       <div
                         ref={dropdownRef}
-                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                          dropdownDirection === "up"
-                            ? "bottom-full mb-2"
-                            : "mt-2"
-                        }`}
+                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
+                          ? "bottom-full mb-2"
+                          : "mt-2"
+                          }`}
                       >
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                           <li>

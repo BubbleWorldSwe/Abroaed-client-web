@@ -1,6 +1,6 @@
-
 import pencil from '../../../assets/pencil.png'
-const StudentPersonalDetails = () => {
+
+const LeadPersonalDetails = () => {
     return (
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
             <div className="flex justify-between items-center mb-4">
@@ -31,7 +31,8 @@ const StudentPersonalDetails = () => {
                 </div>
             </div>
         </div>
+
     )
 }
 
-export default StudentPersonalDetails
+export default LeadPersonalDetails

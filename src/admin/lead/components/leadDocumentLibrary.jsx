@@ -1,10 +1,9 @@
-import { useState } from "react";
-import pencil from "../../../assets/pencil.png"
 import { Upload } from "lucide-react";
-import StudentUploadDocument from "../modals/studentUploadDocumentModal";
-import DocumentLibraryCard from "./documentLibraryCard";
-
-const StudentDocumentLibrary = () => {
+import { useState } from "react";
+import LeadDocumentUploadModal from "../modals/leadDocumentUploadModal";
+import pencil from "../../../assets/pencil.png"
+import LeadDocumentCard from "../components/leadDocumentCard"
+const LeadDocumentLibrary = () => {
     const [activeTab, setActiveTab] = useState(0); // State to keep track of the active tab
     const tabs = ['Government Docs', 'Academic Docs', 'Finance Docs', 'Others'];
     const [openModal, setOpenModal] = useState(false);
@@ -19,7 +18,7 @@ const StudentDocumentLibrary = () => {
 
     return (
         <>
-            <StudentUploadDocument isOpen={openModal} onClose={() => setOpenModal(false)} />
+            <LeadDocumentUploadModal isOpen={openModal} onClose={() => setOpenModal(false)} />
             <div className="max-w-5.5xl  my-8 p-6 bg-white rounded-lg shadow-lg">
                 {/* Header with title and pencil icon button */}
                 <div className="flex justify-between items-center mb-6">
@@ -49,7 +48,7 @@ const StudentDocumentLibrary = () => {
                     {/* Card Container with Horizontal Scroll */}
                     <div className="flex gap-5 overflow-x-auto pb-6">
                         {Array(6).fill().map((tab, index) => (
-                            <DocumentLibraryCard key={index} />
+                            <LeadDocumentCard key={index} />
                         ))}
                     </div>
 
@@ -64,5 +63,4 @@ const StudentDocumentLibrary = () => {
         </>
     )
 }
-
-export default StudentDocumentLibrary
+export default LeadDocumentLibrary
