@@ -9,15 +9,15 @@ const AboutLanguagePrep = () => {
   useEffect(() => {
     console.log(
       "languagePrepDetails updated in AboutLanguagePrep : " +
-        languagePrepDetails
+      languagePrepDetails
     );
   }, [languagePrepDetails]);
 
   return (
     <div className="flex flex-col gap-1">
       {languagePrepDetails?.about &&
-      languagePrepDetails?.exampTypes &&
-      languagePrepDetails?.exampComponents ? (
+        languagePrepDetails?.exampTypes &&
+        languagePrepDetails?.exampComponents ? (
         <>
           <p className="text-gray-700 dark:text-gray-300 mb-6 flex-1">
             {languagePrepDetails?.about}

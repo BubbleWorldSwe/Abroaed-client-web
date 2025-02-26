@@ -17,6 +17,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
   const [formData, setFormData] = useState({
     description: details?.description || "",
     capitalId: details?.capitalId?._id || "",
+    number: details?.number || "",
     language: details?.language || "",
     totalPopulation: details?.totalPopulation || "",
     currency: details?.countryId?.currency || "",
@@ -74,7 +75,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         required
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
         <SelectField
           label="Capital"
           name="capitalId"
@@ -90,6 +91,24 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           }))}
           required
         />
+        <TextInputField
+          label="Language"
+          name="language"
+          type="text"
+          value={formData.language}
+          onChange={(e) => handleInputChange(e?.target?.value, "language")}
+          placeholder="Enter National Language"
+          required
+        />
+        <TextInputField
+          label="Intr. Students"
+          name="language"
+          type="text"
+          value={formData.number}
+          onChange={(e) => handleInputChange(e?.target?.value, "language")}
+          placeholder="Enter Number"
+          required
+        />
 
         <TextInputField
           label="Currency"
@@ -100,18 +119,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           //    placeholder="Enter Capital"
           disabled
         />
-
-        <TextInputField
-          label="Language"
-          name="language"
-          type="text"
-          value={formData.language}
-          onChange={(e) => handleInputChange(e?.target?.value, "language")}
-          placeholder="Enter Language"
-          required
-        />
-
-        <TextInputField
+        {/* <TextInputField
           label="Total Population"
           name="totalPopulation"
           type="number"
@@ -121,7 +129,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           }
           placeholder="Enter Total Population"
           required
-        />
+        /> */}
 
         <TextInputField
           label="Dailing Code"
@@ -135,7 +143,6 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
       </div>
       <div className="text-end">
         <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-
         <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
       </div>
     </form>

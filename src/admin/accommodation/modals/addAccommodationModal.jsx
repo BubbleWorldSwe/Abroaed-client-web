@@ -96,7 +96,7 @@ const AddAccommodationModal = ({
                 placeholder={"Enter Accommodation Name"}
               />
               {/* Country Selection */}
-              <SearchDropdownField
+              {/* <SearchDropdownField
                 label="Select Country"
                 options={countries.map((data) => ({
                   label: `${data.emoji} ${data.name}`,
@@ -106,10 +106,10 @@ const AddAccommodationModal = ({
                 value={selectedCountry}
                 onSelect={handleCountrySelect}
                 onSearch={fetchCountries}
-              />
+              /> */}
 
               <SelectField
-                label="State"
+                label="Location"
                 name="stateId"
                 value={formData.stateId}
                 onChange={handleChange}
@@ -128,13 +128,13 @@ const AddAccommodationModal = ({
                 placeholder={"Enter Currency"}
               /> */}
 
-              <TextInputField
+              {/* <TextInputField
                 label="City"
                 name="city"
                 value={formData?.city}
                 onChange={handleChange}
                 placeholder={"Enter City"}
-              />
+              /> */}
 
               <CurrencyInputField
                 label="Price"

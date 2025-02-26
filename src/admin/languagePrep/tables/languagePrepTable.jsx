@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Pencil, Trash2 } from "lucide-react";
+import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -110,13 +110,17 @@ const LanguagePrepTable = ({
                 </th>
 
                 <td className="px-4 py-3">{language.language}</td>
-                <td className="px-4 py-3"> {formatDate(language.createdAt)}</td>
+                <td className="px-4 py-3">
+                  <span className="p-1 bg-[#eaeaef]">
+                    {formatDate(language.createdAt)}
+                  </span>
+                </td>
                 <td className="px-4 py-3">
                   <a
                     href={language.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
+                    className="p-1 bg-[#eaeaef] hover:underline rounded"
                   >
                     {formatDateTime(language.createdAt)}
                   </a>
@@ -131,9 +135,8 @@ const LanguagePrepTable = ({
                   {dropdownVisible === index && (
                     <div
                       ref={dropdownRef}
-                      className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                        dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
-                      }`}
+                      className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
+                        }`}
                     >
                       <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                         <li>

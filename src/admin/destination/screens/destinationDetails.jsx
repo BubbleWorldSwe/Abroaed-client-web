@@ -31,13 +31,10 @@ import OverviewDest from "../components/OverviewDest";
 function DestinationDetails() {
   const dispatch = useDispatch();
   const { state } = useLocation();
-
   const [documentsList, setDocumentsList] = useState([]);
-
   const destinationDetails = useSelector(
     (state) => state.destinations.selectedDestination
   );
-
   const [visaTypes, setVisaTypes] = useState([]);
   const [selectedSection, setSelectedSection] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);

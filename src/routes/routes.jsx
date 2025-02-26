@@ -4,7 +4,6 @@ import PrivateRoute from "./privateRoute";
 import AccomodationPage from "../website/accommodation/webscreens/accommodationPage";
 import FinancePage from "../website/finance/webpages/financePage";
 import DestinationPage from "../website/destination/webpages/destinationPage";
-import AdminLayout from "../Layouts/AdminLayout";
 import NurtureLeads from "../pages/admin/NurtureLeads";
 import Student from "../admin/student/screens/student";
 import Leads from "../admin/lead/screens/leads";
@@ -43,6 +42,7 @@ import StudentProfile from "../student/studentComponent/studentProfile";
 import StudentApplications from "../student/studentComponent/studentApplications";
 import StudentTransactions from "../student/studentComponent/studentTransactions";
 import LeadProfileLayout from "../admin/lead/screens/leadProfile";
+import AdminLayout from "../admin/adminLayouts";
 
 const AppRoutes = () => {
   const allRoutes = [

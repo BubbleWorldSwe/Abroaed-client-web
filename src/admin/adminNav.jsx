@@ -1,14 +1,15 @@
 // import { Bell, Bookmark, Settings } from "lucide-react";
 import logoBlack from "../assets/logoBlack.png"
 
-const NavStudent = () => {
+
+const AdminNav = () => {
     return (
         <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md">
             <div>
                 <img src={logoBlack} alt="Logo" className="h-8 w-10" />
             </div>
             <div className="flex items-center space-x-5">
-                <div className="flex-1 mx-4 max-w-md">
+                {/* <div className="flex-1 mx-4 max-w-md">
                     <div className="relative">
                         <input
                             type="text"
@@ -25,7 +26,7 @@ const NavStudent = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-4.35-4.35m0 0a8.5 8.5 0 1 0-1.5 1.5L21 21z" />
                         </svg>
                     </div>
-                </div>
+                </div> */}
                 {/* <button className="text-gray-500 hover:text-gray-700">
                     <Bell />
                 </button>
@@ -40,7 +41,7 @@ const NavStudent = () => {
                 </button>
             </div>
         </nav>
-    );
+    )
 }
 
-export default NavStudent
+export default AdminNav

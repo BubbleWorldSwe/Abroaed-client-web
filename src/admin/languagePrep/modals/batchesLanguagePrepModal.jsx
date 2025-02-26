@@ -1,12 +1,15 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+// import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { languages } from "../../../constants/values";
+import { Plus } from "lucide-react";
+import toast from "react-hot-toast";
 
 const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
   const languagePrepDetails = useSelector(
@@ -74,16 +77,22 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
           required
           placeholder="Enter Batch Name"
         />
-        <div className="my-5">
-          <TextareaInputField
-            label="Course Brief"
-            name="batchBrief"
-            type="text"
-            value={formData.batchBrief}
-            onChange={(e) => handleInputChange(e, "batchBrief")}
-            required
-            placeholder="Enter Course Brief"
-          />
+        <div className="my-3">
+          <p className="text-sm mb-1 font-semibold text-gray-700">Features you’ll love</p>
+          <div className="flex flex-col gap-1">
+            {
+              [1, 2, 3].map((item, index) => (
+                <p key={index} className="py-1 px-2 bg-[#F4F4F5] text-gray-500">
+                  Lorem ipsum dolor sit amet
+                </p>
+              ))
+            }
+          </div>
+          <div>
+            <button className="text-blue-500 mt-1 font-semibold flex gap-1 text-sm justify-between text-center">
+              <Plus className="w-4 h-4" /> Add Point
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -100,13 +109,13 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
           />
 
           <TextInputField
-            label="Seats"
+            label="Mark as Sold Out"
             name="seats"
             type="number"
             value={formData.seats}
             onChange={(e) => handleInputChange(e, "seats")}
             required
-            placeholder="Enter Seats"
+            placeholder="Yes"
           />
 
           <div></div>
