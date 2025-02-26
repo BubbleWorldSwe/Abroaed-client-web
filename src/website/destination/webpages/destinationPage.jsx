@@ -26,7 +26,10 @@ import { getDestinationDetailsById } from "../../../api/destinationApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
-import { getCollegesByDestinationId } from "../../../api/collegesApi";
+import {
+  getCollegesByDestinationId,
+  getCoursesListByDestinationId,
+} from "../../../api/collegesApi";
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 
@@ -39,11 +42,14 @@ function DestinationPage() {
   const [collegesList, setCollegesList] = useState([]);
   const [accList, setAccList] = useState([]);
 
+  const [coursesList, setCoursesList] = useState([]);
+
   async function fetchData() {
     try {
       const data = await getDestinationDetailsById(id);
       const college = await getCollegesByDestinationId(id);
       const acc = await getAccommodationsByDestinationId(id);
+      const course = await getCoursesListByDestinationId(id);
 
       if (data.status === 200) {
         setDestinationDetails(data.data);
@@ -57,11 +63,16 @@ function DestinationPage() {
         setAccList(acc.data.result);
       }
 
+      if (course.status === 200) {
+        setCoursesList(course.data);
+      }
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   }
+  console.log(coursesList);
 
   useEffect(() => {
     // window.scrollTo(0, 0);
@@ -94,14 +105,22 @@ function DestinationPage() {
           />
         </div>
       </div>
-      <DestinationUniCoursersSection
-        destinationDetails={destinationDetails}
-        collegesList={collegesList}
-      />
-      <div className="relative">
-        <DestinationAdmissionRequirementSection
+
+      {collegesList.length > 0 && (
+        <DestinationUniCoursersSection
           destinationDetails={destinationDetails}
+          collegesList={collegesList}
+          coursesList={coursesList}
         />
+      )}
+
+      <div className="relative">
+        {destinationDetails?.admissionRequirements.length > 0 && (
+          <DestinationAdmissionRequirementSection
+            destinationDetails={destinationDetails}
+          />
+        )}
+
         <div className="absolute -bottom-44 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -110,12 +129,21 @@ function DestinationPage() {
           />
         </div>
       </div>
+
       <DestinationExpansesSection destinationDetails={destinationDetails} />
-      <DestinationScholarshipSection destinationDetails={destinationDetails} />
-      <div className="relative">
-        <DestinationImmigrationDetailsSection
+      {destinationDetails?.scholarships.length > 0 && (
+        <DestinationScholarshipSection
           destinationDetails={destinationDetails}
         />
+      )}
+
+      <div className="relative">
+        {destinationDetails?.immigrations.length > 0 && (
+          <DestinationImmigrationDetailsSection
+            destinationDetails={destinationDetails}
+          />
+        )}
+
         <div className="absolute bottom-0 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -137,11 +165,17 @@ function DestinationPage() {
         </div>
       </div>
 
-      <DestinationStudentAccommodationsSection
-        destinationDetails={destinationDetails}
-        accommodationList={accList}
-      />
-      <DestinationFaqSection destinationDetails={destinationDetails} />
+      {accList.length > 0 && (
+        <DestinationStudentAccommodationsSection
+          destinationDetails={destinationDetails}
+          accommodationList={accList}
+        />
+      )}
+
+      {destinationDetails?.faqs.length > 0 && (
+        <DestinationFaqSection destinationDetails={destinationDetails} />
+      )}
+
       <div className="relative">
         <Testimonials />
         <div className="absolute top-64 left-48 z-0">

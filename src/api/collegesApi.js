@@ -98,3 +98,18 @@ export const getCollegeDetailsById = async (id) => {
     throw error;
   }
 };
+
+export const getCoursesListByDestinationId = async (id) => {
+  try {
+    console.log(id);
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/colleges/courses/by-destination/${id}`
+    );
+
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

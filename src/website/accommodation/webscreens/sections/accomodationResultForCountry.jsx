@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AccommodationCard from "../../../comman/components/accommodationCard";
 import { useSelector } from "react-redux";
 
@@ -6,11 +6,20 @@ function AccommodationResultForCountry({
   onSelectCountry,
   accList,
   isLoading,
+  selectedDestination,
 }) {
   const { allDestinations } = useSelector((state) => state.destinations);
-  const [selectedCountry, setSelectedCountry] = useState(
-    allDestinations[0]?.countryId?.name
-  );
+  const [selectedCountry, setSelectedCountry] = useState(null);
+
+  useEffect(() => {
+    if (allDestinations.length > 0) {
+      const foundCountry = allDestinations.find(
+        (country) => country._id === selectedDestination
+      );
+
+      setSelectedCountry(foundCountry || allDestinations[0]);
+    }
+  }, [allDestinations, selectedDestination]);
 
   return (
     <div className="relative mx-auto px-10">
@@ -34,13 +43,14 @@ function AccommodationResultForCountry({
                   <button
                     key={country._id}
                     className={`px-4 py-2 text-gray-500 rounded-md text-left ${
-                      selectedCountry === country?.countryId?.name
+                      selectedCountry?.countryId?.name ===
+                      country?.countryId?.name
                         ? "bg-gray-200 font-bold"
                         : "hover:bg-gray-100"
                     }`}
                     onClick={(e) => {
                       e.preventDefault();
-                      setSelectedCountry(country?.countryId?.name);
+                      setSelectedCountry(country);
                       onSelectCountry(country?._id);
                     }}
                   >
@@ -54,7 +64,7 @@ function AccommodationResultForCountry({
           {/* Cards Grid Section */}
           <div className="w-4/5 ml-10">
             <h5 className="text-3xl font-bold tracking-tight text-gray-900">
-              Showing Results for {selectedCountry}
+              Showing Results for {selectedCountry?.countryId?.name}
             </h5>
             <hr className="h-px my-4 bg-gray-200 border-0" />
 

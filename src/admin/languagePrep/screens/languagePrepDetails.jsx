@@ -2,15 +2,15 @@
 import AboutLanguagePrep from "../components/aboutLanguagePrep";
 import Batches from "../components/batchesLanguagePrep";
 import LanguageFaqs from "../components/faqLanguagePrep";
-import SimplifyThings from "../components/simplifyThingsLanguagePrep";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import LanguageImageSection from "../components/imageSectionLanguagePrep";
 import AboutLanguagePrepModal from "../modals/aboutLanguagePrepModal";
-import SimplifyThingsModal from "../modals/simplifyThingsLanguagePrepModal";
+
 import BatchesLanguagePrepModal from "../modals/batchesLanguagePrepModal";
 import FaqLanguagePrepModal from "../modals/faqLanguagePrepModal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { editLanguagePrepRequest } from "../../../redux/actions/languagePrepsActions";
 import { getLanguagePrepDetailsById } from "../../../api/languagePrepsApi";
 import { useDispatch } from "react-redux";
@@ -21,13 +21,13 @@ const LanguagePrepDetails = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
 
-  const { state } = useLocation();
+  const { id } = useParams();
 
   const [formdata, setFormdata] = useState(null);
 
   async function onUpdate(data) {
     try {
-      dispatch(editLanguagePrepRequest(state?._id, data));
+      dispatch(editLanguagePrepRequest(id, data));
 
       closeModal();
     } catch (error) {
@@ -46,17 +46,11 @@ const LanguagePrepDetails = () => {
   function onEditFaq(params) {
     console.log("Edit FAQ");
     setFormdata(params);
-    openModal("FAQs", "edit", 3);
+    openModal("FAQs", "edit", 2);
   }
 
   function onEditBatches(params) {
     console.log("Edit Batches");
-    setFormdata(params);
-    openModal("Batches", "edit", 2);
-  }
-
-  function onEditSimplifyThings(params) {
-    console.log("Edit onEditSimplifyThings");
     setFormdata(params);
     openModal("Batches", "edit", 1);
   }
@@ -66,12 +60,7 @@ const LanguagePrepDetails = () => {
       name: "About Language Preparation",
       component: <AboutLanguagePrep />,
     },
-    {
-      name: "How we simplify things",
-      component: (
-        <SimplifyThings onEdit={onEditSimplifyThings} onUpdate={onUpdate} />
-      ),
-    },
+
     {
       name: "Batches",
       component: <Batches onEdit={onEditBatches} onUpdate={onUpdate} />,
@@ -90,21 +79,15 @@ const LanguagePrepDetails = () => {
     section0: (
       <AboutLanguagePrepModal onUpdate={onUpdate} closeModal={closeModal} />
     ),
+
     section1: (
-      <SimplifyThingsModal
-        onUpdate={onUpdate}
-        filledData={formdata}
-        closeModal={closeModal}
-      />
-    ),
-    section2: (
       <BatchesLanguagePrepModal
         onUpdate={onUpdate}
         filledData={formdata}
         closeModal={closeModal}
       />
     ),
-    section3: (
+    section2: (
       <FaqLanguagePrepModal
         onUpdate={onUpdate}
         filledData={formdata}

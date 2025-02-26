@@ -16,7 +16,7 @@ import ScholarshipModal from "../modals/scholarshipModal";
 import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getAdmissionDocuments, getVisaTypesList } from "../../../api/api";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import {

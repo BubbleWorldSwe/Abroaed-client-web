@@ -10,8 +10,12 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
+import { useParams } from "react-router-dom";
 
 function AccomodationPage() {
+  const { id } = useParams();
+
+  console.log(id);
   const [accList, setAccList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { allDestinations } = useSelector((state) => state.destinations);
@@ -37,7 +41,7 @@ function AccomodationPage() {
   }
 
   useEffect(() => {
-    fetchAccommodations(allDestinations[0]?._id);
+    fetchAccommodations(id || allDestinations[0]?._id);
   }, []);
 
   if (isLoading) {
@@ -52,6 +56,7 @@ function AccomodationPage() {
         onSelectCountry={fetchAccommodations}
         accList={accList}
         isLoading={isDataLoading}
+        selectedDestination={id}
       />
       <AccommodationHowItWorkSection />
       <AccommodationFaqSection />

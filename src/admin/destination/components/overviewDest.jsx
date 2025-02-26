@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 
 function OverviewDest({}) {
@@ -24,7 +24,7 @@ function OverviewDest({}) {
 
           { key: "Currency", value: details?.countryId?.currency },
           { key: "Dial Code", value: details?.dialcode },
-          { key: "International Students", value: details?.totalPopulation },
+          { key: "International Students", value: details?.intrStudents },
         ].map((item, index) => (
           <div key={index} className="text-left">
             <p className="text-base font-semibold text-gray-900 dark:text-gray-400">

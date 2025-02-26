@@ -10,7 +10,8 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
     },
     {
       title: "Intr. Students",
-      value: destinationDetails?.totalPopulation,
+      value: destinationDetails?.internationalStudent,
+      // value: destinationDetails?.totalPopulation,
       icon: "🎓",
     },
     { title: "Language", value: destinationDetails?.language, icon: "𝗘𝗡╸" },

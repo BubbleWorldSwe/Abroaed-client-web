@@ -49,7 +49,7 @@ export const setUpdateTestPrep = async (id, credentials) => {
       `${BASE_URL}/api/v1/admin/test-preps/${id}`,
       credentials
     );
-    // console.log(data);
+    console.log(data);
     if (data.success) {
       return data.data;
     }

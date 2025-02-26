@@ -3,11 +3,10 @@
 import AboutExamTestPrepModal from "../modals/aboutExamTestPrepModal";
 import Batches from "../components/batchesTestPrep";
 import LanguageFaqs from "../components/faqTestPrep";
-import SimplifyThings from "../components/simplifyThingsTestPrep";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import TestPrepImageUpdate from "../components/imageUploadTestPrep";
-import SimplifyThingsModal from "../modals/simplifyThingsTestPrepModal";
+
 import BatchesTestPrepModal from "../modals/batchesTestPrepModal";
 import FaqTestPrepModal from "../modals/faqTestPrepModal";
 import { useLocation } from "react-router-dom";
@@ -64,7 +63,7 @@ const TestPrepDetails = () => {
 
   const sectionConfig = [
     { name: "About Exam", component: <AboutExamTestPrep /> },
-    // { name: "How we simplify things", component: <SimplifyThings /> },
+
     {
       name: "Batches",
       component: <Batches onEdit={onEditBatches} onUpdate={onUpdate} />,
@@ -83,17 +82,15 @@ const TestPrepDetails = () => {
     section0: (
       <AboutExamTestPrepModal onUpdate={onUpdate} closeModal={closeModal} />
     ),
+
     section1: (
-      <SimplifyThingsModal onUpdate={onUpdate} closeModal={closeModal} />
-    ),
-    section2: (
       <BatchesTestPrepModal
         onUpdate={onUpdate}
         filledData={formdata}
         closeModal={closeModal}
       />
     ),
-    section3: (
+    section2: (
       <FaqTestPrepModal
         onUpdate={onUpdate}
         filledData={formdata}
@@ -105,13 +102,13 @@ const TestPrepDetails = () => {
   function onEditFaq(params) {
     console.log("Edit FAQ");
     setFormdata(params);
-    openModal("FAQs", "edit", 3);
+    openModal("FAQs", "edit", 2);
   }
 
   function onEditBatches(params) {
     console.log("Edit Batches");
     setFormdata(params);
-    openModal("Batches", "edit", 2);
+    openModal("Batches", "edit", 1);
   }
 
   useEffect(() => {

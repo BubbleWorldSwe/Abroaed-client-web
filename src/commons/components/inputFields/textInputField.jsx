@@ -7,10 +7,15 @@ export function TextInputField({
   placeholder,
   required,
   disabled,
+  className,
 }) {
   return (
-    <div>
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+    <div className={className}>
+      {label && (
+        <label className="block text-sm font-medium text-gray-700">
+          {label}
+        </label>
+      )}
       <input
         type={type}
         name={name}

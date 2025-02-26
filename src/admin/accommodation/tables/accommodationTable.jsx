@@ -114,7 +114,7 @@ const AccommodationTable = ({
                 >
                   {accommodation.accomodationName}
                 </th>
-                <td className="px-4 py-3">{`${accommodation?.stateId?.name}, ${accommodation.countryId?.name}`}</td>
+                <td className="px-4 py-3">{`${accommodation?.stateId?.name}, ${accommodation?.destinationId?.countryId?.name}`}</td>
                 {/* <td className="px-4 py-3">{`${accommodation?.city}, ${accommodation?.stateId?.name}, ${accommodation.countryId?.name}`}</td> */}
                 <td className="px-4 py-3">
                   {`${accommodation.price} (in ${

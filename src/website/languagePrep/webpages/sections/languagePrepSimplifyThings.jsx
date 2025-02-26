@@ -24,7 +24,7 @@ const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
-              {languagePrepsDetails?.simplifyThings?.map((data, i) => (
+              {["", "", ""]?.map((data, i) => (
                 <div
                   key={i}
                   className="flex relative flex-col gap-3 h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
@@ -44,10 +44,19 @@ const LanguagePrepSimplifyThings = ({ languagePrepsDetails }) => {
                     </span>
                   </div>
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
-                    {data.title}
+                    Lorem Ipsum Dolor
                   </h5>
                   <p className="font-normal text-white dark:text-gray-400">
-                    {data.description}
+                    lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Curabitur tristique felis non odio accumsan laoreet. Integer
+                    cursus libero placerat ex volutpat posuere. Quisque non nisl
+                    ultricies, volutpat mauris sed, venenatis dui. Integer eget
+                    eleifend augue, ac consequat dui. Nam arcu libero, blandit
+                    vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat
+                    sodales tincidunt. Praesent pharetra nisi placerat diam
+                    fringilla, ac fermentum erat commodo. Quisque semper arcu
+                    sit amet auctor consequat. Mauris diam urna, dignissim sed
+                    metus eu, congue porttitor nisi. Nulla facilisi.
                   </p>
                   <div className="absolute top-0 right-0">
                     <img src={vectorRightRing} alt="vector" />

@@ -18,7 +18,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
     description: details?.description || "",
     capitalId: details?.capitalId?._id || "",
     language: details?.language || "",
-    intrStudents: details?.intrStudents || "",
+    totalPopulation: details?.totalPopulation || "",
     currency: details?.countryId?.currency || "",
     dialcode: details?.dialcode || "",
   });
@@ -31,7 +31,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
       "description",
       "capitalId",
       "language",
-      "intrStudents",
+      "totalPopulation",
       "dialcode",
     ];
 
@@ -112,12 +112,26 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         />
 
         <TextInputField
-          label="International Students"
-          name="intrStudents"
+          label="Total Population"
+          name="totalPopulation"
           type="number"
-          value={formData.intrStudents}
-          onChange={(e) => handleInputChange(e?.target?.value, "intrStudents")}
-          placeholder="Enter International Students"
+          value={formData.totalPopulation}
+          onChange={(e) =>
+            handleInputChange(e?.target?.value, "totalPopulation")
+          }
+          placeholder="Enter Total Population"
+          required
+        />
+
+        <TextInputField
+          label="International Students"
+          name="totalPopulation"
+          type="number"
+          value={formData.totalPopulation}
+          onChange={(e) =>
+            handleInputChange(e?.target?.value, "totalPopulation")
+          }
+          placeholder="Enter Total Population"
           required
         />
 

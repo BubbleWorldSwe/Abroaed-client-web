@@ -3,7 +3,11 @@ import { courses, universities } from "../../data";
 import UniversityDetailsCard from "../../components/destinationUniversityDetailsCard";
 import CourseCard from "../../components/destinationCourseCard";
 
-function DestinationUniCoursersSection({ destinationDetails, collegesList }) {
+function DestinationUniCoursersSection({
+  destinationDetails,
+  collegesList,
+  coursesList,
+}) {
   console.log(collegesList);
   return (
     <div className="relative">
@@ -43,7 +47,7 @@ function DestinationUniCoursersSection({ destinationDetails, collegesList }) {
               make the best of your career choice
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-10">
-              {courses.map((course, index) => (
+              {coursesList.map((course, index) => (
                 <CourseCard course={course} key={index} />
               ))}
             </div>

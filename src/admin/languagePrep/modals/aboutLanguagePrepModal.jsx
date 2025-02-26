@@ -11,18 +11,12 @@ const AboutLanguagePrepModal = ({ closeModal, onUpdate }) => {
   );
   const [formData, setFormData] = useState({
     about: languagePrepDetails?.about || "",
-    exampTypes: languagePrepDetails?.exampTypes || "",
-    exampComponents: languagePrepDetails?.exampComponents || "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      !formData.about.trim() ||
-      !formData.exampTypes.trim() ||
-      !formData.exampComponents.trim()
-    ) {
+    if (!formData.about.trim()) {
       toast.error("Please fill in all fields before submitting.");
       return;
     }
@@ -44,26 +38,7 @@ const AboutLanguagePrepModal = ({ closeModal, onUpdate }) => {
           required
           placeholder="Enter About"
         />
-        <div className="my-5">
-          <TextareaInputField
-            label="Exam Types"
-            name="exampTypes"
-            type="text"
-            value={formData.exampTypes}
-            onChange={(e) => handleInputChange(e, "exampTypes")}
-            required
-            placeholder="Enter Exam Types"
-          />
-        </div>
-        <TextareaInputField
-          label="Exam Components"
-          name="exampComponents"
-          type="text"
-          value={formData.exampComponents}
-          onChange={(e) => handleInputChange(e, "exampComponents")}
-          required
-          placeholder="Enter Exam Components"
-        />
+
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
           <ModalSubmitButton label="Save" onClick={handleSubmit} />

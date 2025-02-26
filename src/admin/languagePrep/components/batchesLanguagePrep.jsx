@@ -33,7 +33,10 @@ const Batches = ({ onEdit, onUpdate }) => {
           <thead className="text-sm text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th className="px-4 py-3">Batch Name</th>
-              <th className="px-4 py-3 whitespace-nowrap">Last Edited</th>
+
+              <th className="px-4 py-3 whitespace-nowrap">Language</th>
+              <th className="px-4 py-3 whitespace-nowrap">Fees (in ₹)</th>
+              <th className="px-4 py-3 whitespace-nowrap">Seats</th>
               <th className="px-4 py-3"></th>
             </tr>
           </thead>
@@ -47,7 +50,9 @@ const Batches = ({ onEdit, onUpdate }) => {
                   <td className=" px-4 py-3 font-semibold">
                     {data?.batchName}
                   </td>
-                  <td className="px-4 py-3">{data?.batchBrief}</td>
+                  <td className="px-4 py-3">{data?.language}</td>
+                  <td className="px-4 py-3">{data?.fees}</td>
+                  <td className="px-4 py-3">{data?.seats}</td>
 
                   <td className="text-center w-[100px]">
                     <div className="flex items-center justify-center space-x-5">

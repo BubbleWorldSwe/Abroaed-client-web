@@ -26,6 +26,7 @@ import { fetchAllTestPrepsRequest } from "../../../redux/actions/testPrepsAction
 import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePrepsActions";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
+import Testimonials from "../../comman/components/testimonials";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -68,7 +69,8 @@ function HomeLayout() {
       {/* <TimelineSlider slides={slidesData} /> */}
       <OurPartners />
       <HomeTestimonialsSection />
-      <HomeBlogsSection />
+      <Testimonials />
+
       <HomeDownloadApp />
       {/* <Pricing /> */}
       {/* <FAQsection /> */}

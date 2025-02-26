@@ -22,12 +22,17 @@ const DestinationStudentAccommodationsSection = ({
             ))}
           </div>
           <div className="text-center ">
-            <button
-              type="submit"
-              className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+            <a
+              href={`/accomodation/${destinationDetails._id}`}
+              className="w-full"
             >
-              View All
-            </button>
+              <button
+                type="submit"
+                className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+              >
+                View All
+              </button>
+            </a>
           </div>
         </div>
       </section>

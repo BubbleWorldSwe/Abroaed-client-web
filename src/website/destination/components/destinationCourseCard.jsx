@@ -2,14 +2,15 @@
 
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 
-const CourseCard = ({ course = {} }) => {
+const CourseCard = ({ course }) => {
+  console.log(course);
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col justify-between ">
         <div>
           <div className="flex justify-between">
             <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {course.courseName}
+              {course.name}
             </h5>
             <div>
               <svg
@@ -32,10 +33,13 @@ const CourseCard = ({ course = {} }) => {
             </div>
           </div>
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
+            <strong>College:</strong> {course.collegeName}
+          </p>
+          <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
             <strong>Domain:</strong> {course.domain}
           </p>
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-            <strong>Program:</strong> {course.program}
+            <strong>Program:</strong> {course.courseLevel}
           </p>
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
             <strong>Duration:</strong> {course.duration}
@@ -46,8 +50,9 @@ const CourseCard = ({ course = {} }) => {
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
             <strong>Intake:</strong> {course.intake}
           </p>
+
           <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {course.description}
+            {course.brief}
           </p>
         </div>
         <EnquireButton

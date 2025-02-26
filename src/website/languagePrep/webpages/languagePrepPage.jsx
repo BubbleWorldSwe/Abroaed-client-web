@@ -60,29 +60,35 @@ function LanguagePrepLayout() {
           />
         </div>
       </div>
-      <div className="relative ">
-        <LanguagePrepBatchDetaileSection
-          languagePrepsDetails={languagePrepsDetails}
-        />
-        <div className="absolute bottom-0 right-0 z-0">
-          <img
-            className="rounded-lg max-w-full "
-            src={vectorleftNose}
-            alt="Counselling session"
-          />
-        </div>
-      </div>
 
-      <div className="relative ">
-        <LanguagePrepFaqSection languagePrepsDetails={languagePrepsDetails} />
-        <div className="absolute -top-10 left-0 z-0">
-          <img
-            className="rounded-lg max-w-full "
-            src={vectorDownNose}
-            alt="Counselling session"
+      {languagePrepsDetails?.batches.length > 0 && (
+        <div className="relative ">
+          <LanguagePrepBatchDetaileSection
+            languagePrepsDetails={languagePrepsDetails}
           />
+          <div className="absolute bottom-0 right-0 z-0">
+            <img
+              className="rounded-lg max-w-full "
+              src={vectorleftNose}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
+      )}
+
+      {languagePrepsDetails?.faqs.length > 0 && (
+        <div className="relative ">
+          <LanguagePrepFaqSection languagePrepsDetails={languagePrepsDetails} />
+          <div className="absolute -top-10 left-0 z-0">
+            <img
+              className="rounded-lg max-w-full "
+              src={vectorDownNose}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
+      )}
+
       <Blogs />
 
       <ContactUsForm />

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
@@ -7,6 +6,10 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { languages } from "../../../constants/values";
+import { PlusSquare } from "lucide-react";
+import trash from "../../../assets/delete.png";
+import { toast } from "react-toastify";
+import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 
 const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
   const languagePrepDetails = useSelector(
@@ -16,20 +19,22 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
   const [formData, setFormData] = useState(
     filledData || {
       batchName: "",
-      batchBrief: "",
       seats: "",
       language: "",
       duration: "",
       fees: "",
+      features: [""],
+      sold: false,
     }
   );
+
+  console.log(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (
       !formData.batchName.trim() ||
-      !formData.batchBrief.trim() ||
       !formData.seats.trim() ||
       !formData.language.trim() ||
       !String(formData.duration).trim() ||
@@ -39,20 +44,23 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
       return;
     }
 
+    // Features Validation: Ensure no empty features
+    if (formData.features.some((feature) => feature.trim() === "")) {
+      toast.error("Please fill in all feature fields.");
+      return;
+    }
+
     let updatedBatches = [];
 
     if (filledData) {
-      updatedBatches = languagePrepDetails.batches.map((batches) =>
-        batches._id === filledData._id ? formData : batches
+      updatedBatches = languagePrepDetails.batches.map((batch) =>
+        batch._id === filledData._id ? formData : batch
       );
     } else {
-      const newBatches = { ...formData };
-      updatedBatches = [newBatches, ...languagePrepDetails.batches];
+      updatedBatches = [formData, ...languagePrepDetails.batches];
     }
 
     const batchesWithoutId = updatedBatches.map(({ _id, ...rest }) => rest);
-    console.log(batchesWithoutId);
-
     onUpdate({ batches: batchesWithoutId });
   };
 
@@ -60,7 +68,21 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
 
-  console.log(formData);
+  const handleFeatureChange = (index, value) => {
+    const updatedFeatures = formData.features.map((feature, i) =>
+      i === index ? value : feature
+    );
+    setFormData({ ...formData, features: updatedFeatures });
+  };
+
+  const addFeature = () => {
+    setFormData({ ...formData, features: [...formData.features, ""] });
+  };
+
+  const removeFeature = (index) => {
+    const updatedFeatures = formData.features.filter((_, i) => i !== index);
+    setFormData({ ...formData, features: updatedFeatures });
+  };
 
   return (
     <div>
@@ -74,16 +96,50 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
           required
           placeholder="Enter Batch Name"
         />
-        <div className="my-5">
-          <TextareaInputField
-            label="Course Brief"
-            name="batchBrief"
-            type="text"
-            value={formData.batchBrief}
-            onChange={(e) => handleInputChange(e, "batchBrief")}
-            required
-            placeholder="Enter Course Brief"
-          />
+
+        <p className="block text-sm font-medium text-gray-700 mt-5">
+          Features you’ll love
+        </p>
+        <div className="grid gap-2">
+          {formData.features.map((feature, index) => (
+            <div key={index} className="flex gap-2 items-center">
+              <TextInputField
+                className={"w-full"}
+                name={`feature-${index}`}
+                type="text"
+                value={feature}
+                onChange={(e) => handleFeatureChange(index, e.target.value)}
+                required
+                placeholder="Enter"
+              />
+              {index !== 0 ? (
+                <button
+                  type="button"
+                  className="text-red-500"
+                  onClick={() => removeFeature(index)}
+                >
+                  <img src={trash} alt="Delete Icon" className="w-5 h-5" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  disabled={true}
+                  onClick={() => removeFeature(index)}
+                >
+                  <div className="w-5 h-5" />
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="col-span-full text-start mb-7 mx-2">
+          <button
+            type="button"
+            className="mt-5 font-bold text-blue-500 py-1 rounded transition flex items-center gap-2"
+            onClick={addFeature}
+          >
+            + Add Point
+          </button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -92,13 +148,9 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             name="language"
             value={formData.language}
             onChange={(e) => handleInputChange(e, "language")}
-            options={languages.map((data) => ({
-              label: data,
-              value: data,
-            }))}
+            options={languages.map((data) => ({ label: data, value: data }))}
             required
           />
-
           <TextInputField
             label="Seats"
             name="seats"
@@ -108,8 +160,6 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             required
             placeholder="Enter Seats"
           />
-
-          <div></div>
           <TextInputField
             label="Duration (Months)"
             name="duration"
@@ -119,7 +169,6 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             required
             placeholder="Enter Duration"
           />
-
           <TextInputField
             label="Fees (in ₹)"
             name="fees"
@@ -128,9 +177,28 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             onChange={(e) => handleInputChange(e, "fees")}
             required
             placeholder="Enter Fees"
-            currency={"INR"}
           />
+          <div className="flex items-center text-center gap-3 mt-5">
+            <CheckboxField
+              id="sold"
+              checked={formData.sold || false}
+              onChange={(e) =>
+                handleInputChange(
+                  { target: { value: e.target.checked } },
+                  "sold"
+                )
+              }
+            />
+
+            <label
+              htmlFor="sold"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Mark as Sold Out
+            </label>
+          </div>
         </div>
+
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
           <ModalSubmitButton label={"Save"} onClick={handleSubmit} />

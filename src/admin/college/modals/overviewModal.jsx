@@ -139,7 +139,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
             required
           />
           <TextInputField
-            label="International Students (in percentage)"
+            label="International Students (in %)"
             name="internationalStudent"
             type="text"
             value={formData.internationalStudent}
