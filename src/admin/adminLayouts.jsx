@@ -9,7 +9,6 @@ const AdminLayout = () => {
       <div className="flex h-[90vh]">
         {/* Sidebar */}
         <CollapsableSidebar className="h-full" />
-
         {/* Main Content */}
         <main className="bg-gray-200 dark:bg-gray-900 h-full  w-full flex flex-col">
           <div className="flex-grow  overflow-scroll">
