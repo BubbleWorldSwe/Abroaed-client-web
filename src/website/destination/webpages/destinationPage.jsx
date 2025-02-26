@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import DestinationHeroSection from "./sections/destinationHeroSection";
 import DestinationInfoSection from "./sections/destinationInfoSection";
 import DestinationUniCoursersSection from "./sections/destinationUniCourseSection";
@@ -18,7 +19,7 @@ import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
 import DestinationFaqSection from "./sections/destinationFaqSection";
-import DestinationAbroaedUpdateSection from "./sections/destinationAbroaedUpdateSection";
+// import DestinationAbroaedUpdateSection from "./sections/destinationAbroaedUpdateSection";
 import DestinationFunFactSection from "./sections/destinationFunFactSection";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -75,7 +76,6 @@ function DestinationPage() {
   console.log(coursesList);
 
   useEffect(() => {
-    // window.scrollTo(0, 0);
     fetchData();
   }, [id]);
 
