@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
     CreditCard,
     File,
@@ -8,11 +8,11 @@ import {
     Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import SidebarItem from "./sidebarItem";
 
 const StudentSideBar = () => {
     const [isOpen, setIsOpen] = useState(true);
     const location = useLocation();
-    const navigate = useNavigate();
 
     useEffect(() => {
         const handleResize = () => {
@@ -25,57 +25,22 @@ const StudentSideBar = () => {
     }, []);
 
     const isActive = (path) => location.pathname === path;
-
+    const menuItems = [
+        { path: "/student/home", label: "Home", icon: House },
+        { path: "/student/profile", label: "Profile", icon: Users },
+        { path: "/student/application", label: "Applications", icon: FileText },
+        { path: "/student/documents", label: "Documents", icon: File },
+        { path: "/student/transactions", label: "Transactions", icon: CreditCard },
+    ];
     return (
         <motion.div animate={{ width: isOpen ? 220 : 60 }} >
-            <div className="shadow-md h-full w-[250px] bg-[#fff] p-4">
-                <ul className="space-y-1">
-                    <li
-                        onClick={() => navigate("/student/home")}
-                        className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/home") ? "text-black font-bold" : "text-gray-400"
-                            }   transition`}
-                    >
-                        <House className="w-5 h-5" />
-                        <span className="ml-3">Home</span>
-                    </li>
-
-                    <li
-                        onClick={() => navigate("/student/profile")}
-                        className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/profile") ? "text-black font-bold" : "text-gray-400"
-                            }   transition`}
-                    >
-                        <Users className="w-5 h-5" />
-                        <span className="ml-3">Profile</span>
-                    </li>
-
-                    <li
-                        onClick={() => navigate("/student/application")}
-                        className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/application") ? "text-black font-bold" : "text-gray-400"
-                            }   transition`}
-                    >
-                        <FileText className="w-5 h-5" />
-                        <span className="ml-3">Applications</span>
-                    </li>
-
-                    <li
-                        onClick={() => navigate("/student/documents")}
-                        className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/documents") ? "text-black font-bold" : "text-gray-400"
-                            }   transition`}
-                    >
-                        <File className="w-5 h-5" />
-                        <span className="ml-3">Documents</span>
-                    </li>
-
-                    <li
-                        onClick={() => navigate("/student/transactions")}
-                        className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/transactions") ? "text-black font-bold" : "text-gray-400"
-                            }   transition`}
-                    >
-                        <CreditCard className="w-5 h-5" />
-                        <span className="ml-3">Transactions</span>
-                    </li>
-                </ul>
-            </div>
+            <aside className="h-[90vh]  py-5 w-full bg-white flex flex-col p-2">
+                <nav className="flex flex-col gap-2">
+                    {menuItems.map(({ path, label, icon: Icon }) => (
+                        <SidebarItem key={path} path={path} label={label} Icon={Icon} isActive={isActive} />
+                    ))}
+                </nav>
+            </aside>
         </motion.div>
     );
 }
