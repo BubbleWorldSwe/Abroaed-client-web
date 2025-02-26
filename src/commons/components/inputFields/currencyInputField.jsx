@@ -11,7 +11,7 @@ export function CurrencyInputField({
 }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <label className="block text-sm font-semibold text-gray-700">{label}</label>
       <div className="mt-1 flex w-full rounded-md bg-[#F4F4F5]">
         <input
           type={type}

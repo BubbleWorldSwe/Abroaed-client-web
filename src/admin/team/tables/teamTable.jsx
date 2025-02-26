@@ -61,11 +61,15 @@ const TeamTable = ({
               />
             </th>
             <th className="px-4 py-3">Member Name</th>
-            <th className="px-4 py-3">Phone Number</th>
-            <th className="px-4 py-3">Email ID</th>
+            {/* <th className="px-4 py-3">Phone Number</th> */}
+            {/* <th className="px-4 py-3">Email ID</th> */}
             <th className="px-4 py-3">Role Type</th>
             <th className="px-4 py-3">Permissions</th>
-            <th className="px-4 py-3 w-4">Actions</th>
+            <th className="px-4 py-3 w-4">
+              <span className="sr-only">
+                Actions
+              </span>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -85,8 +89,8 @@ const TeamTable = ({
                     />
                   </td>
                   <td className="px-4 py-3">{`${member?.firstName} ${member?.lastName}`}</td>
-                  <td className="px-4 py-3">+91 {member?.mobile}</td>
-                  <td className="px-4 py-3">{member?.email}</td>
+                  {/* <td className="px-4 py-3">+91 {member?.mobile}</td> */}
+                  {/* <td className="px-4 py-3">{member?.email}</td> */}
                   <td className="px-4 py-3">{member?.roleId?.roleName}</td>
                   <td className="px-4 py-3">
                     {member.isWriteAccess ? (

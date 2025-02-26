@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
-import SearchDropdownField from "../../../commons/components/inputFields/searchDropdownFields";
 import { useSelector } from "react-redux";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
@@ -112,7 +111,7 @@ const AddAccommodationModal = ({
               />
 
               <SelectField
-                label="State"
+                label="Location"
                 name="stateId"
                 value={formData.stateId}
                 onChange={handleChange}
@@ -131,13 +130,13 @@ const AddAccommodationModal = ({
                 placeholder={"Enter Currency"}
               /> */}
 
-              <TextInputField
+              {/* <TextInputField
                 label="City"
                 name="city"
                 value={formData?.city}
                 onChange={handleChange}
                 placeholder={"Enter City"}
-              />
+              /> */}
 
               <CurrencyInputField
                 label="Price"

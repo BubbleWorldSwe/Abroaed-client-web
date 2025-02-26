@@ -1,6 +1,4 @@
 import { useState } from "react";
-import pencil from "../../../assets/pencil.png";
-import deleteIcon from "../../../assets/deleteIcon.png";
 import dark from "../../../assets/dark.png";
 import { useSelector } from "react-redux";
 import { Trash2 } from "lucide-react";

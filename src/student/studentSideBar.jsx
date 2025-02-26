@@ -33,7 +33,7 @@ const StudentSideBar = () => {
                     <li
                         onClick={() => navigate("/student/home")}
                         className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/home") ? "text-black font-bold" : "text-gray-400"
-                            } hover:bg-gray-100 transition`}
+                            }   transition`}
                     >
                         <House className="w-5 h-5" />
                         <span className="ml-3">Home</span>
@@ -42,7 +42,7 @@ const StudentSideBar = () => {
                     <li
                         onClick={() => navigate("/student/profile")}
                         className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/profile") ? "text-black font-bold" : "text-gray-400"
-                            } hover:bg-gray-100 transition`}
+                            }   transition`}
                     >
                         <Users className="w-5 h-5" />
                         <span className="ml-3">Profile</span>
@@ -51,7 +51,7 @@ const StudentSideBar = () => {
                     <li
                         onClick={() => navigate("/student/application")}
                         className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/application") ? "text-black font-bold" : "text-gray-400"
-                            } hover:bg-gray-100 transition`}
+                            }   transition`}
                     >
                         <FileText className="w-5 h-5" />
                         <span className="ml-3">Applications</span>
@@ -60,7 +60,7 @@ const StudentSideBar = () => {
                     <li
                         onClick={() => navigate("/student/documents")}
                         className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/documents") ? "text-black font-bold" : "text-gray-400"
-                            } hover:bg-gray-100 transition`}
+                            }   transition`}
                     >
                         <File className="w-5 h-5" />
                         <span className="ml-3">Documents</span>
@@ -69,7 +69,7 @@ const StudentSideBar = () => {
                     <li
                         onClick={() => navigate("/student/transactions")}
                         className={`flex items-center px-4 py-3 rounded-md cursor-pointer ${isActive("/student/transactions") ? "text-black font-bold" : "text-gray-400"
-                            } hover:bg-gray-100 transition`}
+                            }   transition`}
                     >
                         <CreditCard className="w-5 h-5" />
                         <span className="ml-3">Transactions</span>

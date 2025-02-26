@@ -3,6 +3,7 @@ import deleteIcon from "../../../assets/deleteIcon.png";
 import dark from "../../../assets/dark.png";
 import pencil from "../../../assets/pencil.png";
 import { useSelector } from "react-redux";
+import { Trash2 } from "lucide-react";
 
 const AccommodationImageSection = () => {
   const [openMadal, setOpenModal] = useState(false);
@@ -34,7 +35,7 @@ const AccommodationImageSection = () => {
           <div>
             <button
               type="button"
-              className="text-green-600 text-lg border-green-500 hover:border-4    font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2  "
+              className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2  "
               onClick={(e) => {
                 e.preventDefault();
                 setModalType("edit");
@@ -45,13 +46,14 @@ const AccommodationImageSection = () => {
               Edit Info
             </button>
           </div>
+
           <div>
             <button
               type="button"
-              className="text-gray-500 text-lg font-bold border-gray-700 hover:border-4 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2"
+              className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
             >
-              <img src={deleteIcon} alt="pic" className="w-5 h-5 mr-2" />
-              Delete
+              <Trash2 size={20} style={{ marginRight: 10 }} />
+              <span>Delete</span>
             </button>
           </div>
         </div>

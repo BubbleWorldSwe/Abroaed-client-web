@@ -1,8 +1,7 @@
-import { Plus, Upload } from "lucide-react";
+import { Upload } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddCollegeModal from "../modals/addCollegeModal";
 import filter_list from "../../../assets/filter_list.png";
-import { colleges } from "../data";
 import CollegeTable from "../tables/collegeTable";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,7 @@ import {
 } from "../../../redux/actions/collegeActions";
 import {
   getAllDestinations,
-  getDestinationDetailsById,
+  // getDestinationDetailsById,
 } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 
@@ -122,12 +121,12 @@ function College() {
         getStatesList={fetchStatesList}
         statesList={statesList}
       />
-      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">
-        <section className=" py-3 sm:py-5 flex-grow">
-          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
-            <div className=" dark:border-gray-700 mx-4">
-              <div className="flex justify-between  py-3">
-                <div className="w-full  flex  space-y-3 md:space-y-0  ">
+      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
+        <section className="py-5 flex-grow">
+          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">
+            <div className="dark:border-gray-700 mx-4">
+              <div className="flex justify-between py-3">
+                <div className="w-full flex space-y-3 md:space-y-0">
                   <form className="w-full md:max-w-sm flex-1 md:mr-4">
                     <label
                       htmlFor="default-search"

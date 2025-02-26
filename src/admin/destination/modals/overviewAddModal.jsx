@@ -17,6 +17,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
   const [formData, setFormData] = useState({
     description: details?.description || "",
     capitalId: details?.capitalId?._id || "",
+    number: details?.number || "",
     language: details?.language || "",
     intrStudents: details?.intrStudents || "",
     currency: details?.countryId?.currency || "",
@@ -74,7 +75,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         required
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
         <SelectField
           label="Capital"
           name="capitalId"
@@ -88,6 +89,15 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
             label: data.name,
             value: data._id,
           }))}
+          required
+        />
+        <TextInputField
+          label="Language"
+          name="language"
+          type="text"
+          value={formData.language}
+          onChange={(e) => handleInputChange(e?.target?.value, "language")}
+          placeholder="Enter National Language"
           required
         />
 
@@ -131,9 +141,8 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           required
         />
       </div>
-      <div className="text-end">
+      <div className="text-end mt-10">
         <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-
         <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
       </div>
     </form>

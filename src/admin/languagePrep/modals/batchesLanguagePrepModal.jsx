@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
+// import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
@@ -152,13 +152,13 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Seats"
+            label="Mark as Sold Out"
             name="seats"
             type="number"
             value={formData.seats}
             onChange={(e) => handleInputChange(e, "seats")}
             required
-            placeholder="Enter Seats"
+            placeholder="Yes"
           />
           <TextInputField
             label="Duration (Months)"

@@ -189,7 +189,25 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
             </label>
           </div>
         </div>
+        <div className="flex items-center text-center gap-3 mt-5">
+          <CheckboxField
+            id="isSold"
+            checked={formData.isSold || false}
+            onChange={(e) =>
+              handleInputChange(
+                { target: { value: e.target.checked } },
+                "isSold"
+              )
+            }
+          />
 
+          <label
+            htmlFor="isSold"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Mark as Sold Out
+          </label>
+        </div>
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
           <ModalSubmitButton label={"Save"} onClick={handleSubmit} />

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
@@ -55,27 +56,25 @@ const AddProductTestPrepModal = ({
                 onChange={handleChange}
                 placeholder={"Enter Product Name"}
               />
-
-              <TextInputField
+              <SelectField
                 label="Exam"
                 name="exam"
                 type="text"
-                value={formData?.exam}
-                onChange={handleChange}
+                // value={formData?.exam}
+                // onChange={handleChange}
                 placeholder={"Enter Exam"}
               />
-
-              <TextInputField
+              <SelectField
                 label="Language"
                 name="language"
                 type="text"
-                value={formData?.language}
-                onChange={handleChange}
+                // value={formData?.language}
+                // onChange={handleChange}
                 placeholder={"Enter Language"}
               />
 
               <div className="flex justify-end space-x-4 mt-5">
-                <ModalCloseButton label="Cancel" onClick={onClose} />
+                <ModalCloseButton label="Reset" onClick={onClose} />
                 <ModalSubmitButton label="Add" onClick={handleAddTestPreps} />
               </div>
             </form>
