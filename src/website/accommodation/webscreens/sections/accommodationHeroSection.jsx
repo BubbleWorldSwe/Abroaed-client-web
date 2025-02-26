@@ -1,6 +1,7 @@
 import image from "../../../../assets/dark.png";
 
-function AccommodationHeroSection() {
+function AccommodationHeroSection({ selectedCountry }) {
+  console.log(selectedCountry);
   return (
     <div className="font-rethink">
       <section
@@ -12,7 +13,7 @@ function AccommodationHeroSection() {
         {/* Text Content */}
         <div className="absolute bottom-8 left-8 p-6 rounded-lg shadow-lg max-w-2xl">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
-            Accomodation in UK
+            Accomodation in {selectedCountry?.countryId?.name}
           </h1>
           <p className="font-light text-white md:text-lg xl:text-xl">
             Irure do commodo voluptate excepteur est qui tempor officia. Cillum
@@ -26,10 +27,7 @@ function AccommodationHeroSection() {
               Twitter
             </a>{" "}
             or our{" "}
-            <a
-              className="font-medium text-primary-600 hover:underline"
-              href=""
-            >
+            <a className="font-medium text-primary-600 hover:underline" href="">
               blog
             </a>{" "}
             for the latest updates.

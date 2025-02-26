@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import AccommodationCard from "../../../comman/components/accommodationCard";
 import { useSelector } from "react-redux";
 
@@ -6,20 +6,9 @@ function AccommodationResultForCountry({
   onSelectCountry,
   accList,
   isLoading,
-  selectedDestination,
+  selectedCountry,
 }) {
   const { allDestinations } = useSelector((state) => state.destinations);
-  const [selectedCountry, setSelectedCountry] = useState(null);
-
-  useEffect(() => {
-    if (allDestinations.length > 0) {
-      const foundCountry = allDestinations.find(
-        (country) => country._id === selectedDestination
-      );
-
-      setSelectedCountry(foundCountry || allDestinations[0]);
-    }
-  }, [allDestinations, selectedDestination]);
 
   return (
     <div className="relative mx-auto px-10">
@@ -43,15 +32,13 @@ function AccommodationResultForCountry({
                   <button
                     key={country._id}
                     className={`px-4 py-2 text-gray-500 rounded-md text-left ${
-                      selectedCountry?.countryId?.name ===
-                      country?.countryId?.name
+                      selectedCountry?._id === country._id
                         ? "bg-gray-200 font-bold"
                         : "hover:bg-gray-100"
                     }`}
                     onClick={(e) => {
                       e.preventDefault();
-                      setSelectedCountry(country);
-                      onSelectCountry(country?._id);
+                      onSelectCountry(country._id);
                     }}
                   >
                     {country?.countryId?.emoji} {country?.countryId?.name}

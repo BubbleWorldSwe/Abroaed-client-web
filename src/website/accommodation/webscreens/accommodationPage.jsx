@@ -14,35 +14,39 @@ import { useParams } from "react-router-dom";
 
 function AccomodationPage() {
   const { id } = useParams();
-
-  console.log(id);
   const [accList, setAccList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { allDestinations } = useSelector((state) => state.destinations);
-
   const [isDataLoading, setIsDataLoading] = useState(true);
+  const { allDestinations } = useSelector((state) => state.destinations);
+  const [selectedCountry, setSelectedCountry] = useState(null);
 
-  async function fetchAccommodations(id) {
+  async function fetchAccommodations(destinationId) {
     try {
-      // setIsLoading(true);
       setIsDataLoading(true);
       setAccList([]);
-      const acc = await getAccommodationsByDestinationId(id);
+      const acc = await getAccommodationsByDestinationId(destinationId);
 
       if (acc.status === 200) {
         setAccList(acc.data.result);
       }
-
-      setIsLoading(false);
       setIsDataLoading(false);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsDataLoading(false);
     }
   }
 
   useEffect(() => {
-    fetchAccommodations(id || allDestinations[0]?._id);
-  }, []);
+    if (allDestinations.length > 0) {
+      const initialCountry =
+        allDestinations.find((country) => country._id === id) ||
+        allDestinations[0];
+
+      setSelectedCountry(initialCountry);
+      fetchAccommodations(initialCountry._id);
+    }
+  }, [id, allDestinations]);
 
   if (isLoading) {
     return <PageLoader />;
@@ -51,16 +55,21 @@ function AccomodationPage() {
   return (
     <div className="font-rethink">
       <Header />
-      <AccommodationHeroSection />
+      <AccommodationHeroSection selectedCountry={selectedCountry} />
       <AccommodationResultForCountry
-        onSelectCountry={fetchAccommodations}
+        onSelectCountry={(destinationId) => {
+          const newSelectedCountry = allDestinations.find(
+            (country) => country._id === destinationId
+          );
+          setSelectedCountry(newSelectedCountry);
+          fetchAccommodations(destinationId);
+        }}
         accList={accList}
         isLoading={isDataLoading}
-        selectedDestination={id}
+        selectedCountry={selectedCountry}
       />
       <AccommodationHowItWorkSection />
       <AccommodationFaqSection />
-
       <Blogs />
       <ContactUsForm />
       <Footer />
