@@ -4,7 +4,7 @@ const IvyLeaguesHeroSection = ({ header, text, img }) => {
     return (
         <div>
             <section
-                className="relative h-[70vh] bg-cover bg-center "
+                className="relative h-[65vh] bg-cover bg-center "
                 style={{
                     backgroundImage: `url(${img})`,
                     opacity: '1'

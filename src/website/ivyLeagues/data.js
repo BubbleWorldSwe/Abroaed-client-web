@@ -72,8 +72,17 @@ export const accommodations = [
     },
 ];
 
-export const destinatioRounting = ["Overview", "Top Universities", "Popular Course", "Admission Requirements", "Expense", "Scholarships", "Immigration Details", "Work Opportunities", "Accommodation"];
-
+export const destinatioRounting = [
+    { sectionName: "Overview", link: "overview" },
+    { sectionName: "Top Universities", link: "top-universities" },
+    { sectionName: "Popular Course", link: "popular-course" },
+    { sectionName: "Admission Requirements", link: "admission-requirements" },
+    { sectionName: "Expense", link: "expense" },
+    { sectionName: "Scholarships", link: "scholarships" },
+    { sectionName: "Immigration Details", link: "immigration-details" },
+    { sectionName: "Work Opportunities", link: "work-opportunities" },
+    { sectionName: "Accommodation", link: "accommodation" }
+];
 
 export const articles = [
     {

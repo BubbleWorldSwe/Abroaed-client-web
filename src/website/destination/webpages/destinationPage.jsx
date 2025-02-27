@@ -97,7 +97,7 @@ function DestinationPage() {
           destinationDetails={destinationDetails}
           items={items}
         />
-        <div className="absolute bottom-16 left-0 z-0">
+        <div className="absolute -bottom-6 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorLeftFlat}
@@ -120,7 +120,6 @@ function DestinationPage() {
             destinationDetails={destinationDetails}
           />
         )}
-
         <div className="absolute -bottom-44 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -186,7 +185,6 @@ function DestinationPage() {
           />
         </div>
       </div>
-
       <Blogs />
       <ContactUsForm />
       <Footer />

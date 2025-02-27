@@ -11,7 +11,7 @@ const DestinationStudentAccommodationsSection = ({
     <Element name="accommodation">
       <div className="relative z-10 px-10 mx-auto">
         <section className=" dark:bg-gray-900 relative">
-          <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
+          <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
               <h2 className=" text-4xl  font-extrabold text-gray-900 dark:text-white">
                 Popular Student Accommodations
