@@ -17,25 +17,24 @@ function AccommodationResultForCountry({
           {/* Sidebar Filter */}
           <div className="w-1/5 py-1">
             <form className="mx-auto">
-              <div className="relative">
+              {/* <div className="relative">
                 <input
                   type="search"
                   id="default-search"
                   className="block w-full py-2 px-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Search"
                 />
-              </div>
+              </div> */}
               {/* Tabs for Filtering by Country */}
               <div className="flex flex-col gap-2 mt-3">
                 <p className="font-semibold text-lg">Filter By Country</p>
                 {allDestinations.map((country) => (
                   <button
                     key={country._id}
-                    className={`px-4 py-2 text-gray-500 rounded-md text-left ${
-                      selectedCountry?._id === country._id
+                    className={`px-4 py-2 text-gray-500 rounded-md text-left ${selectedCountry?._id === country._id
                         ? "bg-gray-200 font-bold"
                         : "hover:bg-gray-100"
-                    }`}
+                      }`}
                     onClick={(e) => {
                       e.preventDefault();
                       onSelectCountry(country._id);

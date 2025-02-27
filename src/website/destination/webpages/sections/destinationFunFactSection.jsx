@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import DestinationFunFactCard from "../../components/destinationFunFactCard";
 
@@ -22,7 +23,7 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
 
   return (
     <div className="relative z-10">
-      <section className=" py-8 antialiased dark:bg-gray-900 md:py-16">
+      <section className=" py-8 antialiased dark:bg-gray-900 md:py-2">
         <div className="mx-auto max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
             <p className="text-3xl font-semibold text-gray-900 dark:text-white">

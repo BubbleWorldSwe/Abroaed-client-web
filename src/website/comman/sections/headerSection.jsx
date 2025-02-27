@@ -2,7 +2,7 @@ import { useState } from "react";
 import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
-
+import abroadedLogo from "../../../assets/abroadedLogo.png"
 const DropdownMenu = ({
   title,
   items,
@@ -14,7 +14,7 @@ const DropdownMenu = ({
   <li>
     <button
       onClick={() => toggleDropdown(stateKey)}
-      className="text-yellow-700 flex items-center gap-1"
+      className="font-semibold text-gray-900 text-lg flex items-center gap-1"
     >
       {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}{" "}
     </button>
@@ -71,14 +71,13 @@ function Header() {
         <nav className="flex items-center w-full px-6 py-4 bg-white">
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-6 sm:h-9"
+              src={abroadedLogo}
+              className="h-10 w-10 sm:h-9"
               alt="Logo"
             />
-            <span className="text-xl font-semibold ml-2">ABROAED</span>
           </div>
           <div className="flex-grow basis-[80%] flex justify-center">
-            <ul className="flex space-x-8 text-sm font-medium">
+            <ul className="flex space-x-8 justify-center text-sm font-medium">
               {/*   <li>
                 <button
                   id="mega-menu-button"
@@ -92,16 +91,15 @@ function Header() {
               </li> */}
 
               <li>
-                <a href="/home" className="text-yellow-700 mt-5">
+                <a href="/home" className="  font-semibold text-gray-900 text-lg">
                   Home
                 </a>
               </li>
               <li>
                 <button
                   onClick={() => toggleDropdown("whyAbroad")}
-                  className="block  rounded text-yellow-700 dark:text-primary-500"
-                >
-                  Why Abroaed?
+                  className="  font-semibold text-gray-900 text-lg"                >
+                  Why Abroaed
                 </button>
 
                 {dropdowns.whyAbroad && (
@@ -129,16 +127,15 @@ function Header() {
                 )}
               </li>
 
-              <li>
-                <a href="/blog" className="text-yellow-700">
+              {/* <li>
+                <a href="/blog" className="  font-semibold text-gray-900 text-lg">
                   Blog
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a
                   href="/accomodation"
-                  className="block dark:text-white rounded text-yellow-700 "
-                >
+                  className="  font-semibold text-gray-900 text-lg"                >
                   Accommodation
                 </a>
               </li>
@@ -151,7 +148,7 @@ function Header() {
                 isOpen={dropdowns.destinations}
               />
               <li>
-                <a href="/ivyLeagues" className="text-yellow-700">
+                <a href="/finance" className="  font-semibold text-gray-900 text-lg">
                   Finance
                 </a>
               </li>
@@ -172,7 +169,7 @@ function Header() {
                 isOpen={dropdowns.languagePrep}
               />
               <li>
-                <a href="/pathways" className="text-yellow-700">
+                <a href="/pathways" className="  font-semibold text-gray-900 text-lg">
                   Pathways
                 </a>
               </li>

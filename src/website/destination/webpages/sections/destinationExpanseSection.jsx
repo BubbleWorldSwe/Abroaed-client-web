@@ -6,7 +6,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
     <Element name="expense">
       <div className="relative z-10">
         <section className=" dark:bg-gray-900 relative px-10 mx-auto">
-          <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
+          <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-5 lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
               <h2 className="mb-4 text-4xl  font-extrabold text-gray-900 dark:text-white">
                 Expenses
