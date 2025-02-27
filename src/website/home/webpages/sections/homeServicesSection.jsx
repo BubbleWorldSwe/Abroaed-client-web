@@ -14,7 +14,7 @@ const HomeServicesSection = () => {
                 />
             )}
             <section className="dark:bg-gray-900 relative">
-                <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-24 lg:px-6 relative z-10">
+                <div className="py-4 px-4 mx-auto max-w-screen-xl  lg:px-6 relative z-10">
                     <div className="py-8">
                         <h1 className="mb-4 text-5xl tracking-tight font-extrabold">
                             What we bring to the table (Services).

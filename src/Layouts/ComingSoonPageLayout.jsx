@@ -349,22 +349,11 @@ function ComingSoonPageLayout() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  const ConfirmModal = ({onClick}) => (
+  const ConfirmModal = ({ onClick }) => (
     <div className="flex flex-col gap-3 justify-center ">
-    <p className="text-black text-2xl text-center">Thanks for submitting your information</p>
-    {/* <button
-      type="button"
-      onClick={onClick}
-      className="max-w-max font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
-      style={{
-        backgroundColor: "#FDDA24",
-        color: "#000",
-      }}
-    >
-      Ok
-    </button> */}
-  </div>
-  
+      <p className="text-black text-2xl text-center">Thanks for submitting your information</p>
+    </div>
+
   )
 
   return (
@@ -419,7 +408,7 @@ function ComingSoonPageLayout() {
                       id="name"
                       maxLength={30}
                       value={name}
-onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => setName(e.target.value)}
                       className="bg-[#26262A] border-none bg-opacity-40 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"
                       placeholder="John"
                       required
@@ -616,7 +605,7 @@ onChange={(e) => setName(e.target.value)}
 
       <ModalLayout
         onClose={handleClose}
-        component={<ConfirmModal  onClick={handleClose} />}
+        component={<ConfirmModal onClick={handleClose} />}
         openModal={openModal}
 
       />

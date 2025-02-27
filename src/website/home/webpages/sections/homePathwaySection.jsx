@@ -1,4 +1,5 @@
-import dark from '../../../../assets/dark.png'
+import exploreDirectImg from '../../../../assets/exploreDirectImg.png'
+import explorePathImg from '../../../../assets/explorePathImg.png'
 import VectorleftNose from '../../../../assets/vectorleftNose.png'
 
 
@@ -12,7 +13,7 @@ const HomePathwaySection = () => {
             <div className="relative flex-grow basis-[50%] group hover:basis-[90%] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
               <img
                 className="w-full h-full object-dark"
-                src={dark}
+                src={exploreDirectImg}
                 alt="Direct"
               />
               <div className="absolute bottom-3 left-10">
@@ -32,7 +33,7 @@ const HomePathwaySection = () => {
             <div className="relative flex-grow basis-[50%] group hover:basis-[90%] transition-all duration-300 ease-in-out rounded-lg overflow-hidden">
               <img
                 className="w-full h-full object-dark"
-                src={dark}
+                src={explorePathImg}
                 alt="Pathways"
               />
               <div className="absolute bottom-3 left-10">

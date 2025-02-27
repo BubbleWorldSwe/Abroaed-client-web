@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import dark from "../../../../assets/dark.png";
+import homeHero from "../../../../assets/homeHero.png";
 import { TextGenerateEffect } from "../../components/TextGenerateEffect";
 
 function HomeHeroSection() {
@@ -21,9 +21,9 @@ function HomeHeroSection() {
   return (
     <div className="font-rethink">
       <section
-        className="relative h-[75vh] bg-cover bg-center"
+        className="relative h-[80vh] bg-cover bg-center"
         style={{
-          backgroundImage: `url(${dark})`,
+          backgroundImage: `url(${homeHero})`,
           opacity: "1",
         }}
       >

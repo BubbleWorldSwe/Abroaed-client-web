@@ -15,7 +15,6 @@ import vectorBelow from "../../../assets/vectorBelow.png";
 import destinationHeroImg from "../../../assets/destinationHeroImg.png";
 import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
 import DestinationStudentAccommodationsSection from "./sections/destinationStudentAccommodationSection";
-import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
 import DestinationFaqSection from "./sections/destinationFaqSection";
@@ -33,6 +32,7 @@ import {
 } from "../../../api/collegesApi";
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
+import Header from "../../comman/sections/headerSection";
 
 function DestinationPage() {
   const { id } = useParams();

@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
-import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
+// import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
-import abroadedLogo from "../../../assets/abroadedLogo.png"
+// import abroadedLogo from "../../../assets/abroadedLogo.png"
 const DropdownMenu = ({
   title,
   items,
@@ -14,7 +15,7 @@ const DropdownMenu = ({
   <li>
     <button
       onClick={() => toggleDropdown(stateKey)}
-      className="font-semibold text-gray-900 text-lg flex items-center gap-1"
+      className="font-medium text-white   flex items-center gap-1"
     >
       {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}{" "}
     </button>
@@ -63,81 +64,50 @@ function Header() {
   };
 
   return (
-    <header className="w-full sticky top-0 z-[30] border-b-2 border-gray-400 bg-white">
+    <header className="w-full fixed top-0 z-[30]   border-gray-400">
       <nav className="border-gray-900 dark:border-gray-600 dark:bg-gray-800">
         <div className="py-3 bg-yellow-300 shadow-md text-center text-white font-inter text-sm">
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
-        <nav className="flex items-center w-full px-6 py-4 bg-white">
+        <nav className="flex items-center w-full px-6 py-4 bg-black  bg-opacity-30 ">
           <div className="flex flex-grow-0 basis-[10%] items-center">
-            <img
-              src={abroadedLogo}
-              className="h-10 w-10 sm:h-9"
-              alt="Logo"
-            />
-          </div>
+            <h3 className=" text-center text-lg font-semibold text-yellow-500 sm:text-3xl md:text-4xl lg:text-lg">
+              <span className="text-white font-cinzel tracking-[0.15em] text-xl font-extrabold leading-[40px] ">
+                ABROA
+              </span>
+              <span
+                style={{ color: "#fbba18" }}
+                className="text-white font-cinzel tracking-[0.15em] text-xl font-extrabold leading-[40px] "              >
+                ED
+              </span>
+            </h3>          </div>
           <div className="flex-grow basis-[80%] flex justify-center">
             <ul className="flex space-x-8 justify-center text-sm font-medium">
-              {/*   <li>
-                <button
-                  id="mega-menu-button"
-                  onClick={() => toggleDropdown("exploreCourses")}
-                  className="whitespace-nowrap flex gap-1  hover:text-black border border-gray-500 hover:bg-white bg-red-600 rounded text-white p-2 dark:text-primary-500"
-                >
-                  Explore Courses
-                  <ChevronDown />
-                </button>
-                {dropdowns.exploreCourses && <ExploreCourseNavItemModal />}
-              </li> */}
-
               <li>
-                <a href="/home" className="  font-semibold text-gray-900 text-lg">
-                  Home
-                </a>
+                <a href="/home" className="font-medium text-white  ">Home</a>
               </li>
               <li>
                 <button
                   onClick={() => toggleDropdown("whyAbroad")}
-                  className="  font-semibold text-gray-900 text-lg"                >
-                  Why Abroaed
+                  className="font-medium text-white  "
+                >
+                  Why Abroad
                 </button>
-
                 {dropdowns.whyAbroad && (
                   <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] bg-white border shadow-md">
                     <ul>
                       <li>
-                        <a
-                          href="/aboutus"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          About Us
-                        </a>
+                        <a href="/aboutus" className="block px-4 py-2 hover:bg-gray-100">About Us</a>
                       </li>
-
                       <li>
-                        <a
-                          href="/careers"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Career
-                        </a>
+                        <a href="/careers" className="block px-4 py-2 hover:bg-gray-100">Career</a>
                       </li>
                     </ul>
                   </div>
                 )}
               </li>
-
-              {/* <li>
-                <a href="/blog" className="  font-semibold text-gray-900 text-lg">
-                  Blog
-                </a>
-              </li> */}
               <li>
-                <a
-                  href="/accomodation"
-                  className="  font-semibold text-gray-900 text-lg"                >
-                  Accommodation
-                </a>
+                <a href="/accomodation" className="font-medium text-white  ">Accommodation</a>
               </li>
               <DropdownMenu
                 title="Destinations"
@@ -148,9 +118,7 @@ function Header() {
                 isOpen={dropdowns.destinations}
               />
               <li>
-                <a href="/finance" className="  font-semibold text-gray-900 text-lg">
-                  Finance
-                </a>
+                <a href="/finance" className="font-medium text-white  ">Finance</a>
               </li>
               <DropdownMenu
                 title="Test Prep"
@@ -169,21 +137,17 @@ function Header() {
                 isOpen={dropdowns.languagePrep}
               />
               <li>
-                <a href="/pathways" className="  font-semibold text-gray-900 text-lg">
-                  Pathways
-                </a>
+                <a href="/pathways" className="font-medium text-white  ">Pathways</a>
               </li>
             </ul>
           </div>
           <div className="flex flex-grow-0 basis-[10%] justify-end">
-            <a
-              href="/admin/signin"
-              className="text-sm font-medium text-primary-600 hover:underline"
-            >
+            <a href="/admin/signin" className="text-sm font-medium text-white hover:underline">
               Login
             </a>
           </div>
         </nav>
+
       </nav>
     </header>
   );
