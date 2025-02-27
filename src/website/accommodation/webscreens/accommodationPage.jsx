@@ -9,7 +9,10 @@ import Blogs from "../../comman/components/blogs";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PageLoader from "../../../commons/components/loader/pageLoader";
-import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
+import {
+  getAccommodationsByDestinationId,
+  getAllAccommodations,
+} from "../../../api/accomodationApi";
 import { useParams } from "react-router-dom";
 
 function AccomodationPage() {
@@ -20,11 +23,22 @@ function AccomodationPage() {
   const { allDestinations } = useSelector((state) => state.destinations);
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  async function fetchAccommodations(destinationId) {
+  const destinationsList = [
+    { _id: "all", countryId: { name: "All", emoji: "🌍" } },
+    ...allDestinations,
+  ];
+
+  async function fetchAccommodations(destinationId = "all") {
     try {
       setIsDataLoading(true);
       setAccList([]);
-      const acc = await getAccommodationsByDestinationId(destinationId);
+
+      let acc;
+      if (destinationId === "all") {
+        acc = await getAllAccommodations();
+      } else {
+        acc = await getAccommodationsByDestinationId(destinationId);
+      }
 
       if (acc.status === 200) {
         setAccList(acc.data.result);
@@ -38,13 +52,17 @@ function AccomodationPage() {
   }
 
   useEffect(() => {
-    if (allDestinations.length > 0) {
-      const initialCountry =
-        allDestinations.find((country) => country._id === id) ||
-        allDestinations[0];
-
-      setSelectedCountry(initialCountry);
-      fetchAccommodations(initialCountry._id);
+    if (destinationsList.length > 0) {
+      if (id && id !== "all") {
+        const initialCountry =
+          destinationsList.find((country) => country._id === id) ||
+          destinationsList[1];
+        setSelectedCountry(initialCountry);
+        fetchAccommodations(initialCountry._id);
+      } else {
+        setSelectedCountry(destinationsList[0]);
+        fetchAccommodations("all");
+      }
     }
   }, [id, allDestinations]);
 
@@ -58,7 +76,7 @@ function AccomodationPage() {
       <AccommodationHeroSection selectedCountry={selectedCountry} />
       <AccommodationResultForCountry
         onSelectCountry={(destinationId) => {
-          const newSelectedCountry = allDestinations.find(
+          const newSelectedCountry = destinationsList.find(
             (country) => country._id === destinationId
           );
           setSelectedCountry(newSelectedCountry);
@@ -67,6 +85,7 @@ function AccomodationPage() {
         accList={accList}
         isLoading={isDataLoading}
         selectedCountry={selectedCountry}
+        destinationsList={destinationsList}
       />
       <AccommodationHowItWorkSection />
       <AccommodationFaqSection />

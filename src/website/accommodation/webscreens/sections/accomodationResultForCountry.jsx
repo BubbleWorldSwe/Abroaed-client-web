@@ -1,15 +1,12 @@
-import { useEffect } from "react";
 import AccommodationCard from "../../../comman/components/accommodationCard";
-import { useSelector } from "react-redux";
 
 function AccommodationResultForCountry({
   onSelectCountry,
   accList,
   isLoading,
   selectedCountry,
+  destinationsList,
 }) {
-  const { allDestinations } = useSelector((state) => state.destinations);
-
   return (
     <div className="relative mx-auto px-10">
       <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
@@ -17,18 +14,11 @@ function AccommodationResultForCountry({
           {/* Sidebar Filter */}
           <div className="w-1/5 py-1">
             <form className="mx-auto">
-              <div className="relative">
-                <input
-                  type="search"
-                  id="default-search"
-                  className="block w-full py-2 px-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                  placeholder="Search"
-                />
-              </div>
-              {/* Tabs for Filtering by Country */}
               <div className="flex flex-col gap-2 mt-3">
                 <p className="font-semibold text-lg">Filter By Country</p>
-                {allDestinations.map((country) => (
+
+                {/* Destination Tabs */}
+                {destinationsList.map((country) => (
                   <button
                     key={country._id}
                     className={`px-4 py-2 text-gray-500 rounded-md text-left ${
@@ -51,7 +41,7 @@ function AccommodationResultForCountry({
           {/* Cards Grid Section */}
           <div className="w-4/5 ml-10">
             <h5 className="text-3xl font-bold tracking-tight text-gray-900">
-              Showing Results for {selectedCountry?.countryId?.name}
+              Showing Results {/* for {selectedCountry?.countryId?.name} */}
             </h5>
             <hr className="h-px my-4 bg-gray-200 border-0" />
 

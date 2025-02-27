@@ -26,6 +26,7 @@ const DropdownMenu = ({
               <a
                 href={`/${urlPrefix}/${data._id}`}
                 className="block px-4 py-2 hover:bg-gray-100"
+                target="_blank"
               >
                 {data?.productName ||
                   `${data?.countryId?.emoji} ${data?.countryId?.name}` ||
@@ -92,7 +93,11 @@ function Header() {
               </li> */}
 
               <li>
-                <a href="/home" className="text-yellow-700 mt-5">
+                <a
+                  href="/home"
+                  target="_blank"
+                  className="text-yellow-700 mt-5"
+                >
                   Home
                 </a>
               </li>
@@ -109,6 +114,7 @@ function Header() {
                     <ul>
                       <li>
                         <a
+                          target="_blank"
                           href="/aboutus"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
@@ -118,6 +124,7 @@ function Header() {
 
                       <li>
                         <a
+                          target="_blank"
                           href="/careers"
                           className="block px-4 py-2 hover:bg-gray-100"
                         >
@@ -130,13 +137,14 @@ function Header() {
               </li>
 
               <li>
-                <a href="/blog" className="text-yellow-700">
+                <a href="/blog" target="_blank" className="text-yellow-700">
                   Blog
                 </a>
               </li>
               <li>
                 <a
                   href="/accomodation"
+                  target="_blank"
                   className="block dark:text-white rounded text-yellow-700 "
                 >
                   Accommodation
@@ -151,7 +159,11 @@ function Header() {
                 isOpen={dropdowns.destinations}
               />
               <li>
-                <a href="/ivyLeagues" className="text-yellow-700">
+                <a
+                  href="/ivyLeagues"
+                  target="_blank"
+                  className="text-yellow-700"
+                >
                   Finance
                 </a>
               </li>
@@ -172,7 +184,7 @@ function Header() {
                 isOpen={dropdowns.languagePrep}
               />
               <li>
-                <a href="/pathways" className="text-yellow-700">
+                <a href="/pathways" target="_blank" className="text-yellow-700">
                   Pathways
                 </a>
               </li>
@@ -181,6 +193,7 @@ function Header() {
           <div className="flex flex-grow-0 basis-[10%] justify-end">
             <a
               href="/admin/signin"
+              target="_blank"
               className="text-sm font-medium text-primary-600 hover:underline"
             >
               Login

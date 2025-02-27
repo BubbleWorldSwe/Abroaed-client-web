@@ -20,6 +20,20 @@ export const getAccommodations = async (page) => {
   }
 };
 
+export const getAllAccommodations = async () => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/accomodation/list`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getAccommodationsByDestinationId = async (destId) => {
   try {
     const data = await makeGetRequest(
