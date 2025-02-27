@@ -3,6 +3,7 @@ import { useState } from "react";
 // import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
+import abroadedLogo from "../../../assets/abroadedLogo.png";
 // import abroadedLogo from "../../../assets/abroadedLogo.png"
 const DropdownMenu = ({
   title,
@@ -27,6 +28,7 @@ const DropdownMenu = ({
               <a
                 href={`/${urlPrefix}/${data._id}`}
                 className="block px-4 py-2 hover:bg-gray-100"
+                target="_blank"
               >
                 {data?.productName ||
                   `${data?.countryId?.emoji} ${data?.countryId?.name}` ||
