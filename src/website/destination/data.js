@@ -85,7 +85,7 @@ export const destinatioRounting = [
   { sectionName: "Scholarships", link: "scholarships" },
   { sectionName: "Immigration Details", link: "immigration-details" },
   { sectionName: "Work Opportunities", link: "work-opportunities" },
-  { sectionName: "Accommodation", link: "accommodation" }
+  { sectionName: "Accommodation", link: "accommodation" },
 ];
 
 export const scholarships = [

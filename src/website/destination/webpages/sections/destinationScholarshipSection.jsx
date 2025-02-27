@@ -12,13 +12,13 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                 Scholarships & Financial Aid
               </h2>
               <p className="mb-4 text-black ">
-                For Study in {destinationDetails?.countryId?.name}, the amount of
-                money available and the type of award varies between institutions.
-                Certain research programs may provide up to 100% of the tuition
-                fee besides covering a part of your living expenditures. Here are
-                some popular government scholarship programs you can apply to
-                study in {destinationDetails?.countryId?.name} as an Indian
-                student:
+                For Study in {destinationDetails?.countryId?.name}, the amount
+                of money available and the type of award varies between
+                institutions. Certain research programs may provide up to 100%
+                of the tuition fee besides covering a part of your living
+                expenditures. Here are some popular government scholarship
+                programs you can apply to study in{" "}
+                {destinationDetails?.countryId?.name} as an Indian student:
               </p>
             </div>
             <section className=" dark:bg-gray-900  ">
@@ -69,8 +69,8 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
             </section>
             <div>
               <p className="mb-4 text-black ">
-                If you want to bring down your educational expenses, it is best to
-                apply to various scholarships available for Indian students.
+                If you want to bring down your educational expenses, it is best
+                to apply to various scholarships available for Indian students.
               </p>
             </div>
           </div>

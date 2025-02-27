@@ -20,7 +20,7 @@ export function TextInputField({
       <input
         type={type}
         name={name}
-        className="mt-1 block w-full rounded-md bg-[#F4F4F5] border-none focus:ring-indigo-500 sm:text-sm"
+        className="mt-1 block w-full text-gray-500 rounded-md bg-[#F4F4F5] border-none focus:ring-indigo-500 sm:text-sm"
         placeholder={placeholder}
         defaultValue={value}
         onChange={onChange}

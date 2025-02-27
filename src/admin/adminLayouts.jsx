@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom';
-import CollapsableSidebar from './adminSidebar';
-import AdminNav from './adminNav';
+import { Outlet } from "react-router-dom";
+import CollapsableSidebar from "./adminSidebar";
+import AdminNav from "./adminNav";
 
 const AdminLayout = () => {
   return (

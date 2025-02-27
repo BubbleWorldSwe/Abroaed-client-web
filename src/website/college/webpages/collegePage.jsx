@@ -37,7 +37,7 @@ function CollegePage() {
       if (data.status === 200) {
         setCollegeDetails(data.data);
 
-        const acc = await getAccommodationsByStateId(data?.data?.stateId);
+        const acc = await getAccommodationsByStateId(data?.data?.stateId?._id);
 
         if (acc.status === 200) {
           setAccList(acc.data.result);

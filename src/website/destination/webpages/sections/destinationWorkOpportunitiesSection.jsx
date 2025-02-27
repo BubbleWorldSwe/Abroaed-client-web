@@ -14,10 +14,12 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               </h2>
               <p className="mb-10">
                 Studying in the {destinationDetails?.countryId?.name} offers a
-                variety of experiences. The cultural and traditional values of the
+                variety of experiences. The cultural and traditional values of
+                the
                 {destinationDetails?.countryId?.name} attract several
-                international students every year. The popular areas of employment
-                in {destinationDetails?.countryId?.name} are as follows:
+                international students every year. The popular areas of
+                employment in {destinationDetails?.countryId?.name} are as
+                follows:
               </p>
             </div>
             <div className="py-1">
