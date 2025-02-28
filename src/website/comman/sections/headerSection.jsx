@@ -10,37 +10,37 @@ const DropdownMenu = ({
   toggleDropdown,
   isOpen,
   scrolling,
-}) => (
-  <li>
-    <button
-      onClick={() => toggleDropdown(stateKey)}
-      className={`font-medium flex items-center gap-1 ${
-        scrolling ? "text-black" : "text-white"
-      }`}
-    >
-      {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-    </button>
-    {isOpen && (
-      <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] text-black bg-white border shadow-md">
-        <ul>
-          {items?.map((data, i) => (
-            <li key={i}>
-              <a
-                href={`/${urlPrefix}/${data._id}`}
-                className="block px-4 py-2 hover:bg-gray-100"
-                target="_blank"
-              >
-                {data?.productName ||
-                  `${data?.countryId?.emoji} ${data?.countryId?.name}` ||
-                  data?.menu}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )}
-  </li>
-);
+}) => {
+  return (
+    <li>
+      <button
+        onClick={() => toggleDropdown(stateKey)}
+        className={`font-medium flex items-center gap-1 ${
+          scrolling ? "text-black" : "text-white"
+        }`}
+      >
+        {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+      </button>
+      {isOpen && (
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] text-black bg-white border shadow-md">
+          <ul>
+            {items?.map((data, i) => (
+              <li key={i}>
+                <a
+                  href={data._id ? `/${urlPrefix}/${data._id}` : data.href}
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  target="_blank"
+                >
+                  {data?.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </li>
+  );
+};
 
 function Header() {
   const [scrolling, setScrolling] = useState(false);
@@ -98,10 +98,7 @@ function Header() {
                   scrolling ? "text-black" : "text-white"
                 }`}
               >
-                ABROA
-              </span>
-              <span style={{ color: "#fbba18" }} className="font-extrabold">
-                ED
+                ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </span>
             </h3>
           </div>
@@ -117,39 +114,18 @@ function Header() {
                   Home
                 </a>
               </li>
-              <li>
-                <button
-                  onClick={() => toggleDropdown("whyAbroad")}
-                  className={`font-medium ${
-                    scrolling ? "text-black" : "text-white"
-                  }`}
-                >
-                  Why Abroad
-                </button>
-                {dropdowns.whyAbroad && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] bg-white border shadow-md">
-                    <ul>
-                      <li>
-                        <a
-                          href="/aboutus"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          About Us
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/careers"
-                          className="block px-4 py-2 hover:bg-gray-100"
-                        >
-                          Career
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </li>
-              <li>
+              <DropdownMenu
+                title="Why Abroaed ?"
+                items={[
+                  { title: "About Us", href: "/aboutus" },
+                  { title: "Career", href: "/careers" },
+                ]}
+                stateKey="whyAbroad"
+                toggleDropdown={toggleDropdown}
+                isOpen={dropdowns.whyAbroad}
+                scrolling={scrolling}
+              />
+              {/*  <li>
                 <a
                   href="/accomodation"
                   className={`font-medium ${
@@ -158,14 +134,41 @@ function Header() {
                 >
                   Accommodation
                 </a>
-              </li>
+              </li> */}
               <DropdownMenu
                 title="Destinations"
-                items={allDestinations}
+                items={allDestinations.map((data, i) => ({
+                  title: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                  id: data._id,
+                }))}
                 urlPrefix="destinations"
                 stateKey="destinations"
                 toggleDropdown={toggleDropdown}
                 isOpen={dropdowns.destinations}
+                scrolling={scrolling}
+              />
+              <DropdownMenu
+                title="Test Prep"
+                items={allTestPreps.map((data, i) => ({
+                  title: data?.productName,
+                  id: data._id,
+                }))}
+                urlPrefix="testprep"
+                stateKey="testPrep"
+                toggleDropdown={toggleDropdown}
+                isOpen={dropdowns.testPrep}
+                scrolling={scrolling}
+              />
+              <DropdownMenu
+                title="Language Prep"
+                items={allLanguagePreps.map((data, i) => ({
+                  title: data?.productName,
+                  id: data._id,
+                }))}
+                urlPrefix="languageprep"
+                stateKey="languagePrep"
+                toggleDropdown={toggleDropdown}
+                isOpen={dropdowns.languagePrep}
                 scrolling={scrolling}
               />
               <li>
@@ -178,24 +181,7 @@ function Header() {
                   Finance
                 </a>
               </li>
-              <DropdownMenu
-                title="Test Prep"
-                items={allTestPreps}
-                urlPrefix="testprep"
-                stateKey="testPrep"
-                toggleDropdown={toggleDropdown}
-                isOpen={dropdowns.testPrep}
-                scrolling={scrolling}
-              />
-              <DropdownMenu
-                title="Language Prep"
-                items={allLanguagePreps}
-                urlPrefix="languageprep"
-                stateKey="languagePrep"
-                toggleDropdown={toggleDropdown}
-                isOpen={dropdowns.languagePrep}
-                scrolling={scrolling}
-              />
+
               <li>
                 <a
                   href="/pathways"

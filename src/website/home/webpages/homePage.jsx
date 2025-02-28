@@ -59,7 +59,7 @@ function HomeLayout() {
         title={"Why Abroad?"}
         header={"What sets us apart?"}
         subtitle={
-          "Explore the whole collection of open-source web components and elements built with the utility classes from Tailwind."
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
         }
       />
       <HomePathwaySection />
