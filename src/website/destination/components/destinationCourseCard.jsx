@@ -4,8 +4,8 @@ import { EnquireButton } from "../../../commons/components/buttons/enquireButton
 
 const CourseCard = ({ course }) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col justify-between ">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
+      <div className="flex flex-col flex-grow">
         <div>
           <div className="flex justify-between">
             <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -44,20 +44,20 @@ const CourseCard = ({ course }) => {
             <strong>Duration:</strong> {course.duration}
           </p>
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-            <strong>Fees :</strong> {course.fees}
+            <strong>Fees:</strong> {course.fees}
           </p>
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
             <strong>Intake:</strong> {course.intake}
           </p>
 
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow">
             {course.brief}
           </p>
         </div>
-        <EnquireButton
+      </div>
 
-        //href={`/college/${item._id}`}
-        />
+      <div className="mt-auto">
+        <EnquireButton />
       </div>
     </div>
   );

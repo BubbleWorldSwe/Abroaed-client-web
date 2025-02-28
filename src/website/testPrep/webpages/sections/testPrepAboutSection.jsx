@@ -99,7 +99,7 @@ function TextPrepAbout({ testPrepsDetails }) {
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td className="m-0 p-0" colSpan={3}>
+                      <td className="m-0 p-0" colSpan={2}>
                         <nav
                           className="bg-[#E4E4E7]  w-full  md:space-y-0 p-4"
                           aria-label="Table navigation"
