@@ -5,10 +5,12 @@ import KpiMatrixCard from "../components/kpiTeamCard";
 export const KpiMatrix = ({ title, header, subtitle }) => {
   const teamMembers = [
     {
-      imgSrc: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png",
+      imgSrc:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png",
       name: "Jese Leos",
       role: "CEO & Co-Founder",
-      description: "Jese drives the technical strategy of the themesberg platform and brand.",
+      description:
+        "Jese drives the technical strategy of the themesberg platform and brand.",
       socialLinks: [
         {
           href: "#",
@@ -18,10 +20,12 @@ export const KpiMatrix = ({ title, header, subtitle }) => {
       ],
     },
     {
-      imgSrc: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png",
+      imgSrc:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png",
       name: "Bonnie Green",
       role: "CTO & Co-Founder",
-      description: "Bonnie drives the technical strategy of the themesberg platform and brand.",
+      description:
+        "Bonnie drives the technical strategy of the themesberg platform and brand.",
       socialLinks: [
         {
           href: "#",
@@ -31,10 +35,12 @@ export const KpiMatrix = ({ title, header, subtitle }) => {
       ],
     },
     {
-      imgSrc: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png",
+      imgSrc:
+        "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/sofia-mcguire.png",
       name: "Bonnie Green",
       role: "CTO & Co-Founder",
-      description: "Bonnie drives the technical strategy of the themesberg platform and brand.",
+      description:
+        "Bonnie drives the technical strategy of the themesberg platform and brand.",
       socialLinks: [
         {
           href: "#",

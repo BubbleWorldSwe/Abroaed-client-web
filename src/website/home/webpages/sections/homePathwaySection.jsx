@@ -1,7 +1,6 @@
-import exploreDirectImg from '../../../../assets/exploreDirectImg.png'
-import explorePathImg from '../../../../assets/explorePathImg.png'
-import VectorleftNose from '../../../../assets/vectorleftNose.png'
-
+import exploreDirectImg from "../../../../assets/exploreDirectImg.png";
+import explorePathImg from "../../../../assets/explorePathImg.png";
+import VectorleftNose from "../../../../assets/vectorleftNose.png";
 
 const HomePathwaySection = () => {
   return (
@@ -21,9 +20,7 @@ const HomePathwaySection = () => {
                 <h1 className="mb-4 text-5xl tracking-tight font-extrabold text-white dark:text-white">
                   Direct
                 </h1>
-                <div
-                  className="bg-opacity-50 flex items-center justify-center text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
+                <div className="bg-opacity-50 flex items-center justify-center text-white text-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Disdark tailored solutions for your journey.
                 </div>
               </div>
@@ -41,11 +38,8 @@ const HomePathwaySection = () => {
                 <h1 className="mb-2 text-5xl tracking-tight font-extrabold text-white dark:text-white">
                   Pathways
                 </h1>
-                <div
-                  className="  bg-opacity-50 flex items-center justify-center text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
+                <div className="bg-opacity-50 flex items-center justify-center text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Navigate through endless possibilities.
-
                 </div>
               </div>
             </div>
@@ -59,10 +53,8 @@ const HomePathwaySection = () => {
           />
         </div>
       </section>
-
-
     </div>
-  )
-}
+  );
+};
 
 export default HomePathwaySection;

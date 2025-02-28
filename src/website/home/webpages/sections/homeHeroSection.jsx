@@ -11,7 +11,7 @@ function HomeHeroSection() {
           "Get Dream Scholarships!",
           "Explore limitless opportunities.",
         ]}
-        className="mb-2 font-extrabold leading-tight tracking-tight text-white font-inter lg:text-6xl"
+        className="mb-2 font-bold leading-tight tracking-tight text-white font-inter lg:text-6xl"
         typingSpeed={100}
         pauseDuration={1000}
       />
