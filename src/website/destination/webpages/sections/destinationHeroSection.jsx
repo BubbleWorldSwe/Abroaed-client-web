@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+
 function DestinationHeroSection({ destinationDetails, img }) {
   return (
     <div className="font-rethink">

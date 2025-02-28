@@ -26,7 +26,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { getStatesByCountryId } from "../../../api/countriesApi";
-import OverviewDest from "../components/OverviewDest";
+import OverviewDest from "../components/overviewDest";
 
 function DestinationDetails() {
   const dispatch = useDispatch();

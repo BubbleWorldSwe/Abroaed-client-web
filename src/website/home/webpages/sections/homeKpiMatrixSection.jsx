@@ -7,7 +7,7 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
     return (
         <div>
             <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
-                <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-24 lg:px-3 relative z-10">
+                <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
                     <div className="max-w-screen-sm text-left mb-8 lg:mb-16">
                         <p className="font-light text-gray-500 lg:mb-2 sm:text-xl dark:text-gray-400">
                             {title}
