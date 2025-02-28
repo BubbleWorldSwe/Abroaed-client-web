@@ -24,11 +24,6 @@ const CollegeTable = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
-  const handleOpenAddModal = () => {
-    //  setIsAddModalOpen(true);
-    setDropdownVisible(false);
-  };
-
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setDropdownVisible(null);
@@ -84,11 +79,9 @@ const CollegeTable = ({
               Website
             </th>
             <th scope="col" className="px-4 py-3">
-              Email
+              Entity Type
             </th>
-            <th scope="col" className="px-4 py-3">
-              Contact
-            </th>
+
             <th scope="col" className="px-4 py-3"></th>
           </tr>
         </thead>
@@ -131,8 +124,7 @@ const CollegeTable = ({
                       {college.website}
                     </a>
                   </td>
-                  <td className="px-4 py-3">{college?.email}</td>
-                  <td className="px-4 py-3">{college?.contact}</td>
+                  <td className="px-4 py-3">{college?.entityType}</td>
 
                   <td className="px-4 py-3">
                     <button

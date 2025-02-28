@@ -3,7 +3,6 @@
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 
 const CourseCard = ({ course }) => {
-  console.log(course);
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col justify-between ">

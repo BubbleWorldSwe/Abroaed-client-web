@@ -21,7 +21,7 @@ import { items } from "../data";
 import DestinationFaqSection from "./sections/destinationFaqSection";
 // import DestinationAbroaedUpdateSection from "./sections/destinationAbroaedUpdateSection";
 import DestinationFunFactSection from "./sections/destinationFunFactSection";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
@@ -36,6 +36,9 @@ import Testimonials from "../../comman/components/testimonials";
 
 function DestinationPage() {
   const { id } = useParams();
+  const { state } = useLocation();
+
+  console.log(state);
 
   const [destinationDetails, setDestinationDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

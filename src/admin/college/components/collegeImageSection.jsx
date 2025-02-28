@@ -36,7 +36,7 @@ const CollegeImageSection = () => {
           <div className="flex gap-5">
             <p className="text-2xl font-semibold">{collegeDetails?.name}</p>
             <div className="rounded-2xl bg-yellow-100 text-center flex items-center justify-center h-8 px-2">
-              Private
+              {collegeDetails?.entityType}
             </div>
           </div>
           <div>
@@ -69,14 +69,14 @@ const CollegeImageSection = () => {
                 Visit Website
               </button>
             </div>
-            <div className=" ">
+            {/*  <div className=" ">
               <button
                 type="button"
                 className="flex items-center justify-center gap-2 text-gray-700 bg-white border-2 border-green-700 hover:bg-yellow-50 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-sm rounded-full text-lg px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
               >
                 Contact
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex align-center">

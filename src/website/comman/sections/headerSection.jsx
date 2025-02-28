@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
 import abroadedLogo from "../../../assets/abroadedLogo.png";
