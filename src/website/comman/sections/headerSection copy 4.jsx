@@ -97,7 +97,7 @@ function Header() {
                   onClick={() => toggleDropdown("whyAbroad")}
                   className="font-medium text-white  "
                 >
-                  Why Abroad
+                  Why Abroaed
                 </button>
                 {dropdowns.whyAbroad && (
                   <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] bg-white border shadow-md">

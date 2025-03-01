@@ -21,7 +21,8 @@ const ContactUsForm = () => {
           {/* Right Section - 40% Width */}
           <div className="lg:w-2/5 px-4 py-4 md:pt-5 max-w-md">
             <form className="max-w-sm mx-auto">
-              <BorderTextInputField label={"Name*"} placeholder="Enter" />
+              <BorderTextInputField label={"First Name*"} placeholder="Enter" />
+              <BorderTextInputField label={"Last Name*"} placeholder="Enter" />
               <BorderTextInputField label={"Email ID*"} placeholder="Enter" />
               <BorderTextInputField
                 label={"Contact Number**"}

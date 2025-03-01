@@ -47,7 +47,7 @@ const PathwaysProgramFaqSection = () => {
                                 "A wide range of scholarships and financial support options are available for international students who dream of studying in the UK. The SI-UK scholarship search leads you to hundreds of scholarships provided by universities and government organisations.",
                         },
                         {
-                            question: "How can Abroaed help my study abroad journey?",
+                            question: "How can Abroaed help my study abroaed journey?",
                             answer:
                                 "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
                         },

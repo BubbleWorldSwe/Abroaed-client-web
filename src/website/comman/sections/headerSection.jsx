@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
@@ -82,7 +83,7 @@ function Header() {
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
         scrolling
           ? "bg-white text-black shadow-md"
-          : "bg-black text-white bg-opacity-0"
+          : "bg-black text-white bg-opacity-20"
       }`}
     >
       <nav>
@@ -97,7 +98,7 @@ function Header() {
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <span
-                className={`font-cinzel tracking-[0.15em] text-xl font-extrabold leading-[40px] ${
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
                   scrolling ? "text-black" : "text-white"
                 }`}
               >
@@ -106,96 +107,92 @@ function Header() {
             </h3>
           </div>
           <div className="flex-grow basis-[80%] flex justify-center">
-            <ul className="flex space-x-8 justify-center text-sm font-medium">
-              <li>
-                <a
-                  href="/home"
-                  className={`font-medium ${
-                    scrolling ? "text-black" : "text-white"
-                  }`}
-                >
-                  Home
-                </a>
-              </li>
-              <DropdownMenu
-                title="Why Abroaed ?"
-                items={[
-                  { title: "About Us", href: "/aboutus" },
-                  { title: "Career", href: "/careers" },
-                ]}
-                stateKey="whyAbroad"
-                toggleDropdown={toggleDropdown}
-                isOpen={dropdowns.whyAbroad}
-                scrolling={scrolling}
-              />
-              {/*  <li>
-                <a
-                  href="/accomodation"
-                  className={`font-medium ${
-                    scrolling ? "text-black" : "text-white"
-                  }`}
-                >
-                  Accommodation
-                </a>
-              </li> */}
-              <DropdownMenu
-                title="Destinations"
-                items={allDestinations.map((data, i) => ({
-                  title: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                  _id: data._id,
-                }))}
-                urlPrefix="destinations"
-                stateKey="destinations"
-                toggleDropdown={toggleDropdown}
-                isOpen={dropdowns.destinations}
-                scrolling={scrolling}
-              />
-              <DropdownMenu
-                title="Test Prep"
-                items={allTestPreps.map((data, i) => ({
-                  title: data?.productName,
-                  _id: data._id,
-                }))}
-                urlPrefix="testprep"
-                stateKey="testPrep"
-                toggleDropdown={toggleDropdown}
-                isOpen={dropdowns.testPrep}
-                scrolling={scrolling}
-              />
-              <DropdownMenu
-                title="Language Prep"
-                items={allLanguagePreps.map((data, i) => ({
-                  title: data?.productName,
-                  _id: data._id,
-                }))}
-                urlPrefix="languageprep"
-                stateKey="languagePrep"
-                toggleDropdown={toggleDropdown}
-                isOpen={dropdowns.languagePrep}
-                scrolling={scrolling}
-              />
-              <li>
-                <a
-                  href="/finance"
-                  className={`font-medium ${
-                    scrolling ? "text-black" : "text-white"
-                  }`}
-                >
-                  Finance
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="/pathways"
-                  className={`font-medium ${
-                    scrolling ? "text-black" : "text-white"
-                  }`}
-                >
-                  Pathways
-                </a>
-              </li>
-            </ul>
+            <div className="flex items-center justify-center h-full">
+              <ul className="flex items-center space-x-8 justify-center text-sm font-medium">
+                <li>
+                  <a
+                    href="/home"
+                    className={`font-medium ${
+                      scrolling ? "text-black" : "text-white"
+                    }`}
+                  >
+                    Home
+                  </a>
+                </li>
+                <DropdownMenu
+                  title="Why Abroad?"
+                  items={[
+                    { title: "About Us", href: "/aboutus" },
+                    { title: "Career", href: "/careers" },
+                  ]}
+                  stateKey="whyAbroad"
+                  toggleDropdown={toggleDropdown}
+                  isOpen={dropdowns.whyAbroad}
+                  scrolling={scrolling}
+                />
+                <DropdownMenu
+                  title="Destinations"
+                  items={allDestinations.map((data) => ({
+                    title: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                    _id: data._id,
+                  }))}
+                  urlPrefix="destinations"
+                  stateKey="destinations"
+                  toggleDropdown={toggleDropdown}
+                  isOpen={dropdowns.destinations}
+                  scrolling={scrolling}
+                />
+                <DropdownMenu
+                  title="Test Prep"
+                  items={allTestPreps.map((data) => ({
+                    title: data?.productName,
+                    _id: data._id,
+                  }))}
+                  urlPrefix="testprep"
+                  stateKey="testPrep"
+                  toggleDropdown={toggleDropdown}
+                  isOpen={dropdowns.testPrep}
+                  scrolling={scrolling}
+                />
+                <DropdownMenu
+                  title="Language Prep"
+                  items={allLanguagePreps.map((data) => ({
+                    title: data?.productName,
+                    _id: data._id,
+                  }))}
+                  urlPrefix="languageprep"
+                  stateKey="languagePrep"
+                  toggleDropdown={toggleDropdown}
+                  isOpen={dropdowns.languagePrep}
+                  scrolling={scrolling}
+                />
+                <li>
+                  <a
+                    href="/finance"
+                    className={`font-medium ${
+                      scrolling ? "text-black" : "text-white"
+                    }`}
+                  >
+                    Finance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/pathways"
+                    className={`font-medium ${
+                      scrolling ? "text-black" : "text-white"
+                    }`}
+                  >
+                    Pathways
+                  </a>
+                </li>
+                <li>
+                  <button className="p-3 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
+                    Book Counselling Now
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="flex flex-grow-0 basis-[10%] justify-end">
             <a

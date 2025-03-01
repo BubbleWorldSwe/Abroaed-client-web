@@ -3,8 +3,8 @@
 function OurPartners() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="py-8 lg:py-16 px-4">
+      <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
+        <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
           <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
             Our Partner
           </h2>

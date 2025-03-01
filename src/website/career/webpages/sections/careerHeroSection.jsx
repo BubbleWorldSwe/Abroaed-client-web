@@ -16,7 +16,7 @@ function CareerHeroSections() {
 
         <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-xl lg:px-12 sm:text-center lg:py-16">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-black dark:text-white">
-            Work At Abroad
+            Work At Abroaed
           </h2>
           <p className="font-light text-gray-800 sm:text-lg md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
             Veniam amet anim sint ipsum consectetur. Ut culpa Lorem Lorem dolor

@@ -29,6 +29,8 @@ function* fetchDestinations(action) {
   try {
     const data = yield call(getDestinations, action.payload);
 
+    console.log(data);
+
     yield put(fetchDestinationsSuccess(data.data));
   } catch (error) {
     yield put(fetchDestinationsFailure(error.message));

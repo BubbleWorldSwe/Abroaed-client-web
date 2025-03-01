@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import Pricing from "../../../Components/Pricing";
 // import PartnerUnis from "../../../Components/PartnerUnis";
 // import TimelineSlider from "../../../Components/TimelineSlider";
@@ -6,22 +7,22 @@ import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import OurPartners from "../../comman/sections/ourPartnersSection";
 import HomeServicesSection from "./sections/homeServicesSection";
-import HomeTestimonialsSection from "./sections/homeTestimonialsSection";
+// import HomeTestimonialsSection from "./sections/homeTestimonialsSection";
 import HomeHeroSection from "./sections/homeHeroSection";
 import HomeKpiMatrixSection from "./sections/homeKpiMatrixSection";
 import HomePathwaySection from "./sections/homePathwaySection";
 import HomePromoSection from "./sections/homePromoSection";
 import HomeDownloadApp from "./sections/homeDownloadAppSection";
-import HomeAbroaedUpdateSection from "./sections/homeAbroaedUpdateSection";
-import HomeBlogsSection from "./sections/homeBlogsSection";
-import HomeLeadForm from "./sections/homeLeadForm";
+// import HomeAbroaedUpdateSection from "./sections/homeAbroaedUpdateSection";
+// import HomeBlogsSection from "./sections/homeBlogsSection";
+// import HomeLeadForm from "./sections/homeLeadForm";
 import {
   fetchAllDestinationsRequest,
-  fetchDestinationsRequest,
+  // fetchDestinationsRequest,
 } from "../../../redux/actions/destinationActions";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import PageLoader from "../../../commons/components/loader/pageLoader";
+// import PageLoader from "../../../commons/components/loader/pageLoader";
 import { fetchAllTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
 import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePrepsActions";
 import ContactUsForm from "../../comman/components/contactUsForm";
@@ -56,7 +57,7 @@ function HomeLayout() {
       <Header />
       <HomeHeroSection />
       <HomeKpiMatrixSection
-        title={"Why Abroad?"}
+        title={"Why Abroaed?"}
         header={"What sets us apart?"}
         subtitle={
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
@@ -68,7 +69,7 @@ function HomeLayout() {
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
       <OurPartners />
-      <HomeTestimonialsSection />
+      {/* <HomeTestimonialsSection /> */}
       <Testimonials />
 
       <HomeDownloadApp />
