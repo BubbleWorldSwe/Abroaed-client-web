@@ -1,6 +1,6 @@
-/* eslint-disable no-constant-condition */
+/* eslint-disable react-hooks/exhaustive-deps */
+// /* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-
 import AdmissionReqDest from "../components/admissionReqDest";
 import ExpensesDest from "../components/expensesDest";
 import ScholarshipsDest from "../components/scholarshipsDest";
@@ -16,7 +16,7 @@ import ScholarshipModal from "../modals/scholarshipModal";
 import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getAdmissionDocuments, getVisaTypesList } from "../../../api/api";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import {
@@ -24,7 +24,6 @@ import {
   setSelectedDestination,
 } from "../../../redux/actions/destinationActions";
 import { useDispatch, useSelector } from "react-redux";
-
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import OverviewDest from "../components/overviewDest";
 

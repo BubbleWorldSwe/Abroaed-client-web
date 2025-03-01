@@ -54,7 +54,6 @@ function DestinationPage() {
       const college = await getCollegesByDestinationId(id);
       const acc = await getAccommodationsByDestinationId(id);
       const course = await getCoursesListByDestinationId(id);
-
       if (data.status === 200) {
         setDestinationDetails(data.data);
       }

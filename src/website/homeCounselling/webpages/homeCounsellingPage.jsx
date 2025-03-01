@@ -18,7 +18,7 @@ const NavigationItems = () => {
   return (
     <div className="text-white px-2  opacity-70 text-xl ">
       <p>
-        Get personalized, one-on-one counseling with experienced consultants to help you navigate your study abroad plans for free.
+        Get personalized, one-on-one counseling with experienced consultants to help you navigate your study abroaed plans for free.
       </p>
       <div className="flex gap-2 mt-5 whitespace-nowrap">
         <button className="p-3 text-base mb-2 rounded-lg text-[#432205]  bg-[#FDDA24] " >Book Counselling Now</button>

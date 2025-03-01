@@ -7,11 +7,11 @@ function HomeHeroSection() {
     () => (
       <TextGenerateEffect
         headings={[
-          "Study Abroad with ABROAED.",
+          "Study abroad with ABROAED",
           "Get Dream Scholarships!",
           "Explore limitless opportunities.",
         ]}
-        className="mb-2 font-extrabold leading-tight tracking-tight text-white font-inter lg:text-6xl"
+        className="mb-2 font-semibold  text-white font-inter text-xs"
         typingSpeed={100}
         pauseDuration={1000}
       />
@@ -35,10 +35,7 @@ function HomeHeroSection() {
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
               We invest in every student’s potential!
             </h1>
-            <p className="font-light text-white md:text-lg xl:text-xl">
-              95% of our students get an admit in less than 4 weeks
-              <br />
-            </p>
+
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-black opacity-80"></div>

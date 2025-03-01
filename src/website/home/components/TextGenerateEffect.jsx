@@ -40,7 +40,7 @@ export const TextGenerateEffect = ({
         <div className={cn("font-bold", className)}>
             <div className="mt-4">
                 <motion.div
-                    className="dark:text-white text-white text-4xl leading-snug tracking-wide"
+                    className="dark:text-white text-white text-xl leading-snug tracking-wide"
                     key={currentHeadingIndex}
                 >
                     {displayText}

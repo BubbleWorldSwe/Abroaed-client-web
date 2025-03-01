@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
 import {
@@ -93,7 +94,6 @@ export const getDestinationDetailsById = async (id) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/${id}`
     );
-
     if (data.success) {
       return data.data;
     }

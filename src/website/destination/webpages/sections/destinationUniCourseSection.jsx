@@ -45,7 +45,7 @@ function DestinationUniCoursersSection({
                   With world-class universities, experienced faculties, and multiple
                   opportunities in different fields, the{" "}
                   {destinationDetails?.countryId?.name} is a top choice among
-                  international students. Know all the popular study abroad courses
+                  international students. Know all the popular study abroaed courses
                   of {destinationDetails?.countryId?.name} universities so you can
                   make the best of your career choice
                 </p>

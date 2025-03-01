@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import play_circle from "../../../assets/play_circle.png";
 
 const Testimonials = () => {
@@ -42,10 +44,10 @@ const Testimonials = () => {
       <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-8 lg:px-6">
         <div className=" max-w-screen-sm text-start mb-4 lg:mb-16 ">
           <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
-            Blog Updates
+            100+ Success Stories
           </p>
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-            The Latest
+            Lorem Ipsum, Dolor Sit
           </h2>
         </div>
         <div className="grid  gap-8 sm:grid-cols-2 lg:grid-cols-3">
