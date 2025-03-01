@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 function CollapsableSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
-  const isActive = (path) => window.location.pathname === path;
+  const isActive = (path) => window.location.pathname.startsWith(path);
 
   const menuItems = [
     { path: "/admin/dashboard", label: "Home", icon: Home },
