@@ -103,7 +103,7 @@ function Header() {
             </h3>
           </div>
           <div className="flex-grow basis-[80%] flex justify-center">
-            <div className="flex items-center justify-center h-full">
+            <div className="flex items-center justify-center ">
               <ul className="flex items-center space-x-8 justify-center text-sm font-medium">
                 <li>
                   <a
@@ -177,7 +177,7 @@ function Header() {
                   </a>
                 </li>
                 <li>
-                  <button className="p-3 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
+                  <button className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
                     Book Counselling Now
                   </button>
                 </li>

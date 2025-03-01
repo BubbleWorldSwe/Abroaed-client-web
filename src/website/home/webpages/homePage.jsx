@@ -28,7 +28,7 @@ import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePre
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
-
+import vectorDownNose from "../../../assets/vectorDownNose.png"
 function HomeLayout() {
   const dispatch = useDispatch();
 
@@ -68,7 +68,17 @@ function HomeLayout() {
       <HomePromoSection />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
-      <OurPartners />
+      <div className="relative ">
+        <OurPartners />
+        <div className="absolute -top-10 left-0 z-0">
+          <img
+            className="rounded-lg max-w-full "
+            src={vectorDownNose}
+            alt="Counselling session"
+          />
+        </div>
+      </div>
+
       {/* <HomeTestimonialsSection /> */}
       <Testimonials />
 

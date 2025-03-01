@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import play_circle from "../../../assets/play_circle.png";
+import testimonialImg from "../../../assets/testimonialImg.png";
 
 const Testimonials = () => {
   const TestimonialsCard = ({ article }) => {
@@ -9,19 +10,19 @@ const Testimonials = () => {
         <div className="relative h-[300px]">
           <a href="#">
             <img
-              className="object-cover h-full rounded-t-lg"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/google-hq.png"
+              className="object-cover w-full h-full rounded-t-lg"
+              src={testimonialImg}
               alt=""
             />
           </a>
-          <div className="absolute bottom-3 left-2 z-0 text-white bg-slate-800 bg-opacity-40  flex justify-center  gap-2 p-2">
+          {/* <div className="absolute bottom-3 left-2 z-0 text-white bg-slate-800 bg-opacity-40  flex justify-center  gap-2 p-2">
             <img
               className="rounded-lg max-w-full "
               src={play_circle}
               alt="Counselling session"
             />
             <p className="opacity-95 ">Watch History</p>
-          </div>
+          </div> */}
         </div>
         <div className="flex p-3 items-center space-x-4">
           <img

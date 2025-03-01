@@ -11,7 +11,7 @@ const HomePathwaySection = () => {
     <div>
       <section className="dark:bg-gray-900 relative  h-full">
         <div className="py-4 px-4 mx-auto max-w-screen-2xl lg:py-4 lg:px-6 h-[600px] relative z-10 ">
-          <div className="flex gap-4 h-[60vh]">
+          <div className="flex gap-4 h-[70vh]">
             {/* Left Child */}
             <div className="relative flex-grow basis-[50%] group hover:basis-[90%] transition-all duration-300 ease-in-out rounded-lg overflow-hidden"
               onMouseEnter={() => {
