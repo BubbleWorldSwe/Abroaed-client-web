@@ -66,7 +66,7 @@ function Header() {
   };
 
   return (
-    <header className="w-full fixed top-0 z-[30] border-gray-400">
+    <header className="w-full fixed top-0 z-[30]   border-gray-400">
       <nav className="border-gray-900 dark:border-gray-600 dark:bg-gray-800">
         <div className="py-3 bg-yellow-300 shadow-md text-center text-white font-inter text-sm">
           Improve Your IELTS Writing with Our Free Tool 🔍
@@ -77,7 +77,12 @@ function Header() {
               <span className="text-white font-cinzel tracking-[0.15em] text-xl font-extrabold leading-[40px] ">
                 ABROA
               </span>
-              <span style={{ color: "#fbba18" }}>ED</span>
+              <span
+                style={{ color: "#fbba18" }}
+                className="text-white font-cinzel tracking-[0.15em] text-xl font-extrabold leading-[40px] "
+              >
+                ED
+              </span>
             </h3>{" "}
           </div>
           <div className="flex-grow basis-[80%] flex justify-center">

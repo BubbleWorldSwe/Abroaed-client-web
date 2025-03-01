@@ -24,17 +24,20 @@ const DropdownMenu = ({
       {isOpen && (
         <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] text-black bg-white border shadow-md">
           <ul>
-            {items?.map((data, i) => (
-              <li key={i}>
-                <a
-                  href={data._id ? `/${urlPrefix}/${data._id}` : data.href}
-                  className="block px-4 py-2 hover:bg-gray-100"
-                  target="_blank"
-                >
-                  {data?.title}
-                </a>
-              </li>
-            ))}
+            {items?.map((data, i) => {
+              console.log(data);
+              return (
+                <li key={i}>
+                  <a
+                    href={data._id ? `/${urlPrefix}/${data._id}` : data.href}
+                    className="block px-4 py-2 hover:bg-gray-100"
+                    target="_blank"
+                  >
+                    {data?.title}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
@@ -139,7 +142,7 @@ function Header() {
                 title="Destinations"
                 items={allDestinations.map((data, i) => ({
                   title: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                  id: data._id,
+                  _id: data._id,
                 }))}
                 urlPrefix="destinations"
                 stateKey="destinations"
@@ -151,7 +154,7 @@ function Header() {
                 title="Test Prep"
                 items={allTestPreps.map((data, i) => ({
                   title: data?.productName,
-                  id: data._id,
+                  _id: data._id,
                 }))}
                 urlPrefix="testprep"
                 stateKey="testPrep"
@@ -163,7 +166,7 @@ function Header() {
                 title="Language Prep"
                 items={allLanguagePreps.map((data, i) => ({
                   title: data?.productName,
-                  id: data._id,
+                  _id: data._id,
                 }))}
                 urlPrefix="languageprep"
                 stateKey="languagePrep"
