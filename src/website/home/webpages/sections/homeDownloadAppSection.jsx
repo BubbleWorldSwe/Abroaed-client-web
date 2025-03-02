@@ -3,9 +3,9 @@ import iPhoneIcon from "../../../../assets/iPhoneIcon.png"
 function HomeDownloadApp() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900 h-screen flex justify-center items-center relative">
+      <section className=" dark:bg-gray-900 h-[70vh] flex justify-center items-end relative">
         <div className="relative shadow-lg z-10">
-          <div className="gap-8 bg-[#F4F4F5] items-center py-12 px-4 mx-auto max-w-screen-2xl xl:gap-16 md:grid md:grid-cols-2  lg:px-6">
+          <div className="gap-8 bg-[#F4F4F5] items-center pt-20  px-4 mx-auto max-w-screen-2xl xl:gap-16 md:grid md:grid-cols-2  lg:px-6">
             <div className="">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Get the Abroaed Mobile App.
