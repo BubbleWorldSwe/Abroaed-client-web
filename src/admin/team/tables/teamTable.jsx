@@ -1,10 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import {
-  Edit,
-  EllipsisVertical,
-  Trash2,
-} from "lucide-react";
+import { Edit, EllipsisVertical, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
@@ -66,9 +62,7 @@ const TeamTable = ({
             <th className="px-4 py-3">Role Type</th>
             <th className="px-4 py-3">Permissions</th>
             <th className="px-4 py-3 w-4">
-              <span className="sr-only">
-                Actions
-              </span>
+              <span className="sr-only">Actions</span>
             </th>
           </tr>
         </thead>
@@ -121,10 +115,11 @@ const TeamTable = ({
                     {dropdownVisible === index && (
                       <div
                         ref={dropdownRef}
-                        className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${dropdownDirection === "up"
-                          ? "bottom-full mb-2"
-                          : "top-full mt-2"
-                          }`}
+                        className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${
+                          dropdownDirection === "up"
+                            ? "bottom-full mb-2"
+                            : "top-full mt-2"
+                        }`}
                       >
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                           <li>

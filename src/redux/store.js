@@ -3,8 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
 import { countriesReducer } from "./reducers/countryReducer";
 import { destnationReducer } from "./reducers/destinationReducer";
-import { leadsReducer } from "./reducers/leadReducer";
-import { rolesReducer } from "./reducers/rolesReducer";
+import { leadsReducer } from "./reducers/leadsReducer";
 import { authReducer } from "./reducers/authReducer";
 import { teamReducer } from "./reducers/teamReducer";
 import { persistStore, persistReducer } from "redux-persist";
@@ -52,11 +51,16 @@ const accommodationsPersistConfig = {
   whitelist: ["selectedAccommodation"],
 };
 
+const leadsPersistConfig = {
+  key: "leads",
+  storage,
+  whitelist: ["selectedLead"],
+};
+
 const rootReducer = {
   auth: persistReducer(authPersistConfig, authReducer),
   team: teamReducer,
-  roles: rolesReducer,
-  leads: leadsReducer,
+  leads: persistReducer(leadsPersistConfig, leadsReducer),
   destinations: persistReducer(destinationPersistConfig, destnationReducer),
   countries: countriesReducer,
   testPreps: persistReducer(testPrepsPersistConfig, testPrepsReducer),

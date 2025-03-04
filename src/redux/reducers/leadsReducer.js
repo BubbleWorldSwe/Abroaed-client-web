@@ -1,0 +1,96 @@
+import {
+  FETCH_LEADS_REQUEST,
+  FETCH_LEADS_SUCCESS,
+  FETCH_LEADS_FAILURE,
+  ADD_LEAD_REQUEST,
+  ADD_LEAD_SUCCESS,
+  ADD_LEAD_FAILURE,
+  DELETE_LEAD_REQUEST,
+  DELETE_LEAD_SUCCESS,
+  DELETE_LEAD_FAILURE,
+  EDIT_LEAD_REQUEST,
+  EDIT_LEAD_SUCCESS,
+  EDIT_LEAD_FAILURE,
+  SET_SELECTED_LEAD,
+} from "../actions/leadsActions";
+
+const initialState = {
+  loading: false,
+  leads: [],
+  error: null,
+  totalPages: null,
+  page: 1,
+  limit: null,
+  total: null,
+  selectedLead: {},
+};
+
+export const leadsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_LEADS_REQUEST:
+      return { ...state, loading: true };
+
+    case FETCH_LEADS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        leads:
+          action.payload.page === 1
+            ? [{ index: action.payload.page, data: action.payload.result }]
+            : [
+                ...state.leads,
+                { index: action.payload.page, data: action.payload.result },
+              ],
+        totalPages: action.payload.totalPages,
+        page: action.payload.page,
+      };
+
+    case FETCH_LEADS_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+
+    case ADD_LEAD_REQUEST:
+      return { ...state, loading: true };
+
+    case ADD_LEAD_SUCCESS:
+      return initialState;
+
+    case ADD_LEAD_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+
+    case DELETE_LEAD_REQUEST:
+      return { ...state, loading: true };
+
+    case DELETE_LEAD_SUCCESS:
+      return initialState;
+
+    case DELETE_LEAD_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+
+    case EDIT_LEAD_REQUEST:
+      return { ...state, loading: true };
+
+    case EDIT_LEAD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        leads: state.leads.map((lead) => ({
+          ...lead,
+          data: lead.data.map((item) =>
+            item._id === action.payload._id
+              ? { ...item, ...action.payload }
+              : item
+          ),
+        })),
+        selectedLead: action.payload,
+      };
+
+    case EDIT_LEAD_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+
+    case SET_SELECTED_LEAD:
+      return { ...state, selectedLead: action.payload };
+
+    default:
+      return state;
+  }
+};

@@ -3,93 +3,87 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { scheduleAppointment } from "../../../slices/leadSlice";
 import ConfirmModal from "../../../commons/modal/confirmModal";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { appointmentType, highestEducation } from "../../../constants/values";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { ModalDeleteButton } from "../../../commons/components/buttons/modalDeleteButton";
+import { toast } from "react-toastify";
 
-const AppointmentModal = ({ leadId, onClose }) => {
+const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
   const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
-  const [appointmentData, setAppointmentData] = useState({
-    date: "",
-    timeSlot: "",
-    type: "Virtual",
+
+  const [formData, setFormData] = useState({
+    appointmentType: "",
+    preferredSlot: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setAppointmentData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = () => {
-    setConfirmModalOpen(true);
-    dispatch(scheduleAppointment({ id: leadId, appointmentData }));
+    if (!formData.appointmentType || !formData.preferredSlot) {
+      toast.error(
+        "Please fill in all fields before scheduling the appointment."
+      );
+      return;
+    }
+
+    console.log(formData);
+    // onUpdate(formData, )
+
+    // setConfirmModalOpen(true);
+    // dispatch(scheduleAppointment({ id: leadId, appointmentData }));
   };
 
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
+        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-1/2 relative">
           <button
             className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
             onClick={onClose}
           >
             &times;
           </button>
-          <h2 className="text-xl font-semibold mb-4">Schedule Appointment</h2>
+          <h2 className="text-xl font-semibold mb-7">
+            Schedule an Appointment
+          </h2>
           <div className="space-y-4 mt-4">
-            <div className=" mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2">
-              <div>
-                <label className="text-sm font-semibold mb-1">
-                  Appointment Type
-                </label>
-                <select
-                  name="type"
-                  value={appointmentData.type}
-                  onChange={handleChange}
-                  className="w-full bg-[#F4F4F5] text-[#3F3F46] px-3 py-1 border-none border rounded-lg"
-                >
-                  <option value="Virtual">Virtual</option>
-                  <option value="Home Appointment">Home Appointment</option>
-                  <option value="In-Person">In-Person</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-sm font-semibold mb-1">
-                  Preferred Slot
-                </label>
-                <input
-                  type="datetime-local"
-                  placeholder="DD/MM/YYYY"
-                  className="w-full px-3 py-1 border-none bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-                {/* <Flatpickr
-                  value={dateTime}
-                  onChange={(date) => setDateTime(date[0])}
-                  options={{
-                    enableTime: true,
-                    dateFormat: "Y-m-d H:i",
-                  }}
-                  className="w-full border-none bg-[#F4F4F5] rounded-lg p-1 px-3"
-                /> */}
-              </div>
+            <div className="mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
+              <SelectField
+                label="Appointment Type"
+                name="appointmentType"
+                value={formData.appointmentType}
+                onChange={handleChange}
+                options={appointmentType.map((data) => ({
+                  label: data,
+                  value: data,
+                }))}
+                required
+              />
+
+              <TextInputField
+                label="Preferred Slot"
+                name="preferredSlot"
+                type="datetime-local"
+                value={formData?.preferredSlot}
+                onChange={handleChange}
+                required
+              />
             </div>
             <div className="flex justify-end space-x-2">
-              <button
+              <ModalCloseButton label="Reset" onClick={onClose} />
+
+              <ModalDeleteButton
+                label=" Cancel Appointment"
                 onClick={onClose}
-                className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
-              >
-                Reset
-              </button>
-              <button
-                onClick={onClose}
-                className="px-4 py-2 bg-[#C80E41] text-white rounded-lg hover:bg-red-700"
-              >
-                Cancel Appointment
-              </button>
-              <button
-                onClick={handleSubmit}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-              >
-                Schedule
-              </button>
+              />
+              <ModalSubmitButton label="Schedule" onClick={handleSubmit} />
             </div>
           </div>
         </div>

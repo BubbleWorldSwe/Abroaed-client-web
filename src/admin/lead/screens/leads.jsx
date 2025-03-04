@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
 import filter_list from "../../../assets/filter_list.png";
 import { leadsData } from "../data";
@@ -8,17 +8,36 @@ import UpdateLeadStatus from "../modals/updateLeadStatusModal";
 import AddLeadModal from "../modals/addLeadModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
+import {
+  addLeadRequest,
+  deleteLeadRequest,
+  editLeadRequest,
+  fetchLeadsRequest,
+} from "../../../redux/actions/leadsActions";
+
 function Leads() {
+  const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { leads, totalPages } = useSelector((state) => state.leads);
+
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   const handleScheduleAppointment = (member) => {
-    setSelectedMember(member);
-    setshowAppointmentModal(true);
-    setDropdownVisible(false);
+    try {
+      setSelectedMember(member);
+      setshowAppointmentModal(true);
+      setDropdownVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleAssignTeamMember = (member) => {
@@ -40,6 +59,75 @@ function Leads() {
     setIsAddModalOpen(false);
   };
 
+  async function fetchData() {
+    try {
+      dispatch(fetchAllDestinationsRequest());
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleAddLead = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddLead");
+    console.log(data);
+
+    dispatch(addLeadRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchLeadsRequest(1));
+    handleCloseAddModal();
+  };
+
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editLeadRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteLeadRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchLeadsRequest(1));
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = leads.some((item) => item.index === currentPage + 1);
+
+      if (!pageExists) {
+        dispatch(fetchLeadsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = leads.some((item) => item.index === currentPage - 1);
+
+      if (!pageExists) {
+        dispatch(fetchLeadsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  console.log(showAppointmentModal);
+
+  useEffect(() => {
+    if (leads?.length === 0) {
+      console.log("fetchLeadsRequest");
+      dispatch(fetchLeadsRequest(currentPage));
+    }
+    fetchData();
+  }, [dispatch, leads, currentPage]);
+
   return (
     <>
       {showTeamModal && (
@@ -59,6 +147,7 @@ function Leads() {
         <AppointmentModal
           leadId={selectedMember.id}
           onClose={() => setshowAppointmentModal(false)}
+          onUpdate={onUpdate}
         />
       )}
       {showUpdateModal && (
@@ -70,8 +159,8 @@ function Leads() {
       <AddLeadModal
         isOpen={isAddModalOpen}
         onClose={handleCloseAddModal}
+        onAddLead={handleAddLead}
       />
-
 
       <div className="min-h-screen bg-white dark:bg-gray-900 ">
         {/* Adjust padding and spacing */}
@@ -119,10 +208,7 @@ function Leads() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <AddButton
-                  onClick={handleOpenAddModal}
-                  label={" New Lead"}
-                />
+                <AddButton onClick={handleOpenAddModal} label={" New Lead"} />
               </div>
             </div>
           </div>
@@ -134,6 +220,11 @@ function Leads() {
               handleUpdateTeamMember={handleUpdateTeamMember}
               dropdownVisible={dropdownVisible}
               setDropdownVisible={setDropdownVisible}
+              currentPage={currentPage}
+              handleNextPage={handleNextPage}
+              handlePrevPage={handlePrevPage}
+              handleDelete={handleDelete}
+              onUpdate={onUpdate}
             />
           </div>
         </section>
