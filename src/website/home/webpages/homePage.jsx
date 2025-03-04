@@ -32,7 +32,6 @@ import vectorDownNose from "../../../assets/vectorDownNose.png"
 import VectorleftNose from "../../../assets/VectorleftNose.png"
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png"
 import vectorBelow from "../../../assets/vectorBelow.png"
-import vectorDownNose from "../../../assets/vectorDownNose.png"
 function HomeLayout() {
   const dispatch = useDispatch();
 

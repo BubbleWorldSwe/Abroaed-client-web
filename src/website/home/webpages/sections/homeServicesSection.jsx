@@ -1,20 +1,11 @@
 import { useState } from 'react';
 import HomeServiceModal from '../../../../Components/Modals/HomeServiceModal';
-<<<<<<< Updated upstream
 import homeService1 from "../../../../assets/homeService1.png"
 import homeService2 from "../../../../assets/homeService2.png"
 import homeService3 from "../../../../assets/homeService3.png"
 import homeService4 from "../../../../assets/homeService4.png"
 import homeService5 from "../../../../assets/homeService5.png"
 import homeService6 from "../../../../assets/homeService6.png"
-=======
-import homeService1 from "../../../../assets/dark.png"
-// import homeService2 from "../../../../assets/homeService2.png"
-// import homeService3 from "../../../../assets/homeService3.png"
-// import homeService4 from "../../../../assets/homeService4.png"
-// import homeService5 from "../../../../assets/homeService5.png"
-// import homeService6 from "../../../../assets/homeService6.png"
->>>>>>> Stashed changes
 
 const serviceData = [
     {
@@ -25,47 +16,27 @@ const serviceData = [
     {
         text1: "Personalised Mentorship",
         text2: "Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum",
-<<<<<<< Updated upstream
         imgUrl: homeService2,
-=======
-        imgUrl: homeService1,
->>>>>>> Stashed changes
     },
     {
         text1: "Scholarship Assistance",
         text2: "Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum",
-<<<<<<< Updated upstream
         imgUrl: homeService3
-=======
-        imgUrl: homeService1
->>>>>>> Stashed changes
     },
     {
         text1: "Visa & Accommodation",
         text2: "Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum",
-<<<<<<< Updated upstream
         imgUrl: homeService4
-=======
-        imgUrl: homeService1
->>>>>>> Stashed changes
     },
     {
         text1: "Customised SOP & LORs",
         text2: "Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum",
-<<<<<<< Updated upstream
         imgUrl: homeService5
-=======
-        imgUrl: homeService1
->>>>>>> Stashed changes
     },
     {
         text1: "Finance & FOREX",
         text2: "Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum",
-<<<<<<< Updated upstream
         imgUrl: homeService6
-=======
-        imgUrl: homeService1
->>>>>>> Stashed changes
     },
 ];
 
