@@ -21,7 +21,7 @@ function HomeHeroSection() {
   return (
     <div className="font-rethink">
       <section
-        className="relative h-[80vh] bg-cover bg-center"
+        className="relative h-[80vh]  bg-cover flex  bg-center"
         style={{
           backgroundImage: `url(${homeHero})`,
           opacity: "1",
@@ -38,7 +38,7 @@ function HomeHeroSection() {
 
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-black opacity-80"></div>
+        {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-black opacity-80"></div> */}
       </section>
     </div>
   );

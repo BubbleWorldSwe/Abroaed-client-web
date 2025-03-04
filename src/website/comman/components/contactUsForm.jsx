@@ -1,10 +1,9 @@
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
-// import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
 const ContactUsForm = () => {
   return (
     <section className="relative isolate overflow-hidden z-10 px-10 mx-auto">
-      <div className="py-2 px-4 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative z-20">
+      <div className="py-2 px-4 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}
           <div className="lg:w-3/5 px-4 py-4 flex flex-col justify-center">
