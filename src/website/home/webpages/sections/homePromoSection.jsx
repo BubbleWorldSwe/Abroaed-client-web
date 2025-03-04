@@ -36,9 +36,7 @@ function HomePromoSection() {
                 />
               </div>
               <div className="flex justify-center text-center">
-                <button
-                  className="py-2 px-3 border-2 rounded-lg  border-[#27272A] text-[#71717A]"
-                >
+                <button className="py-2 px-3 border-2 rounded-lg  border-[#27272A] text-[#71717A]">
                   Learn About Home Counselling
                 </button>
               </div>

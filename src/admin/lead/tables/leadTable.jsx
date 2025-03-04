@@ -33,6 +33,7 @@ const LeadTable = ({
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
@@ -115,14 +116,14 @@ const LeadTable = ({
                 <td className="px-4 py-3">
                   <span
                     className={`font-medium p-2 rounded ${
-                      lead?.status === "nurture"
-                        ? "bg-[#FDF6B2]"
+                      lead?.status === "Nurture"
+                        ? "bg-[#FDF6B2] text-[#723B13]"
                         : lead?.status === "Converted"
-                        ? "bg-[#DEF7EC]"
+                        ? "bg-[#DEF7EC] text-[#03543F]"
                         : lead?.status === "Lost"
-                        ? "bg-[#FDE8E8]"
+                        ? "bg-[#FDE8E8] text-[#9B1C1C]"
                         : "bg-gray-200"
-                    } text-yellow-800`}
+                    }`}
                   >
                     {lead?.status}
                   </span>
@@ -148,7 +149,9 @@ const LeadTable = ({
                   <button
                     ref={dropdownRef}
                     className="focus:outline-none"
-                    onClick={(e) => handleDropdownToggle(e, index)}
+                    onClick={(e) => {
+                      handleDropdownToggle(e, index);
+                    }}
                   >
                     <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
                   </button>

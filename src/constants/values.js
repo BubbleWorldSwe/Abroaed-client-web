@@ -57,3 +57,12 @@ export const highestEducation = [
 ];
 
 export const appointmentType = ["Virtual Consellings", "Home", "In-Person"];
+
+export const servicerType = [
+  "ABROAED Plus",
+  "ABROAED Standard",
+  "ABROAED Pathways",
+  "ABROAED LOE",
+];
+
+export const planType = ["Basic", "Advance", "Elite"];

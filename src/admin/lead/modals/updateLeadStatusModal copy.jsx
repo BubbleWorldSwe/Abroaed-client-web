@@ -9,14 +9,20 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { ModalDeleteButton } from "../../../commons/components/buttons/modalDeleteButton";
-import { toast } from "react-toastify";
+
+const statusList = [
+  { label: "Nurture", bg: "bg-[#FDF6B2]", text: "text-[#723B13]" },
+  { label: "Converted", bg: "bg-[#DEF7EC]", text: "text-[#03543F]" },
+  { label: "Lost", bg: "bg-[#FDE8E8]", text: "text-[#9B1C1C]" },
+];
 
 const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
+  const dispatch = useDispatch();
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
-
   const [formData, setFormData] = useState({
     appointmentType: "",
     preferredSlot: "",
+    status: "",
   });
 
   const handleChange = (e) => {
@@ -24,19 +30,20 @@ const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleStatusSelect = (status) => {
+    setFormData((prev) => ({ ...prev, status }));
+  };
+
   const handleSubmit = () => {
-    if (!formData.appointmentType || !formData.preferredSlot) {
-      toast.error(
-        "Please fill in all fields before scheduling the appointment."
-      );
+    if (
+      !formData.appointmentType ||
+      !formData.preferredSlot ||
+      !formData.status
+    ) {
+      alert("Please fill in all fields before scheduling the appointment.");
       return;
     }
-
-    console.log(formData);
-    onUpdate({ scheduleDetails: formData }, leadId);
-
-    // setConfirmModalOpen(true);
-    // dispatch(scheduleAppointment({ id: leadId, appointmentData }));
+    setConfirmModalOpen(true);
   };
 
   return (
@@ -56,7 +63,7 @@ const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
             <div className="mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
               <SelectField
                 label="Appointment Type"
-                name="appointmentType"
+                name="highestEducation"
                 value={formData.appointmentType}
                 onChange={handleChange}
                 options={appointmentType.map((data) => ({
@@ -65,7 +72,6 @@ const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
                 }))}
                 required
               />
-
               <TextInputField
                 label="Preferred Slot"
                 name="preferredSlot"
@@ -75,13 +81,22 @@ const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
                 required
               />
             </div>
+            <div className="flex space-x-2 mb-4">
+              {statusList.map(({ label, bg, text }) => (
+                <span
+                  key={label}
+                  className={`text-sm rounded-md px-3 py-1 cursor-pointer ${bg} ${text} ${
+                    formData.status === label ? "font-bold" : ""
+                  }`}
+                  onClick={() => handleStatusSelect(label)}
+                >
+                  {label}
+                </span>
+              ))}
+            </div>
             <div className="flex justify-end space-x-2">
               <ModalCloseButton label="Reset" onClick={onClose} />
-
-              {/* <ModalDeleteButton
-                label=" Cancel Appointment"
-                onClick={onClose}
-              /> */}
+              <ModalDeleteButton label="Cancel Appointment" onClick={onClose} />
               <ModalSubmitButton label="Schedule" onClick={handleSubmit} />
             </div>
           </div>

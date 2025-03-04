@@ -1,13 +1,67 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { planType, servicerType } from "../../../constants/values";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-const UpdateLeadStatus = ({ leadId, leadName, team = {}, onClose }) => {
-  const [selectedTeam, setSelectedTeam] = useState({
-    counsellor: "",
-    backendManager: "",
-    mentor: "",
-  });
+const statusList = [
+  {
+    label: "Nurture",
+    bg: "bg-[#FDF6B2]",
+    text: "text-[#723B13]",
+    border: "border-[#723B13]",
+  },
+  {
+    label: "Converted",
+    bg: "bg-[#DEF7EC]",
+    text: "text-[#03543F]",
+    border: "border-[#03543F]",
+  },
+  {
+    label: "Lost",
+    bg: "bg-[#FDE8E8]",
+    text: "text-[#9B1C1C]",
+    border: "border-[#9B1C1C]",
+  },
+];
+
+const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
+  const [formData, setFormData] = useState(
+    filledData || {
+      servicerType: "",
+      planType: "",
+      billableAmount: "",
+      status: "",
+    }
+  );
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleStatusSelect = (status) => {
+    setFormData((prev) => ({ ...prev, status }));
+  };
+
+  const handleSubmit = () => {
+    if (
+      !formData.status ||
+      !formData.servicerType ||
+      !formData.planType ||
+      !formData.billableAmount
+    ) {
+      toast.error("Please fill in all fields before updating the lead status.");
+      return;
+    }
+
+    console.log(formData);
+    onUpdate(formData, leadId);
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
@@ -19,92 +73,66 @@ const UpdateLeadStatus = ({ leadId, leadName, team = {}, onClose }) => {
           &times;
         </button>
         <h2 className="text-xl font-semibold mb-4">Update Lead Status</h2>
-        {/* <h5 className="text-sm font-semibold mb-1">
-                    Student Name
-                </h5> */}
-        {/* <div className="mb-4">
-                    <input
-                        placeholder="Garvit Singh"
-                        className="w-1/2 px-3 py-2 border-none text-[#3F3F46] bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-                    />
-                </div> */}
-        <h5 className="text-sm font-semibold mb-2 ">Update To</h5>
-        <div className="flex justify-between w-1/3 mb-4">
-          <spna className="text-sm    rounded-md px-3 py-1  bg-[#FDF6B2] text-[#723B13]">
-            Nurture
-          </spna>
-          <spna className="text-sm    rounded-md px-3 py-1  bg-[#DEF7EC] text-[#03543F]">
-            Converted
-          </spna>
-          <spna className="text-sm    rounded-md px-3 py-1  bg-[#FDE8E8] text-[#9B1C1C]">
-            Lost
-          </spna>
-        </div>
-        <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-3">
-          <div>
-            <label className="block text-gray-700 text-sm font-semibold mb-1">
-              Counsellor
-            </label>
-            <select
-              name="counsellor"
-              value={selectedTeam.counsellor}
-              // onChange={handleChange}
-              className="w-full px-3 py-2 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-            >
-              <option value="">Select Counsellor</option>
-              {/* {getMembersByRole("Counsellor").map((member) => (
-                                <option key={member.id} value={member.id}>
-                                    {member.name}
-                                </option>
-                            ))} */}
-            </select>
-          </div>
 
-          <div>
-            <label className="block text-gray-700 text-sm font-semibold mb-1">
-              Backend Manager
-            </label>
-            <select
-              name="backendManager"
-              value={selectedTeam.backendManager}
-              // onChange={handleChange}
-              className="w-full px-3 py-2 border-none text-[#3F3F46] bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+        <h5 className="block text-sm font-medium text-gray-700 mb-2">
+          Update To
+        </h5>
+
+        <div className="flex justify-between w-1/3">
+          {statusList.map(({ label, bg, text, border }) => (
+            <span
+              key={label}
+              className={`text-sm rounded-md px-3 py-1 cursor-pointer border ${border} ${bg} ${text} ${
+                formData.status === label
+                  ? "font-semibold border-1"
+                  : `border-0`
+              }`}
+              onClick={() => handleStatusSelect(label)}
             >
-              <option value="">Select Backend Manager</option>
-              {[].map((member) => (
-                <option key={member.id} value={member.id}>
-                  {member.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label className="block text-sm text-gray-700 font-semibold mb-1">
-              Billable Amount (INR)
-            </label>
-            <input
-              type="text"
-              name="amount"
-              id="amount"
-              className="w-full px-3 py-2 border-none text-[#3F3F46] bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-            />
-          </div>
-          <div className="p-1"></div>
+              {label}
+            </span>
+          ))}
+        </div>
+        <div className="grid mt-5 mb-10 grid-cols-1 gap-4 lg:grid-cols-3">
+          <SelectField
+            label="Service Type"
+            name="servicerType"
+            value={formData.servicerType}
+            onChange={handleChange}
+            options={servicerType.map((data) => ({
+              label: data,
+              value: data,
+            }))}
+            required
+          />
+          <SelectField
+            label="Plan Type"
+            name="planType"
+            value={formData.planType}
+            onChange={handleChange}
+            options={planType.map((data) => ({
+              label: data,
+              value: data,
+            }))}
+            required
+          />
+          <TextInputField
+            label=" Billable Amount (INR)"
+            name="billableAmount"
+            value={formData?.billableAmount}
+            onChange={handleChange}
+            required
+          />
         </div>
 
-        <div className="flex justify-end space-x-2 mt-4">
-          <button
-            onClick={onClose}
-            className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
-          >
-            Reset
-          </button>
-          <button
-            // onClick={handleSave}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-          >
-            Update
-          </button>
+        <div className="flex justify-end space-x-2">
+          <ModalCloseButton label="Reset" onClick={onClose} />
+
+          {/* <ModalDeleteButton
+                              label=" Cancel Appointment"
+                              onClick={onClose}
+                            /> */}
+          <ModalSubmitButton label="Update" onClick={handleSubmit} />
         </div>
       </div>
     </div>

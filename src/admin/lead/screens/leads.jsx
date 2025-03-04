@@ -29,6 +29,8 @@ function Leads() {
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  console.log(" SelectedMember");
+  console.log(selectedMember);
 
   const handleScheduleAppointment = (member) => {
     try {
@@ -82,6 +84,9 @@ function Leads() {
     try {
       console.log(data, id);
       dispatch(editLeadRequest(id, data));
+      setshowAppointmentModal(false);
+      setShowUpdateModal(false);
+      setshowTeamModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -132,12 +137,12 @@ function Leads() {
     <>
       {showTeamModal && (
         <AssignTeamModal
-          leadId={selectedMember.id}
-          leadName={selectedMember.name}
+          leadId={selectedMember?._id}
+          leadName={selectedMember?.name}
           team={{
-            counsellor: selectedMember.counsellor,
-            backendManager: selectedMember.backendManager,
-            mentor: selectedMember.mentor,
+            counsellor: selectedMember?.counsellor,
+            backendManager: selectedMember?.backendManager,
+            mentor: selectedMember?.mentor,
           }}
           onClose={() => setshowTeamModal(false)}
         />
@@ -145,15 +150,22 @@ function Leads() {
 
       {showAppointmentModal && (
         <AppointmentModal
-          leadId={selectedMember.id}
+          leadId={selectedMember?._id}
           onClose={() => setshowAppointmentModal(false)}
           onUpdate={onUpdate}
         />
       )}
       {showUpdateModal && (
         <UpdateLeadStatus
-          leadId={selectedMember.id}
+          leadId={selectedMember?._id}
           onClose={() => setShowUpdateModal(false)}
+          onUpdate={onUpdate}
+          filledData={{
+            servicerType: selectedMember?.servicerType,
+            planType: selectedMember?.planType,
+            billableAmount: selectedMember?.billableAmount,
+            status: selectedMember?.status,
+          }}
         />
       )}
       <AddLeadModal
