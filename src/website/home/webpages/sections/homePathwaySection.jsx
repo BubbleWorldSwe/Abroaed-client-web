@@ -75,6 +75,6 @@ const HomePathwaySection = () => {
       </section>
     </div>
   );
-};
+}
 
 export default HomePathwaySection;

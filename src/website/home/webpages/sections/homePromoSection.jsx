@@ -1,5 +1,4 @@
-import cover from "../../../../assets/cover.jpg";
-import vectorDownNose from "../../../../assets/vectorDownNose.png";
+import homeQuery from "../../../../assets/homeQuery.png";
 import Tabs, {
   HomeForm,
   VirtualForm,
@@ -29,10 +28,10 @@ function HomePromoSection() {
                 documents, so that you can focus on yourself, leaving all the
                 hassle for us to handle.
               </p>
-              <div className=" p-4">
+              <div className="flex justify-center  lg:justify-start ">
                 <img
-                  className="rounded-lg w-full object-cover h-[40vh]"
-                  src={cover}
+                  className="rounded-lg w-full h-[45vh] object-cover"
+                  src={homeQuery}
                   alt="Counselling session"
                 />
               </div>

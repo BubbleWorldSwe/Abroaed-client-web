@@ -88,6 +88,8 @@ function Header() {
         <div
           className={`py-3 text-center font-inter text-sm ${scrolling ? "bg-yellow-300 text-black" : "bg-yellow-300 text-white"
             }`}
+          className={`py-3 text-center font-inter text-sm ${scrolling ? "bg-yellow-300 text-black" : "bg-yellow-300 text-white"
+            }`}
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>

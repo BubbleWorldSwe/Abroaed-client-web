@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 import { BASE_URL } from "../constants/baseUrl";
 import {
   makeDeleteRequest,

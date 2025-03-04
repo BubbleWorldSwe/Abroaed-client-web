@@ -29,6 +29,10 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
 import vectorDownNose from "../../../assets/vectorDownNose.png"
+import VectorleftNose from "../../../assets/VectorleftNose.png"
+import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png"
+import vectorBelow from "../../../assets/vectorBelow.png"
+import vectorDownNose from "../../../assets/vectorDownNose.png"
 function HomeLayout() {
   const dispatch = useDispatch();
 
@@ -64,7 +68,16 @@ function HomeLayout() {
         }
       />
       <HomePathwaySection />
-      <HomeServicesSection />
+      <div className="relative ">
+        <HomeServicesSection />
+        <div className="absolute -top-10 right-0 -z-20">
+          <img
+            className="rounded-lg max-w-full "
+            src={VectorleftNose}
+            alt="Counselling session"
+          />
+        </div>
+      </div>
       <HomePromoSection />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
@@ -81,12 +94,32 @@ function HomeLayout() {
 
       {/* <HomeTestimonialsSection /> */}
       <Testimonials />
+      <div className="relative ">
+        <HomeDownloadApp />
+        <div className="absolute -top-10 left-0 z-0">
+          <img
+            className="rounded-lg max-w-full "
+            src={vectorRightNoseCurve}
+            alt="Counselling session"
+          />
+        </div>
+      </div>
 
-      <HomeDownloadApp />
+      {/* <HomeTestimonialsSection /> */}
+
       {/* <Pricing /> */}
       {/* <FAQsection /> */}
 
-      <Blogs />
+      <div className="relative ">
+        <Blogs />
+        <div className="absolute top-28 right-0 z-0">
+          <img
+            className="rounded-lg max-w-full "
+            src={vectorBelow}
+            alt="Counselling session"
+          />
+        </div>
+      </div>
       <ContactUsForm />
       <Footer />
     </div>
