@@ -16,7 +16,7 @@ import { getRoles } from "../../../api/api";
 
 function Teams() {
   const dispatch = useDispatch();
-  const { teams, totalPages, page } = useSelector((state) => state.team);
+  const { teams, totalPages, page } = useSelector((state) => state.teams);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);

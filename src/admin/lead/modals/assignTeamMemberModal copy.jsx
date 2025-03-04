@@ -4,9 +4,6 @@ import { useState } from "react";
 import { teamMembers } from "../../student/data";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 import { useSelector } from "react-redux";
-import { SelectField } from "../../../commons/components/inputFields/selectField";
-import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
-import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 const AssignTeamModal = ({
   leadId,
@@ -46,7 +43,7 @@ const AssignTeamModal = ({
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-1/2 relative">
+        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
           <button
             className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
             onClick={onClose}
@@ -54,20 +51,18 @@ const AssignTeamModal = ({
             &times;
           </button>
           <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
-          <h5 className="block text-sm font-medium text-gray-700 mb-2">
-            Assigned Members
-          </h5>
-          <div className="flex flex-wrap gap-2 mb-5">
+          <h5 className="text-lg font-medium">Assigned Members</h5>
+          <div className="flex flex-wrap gap-2">
             {assignTeamMembers.length > 0 ? (
               assignTeamMembers.map((data, i) => (
                 <div
                   key={i}
-                  className="flex items-center bg-gray-100 text-gray-700 border border-gray-200 rounded-sm px-3 py-1 text-sm"
+                  className="flex items-center bg-yellow-100 text-yellow-700 border border-yellow-200 rounded-xl px-3 py-1 text-sm"
                 >
                   <span>{`${data.firstName} ${data.lastName} - ${data?.roleId?.roleName}`}</span>
                   <button
                     // onClick={() => handleRemoveMember(i)}
-                    className="ml-2 text-gray-500 hover:text-red-500"
+                    className="ml-2 text-yellow-500 hover:text-red-500"
                   >
                     ✖
                   </button>
@@ -81,38 +76,57 @@ const AssignTeamModal = ({
           </div>
 
           <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
-            <SelectField
-              label="Member Type"
-              name="type"
-              value={formData.type}
-              onChange={handleChange}
-              options={[].map((data) => ({
-                label: data,
-                value: data,
-              }))}
-              required
-            />
-            <SelectField
-              label="Members"
-              name="members"
-              value={formData.members}
-              onChange={handleChange}
-              options={[].map((data) => ({
-                label: data,
-                value: data,
-              }))}
-              required
-            />
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Counsellor
+              </label>
+              <select
+                name="counsellor"
+                value={selectedTeam.counsellor}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-[#3F3F46] border-none  bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+              >
+                <option value="">Select Counsellor</option>
+                {getMembersByRole("Counsellor").map((member) => (
+                  <option key={member.id} value={member.id}>
+                    {member.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-medium mb-1">
+                Backend Manager
+              </label>
+              <select
+                name="backendManager"
+                value={selectedTeam.backendManager}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border-none text-[#3F3F46] bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
+              >
+                <option value="">Select Backend Manager</option>
+                {getMembersByRole("Backend Manager").map((member) => (
+                  <option key={member.id} value={member.id}>
+                    {member.name}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-
-          <div className="flex justify-end space-x-2 mt-10">
-            <ModalCloseButton label="Reset" onClick={onClose} />
-
-            {/* <ModalDeleteButton
-                          label=" Cancel Appointment"
-                          onClick={onClose}
-                        /> */}
-            <ModalSubmitButton label="Assign" onClick={handleSave} />
+          <div className="flex justify-end space-x-2 mt-4">
+            <button
+              onClick={onClose}
+              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+            >
+              Reset
+            </button>
+            <button
+              onClick={handleSave}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Assign
+            </button>
           </div>
         </div>
       </div>

@@ -8,8 +8,8 @@ const HomePathwaySection = () => {
   const [hoverOn, setHoverOn] = useState(null);
   return (
     <div>
-      <section className="dark:bg-gray-900 relative  h-full">
-        <div className="py-4 px-4 mx-auto max-w-screen-2xl lg:py-4 lg:px-6 h-[600px] relative z-10 ">
+      <section className="dark:bg-gray-900 relative px-10 mx-auto  h-full">
+        <div className="py-4 px-4 mx-auto max-w-screen-2xl lg:py-4 lg:px-3 h-[600px] relative z-10 ">
           <div className="flex gap-4 h-[70vh]">
             {/* Left Child */}
             <div
@@ -35,14 +35,15 @@ const HomePathwaySection = () => {
                 </h1>
                 {hoverOn === "direct" && isHovered && (
                   <div className="bg-opacity-50 flex items-center justify-center text-white text-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.{" "}
+                    Our Direct Programs are designed to make your study abroad
+                    experience simple and stress-free. We guide you through each
+                    step of the application process to top universities,
+                    ensuring everything goes smoothly. With expert guidance,
+                    personalized assistance, and partnerships with prestigious
+                    international institutions, we ensure you land in the right
+                    program suited to your career goals. Experience the
+                    world-class education you deserve with ease and confidence,
+                    all under the professional guidance of Abroaed.
                   </div>
                 )}
               </div>
@@ -72,14 +73,15 @@ const HomePathwaySection = () => {
                 </h1>
                 {hoverOn === "pathways" && isHovered && (
                   <div className="bg-opacity-50 flex items-center justify-center text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.{" "}
+                    Our Pathways Programs offer you the opportunity to begin
+                    your studies in India and then transfer to top international
+                    universities. With the guidance of our visa overseas
+                    consultant, this flexible study approach makes your
+                    transition easy and cost-effective, allowing you to gain the
+                    benefits of both local and global education. It provides you
+                    with a strong foundation and enhances your career prospects
+                    on the global stage. With Abroaed, you’ll never lose sight
+                    of the right track.
                   </div>
                 )}
               </div>

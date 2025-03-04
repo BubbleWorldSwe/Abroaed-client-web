@@ -12,9 +12,13 @@ import {
   editTeamSuccess,
   editTeamFailure,
   EDIT_TEAM_REQUEST,
+  FETCH_ALL_TEAMS_REQUEST,
+  fetchAllTeamsSuccess,
+  fetchAllTeamsFailure,
 } from "../actions/teamActions";
 
 import {
+  getAllTeams,
   getTeams,
   setAddTeam,
   setDeleteTeam,
@@ -33,6 +37,20 @@ function* fetchTeams(action) {
     toast.error(error.message);
   }
 }
+
+function* fetchAllTeams() {
+  try {
+    const response = yield call(getAllTeams);
+
+    console.log(response.data);
+
+    yield put(fetchAllTeamsSuccess(response.data));
+  } catch (error) {
+    yield put(fetchAllTeamsFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 function* addNewTeam(action) {
   try {
     const response = yield call(setAddTeam, action.payload);
@@ -86,6 +104,7 @@ function* handleEditTeam(action) {
 
 export default function* teamSaga() {
   yield takeLatest(FETCH_TEAMS_REQUEST, fetchTeams);
+  yield takeLatest(FETCH_ALL_TEAMS_REQUEST, fetchAllTeams);
   yield takeLatest(ADD_TEAM_REQUEST, addNewTeam);
   yield takeLatest(DELETE_TEAM_REQUEST, deleteTeam);
   yield takeLatest(EDIT_TEAM_REQUEST, handleEditTeam);

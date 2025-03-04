@@ -16,9 +16,11 @@ import {
   editLeadRequest,
   fetchLeadsRequest,
 } from "../../../redux/actions/leadsActions";
+import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
 
 function Leads() {
   const dispatch = useDispatch();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const { leads, totalPages } = useSelector((state) => state.leads);
@@ -64,6 +66,7 @@ function Leads() {
   async function fetchData() {
     try {
       dispatch(fetchAllDestinationsRequest());
+      dispatch(fetchAllTeamsRequest());
     } catch (error) {
       console.log(error);
     }
@@ -145,6 +148,7 @@ function Leads() {
             mentor: selectedMember?.mentor,
           }}
           onClose={() => setshowTeamModal(false)}
+          filledData={{ assignTeamMembers: selectedMember?.assignTeamMembers }}
         />
       )}
 

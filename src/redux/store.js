@@ -59,7 +59,7 @@ const leadsPersistConfig = {
 
 const rootReducer = {
   auth: persistReducer(authPersistConfig, authReducer),
-  team: teamReducer,
+  teams: teamReducer,
   leads: persistReducer(leadsPersistConfig, leadsReducer),
   destinations: persistReducer(destinationPersistConfig, destnationReducer),
   countries: countriesReducer,

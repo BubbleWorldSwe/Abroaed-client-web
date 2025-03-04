@@ -20,7 +20,7 @@ function Tabs() {
   return (
     <div className="flex flex-col items-start w-full rounded-lg p-8 bg-bal">
       {/* Tabs Row */}
-      <div className="text-4xl  font-extrabold mb-4">
+      <div className="mb-3">
         {/* {tabOptions.map((tab) => (
           <button
             key={tab.value}
@@ -35,7 +35,9 @@ function Tabs() {
             {tab.title}
           </button>
         ))} */}
-        Book Counselling Now
+        <h1 className="text-5xl font-bold  text-black dark:text-white ">
+          Book Counselling Now
+        </h1>
       </div>
 
       <div className="">
@@ -94,8 +96,8 @@ const FormFields = () => (
   <>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <BorderTextInputField label={"First Name"} placeholder="Enter" />
-        <BorderTextInputField label={"Email ID"} placeholder="Enter" />
+        <BorderTextInputField label={"First Name*"} placeholder="Enter" />
+        <BorderTextInputField label={"Email*"} placeholder="Enter" />
         <BorderTextInputField
           label={"Highest Education Qualification"}
           placeholder="Enter"
@@ -106,19 +108,20 @@ const FormFields = () => (
         />
       </div>
       <div>
-        <BorderTextInputField label={"Last Name"} placeholder="Enter" />
-        <BorderTextInputField label={"Contact Number"} placeholder="Enter" />
-
-        <BorderSelectField
-          label={"Preferred Study Level"}
-          options={[
-            { value: "UG", label: "UG" },
-            { value: "PG", label: "PG" },
-            { value: "PhD", label: "PhD" },
-            { value: "Others", label: "Others" },
-          ]}
-          required
-        />
+        <BorderTextInputField label={"Last Name*"} placeholder="Enter" />
+        <BorderTextInputField label={"Contact Number*"} placeholder="Enter" />
+        <div className="my-2">
+          <BorderSelectField
+            label={"Preferred Study Level"}
+            options={[
+              { value: "UG", label: "UG" },
+              { value: "PG", label: "PG" },
+              { value: "PhD", label: "PhD" },
+              { value: "Others", label: "Others" },
+            ]}
+            required
+          />
+        </div>
 
         <BorderSelectField
           label={"Mode of Counselling"}

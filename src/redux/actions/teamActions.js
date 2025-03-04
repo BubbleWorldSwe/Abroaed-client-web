@@ -3,6 +3,10 @@ export const FETCH_TEAMS_REQUEST = "FETCH_TEAMS_REQUEST";
 export const FETCH_TEAMS_SUCCESS = "FETCH_TEAMS_SUCCESS";
 export const FETCH_TEAMS_FAILURE = "FETCH_TEAMS_FAILURE";
 
+export const FETCH_ALL_TEAMS_REQUEST = "FETCH_ALL_TEAMS_REQUEST";
+export const FETCH_ALL_TEAMS_SUCCESS = "FETCH_ALL_TEAMS_SUCCESS";
+export const FETCH_ALL_TEAMS_FAILURE = "FETCH_ALL_TEAMS_FAILURE";
+
 export const ADD_TEAM_REQUEST = "ADD_TEAM_REQUEST";
 export const ADD_TEAM_SUCCESS = "ADD_TEAM_SUCCESS";
 export const ADD_TEAM_FAILURE = "ADD_TEAM_FAILURE";
@@ -27,6 +31,20 @@ export const fetchTeamsSuccess = (data) => ({
 
 export const fetchTeamsFailure = (error) => ({
   type: FETCH_TEAMS_FAILURE,
+  payload: error,
+});
+
+export const fetchAllTeamsRequest = () => ({
+  type: FETCH_ALL_TEAMS_REQUEST,
+});
+
+export const fetchAllTeamsSuccess = (data) => ({
+  type: FETCH_ALL_TEAMS_SUCCESS,
+  payload: data,
+});
+
+export const fetchAllTeamsFailure = (error) => ({
+  type: FETCH_ALL_TEAMS_FAILURE,
   payload: error,
 });
 

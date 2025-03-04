@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png";
 import HomeKpiMatrixCard from "../../components/homeKpiMatrixCard";
-import { teamMembers } from "../../data";
+import { kpiCards } from "../../data";
 
 const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
   return (
@@ -21,7 +21,7 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 overflow-hidden">
-            {teamMembers.map((member, index) => (
+            {kpiCards.map((member, index) => (
               <HomeKpiMatrixCard key={index} {...member} />
             ))}
           </div>

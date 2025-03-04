@@ -17,7 +17,7 @@ const TeamTable = ({
   currentPage,
   onSetEditData,
 }) => {
-  const { teams, totalPages } = useSelector((state) => state.team);
+  const { teams, totalPages } = useSelector((state) => state.teams);
   const [deleteId, setDeleteId] = useState(null);
   const dropdownRef = useRef(null);
   const [dropdownDirection, setDropdownDirection] = useState(null);

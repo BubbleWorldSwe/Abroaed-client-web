@@ -11,9 +11,10 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "flowbite-react";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { formatDateTime } from "../../../utils/helper";
+import { setSelectedLead } from "../../../redux/actions/leadsActions";
 
 const LeadTable = ({
   handleAssignTeamMember,
@@ -28,11 +29,17 @@ const LeadTable = ({
   handleDelete,
   onUpdate,
 }) => {
+  const dispatch = useDispatch();
   const { leads, totalPages } = useSelector((state) => state.leads);
 
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+
+  const handleViewDetails = (lead) => {
+    dispatch(setSelectedLead(lead));
+    navigate(`/admin/leads/${encodeURIComponent(lead?._id)}`, { state: lead });
+  };
 
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
@@ -195,11 +202,7 @@ const LeadTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={() =>
-                              navigate(
-                                `/admin/leads/${encodeURIComponent(lead?.name)}`
-                              )
-                            }
+                            onClick={() => handleViewDetails(lead)}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <Eye className="w-4 h-4" />
