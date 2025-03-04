@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function BorderSelectField({
   label,
   name,
@@ -7,7 +8,7 @@ export function BorderSelectField({
   required,
 }) {
   return (
-    <div className="my-5">
+    <div className="">
       <label className="block text-sm font-medium text-gray-700 mb-1">
         {label}
       </label>

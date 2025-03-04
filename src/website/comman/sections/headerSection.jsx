@@ -91,7 +91,7 @@ function Header() {
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
-        <nav className="flex items-center w-full px-6 py-4">
+        <nav className="flex items-center   justify-center w-full px-12 py-4">
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <span

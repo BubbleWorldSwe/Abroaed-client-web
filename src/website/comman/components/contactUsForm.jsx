@@ -7,13 +7,11 @@ const ContactUsForm = () => {
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}
           <div className="lg:w-3/5 px-4 py-4 flex flex-col justify-center">
-            <h1 className="text-[45px] font-black text-black leading-tight tracking-wide">
-              Need Help?
+            <h1 className="text-[45px] font-black max-w-xl text-black leading-tight tracking-wide">
+              Book your counseling session today!
             </h1>
-
             <p className="mt-3 md:mt-6 text-lg leading-6 text-gray-500 tracking-wide font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              tristique felis non odio accumsan laoreet.
+              Our specialised home counseling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today.
             </p>
           </div>
 
