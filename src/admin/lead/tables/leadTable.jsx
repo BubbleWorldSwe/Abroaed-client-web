@@ -123,11 +123,11 @@ const LeadTable = ({
                 <td className="px-4 py-3">
                   <span
                     className={`font-medium p-2 rounded ${
-                      lead?.status === "Nurture"
+                      lead?.status?.toLowerCase() === "nurture"
                         ? "bg-[#FDF6B2] text-[#723B13]"
-                        : lead?.status === "Converted"
+                        : lead?.status?.toLowerCase() === "converted"
                         ? "bg-[#DEF7EC] text-[#03543F]"
-                        : lead?.status === "Lost"
+                        : lead?.status?.toLowerCase() === "lost"
                         ? "bg-[#FDE8E8] text-[#9B1C1C]"
                         : "bg-gray-200"
                     }`}
@@ -141,7 +141,7 @@ const LeadTable = ({
                       ? `${
                           lead?.scheduleDetails?.appointmentType
                         } at ${formatDateTime(
-                          lead?.appointment?.preferredSlot
+                          lead?.scheduleDetails?.preferredSlot
                         )}`
                       : "To be Scheduled"}
                   </span>

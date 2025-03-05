@@ -18,6 +18,7 @@ import {
   fetchLeadsRequest,
 } from "../../../redux/actions/leadsActions";
 import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
+import { getRoles } from "../../../api/api";
 
 function Leads() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function Leads() {
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const [rolesList, setRolesList] = useState([]);
+
   console.log(" SelectedMember");
   console.log(selectedMember);
 
@@ -68,6 +72,11 @@ function Leads() {
     try {
       dispatch(fetchAllDestinationsRequest());
       dispatch(fetchAllTeamsRequest());
+      const list = await getRoles();
+
+      if (list.status === 200) {
+        setRolesList(list.data.result);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -150,6 +159,7 @@ function Leads() {
           }}
           onClose={() => setshowTeamModal(false)}
           filledData={{ assignTeamMembers: selectedMember?.assignTeamMembers }}
+          rolesList={rolesList}
         />
       )}
 
@@ -158,6 +168,10 @@ function Leads() {
           leadId={selectedMember?._id}
           onClose={() => setshowAppointmentModal(false)}
           onUpdate={onUpdate}
+          filledData={{
+            appointmentType: selectedMember?.scheduleDetails?.appointmentType,
+            preferredSlot: selectedMember?.scheduleDetails?.preferredSlot,
+          }}
         />
       )}
       {showUpdateModal && (

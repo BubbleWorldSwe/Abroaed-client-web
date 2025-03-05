@@ -10,14 +10,17 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { ModalDeleteButton } from "../../../commons/components/buttons/modalDeleteButton";
 import { toast } from "react-toastify";
+import moment from "moment";
 
-const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
+const AppointmentModal = ({ leadId, onClose, onUpdate, filledData }) => {
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
-  const [formData, setFormData] = useState({
-    appointmentType: "",
-    preferredSlot: "",
-  });
+  const [formData, setFormData] = useState(
+    filledData || {
+      appointmentType: "",
+      preferredSlot: "",
+    }
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,12 +35,23 @@ const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
       return;
     }
 
-    console.log(formData);
-    onUpdate({ scheduleDetails: formData }, leadId);
+    const formattedData = {
+      ...formData,
+      preferredSlot: moment(formData.preferredSlot, "YYYY-MM-DDTHH:mm")
+        .utc()
+        .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
+    };
+
+    //console.log("Updated Data:", formattedData);
+
+    onUpdate({ scheduleDetails: formattedData }, leadId);
 
     // setConfirmModalOpen(true);
     // dispatch(scheduleAppointment({ id: leadId, appointmentData }));
   };
+
+  console.log(formData);
+  console.log(formData?.appointmentType);
 
   return (
     <>
@@ -70,13 +84,18 @@ const AppointmentModal = ({ leadId, onClose, onUpdate }) => {
                 label="Preferred Slot"
                 name="preferredSlot"
                 type="datetime-local"
-                value={formData?.preferredSlot}
+                // value={formData?.preferredSlot}
+                value={
+                  formData?.preferredSlot
+                    ? moment(formData.preferredSlot).format("YYYY-MM-DDTHH:mm")
+                    : ""
+                }
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="flex justify-end space-x-2">
-              <ModalCloseButton label="Reset" onClick={onClose} />
+              <ModalCloseButton label="Close" onClick={onClose} />
 
               {/* <ModalDeleteButton
                 label=" Cancel Appointment"

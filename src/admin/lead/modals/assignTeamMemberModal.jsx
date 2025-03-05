@@ -14,6 +14,8 @@ const AssignTeamModal = ({
   team = {},
   onClose,
   filledData,
+  rolesList,
+  onUpdate,
 }) => {
   const { allTeams } = useSelector((state) => state.teams);
 
@@ -74,7 +76,7 @@ const AssignTeamModal = ({
                 </div>
               ))
             ) : (
-              <p className="text-sm text-gray-700">
+              <p className="text-sm text-gray-700 font-bold">
                 No members assigned. Assign below
               </p>
             )}
@@ -86,9 +88,9 @@ const AssignTeamModal = ({
               name="type"
               value={formData.type}
               onChange={handleChange}
-              options={[].map((data) => ({
-                label: data,
-                value: data,
+              options={rolesList?.map((data) => ({
+                label: data?.roleName,
+                value: data?._id,
               }))}
               required
             />
@@ -106,7 +108,7 @@ const AssignTeamModal = ({
           </div>
 
           <div className="flex justify-end space-x-2 mt-10">
-            <ModalCloseButton label="Reset" onClick={onClose} />
+            <ModalCloseButton label="Close" onClick={onClose} />
 
             {/* <ModalDeleteButton
                           label=" Cancel Appointment"

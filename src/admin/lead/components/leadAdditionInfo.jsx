@@ -3,7 +3,7 @@ import pencil from "../../../assets/pencil.png";
 import UpdateLeadAdditionInfo from "../modals/updateLeadAdditionInfoModal";
 import { useState } from "react";
 
-const LeadAdditionInfo = () => {
+const LeadAdditionInfo = ({ onOpenModal }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
   const [openModal, setOpenModal] = useState(false);
   const handleCloseAddModal = () => {
@@ -11,7 +11,6 @@ const LeadAdditionInfo = () => {
   };
   const handleOpenAddModal = () => {
     setOpenModal(true);
-
   };
 
   return (
@@ -26,7 +25,7 @@ const LeadAdditionInfo = () => {
             Additional Information
           </h2>
           <button
-            onClick={handleOpenAddModal}
+            onClick={onOpenModal}
             className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"
           >
             <img

@@ -7,6 +7,7 @@ import { planType, servicerType } from "../../../constants/values";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 
 const statusList = [
   {
@@ -36,26 +37,57 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
       planType: "",
       billableAmount: "",
       status: "",
+      remarks: "",
     }
+  );
+
+  const isPlanTypeEnabled = ["ABROAED Plus", "ABROAED LOE"].includes(
+    formData.servicerType
   );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+      ...(name === "servicerType" && !isPlanTypeEnabled
+        ? { planType: "", billableAmount: "" }
+        : {}),
+    }));
   };
 
   const handleStatusSelect = (status) => {
-    setFormData((prev) => ({ ...prev, status }));
+    setFormData({
+      status,
+      servicerType: "",
+      planType: "",
+      billableAmount: "",
+      remarks: "",
+    });
   };
 
   const handleSubmit = () => {
-    if (
-      !formData.status ||
-      !formData.servicerType ||
-      !formData.planType ||
-      !formData.billableAmount
-    ) {
-      toast.error("Please fill in all fields before updating the lead status.");
+    if (!formData.status) {
+      toast.error("Please select a status.");
+      return;
+    }
+
+    if (formData.status === "Converted") {
+      if (!formData.servicerType) {
+        toast.error("Please select a service type.");
+        return;
+      }
+      if (
+        isPlanTypeEnabled &&
+        (!formData.planType || !formData.billableAmount)
+      ) {
+        toast.error("Please fill in all required fields.");
+        return;
+      }
+    }
+
+    if (formData.status === "Lost" && !formData.remarks) {
+      toast.error("Please provide remarks for a lost lead.");
       return;
     }
 
@@ -65,7 +97,7 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-      <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
+      <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-1/2 relative">
         <button
           className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
           onClick={onClose}
@@ -77,15 +109,14 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
         <h5 className="block text-sm font-medium text-gray-700 mb-2">
           Update To
         </h5>
-
-        <div className="flex justify-between w-1/3">
+        <div className="flex space-x-3">
           {statusList.map(({ label, bg, text, border }) => (
             <span
               key={label}
               className={`text-sm rounded-md px-3 py-1 cursor-pointer border ${border} ${bg} ${text} ${
-                formData.status === label
+                formData.status?.toLowerCase() === label.toLowerCase()
                   ? "font-semibold border-1"
-                  : `border-0`
+                  : "border-0"
               }`}
               onClick={() => handleStatusSelect(label)}
             >
@@ -93,45 +124,64 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
             </span>
           ))}
         </div>
-        <div className="grid mt-5 mb-10 grid-cols-1 gap-4 lg:grid-cols-3">
-          <SelectField
-            label="Service Type"
-            name="servicerType"
-            value={formData.servicerType}
-            onChange={handleChange}
-            options={servicerType.map((data) => ({
-              label: data,
-              value: data,
-            }))}
-            required
-          />
-          <SelectField
-            label="Plan Type"
-            name="planType"
-            value={formData.planType}
-            onChange={handleChange}
-            options={planType.map((data) => ({
-              label: data,
-              value: data,
-            }))}
-            required
-          />
-          <TextInputField
-            label=" Billable Amount (INR)"
-            name="billableAmount"
-            value={formData?.billableAmount}
-            onChange={handleChange}
-            required
-          />
-        </div>
 
-        <div className="flex justify-end space-x-2">
-          <ModalCloseButton label="Reset" onClick={onClose} />
+        {formData.status === "Converted" && (
+          <div className="mt-5">
+            <SelectField
+              label="Service Type"
+              name="servicerType"
+              value={formData.servicerType}
+              onChange={handleChange}
+              options={servicerType.map((data) => ({
+                label: data,
+                value: data,
+              }))}
+              required
+            />
+            <div className="grid mt-5 grid-cols-1 gap-4 lg:grid-cols-2">
+              {isPlanTypeEnabled && (
+                <>
+                  <SelectField
+                    label="Plan Type"
+                    name="planType"
+                    value={formData.planType}
+                    onChange={handleChange}
+                    options={planType.map((data) => ({
+                      label: data,
+                      value: data,
+                    }))}
+                    required={isPlanTypeEnabled}
+                    disabled={!isPlanTypeEnabled}
+                  />
 
-          {/* <ModalDeleteButton
-                              label=" Cancel Appointment"
-                              onClick={onClose}
-                            /> */}
+                  <TextInputField
+                    label="Billable Amount (INR)"
+                    name="billableAmount"
+                    value={formData.billableAmount}
+                    onChange={handleChange}
+                    required={isPlanTypeEnabled}
+                    disabled={!isPlanTypeEnabled}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+        )}
+
+        {formData.status === "Lost" && (
+          <div className="mt-5">
+            <TextareaInputField
+              label="Remarks"
+              name="remarks"
+              value={formData.remarks}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        )}
+
+        <div className="flex justify-end space-x-2 mt-10">
+          <ModalCloseButton label="Close" onClick={onClose} />
           <ModalSubmitButton label="Update" onClick={handleSubmit} />
         </div>
       </div>

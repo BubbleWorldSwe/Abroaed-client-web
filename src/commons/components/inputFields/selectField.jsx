@@ -5,6 +5,7 @@ export function SelectField({
   onChange,
   options,
   required,
+  disabled,
 }) {
   return (
     <div>
@@ -15,11 +16,12 @@ export function SelectField({
         value={value}
         onChange={onChange}
         required={required}
+        disabled={disabled}
       >
         <option value="" className="text-gray-400">
           Select
         </option>
-        {options.map((data, i) => (
+        {options?.map((data, i) => (
           <option key={i} value={data.value}>
             {data.label}
           </option>
