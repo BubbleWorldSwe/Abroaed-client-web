@@ -9,7 +9,7 @@ import CareerContentSection from "./sections/careerContentSection";
 
 function CareerPage() {
   return (
-    <div>
+    <div className="font-rethink">
       <Header />
       <CareerHeroSections />
       <CareerContentSection />

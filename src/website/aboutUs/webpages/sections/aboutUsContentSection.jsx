@@ -1,34 +1,8 @@
-/* eslint-disable react/prop-types */
 
+import CardComponent from "../../components/cardComponent";
 import { aboutUs } from "../../data";
 
 function AboutUsContentSection() {
-
-
-  const TextComponent = ({ text, heading }) => (
-    <div>
-      <h2 className="text-3xl font-bold mb-4">{heading}</h2>
-      <p className="text-gray-700">{text}</p>
-    </div>
-  );
-
-  const ImageComponent = ({ imgFirst, imgUrl }) => (
-    <div className={`flex ${imgFirst ? "justify-start" : "justify-end"} `}>
-      <img
-        src={imgUrl}
-        alt="Night Scene"
-        className="w-4/5 rounded-lg shadow-lg"
-      />
-    </div>
-  );
-
-  const CardSection = ({ imgFirst, text, heading, imgUrl }) => (
-    <div className="grid md:grid-cols-2 gap-10 mt-14 items-center justify-center">
-      {imgFirst && <ImageComponent imgFirst={imgFirst} imgUrl={imgUrl} />}
-      <TextComponent text={text} heading={heading} />
-      {!imgFirst && <ImageComponent imgFirst={imgFirst} imgUrl={imgUrl} />}
-    </div>
-  );
 
   return (
     <div>
@@ -67,7 +41,7 @@ function AboutUsContentSection() {
           </div> */}
           <div className="mt-2 px-10 mx-auto">
             {aboutUs.map((item, index) => (
-              <CardSection key={index} {...item} />
+              <CardComponent key={index} {...item} />
             ))}
           </div>
         </div>

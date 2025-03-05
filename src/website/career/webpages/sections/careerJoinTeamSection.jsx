@@ -3,14 +3,12 @@
 function CareerJoinTeam() {
     return (
         <div>
-            <div className="mt-2 py-8 flex flex-col gap-2 mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
+            <div className="mt-2 py-8 flex flex-col gap-2 mx-auto max-w-screen-2xl px-14  bg-white dark:bg-gray-900">
                 <header className="mb-4 flex flex-col gap-3 lg:mb-6 not-format">
                     <h1 className=" text-3xl font-extrabold leading-tight text-gray-900  lg:text-4xl dark:text-white">
-                        Why you should join our awesome team!
-                    </h1>
+                        Why you should join our awesome team                    </h1>
                     <h2 className=" text-lg leading-tight text-gray-500   dark:text-white">
-                        Consectetur consectetur nulla aute aliquip ad tempor consequat minim laborum aliquip amet.
-                    </h2>
+                        We want to feel like home when you are working at Abroaed & for that we have curated a great set of benefits for you.                    </h2>
                 </header>
                 <div className="flex gap-3">
                     <div

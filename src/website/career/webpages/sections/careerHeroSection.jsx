@@ -3,8 +3,8 @@ import blobImage from "../../../../assets/Vector.png";
 
 function CareerHeroSections() {
   return (
-    <div>
-      <section className="relative bg-white dark:bg-gray-900 overflow-hidden">
+    <div className="pt-20 mt-10">
+      <section className="relative bg-white  dark:bg-gray-900 ">
         {/* Background Image */}
         <div className="absolute top-0 left-[-100px] z-0">
           <img
@@ -13,19 +13,12 @@ function CareerHeroSections() {
             className="w-full opacity-100"
           />
         </div>
-
-        <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-xl lg:px-12 sm:text-center lg:py-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-black dark:text-white">
+        <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-2xl lg:px-12 sm:text-center lg:py-16 ">
+          <h2 className="mb-4 text-5xl  font-extrabold text-black dark:text-white">
             Work At Abroaed
           </h2>
-          <p className="font-light text-gray-800 sm:text-lg md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
-            Veniam amet anim sint ipsum consectetur. Ut culpa Lorem Lorem dolor
-            ipsum. Qui do officia ea nostrud anim consequat sunt. Aliquip cillum
-            pariatur aliqua cupidatat eu. Velit pariatur eu ipsum culpa in ex
-            minim tempor eu mollit mollit deserunt nisi. Eu qui voluptate irure
-            dolore est adipisicing deserunt reprehenderit minim aute consectetur
-            elit. Laboris consequat aliqua excepteur voluptate ex amet esse sint
-            reprehenderit nulla fugiat anim excepteur.
+          <p className="font-bold text-lg text-gray-700  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
+            Get a glimpse of what it’d be like working at Abroaed! We value both, work & fun!
           </p>
           <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:mt-12">
             <img
