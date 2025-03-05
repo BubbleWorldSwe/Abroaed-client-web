@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import image from "../../../../assets/dark.png";
 
 function AboutUsHeroSection() {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
 import filter_list from "../../../assets/filter_list.png";
