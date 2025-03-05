@@ -122,7 +122,7 @@ function DestinationPage() {
             destinationDetails={destinationDetails}
           />
         )}
-        <div className="absolute -bottom-44 left-0 z-0">
+        <div className="absolute -bottom-44 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorDownNose}
@@ -145,7 +145,7 @@ function DestinationPage() {
           />
         )}
 
-        <div className="absolute bottom-0 left-0 z-0">
+        <div className="absolute bottom-0 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorRightNoseCurve}
@@ -157,7 +157,7 @@ function DestinationPage() {
         <DestinationWorkOpportunitiesSection
           destinationDetails={destinationDetails}
         />
-        <div className="absolute top-0 right-0 z-0">
+        <div className="absolute top-0 right-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorBelow}
@@ -179,7 +179,7 @@ function DestinationPage() {
 
       <div className="relative">
         <Testimonials />
-        <div className="absolute top-64 left-48 z-0">
+        <div className="absolute top-64 left-48 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorNoseRightToLeft}

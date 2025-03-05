@@ -41,7 +41,7 @@ const Testimonials = () => {
     );
   };
   return (
-    <section className=" dark:bg-gray-900 relative z-20 px-10 mx-auto">
+    <section className=" dark:bg-gray-900 relative  px-10 mx-auto">
       <div className="py-14 px-4 mx-auto max-w-screen-2xl  lg:px-3">
         <div className=" max-w-screen-sm text-start mb-4 lg:mb-10 ">
           <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">

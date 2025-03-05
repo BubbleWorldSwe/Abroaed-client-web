@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import LeadAdditionInfo from "../components/leadAdditionInfo";
 import LeadAssignTeam from "../components/leadAssignTeam";
 import LeadDocumentLibrary from "../components/leadDocumentLibrary";
@@ -9,7 +9,7 @@ import LeadScheduleAppointment from "../components/leadScheduleAppointment";
 import { useSelector } from "react-redux";
 
 const LeadProfileLayout = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
 

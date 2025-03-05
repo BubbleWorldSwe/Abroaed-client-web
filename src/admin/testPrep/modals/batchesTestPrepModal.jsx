@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";

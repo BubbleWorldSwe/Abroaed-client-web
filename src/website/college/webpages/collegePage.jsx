@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
@@ -85,7 +86,7 @@ function CollegePage() {
           <CollegeCourseOfferSection collegeDetails={collegeDetails} />
         )}
 
-        <div className="absolute top-0 -right-10 z-0">
+        <div className="absolute top-0 right-0  z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorleftNose}
@@ -98,7 +99,7 @@ function CollegePage() {
           <CollegeScholarshipSection collegeDetails={collegeDetails} />
         )}
 
-        <div className="absolute -top-60 left-0 z-0">
+        <div className="absolute top-16 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorDownNose}
@@ -125,7 +126,6 @@ function CollegePage() {
       {collegeDetails?.faqSchema.length > 0 && (
         <CollegeFaqSection collegeDetails={collegeDetails} />
       )}
-
       <Testimonials />
       <Blogs />
       <ContactUsForm />

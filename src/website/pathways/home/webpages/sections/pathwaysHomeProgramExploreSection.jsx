@@ -5,11 +5,11 @@ const PathwayHomeProgramExplore = () => {
         <div className="relative mx-auto px-10 ">
             <div className="mx-auto w-full px-2 my-10 max-w-screen-2xl relative z-10">
                 <section className="dark:bg-gray-900">
-                    <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+                    <h2 className=" text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                         Explore Top Programs
                     </h2>
                     <div className="py-10">
-                        <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-3">
+                        <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
                             {Array(3).fill().map((_, index) => (
                                 <div
                                     key={index}

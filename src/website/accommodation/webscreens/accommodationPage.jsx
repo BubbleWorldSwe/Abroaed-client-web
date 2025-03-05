@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import AccommodationHeroSection from "./sections/accommodationHeroSection";
 import AccommodationResultForCountry from "./sections/accomodationResultForCountry";
 import Header from "../../comman/sections/headerSection";

@@ -16,9 +16,8 @@ const DropdownMenu = ({
     <li>
       <button
         onClick={() => toggleDropdown(stateKey)}
-        className={`font-medium flex items-center gap-1 ${
-          scrolling ? "text-black" : "text-white"
-        }`}
+        className={`font-medium flex items-center gap-1 ${scrolling ? "text-black" : "text-white"
+          }`}
       >
         {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
       </button>
@@ -80,17 +79,15 @@ function Header() {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling
-          ? "bg-white text-black shadow-md"
-          : "bg-black text-white bg-opacity-20"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling
+        ? "bg-white text-black shadow-md"
+        : "bg-black text-white bg-opacity-20"
+        }`}
     >
       <nav>
         <div
-          className={`py-3 text-center font-inter text-sm ${
-            scrolling ? "bg-yellow-300 text-black" : "bg-yellow-300 text-white"
-          }`}
+          className={`py-3 text-center font-inter text-sm ${scrolling ? "bg-yellow-300 text-black" : "bg-yellow-300 text-white"
+            }`}
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
@@ -98,9 +95,8 @@ function Header() {
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <span
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
-                  scrolling ? "text-black" : "text-white"
-                }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling ? "text-black" : "text-white"
+                  }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </span>
@@ -112,9 +108,8 @@ function Header() {
                 <li>
                   <a
                     href="/home"
-                    className={`font-medium ${
-                      scrolling ? "text-black" : "text-white"
-                    }`}
+                    className={`font-medium ${scrolling ? "text-black" : "text-white"
+                      }`}
                   >
                     Home
                   </a>
@@ -169,9 +164,8 @@ function Header() {
                 <li>
                   <a
                     href="/finance"
-                    className={`font-medium ${
-                      scrolling ? "text-black" : "text-white"
-                    }`}
+                    className={`font-medium ${scrolling ? "text-black" : "text-white"
+                      }`}
                   >
                     Finance
                   </a>
@@ -179,9 +173,8 @@ function Header() {
                 <li>
                   <a
                     href="/pathways"
-                    className={`font-medium ${
-                      scrolling ? "text-black" : "text-white"
-                    }`}
+                    className={`font-medium ${scrolling ? "text-black" : "text-white"
+                      }`}
                   >
                     Pathways
                   </a>
@@ -197,9 +190,8 @@ function Header() {
           <div className="flex flex-grow-0 basis-[10%] justify-end">
             <a
               href="/admin/signin"
-              className={`text-sm font-medium ${
-                scrolling ? "text-black" : "text-white"
-              } hover:underline`}
+              className={`text-sm font-medium ${scrolling ? "text-black" : "text-white"
+                } hover:underline`}
             >
               Login
             </a>

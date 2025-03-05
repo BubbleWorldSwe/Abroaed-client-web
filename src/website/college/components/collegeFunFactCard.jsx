@@ -5,14 +5,14 @@ const CollegeFunFactCard = ({ icon, title, desc }) => {
     return (
         <>
             <div
-                className="flex md:w-[427px] sm:min-w-max bg-black relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800"
+                className="flex w-full  bg-black  relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800"
             >
                 <div
                     className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  pointer-events-none"
                     style={{
                         left: "auto", // Ensure it starts from the right edge
                         right: 0, // Anchor the gradient to the right
-                        width: "70%", // Adjust the width of the gradient area
+                        width: "100%", // Adjust the width of the gradient area
                         height: "100%", // Full height to cover the parent div
                     }}
                 ></div>

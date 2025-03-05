@@ -2,19 +2,21 @@
 
 const FinanceLeadFromSection = () => {
     return (
-        <section className=" relative isolate overflow-hidden z-10 px-10 mx-auto">
+        <section className=" relative isolate overflow-hidden z-10 px-6 mx-auto">
             <div className="py-8 px-4 mx-auto  max-w-screen-2xl lg:py-24 dark:bg-gray-800 antialiased  relative z-20">
-                <div className="flex justify-between gap-5 lg:gap-12">
+                <div className="grid grid-cols-2  gap-5 ">
                     <div className="px-4 py-4 flex flex-col items-start justify-center">
                         <h1 className="md:text-7xl text-xl  text-black font-bold leading-6 tracking-wide">
-                            Lorem Ipsum Dolor.
-                            Need Help?
+                            Keen to know more?
+
                         </h1>
                         <p className=" mt-3 md:mt-6 text-lg leading-6 text-gray-500 tracking-wide  font-medium">
-                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet.
+                            Schedule your counseling session today
+                            Our specialized home counseling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today.
+
                         </p>
                     </div>
-                    <div className="px-4 py-4 md:pt-5 max-w-md  ">
+                    <div className="px-4 py-4 md:pt-5 ">
                         <form className="max-w-sm mx-auto">
                             <div className="mb-5">
                                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name*</label>

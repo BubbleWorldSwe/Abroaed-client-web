@@ -3,18 +3,18 @@ import image from "../../../assets/dark.png";
 export const steps = [
     {
         step: 1,
-        heading: "Lorem Ipsum Dolor",
-        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."
+        heading: "Academic and language preparation",
+        description: "Pathways programs begin with academic and English skills preparation to ensure you are adequately prepared for university studies abroad. There will be support in specific subjects, such as math, science, or business, in addition to language courses if required. This provides some confidence and opportunities for preparation for university-level studies abroad."
     },
     {
         step: 2,
-        heading: "Lorem Ipsum Dolor",
-        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi."
+        heading: "Cultural and Personal Orientation",
+        description: "There are cultural immersion activities in the program where you would learn about the customs, values, and practicalities of living in a foreign land. In addition, personal development workshops and career counseling are given to help students grow both academically and professionally, hence easing the transition process."
     },
     {
         step: 3,
-        heading: "Lorem Ipsum Dolor",
-        description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
+        heading: "Placement in University and Continuing Support",
+        description: "Once you complete the pathway program successfully, you'll be guaranteed entry into a partner university's degree program. There'll also be continuous guidance during this time to ensure you stay on track, helping you smoothly transition into your chosen academic path and life abroad.",
     },
 ];
 

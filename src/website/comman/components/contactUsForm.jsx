@@ -2,7 +2,7 @@ import { BorderTextInputField } from "../../../commons/components/inputFields/bo
 
 const ContactUsForm = () => {
   return (
-    <section className="relative isolate overflow-hidden z-10 px-10 mx-auto">
+    <section className="relative isolate overflow-hidden  px-10 mx-auto">
       <div className="py-2 px-3 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}

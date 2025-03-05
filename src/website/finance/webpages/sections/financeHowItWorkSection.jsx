@@ -13,22 +13,10 @@ function FinanceHowItWorks() {
                 How It Works?
               </h2>
               <p className="mb-4 font-light">
-                Track work across the enterprise through an open, collaborative
-                platform. Link issues across Jira and ingest data from other
-                software development tools, so your IT support and operations
-                teams have richer contextual information to rapidly respond to
-                requests, incidents, and changes.
-              </p>
-              <p className="mb-4 font-medium">
-                Deliver great service experiences fast - without the complexity of
-                traditional ITSM solutions. Accelerate critical development work,
-                eliminate toil, and deploy changes with ease.
-                Deliver great service experiences fast - without the complexity of
-                traditional ITSM solutions. Accelerate critical development work,
-                eliminate toil, and deploy changes with ease.
+                Studying abroad can feel like a huge deal when it comes to managing your finances, but Abroad Consultancy is here to help break it down and make it easier. We assist you through the simple three-step process so you&apos;re fully equipped with financial preparations for your study abroad. Understand your financial requirements, and best available funding options, and ensure that you feel comfortable with your financial planning. With our aid, you can concentrate on your academics while we manage all the necessary bookkeeping.
               </p>
             </div>
-            <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
+            <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3 py-5">
               {steps.map((step) => (
                 <div
                   key={step.step}
