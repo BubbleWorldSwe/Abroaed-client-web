@@ -2,8 +2,8 @@
 function AboutUsOurTeam() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900 antialiased">
-        <div className="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
+      <section className="bg-white dark:bg-gray-900 antialiased px-6 mx-auto">
+        <div className="max-w-screen-2xl px-4 py-2 mx-auto lg:px-6 sm:py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-gray-900 sm:text-4xl dark:text-white">
               Our people make us great

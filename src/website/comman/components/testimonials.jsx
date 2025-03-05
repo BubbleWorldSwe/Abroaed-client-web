@@ -6,7 +6,7 @@ import testimonialImg from "../../../assets/testimonialImg.png";
 const Testimonials = () => {
   const TestimonialsCard = ({ article }) => {
     return (
-      <div className="max-w-full  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="max-w-full   bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="relative h-[300px]">
           <a href="#">
             <img
@@ -42,12 +42,12 @@ const Testimonials = () => {
   };
   return (
     <section className=" dark:bg-gray-900 relative z-20 px-10 mx-auto">
-      <div className="py-8 px-4 mx-auto max-w-screen-2xl lg:py-8 lg:px-3">
-        <div className=" max-w-screen-sm text-start mb-4 lg:mb-16 ">
+      <div className="py-14 px-4 mx-auto max-w-screen-2xl  lg:px-3">
+        <div className=" max-w-screen-sm text-start mb-4 lg:mb-10 ">
           <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
             100+ Success Stories
           </p>
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <h2 className=" text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             Lorem Ipsum, Dolor Sit
           </h2>
         </div>

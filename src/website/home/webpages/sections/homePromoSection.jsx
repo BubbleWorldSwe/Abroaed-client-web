@@ -14,7 +14,7 @@ function HomePromoSection() {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto h-full">
-        <div className="py-10 px-4 mx-auto max-w-screen-2xl  lg:px-3  z-10">
+        <div className="py-16 px-4 mx-auto max-w-screen-2xl  lg:px-3  z-10">
           <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  ">
             {/* Left Side: Text and Image */}
             <div className="flex flex-col gap-3 justify-center">

@@ -3,10 +3,10 @@ import { BorderTextInputField } from "../../../commons/components/inputFields/bo
 const ContactUsForm = () => {
   return (
     <section className="relative isolate overflow-hidden z-10 px-10 mx-auto">
-      <div className="py-2 px-4 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
+      <div className="py-2 px-3 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}
-          <div className="lg:w-3/5 px-4 py-4 flex flex-col justify-center">
+          <div className="lg:w-3/5  py-4 flex flex-col justify-center">
             <h1 className="text-[45px] font-black max-w-xl text-black leading-tight tracking-wide">
               Book your counseling session today!
             </h1>
