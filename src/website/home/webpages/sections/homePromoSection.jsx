@@ -22,7 +22,7 @@ function HomePromoSection() {
               <h1 className="text-5xl font-bold  text-black dark:text-white ">
                 Need Clarifications on Your Study Abroad Plans?
               </h1>
-              <p className="text-[#52525B] font-semibold text-base">
+              <p className="text-[#52525B] font-medium text-[16px">
                 Our study abroad consultants will reach out to you and guide you
                 through every step of the application process and document
                 preparation, allowing you to focus on what matters most while we
@@ -36,8 +36,8 @@ function HomePromoSection() {
                   alt="Counselling session"
                 />
               </div>
-              <div className="flex justify-center text-center">
-                <button className="py-2 px-3 border-2 rounded-lg  border-[#27272A] text-[#71717A]">
+              <div className="flex justify-center text-center mt-5">
+                <button className="py-2 px-5 border-2 rounded-lg font-semibold border-[#27272A] text-[#71717A]">
                   Learn About Home Counselling
                 </button>
               </div>

@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
-
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 
 const CollegeCourseCard = ({ course }) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col justify-between ">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
+      <div className="flex flex-col flex-grow">
         <div>
           <div className="flex justify-between">
             <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
@@ -46,10 +44,14 @@ const CollegeCourseCard = ({ course }) => {
           <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
             <strong>Intake:</strong> {course.intake}
           </p>
-          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {course.brief}
-          </p>
         </div>
+
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow">
+          {course.brief}
+        </p>
+      </div>
+
+      <div className="mt-auto">
         <EnquireButton />
       </div>
     </div>

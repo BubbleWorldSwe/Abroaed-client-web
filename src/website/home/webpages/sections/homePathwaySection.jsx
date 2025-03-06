@@ -7,7 +7,7 @@ const HomePathwaySection = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [hoverOn, setHoverOn] = useState(null);
   return (
-    <div>
+    <div className="my-10">
       <section className="dark:bg-gray-900 relative px-10 mx-auto  h-full">
         <div className="py-4 px-4 mx-auto max-w-screen-2xl lg:py-4 lg:px-3 h-[600px] relative z-10 ">
           <div className="flex gap-4 h-[70vh]">
@@ -96,6 +96,7 @@ const HomePathwaySection = () => {
           />
         </div>
       </section>
+      <div className="h-[35px]"></div>
     </div>
   );
 };

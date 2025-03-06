@@ -14,6 +14,10 @@ export const EDIT_LEAD_REQUEST = "EDIT_LEAD_REQUEST";
 export const EDIT_LEAD_SUCCESS = "EDIT_LEAD_SUCCESS";
 export const EDIT_LEAD_FAILURE = "EDIT_LEAD_FAILURE";
 
+export const EDIT_STUDENT_REQUEST = "EDIT_STUDENT_REQUEST";
+export const EDIT_STUDENT_SUCCESS = "EDIT_STUDENT_SUCCESS";
+export const EDIT_STUDENT_FAILURE = "EDIT_STUDENT_FAILURE";
+
 export const SET_SELECTED_LEAD = "SET_SELECTED_LEAD";
 
 // Fetch Leads
@@ -77,6 +81,22 @@ export const editLeadSuccess = (editedLead) => ({
 
 export const editLeadFailure = (error) => ({
   type: EDIT_LEAD_FAILURE,
+  payload: error,
+});
+
+// Edit Student
+export const editStudentRequest = (id, leadData) => ({
+  type: EDIT_STUDENT_REQUEST,
+  payload: { id, leadData },
+});
+
+export const editStudentSuccess = (editedLead) => ({
+  type: EDIT_STUDENT_SUCCESS,
+  payload: editedLead,
+});
+
+export const editStudentFailure = (error) => ({
+  type: EDIT_STUDENT_FAILURE,
   payload: error,
 });
 

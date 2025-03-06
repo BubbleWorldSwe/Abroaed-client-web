@@ -1,49 +1,57 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { teamMembers } from "../../student/data";
-import ConfirmModal from "../../../commons/modal/confirmModal";
-import { useSelector } from "react-redux";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { toast } from "react-toastify";
 
 const AssignTeamModal = ({
   leadId,
-  leadName,
-  team = {},
   onClose,
   filledData,
   rolesList,
   onUpdate,
+  membersList,
+  setMembersList,
 }) => {
-  const { allTeams } = useSelector((state) => state.teams);
-
-  console.log(allTeams);
-  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
-  const [selectedTeam, setSelectedTeam] = useState({
-    counsellor: "",
-    backendManager: "",
-    mentor: "",
-  });
-
-  const [formData, setFormData] = useState({});
-
   const { assignTeamMembers } = filledData;
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
-  console.log(assignTeamMembers);
+  const [selectedMember, setSelectedMember] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSelectedTeam((prev) => ({ ...prev, [name]: value }));
+    const { value } = e.target;
+    setSelectedMember(value);
+  };
+
+  const handleRemoveMember = (idToRemove) => {
+    const updatedAssignTeamMembers = assignTeamMembers.filter(
+      (member) => member._id !== idToRemove
+    );
+
+    const newArray = updatedAssignTeamMembers.map((m) => m._id);
+
+    console.log("Updated assignTeamMembers IDs:", newArray);
+    onUpdate({ assignTeamMembers: newArray }, leadId);
   };
 
   const handleSave = () => {
-    // onClose();
-    setConfirmModalOpen(true);
+    try {
+      if (selectedMember) {
+        const existingMemberIds = assignTeamMembers.map((member) => member._id);
+
+        const newAssignTeamMembers = [...existingMemberIds, selectedMember];
+
+        console.log("New assignTeamMembers array:", newAssignTeamMembers);
+        onUpdate({ assignTeamMembers: newAssignTeamMembers }, leadId);
+      } else {
+        toast.error("Please Select Member");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const getMembersByRole = (role) =>
-    teamMembers.filter((member) => member.role === role);
 
   return (
     <>
@@ -68,7 +76,7 @@ const AssignTeamModal = ({
                 >
                   <span>{`${data.firstName} ${data.lastName} - ${data?.roleId?.roleName}`}</span>
                   <button
-                    // onClick={() => handleRemoveMember(i)}
+                    onClick={() => handleRemoveMember(data._id)}
                     className="ml-2 text-gray-500 hover:text-red-500"
                   >
                     ✖
@@ -86,22 +94,39 @@ const AssignTeamModal = ({
             <SelectField
               label="Member Type"
               name="type"
-              value={formData.type}
-              onChange={handleChange}
-              options={rolesList?.map((data) => ({
-                label: data?.roleName,
-                value: data?._id,
-              }))}
+              onChange={({ target }) => {
+                setSelectedMember(null);
+                setMembersList([]);
+                const selectedRole = rolesList?.find(
+                  (data) => data.roleId === target.value
+                );
+                setMembersList(selectedRole?.users);
+              }}
+              options={rolesList
+                ?.filter(
+                  (data) =>
+                    !["Admin", "Content Manager"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                )
+                .filter((data) => {
+                  const assignedRoleIds = assignTeamMembers.map(
+                    (member) => member.roleId?._id
+                  );
+                  return !assignedRoleIds.includes(data.roleId); // Step 2: Exclude already assigned roles
+                })
+                .map((data) => ({
+                  label: data?.roleName,
+                  value: data?.roleId,
+                }))}
               required
             />
             <SelectField
               label="Members"
               name="members"
-              value={formData.members}
+              value={selectedMember}
               onChange={handleChange}
-              options={[].map((data) => ({
-                label: data,
-                value: data,
+              options={membersList.map((data) => ({
+                label: `${data?.firstName} ${data?.lastName}`,
+                value: data?._id,
               }))}
               required
             />
@@ -118,11 +143,6 @@ const AssignTeamModal = ({
           </div>
         </div>
       </div>
-      <ConfirmModal
-        isOpen={confirmModalOpen}
-        onClose={() => setConfirmModalOpen(false)}
-        text="Member Assigned!"
-      />
     </>
   );
 };

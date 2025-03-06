@@ -32,6 +32,7 @@ import vectorDownNose from "../../../assets/vectorDownNose.png";
 import VectorleftNose from "../../../assets/VectorleftNose.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -48,9 +49,13 @@ function HomeLayout() {
     }
   }
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const handleAddLead = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddLead");
+    console.log(data);
+
+    dispatch(addLeadRequest(data));
+  };
 
   if (loading) {
     // return <PageLoader />;
@@ -68,7 +73,7 @@ function HomeLayout() {
         }
       />
       <HomePathwaySection />
-      <div className="relative ">
+      <div className="relative mt-10">
         <HomeServicesSection />
         <div className="absolute -top-10 right-0 -z-20">
           <img
@@ -81,7 +86,7 @@ function HomeLayout() {
       <HomePromoSection />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
-      <div className="relative ">
+      <div className="relative my-5">
         <OurPartners />
         <div className="absolute -top-10 left-0 z-0">
           <img
@@ -95,7 +100,6 @@ function HomeLayout() {
       {/* <HomeTestimonialsSection /> */}
       <Testimonials />
       <div className="relative ">
-        <HomeDownloadApp />
         <div className="absolute -top-10 left-0 z-0">
           <img
             className="rounded-lg max-w-full "
@@ -103,6 +107,7 @@ function HomeLayout() {
             alt="Counselling session"
           />
         </div>
+        <HomeDownloadApp />
       </div>
 
       {/* <HomeTestimonialsSection /> */}
@@ -111,7 +116,6 @@ function HomeLayout() {
       {/* <FAQsection /> */}
 
       <div className="relative ">
-        <Blogs />
         <div className="absolute top-28 right-0 z-0">
           <img
             className="rounded-lg max-w-full "
@@ -119,8 +123,14 @@ function HomeLayout() {
             alt="Counselling session"
           />
         </div>
+
+        <Blogs />
       </div>
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source="Home"
+        entity="Contact Us"
+      />
       <Footer />
     </div>
   );

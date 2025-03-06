@@ -5,7 +5,7 @@ import check_circle from "../../../../assets/check_circle.png";
 const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
   return (
     <Element name="admission-requirements">
-      <div className="relative z-10">
+      <div className="relative ">
         <section className=" dark:bg-gray-900 relative px-10 mx-auto">
           <div className="gap-8 items-center px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-2 lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">

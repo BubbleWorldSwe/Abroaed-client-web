@@ -4,7 +4,7 @@ import { Element } from "react-scroll";
 const DestinationScholarshipSection = ({ destinationDetails }) => {
   return (
     <Element name="scholarships">
-      <div className="relative z-10">
+      <div className="relative ">
         <section className=" dark:bg-gray-900 relative px-10 mx-auto">
           <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">

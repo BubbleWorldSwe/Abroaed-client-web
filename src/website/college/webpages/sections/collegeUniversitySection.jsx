@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import dark from "../../../../assets/dark.png";
 
 const CollegeUniversitySection = ({ collegeDetails }) => {
   return (
     <div>
       <section className="dark:bg-gray-900 relative">
-        <div className="py-8 px-4 mx-auto  lg:py-24 lg:px-6 relative z-10">
+        <div className=" mx-auto py-14  px-2 relative z-10">
           <div className="py-8 text-center">
             <h1 className="mb-4 text-5xl tracking-tight font-extrabold">
               {collegeDetails?.name}at a Glance
@@ -17,8 +18,8 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
                 .map((_, index) => (
                   <div
                     key={index}
-                    className="w-full lg:w-96
-                                        md:w-80 sm:w-72 h-[35rem] relative rounded-lg overflow-hidden"
+                    className="w-full lg:w-[30vw]
+                                        md:w-80 sm:w-72 h-[25rem] relative rounded-2xl overflow-hidden"
                   >
                     {/* Background Image with Overlay */}
                     <div className="relative w-full h-full">

@@ -1,8 +1,60 @@
+import { useState } from "react";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
+import { toast } from "react-toastify";
 
-const ContactUsForm = () => {
+const ContactUsForm = ({ onFormSubmit, source, entity }) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+  });
+
+  const [checkboxes, setCheckboxes] = useState({
+    termsAgreed: false,
+    contactPermission: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+    setCheckboxes((prev) => ({
+      ...prev,
+      [name]: checked,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, mobile } = formData;
+    const { termsAgreed, contactPermission } = checkboxes;
+
+    // Validate required fields
+    if (!firstName || !lastName || !email || !mobile) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    // Validate checkboxes
+    if (!termsAgreed || !contactPermission) {
+      toast.error("Please agree to both checkboxes.");
+      return;
+    }
+
+    console.log("Form Submitted:", formData);
+
+    onFormSubmit({ user: formData, source, entity });
+  };
+
   return (
-    <section className="relative isolate overflow-hidden z-10 px-10 mx-auto">
+    <section className="relative isolate overflow-hidden  px-10 mx-auto">
       <div className="py-2 px-3 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}
@@ -11,57 +63,87 @@ const ContactUsForm = () => {
               Book your counseling session today!
             </h1>
             <p className="mt-3 md:mt-6 text-lg leading-6 text-gray-500 tracking-wide font-medium">
-              Our specialised home counseling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today.
+              Our specialised home counseling session is available at your
+              convenience. Don’t waste a minute—take a stride towards your
+              future by contacting our study abroad expert today.
             </p>
           </div>
 
           {/* Right Section - 40% Width */}
           <div className="lg:w-2/5 px-4 py-4 md:pt-5 max-w-md">
-            <form className="max-w-sm mx-auto">
-              <BorderTextInputField label={"First Name*"} placeholder="Enter" />
-              <BorderTextInputField label={"Last Name*"} placeholder="Enter" />
-              <BorderTextInputField label={"Email ID*"} placeholder="Enter" />
+            <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
               <BorderTextInputField
-                label={"Contact Number**"}
+                label={"First Name*"}
                 placeholder="Enter"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                required
+              />
+              <BorderTextInputField
+                label={"Last Name*"}
+                placeholder="Enter"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                required
+              />
+              <BorderTextInputField
+                label={"Email ID*"}
+                placeholder="Enter"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <BorderTextInputField
+                label={"Contact Number*"}
+                placeholder="Enter"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                required
               />
 
-              <div className="flex items-start mt-8 mb-5">
+              {/* Checkbox 1 */}
+              <div className="flex items-start mt-6">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  required
+                  name="termsAgreed"
+                  checked={checkboxes.termsAgreed}
+                  onChange={handleCheckboxChange}
+                  className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
+                <label className="ml-2 text-sm text-gray-500">
                   I agree to Abroaed{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
                 </label>
               </div>
-              <div className="flex items-start mt-4 mb-8">
+
+              {/* Checkbox 2 */}
+              <div className="flex items-start mt-4 mb-4">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  required
+                  name="contactPermission"
+                  checked={checkboxes.contactPermission}
+                  onChange={handleCheckboxChange}
+                  className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
+                <label className="ml-2 text-sm text-gray-500">
                   Please contact me by phone, email, or SMS to assist with my
                   enquiry. I would like to receive updates and offers from
                   Abroaed.
                 </label>
               </div>
-              <div>
-                <button
-                  type="submit"
-                  className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
-                  style={{
-                    backgroundColor: "#FDDA24",
-                    color: "#000",
-                  }}
-                >
-                  Get Help
-                </button>
-              </div>
+
+              <button
+                type="submit"
+                className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
+                style={{ backgroundColor: "#FDDA24", color: "#000" }}
+              >
+                Get Help
+              </button>
             </form>
           </div>
         </div>

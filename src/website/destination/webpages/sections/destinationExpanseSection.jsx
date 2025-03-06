@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 const DestinationExpansesSection = ({ destinationDetails }) => {
   return (
-    <div className="relative z-10">
+    <div className="relative">
       <section className=" dark:bg-gray-900 relative px-10 mx-auto">
         <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
           <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
@@ -25,7 +26,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 <div className=" w-11/12 ">
                   <div className=" dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div className="overflow-x-auto">
-                      <table className="w-full  text-sm text-left text-gray-500 border-4 border-[#E4E4E7] dark:text-gray-400">
+                      <table className="w-full bg-white  text-sm text-left text-gray-500 border-4 border-[#E4E4E7] dark:text-gray-400">
                         <thead className="text-xs  text-gray-700  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                           <tr>
                             <th scope="col" className="px-4 py-3">
@@ -78,7 +79,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 <div className=" w-11/12 ">
                   <div className=" dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                     <div className="overflow-x-auto">
-                      <table className="w-full  text-sm text-left text-gray-500 border-4 border-[#E4E4E7] dark:text-gray-400">
+                      <table className="w-full bg-white  text-sm text-left text-gray-500 border-4 border-[#E4E4E7] dark:text-gray-400">
                         <thead className="text-xs  text-gray-700  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                           <tr>
                             <th scope="col" className="px-4 py-3">

@@ -12,22 +12,9 @@ const PathwaysHomeHowItWorkSection = () => {
                                 How It Works?
                             </h2>
                             <p className="mb-4 font-light">
-                                Track work across the enterprise through an open, collaborative
-                                platform. Link issues across Jira and ingest data from other
-                                software development tools, so your IT support and operations
-                                teams have richer contextual information to rapidly respond to
-                                requests, incidents, and changes.
-                            </p>
-                            <p className="mb-4 font-medium">
-                                Deliver great service experiences fast - without the complexity of
-                                traditional ITSM solutions. Accelerate critical development work,
-                                eliminate toil, and deploy changes with ease.
-                                Deliver great service experiences fast - without the complexity of
-                                traditional ITSM solutions. Accelerate critical development work,
-                                eliminate toil, and deploy changes with ease.
-                            </p>
+                                Pathways programs offer students a seamless route to studying abroad by providing the academic, language, and cultural support needed for success. These programs help you build a strong foundation in core subjects, improve language proficiency, and gain cultural understanding to thrive in a foreign academic environment. With guaranteed progression to a degree program at a partner university, pathways programs not only prepare you academically but also guide you through personal and professional development, ensuring a smooth transition to university life abroad.                            </p>
                         </div>
-                        <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
+                        <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3 py-5">
                             {steps.map((step) => (
                                 <div
                                     key={step.step}

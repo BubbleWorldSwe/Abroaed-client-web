@@ -7,7 +7,6 @@ import OurPartners from "../../comman/sections/ourPartnersSection";
 import FinanceBlogSection from "./sections/financeBlogSection";
 import FinanceFaqSection from "./sections/financeFaqSection";
 import FinanceLeadFromSection from "./sections/financeLeadFromSection";
-import FinanceForm from "./sections/financeForm";
 
 function FinancePage() {
   return (
@@ -27,7 +26,6 @@ function FinancePage() {
         </div>
       </div>
       <FinanceFaqSection />
-      <FinanceForm />
       <FinanceLeadFromSection />
       <Footer />
     </div>

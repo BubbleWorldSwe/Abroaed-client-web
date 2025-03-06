@@ -19,6 +19,7 @@ import {
 } from "../../../redux/actions/leadsActions";
 import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
 import { getRoles } from "../../../api/api";
+import { getTeamsByMembers } from "../../../api/teamsApi";
 
 function Leads() {
   const dispatch = useDispatch();
@@ -35,6 +36,8 @@ function Leads() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const [rolesList, setRolesList] = useState([]);
+
+  const [membersList, setMembersList] = useState([]);
 
   console.log(" SelectedMember");
   console.log(selectedMember);
@@ -72,10 +75,10 @@ function Leads() {
     try {
       dispatch(fetchAllDestinationsRequest());
       dispatch(fetchAllTeamsRequest());
-      const list = await getRoles();
+      const list = await getTeamsByMembers();
 
       if (list.status === 200) {
-        setRolesList(list.data.result);
+        setRolesList(list.data);
       }
     } catch (error) {
       console.log(error);
@@ -160,6 +163,9 @@ function Leads() {
           onClose={() => setshowTeamModal(false)}
           filledData={{ assignTeamMembers: selectedMember?.assignTeamMembers }}
           rolesList={rolesList}
+          membersList={membersList}
+          setMembersList={setMembersList}
+          onUpdate={onUpdate}
         />
       )}
 
@@ -184,6 +190,7 @@ function Leads() {
             planType: selectedMember?.planType,
             billableAmount: selectedMember?.billableAmount,
             status: selectedMember?.status,
+            remark: selectedMember?.remark,
           }}
         />
       )}

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Pencil, Trash2 } from "lucide-react";
+import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -136,11 +136,10 @@ const CollegeTable = ({
                     {dropdownVisible === index && (
                       <div
                         ref={dropdownRef}
-                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                          dropdownDirection === "up"
+                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${dropdownDirection === "up"
                             ? "bottom-full mb-2"
                             : "mt-2"
-                        }`}
+                          }`}
                       >
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                           <li>

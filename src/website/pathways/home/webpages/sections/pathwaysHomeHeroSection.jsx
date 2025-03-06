@@ -16,9 +16,8 @@ function PathwaysHomeHero() {
                         Pathways Program
                     </h1>
                     <p className="font-light text-white md:text-lg xl:text-xl">
-                        Irure do commodo voluptate excepteur est qui tempor officia. Cillum
-                        occaecat sint occaecat consequat in fugiat dolor. Voluptate ea
-                        dolore duis amet Lorem.
+                        Your Pathway to Academic Success and Global Opportunities
+
                         <br />
                         <a
                             className="font-medium text-primary-600 hover:underline"

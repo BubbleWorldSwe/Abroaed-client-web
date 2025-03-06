@@ -17,13 +17,13 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
           style={{ mixBlendMode: "multiply" }}
         ></div>
         {/* Text Content */}
-        <div className="absolute bottom-0 left-12  p-6 rounded-lg shadow-lg max-w-3xl">
+        <div className="absolute bottom-0  px-12 mx-auto  rounded-lg shadow-lg max-w-3xl">
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
             {collegeDetails?.name}
           </h1>
 
           <div className="font-light text-white md:text-lg xl:text-xl">
-            <div className="text-white px-2 mt-8 opacity-70 text-xl flex justify-between">
+            <div className="text-white  mt-8 opacity-70 text-xl flex justify-between">
               <p>{collegeDetails?.entityType}</p>
               <div className="flex gap-2 whitespace-nowrap mx-5">
                 <img

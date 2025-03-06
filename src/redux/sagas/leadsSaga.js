@@ -87,6 +87,25 @@ function* handleEditLead(action) {
   }
 }
 
+// Edit a Student
+function* handleEditStudent(action) {
+  try {
+    const { id, leadData } = action.payload;
+    const response = yield call(setUpdateLead, id, leadData);
+    console.log("handleEditLead in Saga", response);
+
+    if (response.status === 200) {
+      yield put(editLeadSuccess(response.data));
+      toast.success("Lead updated successfully!");
+    } else {
+      yield put(editLeadFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(editLeadFailure(error.message));
+  }
+}
+
 // Root saga for leads
 export default function* leadsSaga() {
   yield takeLatest(FETCH_LEADS_REQUEST, fetchLeads);

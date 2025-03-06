@@ -1,17 +1,16 @@
-
-
 function OurPartners() {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
         <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
-
           <h2 className="mb-1 text-3xl font-extrabold tracking-tight leading-tight text-center text-[#27272A] dark:text-white md:text-4xl">
             Our Partner
           </h2>
           <div className="flex mb-10 justify-center text-center">
-
-            <p className="text-center max-w-[30vw] text-[#52525B]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p className="text-center max-w-[50vw] text-[#52525B]">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
             <a href="#" className="flex justify-center items-center">

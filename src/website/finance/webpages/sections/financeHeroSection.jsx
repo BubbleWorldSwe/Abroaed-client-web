@@ -11,9 +11,9 @@ function FinanceHeroSection() {
         }}
       >
         {/* Text Content */}
-        <div className="absolute bottom-8 left-8  p-6 rounded-lg shadow-lg max-w-2xl">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
-            Nurture & Finance your Abroaed Dream
+        <div className="absolute bottom-1 left-8  p-5 rounded-lg shadow-lg max-w-2xl">
+          <h1 className="mb-4  font-extrabold tracking-tight leading-none text-white text-5xl ">
+            Smart Financial Planning for Your Study Abroad Success
           </h1>
 
         </div>

@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
+import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
+import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
+import { getCollegesByDestinationId } from "../../../api/collegesApi";
 
 const DropdownMenu = ({
   title,
@@ -51,6 +54,7 @@ function Header() {
   const [dropdowns, setDropdowns] = useState({
     whyAbroad: false,
     exploreCourses: false,
+    exploreColleges: false,
     testPrep: false,
     languagePrep: false,
     destinations: false,
@@ -59,6 +63,14 @@ function Header() {
   const { allDestinations } = useSelector((state) => state.destinations);
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
+
+  // State lifted up from ExploreCollegesNavItemModal
+  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [states, setStates] = useState([]);
+  const [colleges, setColleges] = useState([]);
+  const [filteredColleges, setFilteredColleges] = useState([]);
+  const [selectedState, setSelectedState] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,6 +89,47 @@ function Header() {
       return newDropdowns;
     });
   };
+
+  async function handleDestinationClick(destination) {
+    setSelectedDestination(destination);
+    setSelectedState(null); // Reset state selection
+    setIsLoading(true);
+    try {
+      const response = await getCollegesByDestinationId(destination._id);
+      if (response.status === 200) {
+        setColleges(response.data.result);
+        setFilteredColleges(response.data.result); // Show all initially
+        const uniqueStates = [
+          ...new Map(
+            response.data.result.map((college) => [
+              college.stateId._id,
+              college.stateId,
+            ])
+          ).values(),
+        ];
+        setStates(uniqueStates);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  function handleStateClick(state) {
+    setSelectedState(state);
+    const filtered = colleges.filter(
+      (college) => college.stateId._id === state._id
+    );
+    setFilteredColleges(filtered);
+  }
+
+  useEffect(() => {
+    if (allDestinations?.length > 0 && !selectedDestination) {
+      setSelectedDestination(allDestinations[0]);
+      handleDestinationClick(allDestinations[0]);
+    }
+  }, [allDestinations]);
 
   return (
     <header
@@ -97,19 +150,47 @@ function Header() {
         <nav className="flex items-center   justify-center w-full px-12 py-4">
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
-              <span
+              <a
+                target="_blank"
+                href="/home"
                 className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
                   scrolling ? "text-black" : "text-white"
                 }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
-              </span>
+              </a>
             </h3>
           </div>
           <div className="flex-grow basis-[80%] flex justify-center">
             <div className="flex items-center justify-center ">
-              <ul className="flex items-center space-x-8 justify-center text-sm font-medium">
+              <ul className="flex items-center space-x-5 justify-center text-sm font-medium">
                 <li>
+                  <button
+                    onClick={() => toggleDropdown("exploreColleges")}
+                    className="flex px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg"
+                  >
+                    Explore Colleges{" "}
+                    {dropdowns.exploreColleges ? (
+                      <ChevronUp size={22} />
+                    ) : (
+                      <ChevronDown size={22} />
+                    )}
+                  </button>
+                  {dropdowns.exploreColleges && (
+                    <ExploreCollegesNavItemModal
+                      allDestinations={allDestinations}
+                      selectedDestination={selectedDestination}
+                      selectedState={selectedState}
+                      states={states}
+                      colleges={colleges}
+                      filteredColleges={filteredColleges}
+                      isLoading={isLoading}
+                      handleDestinationClick={handleDestinationClick}
+                      handleStateClick={handleStateClick}
+                    />
+                  )}
+                </li>
+                {/* <li>
                   <a
                     href="/home"
                     className={`font-medium ${
@@ -118,9 +199,9 @@ function Header() {
                   >
                     Home
                   </a>
-                </li>
+                </li> */}
                 <DropdownMenu
-                  title="Why Abroad?"
+                  title="Why Abroaed?"
                   items={[
                     { title: "About Us", href: "/aboutus" },
                     { title: "Career", href: "/careers" },
@@ -194,7 +275,7 @@ function Header() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-grow-0 basis-[10%] justify-end">
+          {/*    <div className="flex flex-grow-0 basis-[10%] justify-end">
             <a
               href="/admin/signin"
               className={`text-sm font-medium ${
@@ -203,7 +284,7 @@ function Header() {
             >
               Login
             </a>
-          </div>
+          </div> */}
         </nav>
       </nav>
     </header>

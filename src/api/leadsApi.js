@@ -67,6 +67,22 @@ export const setUpdateLead = async (id, credentials) => {
   }
 };
 
+export const setUpdateStudent = async (id, credentials) => {
+  try {
+    console.log(credentials);
+
+    const data = await makePatchRequest(
+      `${BASE_URL}/api/v1/admin/leads/${id}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const setDeleteLead = async (id) => {
   try {
     console.log(id + " id");

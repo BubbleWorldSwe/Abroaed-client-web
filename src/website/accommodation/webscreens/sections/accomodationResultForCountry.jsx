@@ -1,4 +1,5 @@
 import AccommodationCard from "../../../comman/components/accommodationCard";
+import Loader from "../../../comman/components/loader";
 
 function AccommodationResultForCountry({
   onSelectCountry,
@@ -47,9 +48,7 @@ function AccommodationResultForCountry({
 
             {/* Loader */}
             {isLoading ? (
-              <div className="flex justify-center items-center mt-10 h-[450px]">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-yellow-500"></div>
-              </div>
+              <Loader />
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
                 {accList.length > 0 ? (

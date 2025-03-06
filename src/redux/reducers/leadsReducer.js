@@ -12,6 +12,8 @@ import {
   EDIT_LEAD_SUCCESS,
   EDIT_LEAD_FAILURE,
   SET_SELECTED_LEAD,
+  EDIT_STUDENT_REQUEST,
+  EDIT_STUDENT_FAILURE,
 } from "../actions/leadsActions";
 
 const initialState = {
@@ -28,6 +30,10 @@ const initialState = {
 export const leadsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_LEADS_REQUEST:
+    case ADD_LEAD_REQUEST:
+    case DELETE_LEAD_REQUEST:
+    case EDIT_LEAD_REQUEST:
+    case EDIT_STUDENT_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_LEADS_SUCCESS:
@@ -45,30 +51,6 @@ export const leadsReducer = (state = initialState, action) => {
         page: action.payload.page,
       };
 
-    case FETCH_LEADS_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case ADD_LEAD_REQUEST:
-      return { ...state, loading: true };
-
-    case ADD_LEAD_SUCCESS:
-      return initialState;
-
-    case ADD_LEAD_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case DELETE_LEAD_REQUEST:
-      return { ...state, loading: true };
-
-    case DELETE_LEAD_SUCCESS:
-      return initialState;
-
-    case DELETE_LEAD_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case EDIT_LEAD_REQUEST:
-      return { ...state, loading: true };
-
     case EDIT_LEAD_SUCCESS:
       return {
         ...state,
@@ -84,7 +66,15 @@ export const leadsReducer = (state = initialState, action) => {
         selectedLead: action.payload,
       };
 
+    case DELETE_LEAD_SUCCESS:
+    case ADD_LEAD_SUCCESS:
+      return initialState;
+
+    case FETCH_LEADS_FAILURE:
+    case ADD_LEAD_FAILURE:
+    case DELETE_LEAD_FAILURE:
     case EDIT_LEAD_FAILURE:
+    case EDIT_STUDENT_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_LEAD:

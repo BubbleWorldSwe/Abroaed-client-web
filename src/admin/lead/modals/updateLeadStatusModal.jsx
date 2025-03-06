@@ -37,7 +37,7 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
       planType: "",
       billableAmount: "",
       status: "",
-      remarks: "",
+      remark: "",
     }
   );
 
@@ -62,7 +62,7 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
       servicerType: "",
       planType: "",
       billableAmount: "",
-      remarks: "",
+      remark: "",
     });
   };
 
@@ -86,8 +86,8 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
       }
     }
 
-    if (formData.status === "Lost" && !formData.remarks) {
-      toast.error("Please provide remarks for a lost lead.");
+    if (formData.status === "Lost" && !formData.remark) {
+      toast.error("Please provide remark for a lost lead.");
       return;
     }
 
@@ -171,9 +171,9 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
         {formData.status === "Lost" && (
           <div className="mt-5">
             <TextareaInputField
-              label="Remarks"
-              name="remarks"
-              value={formData.remarks}
+              label="Remark"
+              name="remark"
+              value={formData.remark}
               onChange={handleChange}
               required
             />
