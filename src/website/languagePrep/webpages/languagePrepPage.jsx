@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";

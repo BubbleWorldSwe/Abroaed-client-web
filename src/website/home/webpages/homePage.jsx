@@ -112,7 +112,7 @@ function HomeLayout() {
 
       <div className="relative ">
         <Blogs />
-        <div className="absolute top-28 right-0 z-0">
+        <div className="absolute top-28 right-0 -z-10">
           <img
             className="rounded-lg max-w-full "
             src={vectorBelow}
