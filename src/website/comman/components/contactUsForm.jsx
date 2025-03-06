@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
 import { toast } from "react-toastify";
 
-const ContactUsForm = ({ onFormSubmit, source, entity }) => {
+const ContactUsForm = ({ onFormSubmit, source, entity, isLoading }) => {
+  console.log(isLoading + " Is Loading");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -52,6 +53,10 @@ const ContactUsForm = ({ onFormSubmit, source, entity }) => {
 
     onFormSubmit({ user: formData, source, entity });
   };
+
+  useEffect(() => {
+    console.log(isLoading);
+  }, [isLoading]);
 
   return (
     <section className="relative isolate overflow-hidden  px-10 mx-auto">
@@ -142,7 +147,13 @@ const ContactUsForm = ({ onFormSubmit, source, entity }) => {
                 className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                 style={{ backgroundColor: "#FDDA24", color: "#000" }}
               >
-                Get Help
+                {isLoading ? (
+                  <div className="flex justify-center items-center">
+                    <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-white rounded-full"></div>
+                  </div>
+                ) : (
+                  "Get Help"
+                )}
               </button>
             </form>
           </div>

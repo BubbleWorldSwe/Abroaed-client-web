@@ -9,9 +9,11 @@ import AccomodationEnquiryModal from "../modals/accomodationEnquiryModal";
 
 const AccommodationCard = ({ item }) => {
   const [openModal, setOpenModal] = useState(false);
+
   const handleCloseAddModal = () => {
     setOpenModal(false);
   };
+
   const handleOpenAddModal = () => {
     setOpenModal(true);
   };
@@ -22,7 +24,7 @@ const AccommodationCard = ({ item }) => {
         isOpen={openModal}
         onClose={handleCloseAddModal}
       />
-      <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
         <a href="#">
           <img
             className="rounded-t-lg w-full h-48 object-cover"
@@ -30,9 +32,10 @@ const AccommodationCard = ({ item }) => {
             alt={item.name}
           />
         </a>
-        <div className="p-5">
+        <div className="p-5 flex flex-col flex-grow">
+          {/* Header */}
           <div className="flex justify-between">
-            <h5 className="mb-5 text-xl font-600 tracking-tight dark:text-white">
+            <h5 className="text-xl font-600 tracking-tight dark:text-white">
               {item.accomodationName}
             </h5>
             <div>
@@ -55,37 +58,44 @@ const AccommodationCard = ({ item }) => {
               </svg>
             </div>
           </div>
+
+          {/* Location */}
           <div className="mb-2 flex justify-between">
-            <div className="flex gap-2 justify-between">
+            <div className="flex gap-2">
               <img
-                className="rounded-t-lg w-[18px] h-[18px] object-contain mx-1"
+                className="w-[18px] h-[18px] object-contain mx-1"
                 src={locationIcon}
                 alt={item.name}
               />
-
               <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400">
                 {item?.stateId?.name}, {item?.destinationId?.countryId?.name}
               </p>
             </div>
           </div>
-          <div className=" flex justify-between text-center mb-5">
-            <div className="flex gap-2 justify-between">
+
+          {/* Price */}
+          <div className="flex justify-between text-center mb-5">
+            <div className="flex gap-2">
               <img
-                className="rounded-t-lg w-[24px] h-[24px] object-contain"
+                className="w-[24px] h-[24px] object-contain"
                 src={wallet}
                 alt={item.name}
               />
-
               <p className="font-medium text-gray-500 dark:text-gray-400">
                 {item.price} per month
               </p>
             </div>
           </div>
 
-          <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
-            {item.description}
-          </p>
-          <EnquireButton onClick={handleOpenAddModal} />
+          <div className="flex-grow">
+            <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
+              {item.description}
+            </p>
+          </div>
+
+          <div className="mt-auto">
+            <EnquireButton onClick={handleOpenAddModal} />
+          </div>
         </div>
       </div>
     </>

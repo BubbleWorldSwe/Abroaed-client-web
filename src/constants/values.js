@@ -1,9 +1,4 @@
 export const courseLevels = [
-  //   "Undergraduate",
-  // "Postgraduate",
-  // "Diploma",
-  //  "Certificate",
-
   "Bachelor’s Degree",
   "Master's Degree",
   "PhD",
@@ -66,3 +61,16 @@ export const servicerType = [
 ];
 
 export const planType = ["Basic", "Advance", "Elite"];
+
+export const source = {
+  home: "Home",
+  destination: "Destination",
+  accommodation: "Accommodation",
+  college: "College",
+  languagePrep: "Language Prep",
+  testPrep: "Test Prep",
+};
+
+export const entity = {
+  contactUs: "Contact Us",
+};

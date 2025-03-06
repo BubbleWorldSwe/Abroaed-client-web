@@ -43,6 +43,7 @@ import StudentApplications from "../student/studentComponent/studentApplications
 import StudentTransactions from "../student/studentComponent/studentTransactions";
 import LeadProfileLayout from "../admin/lead/screens/leadProfile";
 import AdminLayout from "../admin/adminLayouts";
+import LeaguageOfExcellencePage from "../website/leagueOfExcellence/webpages/leaguageOfExcellencePage";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -94,6 +95,11 @@ const AppRoutes = () => {
     {
       path: "/pathways",
       element: <PathwaysHomePage />,
+      isPrivate: false,
+    },
+    {
+      path: "/leaguageOfExcellence",
+      element: <LeaguageOfExcellencePage />,
       isPrivate: false,
     },
     {

@@ -22,12 +22,15 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import { getAccommodationsByStateId } from "../../../api/accomodationApi";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 function CollegePage() {
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
-
+  const dispatch = useDispatch();
   const [collegeDetails, setCollegeDetails] = useState(null);
   const [accList, setAccList] = useState([]);
 
@@ -50,6 +53,17 @@ function CollegePage() {
       console.log(error);
     }
   }
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -128,7 +142,12 @@ function CollegePage() {
       )}
       <Testimonials />
       <Blogs />
-      <ContactUsForm />
+
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.college}
+        entity={`${collegeDetails?.name}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

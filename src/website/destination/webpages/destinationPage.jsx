@@ -33,11 +33,14 @@ import {
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
+import { entity, source } from "../../../constants/values";
 
 function DestinationPage() {
   const { id } = useParams();
   const { state } = useLocation();
-
+  const dispatch = useDispatch();
   console.log(state);
 
   const [destinationDetails, setDestinationDetails] = useState(null);
@@ -76,6 +79,17 @@ function DestinationPage() {
     }
   }
   console.log(coursesList);
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -188,7 +202,11 @@ function DestinationPage() {
         </div>
       </div>
       <Blogs />
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.destination}
+        entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

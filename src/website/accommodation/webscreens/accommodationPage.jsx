@@ -7,7 +7,7 @@ import AccommodationHowItWorkSection from "./sections/accommodationHowItWorkSect
 import AccommodationFaqSection from "./sections/accommodationFaqSection";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import {
@@ -15,8 +15,11 @@ import {
   getAllAccommodations,
 } from "../../../api/accomodationApi";
 import { useParams } from "react-router-dom";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { entity, source } from "../../../constants/values";
 
 function AccomodationPage() {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [accList, setAccList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,6 +54,17 @@ function AccomodationPage() {
       setIsDataLoading(false);
     }
   }
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (destinationsList.length > 0) {
@@ -91,7 +105,11 @@ function AccomodationPage() {
       <AccommodationHowItWorkSection />
       <AccommodationFaqSection />
       <Blogs />
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.accommodation}
+        entity={`${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

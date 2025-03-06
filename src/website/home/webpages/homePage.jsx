@@ -20,7 +20,7 @@ import {
   fetchAllDestinationsRequest,
   // fetchDestinationsRequest,
 } from "../../../redux/actions/destinationActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import PageLoader from "../../../commons/components/loader/pageLoader";
 import { fetchAllTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
@@ -33,11 +33,14 @@ import VectorleftNose from "../../../assets/VectorleftNose.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { entity, source } from "../../../constants/values";
 
 function HomeLayout() {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.destinations);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fetchData() {
     try {
@@ -50,16 +53,21 @@ function HomeLayout() {
   }
 
   const handleAddLead = (data) => {
-    //  setIsAddModalOpen(false);
+    // setIsLoading(true);
     console.log("handleAddLead");
     console.log(data);
 
     dispatch(addLeadRequest(data));
+    // setIsLoading(false);
   };
 
   if (loading) {
     // return <PageLoader />;
   }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="font-rethink">
@@ -128,9 +136,11 @@ function HomeLayout() {
       </div>
       <ContactUsForm
         onFormSubmit={handleAddLead}
-        source="Home"
-        entity="Contact Us"
+        source={source.home}
+        entity={entity.contactUs}
+        isLoading={isLoading}
       />
+
       <Footer />
     </div>
   );

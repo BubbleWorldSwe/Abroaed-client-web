@@ -16,12 +16,16 @@ import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import TestPrepSimplifyThings from "./sections/testPrepSimplifyThings";
 import Blogs from "../../comman/components/blogs";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 function TestPrepLayout() {
   const { id } = useParams();
   // const { state: destinationDetails } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [testPrepsDetails, setTestPrepsDetails] = useState(null);
+  const dispatch = useDispatch();
 
   async function fetchData() {
     try {
@@ -35,6 +39,17 @@ function TestPrepLayout() {
       console.log(error);
     }
   }
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   console.log(testPrepsDetails);
 
@@ -90,8 +105,12 @@ function TestPrepLayout() {
       )}
 
       <Blogs />
-      <ContactUsForm />
 
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.testPrep}
+        entity={`${testPrepsDetails?.productName}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );
