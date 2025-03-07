@@ -91,7 +91,11 @@ function HomeLayout() {
           />
         </div>
       </div>
-      <HomePromoSection />
+      <HomePromoSection
+        onFormSubmit={handleAddLead}
+        source={source.home}
+        entity={entity.bookCounselling}
+      />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
       <div className="relative my-5">

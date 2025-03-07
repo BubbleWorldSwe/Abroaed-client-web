@@ -127,6 +127,8 @@ function DestinationPage() {
           destinationDetails={destinationDetails}
           collegesList={collegesList}
           coursesList={coursesList}
+          source={`${source.destination}_${source.courses}`}
+          onAddLead={handleAddLead}
         />
       )}
 
@@ -184,6 +186,8 @@ function DestinationPage() {
         <DestinationStudentAccommodationsSection
           destinationDetails={destinationDetails}
           accommodationList={accList}
+          source={`${source.destination}_${source.accommodation}`}
+          onAddLead={handleAddLead}
         />
       )}
 

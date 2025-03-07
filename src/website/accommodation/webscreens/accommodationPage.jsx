@@ -101,6 +101,8 @@ function AccomodationPage() {
         isLoading={isDataLoading}
         selectedCountry={selectedCountry}
         destinationsList={destinationsList}
+        source={`${source.accommodation}`}
+        onAddLead={handleAddLead}
       />
       <AccommodationHowItWorkSection />
       <AccommodationFaqSection />

@@ -9,6 +9,8 @@ function DestinationUniCoursersSection({
   destinationDetails,
   collegesList,
   coursesList,
+  source,
+  onAddLead,
 }) {
   return (
     <Element name="top-universities">
@@ -51,7 +53,12 @@ function DestinationUniCoursersSection({
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-5">
                   {coursesList.map((course, index) => (
-                    <CourseCard course={course} key={index} />
+                    <CourseCard
+                      course={course}
+                      key={index}
+                      source={source}
+                      onAddLead={onAddLead}
+                    />
                   ))}
                 </div>
               </div>

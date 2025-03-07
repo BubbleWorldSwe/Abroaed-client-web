@@ -7,7 +7,8 @@ import wallet from "../../../assets/wallet.png";
 import { useState } from "react";
 import AccomodationEnquiryModal from "../modals/accomodationEnquiryModal";
 
-const AccommodationCard = ({ item }) => {
+const AccommodationCard = ({ item, source, onAddLead }) => {
+  console.log(source);
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseAddModal = () => {
@@ -23,6 +24,10 @@ const AccommodationCard = ({ item }) => {
       <AccomodationEnquiryModal
         isOpen={openModal}
         onClose={handleCloseAddModal}
+        source={source}
+        onAddLead={onAddLead}
+        entity={item.accomodationName}
+        accommodationDetails={item}
       />
       <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
         <a href="#">

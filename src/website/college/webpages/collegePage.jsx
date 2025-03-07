@@ -97,7 +97,11 @@ function CollegePage() {
       <CollegeUniversitySection collegeDetails={collegeDetails} />
       <div className="relative">
         {collegeDetails?.courses.length > 0 && (
-          <CollegeCourseOfferSection collegeDetails={collegeDetails} />
+          <CollegeCourseOfferSection
+            collegeDetails={collegeDetails}
+            source={`${source.college}_${source.courses}`}
+            onAddLead={handleAddLead}
+          />
         )}
 
         <div className="absolute top-0 right-0  z-0">
@@ -126,6 +130,8 @@ function CollegePage() {
           <CollegeStudentAccommodation
             collegeDetails={collegeDetails}
             accommodationList={accList}
+            source={`${source.college}_${source.accommodation}`}
+            onAddLead={handleAddLead}
           />
         )}
 

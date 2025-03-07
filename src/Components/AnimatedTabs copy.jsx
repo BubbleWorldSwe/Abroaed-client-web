@@ -67,7 +67,7 @@ export const HomeForm = (source, entity, onFormSubmit) => (
   <form>
     <FormFields />
     <TermsAndConditions />
-    <BookButton onSubmit={onFormSubmit} />
+    <BookButton onFormSubmit={onFormSubmit} />
   </form>
 );
 
@@ -134,44 +134,91 @@ const FormFields = () => (
           required
         />
       </div>
-      {/* Checkbox 1 */}
-      <div className="flex items-start mt-6">
-        <input
-          type="checkbox"
-          name="termsAgreed"
-          //    checked={checkboxes.termsAgreed}
-          //   onChange={handleCheckboxChange}
-          className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
-        />
-        <label className="ml-2 text-sm text-gray-500">
-          I agree to Abroaed <span className="font-bold">Terms of Service</span>{" "}
-          and <span className="font-bold">Privacy Policy</span>.
-        </label>
-      </div>
-
-      {/* Checkbox 2 */}
-      <div className="flex items-start mt-4 mb-4">
-        <input
-          type="checkbox"
-          name="contactPermission"
-          //  checked={checkboxes.contactPermission}
-          //  onChange={handleCheckboxChange}
-          className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
-        />
-        <label className="ml-2 text-sm text-gray-500">
-          Please contact me by phone, email, or SMS to assist with my enquiry. I
-          would like to receive updates and offers from Abroaed.
-        </label>
-      </div>
     </div>
   </>
 );
+// const FormFields = () => (
+//   <>
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         First Name
+//       </label>
+//       <input
+//         type="text"
+//         className={inputStyles}
+//         placeholder="First Name"
+//         required
+//       />
+//     </div>
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         Last Name
+//       </label>
+//       <input
+//         type="text"
+//         className={inputStyles}
+//         placeholder="Last Name"
+//         required
+//       />
+//     </div>
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         Email ID
+//       </label>
+//       <input
+//         type="email"
+//         className={inputStyles}
+//         placeholder="Email ID"
+//         required
+//       />
+//     </div>
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         Contact Number
+//       </label>
+//       <input
+//         type="tel"
+//         className={inputStyles}
+//         placeholder="Contact Number"
+//         required
+//       />
+//     </div>
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         Highest Qualification
+//       </label>
+//       <input
+//         type="text"
+//         className={inputStyles}
+//         placeholder="Highest Qualification"
+//         required
+//       />
+//     </div>
 
-const BookButton = ({ onSubmit }) => {
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         When Do You Plan to Study?
+//       </label>
+//       <input type="month" className={inputStyles} required />
+//     </div>
+//     <div>
+//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+//         Preferred Study Level
+//       </label>
+//       <select className={inputStyles} required>
+//         <option>UG</option>
+//         <option>PG</option>
+//         <option>PHD</option>
+//         <option>Others</option>
+//       </select>
+//     </div>
+//   </>
+// );
+
+const BookButton = () => {
   return (
     <div>
       <button
-        onSubmit={onSubmit}
         type="submit"
         className="py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
       >

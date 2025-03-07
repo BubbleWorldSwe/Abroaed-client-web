@@ -1,6 +1,10 @@
 /* eslint-disable react/prop-types */
 import AccommodationCard from "../../../comman/components/accommodationCard";
-const CollegeStudentAccommodation = ({ accommodationList }) => {
+const CollegeStudentAccommodation = ({
+  accommodationList,
+  source,
+  onAddLead,
+}) => {
   return (
     <>
       <div className="relative  px-10 mx-auto">
@@ -15,7 +19,12 @@ const CollegeStudentAccommodation = ({ accommodationList }) => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
               {accommodationList?.slice(0, 4).map((item, index) => (
-                <AccommodationCard item={item} key={index} />
+                <AccommodationCard
+                  item={item}
+                  key={index}
+                  source={source}
+                  onAddLead={onAddLead}
+                />
               ))}
             </div>
             <div className="text-center ">

@@ -1,134 +1,208 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import dark from "../../../assets/dark.png"
-import { TextInputField } from "../../../commons/components/inputFields/textInputField"
+import dark from "../../../assets/dark.png";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
-import locationIcon from "../../../assets/locationIcon.png"
-import wallet from "../../../assets/wallet.png"
+import locationIcon from "../../../assets/locationIcon.png";
+import wallet from "../../../assets/wallet.png";
+import { toast } from "react-toastify";
 
-const AccomodationEnquiryModal = ({ isOpen, onClose }) => {
-    const [formData, setFormData] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        mobile: "",
-        location: ""
-    });
+const AccomodationEnquiryModal = ({
+  isOpen,
+  onClose,
+  entity,
+  source,
+  onAddLead,
+  accommodationDetails,
+}) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+  });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => {
-            return { ...prevData, [name]: value };
-        });
-    };
-    return (
-        <>
-            {isOpen && (
-                <div className="fixed inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
-                    <div className="bg-white max-h-[63vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-2xl z-50 relative">
-                        <button
-                            className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                            onClick={onClose}
-                        >
-                            &times;
-                        </button>
-                        <h2 className="text-xl font-semibold mb-4">Enquire Now</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Image */}
-                            <img
-                                src={dark}
-                                alt="Accommodation"
-                                className="w-full h-auto rounded-lg shadow-md"
-                            />
+  const [termsAgreed, setTermsAgreed] = useState(false);
 
-                            {/* Details */}
-                            <div>
-                                <h3 className="text-lg font-semibold mb-2">Accommodation Name</h3>
-                                <div className="flex gap-3 text-center">
-                                    <img
-                                        className="rounded-t-lg w-[18px] h-[18px] object-contain mx-1"
-                                        src={locationIcon}
-                                        alt={"accomodation-img"}
-                                    />
-                                    <p className="text-gray-700 font-semibold ">
-                                        New York, USA
-                                    </p>
-                                </div>
-                                <div className="flex gap-3 text-center mt-1">
-                                    <img
-                                        className="rounded-t-lg w-[24px] h-[24px] object-contain"
-                                        src={wallet}
-                                        alt='wallet-pic'
-                                    />
-                                    <p className="text-gray-900">
-                                        $3000 per month
-                                    </p>
-                                </div>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const { firstName, lastName, email, mobile } = formData;
 
-                                <p className="text-gray-600 text-sm mt-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere.
-                                </p>
-                            </div>
-                        </div>
-                        <form className="space-y-15 pt-5">
-                            <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-3">
-                                {/*  Name */}
-                                <TextInputField
-                                    label="Name*"
-                                    name="name"
-                                    type="text"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Enter name"
-                                    required
-                                />
+      // Validate required fields
+      if (!firstName || !lastName || !email || !mobile) {
+        toast.error("Please fill out all fields.");
+        return;
+      }
 
-                                {/* Email */}
-                                <TextInputField
-                                    label="Email*"
-                                    name="email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="Enter email"
-                                    required
-                                />
+      // Email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        toast.error("Please enter a valid email address.");
+        return;
+      }
 
-                                {/* Contact Number */}
-                                <TextInputField
-                                    label="Phone*"
-                                    name="mobile"
-                                    type="tel"
-                                    value={formData.mobile}
-                                    onChange={handleChange}
-                                    placeholder="Enter phone"
-                                    required
-                                />
-                            </div>
-                            <div className="mt-4 flex items-center justify-center gap-2">
-                                <CheckboxField
-                                    onClick={(e) => e.stopPropagation()}
-                                    id={`enquiryModal`}
-                                    htmlFor={`enquiryModal`}
-                                />
-                                <label htmlFor="terms" className="text-sm text-gray-600">
-                                    I agree to Abroaed{" "}
-                                    <span className="text-black cursor-pointer">Terms of Service</span> and{" "}
-                                    <span className="text-black cursor-pointer">Privacy Policy</span>.
-                                </label>
-                            </div>
-                            {/* Action Buttons */}
-                            <div className="flex justify-center text-center">
-                                <button className="mt-4 w-72 bg-[#FDDA24] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300">
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+      // Phone number validation (only digits, length 10-15)
+      const phoneRegex = /^\d{10}$/;
+      if (!phoneRegex.test(mobile)) {
+        toast.error("Please enter a valid 10-digit phone number.");
+        return;
+      }
+
+      // Validate checkboxes
+      if (!termsAgreed) {
+        toast.error("Please agree to Terms & Conditions.");
+        return;
+      }
+
+      console.log("Form Submitted:", formData, source, entity, onAddLead);
+
+      onAddLead({ user: formData, source, entity });
+      onClose();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return (
+    <>
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
+          <div className="bg-white max-h-[63vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-2xl z-50 relative">
+            <button
+              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              onClick={onClose}
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-semibold mb-4">Enquire Now</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Image */}
+              <img
+                src={dark}
+                alt="Accommodation"
+                className="w-full h-auto rounded-lg shadow-md"
+              />
+
+              {/* Details */}
+              <div>
+                <h3 className="text-lg font-semibold mb-2">
+                  {accommodationDetails?.accomodationName}
+                </h3>
+                <div className="flex gap-3 text-center">
+                  <img
+                    className="rounded-t-lg w-[18px] h-[18px] object-contain mx-1"
+                    src={locationIcon}
+                    alt={"accomodation-img"}
+                  />
+                  <p className="text-gray-700 font-semibold ">
+                    {accommodationDetails?.stateId?.name},{" "}
+                    {accommodationDetails?.destinationId?.countryId?.name}
+                  </p>
                 </div>
-            )}
-        </>)
-}
+                <div className="flex gap-3 text-center mt-1">
+                  <img
+                    className="rounded-t-lg w-[24px] h-[24px] object-contain"
+                    src={wallet}
+                    alt="wallet-pic"
+                  />
+                  <p className="text-gray-900">
+                    Rs. {accommodationDetails?.price} per month
+                  </p>
+                </div>
 
-export default AccomodationEnquiryModal
+                <p className="text-gray-600 text-sm mt-2">
+                  {accommodationDetails?.description}
+                </p>
+              </div>
+            </div>
+            <form className="space-y-15 pt-5" onSubmit={handleSubmit}>
+              <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
+                {/* F Name */}
+                <TextInputField
+                  label={"First Name*"}
+                  placeholder="Enter"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+
+                {/* L Name */}
+                <TextInputField
+                  label={"Last Name*"}
+                  placeholder="Enter"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                />
+
+                {/* Email */}
+                <TextInputField
+                  label="Email*"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter email"
+                  required
+                />
+
+                {/* Contact Number */}
+                <TextInputField
+                  label="Phone*"
+                  name="mobile"
+                  type="tel"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Enter phone"
+                  required
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <CheckboxField
+                  onClick={(e) => e.stopPropagation()}
+                  id={`enquiryModal`}
+                  htmlFor={`enquiryModal`}
+                  checked={termsAgreed}
+                  onChange={(e) => setTermsAgreed(e.target.checked)}
+                />
+                <label htmlFor="terms" className="text-sm text-gray-600">
+                  I agree to Abroaed{" "}
+                  <span className="text-black cursor-pointer">
+                    Terms of Service
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-black cursor-pointer">
+                    Privacy Policy
+                  </span>
+                  .
+                </label>
+              </div>
+              {/* Action Buttons */}
+              <div className="flex justify-center text-center">
+                <button
+                  type="submit" // ✅ Ensure button is of type submit
+                  className="mt-4 w-72 bg-[#FDDA24] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default AccomodationEnquiryModal;

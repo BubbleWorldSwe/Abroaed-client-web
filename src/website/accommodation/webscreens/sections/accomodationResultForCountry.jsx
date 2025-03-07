@@ -7,6 +7,8 @@ function AccommodationResultForCountry({
   isLoading,
   selectedCountry,
   destinationsList,
+  source,
+  onAddLead,
 }) {
   return (
     <div className="relative mx-auto px-10">
@@ -53,7 +55,12 @@ function AccommodationResultForCountry({
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
                 {accList.length > 0 ? (
                   accList.map((item, index) => (
-                    <AccommodationCard key={index} item={item} />
+                    <AccommodationCard
+                      key={index}
+                      item={item}
+                      source={source}
+                      onAddLead={onAddLead}
+                    />
                   ))
                 ) : (
                   <p className="text-gray-500">No accommodations available.</p>

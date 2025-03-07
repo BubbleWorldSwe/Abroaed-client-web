@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
-import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal"
-const CourseCard = ({ course }) => {
+import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal";
+
+const CourseCard = ({ course, source, onAddLead }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseAddModal = () => {
@@ -19,6 +20,10 @@ const CourseCard = ({ course }) => {
       <CourseEnquiryModal
         isOpen={openModal}
         onClose={handleCloseAddModal}
+        entity={`${course.name}`}
+        source={source}
+        onAddLead={onAddLead}
+        courseDetails={course}
       />
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
         <div className="flex flex-col flex-grow">
@@ -74,9 +79,7 @@ const CourseCard = ({ course }) => {
 
         {/* Button Always at Bottom */}
         <div className="mt-auto">
-          <EnquireButton
-            onClick={handleOpenAddModal}
-          />
+          <EnquireButton onClick={handleOpenAddModal} />
         </div>
       </div>
     </>

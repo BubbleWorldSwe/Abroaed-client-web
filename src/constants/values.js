@@ -65,6 +65,7 @@ export const planType = ["Basic", "Advance", "Elite"];
 export const source = {
   home: "Home",
   destination: "Destination",
+  courses: "Courses",
   accommodation: "Accommodation",
   college: "College",
   languagePrep: "Language Prep",
@@ -73,4 +74,5 @@ export const source = {
 
 export const entity = {
   contactUs: "Contact Us",
+  bookCounselling: "Book Counselling",
 };

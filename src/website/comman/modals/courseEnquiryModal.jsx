@@ -2,119 +2,181 @@
 import { useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
+import { toast } from "react-toastify";
 
-const CourseEnquiryModal = ({ isOpen, onClose }) => {
-    const [formData, setFormData] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        mobile: "",
-        location: ""
-    });
+const CourseEnquiryModal = ({
+  isOpen,
+  onClose,
+  entity,
+  source,
+  onAddLead,
+  courseDetails,
+}) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+  });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => {
-            return { ...prevData, [name]: value };
-        });
-    };
+  const [termsAgreed, setTermsAgreed] = useState(false);
 
-    return (
-        <>
-            {isOpen && (
-                <div className="fixed h-screen inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-                    <div className="bg-white max-h-[63vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg z-50 relative">
-                        <button
-                            className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                            onClick={onClose}
-                        >
-                            &times;
-                        </button>
-                        <h2 className="text-xl font-semibold mb-4">Enquire Now</h2>
-                        {/* Course Details */}
-                        <h3 className="text-base font-semibold">Course Name</h3>
-                        <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mt-2">
-                            <p>
-                                <strong >Domain</strong> Engineering
-                            </p>
-                            <p>
-                                <strong>Program</strong> Undergraduate
-                            </p>
-                            <p>
-                                <strong>Duration</strong> 24 months
-                            </p>
-                            <p>
-                                <strong>Fees</strong> $23,999 per year
-                            </p>
-                            <p>
-                                <strong>Intake</strong> January
-                            </p>
-                        </div>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-                        {/* Course Description */}
-                        <p className="text-gray-600 text-sm mt-3">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet.
-                            Integer cursus libero placerat ex volutpat posuere.
-                        </p>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { firstName, lastName, email, mobile } = formData;
 
-                        <form className="space-y-15 pt-5">
-                            <div className="grid font-rethink grid-cols-1 gap-2 ">
-                                {/*  Name */}
-                                <TextInputField
-                                    label="Name*"
-                                    name="name"
-                                    type="text"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    placeholder="Enter name"
-                                    required
-                                />
+    // Validate required fields
+    if (!firstName || !lastName || !email || !mobile) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
 
-                                {/* Email */}
-                                <TextInputField
-                                    label="Email*"
-                                    name="email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="Enter email"
-                                    required
-                                />
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
 
-                                {/* Contact Number */}
-                                <TextInputField
-                                    label="Phone*"
-                                    name="mobile"
-                                    type="tel"
-                                    value={formData.mobile}
-                                    onChange={handleChange}
-                                    placeholder="Enter phone"
-                                    required
-                                />
-                            </div>
-                            <div className="mt-4 flex items-center justify-center gap-2">
-                                <CheckboxField
-                                    onClick={(e) => e.stopPropagation()}
-                                    id={`enquiryModal`}
-                                    htmlFor={`enquiryModal`}
-                                />
-                                <label htmlFor="terms" className="text-sm text-gray-600">
-                                    I agree to Abroaed{" "}
-                                    <span className="text-black cursor-pointer">Terms of Service</span> and{" "}
-                                    <span className="text-black cursor-pointer">Privacy Policy</span>.
-                                </label>
-                            </div>
-                            {/* Action Buttons */}
-                            <div className="flex justify-center text-center">
-                                <button className="mt-4 w-72 bg-[#FDDA24] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300">
-                                    Submit
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-        </>)
-}
+    // Phone number validation (only digits, length 10-15)
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(mobile)) {
+      toast.error("Please enter a valid 10-digit phone number.");
+      return;
+    }
 
-export default CourseEnquiryModal
+    // Validate checkboxes
+    if (!termsAgreed) {
+      toast.error("Please agree to Terms & Conditions.");
+      return;
+    }
+
+    console.log("Form Submitted:", formData);
+
+    onAddLead({ user: formData, source, entity });
+    onClose();
+  };
+
+  return (
+    <>
+      {isOpen && (
+        <div className="fixed h-screen inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+          <div className="bg-white max-h-[63vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg z-50 relative">
+            <button
+              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              onClick={onClose}
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-semibold mb-4">Enquire Now</h2>
+            {/* Course Details */}
+            <h3 className="text-base font-semibold">{courseDetails?.name}</h3>
+            <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mt-2">
+              <p>
+                <strong>Domain :</strong> {courseDetails?.domain}
+              </p>
+              <p>
+                <strong>Program :</strong> {courseDetails?.courseLevel}
+              </p>
+              <p>
+                <strong>Duration :</strong> {courseDetails?.duration}
+              </p>
+              <p>
+                <strong>Fees :</strong> {courseDetails?.fees}
+              </p>
+              <p>
+                <strong>Intake :</strong> {courseDetails?.intake}
+              </p>
+            </div>
+
+            {/* Course Description */}
+            <p className="text-gray-600 text-sm mt-3">{courseDetails?.brief}</p>
+
+            <form className="space-y-15 pt-5">
+              <div className="grid font-rethink grid-cols-1 gap-2 ">
+                {/* F Name */}
+                <TextInputField
+                  label={"First Name*"}
+                  placeholder="Enter"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+
+                {/* L Name */}
+                <TextInputField
+                  label={"Last Name*"}
+                  placeholder="Enter"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                />
+
+                {/* Email */}
+                <TextInputField
+                  label={"Email ID*"}
+                  placeholder="Enter"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+
+                {/* Contact Number */}
+                <TextInputField
+                  label={"Contact Number*"}
+                  placeholder="Enter"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-center gap-2">
+                <CheckboxField
+                  onClick={(e) => e.stopPropagation()}
+                  id={`enquiryModal`}
+                  htmlFor={`enquiryModal`}
+                  checked={termsAgreed}
+                  onChange={(e) => setTermsAgreed(e.target.checked)}
+                />
+                <label htmlFor="terms" className="text-sm text-gray-600">
+                  I agree to Abroaed{" "}
+                  <span className="text-black cursor-pointer">
+                    Terms of Service
+                  </span>{" "}
+                  and{" "}
+                  <span className="text-black cursor-pointer">
+                    Privacy Policy
+                  </span>
+                  .
+                </label>
+              </div>
+              {/* Action Buttons */}
+              <div className="flex justify-center text-center">
+                <button
+                  onClick={handleSubmit}
+                  className="mt-4 w-72 bg-[#FDDA24] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default CourseEnquiryModal;

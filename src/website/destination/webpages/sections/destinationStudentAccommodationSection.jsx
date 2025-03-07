@@ -5,8 +5,9 @@ import AccommodationCard from "../../../comman/components/accommodationCard";
 const DestinationStudentAccommodationsSection = ({
   accommodationList,
   destinationDetails,
+  onAddLead,
+  source,
 }) => {
-  console.log(accommodationList);
   return (
     <Element name="accommodation">
       <div className="relative  px-10 mx-auto">
@@ -21,7 +22,12 @@ const DestinationStudentAccommodationsSection = ({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
               {accommodationList.slice(0, 4).map((item, index) => (
-                <AccommodationCard item={item} key={index} />
+                <AccommodationCard
+                  item={item}
+                  key={index}
+                  onAddLead={onAddLead}
+                  source={source}
+                />
               ))}
             </div>
             <div className="text-center ">
