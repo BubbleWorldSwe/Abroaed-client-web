@@ -59,28 +59,39 @@ export const articles = [
 ];
 export const cardDetails = [
     {
-        key: "Country",
-        value: "India"
+        key: "Unlimited Home Counselling",
+
     },
     {
-        key: "Tuition Fees",
-        value: "₹ 6,54,321"
+        key: "Home Tutors for EPT",
+
     },
     {
-        key: "Mode of Teaching",
-        value: "Online"
+        key: "Competitive Interest Rateson Loans",
+
     },
     {
-        key: "Course Name",
-        value: "Course Name"
+        key: "Country Specific Coach",
+
     },
     {
-        key: "Cost of Living",
-        value: "NA"
+        key: "24/7 Student Support (Post Arrival)",
+
     },
     {
-        key: "Duration",
-        value: "8 Months"
+        key: "GRE/GMAT Prep",
+    },
+    {
+        key: "Comprehensive Profile Building",
+    },
+    {
+        key: "Small Cohorts Sizes for Extra Attention",
+    },
+    {
+        key: "Priority Admission Offers from Recommended Universities.",
+    },
+    {
+        key: "Alumni Connect from Various Universities.",
     },
 ];
 

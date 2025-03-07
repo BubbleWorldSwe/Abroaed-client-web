@@ -1,0 +1,109 @@
+
+import dark from "../../../../assets/dark.png"
+
+const serviceData = [
+    {
+        text1: "Free Home Consultation",
+        text2:
+            "Our free home consultation brings expert advice to your doorstep. We assess your educational aspirations, preferred destinations, and potential career paths. This service ensures personalized guidance from experienced counselors in the comfort of your home. With a focus on clarity, we discuss program options, visa processes, and financial planning. This consultation provides families an opportunity to understand the study abroad process comprehensively. We focus on answering your questions, explaining the process, and providing honest, practical advice to help you kick-start your journey.",
+        imgUrl: dark,
+    },
+    {
+        text1: "Comprehensive Research & Shortlisting",
+        text2:
+            "We make the highly complicated process of selecting the proper euniversity and course easier. Based on your educational background, the desired career outcome, and choice of country, our experts are going to analyze and research very thoroughly about any particular program to compare universities across the world in rank, courses available, fees and requirements to apply. That's how the personal approach could give you better insight into which choice is actually yours. Narrowing down your choices will lead us to help you focus on opportunities that best align with your aims toward the goal of a successful academic experience abroad.",
+        imgUrl: dark,
+    },
+    {
+        text1: "Customized Personal Guidance",
+        text2:
+            "We give you one-to-one guidance at every step in your study abroad journey. Our team takes time to understand the specific needs you have, from selecting a course to preparing your application. We can help you with drafting your statement of purpose, review your documents, and ensure you fulfill all requirements set by the university you've chosen. Additionally, we help you land the most suitable scholarship and offer support in interview preparations. This hands-on assistance ensures you’re fully prepared for every stage of the application process.",
+        imgUrl: dark,
+    },
+    {
+        text1: "Accommodation Support Services",
+        text2:
+            "Finding a place to call home while studying in a foreign land is a cumbersome task, however, help is at hand from our team. There is a wide range of choices available to you like hostel dorms, flats where you can house with a flatmate, or independently rented homes. Our team gives you advice on picking a place that works for your money situation where you want to be, and how you like to live. We walk you through the steps to book your place making sure you have all the papers and deals you need. With us backing you up, you can get a comfy and safe place to live, so you can pay attention to your classes without worrying about where you'll sleep at night.",
+        imgUrl: dark,
+    },
+    {
+        text1: "Exclusive Scholarship Guidance",
+        text2:
+            "We provide in-depth assistance in identifying and applying for scholarships that align with your academic qualifications and professional objectives. Our team thoroughly researches the relevant funding opportunities, including merit-based, need-based, and program-specific scholarships. We assist you in preparing your application, ensuring all documentation meets all criteria, from academic transcripts to recommendation letters. We also help students write well-argued personal statements and prepare their applications in line with scholarship requirements. Through our extensive information, we help enhance the chances of one being awarded the much-needed financial support to fund their education abroad.",
+        imgUrl: dark,
+    },
+    {
+        text1: "Global Pathway Course Options",
+        text2: "We will support you by recommending an appropriate global pathway course to be your bridge to the degree program abroad. These courses are planned for students who need more preparation or improvement in language proficiency, academic abilities, or subject knowledge. With the help of our team, you will identify programs that best fit your background and career aspirations. We provide ample information in terms of course content, duration, and entry requirements to make an informed choice. With our help, you will ease your transition into the university and its academic program that you've chosen.",
+        imgUrl: dark,
+    },
+];
+
+const ExploreOurServicesHomeCounselling = () => {
+    return (
+        <section className="dark:bg-gray-900  relative py-10">
+            <div className=" px-12 mx-auto max-w-screen-2xl   relative z-10">
+                <h1 className="mb-10 text-5xl tracking-tight font-extrabold">
+                    Explore Our Other Services
+                </h1>
+            </div>
+            <div className="overflow-x-auto">
+                <div className="flex space-x-5" style={{ minWidth: "max-content" }}>
+                    {serviceData?.map((service, index) => (
+                        <div
+                            key={index}
+                            className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden"
+                        >
+                            {/* Background Image with Overlay */}
+                            <div className="relative w-full h-full">
+                                <img
+                                    className="w-full h-full object-cover rounded-lg"
+                                    src={service.imgUrl}
+                                    alt={`Service ${index + 1}`}
+                                />
+                                <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+                                {/* Overlay */}
+                            </div>
+                            <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                                <div className="overflow-y-auto">
+                                    <h1 className="mb-1 text-2xl font-bold text-white">
+                                        {service.text1}
+                                    </h1>
+                                    <p className="text-gray-200 lg:mb-2 text-[16px]">
+                                        {service.text2}
+                                    </p>
+                                </div>
+
+                                {/* Button */}
+                                {/* <button
+                      type="button"
+                      onClick={() => setModalOpen(true)}
+                      className="w-12 h-12 flex items-center justify-center font-medium bg-black bg-opacity-40 rounded-full hover:bg-opacity-60 focus:outline-none transition-all"
+                    >
+                      <svg
+                        className="w-5 h-5 text-white"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 18 18"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 1v16M1 9h16"
+                        />
+                      </svg>
+                    </button> */}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+        </section>
+    )
+}
+
+export default ExploreOurServicesHomeCounselling

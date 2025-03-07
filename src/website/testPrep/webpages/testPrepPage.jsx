@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import TestPrepContent from "../../../pages/TestPrep/TestPrepOverviewContent";
 import TestPrepHero from "./sections/testPrepHeroSection";
 // import TestPrepForm from "../../../pages/TestPrep/TestPrepForm";
@@ -15,7 +16,7 @@ import { getTestPrepDetailsById } from "../../../api/testPrepsApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import TestPrepSimplifyThings from "./sections/testPrepSimplifyThings";
-import Blogs from "../../comman/components/blogs";
+// import Blogs from "../../comman/components/blogs";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch } from "react-redux";
@@ -64,7 +65,7 @@ function TestPrepLayout() {
 
   return (
     <div className="font-rethink">
-      <Header testPrepsDetails={testPrepsDetails} />
+      <Header testPrepsDetails={testPrepsDetails} isHeaderBgWhite={true} />
       <TestPrepHero testPrepsDetails={testPrepsDetails} />
       <TextPrepAbout testPrepsDetails={testPrepsDetails} />
       <div className="relative ">
@@ -104,7 +105,7 @@ function TestPrepLayout() {
         </div>
       )}
 
-      <Blogs />
+      {/* <Blogs /> */}
 
       <ContactUsForm
         onFormSubmit={handleAddLead}

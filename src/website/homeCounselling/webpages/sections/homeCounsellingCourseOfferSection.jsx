@@ -6,7 +6,7 @@ const HomeCounsellingCourseOffer = () => {
         <div className="relative">
             {/* Blob Background */}
             <section className="px-10 mx-auto">
-                <div className=" px-4  flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
+                <div className=" px-4  flex flex-col gap-6 mx-auto max-w-screen-2xl ">
                     {/* Content */}
                     <div className="relative z-10 mt-10">
                         <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">

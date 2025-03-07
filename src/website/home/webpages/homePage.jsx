@@ -140,7 +140,6 @@ function HomeLayout() {
         entity={entity.contactUs}
         isLoading={isLoading}
       />
-
       <Footer />
     </div>
   );
