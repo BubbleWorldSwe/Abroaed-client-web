@@ -30,7 +30,7 @@ const HomePathwaySection = () => {
               />
               <div className="absolute bottom-3 left-10 px-5">
                 <p className="text-gray-200 lg:mb-2 text-base">Explore</p>
-                <h1 className="mb-4 text-5xl tracking-tight font-extrabold text-white dark:text-white">
+                <h1 className="mb-2 text-5xl tracking-tight font-extrabold text-white dark:text-white">
                   Direct
                 </h1>
                 {hoverOn === "direct" && isHovered && (
