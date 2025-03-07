@@ -10,9 +10,7 @@ import LeadSavePreference from "../components/leadSavePreference";
 import LeadScheduleAppointment from "../components/leadScheduleAppointment";
 import UpdateLeadPersonalInfo from "../modals/updateLeadPersonalInfoModal";
 import UpdateLeadAdditionInfo from "../modals/updateLeadAdditionInfoModal";
-import UpdateLeadAssignTeamModal from "../modals/updateLeadAssignTeamModal";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
-import UpdateAppointmentModal from "../modals/updateAppointmentModal"; // Import Appointment Modal
 import { editLeadRequest } from "../../../redux/actions/leadsActions";
 import AppointmentModal from "../modals/appointmentModal";
 

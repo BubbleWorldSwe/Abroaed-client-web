@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
-import UpdateLeadAssignTeamModal from "../modals/updateLeadAssignTeamModal";
 import { useSelector } from "react-redux";
 
 const LeadAssignTeam = ({ onOpenModal }) => {
@@ -128,7 +127,7 @@ const LeadAssignTeam = ({ onOpenModal }) => {
             ) : (
               <tr>
                 <td
-                  colSpan="3"
+                  colSpan="5"
                   className="text-center py-4 border text-gray-500"
                 >
                   No Records

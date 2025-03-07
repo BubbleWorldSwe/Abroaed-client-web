@@ -10,7 +10,7 @@ const LeadScheduleAppointment = ({ onOpenModal }) => {
       <div className="space-y-4 mt-4">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-[#27272A]">
-            Schedule Appointment (Already Scheduled)
+            Schedule Appointment
           </h2>
           <button
             onClick={onOpenModal} // Trigger modal from parent

@@ -124,7 +124,7 @@ const AssignTeamModal = ({
               name="members"
               value={selectedMember}
               onChange={handleChange}
-              options={membersList.map((data) => ({
+              options={membersList?.map((data) => ({
                 label: `${data?.firstName} ${data?.lastName}`,
                 value: data?._id,
               }))}
