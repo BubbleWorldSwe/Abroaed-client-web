@@ -1,8 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
 import { toast } from "react-toastify";
 
-const ContactUsForm = ({ onFormSubmit, source, entity, isLoading }) => {
+const ContactUsForm = ({
+  onFormSubmit,
+  source,
+  entity,
+  isLoading,
+  title,
+  text,
+}) => {
   console.log(isLoading + " Is Loading");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -60,17 +68,18 @@ const ContactUsForm = ({ onFormSubmit, source, entity, isLoading }) => {
 
   return (
     <section className="relative isolate overflow-hidden  px-10 mx-auto">
-      <div className="py-2 px-3 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
+      <div className="py-8 px-3 mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}
           <div className="lg:w-3/5  py-4 flex flex-col justify-center">
             <h1 className="text-[45px] font-black max-w-xl text-black leading-tight tracking-wide">
-              Book your counseling session today!
+              {title || `Book your counseling session today!`}
             </h1>
             <p className="mt-3 md:mt-6 text-lg leading-6 text-gray-500 tracking-wide font-medium">
-              Our specialised home counseling session is available at your
+              {text ||
+                `Our specialised home counseling session is available at your
               convenience. Don’t waste a minute—take a stride towards your
-              future by contacting our study abroad expert today.
+              future by contacting our study abroad expert today.`}
             </p>
           </div>
 

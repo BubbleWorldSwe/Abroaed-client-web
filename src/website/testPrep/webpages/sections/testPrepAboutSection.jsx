@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable react/prop-types */
 
 import { formatDate } from "../../../../utils/helper";
 
@@ -10,7 +10,7 @@ function TextPrepAbout({ testPrepsDetails }) {
           <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
             About {testPrepsDetails?.productName}
           </h2>
-          <p className="mt-3 font-inter text-lg text-gray-800">
+          <p className="mt-3 font-normal text-sm text-gray-800">
             {testPrepsDetails?.about}
           </p>
         </header>

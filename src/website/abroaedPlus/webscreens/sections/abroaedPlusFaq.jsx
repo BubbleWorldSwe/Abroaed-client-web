@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-
-const LeaguageOfExcellenceFaq = () => {
+const AbroaedPlusFaq = () => {
     const [activeIndex, setActiveIndex] = useState(null);
     const toggleFAQ = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
@@ -84,5 +83,4 @@ const LeaguageOfExcellenceFaq = () => {
     );
 };
 
-
-export default LeaguageOfExcellenceFaq
+export default AbroaedPlusFaq

@@ -3,7 +3,7 @@ import vectorRightRing from "../../../../assets/vectorRightRing.png"
 
 const HomeCounsellingHowItWork = () => {
     return (
-        <div className="relative mx-auto px-10 bg-white">
+        <div className="relative mx-auto px-12 bg-white">
             <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
                 <section className="dark:bg-gray-900">
                     <div className="py-8 lg:py-16">
@@ -11,14 +11,14 @@ const HomeCounsellingHowItWork = () => {
                             <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                                 How It Works?
                             </h2>
-                            <p className="mb-4 font-light">
+                            <p className="mb-4 font-normal text-[#27272A] text-sm">
                                 Track work across the enterprise through an open, collaborative
                                 platform. Link issues across Jira and ingest data from other
                                 software development tools, so your IT support and operations
                                 teams have richer contextual information to rapidly respond to
                                 requests, incidents, and changes.
                             </p>
-                            <p className="mb-4 font-medium">
+                            <p className="mb-4 font-normal text-[#27272A] text-sm">
                                 Deliver great service experiences fast - without the complexity of
                                 traditional ITSM solutions. Accelerate critical development work,
                                 eliminate toil, and deploy changes with ease.
@@ -27,7 +27,7 @@ const HomeCounsellingHowItWork = () => {
                                 eliminate toil, and deploy changes with ease.
                             </p>
                         </div>
-                        <div className="mt-8 grid grid-cols-1 gap-2 md:grid-cols-3 py-5">
+                        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">
                             {steps.map((step) => (
                                 <div
                                     key={step.step}
@@ -50,7 +50,7 @@ const HomeCounsellingHowItWork = () => {
                                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">
                                         {step.heading}
                                     </h5>
-                                    <p className="font-normal text-white dark:text-gray-400">
+                                    <p className="font-normal text-white text-base dark:text-gray-400">
                                         {step.description}
                                     </p>
                                     <div className="absolute top-0 right-0">

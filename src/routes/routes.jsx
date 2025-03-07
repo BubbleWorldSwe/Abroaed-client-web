@@ -44,6 +44,7 @@ import StudentTransactions from "../student/studentComponent/studentTransactions
 import LeadProfileLayout from "../admin/lead/screens/leadProfile";
 import AdminLayout from "../admin/adminLayouts";
 import LeaguageOfExcellencePage from "../website/leagueOfExcellence/webpages/leaguageOfExcellencePage";
+import AbroaedPlusPage from "../website/abroaedPlus/webscreens/abroaedPlusPage";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -100,6 +101,11 @@ const AppRoutes = () => {
     {
       path: "/leaguageOfExcellence",
       element: <LeaguageOfExcellencePage />,
+      isPrivate: false,
+    },
+    {
+      path: "/abroaedPlus",
+      element: <AbroaedPlusPage />,
       isPrivate: false,
     },
     {

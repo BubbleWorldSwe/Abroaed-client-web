@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useSelector } from "react-redux";
-import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
+// import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 
@@ -14,13 +15,14 @@ const DropdownMenu = ({
   toggleDropdown,
   isOpen,
   scrolling,
+  isHeaderBgWhite,
 }) => {
   return (
     <li>
       <button
         onClick={() => toggleDropdown(stateKey)}
-        className={`font-medium flex items-center gap-1 ${
-          scrolling ? "text-black" : "text-white"
+        className={`font-semibold text-sm flex items-center gap-1 ${
+          scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"
         }`}
       >
         {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -49,7 +51,7 @@ const DropdownMenu = ({
   );
 };
 
-function Header() {
+function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
   const [dropdowns, setDropdowns] = useState({
     whyAbroad: false,
@@ -134,8 +136,8 @@ function Header() {
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling
-          ? "bg-white text-black shadow-md"
+        scrolling || isHeaderBgWhite
+          ? "bg-white text-[#52525B] shadow-md"
           : "bg-black text-white bg-opacity-20"
       }`}
     >
@@ -154,7 +156,7 @@ function Header() {
                 target="_blank"
                 href="/home"
                 className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
-                  scrolling ? "text-black" : "text-white"
+                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
                 }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
@@ -210,6 +212,7 @@ function Header() {
                   toggleDropdown={toggleDropdown}
                   isOpen={dropdowns.whyAbroad}
                   scrolling={scrolling}
+                  isHeaderBgWhite={isHeaderBgWhite}
                 />
                 <DropdownMenu
                   title="Destinations"
@@ -222,6 +225,7 @@ function Header() {
                   toggleDropdown={toggleDropdown}
                   isOpen={dropdowns.destinations}
                   scrolling={scrolling}
+                  isHeaderBgWhite={isHeaderBgWhite}
                 />
                 <DropdownMenu
                   title="Test Prep"
@@ -234,6 +238,7 @@ function Header() {
                   toggleDropdown={toggleDropdown}
                   isOpen={dropdowns.testPrep}
                   scrolling={scrolling}
+                  isHeaderBgWhite={isHeaderBgWhite}
                 />
                 <DropdownMenu
                   title="Language Prep"
@@ -246,12 +251,15 @@ function Header() {
                   toggleDropdown={toggleDropdown}
                   isOpen={dropdowns.languagePrep}
                   scrolling={scrolling}
+                  isHeaderBgWhite={isHeaderBgWhite}
                 />
                 <li>
                   <a
                     href="/finance"
-                    className={`font-medium ${
-                      scrolling ? "text-black" : "text-white"
+                    className={`font-semibold text-sm ${
+                      scrolling || isHeaderBgWhite
+                        ? "text-[#52525B]"
+                        : "text-white"
                     }`}
                   >
                     Finance
@@ -260,8 +268,10 @@ function Header() {
                 <li>
                   <a
                     href="/pathways"
-                    className={`font-medium ${
-                      scrolling ? "text-black" : "text-white"
+                    className={`font-semibold text-sm ${
+                      scrolling || isHeaderBgWhite
+                        ? "text-[#52525B]"
+                        : "text-white"
                     }`}
                   >
                     Pathways
