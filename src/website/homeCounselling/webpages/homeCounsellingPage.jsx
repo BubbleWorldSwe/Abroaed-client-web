@@ -2,16 +2,17 @@ import dark from '../../../assets/dark.png';
 // import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
+import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import Footer from '../../comman/sections/footerSection';
 import Header from '../../comman/sections/headerSection';
 import HomeCounsellingHeroSection from './sections/homeCounsellingHeroSection';
 import HomeCounsellingHowItWork from './sections/homeCounsellingHowItWorkSection';
 // import HomeCounsellingCourseOffer from './sections/homeCounsellingCourseOfferSection';
-import HomeCounsellingScholarshipSection from './sections/homeCounsellingScholarshipSection';
-import HomeCounsellingBlogSectionSection from './sections/homeCounsellingBlogSectionSection';
+// import HomeCounsellingScholarshipSection from './sections/homeCounsellingScholarshipSection';
+// import HomeCounsellingBlogSectionSection from './sections/homeCounsellingBlogSectionSection';
 import HomeCounsellingFaqSection from './sections/homeCounsellingFaqSection';
-import HomeCounsellingAbroaedUpdateSection from './sections/homeCounsellingAbroaedUpdateSection';
-import HomeCounsellingLeadFormSection from './sections/homeCounsellingLeadFormSection';
+// import HomeCounsellingAbroaedUpdateSection from './sections/homeCounsellingAbroaedUpdateSection';
+// import HomeCounsellingLeadFormSection from './sections/homeCounsellingLeadFormSection';
 import WhyChooseOurHomeCounselling from './sections/whyChooseOurHomeCounselling';
 import BookCounsellingNow from './sections/bookCounsellingNow';
 import Testimonials from '../../comman/components/testimonials';
@@ -64,20 +65,20 @@ const HomeCounsellingPage = () => {
         </div>
       </div>
       <Testimonials />
-      {/* <div className="relative">
-        <HomeCounsellingScholarshipSection />
-        <div className="absolute -top-60 left-0 z-0">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorDownNose}
-            alt="Counselling session"
-          />
-        </div>
-      </div> */}
+
 
       <ExploreOurServicesHomeCounselling />
       <HomeCounsellingFaqSection />
-      <Blogs />
+      <div className="relative">
+        <Blogs />
+        <div className="absolute -top-10 right-0 -z-10">
+          <img
+            className="rounded-lg w-full h-full object-cover"
+            src={vectorLeftNoseSmall}
+            alt="Counselling session"
+          />
+        </div>
+      </div>
       <ContactUsForm />
       <Footer />
     </div>
