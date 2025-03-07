@@ -14,7 +14,7 @@ const ExploreCollegesNavItemModal = ({
   handleStateClick,
 }) => {
   return (
-    <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] min-w-max h-[60vh] bg-white border border-gray-100 flex z-50 overflow-hidden">
+    <div className="absolute left-1/2 transform -translate-x-1/2 top-full w-[70%] min-w-max h-[60vh] bg-white border border-gray-100 shadow-lg rounded-b-lg flex z-50 overflow-hidden">
       {/* Left Sidebar: Destination List */}
       <div className="p-3 w-1/4 overflow-y-auto text-gray-900 bg-white dark:text-white dark:bg-gray-800">
         <h3 className="mb-4 text-lg font-bold">Destinations</h3>

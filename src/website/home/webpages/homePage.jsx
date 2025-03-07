@@ -34,19 +34,21 @@ import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
+import PageLoader from "../../../commons/components/loader/pageLoader";
 
 function HomeLayout() {
   const dispatch = useDispatch();
 
   const { loading } = useSelector((state) => state.destinations);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   async function fetchData() {
     try {
       dispatch(fetchAllTestPrepsRequest());
       dispatch(fetchAllLanguagePrepsRequest());
       dispatch(fetchAllDestinationsRequest());
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -61,13 +63,13 @@ function HomeLayout() {
     // setIsLoading(false);
   };
 
-  if (loading) {
-    // return <PageLoader />;
-  }
-
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <div className="font-rethink">
@@ -98,7 +100,7 @@ function HomeLayout() {
       />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
-      <div className="relative ">
+      <div className="relative">
         <OurPartners />
         <div className="absolute -top-10 left-0 z-0">
           <img

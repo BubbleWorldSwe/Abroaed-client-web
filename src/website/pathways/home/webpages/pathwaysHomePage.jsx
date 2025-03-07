@@ -45,7 +45,10 @@ function PathwaysHomePage() {
             alt="Counselling session"
           />
         </div>
-        <ContactUsForm title="abcd" text="vvv" />
+        <ContactUsForm
+        // title="abcd"
+        //  text="vvv"
+        />
       </div>
 
       <Footer />

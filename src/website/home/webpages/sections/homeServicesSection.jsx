@@ -56,8 +56,8 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className="dark:bg-gray-900  relative -mt-14">
-        <div className=" px-12 mx-auto max-w-screen-2xl   relative z-10">
+      <section className="dark:bg-gray-900 relative">
+        <div className="px-12 mx-auto max-w-screen-2xl relative z-10">
           <h2 className="mb-10 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
             What we bring to the table (Services).
           </h2>
@@ -67,7 +67,7 @@ const HomeServicesSection = () => {
             {serviceData?.map((service, index) => (
               <div
                 key={index}
-                className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden"
+                className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden ml-12"
               >
                 {/* Background Image with Overlay */}
                 <div className="relative w-full h-full">
@@ -116,7 +116,6 @@ const HomeServicesSection = () => {
             ))}
           </div>
         </div>
-
       </section>
     </div>
   );

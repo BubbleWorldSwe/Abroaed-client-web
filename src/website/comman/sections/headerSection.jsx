@@ -37,7 +37,7 @@ const DropdownMenu = ({
                   <a
                     href={data._id ? `/${urlPrefix}/${data._id}` : data.href}
                     className="block px-4 py-2 hover:bg-gray-100"
-                    target="_blank"
+                    //target="_blank"
                   >
                     {data?.title}
                   </a>
@@ -138,14 +138,12 @@ function Header({ isHeaderBgWhite = false }) {
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
         scrolling || isHeaderBgWhite
           ? "bg-white text-[#52525B] shadow-md"
-          : "bg-black text-white bg-opacity-20"
+          : "bg-black text-white bg-opacity-0"
       }`}
     >
       <nav>
         <div
-          className={`py-3 text-center font-inter text-sm ${
-            scrolling ? "bg-yellow-300 text-black" : "bg-yellow-300 text-white"
-          }`}
+          className={`py-3 text-center font-inter text-sm bg-yellow-300 text-black`}
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
@@ -153,7 +151,7 @@ function Header({ isHeaderBgWhite = false }) {
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
-                target="_blank"
+                // target="_blank"
                 href="/home"
                 className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
                   scrolling || isHeaderBgWhite ? "text-black" : "text-white"
