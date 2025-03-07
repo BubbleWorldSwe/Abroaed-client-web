@@ -7,13 +7,13 @@ function HomeDownloadApp() {
         <div className="relative  mx-auto px-10 z-10">
           <div className=" shadow-lg bg-[#F4F4F5]  items-center max-w-screen-2xl  mx-auto  xl:gap-16 md:grid md:grid-cols-2  lg:px-3">
             <div className="px-5 py-8">
-              <h2 className="mb-4 text-5xl max-w-xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+              <h2 className="mb-4 text-5xl  font-extrabold text-[#27272A] dark:text-white">
                 For Convenient Access to Study Abroad Resources
               </h2>
               <h2 className="mb-4 text-xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Download Our App
               </h2>
-              <p className="mb-6 font-light max-w-lg text-gray-500 text-base dark:text-gray-400">
+              <p className="mb-6 font-normal max-w-lg text-[#52525B] text-sm dark:text-gray-400">
                 Download now for personalized coaching, exclusive services, and
                 seamless study-abroad preparation.
               </p>

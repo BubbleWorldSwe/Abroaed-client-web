@@ -29,12 +29,12 @@ const HomePathwaySection = () => {
                 alt="Direct"
               />
               <div className="absolute bottom-3 left-10 px-5">
-                <p className="text-gray-200 lg:mb-2 sm:text-xl">Explore</p>
-                <h1 className="mb-4 text-5xl tracking-tight font-extrabold text-white dark:text-white">
+                <p className="text-gray-200 lg:mb-2 text-base">Explore</p>
+                <h1 className="mb-2 text-5xl tracking-tight font-extrabold text-white dark:text-white">
                   Direct
                 </h1>
                 {hoverOn === "direct" && isHovered && (
-                  <div className="bg-opacity-50 flex items-center justify-center text-white text-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-opacity-50 flex items-center justify-center text-white text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Our Direct Programs are designed to make your study abroad
                     experience simple and stress-free. We guide you through each
                     step of the application process to top universities,
@@ -67,12 +67,12 @@ const HomePathwaySection = () => {
                 alt="Pathways"
               />
               <div className="absolute bottom-3 left-10 px-5">
-                <p className="text-gray-200 lg:mb-2 sm:text-xl">Explore</p>
+                <p className="text-gray-200 lg:mb-2 text-base">Explore</p>
                 <h1 className="mb-2 text-5xl tracking-tight font-extrabold text-white dark:text-white">
                   Pathways
                 </h1>
                 {hoverOn === "pathways" && isHovered && (
-                  <div className="bg-opacity-50 flex items-center justify-center text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-opacity-50 flex items-center justify-center text-white text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Our Pathways Programs offer you the opportunity to begin
                     your studies in India and then transfer to top international
                     universities. With the guidance of our visa overseas
@@ -96,7 +96,7 @@ const HomePathwaySection = () => {
           />
         </div>
       </section>
-      <div className="h-[35px]"></div>
+      {/* <div className="h-[35px]"></div> */}
     </div>
   );
 };

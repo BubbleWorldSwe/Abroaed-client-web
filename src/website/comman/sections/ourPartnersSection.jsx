@@ -3,11 +3,11 @@ function OurPartners() {
     <div>
       <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
         <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
-          <h2 className="mb-1 text-3xl font-extrabold tracking-tight leading-tight text-center text-[#27272A] dark:text-white md:text-4xl">
+          <h2 className="mb-4 text-center text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
             Our Partner
           </h2>
           <div className="flex mb-10 justify-center text-center">
-            <p className="text-center max-w-[50vw] text-[#52525B]">
+            <p className="text-center max-w-[50vw] text-[#52525B] text-base font-semibold">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>

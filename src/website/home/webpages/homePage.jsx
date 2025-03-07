@@ -81,7 +81,7 @@ function HomeLayout() {
         }
       />
       <HomePathwaySection />
-      <div className="relative mt-10">
+      <div className="relative ">
         <HomeServicesSection />
         <div className="absolute -top-10 right-0 -z-20">
           <img
@@ -98,7 +98,7 @@ function HomeLayout() {
       />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
-      <div className="relative my-5">
+      <div className="relative ">
         <OurPartners />
         <div className="absolute -top-10 left-0 z-0">
           <img
@@ -121,12 +121,6 @@ function HomeLayout() {
         </div>
         <HomeDownloadApp />
       </div>
-
-      {/* <HomeTestimonialsSection /> */}
-
-      {/* <Pricing /> */}
-      {/* <FAQsection /> */}
-
       <div className="relative ">
         <div className="absolute top-28 right-0 z-0">
           <img
@@ -135,7 +129,6 @@ function HomeLayout() {
             alt="Counselling session"
           />
         </div>
-
         <Blogs />
       </div>
       <ContactUsForm

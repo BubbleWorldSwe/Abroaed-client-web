@@ -19,15 +19,15 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
 
   return (
     <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto h-full">
-      <div className="py-16 px-4 mx-auto max-w-screen-2xl  lg:px-3  z-10">
+      <div className="py-20 px-4 mx-auto max-w-screen-2xl  lg:px-3  z-10">
         <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  ">
           {/* Left Side: Text and Image */}
           <div className="flex flex-col gap-3 justify-center">
             {/* <div className="text-start "> */}
-            <h1 className="text-5xl font-bold  text-black dark:text-white ">
+            <h2 className="mb-2 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
               Need Clarifications on Your Study Abroad Plans?
-            </h1>
-            <p className="text-[#52525B] font-medium text-[16px">
+            </h2>
+            <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
               Our study abroad consultants will reach out to you and guide you
               through every step of the application process and document
               preparation, allowing you to focus on what matters most while we
@@ -54,9 +54,9 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             <div className="flex flex-col items-start w-full rounded-lg p-8 bg-bal">
               {/* Tabs Row */}
               <div className="mb-3">
-                <h1 className="text-5xl font-bold mb-5 text-black dark:text-white ">
+                <h2 className="mb-4 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
                   Book Counselling Now
-                </h1>
+                </h2>
 
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -56,42 +56,41 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className="dark:bg-gray-900 px-10 mx-auto relative">
-        <div className=" px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
-          <div className="">
-            <h1 className="mb-10 text-5xl tracking-tight font-extrabold">
-              What we bring to the table (Services).
-            </h1>
-          </div>
-          <div className="overflow-x-auto">
-            <div className="flex space-x-5" style={{ minWidth: "max-content" }}>
-              {serviceData?.map((service, index) => (
-                <div
-                  key={index}
-                  className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden"
-                >
-                  {/* Background Image with Overlay */}
-                  <div className="relative w-full h-full">
-                    <img
-                      className="w-full h-full object-cover rounded-lg"
-                      src={service.imgUrl}
-                      alt={`Service ${index + 1}`}
-                    />
-                    <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
-                    {/* Overlay */}
+      <section className="dark:bg-gray-900  relative -mt-14">
+        <div className=" px-12 mx-auto max-w-screen-2xl   relative z-10">
+          <h2 className="mb-10 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
+            What we bring to the table (Services).
+          </h2>
+        </div>
+        <div className="overflow-x-auto">
+          <div className="flex space-x-5" style={{ minWidth: "max-content" }}>
+            {serviceData?.map((service, index) => (
+              <div
+                key={index}
+                className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden"
+              >
+                {/* Background Image with Overlay */}
+                <div className="relative w-full h-full">
+                  <img
+                    className="w-full h-full object-cover rounded-lg"
+                    src={service.imgUrl}
+                    alt={`Service ${index + 1}`}
+                  />
+                  <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+                  {/* Overlay */}
+                </div>
+                <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                  <div className="overflow-y-auto">
+                    <h1 className="mb-1 text-2xl font-bold text-white">
+                      {service.text1}
+                    </h1>
+                    <p className="text-gray-200 lg:mb-2 text-[16px]">
+                      {service.text2}
+                    </p>
                   </div>
-                  <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
-                    <div className="overflow-y-auto">
-                      <h1 className="mb-1 text-2xl font-bold text-white">
-                        {service.text1}
-                      </h1>
-                      <p className="text-gray-200 lg:mb-2 text-[16px]">
-                        {service.text2}
-                      </p>
-                    </div>
 
-                    {/* Button */}
-                    {/* <button
+                  {/* Button */}
+                  {/* <button
                       type="button"
                       onClick={() => setModalOpen(true)}
                       className="w-12 h-12 flex items-center justify-center font-medium bg-black bg-opacity-40 rounded-full hover:bg-opacity-60 focus:outline-none transition-all"
@@ -112,12 +111,12 @@ const HomeServicesSection = () => {
                         />
                       </svg>
                     </button> */}
-                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
+
       </section>
     </div>
   );
