@@ -3,7 +3,7 @@ import dark from '../../../../assets/dark.png'
 function CareerGallerySection() {
     return (
         <div className='my-8'>
-            <h1 className='w-full text-center justify-center text-lg py-8 '>
+            <h1 className='w-full text-center justify-center font-bold text-[24px] py-8 '>
                 Sint in ullamco deserunt veniam eiusmod dolor sint ex ullamco ullamco anim cillum.
             </h1>
             <div className="overflow-x-auto">

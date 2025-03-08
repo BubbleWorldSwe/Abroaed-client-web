@@ -2,8 +2,8 @@
 
 const TextComponent = ({ text, heading }) => (
     <div>
-        <h2 className="text-3xl font-bold mb-4">{heading}</h2>
-        <p className="text-gray-700">{text}</p>
+        <h2 className="text-[32px]  font-bold mb-4">{heading}</h2>
+        <p className="text-[#52525B] text-sm font-normal">{text}</p>
     </div>
 );
 
