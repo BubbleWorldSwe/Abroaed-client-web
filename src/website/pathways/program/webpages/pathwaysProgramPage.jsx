@@ -1,10 +1,10 @@
-import vectorDownNose from "../../../../assets/vectorDownNose.png"
-import dark from "../../../../assets/dark.png"
-import vectorBelow from "../../../../assets/vectorBelow.png"
+import vectorDownNose from "../../../../assets/vectorDownNose.png";
+import dark from "../../../../assets/dark.png";
+import vectorBelow from "../../../../assets/vectorBelow.png";
 import PathwaysProgramOverview from "./sections/pathwaysProgramOverviewSection";
-import vectorleftNose from "../../../../assets/vectorleftNose.png"
+import vectorleftNose from "../../../../assets/vectorleftNose.png";
 import PathwaysProgramEligibilityCriteria from "./sections/pathwaysProgramEligibilityCriteriaSection";
-import vectorLeftNoseSmall from "../../../../assets/vectorLeftNoseSmall.png"
+import vectorLeftNoseSmall from "../../../../assets/vectorLeftNoseSmall.png";
 import Header from "../../../comman/sections/headerSection";
 import Footer from "../../../comman/sections/footerSection";
 import PathwaysProgramHeroSection from "./sections/pathwaysProgramHeroSection";
@@ -19,14 +19,24 @@ import PathwaysProgramBlogSection from "./sections/pathwaysProgramBlogSection";
 import PathwaysProgramFaqSection from "./sections/pathwaysProgramFaqSection";
 import PathwaysProgramAbroaedUpdateSection from "./sections/pathwaysProgramAbroaedUpdateSection";
 import PathwaysProgramLeadFormSection from "./sections/pathwaysProgramLeadFormSection";
-
+import ContactUsForm from "../../../comman/components/contactUsForm";
 
 const PathwaysProgramPage = () => {
   return (
     <div className="font-rethink">
       <Header />
-      <PathwaysProgramHeroSection header={'Pathways Program Name'} text={'Batch Starts: Jan 1, 2025 | Abroad Intake: Aug’ 2025'} img={dark} />
-      <PathwaysProgramKpiMatrixSection title={""} header={"Key Benefits of Program"} subtitle={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "} />
+      <PathwaysProgramHeroSection
+        header={"Pathways Program Name"}
+        text={"Batch Starts: Jan 1, 2025 | Abroaed Intake: Aug’ 2025"}
+        img={dark}
+      />
+      <PathwaysProgramKpiMatrixSection
+        title={""}
+        header={"Key Benefits of Program"}
+        subtitle={
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+        }
+      />
       <div className="relative ">
         <PathwaysProgramOverview />
         <div className="absolute top-24 right-0 z-0">
@@ -76,9 +86,10 @@ const PathwaysProgramPage = () => {
       <PathwaysProgramFaqSection />
       <PathwaysProgramAbroaedUpdateSection />
       <PathwaysProgramLeadFormSection />
+
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default PathwaysProgramPage;

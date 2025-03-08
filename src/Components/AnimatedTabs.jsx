@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { BorderTextInputField } from "../commons/components/inputFields/borderTextInputField";
@@ -17,9 +18,9 @@ function Tabs() {
   const [activeTab, setActiveTab] = useState(tabOptions[0].value);
 
   return (
-    <div className="flex flex-col items-center w-full rounded-lg p-8 bg-bal">
+    <div className="flex flex-col items-start w-full rounded-lg p-8 bg-bal">
       {/* Tabs Row */}
-      <div className="text-4xl font-extrabold mb-4">
+      <div className="mb-3">
         {/* {tabOptions.map((tab) => (
           <button
             key={tab.value}
@@ -34,7 +35,9 @@ function Tabs() {
             {tab.title}
           </button>
         ))} */}
-        Book Counselling Now
+        <h1 className="text-5xl font-bold  text-black dark:text-white ">
+          Book Counselling Now
+        </h1>
       </div>
 
       <div className="">
@@ -60,11 +63,11 @@ const inputStyles =
   "shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500";
 
 // Home Counselling Form
-export const HomeForm = () => (
+export const HomeForm = (source, entity, onFormSubmit) => (
   <form>
     <FormFields />
     <TermsAndConditions />
-    <BookButton />
+    <BookButton onSubmit={onFormSubmit} />
   </form>
 );
 
@@ -93,8 +96,8 @@ const FormFields = () => (
   <>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
-        <BorderTextInputField label={"First Name"} placeholder="Enter" />
-        <BorderTextInputField label={"Email ID"} placeholder="Enter" />
+        <BorderTextInputField label={"First Name*"} placeholder="Enter" />
+        <BorderTextInputField label={"Email*"} placeholder="Enter" />
         <BorderTextInputField
           label={"Highest Education Qualification"}
           placeholder="Enter"
@@ -105,19 +108,20 @@ const FormFields = () => (
         />
       </div>
       <div>
-        <BorderTextInputField label={"Last Name"} placeholder="Enter" />
-        <BorderTextInputField label={"Contact Number"} placeholder="Enter" />
-
-        <BorderSelectField
-          label={"Preferred Study Level"}
-          options={[
-            { value: "UG", label: "UG" },
-            { value: "PG", label: "PG" },
-            { value: "PhD", label: "PhD" },
-            { value: "Others", label: "Others" },
-          ]}
-          required
-        />
+        <BorderTextInputField label={"Last Name*"} placeholder="Enter" />
+        <BorderTextInputField label={"Contact Number*"} placeholder="Enter" />
+        <div className="my-2">
+          <BorderSelectField
+            label={"Preferred Study Level"}
+            options={[
+              { value: "UG", label: "UG" },
+              { value: "PG", label: "PG" },
+              { value: "PhD", label: "PhD" },
+              { value: "Others", label: "Others" },
+            ]}
+            required
+          />
+        </div>
 
         <BorderSelectField
           label={"Mode of Counselling"}
@@ -130,93 +134,46 @@ const FormFields = () => (
           required
         />
       </div>
+      {/* Checkbox 1 */}
+      <div className="flex items-start mt-6">
+        <input
+          type="checkbox"
+          name="termsAgreed"
+          //    checked={checkboxes.termsAgreed}
+          //   onChange={handleCheckboxChange}
+          className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
+        />
+        <label className="ml-2 text-sm text-gray-500">
+          I agree to Abroaed <span className="font-bold">Terms of Service</span>{" "}
+          and <span className="font-bold">Privacy Policy</span>.
+        </label>
+      </div>
+
+      {/* Checkbox 2 */}
+      <div className="flex items-start mt-4 mb-4">
+        <input
+          type="checkbox"
+          name="contactPermission"
+          //  checked={checkboxes.contactPermission}
+          //  onChange={handleCheckboxChange}
+          className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
+        />
+        <label className="ml-2 text-sm text-gray-500">
+          Please contact me by phone, email, or SMS to assist with my enquiry. I
+          would like to receive updates and offers from Abroaed.
+        </label>
+      </div>
     </div>
   </>
 );
-// const FormFields = () => (
-//   <>
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         First Name
-//       </label>
-//       <input
-//         type="text"
-//         className={inputStyles}
-//         placeholder="First Name"
-//         required
-//       />
-//     </div>
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         Last Name
-//       </label>
-//       <input
-//         type="text"
-//         className={inputStyles}
-//         placeholder="Last Name"
-//         required
-//       />
-//     </div>
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         Email ID
-//       </label>
-//       <input
-//         type="email"
-//         className={inputStyles}
-//         placeholder="Email ID"
-//         required
-//       />
-//     </div>
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         Contact Number
-//       </label>
-//       <input
-//         type="tel"
-//         className={inputStyles}
-//         placeholder="Contact Number"
-//         required
-//       />
-//     </div>
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         Highest Qualification
-//       </label>
-//       <input
-//         type="text"
-//         className={inputStyles}
-//         placeholder="Highest Qualification"
-//         required
-//       />
-//     </div>
 
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         When Do You Plan to Study?
-//       </label>
-//       <input type="month" className={inputStyles} required />
-//     </div>
-//     <div>
-//       <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-//         Preferred Study Level
-//       </label>
-//       <select className={inputStyles} required>
-//         <option>UG</option>
-//         <option>PG</option>
-//         <option>PHD</option>
-//         <option>Others</option>
-//       </select>
-//     </div>
-//   </>
-// );
-
-const BookButton = () => {
+const BookButton = ({ onSubmit }) => {
   return (
-    <div className="flex items-center justify-center">
+    <div>
       <button
+        onSubmit={onSubmit}
         type="submit"
-        className="py-3 px-10 text-md font-900 mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+        className="py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
       >
         Book Now
       </button>

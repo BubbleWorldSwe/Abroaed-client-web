@@ -8,9 +8,7 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-function AddTeamMember({ isOpen, onClose, setIsDone, onAddTeam }) {
-  const { roles } = useSelector((state) => state.roles);
-
+function AddTeamMember({ isOpen, onClose, setIsDone, onAddTeam, roles }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

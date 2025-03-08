@@ -9,20 +9,22 @@ import {
   editTeamRequest,
   fetchTeamsRequest,
 } from "../../../redux/actions/teamActions";
-import { fetchRolesRequest } from "../../../redux/actions/rolesActions";
 import TeamTable from "../tables/teamTable";
 import filter_list from "../../../assets/filter_list.png";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import { getRoles } from "../../../api/api";
 
 function Teams() {
   const dispatch = useDispatch();
-  const { teams, totalPages, page } = useSelector((state) => state.team);
+  const { teams, totalPages, page } = useSelector((state) => state.teams);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [modalType, setModalType] = useState("");
   const [editData, setEditData] = useState(null);
   const [isDone, setIsDone] = useState(false);
+
+  const [roles, setRoles] = useState([]);
 
   const handleOpenAddModal = () => {
     setModalType("add");
@@ -83,12 +85,25 @@ function Teams() {
     setEditData(data);
   };
 
+  async function fetchData() {
+    try {
+      const list = await getRoles();
+
+      if (list.status === 200) {
+        setRoles(list.data.result);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     if (teams.length === 0) {
       dispatch(fetchTeamsRequest(page));
       setCurrentPage(1);
     }
-    dispatch(fetchRolesRequest());
+
+    fetchData();
   }, [dispatch, page, teams, editData]);
 
   return (
@@ -98,12 +113,14 @@ function Teams() {
         onClose={handleCloseModal}
         setIsDone={setIsDone}
         onAddTeam={handleAddTeam}
+        roles={roles}
       />
       <UpdateTeamMember
         isOpen={isModalOpen && modalType === "edit"}
         onClose={handleCloseModal}
         data={editData}
         onUpdateTeam={handleUpdateTeam}
+        roles={roles}
       />
 
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // import TestPrepContent from "../../../pages/TestPrep/TestPrepOverviewContent";
 import TestPrepHero from "./sections/testPrepHeroSection";
 // import TestPrepForm from "../../../pages/TestPrep/TestPrepForm";
@@ -15,13 +16,17 @@ import { getTestPrepDetailsById } from "../../../api/testPrepsApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import TestPrepSimplifyThings from "./sections/testPrepSimplifyThings";
-import Blogs from "../../comman/components/blogs";
+// import Blogs from "../../comman/components/blogs";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 function TestPrepLayout() {
   const { id } = useParams();
   // const { state: destinationDetails } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [testPrepsDetails, setTestPrepsDetails] = useState(null);
+  const dispatch = useDispatch();
 
   async function fetchData() {
     try {
@@ -36,6 +41,17 @@ function TestPrepLayout() {
     }
   }
 
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   console.log(testPrepsDetails);
 
   useEffect(() => {
@@ -49,7 +65,7 @@ function TestPrepLayout() {
 
   return (
     <div className="font-rethink">
-      <Header testPrepsDetails={testPrepsDetails} />
+      <Header testPrepsDetails={testPrepsDetails} isHeaderBgWhite={true} />
       <TestPrepHero testPrepsDetails={testPrepsDetails} />
       <TextPrepAbout testPrepsDetails={testPrepsDetails} />
       <div className="relative ">
@@ -89,9 +105,13 @@ function TestPrepLayout() {
         </div>
       )}
 
-      <Blogs />
-      <ContactUsForm />
+      {/* <Blogs /> */}
 
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.testPrep}
+        entity={`${testPrepsDetails?.productName}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

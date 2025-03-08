@@ -3,7 +3,7 @@
 import vector from "../../../assets/kpiVector.png";
 
 const HomeKpiMatrixCard = ({
-  imgSrc,
+  cardName,
   name,
   role,
   description,
@@ -16,17 +16,15 @@ const HomeKpiMatrixCard = ({
       alt="Decorative vector"
     />
     <h1
-      className="text-5xl lg:text-5xl font-bold bg-clip-text text-transparent z-10"
+      className=" text-4xl font-bold bg-clip-text text-transparent z-10"
       style={{
         backgroundImage:
           "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.3) 100%)",
       }}
     >
-      KPI Metric
+      {cardName}
     </h1>
-    <p className="text-[#D4D4D8] lg:mb-2 sm:text-md  mt-2">
-      lorem ispum dolor sit amet
-    </p>
+    <p className="text-gray-100 lg:mb-2 sm:text-lg  mt-2">Explore</p>
   </div>
 );
 

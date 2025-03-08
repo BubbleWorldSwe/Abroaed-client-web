@@ -27,13 +27,13 @@ const carouselItems = [
   {
     title: "Designated Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroad journey",
+      "Identify and secure scholarships for their study-abroaed journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -63,13 +63,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroad journey",
+      "Identify and secure scholarships for their study-abroaed journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -99,13 +99,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroad journey",
+      "Identify and secure scholarships for their study-abroaed journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -135,13 +135,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroad journey",
+      "Identify and secure scholarships for their study-abroaed journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -171,13 +171,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroad journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroad journey",
+      "Identify and secure scholarships for their study-abroaed journey",
     imgSrc: squareAcademicCap,
   },
   {

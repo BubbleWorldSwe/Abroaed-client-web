@@ -103,9 +103,7 @@ const DestinationTable = ({
               Created At
             </th>
 
-            <th scope="col" className="px-4 py-3">
-              <span className="sr-only">Actions</span>
-            </th>
+            <th scope="col" className="px-4 py-3"></th>
           </tr>
         </thead>
 

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
@@ -14,12 +15,16 @@ import LanguagePrepFaqSection from "./sections/languagePrepFaqSection";
 import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import PageLoader from "../../../commons/components/loader/pageLoader";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 function LanguagePrepLayout() {
   const { id } = useParams();
   // const { state: destinationDetails } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [languagePrepsDetails, setLanguagePrepsDetails] = useState(null);
+  const dispatch = useDispatch();
 
   async function fetchData() {
     try {
@@ -33,6 +38,17 @@ function LanguagePrepLayout() {
       console.log(error);
     }
   }
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     // window.scrollTo(0, 0);
@@ -91,7 +107,11 @@ function LanguagePrepLayout() {
 
       <Blogs />
 
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.languagePrep}
+        entity={`${languagePrepsDetails?.productName}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

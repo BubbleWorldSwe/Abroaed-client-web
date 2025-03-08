@@ -25,33 +25,28 @@ const PathwaysHomeFaqSection = () => {
                     {[
                         {
                             question:
-                                "Do UK universities and courses have quality assurance?",
+                                "Can I work while completing a Pathways program?",
                             answer:
-                                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+                                "Work options vary by country and program. Some Pathways programs allow part-time work, while others may restrict it. It’s best to check the specific regulations for your chosen destination and program to understand your work options while studying.",
                         },
                         {
                             question:
-                                "Do UK universities and courses have quality assurance?",
+                                "How long is a Pathways program?",
                             answer:
-                                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+                                "The length of a Pathways program varies anywhere from a few months to up to a year, depending upon the academic demands and the English proficiency required. Most programs have been designed such that students should be ready to join the universities within a pretty short period of time.",
                         },
                         {
-                            question: "Does Abroed take fees?",
+                            question: "Do I need to meet certain academic requirements to join a Pathways program?",
                             answer:
-                                "Leverage Edu offers all its counselling, admissions and visa services completely free of cost. Its premium Leverage One services are tiered plans that include several value-added services to students including scholarship assistance, test preparation, priority visa assistance, accommodation assistance and more.",
+                                "Pathways programs are available to students who qualify based on basic entry requirements into the chosen course of study. Some academic qualifications might differ with specific programs and destinations, but generally, these programs support students who need further preparation.",
                         },
                         {
                             question:
-                                "Where can I find scholarships and financial support for studying in the UK?",
+                                "What is a Pathways program?",
                             answer:
-                                "A wide range of scholarships and financial support options are available for international students who dream of studying in the UK. The SI-UK scholarship search leads you to hundreds of scholarships provided by universities and government organisations.",
+                                "A Pathways program is designed to help students transition smoothly into studying abroad. It provides academic support, language training, cultural orientation, and personal development to ensure you are prepared for university life in a foreign country.",
                         },
-                        {
-                            question: "How can Abroaed help my study abroad journey?",
-                            answer:
-                                "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
-                        },
-                        // Add more FAQs here
+
                     ].map((faq, index) => (
                         <div key={index}>
                             <h2 id={`accordion-flush-heading-${index}`}>

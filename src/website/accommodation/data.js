@@ -40,20 +40,17 @@ export const accommodations = [
 export const steps = [
   {
     step: 1,
-    heading: "Lorem Ipsum Dolor",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
+    heading: "Understanding Your Preferences",
+    description: "We begin by discussing in great detail what your needs, preferences, and budget are. From shared apartments, private rooms, or university housing, we can guide you on where to best settle. Using advanced tools, we focus on factors like location, amenities, and safety, ensuring your choice aligns with your requirements."
   },
   {
     step: 2,
-    heading: "Lorem Ipsum Dolor",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
+    heading: "Shortlisting and Support",
+    description: "After understanding your preferences, we present you with a carefully curated list of accommodation options. Each listing includes detailed descriptions, high-quality images, and verified reviews for full transparency. We help compare your options, negotiate rental terms, and answer any queries you may have. Our aim is to make decision-making easy."
   },
   {
     step: 3,
-    heading: "Lorem Ipsum Dolor",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
+    heading: "Booking and Support",
+    description: "We will take care of the whole booking process once you have made your decision, ensuring that your accommodation will be secured. Our team communicates directly with landlords or agencies in finalizing the reservation as well as paper works required. Once the reservation has been made, we are just a phone call away to assist you."
   },
 ];

@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
 import filter_list from "../../../assets/filter_list.png";
 import { leadsData } from "../data";
@@ -8,17 +9,47 @@ import UpdateLeadStatus from "../modals/updateLeadStatusModal";
 import AddLeadModal from "../modals/addLeadModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
+import {
+  addLeadRequest,
+  deleteLeadRequest,
+  editLeadRequest,
+  fetchLeadsRequest,
+} from "../../../redux/actions/leadsActions";
+import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
+import { getRoles } from "../../../api/api";
+import { getTeamsByMembers } from "../../../api/teamsApi";
+
 function Leads() {
+  const dispatch = useDispatch();
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { leads, totalPages } = useSelector((state) => state.leads);
+
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const [rolesList, setRolesList] = useState([]);
+
+  const [membersList, setMembersList] = useState([]);
+
+  console.log(" SelectedMember");
+  console.log(selectedMember);
+
   const handleScheduleAppointment = (member) => {
-    setSelectedMember(member);
-    setshowAppointmentModal(true);
-    setDropdownVisible(false);
+    try {
+      setSelectedMember(member);
+      setshowAppointmentModal(true);
+      setDropdownVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleAssignTeamMember = (member) => {
@@ -40,38 +71,134 @@ function Leads() {
     setIsAddModalOpen(false);
   };
 
+  async function fetchData() {
+    try {
+      dispatch(fetchAllDestinationsRequest());
+      dispatch(fetchAllTeamsRequest());
+      const list = await getTeamsByMembers();
+
+      if (list.status === 200) {
+        setRolesList(list.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleAddLead = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddLead");
+    console.log(data);
+
+    dispatch(addLeadRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchLeadsRequest(1));
+    handleCloseAddModal();
+  };
+
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editLeadRequest(id, data));
+      setshowAppointmentModal(false);
+      setShowUpdateModal(false);
+      setshowTeamModal(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteLeadRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchLeadsRequest(1));
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = leads.some((item) => item.index === currentPage + 1);
+
+      if (!pageExists) {
+        dispatch(fetchLeadsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = leads.some((item) => item.index === currentPage - 1);
+
+      if (!pageExists) {
+        dispatch(fetchLeadsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  console.log(showAppointmentModal);
+
+  useEffect(() => {
+    if (leads?.length === 0) {
+      console.log("fetchLeadsRequest");
+      dispatch(fetchLeadsRequest(currentPage));
+    }
+    fetchData();
+  }, [dispatch, leads, currentPage]);
+
   return (
     <>
       {showTeamModal && (
         <AssignTeamModal
-          leadId={selectedMember.id}
-          leadName={selectedMember.name}
+          leadId={selectedMember?._id}
+          leadName={selectedMember?.name}
           team={{
-            counsellor: selectedMember.counsellor,
-            backendManager: selectedMember.backendManager,
-            mentor: selectedMember.mentor,
+            counsellor: selectedMember?.counsellor,
+            backendManager: selectedMember?.backendManager,
+            mentor: selectedMember?.mentor,
           }}
           onClose={() => setshowTeamModal(false)}
+          filledData={{ assignTeamMembers: selectedMember?.assignTeamMembers }}
+          rolesList={rolesList}
+          membersList={membersList}
+          setMembersList={setMembersList}
+          onUpdate={onUpdate}
         />
       )}
 
       {showAppointmentModal && (
         <AppointmentModal
-          leadId={selectedMember.id}
+          leadId={selectedMember?._id}
           onClose={() => setshowAppointmentModal(false)}
+          onUpdate={onUpdate}
+          filledData={{
+            appointmentType: selectedMember?.scheduleDetails?.appointmentType,
+            preferredSlot: selectedMember?.scheduleDetails?.preferredSlot,
+          }}
         />
       )}
       {showUpdateModal && (
         <UpdateLeadStatus
-          leadId={selectedMember.id}
+          leadId={selectedMember?._id}
           onClose={() => setShowUpdateModal(false)}
+          onUpdate={onUpdate}
+          filledData={{
+            servicerType: selectedMember?.servicerType,
+            planType: selectedMember?.planType,
+            billableAmount: selectedMember?.billableAmount,
+            status: selectedMember?.status,
+            remark: selectedMember?.remark,
+          }}
         />
       )}
       <AddLeadModal
         isOpen={isAddModalOpen}
         onClose={handleCloseAddModal}
+        onAddLead={handleAddLead}
       />
-
 
       <div className="min-h-screen bg-white dark:bg-gray-900 ">
         {/* Adjust padding and spacing */}
@@ -119,21 +246,22 @@ function Leads() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <AddButton
-                  onClick={handleOpenAddModal}
-                  label={" New Lead"}
-                />
+                <AddButton onClick={handleOpenAddModal} label={" New Lead"} />
               </div>
             </div>
           </div>
           <div className="flex-grow  overflow-auto bg-white dark:bg-gray-800 px-5">
             <LeadTable
-              leads={leadsData}
               handleAssignTeamMember={handleAssignTeamMember}
               handleScheduleAppointment={handleScheduleAppointment}
               handleUpdateTeamMember={handleUpdateTeamMember}
               dropdownVisible={dropdownVisible}
               setDropdownVisible={setDropdownVisible}
+              currentPage={currentPage}
+              handleNextPage={handleNextPage}
+              handlePrevPage={handlePrevPage}
+              handleDelete={handleDelete}
+              onUpdate={onUpdate}
             />
           </div>
         </section>

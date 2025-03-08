@@ -13,15 +13,15 @@ const CollegeFunFactSection = ({ collegeDetails }) => {
 
   return (
     <div className="relative z-10">
-      <section className=" py-8 antialiased dark:bg-gray-900 md:py-16">
-        <div className="mx-auto max-w-screen-2xl px-4 2xl:px-0">
+      <section className=" py-4  antialiased dark:bg-gray-900 px-12 mx-auto">
+        <div className=" max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
             <p className="text-3xl font-semibold text-gray-900 dark:text-white">
               Fun Facts
             </p>
           </div>
           <div className="mt-6 space-y-6">
-            <div className="flex flex-col md:flex-row  justify-center flex-wrap gap-5 ">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
               {items?.map((item, idx) => (
                 <CollegeFunFactCard
                   icon={item?.icon}

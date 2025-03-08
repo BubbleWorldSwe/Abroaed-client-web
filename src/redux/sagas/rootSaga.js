@@ -1,24 +1,26 @@
 import { all } from "redux-saga/effects";
 import authSaga from "./authSaga";
 import teamSaga from "./teamSaga";
-import { rolesSaga } from "./rolesSaga";
 import destinationSaga from "./destinationSaga";
 import countriesSaga from "./countrySaga";
 import testPrepsSaga from "./testPrepsSaga";
 import languagePrepsSaga from "./languagePrepsSaga";
 import collegesSaga from "./collegeSaga";
 import accommodationsSaga from "./accommodationSaga";
+import leadsSaga from "./leadsSaga";
+import studentsSaga from "./studentsSaga";
 
 export default function* rootSaga() {
   yield all([
     authSaga(),
     teamSaga(),
-    rolesSaga(),
     destinationSaga(),
     countriesSaga(),
     testPrepsSaga(),
     languagePrepsSaga(),
     collegesSaga(),
     accommodationsSaga(),
+    leadsSaga(),
+    studentsSaga(),
   ]);
 }

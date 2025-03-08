@@ -1,23 +1,24 @@
-/* eslint-disable react/prop-types */
 export function SelectField({
   label,
   name,
   value,
   onChange,
-  options = [],
+  options,
   required,
+  disabled,
 }) {
   return (
     <div>
-      <label className="block text-sm font-semibold text-[#27272A]">{label}</label>
+      <label className="block text-sm font-medium text-gray-700">{label}</label>
       <select
         name={name}
-        className="mt-1 block w-full px-3 py-2 text-gray-500 bg-[#F4F4F5] rounded-md focus:ring-[#F4F4F5] sm:text-sm border-none"
+        className="mt-1 block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:ring-[#F4F4F5] sm:text-sm border-none"
         value={value}
         onChange={onChange}
         required={required}
+        disabled={disabled}
       >
-        <option value="" >
+        <option value="" className="text-gray-400">
           Select
         </option>
         {options?.map((data, i) => (

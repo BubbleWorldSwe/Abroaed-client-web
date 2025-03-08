@@ -1,15 +1,30 @@
 import FinanceHowItWorks from "./sections/financeHowItWorkSection";
 import FinanceHeroSection from "./sections/financeHeroSection";
-import vectorShoe from "../../../assets/vectorShoe.png"
+import vectorShoe from "../../../assets/vectorShoe.png";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import OurPartners from "../../comman/sections/ourPartnersSection";
 import FinanceBlogSection from "./sections/financeBlogSection";
 import FinanceFaqSection from "./sections/financeFaqSection";
 import FinanceLeadFromSection from "./sections/financeLeadFromSection";
-import FinanceForm from "./sections/financeForm";
+import { useDispatch } from "react-redux";
+import ContactUsForm from "../../comman/components/contactUsForm";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
 
 function FinancePage() {
+  const dispatch = useDispatch();
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="font-rethink">
       <Header />
@@ -27,8 +42,14 @@ function FinancePage() {
         </div>
       </div>
       <FinanceFaqSection />
-      <FinanceForm />
-      <FinanceLeadFromSection />
+      {/*  <FinanceLeadFromSection /> */}
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.finance}
+        entity={`${entity.contactUs}`}
+        title={"Keen to know more?"}
+        text="Schedule your counseling session today Our specialized home counseling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today."
+      />
       <Footer />
     </div>
   );

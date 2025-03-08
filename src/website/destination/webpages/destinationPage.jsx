@@ -33,11 +33,14 @@ import {
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
+import { entity, source } from "../../../constants/values";
 
 function DestinationPage() {
   const { id } = useParams();
   const { state } = useLocation();
-
+  const dispatch = useDispatch();
   console.log(state);
 
   const [destinationDetails, setDestinationDetails] = useState(null);
@@ -54,7 +57,6 @@ function DestinationPage() {
       const college = await getCollegesByDestinationId(id);
       const acc = await getAccommodationsByDestinationId(id);
       const course = await getCoursesListByDestinationId(id);
-
       if (data.status === 200) {
         setDestinationDetails(data.data);
       }
@@ -78,6 +80,17 @@ function DestinationPage() {
   }
   console.log(coursesList);
 
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, [id]);
@@ -100,7 +113,7 @@ function DestinationPage() {
           destinationDetails={destinationDetails}
           items={items}
         />
-        <div className="absolute -bottom-6 left-0 z-0">
+        <div className="absolute -bottom-28 left-0 z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorLeftFlat}
@@ -114,6 +127,8 @@ function DestinationPage() {
           destinationDetails={destinationDetails}
           collegesList={collegesList}
           coursesList={coursesList}
+          source={`${source.destination}_${source.courses}`}
+          onAddLead={handleAddLead}
         />
       )}
 
@@ -123,7 +138,7 @@ function DestinationPage() {
             destinationDetails={destinationDetails}
           />
         )}
-        <div className="absolute -bottom-44 left-0 z-0">
+        <div className="absolute -bottom-44 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorDownNose}
@@ -146,7 +161,7 @@ function DestinationPage() {
           />
         )}
 
-        <div className="absolute bottom-0 left-0 z-0">
+        <div className="absolute bottom-0 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorRightNoseCurve}
@@ -158,7 +173,7 @@ function DestinationPage() {
         <DestinationWorkOpportunitiesSection
           destinationDetails={destinationDetails}
         />
-        <div className="absolute top-0 right-0 z-0">
+        <div className="absolute top-0 right-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorBelow}
@@ -171,6 +186,8 @@ function DestinationPage() {
         <DestinationStudentAccommodationsSection
           destinationDetails={destinationDetails}
           accommodationList={accList}
+          source={`${source.destination}_${source.accommodation}`}
+          onAddLead={handleAddLead}
         />
       )}
 
@@ -180,7 +197,7 @@ function DestinationPage() {
 
       <div className="relative">
         <Testimonials />
-        <div className="absolute top-64 left-48 z-0">
+        <div className="absolute top-64 left-48 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorNoseRightToLeft}
@@ -189,7 +206,11 @@ function DestinationPage() {
         </div>
       </div>
       <Blogs />
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.destination}
+        entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

@@ -1,26 +1,22 @@
-
-import PathwaysHomeHero from './sections/pathwaysHomeHeroSection'
-import PathwayHomeProgramExplore from './sections/pathwaysHomeProgramExploreSection'
-import vectorDownNose from '../../../../assets/vectorDownNose.png'
-import vectorLeftNoseSmall from '../../../../assets/vectorLeftNoseSmall.png'
-import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png"
-import Header from '../../../comman/sections/headerSection'
-import Footer from '../../../comman/sections/footerSection'
-import OurPartners from '../../../comman/sections/ourPartnersSection'
-import PathwaysHomeHowItWorkSection from './sections/pathwaysHomeHowItWorkSection'
-import PathwaysHomeBlogSection from './sections/pathwaysHomeBlogSection'
-import PathwaysHomeFaqSection from './sections/pathwaysHomeFaqSection'
-import PathwaysHomeAbroaedUpdateSection from './sections/pathwaysHomeAbroaedUpdateSection'
-import PathwaysHomeLeadForm from './sections/pathwaysHomeLeadFormSection'
+import PathwaysHomeHero from "./sections/pathwaysHomeHeroSection";
+import vectorleftNose from "../../../../assets/vectorleftNose.png";
+import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png";
+import Header from "../../../comman/sections/headerSection";
+import Footer from "../../../comman/sections/footerSection";
+import OurPartners from "../../../comman/sections/ourPartnersSection";
+import PathwaysHomeHowItWorkSection from "./sections/pathwaysHomeHowItWorkSection";
+import PathwaysHomeFaqSection from "./sections/pathwaysHomeFaqSection";
+import PathwaysHomeLeadForm from "./sections/pathwaysHomeLeadFormSection";
+import ContactUsForm from "../../../comman/components/contactUsForm";
 
 function PathwaysHomePage() {
   return (
-    <div className='font-rethink'>
+    <div className="font-rethink">
       <Header />
       <PathwaysHomeHero />
-      <div className='relative'>
+      <div className="relative">
         <PathwaysHomeHowItWorkSection />
-        <div className="absolute bottom-20 left-0 z-0" >
+        <div className="absolute bottom-20 left-0 z-0">
           <img
             className="rounded-lg max-w-full "
             src={vectorLeftFlat}
@@ -29,8 +25,8 @@ function PathwaysHomePage() {
         </div>
       </div>
       <OurPartners />
-      <PathwayHomeProgramExplore />
-      <div className='relative'>
+      {/* <PathwayHomeProgramExplore /> */}
+      {/* <div className='relative'>
         <PathwaysHomeBlogSection />
         <div className="absolute bottom-20 left-0 z-10" >
           <img
@@ -39,22 +35,25 @@ function PathwaysHomePage() {
             alt="Counselling session"
           />
         </div>
-      </div>
+      </div> */}
       <PathwaysHomeFaqSection />
-      <div className='relative'>
-        <PathwaysHomeAbroaedUpdateSection />
-        <div className="absolute top-0 right-0 z-10" >
+      <div className="relative">
+        <div className="absolute bottom-10 right-0 -z-10">
           <img
             className="rounded-lg max-w-full "
-            src={vectorLeftNoseSmall}
+            src={vectorleftNose}
             alt="Counselling session"
           />
         </div>
+        <ContactUsForm
+        // title="abcd"
+        //  text="vvv"
+        />
       </div>
-      <PathwaysHomeLeadForm />
+
       <Footer />
     </div>
-  )
+  );
 }
 
-export default PathwaysHomePage
+export default PathwaysHomePage;

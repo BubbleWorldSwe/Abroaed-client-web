@@ -4,14 +4,14 @@ import { Element } from "react-scroll";
 const DestinationScholarshipSection = ({ destinationDetails }) => {
   return (
     <Element name="scholarships">
-      <div className="relative z-10">
-        <section className=" dark:bg-gray-900 relative px-10 mx-auto">
+      <div className="relative ">
+        <section className=" dark:bg-gray-900 relative px-7 mx-auto">
           <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className="mb-4 text-4xl  font-extrabold text-gray-900 dark:text-white">
+              <h2 className="mb-10 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 Scholarships & Financial Aid
               </h2>
-              <p className="mb-4 text-black ">
+              <p className="mb-4 text-[22px] font-semibold text-[#27272A]">
                 For Study in {destinationDetails?.countryId?.name}, the amount
                 of money available and the type of award varies between
                 institutions. Certain research programs may provide up to 100%
@@ -25,11 +25,11 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
               <div className=" w-full ">
                 <div className=" dark:bg-gray-800 relative   overflow-hidden">
                   <div className="overflow-x-auto">
-                    <table className="w-full  text-sm text-left text-gray-500 border-t-2 border-gray-400  dark:text-gray-400">
-                      <thead className="text-xs  text-gray-700 uppercase border-b-2 border-gray-400 dark:bg-gray-700 dark:text-gray-400">
+                    <table className="w-full   text-left  border-t-2 border-gray-400  dark:text-gray-400">
+                      <thead className="text-[22px]  text-[#27272A] font-semibold  border-b-2 border-gray-400 ">
                         <tr>
-                          <th scope="col" className="px-4 py-3">
-                            Name
+                          <th scope="col" className="px-4 py-3 ">
+                            Name of Scholarship
                           </th>
                           <th scope="col" className="px-4 py-3">
                             Description
@@ -47,18 +47,23 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                           >
                             <th
                               scope="row"
-                              className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                              className="px-4 py-3 font-semibold text-[22px] text-[#27272A]  dark:text-white"
                             >
-                              <a
+                              <p
+
+                              >
+                                {item.name}
+                              </p>
+                              {/* <a
                                 href={item.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-blue-500 hover:underline cursor-pointer"
                               >
                                 {item.name}
-                              </a>
+                              </a> */}
                             </th>
-                            <td className="px-4 py-3">{item.description}</td>
+                            <td className="px-4 py-3 text-base font-normal text-[#27272A] ">{item.description}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -67,8 +72,8 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                 </div>
               </div>
             </section>
-            <div>
-              <p className="mb-4 text-black ">
+            <div className="pb-10">
+              <p className="mb-4 text-[#27272A] font-normal text-base ">
                 If you want to bring down your educational expenses, it is best
                 to apply to various scholarships available for Indian students.
               </p>

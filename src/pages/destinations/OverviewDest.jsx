@@ -77,8 +77,7 @@ function OverviewDest({ details }) {
       {/* <div className="flex items-center gap-4 mt-6">
         <button
           type="button"
-          data-modal-target="editReviewModal"
-          data-modal-toggle="editReviewModal"
+          
           className="inline-flex text-sm items-center font-medium text-primary-700 hover:underline dark:text-primary-500"
         >
           <svg
@@ -99,8 +98,7 @@ function OverviewDest({ details }) {
         </button>
         <button
           type="button"
-          data-modal-target="deleteReviewModal"
-          data-modal-toggle="deleteReviewModal"
+          
           className="inline-flex text-sm items-center font-medium text-red-600 hover:underline dark:text-red-500"
         >
           <svg

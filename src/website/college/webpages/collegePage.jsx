@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
@@ -21,12 +22,15 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import { getAccommodationsByStateId } from "../../../api/accomodationApi";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 function CollegePage() {
   const { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
-
+  const dispatch = useDispatch();
   const [collegeDetails, setCollegeDetails] = useState(null);
   const [accList, setAccList] = useState([]);
 
@@ -49,6 +53,17 @@ function CollegePage() {
       console.log(error);
     }
   }
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -82,10 +97,14 @@ function CollegePage() {
       <CollegeUniversitySection collegeDetails={collegeDetails} />
       <div className="relative">
         {collegeDetails?.courses.length > 0 && (
-          <CollegeCourseOfferSection collegeDetails={collegeDetails} />
+          <CollegeCourseOfferSection
+            collegeDetails={collegeDetails}
+            source={`${source.college}_${source.courses}`}
+            onAddLead={handleAddLead}
+          />
         )}
 
-        <div className="absolute top-0 -right-10 z-0">
+        <div className="absolute top-0 right-0  z-0">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorleftNose}
@@ -98,7 +117,7 @@ function CollegePage() {
           <CollegeScholarshipSection collegeDetails={collegeDetails} />
         )}
 
-        <div className="absolute -top-60 left-0 z-0">
+        <div className="absolute top-16 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorDownNose}
@@ -111,6 +130,8 @@ function CollegePage() {
           <CollegeStudentAccommodation
             collegeDetails={collegeDetails}
             accommodationList={accList}
+            source={`${source.college}_${source.accommodation}`}
+            onAddLead={handleAddLead}
           />
         )}
 
@@ -125,10 +146,14 @@ function CollegePage() {
       {collegeDetails?.faqSchema.length > 0 && (
         <CollegeFaqSection collegeDetails={collegeDetails} />
       )}
-
       <Testimonials />
       <Blogs />
-      <ContactUsForm />
+
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.college}
+        entity={`${collegeDetails?.name}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

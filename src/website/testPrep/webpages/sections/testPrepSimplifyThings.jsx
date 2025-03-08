@@ -1,7 +1,7 @@
 import vectorRightRing from "../../../../assets/vectorRightRing.png";
 import { steps } from "../../data";
 
-const TestPrepSimplifyThings = ({ testPrepsDetails }) => {
+const TestPrepSimplifyThings = () => {
   return (
     <div className="relative mx-auto px-10">
       <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
@@ -11,7 +11,7 @@ const TestPrepSimplifyThings = ({ testPrepsDetails }) => {
               <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
                 How We Simplify Things?
               </h2>
-              <p className="mb-4 font-light">
+              <p className="mb-4 font-normal text-sm text-[#27272A]">
                 lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Curabitur tristique felis non odio accumsan laoreet. Integer
                 cursus libero placerat ex volutpat posuere. Quisque non nisl

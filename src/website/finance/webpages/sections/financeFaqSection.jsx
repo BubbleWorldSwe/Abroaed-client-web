@@ -22,31 +22,26 @@ const FinanceFaqSection = () => {
                     {[
                         {
                             question:
-                                "Do UK universities and courses have quality assurance?",
+                                "What should I do if I face a financial emergency while abroad?",
                             answer:
-                                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+                                "We provide ongoing support and guidance on handling unexpected financial situations. Our team can help you find emergency financial solutions, such as loans or alternative funding options.",
                         },
                         {
                             question:
-                                "Do UK universities and courses have quality assurance?",
+                                "How do I manage my living expenses while abroad?",
                             answer:
-                                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+                                "We offer budgeting tips and recommend strategies to help you manage your finances effectively. We also suggest ways to save on daily expenses and ensure you stay within your budget.",
                         },
                         {
-                            question: "Does Abroed take fees?",
+                            question: "Can I work part-time while studying abroad?",
                             answer:
-                                "Leverage Edu offers all its counselling, admissions and visa services completely free of cost. Its premium Leverage One services are tiered plans that include several value-added services to students including scholarship assistance, test preparation, priority visa assistance, accommodation assistance and more.",
+                                "Many countries allow students to work part-time. We provide guidance on finding legal part-time work opportunities and how to balance work with your studies effectively.",
                         },
                         {
                             question:
-                                "Where can I find scholarships and financial support for studying in the UK?",
+                                "How do I pay my money internationally?",
                             answer:
-                                "A wide range of scholarships and financial support options are available for international students who dream of studying in the UK. The SI-UK scholarship search leads you to hundreds of scholarships provided by universities and government organisations.",
-                        },
-                        {
-                            question: "How can Abroaed help my study abroad journey?",
-                            answer:
-                                "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
+                                "We help you pick the most reliable payment methods with minimal possible service charges, be it international bank transfers, digital wallets, or money transfer services.",
                         },
                     ].map((faq, index) => (
                         <div key={index}>

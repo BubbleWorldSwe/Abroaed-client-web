@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import StudentTable from "../tables/studentTable";
 import { studentsData } from "../data";
@@ -7,12 +7,24 @@ import ServiceTypePlanStudent from "../modals/serviceTypePlanStudentModal";
 import AssignTeamMemberStudentModal from "../modals/assignTeamMemberStudentModal";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
+import { fetchStudentsRequest } from "../../../redux/actions/studentsActions";
+
 function Student() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [next, setNext] = useState(false);
   const [done, setDone] = useState(false);
   const [modalType, setModalType] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(null);
+
+  const dispatch = useDispatch();
+
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const { students, totalPages } = useSelector((state) => state.students);
+
+  console.log(students);
 
   const handleOpenAddModal = (modalType) => {
     setIsAddModalOpen(true);
@@ -23,6 +35,50 @@ function Student() {
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
+  async function fetchData() {
+    try {
+      dispatch(fetchAllDestinationsRequest());
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = students.some(
+        (item) => item.index === currentPage + 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchStudentsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = students.some(
+        (item) => item.index === currentPage - 1
+      );
+
+      if (!pageExists) {
+        dispatch(fetchStudentsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    if (students?.length === 0) {
+      console.log("fetchStudentsRequest");
+      dispatch(fetchStudentsRequest(currentPage));
+    }
+    // fetchData();
+  }, [dispatch, students, currentPage]);
 
   return (
     <>
@@ -92,42 +148,17 @@ function Student() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                {/* <div className="flex gap-2">
-                  <button
-                    onClick={() => handleOpenAddModal("add")}
-                    type="button"
-                    className="w-full whitespace-nowrap md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400"
-                  >
-                    <svg
-                      className="w-6 h-6 p-1 text-gray-600 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 12h14m-7 7V5"
-                      />
-                    </svg>
-                    Add Student
-                  </button>
-                </div> */}
               </div>
             </div>
-            <div
-              className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5"
-            >
+            <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <StudentTable
                 Students={studentsData}
                 handleOpenAddModal={handleOpenAddModal}
                 dropdownVisible={dropdownVisible}
                 setDropdownVisible={setDropdownVisible}
+                currentPage={currentPage}
+                handleNextPage={handleNextPage}
+                handlePrevPage={handlePrevPage}
               />
             </div>
           </div>

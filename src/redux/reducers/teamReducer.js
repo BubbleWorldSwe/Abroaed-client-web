@@ -12,6 +12,9 @@ import {
   EDIT_TEAM_FAILURE,
   EDIT_TEAM_SUCCESS,
   EDIT_TEAM_REQUEST,
+  FETCH_ALL_TEAMS_SUCCESS,
+  FETCH_ALL_TEAMS_REQUEST,
+  FETCH_ALL_TEAMS_FAILURE,
 } from "../actions/teamActions";
 
 const initialState = {
@@ -22,12 +25,18 @@ const initialState = {
   page: 1,
   limit: null,
   total: null,
+  allTeams: [],
 };
 
 export const teamReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_TEAMS_REQUEST:
+    case FETCH_ALL_TEAMS_REQUEST:
+    case ADD_TEAM_REQUEST:
+    case DELETE_TEAM_REQUEST:
+    case EDIT_TEAM_REQUEST:
       return { ...state, loading: true };
+
     case FETCH_TEAMS_SUCCESS:
       console.log(action.payload.page, state.page, action.payload);
       return {
@@ -51,47 +60,14 @@ export const teamReducer = (state = initialState, action) => {
         limit: action.payload.limit,
         total: action.payload.total,
       };
-    case FETCH_TEAMS_FAILURE:
+
+    case FETCH_ALL_TEAMS_SUCCESS:
       return {
         ...state,
         loading: false,
-        error: action.payload,
-        totalPages: null,
-        page: null,
-        limit: null,
-        total: null,
+        allTeams: action.payload.result,
       };
 
-    case ADD_TEAM_REQUEST:
-      return { ...state, loading: true };
-    case ADD_TEAM_SUCCESS:
-      return initialState;
-
-    case ADD_TEAM_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case DELETE_TEAM_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
-
-    case DELETE_TEAM_SUCCESS:
-      return initialState;
-
-    case DELETE_TEAM_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-
-    case EDIT_TEAM_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
     case EDIT_TEAM_SUCCESS:
       return {
         ...state,
@@ -106,7 +82,16 @@ export const teamReducer = (state = initialState, action) => {
           ),
         })),
       };
+
+    case ADD_TEAM_SUCCESS:
+    case DELETE_TEAM_SUCCESS:
+      return initialState;
+
+    case FETCH_TEAMS_FAILURE:
+    case DELETE_TEAM_FAILURE:
     case EDIT_TEAM_FAILURE:
+    case ADD_TEAM_FAILURE:
+    case FETCH_ALL_TEAMS_FAILURE:
       return {
         ...state,
         loading: false,

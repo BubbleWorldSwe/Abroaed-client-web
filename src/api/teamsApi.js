@@ -20,6 +20,33 @@ export const getTeams = async (page) => {
   }
 };
 
+export const getTeamsByMembers = async () => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/users?filter=members`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllTeams = async () => {
+  console.log("getAllTeams");
+  try {
+    const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/users`);
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const setAddTeam = async (credentials) => {
   try {
     console.log(credentials);

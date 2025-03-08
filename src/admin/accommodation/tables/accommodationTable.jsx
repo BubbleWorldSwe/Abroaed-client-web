@@ -123,7 +123,9 @@ const AccommodationTable = ({
                   })`}
                 </td>
                 <td className="px-4 py-3">{accommodation.availablity}</td>
-                <td className="px-4 py-3">{accommodation.description}</td>
+                <td className="px-4 py-3 line-clamp-3 overflow-scroll">
+                  {accommodation.description}
+                </td>
 
                 <td className="px-4 py-3">
                   <button

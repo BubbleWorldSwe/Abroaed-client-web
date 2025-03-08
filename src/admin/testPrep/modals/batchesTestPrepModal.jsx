@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
@@ -189,25 +189,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
             </label>
           </div>
         </div>
-        <div className="flex items-center text-center gap-3 mt-5">
-          <CheckboxField
-            id="isSold"
-            checked={formData.isSold || false}
-            onChange={(e) =>
-              handleInputChange(
-                { target: { value: e.target.checked } },
-                "isSold"
-              )
-            }
-          />
 
-          <label
-            htmlFor="isSold"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Mark as Sold Out
-          </label>
-        </div>
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
           <ModalSubmitButton label={"Save"} onClick={handleSubmit} />

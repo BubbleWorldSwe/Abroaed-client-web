@@ -25,32 +25,28 @@ const AccommodationFaqSection = () => {
                     {[
                         {
                             question:
-                                "Do UK universities and courses have quality assurance?",
+                                "What types of accommodation are available? ",
                             answer:
-                                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+                                "We offer various accommodation types including shared apartments, private rooms, and university housing. The options depend on your budget and preferences, and we ensure the accommodation is safe and close to your school or work.",
                         },
                         {
                             question:
-                                "Do UK universities and courses have quality assurance?",
+                                "Is it safe to live in these accommodations? ",
                             answer:
-                                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+                                "Yes, safety is our top priority. We ensure that all options we provide meet safety standards, and we verify the reviews and conditions before recommending them to you. You can always contact us for further information about the safety of a location.",
                         },
                         {
-                            question: "Does Abroed take fees?",
+                            question: "Can I cancel my accommodation booking?",
                             answer:
-                                "Leverage Edu offers all its counselling, admissions and visa services completely free of cost. Its premium Leverage One services are tiered plans that include several value-added services to students including scholarship assistance, test preparation, priority visa assistance, accommodation assistance and more.",
+                                "Cancellation policies vary by property. We work with landlords and agencies to ensure you understand the cancellation terms before booking. In case of changes, we offer support to manage any necessary adjustments.",
                         },
                         {
                             question:
-                                "Where can I find scholarships and financial support for studying in the UK?",
+                                "How do I handle utilities like electricity and water?",
                             answer:
-                                "A wide range of scholarships and financial support options are available for international students who dream of studying in the UK. The SI-UK scholarship search leads you to hundreds of scholarships provided by universities and government organisations.",
+                                "We take you through a thorough process on how to set up these utilities, mainly electricity, and water, if they're not included in the rent. We ensure that you will be prepared with how to take care of these utilities and other round expenses.",
                         },
-                        {
-                            question: "How can Abroaed help my study abroad journey?",
-                            answer:
-                                "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
-                        },
+
                         // Add more FAQs here
                     ].map((faq, index) => (
                         <div key={index}>

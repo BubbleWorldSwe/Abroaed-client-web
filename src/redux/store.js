@@ -3,8 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas/rootSaga";
 import { countriesReducer } from "./reducers/countryReducer";
 import { destnationReducer } from "./reducers/destinationReducer";
-import { leadsReducer } from "./reducers/leadReducer";
-import { rolesReducer } from "./reducers/rolesReducer";
+import { leadsReducer } from "./reducers/leadsReducer";
 import { authReducer } from "./reducers/authReducer";
 import { teamReducer } from "./reducers/teamReducer";
 import { persistStore, persistReducer } from "redux-persist";
@@ -13,6 +12,7 @@ import { testPrepsReducer } from "./reducers/testPrepsReducer";
 import { languagePrepsReducer } from "./reducers/languagePrepsReducer";
 import { collegesReducer } from "./reducers/collegeReducer";
 import { accommodationsReducer } from "./reducers/accommodationReducer";
+import { studentsReducer } from "./reducers/studentsReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -52,11 +52,23 @@ const accommodationsPersistConfig = {
   whitelist: ["selectedAccommodation"],
 };
 
+const leadsPersistConfig = {
+  key: "leads",
+  storage,
+  whitelist: ["selectedLead"],
+};
+
+const studentsPersistConfig = {
+  key: "students",
+  storage,
+  whitelist: ["selectedStudent"],
+};
+
 const rootReducer = {
   auth: persistReducer(authPersistConfig, authReducer),
-  team: teamReducer,
-  roles: rolesReducer,
-  leads: leadsReducer,
+  teams: teamReducer,
+  leads: persistReducer(leadsPersistConfig, leadsReducer),
+  students: persistReducer(studentsPersistConfig, studentsReducer),
   destinations: persistReducer(destinationPersistConfig, destnationReducer),
   countries: countriesReducer,
   testPreps: persistReducer(testPrepsPersistConfig, testPrepsReducer),
@@ -65,6 +77,7 @@ const rootReducer = {
     languagePrepsReducer
   ),
   colleges: persistReducer(collegesPersistConfig, collegesReducer),
+
   accommodations: persistReducer(
     accommodationsPersistConfig,
     accommodationsReducer

@@ -324,7 +324,7 @@ function SigninPage() {
                 ABROAED
               </a>
               <h1 className="mb-4 text-3xl font-extrabold font-inter tracking-tight leading-none text-white xl:text-5xl">
-                Explore the world’s leading study Abroad platform
+                Explore the world’s leading study Abroaed platform
               </h1>
               <p className="mb-4 font-light font-inter text-primary-200 lg:mb-8">
                 Millions of designers and agencies around the world showcase

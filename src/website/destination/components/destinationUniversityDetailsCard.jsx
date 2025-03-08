@@ -46,13 +46,16 @@ const UniversityDetailsCard = ({ item }) => {
               alt={item.name}
             />
 
-            <p className="font-[16px] text-gray-600 dark:text-gray-400">
+            <p className="text-base text-[#52525B] font-semibold dark:text-gray-400">
               {item?.stateId?.name}, {item?.destinationId?.countryId?.name}
             </p>
           </div>
-          <div className="font-bold text-gray-500">{item.entityType}</div>
+
+          <div className="font-semibold text-[#52525B] text-base ">
+            {item.entityType}
+          </div>
         </div>
-        <p className="mb-5 text-gray-500 dark:text-gray-400 line-clamp-4">
+        <p className="mb-5 text-[#71717A] font-normal dark:text-gray-400 line-clamp-4">
           {item.description}
         </p>
 

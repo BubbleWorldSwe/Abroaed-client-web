@@ -133,3 +133,25 @@ export const courses = [
         description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
     },
 ];
+
+export const cardDetails = [
+    {
+        key: "Personalized Consultation",
+        value: 'We listen to your unique goals, preferences, and academic background to guide you toward the best study destinations and universities.'
+
+    },
+    {
+        key: "Expert Guidance",
+        value: 'Our counselors have years of experience in helping students successfully plan their study abroad journeys.'
+
+    },
+    {
+        key: "Free Service",
+        value: 'No cost at all! Our consultation is 100% free, with no hidden fees or obligations.'
+    },
+    {
+        key: "Convenience",
+        value: 'Access our service from the comfort of your home. We offer flexible time slots to fit your schedule.'
+
+    },
+];

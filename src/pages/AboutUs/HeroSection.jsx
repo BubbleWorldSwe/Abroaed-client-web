@@ -12,7 +12,7 @@ function HeroSection() {
         {/* Text Content */}
         <div className="absolute  flex flex-col gap-4 bottom-8 left-8 max-w-2xl">
           <p className="text-sm opacity-90  font-normal lg:text-lg text-white">
-            Study abroad with ABROAED
+            Study abroaed with ABROAED
           </p>
           <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
             We invest in every{" "}

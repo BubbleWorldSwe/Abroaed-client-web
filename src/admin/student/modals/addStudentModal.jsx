@@ -20,9 +20,7 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
   const handleNext = () => {
     onClose();
     setNext(true);
-  }
-
-
+  };
 
   return (
     <>
@@ -42,7 +40,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
                   {/* First Name */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">First Name</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      First Name
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -55,7 +55,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Last Name */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">Last Name</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      Last Name
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -68,7 +70,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">Email</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      Email
+                    </label>
                     <input
                       type="email"
                       name="email"
@@ -81,7 +85,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Contact Number */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">Contact Number</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      Contact Number
+                    </label>
                     <input
                       type="tel"
                       name="contactNumber"
@@ -94,7 +100,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Highest Education Qualification (Dropdown) */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">Highest Education Qualification</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      Highest Education Qualification
+                    </label>
                     <select
                       name="education"
                       value={formData.education}
@@ -104,7 +112,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
                       <option value="">Select Qualification</option>
                       <option value="High School">High School</option>
                       <option value="Diploma">Diploma</option>
-                      <option value="Bachelor's Degree">Bachelor's Degree</option>
+                      <option value="Bachelor's Degree">
+                        Bachelor's Degree
+                      </option>
                       <option value="Master's Degree">Master's Degree</option>
                       <option value="PhD">PhD</option>
                     </select>
@@ -112,7 +122,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Preferred Study Destination (Dropdown) */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">Preferred Study Destination</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      Preferred Study Destination
+                    </label>
                     <select
                       name="studyDestination"
                       value={formData.studyDestination}
@@ -130,7 +142,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Target Year (Dropdown) */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">Target Year</label>
+                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                      Target Year
+                    </label>
                     <select
                       name="targetYear"
                       value={formData.targetYear}

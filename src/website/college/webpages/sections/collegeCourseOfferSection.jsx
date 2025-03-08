@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import CollegeCourseCard from "../../components/collegeCourseCard";
-import { courses } from "../../data";
 
-const CollegeCourseOfferSection = ({ collegeDetails }) => {
+const CollegeCourseOfferSection = ({ collegeDetails, source, onAddLead }) => {
   return (
     <div className="relative">
       {/* Blob Background */}
@@ -12,10 +12,15 @@ const CollegeCourseOfferSection = ({ collegeDetails }) => {
             <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
               Course Offerings
             </h2>
-            <div className="my-4 border-t border-gray-300"></div>
+            <div className="my-1 border-t border-gray-300"></div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-10">
-              {collegeDetails?.courses.map((course, index) => (
-                <CollegeCourseCard course={course} key={index} />
+              {collegeDetails?.courses?.map((course, index) => (
+                <CollegeCourseCard
+                  course={course}
+                  key={index}
+                  source={source}
+                  onAddLead={onAddLead}
+                />
               ))}
             </div>
           </div>

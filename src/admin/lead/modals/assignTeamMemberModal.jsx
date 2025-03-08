@@ -1,33 +1,62 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { teamMembers } from "../../student/data";
-import ConfirmModal from "../../../commons/modal/confirmModal";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { toast } from "react-toastify";
 
-const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
+const AssignTeamModal = ({
+  leadId,
+  onClose,
+  filledData,
+  rolesList,
+  onUpdate,
+  membersList,
+  setMembersList,
+}) => {
+  const { assignTeamMembers } = filledData;
   const [confirmModalOpen, setConfirmModalOpen] = useState(false);
-  const [selectedTeam, setSelectedTeam] = useState({
-    counsellor: "",
-    backendManager: "",
-    mentor: "",
-  });
+
+  const [selectedMember, setSelectedMember] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setSelectedTeam((prev) => ({ ...prev, [name]: value }));
+    const { value } = e.target;
+    setSelectedMember(value);
+  };
+
+  const handleRemoveMember = (idToRemove) => {
+    const updatedAssignTeamMembers = assignTeamMembers.filter(
+      (member) => member._id !== idToRemove
+    );
+
+    const newArray = updatedAssignTeamMembers.map((m) => m._id);
+
+    console.log("Updated assignTeamMembers IDs:", newArray);
+    onUpdate({ assignTeamMembers: newArray }, leadId);
   };
 
   const handleSave = () => {
-    // onClose();
-    setConfirmModalOpen(true);
+    try {
+      if (selectedMember) {
+        const existingMemberIds = assignTeamMembers.map((member) => member._id);
+
+        const newAssignTeamMembers = [...existingMemberIds, selectedMember];
+
+        console.log("New assignTeamMembers array:", newAssignTeamMembers);
+        onUpdate({ assignTeamMembers: newAssignTeamMembers }, leadId);
+      } else {
+        toast.error("Please Select Member");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const getMembersByRole = (role) =>
-    teamMembers.filter((member) => member.role === role);
 
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
+        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-1/2 relative">
           <button
             className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
             onClick={onClose}
@@ -35,68 +64,85 @@ const AssignTeamModal = ({ leadId, leadName, team = {}, onClose }) => {
             &times;
           </button>
           <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
-          <h5 className="text-lg font-medium">Assigned Members</h5>
-          <p className="text-sm">No members assigned. Assign below</p>
-          <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">
-                Counsellor
-              </label>
-              <select
-                name="counsellor"
-                value={selectedTeam.counsellor}
-                onChange={handleChange}
-                className="w-full px-3 py-2 text-[#3F3F46] border-none  bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-              >
-                <option value="">Select Counsellor</option>
-                {getMembersByRole("Counsellor").map((member) => (
-                  <option key={member.id} value={member.id}>
-                    {member.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-medium mb-1">
-                Backend Manager
-              </label>
-              <select
-                name="backendManager"
-                value={selectedTeam.backendManager}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border-none text-[#3F3F46] bg-[#F4F4F5] rounded-lg focus:outline-none focus:ring focus:border-blue-500"
-              >
-                <option value="">Select Backend Manager</option>
-                {getMembersByRole("Backend Manager").map((member) => (
-                  <option key={member.id} value={member.id}>
-                    {member.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <h5 className="block text-sm font-medium text-gray-700 mb-2">
+            Assigned Members
+          </h5>
+          <div className="flex flex-wrap gap-2 mb-5">
+            {assignTeamMembers.length > 0 ? (
+              assignTeamMembers.map((data, i) => (
+                <div
+                  key={i}
+                  className="flex items-center bg-gray-100 text-gray-700 border border-gray-200 rounded-sm px-3 py-1 text-sm"
+                >
+                  <span>{`${data.firstName} ${data.lastName} - ${data?.roleId?.roleName}`}</span>
+                  <button
+                    onClick={() => handleRemoveMember(data._id)}
+                    className="ml-2 text-gray-500 hover:text-red-500"
+                  >
+                    ✖
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p className="text-sm text-gray-700 font-bold">
+                No members assigned. Assign below
+              </p>
+            )}
           </div>
-          <div className="flex justify-end space-x-2 mt-4">
-            <button
-              onClick={onClose}
-              className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
-            >
-              Reset
-            </button>
-            <button
-              onClick={handleSave}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Assign
-            </button>
+
+          <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
+            <SelectField
+              label="Member Type"
+              name="type"
+              onChange={({ target }) => {
+                setSelectedMember(null);
+                setMembersList([]);
+                const selectedRole = rolesList?.find(
+                  (data) => data.roleId === target.value
+                );
+                setMembersList(selectedRole?.users);
+              }}
+              options={rolesList
+                ?.filter(
+                  (data) =>
+                    !["Admin", "Content Manager"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                )
+                .filter((data) => {
+                  const assignedRoleIds = assignTeamMembers.map(
+                    (member) => member.roleId?._id
+                  );
+                  return !assignedRoleIds.includes(data.roleId); // Step 2: Exclude already assigned roles
+                })
+                .map((data) => ({
+                  label: data?.roleName,
+                  value: data?.roleId,
+                }))}
+              required
+            />
+            <SelectField
+              label="Members"
+              name="members"
+              value={selectedMember}
+              onChange={handleChange}
+              options={membersList?.map((data) => ({
+                label: `${data?.firstName} ${data?.lastName}`,
+                value: data?._id,
+              }))}
+              required
+            />
+          </div>
+
+          <div className="flex justify-end space-x-2 mt-10">
+            <ModalCloseButton label="Close" onClick={onClose} />
+
+            {/* <ModalDeleteButton
+                          label=" Cancel Appointment"
+                          onClick={onClose}
+                        /> */}
+            <ModalSubmitButton label="Assign" onClick={handleSave} />
           </div>
         </div>
       </div>
-      <ConfirmModal
-        isOpen={confirmModalOpen}
-        onClose={() => setConfirmModalOpen(false)}
-        text="Member Assigned!"
-      />
     </>
   );
 };

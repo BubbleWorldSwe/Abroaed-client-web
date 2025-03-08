@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 export function BorderTextInputField({
   label,
   name,
@@ -9,8 +10,8 @@ export function BorderTextInputField({
   disabled,
 }) {
   return (
-    <div className="my-5">
-      <label className="block text-sm font-medium text-gray-700 mb-1">
+    <div className="my-2">
+      <label className="block text-sm font-medium text-[#27272A] mb-1">
         {label}
       </label>
       <input

@@ -1,4 +1,5 @@
 import AccommodationCard from "../../../comman/components/accommodationCard";
+import Loader from "../../../comman/components/loader";
 
 function AccommodationResultForCountry({
   onSelectCountry,
@@ -6,6 +7,8 @@ function AccommodationResultForCountry({
   isLoading,
   selectedCountry,
   destinationsList,
+  source,
+  onAddLead,
 }) {
   return (
     <div className="relative mx-auto px-10">
@@ -47,14 +50,17 @@ function AccommodationResultForCountry({
 
             {/* Loader */}
             {isLoading ? (
-              <div className="flex justify-center items-center mt-10 h-[450px]">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-yellow-500"></div>
-              </div>
+              <Loader />
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
                 {accList.length > 0 ? (
                   accList.map((item, index) => (
-                    <AccommodationCard key={index} item={item} />
+                    <AccommodationCard
+                      key={index}
+                      item={item}
+                      source={source}
+                      onAddLead={onAddLead}
+                    />
                   ))
                 ) : (
                   <p className="text-gray-500">No accommodations available.</p>

@@ -1,13 +1,17 @@
-
-
 function OurPartners() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="py-8 lg:py-16 px-4">
-          <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
+      <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
+        <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
+          <h2 className="mb-4 text-center text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
             Our Partner
           </h2>
+          <div className="flex mb-10 justify-center text-center">
+            <p className="text-center max-w-[50vw] text-[#52525B] text-base font-semibold">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
           <div className="grid grid-cols-2 gap-8 text-gray-500 sm:gap-12 md:grid-cols-3 lg:grid-cols-6 dark:text-gray-400">
             <a href="#" className="flex justify-center items-center">
               <svg

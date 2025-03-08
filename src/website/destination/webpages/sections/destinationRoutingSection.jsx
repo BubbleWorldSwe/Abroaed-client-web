@@ -12,7 +12,7 @@ const DestinationRoutingSection = () => {
               smooth={true}
               duration={500}
               offset={-120}
-              className="relative cursor-pointer font-semibold text-gray-700 transition-colors hover:text-blue-700 after:content-[''] after:absolute after:left-0 after:-bottom-6 after:h-[2px] after:w-full after:bg-blue-700 after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+              className="relative cursor-pointer font-medium text-sm text-[#52525B] transition-colors hover:text-blue-700 after:content-[''] after:absolute after:left-0 after:-bottom-6 after:h-[2px] after:w-full after:bg-blue-700 after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
             >
               {path.sectionName}
             </Link>

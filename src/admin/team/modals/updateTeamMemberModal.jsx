@@ -7,9 +7,7 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam }) => {
-  const { roles } = useSelector((state) => state.roles);
-
+const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -67,7 +65,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam }) => {
             </h2>
             <div>
               <form onSubmit={handleSubmit} className="bg-white rounded-md">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {/* First Name */}
                   <TextInputField
                     label="First Name"
@@ -90,16 +88,6 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam }) => {
                     required
                   />
 
-                  {/* Mobile Number */}
-                  <TextInputField
-                    label="Mobile Number"
-                    name="phoneNumber"
-                    type="text"
-                    value={formData.phoneNumber}
-                    disabled
-                    placeholder="Enter Mobile Number"
-                  />
-
                   {/* Email ID */}
                   <TextInputField
                     label="Email ID"
@@ -108,6 +96,16 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam }) => {
                     value={formData.email}
                     disabled
                     placeholder="Enter Email ID"
+                  />
+
+                  {/* Mobile Number */}
+                  <TextInputField
+                    label="Mobile Number"
+                    name="phoneNumber"
+                    type="text"
+                    value={formData.phoneNumber}
+                    disabled
+                    placeholder="Enter Mobile Number"
                   />
 
                   {/* Select Role */}
