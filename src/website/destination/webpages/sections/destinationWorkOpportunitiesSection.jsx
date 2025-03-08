@@ -4,15 +4,15 @@ import { Element } from "react-scroll";
 const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
   return (
     <Element name="work-opportunities">
-      <div className="relative px-10 mx-auto">
-        <div className=" px-4 py-3 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
+      <div className="relative px-8 mx-auto">
+        <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
           {/* Content */}
           <div className="relative">
             <div className="py-1">
-              <h2 className="mb-2 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+              <h2 className="mb-2 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 Work Opportunities in {destinationDetails?.countryId?.name}
               </h2>
-              <p className="mb-10">
+              <p className="mb-8 font-normal text-sm text-[#27272A]">
                 Studying in the {destinationDetails?.countryId?.name} offers a
                 variety of experiences. The cultural and traditional values of
                 the
@@ -23,16 +23,18 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               </p>
             </div>
             <div className="py-1">
-              <h3 className="mb-2  text-3xl tracking-tight font-bold text-gray-900 dark:text-white">
+              <h3 className="mb-2  text-[32px]  font-bold text-[#27272A] dark:text-white">
                 Part-Time Work Opportunities
               </h3>
-              <p>{destinationDetails?.workOpportunities?.partTimeStudents}</p>
+              <p className="text-sm font-normal text-[#27272A] ">
+                {destinationDetails?.workOpportunities?.partTimeStudents}
+              </p>
             </div>
             <div className="py-5">
-              <h3 className="mb-2 mt-5 text-3xl tracking-tight font-bold text-gray-900 dark:text-white">
+              <h3 className="mb-2  text-[32px]  font-bold text-[#27272A] dark:text-white">
                 Post Study Work Opportunities
               </h3>
-              <p>
+              <p className="text-sm font-normal text-[#27272A] ">
                 {destinationDetails?.workOpportunities?.postDegreeOpportunity}
               </p>
             </div>
@@ -45,11 +47,11 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
                   >
                     <div className="p-5">
                       <div className="flex justify-between">
-                        <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                        <h5 className="mb-2 text-[28px] font-bold  text-[#27272A] dark:text-white">
                           {data?.professionName}
                         </h5>
                       </div>
-                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                      <p className="mb-3 font-semibold text-[#52525B] text-[22px] dark:text-gray-400">
                         {data?.salary}
                       </p>
                     </div>
@@ -58,7 +60,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               )}
             </div>
             {destinationDetails?.workOpportunities?.additionalInformation && (
-              <p className="my-10">
+              <p className="my-10 text-sm font-normal text-[#27272A]">
                 {destinationDetails?.workOpportunities?.additionalInformation}
               </p>
             )}

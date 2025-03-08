@@ -15,7 +15,7 @@ const UniversityDetailsCard = ({ item }) => {
       </a>
       <div className="p-5">
         <div className="flex justify-between">
-          <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-600 dark:text-white">
+          <h5 className="mb-2 text-[22px] font-semibold  text-[#27272A] dark:text-white">
             {item?.name}
           </h5>
           <div>
@@ -39,23 +39,22 @@ const UniversityDetailsCard = ({ item }) => {
           </div>
         </div>
         <div className="mb-3 flex justify-between text-center ">
-          <div className="flex gap-2 justify-between">
+          <div className="flex items-center gap-2 justify-center text-center">
             <img
-              className="rounded-t-lg w-[18px] h-[18px] object-contain"
+              className="rounded-t-lg w-[14px] h-[14px] object-contain"
               src={locationIcon}
               alt={item.name}
             />
-
-            <p className="font-[16px] text-gray-600 dark:text-gray-400">
+            <p className="text-base text-[#52525B] font-semibold dark:text-gray-400">
               {item?.stateId?.name}, {item?.destinationId?.countryId?.name}
             </p>
           </div>
-          <div className="font-bold text-gray-500">{item.entityType}</div>
+
+          <div className="font-semibold text-[#52525B] text-base ">{item.entityType}</div>
         </div>
-        <p className="mb-5 text-gray-500 dark:text-gray-400 line-clamp-4">
+        <p className="mb-5 text-[#71717A] font-normal text-base dark:text-gray-400 ">
           {item.description}
         </p>
-
         <EnquireButton href={`/college/${item._id}`} />
       </div>
     </div>

@@ -29,7 +29,7 @@ const CourseCard = ({ course, source, onAddLead }) => {
         <div className="flex flex-col flex-grow">
           <div>
             <div className="flex justify-between">
-              <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              <h5 className="mb-2 text-[22px] font-semibold  text-[#27272A] dark:text-white">
                 {course.name}
               </h5>
               <div>
@@ -52,26 +52,26 @@ const CourseCard = ({ course, source, onAddLead }) => {
                 </svg>
               </div>
             </div>
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-              <strong>College:</strong> {course.collegeName}
+            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+              <span className="text-base font-semibold">College:</span> {course.collegeName}
             </p>
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-              <strong>Domain:</strong> {course.domain}
+            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+              <span className="text-base font-semibold">Domain:</span> {course.domain}
             </p>
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-              <strong>Program:</strong> {course.courseLevel}
+            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+              <span className="text-base font-semibold">Program:</span> {course.courseLevel}
             </p>
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-              <strong>Duration:</strong> {course.duration}
+            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+              <span className="text-base font-semibold">Duration:</span> {course.duration}
             </p>
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-              <strong>Fees:</strong> {course.fees}
+            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+              <span className="text-base font-semibold">Fees:</span> {course.fees}
             </p>
-            <p className="mb-2 text-sm font-medium text-gray-700 dark:text-gray-400">
-              <strong>Intake:</strong> {course.intake}
+            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+              <span className="text-base font-semibold">Intake:</span> {course.intake}
             </p>
 
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 flex-grow">
+            <p className="mb-3 font-normal text-[#71717A] text-base dark:text-gray-400 flex-grow">
               {course.brief}
             </p>
           </div>

@@ -16,9 +16,9 @@ const DestinationFunFactCard = ({ icon, title, desc }) => {
           }}
         ></div>
         <div className="text-yellow-500 text-4xl">{icon}</div>
-        <div className="flex flex-col gap-4 text-white text-left">
-          <p className="text-2xl font-semibold">{title}</p>
-          <p className="text-lg font-normal dark:text-gray-400">{desc}</p>
+        <div className="flex flex-col gap-4  text-left">
+          <p className="text-[32px] text-[#FFFFFF] font-bold">{title}</p>
+          <p className="text-[22px] text-[#F4F4F5] font-semibold dark:text-gray-400">{desc}</p>
         </div>
         <div className="absolute right-0">
           <img src={vectorRightFlat} />

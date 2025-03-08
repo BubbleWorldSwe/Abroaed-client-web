@@ -72,10 +72,10 @@ const ContactUsForm = ({
         <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
           {/* Left Section - 60% Width */}
           <div className="lg:w-3/5  py-4 flex flex-col justify-center">
-            <h1 className="text-[45px] font-black max-w-xl text-black leading-tight tracking-wide">
+            <h1 className="text-[45px] font-extrabold text-[#27272A]  max-w-xl  ">
               {title || `Book your counseling session today!`}
             </h1>
-            <p className="mt-3 md:mt-6 text-lg leading-6 text-gray-500 tracking-wide font-medium">
+            <p className=" text-base text-[#52525B]  font-normal">
               {text ||
                 `Our specialised home counseling session is available at your
               convenience. Don’t waste a minute—take a stride towards your
@@ -128,7 +128,7 @@ const ContactUsForm = ({
                   onChange={handleCheckboxChange}
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-sm text-gray-500">
+                <label className="ml-2 text-[12px] text-[#71717A]">
                   I agree to Abroaed{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
@@ -144,7 +144,7 @@ const ContactUsForm = ({
                   onChange={handleCheckboxChange}
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-sm text-gray-500">
+                <label className="ml-2 text-[12px] text-[#71717A]">
                   Please contact me by phone, email, or SMS to assist with my
                   enquiry. I would like to receive updates and offers from
                   Abroaed.
@@ -153,7 +153,7 @@ const ContactUsForm = ({
 
               <button
                 type="submit"
-                className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
+                className="w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                 style={{ backgroundColor: "#FDDA24", color: "#000" }}
               >
                 {isLoading ? (

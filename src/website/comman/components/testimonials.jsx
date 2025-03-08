@@ -44,10 +44,10 @@ const Testimonials = () => {
     <section className=" dark:bg-gray-900 relative  px-10 mx-auto">
       <div className="py-14 px-4 mx-auto max-w-screen-2xl  lg:px-3">
         <div className=" max-w-screen-sm text-start mb-4 lg:mb-10 ">
-          <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+          <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
             100+ Success Stories
           </p>
-          <h2 className=" text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
             Lorem Ipsum, Dolor Sit
           </h2>
         </div>
