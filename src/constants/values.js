@@ -31,7 +31,7 @@ export const testMode = ["Online", "Offline"];
 
 export const pageDataLimit = 20;
 
-export const targetYear = ["2025", "2024", "2023", "2022", "2021", "2020"];
+export const targetYear = ["2025", "2026", "2027", "2028", "2029", "2030"];
 
 export const applyingFor = [
   "Bachelor’s Degree",

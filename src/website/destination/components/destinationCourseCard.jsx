@@ -53,22 +53,28 @@ const CourseCard = ({ course, source, onAddLead }) => {
               </div>
             </div>
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
-              <span className="text-base font-semibold">College:</span> {course.collegeName}
+              <span className="text-base font-semibold">College:</span>{" "}
+              {course.collegeName}
             </p>
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
-              <span className="text-base font-semibold">Domain:</span> {course.domain}
+              <span className="text-base font-semibold">Domain:</span>{" "}
+              {course.domain}
             </p>
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
-              <span className="text-base font-semibold">Program:</span> {course.courseLevel}
+              <span className="text-base font-semibold">Program:</span>{" "}
+              {course.courseLevel}
             </p>
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
-              <span className="text-base font-semibold">Duration:</span> {course.duration}
+              <span className="text-base font-semibold">Duration:</span>{" "}
+              {course.duration}
             </p>
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
-              <span className="text-base font-semibold">Fees:</span> {course.fees}
+              <span className="text-base font-semibold">Fees:</span>{" "}
+              {course.fees}
             </p>
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
-              <span className="text-base font-semibold">Intake:</span> {course.intake}
+              <span className="text-base font-semibold">Intake:</span>{" "}
+              {course.intake}
             </p>
 
             <p className="mb-3 font-normal text-[#71717A] text-base dark:text-gray-400 flex-grow">

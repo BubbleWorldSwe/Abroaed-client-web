@@ -5,7 +5,11 @@ import { SelectField } from "../../../commons/components/inputFields/selectField
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { useSelector } from "react-redux";
-import { applyingFor, highestEducation } from "../../../constants/values";
+import {
+  applyingFor,
+  highestEducation,
+  targetYear,
+} from "../../../constants/values";
 import { toast } from "react-toastify";
 
 const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
@@ -173,14 +177,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                     name="targetYear"
                     value={formData.userDetail.targetYear}
                     onChange={handleChange}
-                    options={[
-                      "2025",
-                      "2026",
-                      "2027",
-                      "2028",
-                      "2029",
-                      "2030",
-                    ].map((data) => ({
+                    options={targetYear.map((data) => ({
                       label: data,
                       value: data,
                     }))}

@@ -2,7 +2,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { applyingFor, highestEducation } from "../../../constants/values";
+import {
+  applyingFor,
+  highestEducation,
+  targetYear,
+} from "../../../constants/values";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
@@ -110,14 +114,7 @@ const UpdateLeadAdditionInfo = ({
                     name="targetYear"
                     value={formData.targetYear}
                     onChange={handleChange}
-                    options={[
-                      "2025",
-                      "2024",
-                      "2023",
-                      "2022",
-                      "2021",
-                      "2020",
-                    ].map((data) => ({
+                    options={targetYear.map((data) => ({
                       label: data,
                       value: data,
                     }))}

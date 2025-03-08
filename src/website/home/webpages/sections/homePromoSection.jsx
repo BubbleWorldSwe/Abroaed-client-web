@@ -2,7 +2,11 @@ import { useState } from "react";
 import homeQuery from "../../../../assets/homeQuery.png";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
-import { applyingFor, highestEducation } from "../../../../constants/values";
+import {
+  applyingFor,
+  highestEducation,
+  targetYear,
+} from "../../../../constants/values";
 import { SelectField } from "../../../../commons/components/inputFields/selectField";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -145,14 +149,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                         name="targetYear"
                         value={formData.userDetail.targetYear}
                         onChange={handleChange}
-                        options={[
-                          "2025",
-                          "2026",
-                          "2027",
-                          "2028",
-                          "2029",
-                          "2030",
-                        ].map((data) => ({
+                        options={targetYear.map((data) => ({
                           label: data,
                           value: data,
                         }))}
