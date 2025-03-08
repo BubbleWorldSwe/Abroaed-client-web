@@ -1,0 +1,33 @@
+import { BASE_URL } from "../constants/baseUrl";
+import { pageDataLimit } from "../constants/values";
+import { makeGetRequest, makePatchRequest } from "../utils/apiUtils";
+
+export const getStudents = async (page) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/list?page=${page}&limit=${pageDataLimit}&filter={"type":"student"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const setUpdateStudent = async (id, credentials) => {
+  try {
+    console.log(credentials);
+
+    const data = await makePatchRequest(
+      `${BASE_URL}/api/v1/admin/users/${id}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

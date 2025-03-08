@@ -12,6 +12,7 @@ import { testPrepsReducer } from "./reducers/testPrepsReducer";
 import { languagePrepsReducer } from "./reducers/languagePrepsReducer";
 import { collegesReducer } from "./reducers/collegeReducer";
 import { accommodationsReducer } from "./reducers/accommodationReducer";
+import { studentsReducer } from "./reducers/studentsReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -57,10 +58,17 @@ const leadsPersistConfig = {
   whitelist: ["selectedLead"],
 };
 
+const studentsPersistConfig = {
+  key: "students",
+  storage,
+  whitelist: ["selectedStudent"],
+};
+
 const rootReducer = {
   auth: persistReducer(authPersistConfig, authReducer),
   teams: teamReducer,
   leads: persistReducer(leadsPersistConfig, leadsReducer),
+  students: persistReducer(studentsPersistConfig, studentsReducer),
   destinations: persistReducer(destinationPersistConfig, destnationReducer),
   countries: countriesReducer,
   testPreps: persistReducer(testPrepsPersistConfig, testPrepsReducer),
@@ -69,6 +77,7 @@ const rootReducer = {
     languagePrepsReducer
   ),
   colleges: persistReducer(collegesPersistConfig, collegesReducer),
+
   accommodations: persistReducer(
     accommodationsPersistConfig,
     accommodationsReducer

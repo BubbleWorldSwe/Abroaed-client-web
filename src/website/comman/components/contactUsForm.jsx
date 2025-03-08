@@ -53,7 +53,7 @@ const ContactUsForm = ({
 
     // Validate checkboxes
     if (!termsAgreed || !contactPermission) {
-      toast.error("Please agree to both checkboxes.");
+      toast.error("Please agree to both Terms & Conditions.");
       return;
     }
 

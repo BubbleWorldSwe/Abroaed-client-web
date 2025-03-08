@@ -175,11 +175,11 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                     onChange={handleChange}
                     options={[
                       "2025",
-                      "2024",
-                      "2023",
-                      "2022",
-                      "2021",
-                      "2020",
+                      "2026",
+                      "2027",
+                      "2028",
+                      "2029",
+                      "2030",
                     ].map((data) => ({
                       label: data,
                       value: data,

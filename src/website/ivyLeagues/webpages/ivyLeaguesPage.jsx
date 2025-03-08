@@ -1,4 +1,4 @@
-import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png"
+import vectorLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
@@ -6,30 +6,28 @@ import dark from "../../../assets/dark.png";
 import IvyLeaguesHeroSection from "./sections/ivyLeaguesHeroSection";
 import IvyLeaguesInfoSection from "./sections/ivyLeaguesInfoSection";
 import IvyLeaguesUniversitySection from "./sections/ivyLeaguesUniversitySection";
-import vectorleftNose from "../../../assets/vectorleftNose.png"
+import vectorleftNose from "../../../assets/vectorleftNose.png";
 import IvyLeaguesRoutingSection from "./sections/ivyLeaguesRoutingSection";
 import IvyLeagueAdmissionRequirementSection from "./sections/ivyLeaguesAdmissionRequirementSection";
 import IvyLeaguesEligibilityCriteria from "./sections/ivyLeaguesEligibilityCriteria";
 import IvyLeaguesExpensesSection from "./sections/ivyLeaguesExpensesSection";
-import vectorDownNose from "../../../assets/vectorDownNose.png"
+import vectorDownNose from "../../../assets/vectorDownNose.png";
 import IvyLeaguesScholarshipSection from "./sections/ivyLeaguesScholarshipSection";
 import IvyLeaguesImmigrationDetailSection from "./sections/ivyLeaguesImmigrationDetailSection";
-import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png"
+import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import IvyLeaguesWorkOpportunitiesSection from "./sections/ivyLeaguesWorkOpportunitiesSection";
-import vectorFoot from "../../../assets/vectorFoot.png"
+import vectorFoot from "../../../assets/vectorFoot.png";
 import IvyLeaguesStudentAccommodationSection from "./sections/ivyLeaguesStudentAccommodation";
 import IvyLeaguesFaqSection from "./sections/ivyLeaguesFaqSection";
 import IvyLeaguesBlogSection from "./sections/ivyLeaguesBlogSection";
 import IvyLeaguesAbroaedUpdateSection from "./sections/ivyLeaguesAbroaedUpdateSection";
-import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png"
+import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
 import IvyLeaguesLeadFormSection from "./sections/ivyLeaguesLeadFormSection";
 
 const NavigationItems = () => {
   return (
     <div className="text-white px-2 mt-5 opacity-70 text-xl flex justify-between">
-      <p>
-        One Liner
-      </p>
+      <p>One Liner</p>
     </div>
   );
 };

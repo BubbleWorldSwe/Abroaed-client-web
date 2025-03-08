@@ -70,6 +70,8 @@ export const source = {
   college: "College",
   languagePrep: "Language Prep",
   testPrep: "Test Prep",
+  finance: "Finance",
+  abroaedPlus: "Abroaed Plus",
 };
 
 export const entity = {

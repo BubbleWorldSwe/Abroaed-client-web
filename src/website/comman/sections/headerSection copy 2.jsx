@@ -205,7 +205,7 @@ function Header() {
               </li>
               <li>
                 <a
-                  href="/ivyLeagues"
+                  href="/finance"
                   className="block rounded text-yellow-700 dark:text-primary-500"
                 >
                   Finance

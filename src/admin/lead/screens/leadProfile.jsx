@@ -11,7 +11,10 @@ import LeadScheduleAppointment from "../components/leadScheduleAppointment";
 import UpdateLeadPersonalInfo from "../modals/updateLeadPersonalInfoModal";
 import UpdateLeadAdditionInfo from "../modals/updateLeadAdditionInfoModal";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
-import { editLeadRequest } from "../../../redux/actions/leadsActions";
+import {
+  editLeadRequest,
+  editLeadsStudentRequest,
+} from "../../../redux/actions/leadsActions";
 import AppointmentModal from "../modals/appointmentModal";
 
 const LeadProfileLayout = () => {
@@ -37,35 +40,48 @@ const LeadProfileLayout = () => {
     }
   }
 
+  async function onUpdateStudent(data, id) {
+    try {
+      dispatch(editLeadsStudentRequest(id, data));
+      handleModal(null);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       {/* Modals */}
-      <UpdateLeadPersonalInfo
-        isOpen={modal === "personal"}
-        onClose={() => handleModal(null)}
-        onUpdate={onUpdate}
-        leadId={id}
-        filledData={{
-          firstName: leadProfile?.user?.firstName,
-          lastName: leadProfile?.user?.lastName,
-          email: leadProfile?.user?.email,
-          mobile: leadProfile?.user?.mobile,
-          address: leadProfile?.user?.address,
-        }}
-      />
-      <UpdateLeadAdditionInfo
-        isOpen={modal === "addition"}
-        onClose={() => handleModal(null)}
-        onUpdate={onUpdate}
-        leadId={id}
-        filledData={{
-          highestEducation: leadProfile?.user?.userDetail?.highestEducation,
-          preferredDestination:
-            leadProfile?.user?.userDetail?.preferredDestination?._id,
-          applyingFor: leadProfile?.user?.userDetail?.applyingFor,
-          targetYear: leadProfile?.user?.userDetail?.targetYear,
-        }}
-      />
+      {modal === "personal" && (
+        <UpdateLeadPersonalInfo
+          isOpen={modal === "personal"}
+          onClose={() => handleModal(null)}
+          onUpdate={onUpdateStudent}
+          leadId={id}
+          filledData={{
+            firstName: leadProfile?.user?.firstName,
+            lastName: leadProfile?.user?.lastName,
+            email: leadProfile?.user?.email,
+            mobile: leadProfile?.user?.mobile,
+            address: leadProfile?.user?.address || "",
+          }}
+        />
+      )}
+      {modal === "addition" && (
+        <UpdateLeadAdditionInfo
+          isOpen={modal === "addition"}
+          onClose={() => handleModal(null)}
+          onUpdate={onUpdateStudent}
+          leadId={id}
+          filledData={{
+            highestEducation: leadProfile?.user?.userDetail?.highestEducation,
+            preferredDestination:
+              leadProfile?.user?.userDetail?.preferredDestination?._id,
+            applyingFor: leadProfile?.user?.userDetail?.applyingFor,
+            targetYear: leadProfile?.user?.userDetail?.targetYear,
+          }}
+        />
+      )}
       {modal === "assignTeam" && (
         <AssignTeamModal
           isOpen={modal === "assignTeam"}

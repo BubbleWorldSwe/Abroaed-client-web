@@ -12,8 +12,8 @@ import {
   EDIT_LEAD_SUCCESS,
   EDIT_LEAD_FAILURE,
   SET_SELECTED_LEAD,
-  EDIT_STUDENT_REQUEST,
-  EDIT_STUDENT_FAILURE,
+  FETCH_LEADS_STUDENTS_REQUEST,
+  EDIT_LEADS_STUDENT_SUCCESS,
 } from "../actions/leadsActions";
 
 const initialState = {
@@ -33,7 +33,7 @@ export const leadsReducer = (state = initialState, action) => {
     case ADD_LEAD_REQUEST:
     case DELETE_LEAD_REQUEST:
     case EDIT_LEAD_REQUEST:
-    case EDIT_STUDENT_REQUEST:
+    case FETCH_LEADS_STUDENTS_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_LEADS_SUCCESS:
@@ -66,6 +66,21 @@ export const leadsReducer = (state = initialState, action) => {
         selectedLead: action.payload,
       };
 
+    case EDIT_LEADS_STUDENT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        leads: state.leads.map((lead) => ({
+          ...lead,
+          data: lead.data.map((item) =>
+            item._id === action.payload._id
+              ? { ...item, ...action.payload }
+              : item
+          ),
+        })),
+        selectedLead: action.payload,
+      };
+
     case DELETE_LEAD_SUCCESS:
     case ADD_LEAD_SUCCESS:
       return initialState;
@@ -74,7 +89,6 @@ export const leadsReducer = (state = initialState, action) => {
     case ADD_LEAD_FAILURE:
     case DELETE_LEAD_FAILURE:
     case EDIT_LEAD_FAILURE:
-    case EDIT_STUDENT_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_LEAD:

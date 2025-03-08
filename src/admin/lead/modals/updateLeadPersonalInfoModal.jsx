@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 
 const UpdateLeadPersonalInfo = ({
   isOpen,
@@ -12,17 +13,9 @@ const UpdateLeadPersonalInfo = ({
   leadId,
   filledData,
 }) => {
-  const [formData, setFormData] = useState(
-    filledData || {
-      email: "",
-      firstName: "",
-      lastName: "",
-      mobile: "",
-      address: "",
-    }
-  );
+  const [formData, setFormData] = useState(filledData);
 
-  console.log(filledData);
+  console.log(formData);
 
   // Handle input change
   const handleChange = (e) => {
@@ -65,7 +58,9 @@ const UpdateLeadPersonalInfo = ({
   const handleUpdateLeadProfileInfo = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      onUpdate({ user: formData }, leadId);
+      console.log(updatedFormData, leadId);
+      const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
+      onUpdate(updatedFormData, leadId);
     }
   };
 
@@ -73,7 +68,7 @@ const UpdateLeadPersonalInfo = ({
     <>
       {isOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-max relative">
+          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-2/5 relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -130,18 +125,18 @@ const UpdateLeadPersonalInfo = ({
                   placeholder="Enter mobile number"
                   required
                 />
-
-                {/* Address */}
-                <TextInputField
-                  label="Address"
-                  name="address"
-                  type="text"
-                  value={formData.address}
-                  onChange={handleChange}
-                  placeholder="Enter Address"
-                  required
-                />
               </div>
+
+              {/* Address */}
+              <TextareaInputField
+                label="Address"
+                name="address"
+                type="text"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Enter Address"
+                required
+              />
 
               {/* Action Buttons */}
               <div className="flex justify-end space-x-4 mt-10">

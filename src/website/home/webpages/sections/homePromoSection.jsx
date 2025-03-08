@@ -2,8 +2,13 @@ import { useState } from "react";
 import homeQuery from "../../../../assets/homeQuery.png";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
+import { applyingFor, highestEducation } from "../../../../constants/values";
+import { SelectField } from "../../../../commons/components/inputFields/selectField";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 function HomePromoSection({ source, entity, onFormSubmit }) {
+  const { allDestinations } = useSelector((state) => state.destinations);
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -16,6 +21,50 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
       targetYear: "",
     },
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevData) => {
+      if (name in prevData) {
+        // Update top-level fields
+        return { ...prevData, [name]: value };
+      } else {
+        // Update nested userDetail fields
+        return {
+          ...prevData,
+          userDetail: {
+            ...prevData.userDetail,
+            [name]: value,
+          },
+        };
+      }
+    });
+  };
+
+  const handleAddLead = (e) => {
+    e.preventDefault();
+    const { email, firstName, lastName, mobile, userDetail } = formData;
+    const { highestEducation, preferredDestination, applyingFor, targetYear } =
+      userDetail;
+
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !mobile ||
+      !highestEducation ||
+      !preferredDestination ||
+      !applyingFor ||
+      !targetYear
+    ) {
+      toast.error("Please fill out all fields.");
+      return;
+    }
+
+    console.log("Lead Data:", formData);
+    onFormSubmit({ user: formData, source: source, entity: entity });
+  };
 
   return (
     <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto h-full">
@@ -58,49 +107,103 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                   Book Counselling Now
                 </h2>
 
-                <>
+                <form className="space-y-6" onSubmit={handleAddLead}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <BorderTextInputField
-                        label={"First Name*"}
+                        label="First Name"
+                        name="firstName"
+                        type="text"
+                        value={formData.firstName}
+                        onChange={handleChange}
                         placeholder="Enter"
+                        required
                       />
                       <BorderTextInputField
-                        label={"Email*"}
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         placeholder="Enter"
+                        required
                       />
-                      <BorderTextInputField
-                        label={"Highest Education Qualification"}
-                        placeholder="Enter"
+                      <BorderSelectField
+                        label="Highest Education Qualification"
+                        name="highestEducation"
+                        value={formData.userDetail.highestEducation}
+                        onChange={handleChange}
+                        options={highestEducation.map((data) => ({
+                          label: data,
+                          value: data,
+                        }))}
+                        required
                       />
-                      <BorderTextInputField
-                        label={"  When Do You Plan to Study?"}
-                        placeholder="Enter"
+
+                      <BorderSelectField
+                        label="When Do You Plan to Study?"
+                        name="targetYear"
+                        value={formData.userDetail.targetYear}
+                        onChange={handleChange}
+                        options={[
+                          "2025",
+                          "2026",
+                          "2027",
+                          "2028",
+                          "2029",
+                          "2030",
+                        ].map((data) => ({
+                          label: data,
+                          value: data,
+                        }))}
+                        required
                       />
                     </div>
                     <div>
                       <BorderTextInputField
-                        label={"Last Name*"}
+                        label="Last Name"
+                        name="lastName"
+                        type="text"
+                        value={formData.lastName}
+                        onChange={handleChange}
                         placeholder="Enter"
+                        required
                       />
                       <BorderTextInputField
-                        label={"Contact Number*"}
+                        label="Mobile Number"
+                        name="mobile"
+                        type="tel"
+                        value={formData.mobile}
+                        onChange={handleChange}
                         placeholder="Enter"
+                        required
                       />
-                      <div className="my-2">
-                        <BorderSelectField
-                          label={"Preferred Study Level"}
-                          options={[
-                            { value: "UG", label: "UG" },
-                            { value: "PG", label: "PG" },
-                            { value: "PhD", label: "PhD" },
-                            { value: "Others", label: "Others" },
-                          ]}
-                          required
-                        />
-                      </div>
+                      <BorderSelectField
+                        label="Preferred Study Level"
+                        name="applyingFor"
+                        value={formData.userDetail.applyingFor}
+                        onChange={handleChange}
+                        required
+                        options={applyingFor.map((data) => ({
+                          label: data,
+                          value: data,
+                        }))}
+                      />
 
                       <BorderSelectField
+                        label="Preferred Study Destination"
+                        name="preferredDestination"
+                        value={formData.userDetail.preferredDestination}
+                        onChange={handleChange}
+                        options={allDestinations.map((data) => ({
+                          label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                          value: data?._id,
+                          ...data,
+                        }))}
+                        required
+                      />
+
+                      {/*   <BorderSelectField
                         label={"Mode of Counselling"}
                         options={[
                           { value: "1", label: "Home Counselling" },
@@ -109,46 +212,47 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                           { value: "4", label: "Others" },
                         ]}
                         required
-                      />
+                      /> */}
                     </div>
                   </div>
-                </>
-                <>
-                  <div className="flex items-start mt-4">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      required
-                    />
-                    <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                      I agree to Abroaed{" "}
-                      <span className="font-bold">Terms of Service</span> and{" "}
-                      <span className="font-bold">Privacy Policy</span>.
-                    </label>
+
+                  <>
+                    <div className="flex items-start mt-4">
+                      <input
+                        type="checkbox"
+                        className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        required
+                      />
+                      <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
+                        I agree to Abroaed{" "}
+                        <span className="font-bold">Terms of Service</span> and{" "}
+                        <span className="font-bold">Privacy Policy</span>.
+                      </label>
+                    </div>
+                    <div className="flex items-start mt-4">
+                      <input
+                        type="checkbox"
+                        className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                        required
+                      />
+                      <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
+                        I agree to Abroaed Terms and privacy policy. Please
+                        contact me by phone, email, or SMS to assist with my
+                        enquiry. I would like to receive updates and offers from
+                        Abroaed.
+                      </label>
+                    </div>
+                  </>
+                  <div>
+                    <button
+                      onSubmit={handleAddLead}
+                      type="submit"
+                      className="py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                    >
+                      Book Now
+                    </button>
                   </div>
-                  <div className="flex items-start mt-4">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      required
-                    />
-                    <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                      I agree to Abroaed Terms and privacy policy. Please
-                      contact me by phone, email, or SMS to assist with my
-                      enquiry. I would like to receive updates and offers from
-                      Abroaed.
-                    </label>
-                  </div>
-                </>
-                <div>
-                  <button
-                    onSubmit={onFormSubmit}
-                    type="submit"
-                    className="py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-                  >
-                    Book Now
-                  </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>

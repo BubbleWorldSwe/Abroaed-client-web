@@ -8,6 +8,7 @@ import languagePrepsSaga from "./languagePrepsSaga";
 import collegesSaga from "./collegeSaga";
 import accommodationsSaga from "./accommodationSaga";
 import leadsSaga from "./leadsSaga";
+import studentsSaga from "./studentsSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     collegesSaga(),
     accommodationsSaga(),
     leadsSaga(),
+    studentsSaga(),
   ]);
 }

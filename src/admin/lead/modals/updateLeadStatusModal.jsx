@@ -91,8 +91,13 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
       return;
     }
 
-    console.log(formData);
-    onUpdate(formData, leadId);
+    const updatedFormData = {
+      ...formData,
+      type: formData.status === "Converted" ? "student" : "lead",
+    };
+
+    console.log(updatedFormData);
+    onUpdate(updatedFormData, leadId);
   };
 
   return (

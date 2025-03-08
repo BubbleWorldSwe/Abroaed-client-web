@@ -5,6 +5,7 @@ import {
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePutRequest,
 } from "../utils/apiUtils";
 
 export const getLeads = async (page) => {
@@ -71,8 +72,8 @@ export const setUpdateStudent = async (id, credentials) => {
   try {
     console.log(credentials);
 
-    const data = await makePatchRequest(
-      `${BASE_URL}/api/v1/admin/leads/${id}`,
+    const data = await makePutRequest(
+      `${BASE_URL}/api/v1/admin/users/${id}`,
       credentials
     );
     if (data.success) {

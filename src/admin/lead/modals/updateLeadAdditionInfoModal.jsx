@@ -16,16 +16,9 @@ const UpdateLeadAdditionInfo = ({
 }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
 
-  const [formData, setFormData] = useState(
-    filledData || {
-      highestEducation: "",
-      preferredDestination: "",
-      applyingFor: "",
-      targetYear: "",
-    }
-  );
+  const [formData, setFormData] = useState(filledData);
 
-  console.log(filledData);
+  // console.log(filledData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,6 +47,7 @@ const UpdateLeadAdditionInfo = ({
 
   const handleUpdateLeadProfileInfo = () => {
     if (validateForm()) {
+      console.log(formData, leadId);
       onUpdate({ userDetail: formData }, leadId);
 
       // onUpdate({ user: { userDetail: formData } }, leadId);

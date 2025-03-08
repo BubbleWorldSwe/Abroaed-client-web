@@ -1,9 +1,11 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
+  getLeadDetailsById,
   getLeads,
   setAddLead,
   setDeleteLead,
   setUpdateLead,
+  setUpdateStudent,
 } from "../../api/leadsApi";
 import {
   ADD_LEAD_REQUEST,
@@ -13,7 +15,10 @@ import {
   deleteLeadFailure,
   deleteLeadSuccess,
   EDIT_LEAD_REQUEST,
+  EDIT_LEADS_STUDENT_REQUEST,
   editLeadFailure,
+  editLeadsStudentFailure,
+  editLeadsStudentSuccess,
   editLeadSuccess,
   FETCH_LEADS_REQUEST,
   fetchLeadsFailure,
@@ -87,22 +92,32 @@ function* handleEditLead(action) {
   }
 }
 
-// Edit a Student
-function* handleEditStudent(action) {
+function* handleEditLeadStudent(action) {
   try {
     const { id, leadData } = action.payload;
-    const response = yield call(setUpdateLead, id, leadData);
-    console.log("handleEditLead in Saga", response);
+
+    // First API call to update the student
+    const response = yield call(setUpdateStudent, id, leadData);
+    console.log("handleEditStudent in Saga", response);
 
     if (response.status === 200) {
-      yield put(editLeadSuccess(response.data));
-      toast.success("Lead updated successfully!");
+      // Second API call to get updated student details from lead
+      const leadDetailsResponse = yield call(getLeadDetailsById, id);
+
+      if (leadDetailsResponse.status === 200) {
+        yield put(editLeadsStudentSuccess(leadDetailsResponse.data));
+        toast.success("Student updated successfully!");
+      } else {
+        yield put(editLeadsStudentFailure(leadDetailsResponse.message));
+        toast.error(leadDetailsResponse.message);
+      }
     } else {
-      yield put(editLeadFailure(response.message));
+      yield put(editLeadsStudentFailure(response.message));
       toast.error(response.message);
     }
   } catch (error) {
-    yield put(editLeadFailure(error.message));
+    yield put(editLeadsStudentFailure(error.message));
+    toast.error(error.message);
   }
 }
 
@@ -113,4 +128,5 @@ export default function* leadsSaga() {
   yield takeLatest(ADD_LEAD_REQUEST, addNewLead);
   yield takeLatest(DELETE_LEAD_REQUEST, deleteLead);
   yield takeLatest(EDIT_LEAD_REQUEST, handleEditLead);
+  yield takeLatest(EDIT_LEADS_STUDENT_REQUEST, handleEditLeadStudent);
 }
