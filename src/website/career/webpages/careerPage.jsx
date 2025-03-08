@@ -10,7 +10,7 @@ import CareerContentSection from "./sections/careerContentSection";
 function CareerPage() {
   return (
     <div className="font-rethink">
-      <Header />
+      <Header isHeaderBgWhite={true} />
       <CareerHeroSections />
       <CareerContentSection />
       <CareerJobSection />

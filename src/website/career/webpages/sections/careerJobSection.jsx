@@ -7,11 +7,11 @@ function CareerJobSection() {
     return (
         <div>
             <section className="bg-white dark:bg-gray-900 relative py-16  px-14 mx-auto">
-                <div className="py-10 px-1 mx-auto max-w-screen-2xl   relative z-10">
-                    <h1 className="mb-3 text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">
+                <div className="py-7 px-1 mx-auto max-w-screen-2xl   relative z-10">
+                    <h1 className="mb-6 text-[45px] font-extrabold leading-tight text-[#27272A]  dark:text-white">
                         We'd Love to work with someone like you!
                     </h1>
-                    <h2 className=" text-xl font-semibold leading-tight text-gray-500  lg:text-2xl dark:text-white">
+                    <h2 className=" text-[32px] font-bold  text-[#52525B]   dark:text-white">
                         Category Name
                     </h2>
                 </div>
@@ -22,10 +22,10 @@ function CareerJobSection() {
                             href="#"
                             className="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                         >
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <h5 className="mb-2 text-[32px] font-bold tracking-tight text-gray-900 dark:text-white">
                                 {benefit.heading}
                             </h5>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">
+                            <p className="font-normal text-gray-700 text-sm dark:text-gray-400">
                                 {benefit.text}
                             </p>
                             <p>Location, India</p>

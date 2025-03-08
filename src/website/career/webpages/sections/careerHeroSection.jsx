@@ -14,10 +14,10 @@ function CareerHeroSections() {
           />
         </div>
         <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-2xl lg:px-12 sm:text-center lg:py-16 ">
-          <h2 className="mb-4 text-5xl  font-extrabold text-black dark:text-white">
+          <h2 className="mb-4 text-[52px]  font-extrabold text-[#27272A] dark:text-white">
             Work At Abroaed
           </h2>
-          <p className="font-bold text-lg text-gray-700  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
+          <p className="font-bold text-2xl text-[#52525B]  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
             Get a glimpse of what it’d be like working at Abroaed! We value both, work & fun!
           </p>
           <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:mt-12">
