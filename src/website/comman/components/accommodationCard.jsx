@@ -40,7 +40,7 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
         <div className="p-5 flex flex-col flex-grow">
           {/* Header */}
           <div className="flex justify-between">
-            <h5 className="text-xl font-600 tracking-tight dark:text-white">
+            <h5 className="text-[22px] mb-1 font-semibold tracking-tight text-[#27272A] dark:text-white">
               {item.accomodationName}
             </h5>
             <div>
@@ -65,10 +65,10 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
           </div>
 
           {/* Location */}
-          <div className="mb-2 flex justify-between">
-            <div className="flex gap-2">
+          <div className="mb-1 flex justify-between ">
+            <div className="flex gap-2 items-center">
               <img
-                className="w-[18px] h-[18px] object-contain mx-1"
+                className="w-[14px] h-[14px]  object-contain mx-1"
                 src={locationIcon}
                 alt={item.name}
               />
@@ -79,21 +79,21 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
           </div>
 
           {/* Price */}
-          <div className="flex justify-between text-center mb-5">
-            <div className="flex gap-2">
+          <div className="flex justify-between text-center mb-2">
+            <div className="flex gap-2 text-base text-[#52525B]  items-center">
               <img
-                className="w-[24px] h-[24px] object-contain"
+                className="w-[14px] h-[14px]  object-contain mx-1"
                 src={wallet}
                 alt={item.name}
               />
-              <p className="font-medium text-gray-500 dark:text-gray-400">
+              <p className="font-normal  dark:text-gray-400">
                 {item.price} per month
               </p>
             </div>
           </div>
 
           <div className="flex-grow">
-            <p className="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
+            <p className="mb-5 font-normal  text-gray-500 dark:text-gray-400 line-clamp-4">
               {item.description}
             </p>
           </div>

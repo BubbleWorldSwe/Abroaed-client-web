@@ -26,11 +26,11 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
       <section className=" py-8 antialiased dark:bg-gray-900 md:py-2">
         <div className="mx-auto max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
-            <p className="text-3xl font-semibold text-gray-900 dark:text-white">
+            <p className="text-[45px] font-extrabold text-[#27272A] dark:text-white">
               Fun Facts
             </p>
           </div>
-          <div className="mt-6 space-y-6">
+          <div className="mt-10 space-y-6">
             <div className="flex flex-col md:flex-row  justify-center flex-wrap gap-5 ">
               {list?.map((item, idx) => (
                 <DestinationFunFactCard
