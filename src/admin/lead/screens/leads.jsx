@@ -252,7 +252,6 @@ function Leads() {
           </div>
           <div className="flex-grow  overflow-auto bg-white dark:bg-gray-800 px-5">
             <LeadTable
-              leads={leadsData}
               handleAssignTeamMember={handleAssignTeamMember}
               handleScheduleAppointment={handleScheduleAppointment}
               handleUpdateTeamMember={handleUpdateTeamMember}
