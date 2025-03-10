@@ -11,7 +11,7 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-const UpdateLeadAdditionInfo = ({
+const UpdateStudentAdditionInfo = ({
   isOpen,
   onClose,
   onUpdate,
@@ -138,4 +138,4 @@ const UpdateLeadAdditionInfo = ({
   );
 };
 
-export default UpdateLeadAdditionInfo;
+export default UpdateStudentAdditionInfo;

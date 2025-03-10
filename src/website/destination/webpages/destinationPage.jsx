@@ -18,7 +18,6 @@ import DestinationStudentAccommodationsSection from "./sections/destinationStude
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
 import DestinationFaqSection from "./sections/destinationFaqSection";
-// import DestinationAbroaedUpdateSection from "./sections/destinationAbroaedUpdateSection";
 import DestinationFunFactSection from "./sections/destinationFunFactSection";
 import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -26,10 +25,12 @@ import { getDestinationDetailsById } from "../../../api/destinationApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
+
 import {
   getCollegesByDestinationId,
   getCoursesListByDestinationId,
 } from "../../../api/collegesApi";
+
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
@@ -78,6 +79,7 @@ function DestinationPage() {
       console.log(error);
     }
   }
+
   console.log(coursesList);
 
   const handleAddLead = (data) => {

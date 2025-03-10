@@ -6,7 +6,7 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
 
-const AssignTeamModal = ({
+const StudentAssignTeamModal = ({
   leadId,
   onClose,
   filledData,
@@ -146,4 +146,4 @@ const AssignTeamModal = ({
   );
 };
 
-export default AssignTeamModal;
+export default StudentAssignTeamModal;

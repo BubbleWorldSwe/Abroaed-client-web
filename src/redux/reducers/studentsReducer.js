@@ -12,6 +12,9 @@ import {
   EDIT_STUDENT_SUCCESS,
   EDIT_STUDENT_FAILURE,
   SET_SELECTED_STUDENT,
+  EDIT_STUDENT_LEADS_SUCCESS,
+  EDIT_STUDENT_LEADS_REQUEST,
+  EDIT_STUDENT_LEADS_FAILURE,
 } from "../actions/studentsActions";
 
 const initialState = {
@@ -35,6 +38,7 @@ export const studentsReducer = (state = initialState, action) => {
     case ADD_STUDENT_REQUEST:
     case DELETE_STUDENT_REQUEST:
     case EDIT_STUDENT_REQUEST:
+    case EDIT_STUDENT_LEADS_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_STUDENTS_SUCCESS:
@@ -53,6 +57,7 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case EDIT_STUDENT_SUCCESS:
+    case EDIT_STUDENT_LEADS_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -72,10 +77,10 @@ export const studentsReducer = (state = initialState, action) => {
       return initialState;
 
     case FETCH_STUDENTS_FAILURE:
-
     case ADD_STUDENT_FAILURE:
     case DELETE_STUDENT_FAILURE:
     case EDIT_STUDENT_FAILURE:
+    case EDIT_STUDENT_LEADS_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_STUDENT:

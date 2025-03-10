@@ -14,6 +14,10 @@ export const EDIT_STUDENT_REQUEST = "EDIT_STUDENT_REQUEST";
 export const EDIT_STUDENT_SUCCESS = "EDIT_STUDENT_SUCCESS";
 export const EDIT_STUDENT_FAILURE = "EDIT_STUDENT_FAILURE";
 
+export const EDIT_STUDENT_LEADS_REQUEST = "EDIT_STUDENT_LEADS_REQUEST";
+export const EDIT_STUDENT_LEADS_SUCCESS = "EDIT_STUDENT_LEADS_SUCCESS";
+export const EDIT_STUDENT_LEADS_FAILURE = "EDIT_STUDENT_LEADS_FAILURE";
+
 export const SET_SELECTED_STUDENT = "SET_SELECTED_STUDENT";
 
 export const fetchStudentsRequest = (page) => ({
@@ -28,20 +32,6 @@ export const fetchStudentsSuccess = (data) => ({
 
 export const fetchStudentsFailure = (error) => ({
   type: FETCH_STUDENTS_FAILURE,
-  payload: error,
-});
-
-export const fetchAllStudentsRequest = () => ({
-  type: FETCH_ALL_STUDENTS_REQUEST,
-});
-
-export const fetchAllStudentsSuccess = (data) => ({
-  type: FETCH_ALL_STUDENTS_SUCCESS,
-  payload: data,
-});
-
-export const fetchAllStudentsFailure = (error) => ({
-  type: FETCH_ALL_STUDENTS_FAILURE,
   payload: error,
 });
 
@@ -75,9 +65,28 @@ export const deleteStudentFailure = (error) => ({
   payload: error,
 });
 
-export const editStudentRequest = (id, studentData) => ({
-  type: EDIT_STUDENT_REQUEST,
+// Edit Lead
+export const editStudentLeadRequest = (id, studentData) => ({
+  type: EDIT_STUDENT_LEADS_REQUEST,
+  // payload: { userId, leadData, leadId },
   payload: { id, studentData },
+});
+
+export const editStudentLeadSuccess = (editedLead) => ({
+  type: EDIT_STUDENT_LEADS_SUCCESS,
+  payload: editedLead,
+});
+
+export const editStudentLeadFailure = (error) => ({
+  type: EDIT_STUDENT_LEADS_FAILURE,
+  payload: error,
+});
+
+// Edit Student
+export const editStudentRequest = (userId, studentData, leadId) => ({
+  type: EDIT_STUDENT_REQUEST,
+
+  payload: { userId, studentData, leadId },
 });
 
 export const editStudentSuccess = (editedStudent) => ({

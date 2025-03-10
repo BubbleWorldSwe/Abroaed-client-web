@@ -1,125 +1,150 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { X } from "lucide-react";
 import { useState } from "react";
-import { Toaster } from "react-hot-toast"
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { toast } from "react-toastify";
 
-const AssignTeamMemberStudentModal = ({ isOpen, onClose, setDone }) => {
-    const [formData, setFormData] = useState({
-        counsellor: "",
-        backendManager: "",
-        mentor: "",
-    });
-    const assignMember = ["Manmeet Singh - Counsellor", "Manmeet Singh - Counsellor", "Manmeet Singh - Counsellor"]
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+const AssignTeamMemberStudentModal = ({
+  leadId,
+  onClose,
+  filledData,
+  rolesList,
+  onUpdate,
+  membersList,
+  setMembersList,
+}) => {
+  const { assignTeamMembers } = filledData;
+  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
-    const handleReset = () => {
-        setFormData({
-            counsellor: "",
-            backendManager: "",
-            mentor: "",
-        });
+  const [selectedMember, setSelectedMember] = useState(null);
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setSelectedMember(value);
+  };
+
+  const handleRemoveMember = (idToRemove) => {
+    const updatedAssignTeamMembers = assignTeamMembers.filter(
+      (member) => member._id !== idToRemove
+    );
+
+    const newArray = updatedAssignTeamMembers.map((m) => m._id);
+
+    console.log("Updated assignTeamMembers IDs:", newArray);
+    onUpdate({ assignTeamMembers: newArray }, leadId);
+  };
+
+  const handleSave = () => {
+    try {
+      if (selectedMember) {
+        const existingMemberIds = assignTeamMembers.map((member) => member._id);
+
+        const newAssignTeamMembers = [...existingMemberIds, selectedMember];
+
+        console.log("New assignTeamMembers array:", newAssignTeamMembers);
+        onUpdate({ assignTeamMembers: newAssignTeamMembers }, leadId);
+      } else {
+        toast.error("Please Select Member");
+      }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
-    const handleAssign = () => {
-        onClose();
-        setDone(true);
-
-    }
-
-
-    return (
-        <>
-            {isOpen && (
-                <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-                    <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6  min-w-max relative">
-                        <button
-                            className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-                            onClick={onClose}
-                        >
-                            &times;
-                        </button>
-                        <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
-
-                        <div>
-                            <h5 className="block text-sm font-semibold text-[#27272A] mb-2">Assigned Members</h5>
-                            <div className="mb-2 grid grid-cols-2 gap-3">
-                                {assignMember.map((member, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center justify-between p-1 px-2 bg-[#F3F4F6] text-sm text-[#4B5563] rounded"
-                                    >
-                                        <p>{member}</p>
-                                        <span className="flex ml-4 items-center">
-                                            <X className="w-4 h-4" />
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                            <form onSubmit={handleAssign} className="space-y-6">
-                                <div className="grid font-rethink grid-cols-2 gap-4">
-                                    {/* Counsellor Dropdown */}
-                                    <div>
-                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">
-                                            Member Type
-                                        </label>
-                                        <select
-                                            name="counsellor"
-                                            value={formData.counsellor}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-1 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        >
-                                            <option value="">Member Type</option>
-                                            <option value="John Doe">John Doe</option>
-                                            <option value="Jane Smith">Jane Smith</option>
-                                            <option value="Alice Johnson">Alice Johnson</option>
-                                        </select>
-                                    </div>
-
-                                    {/* Backend Manager Dropdown */}
-                                    <div>
-                                        <label className="block text-sm font-semibold text-[#27272A] mb-1">
-                                            Member Name
-                                        </label>
-                                        <select
-                                            name="backendManager"
-                                            value={formData.backendManager}
-                                            onChange={handleChange}
-                                            className="w-full px-3 py-1 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        >
-                                            <option value="">Member Name</option>
-                                            <option value="Mike Brown">Mike Brown</option>
-                                            <option value="Sara Wilson">Sara Wilson</option>
-                                            <option value="Tom Lee">Tom Lee</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                {/* Action Buttons */}
-                                <div className="flex gap-3 justify-end mt-4">
-                                    <button
-                                        type="button"
-                                        className="bg-gray-300 text-gray-700 px-3 py-1 rounded-md"
-                                        onClick={handleReset}
-                                    >
-                                        Reset
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        className="bg-blue-600 text-white px-3 py-1 rounded-md"
-                                    >
-                                        Assign
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+  return (
+    <>
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+        <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-1/2 relative">
+          <button
+            className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+            onClick={onClose}
+          >
+            &times;
+          </button>
+          <h2 className="text-xl font-semibold mb-4">Assign Team Member</h2>
+          <h5 className="block text-sm font-medium text-gray-700 mb-2">
+            Assigned Members
+          </h5>
+          <div className="flex flex-wrap gap-2 mb-5">
+            {assignTeamMembers.length > 0 ? (
+              assignTeamMembers.map((data, i) => (
+                <div
+                  key={i}
+                  className="flex items-center bg-gray-100 text-gray-700 border border-gray-200 rounded-sm px-3 py-1 text-sm"
+                >
+                  <span>{`${data.firstName} ${data.lastName} - ${data?.roleId?.roleName}`}</span>
+                  <button
+                    onClick={() => handleRemoveMember(data._id)}
+                    className="ml-2 text-gray-500 hover:text-red-500"
+                  >
+                    ✖
+                  </button>
                 </div>
+              ))
+            ) : (
+              <p className="text-sm text-gray-700 font-bold">
+                No members assigned. Assign below
+              </p>
             )}
-            <Toaster position="top-center" reverseOrder={false} />
-        </>
-    )
-}
+          </div>
 
-export default AssignTeamMemberStudentModal
+          <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
+            <SelectField
+              label="Member Type"
+              name="type"
+              onChange={({ target }) => {
+                setSelectedMember(null);
+                setMembersList([]);
+                const selectedRole = rolesList?.find(
+                  (data) => data.roleId === target.value
+                );
+                setMembersList(selectedRole?.users);
+              }}
+              options={rolesList
+                ?.filter(
+                  (data) =>
+                    !["Admin", "Content Manager"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                )
+                .filter((data) => {
+                  const assignedRoleIds = assignTeamMembers.map(
+                    (member) => member.roleId?._id
+                  );
+                  return !assignedRoleIds.includes(data.roleId); // Step 2: Exclude already assigned roles
+                })
+                .map((data) => ({
+                  label: data?.roleName,
+                  value: data?.roleId,
+                }))}
+              required
+            />
+            <SelectField
+              label="Members"
+              name="members"
+              value={selectedMember}
+              onChange={handleChange}
+              options={membersList?.map((data) => ({
+                label: `${data?.firstName} ${data?.lastName}`,
+                value: data?._id,
+              }))}
+              required
+            />
+          </div>
+
+          <div className="flex justify-end space-x-2 mt-10">
+            <ModalCloseButton label="Close" onClick={onClose} />
+
+            {/* <ModalDeleteButton
+                          label=" Cancel Appointment"
+                          onClick={onClose}
+                        /> */}
+            <ModalSubmitButton label="Assign" onClick={handleSave} />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default AssignTeamMemberStudentModal;

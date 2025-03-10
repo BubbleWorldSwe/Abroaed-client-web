@@ -6,7 +6,7 @@ import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubm
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 
-const UpdateLeadPersonalInfo = ({
+const UpdateStudentPersonalInfo = ({
   isOpen,
   onClose,
   onUpdate,
@@ -56,11 +56,15 @@ const UpdateLeadPersonalInfo = ({
 
   // Handle form submission
   const handleUpdateLeadProfileInfo = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      //  console.log(updatedFormData, leadId);
-      const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
-      onUpdate(updatedFormData, userId);
+    try {
+      e.preventDefault();
+      if (validateForm()) {
+        const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
+        console.log(updatedFormData, userId);
+        onUpdate(updatedFormData, userId);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -151,4 +155,4 @@ const UpdateLeadPersonalInfo = ({
   );
 };
 
-export default UpdateLeadPersonalInfo;
+export default UpdateStudentPersonalInfo;

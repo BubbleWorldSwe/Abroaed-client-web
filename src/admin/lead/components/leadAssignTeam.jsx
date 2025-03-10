@@ -3,68 +3,25 @@ import { useEffect, useRef, useState } from "react";
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
 import { useSelector } from "react-redux";
+import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 
-const LeadAssignTeam = ({ onOpenModal }) => {
+const LeadAssignTeam = ({ onOpenModal, onUpdate }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
-  const [selected, setSelected] = useState({
-    counsellor: null,
-    associate: null,
-    manager: null,
-  });
-  const [openModal, setOpenModal] = useState(false);
-  const handleCloseAddModal = () => {
-    setOpenModal(false);
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { assignTeamMembers } = leadProfile;
+
   const [deleteId, setDeleteId] = useState(null);
-  const handleOpenAddModal = () => {
-    setOpenModal(true);
-  };
-  // State for toggling dropdowns
-  const [isDropdownOpen, setIsDropdownOpen] = useState({
-    counsellor: false,
-    associate: false,
-    manager: false,
-  });
 
-  // Refs for detecting clicks outside the dropdowns
-  const refs = {
-    counsellor: useRef(null),
-    associate: useRef(null),
-    manager: useRef(null),
-  };
+  const handleRemoveMember = () => {
+    const updatedAssignTeamMembers = assignTeamMembers.filter(
+      (member) => member._id !== deleteId
+    );
 
-  // Close dropdowns when clicking outside
-  const handleClickOutside = (e) => {
-    for (const key in refs) {
-      if (refs[key] && !refs[key]?.current?.contains(e.target)) {
-        setIsDropdownOpen((prev) => ({ ...prev, [key]: false }));
-      }
-    }
-  };
+    const newArray = updatedAssignTeamMembers.map((m) => m._id);
 
-  // Add event listener for clicks outside
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  // Toggle dropdown visibility and close others
-  const toggleDropdown = (dropdown) => {
-    setIsDropdownOpen((prev) => ({
-      ...prev,
-      [dropdown]: !prev[dropdown],
-    }));
-    for (const key in isDropdownOpen) {
-      if (key !== dropdown) {
-        setIsDropdownOpen((prev) => ({ ...prev, [key]: false }));
-      }
-    }
-  };
-  const handleSelect = (dropdown, item) => {
-    setSelected((prev) => ({ ...prev, [dropdown]: item }));
-    setIsDropdownOpen((prev) => ({ ...prev, [dropdown]: false }));
+    console.log("Updated assignTeamMembers IDs:", newArray);
+    onUpdate({ assignTeamMembers: newArray }, leadProfile._id);
   };
 
   return (
@@ -74,11 +31,10 @@ const LeadAssignTeam = ({ onOpenModal }) => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Assigned Team</h2>
           <button
-            onClick={handleOpenAddModal}
+            onClick={onOpenModal}
             className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"
           >
             <img
-              onClick={onOpenModal}
               src={pencil}
               alt="pencil-img"
               className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
@@ -98,7 +54,7 @@ const LeadAssignTeam = ({ onOpenModal }) => {
           </thead>
           <tbody>
             {leadProfile?.assignTeamMembers?.length > 0 ? (
-              leadProfile?.assignTeamMembers.map((data, i) => (
+              assignTeamMembers.map((data, i) => (
                 <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                   <td className=" px-4 py-3 font-semibold">
                     {`${data?.firstName} ${data?.lastName}`}
@@ -117,7 +73,7 @@ const LeadAssignTeam = ({ onOpenModal }) => {
                         //  onClick={() => handleDeleteClick(data?._id)}
                         onClick={() => {
                           setDeleteId(data?._id);
-                          // setIsModalOpen(!isModalOpen);
+                          setIsModalOpen(!isModalOpen);
                         }}
                       />
                     </div>
@@ -137,6 +93,15 @@ const LeadAssignTeam = ({ onOpenModal }) => {
           </tbody>
         </table>
       </div>
+      <DeleteConfirmationModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Delete!"
+        onDelete={() => {
+          handleRemoveMember();
+          setIsModalOpen(false);
+        }}
+      />
     </>
   );
 };

@@ -94,15 +94,15 @@ function* handleEditLead(action) {
 
 function* handleEditLeadStudent(action) {
   try {
-    const { id, leadData } = action.payload;
+    const { userId, leadData, leadId } = action.payload;
 
     // First API call to update the student
-    const response = yield call(setUpdateStudent, id, leadData);
+    const response = yield call(setUpdateStudent, userId, leadData);
     console.log("handleEditStudent in Saga", response);
 
     if (response.status === 200) {
       // Second API call to get updated student details from lead
-      const leadDetailsResponse = yield call(getLeadDetailsById, id);
+      const leadDetailsResponse = yield call(getLeadDetailsById, leadId);
 
       if (leadDetailsResponse.status === 200) {
         yield put(editLeadsStudentSuccess(leadDetailsResponse.data));
