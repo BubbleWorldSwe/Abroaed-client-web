@@ -29,7 +29,7 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
-import VectorleftNose from "../../../assets/VectorleftNose.png";
+import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
@@ -88,7 +88,7 @@ function HomeLayout() {
         <div className="absolute -top-10 right-0 -z-20">
           <img
             className="rounded-lg max-w-full "
-            src={VectorleftNose}
+            src={vectorleftNose}
             alt="Counselling session"
           />
         </div>
