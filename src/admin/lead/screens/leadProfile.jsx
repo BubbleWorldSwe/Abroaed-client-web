@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LeadAdditionInfo from "../components/leadAdditionInfo";
 import LeadAssignTeam from "../components/leadAssignTeam";
 import LeadDocumentLibrary from "../components/leadDocumentLibrary";
@@ -16,11 +16,15 @@ import {
   editLeadsStudentRequest,
 } from "../../../redux/actions/leadsActions";
 import AppointmentModal from "../modals/appointmentModal";
+import { getTeamsByMembers } from "../../../api/teamsApi";
 
 const LeadProfileLayout = () => {
   const { id } = useParams();
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
   const dispatch = useDispatch();
+
+  const [membersList, setMembersList] = useState([]);
+  const [rolesList, setRolesList] = useState([]);
 
   // Generic modal state
   const [modal, setModal] = useState(null);
@@ -40,14 +44,30 @@ const LeadProfileLayout = () => {
     }
   }
 
-  async function onUpdateStudent(data, id) {
+  async function onUpdateStudent(data, userId) {
     try {
-      dispatch(editLeadsStudentRequest(id, data));
+      dispatch(editLeadsStudentRequest(userId, data, id));
       handleModal(null);
     } catch (error) {
       console.log(error);
     }
   }
+
+  async function fetchData() {
+    try {
+      const list = await getTeamsByMembers();
+
+      if (list.status === 200) {
+        setRolesList(list.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -57,7 +77,7 @@ const LeadProfileLayout = () => {
           isOpen={modal === "personal"}
           onClose={() => handleModal(null)}
           onUpdate={onUpdateStudent}
-          leadId={id}
+          userId={leadProfile?.user?._id}
           filledData={{
             firstName: leadProfile?.user?.firstName,
             lastName: leadProfile?.user?.lastName,
@@ -73,6 +93,7 @@ const LeadProfileLayout = () => {
           onClose={() => handleModal(null)}
           onUpdate={onUpdateStudent}
           leadId={id}
+          userId={leadProfile?.user?._id}
           filledData={{
             highestEducation: leadProfile?.user?.userDetail?.highestEducation,
             preferredDestination:
@@ -89,6 +110,9 @@ const LeadProfileLayout = () => {
           onUpdate={onUpdate}
           leadId={id}
           filledData={{ assignTeamMembers: leadProfile?.assignTeamMembers }}
+          rolesList={rolesList}
+          membersList={membersList}
+          setMembersList={setMembersList}
         />
       )}
 
@@ -110,7 +134,10 @@ const LeadProfileLayout = () => {
           <LeadProfile />
           <LeadPersonalDetails onOpenModal={() => handleModal("personal")} />
           <LeadAdditionInfo onOpenModal={() => handleModal("addition")} />
-          <LeadAssignTeam onOpenModal={() => handleModal("assignTeam")} />
+          <LeadAssignTeam
+            onOpenModal={() => handleModal("assignTeam")}
+            onUpdate={onUpdate}
+          />
           <LeadScheduleAppointment
             onOpenModal={() => handleModal("appointment")}
           />

@@ -1,6 +1,11 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
-import { makeGetRequest, makePatchRequest } from "../utils/apiUtils";
+import {
+  makeGetRequest,
+  makePatchRequest,
+  makePostRequest,
+  makePutRequest,
+} from "../utils/apiUtils";
 
 export const getStudents = async (page) => {
   try {
@@ -18,10 +23,26 @@ export const getStudents = async (page) => {
 
 export const setUpdateStudent = async (id, credentials) => {
   try {
+    console.log(credentials, id);
+
+    const data = await makePutRequest(
+      `${BASE_URL}/api/v1/admin/users/${id}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setCreateStudentApplication = async (credentials) => {
+  try {
     console.log(credentials);
 
-    const data = await makePatchRequest(
-      `${BASE_URL}/api/v1/admin/users/${id}`,
+    const data = await makePostRequest(
+      `${BASE_URL}/api/v1/admin/applications/create`,
       credentials
     );
     if (data.success) {

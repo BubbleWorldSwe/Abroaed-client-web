@@ -37,7 +37,7 @@ function Header() {
               title=""
               className="flex items-cent+er justify-center gap-2  font-inter text-sm hover:underline text-yellow-700 dark:text-yellow-300"
             >
-              Improve Your IELTS Writing with Our Free Tool 🔍
+              Improve Your IELTS Writing with Our Free Tool Now 🔍
               <svg
                 className="w-4 h-4 shrink-0"
                 aria-hidden="true"
@@ -61,7 +61,6 @@ function Header() {
         <nav className="flex items-center w-full px-6 py-4">
           {/* First Div: Logo Section */}
           <div className="flex flex-grow-0 basis-[10%]">
-
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               // src={logo}
@@ -128,7 +127,6 @@ function Header() {
                   className="flex rounded text-yellow-700 dark:text-primary-500"
                 >
                   Explore Courses
-
                 </button>
                 {dropdowns.exploreCourses && (
                   <div
@@ -358,7 +356,6 @@ function Header() {
                   className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
                   TestPrep
-
                 </button>
                 {dropdowns.testPrep && (
                   <div

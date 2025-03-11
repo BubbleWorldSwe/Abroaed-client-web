@@ -9,7 +9,15 @@ import ConfirmModal from "../../../commons/modal/confirmModal";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
-import { fetchStudentsRequest } from "../../../redux/actions/studentsActions";
+import {
+  editStudentLeadRequest,
+  editStudentRequest,
+  fetchStudentsRequest,
+} from "../../../redux/actions/studentsActions";
+import AssignTeamModal from "../../lead/modals/assignTeamMemberModal";
+import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
+import { getTeamsByMembers } from "../../../api/teamsApi";
+import { editLeadRequest } from "../../../redux/actions/leadsActions";
 
 function Student() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -17,12 +25,16 @@ function Student() {
   const [done, setDone] = useState(false);
   const [modalType, setModalType] = useState("");
   const [dropdownVisible, setDropdownVisible] = useState(null);
-
+  const [selectedMember, setSelectedMember] = useState(null);
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [showTeamModal, setshowTeamModal] = useState(false);
   const { students, totalPages } = useSelector((state) => state.students);
+
+  const [rolesList, setRolesList] = useState([]);
+
+  const [membersList, setMembersList] = useState([]);
 
   console.log(students);
 
@@ -39,6 +51,12 @@ function Student() {
   async function fetchData() {
     try {
       dispatch(fetchAllDestinationsRequest());
+
+      const list = await getTeamsByMembers();
+
+      if (list.status === 200) {
+        setRolesList(list.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -71,13 +89,29 @@ function Student() {
       setCurrentPage((prev) => prev - 1);
     }
   };
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editStudentLeadRequest(id, data));
+
+      setshowTeamModal(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleAssignTeamMember = (member) => {
+    setSelectedMember(member);
+    setshowTeamModal(true);
+    setDropdownVisible(false);
+  };
 
   useEffect(() => {
     if (students?.length === 0) {
       console.log("fetchStudentsRequest");
       dispatch(fetchStudentsRequest(currentPage));
     }
-    // fetchData();
+    fetchData();
   }, [dispatch, students, currentPage]);
 
   return (
@@ -99,11 +133,18 @@ function Student() {
         onClose={() => setDone(false)}
         text={modalType === "add" ? "Student Added!" : "Team Assigned!"}
       />
-      <AssignTeamMemberStudentModal
-        isOpen={isAddModalOpen && modalType === "assign"}
-        onClose={handleCloseAddModal}
-        setDone={setDone}
-      />
+
+      {showTeamModal && (
+        <AssignTeamMemberStudentModal
+          leadId={selectedMember?._id}
+          onClose={() => setshowTeamModal(false)}
+          filledData={{ assignTeamMembers: selectedMember?.assignTeamMembers }}
+          rolesList={rolesList}
+          membersList={membersList}
+          setMembersList={setMembersList}
+          onUpdate={onUpdate}
+        />
+      )}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">
         <section className=" py-3 sm:py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
@@ -152,7 +193,7 @@ function Student() {
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <StudentTable
-                Students={studentsData}
+                handleAssignTeamMember={handleAssignTeamMember}
                 handleOpenAddModal={handleOpenAddModal}
                 dropdownVisible={dropdownVisible}
                 setDropdownVisible={setDropdownVisible}

@@ -105,9 +105,9 @@ export const editLeadFailure = (error) => ({
 });
 
 // Edit Student
-export const editLeadsStudentRequest = (id, leadData) => ({
+export const editLeadsStudentRequest = (userId, leadData, leadId) => ({
   type: EDIT_LEADS_STUDENT_REQUEST,
-  payload: { id, leadData },
+  payload: { userId, leadData, leadId },
 });
 
 export const editLeadsStudentSuccess = (editedLead) => ({

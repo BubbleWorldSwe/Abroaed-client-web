@@ -5,18 +5,20 @@ import { EllipsisVertical, Eye, Plus } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
+import { setSelectedStudent } from "../../../redux/actions/studentsActions";
 
 const StudentTable = ({
-  Students,
   handleOpenAddModal,
   setDropdownVisible,
   dropdownVisible,
   currentPage,
   handleNextPage,
   handlePrevPage,
+  handleAssignTeamMember,
 }) => {
+  const dispatch = useDispatch();
   const { students, totalPages } = useSelector((state) => state.students);
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const navigate = useNavigate();
@@ -27,6 +29,7 @@ const StudentTable = ({
       setDropdownVisible(null);
     }
   };
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
@@ -48,6 +51,13 @@ const StudentTable = ({
         </div>
       </div>
     );
+  };
+
+  const handleViewDetails = (student) => {
+    dispatch(setSelectedStudent(student));
+    navigate(`/admin/students/${encodeURIComponent(student?._id)}`, {
+      state: student,
+    });
   };
 
   return (
@@ -91,20 +101,11 @@ const StudentTable = ({
                 className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <td className="px-4 py-3 w-4">
-                  <div className="flex items-center">
-                    <input
-                      id="checkbox-table-search-1"
-                      type="checkbox"
-                      onClick="event.stopPropagation()"
-                      className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label
-                      htmlFor="checkbox-table-search-1"
-                      className="sr-only"
-                    >
-                      checkbox
-                    </label>
-                  </div>
+                  <CheckboxField
+                    onClick={(e) => e.stopPropagation()}
+                    id={`checkbox-college-${index}`}
+                    htmlFor={`checkbox-college-${index}`}
+                  />
                 </td>
                 <th
                   scope="row"
@@ -148,7 +149,10 @@ const StudentTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={() => handleOpenAddModal("assign")}
+                            onClick={() => {
+                              handleOpenAddModal("assign");
+                              handleAssignTeamMember(member);
+                            }}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <Plus className="w-4 h-4" />
@@ -158,13 +162,7 @@ const StudentTable = ({
                         <li>
                           <button
                             type="button"
-                            onClick={() =>
-                              navigate(
-                                `/admin/students/${encodeURIComponent(
-                                  member.name
-                                )}`
-                              )
-                            }
+                            onClick={() => handleViewDetails(member)}
                             className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                           >
                             <Eye className="w-4 h-4" />
