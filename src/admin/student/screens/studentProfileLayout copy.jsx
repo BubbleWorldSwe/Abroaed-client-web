@@ -24,7 +24,6 @@ import UpdateStudentAdditionInfo from "../modals/updateStudentAdditionInfoModal"
 import StudentAssignTeamModal from "../modals/studentAssignTeamModal";
 import { getTeamsByMembers } from "../../../api/teamsApi";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
-import { setCreateStudentApplication } from "../../../api/studentsApi";
 
 const StudentProfileLayout = () => {
   const { id } = useParams();
@@ -83,31 +82,6 @@ const StudentProfileLayout = () => {
         if (college.status === 200) {
           setCollegesList(college.data.result);
         }
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function fetchCollegesList(destId) {
-    try {
-      setCollegesList([]);
-      const college = await getCollegesByDestinationId(destId);
-
-      if (college.status === 200) {
-        setCollegesList(college.data.result);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function createStudentApplication(appData) {
-    try {
-      const data = await setCreateStudentApplication(appData);
-      console.log(data);
-      if (data.status === 200) {
-        console.log("Added Successfully");
       }
     } catch (error) {
       console.log(error);
@@ -193,12 +167,9 @@ const StudentProfileLayout = () => {
           <DocumentLibrary />
           {/* <StudentDocumentLibrary /> */}
           <StudentSavedPreference />
-          <StudentApplication
-            collegesList={collegesList}
-            getCollegesList={fetchCollegesList}
-            leadId={id}
-            addApplication={createStudentApplication}
-          />
+          {studentProfile?.user?.userDetail?.preferredDestination?._id && (
+            <StudentApplication collegesList={collegesList} />
+          )}
 
           <StudentLangPrep />
           <StudentTransaction />

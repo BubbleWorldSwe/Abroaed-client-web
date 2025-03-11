@@ -4,7 +4,12 @@ import StudentApplicationCard from "./studentApplicationCard";
 import StartApplicationModal from "../modals/startApplicationModal";
 import { tabColors, tabsData } from "../data";
 
-const StudentApplication = ({ collegesList }) => {
+const StudentApplication = ({
+  collegesList,
+  getCollegesList,
+  leadId,
+  addApplication,
+}) => {
   const [activeTab, setActiveTab] = useState(0);
   const [openModal, setOpenModal] = useState(false);
 
@@ -17,6 +22,9 @@ const StudentApplication = ({ collegesList }) => {
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
         collegesList={collegesList}
+        getCollegesList={getCollegesList}
+        leadId={leadId}
+        addApplication={addApplication}
       />
       <div className="max-w-5.5xl my-8 p-6 bg-white rounded-lg shadow-lg">
         {/* Header with title and pencil icon button */}
@@ -24,7 +32,7 @@ const StudentApplication = ({ collegesList }) => {
           <h2 className="text-2xl font-bold">Applications</h2>
           <button
             onClick={() => setOpenModal(true)}
-            className="flex text-sm  items-center gap-2 bg-[#D4D4D8] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
+            className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
           >
             <Plus size={15} />
             Start a New Application

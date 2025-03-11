@@ -181,7 +181,6 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
           </div>
         </div>
       )}
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 }
