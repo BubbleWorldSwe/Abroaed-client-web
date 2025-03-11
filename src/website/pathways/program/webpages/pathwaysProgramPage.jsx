@@ -15,10 +15,10 @@ import PathwaysProgramScholarshipSection from "./sections/pathwaysProgramScholar
 import PathwaysProgramImmigrationDetailsSection from "./sections/pathwaysProgramImmigrationDetailsSection";
 import PathwaysProgramWorkOpportunitiesSection from "./sections/pathwaysProgramWorkOpportunitiesSection";
 import PathwaysProgramStudentAccommodationSection from "./sections/pathwaysProgramStudentAccommodationSection";
-import PathwaysProgramBlogSection from "./sections/pathwaysProgramBlogSection";
+// import PathwaysProgramBlogSection from "./sections/pathwaysProgramBlogSection";
 import PathwaysProgramFaqSection from "./sections/pathwaysProgramFaqSection";
-import PathwaysProgramAbroaedUpdateSection from "./sections/pathwaysProgramAbroaedUpdateSection";
-import PathwaysProgramLeadFormSection from "./sections/pathwaysProgramLeadFormSection";
+// import PathwaysProgramAbroaedUpdateSection from "./sections/pathwaysProgramAbroaedUpdateSection";
+// import PathwaysProgramLeadFormSection from "./sections/pathwaysProgramLeadFormSection";
 import ContactUsForm from "../../../comman/components/contactUsForm";
 import Testimonials from "../../../comman/components/testimonials";
 import Blogs from "../../../comman/components/blogs";

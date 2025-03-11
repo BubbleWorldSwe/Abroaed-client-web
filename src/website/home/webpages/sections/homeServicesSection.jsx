@@ -60,7 +60,7 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className="dark:bg-gray-900 relative">
+      <section className="dark:bg-gray-900 relative py-20  lg:py-1">
         <div className="px-12 mx-auto max-w-screen-2xl relative z-10">
           <h2 className="mb-10 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
             What we bring to the table (Services).

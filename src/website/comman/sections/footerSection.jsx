@@ -7,7 +7,7 @@ function Footer() {
     <div>
       <footer className="w-full bg-black dark:bg-gray-800">
         <div className=" py-6 mx-auto md:p-8 lg:-10 p-6">
-          <div className="grid grid-cols-2 gap-8 p-4">
+          <div className="grid grid-rows-2 md:grid-cols-2 gap-8 p-4">
             <div className="w-2/5 flex flex-col items-center justify-center h-full text-center">
               <a href="#">
                 <img

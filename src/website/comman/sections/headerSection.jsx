@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 import { useSelector } from "react-redux";
 // import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
@@ -145,7 +145,7 @@ function Header({ isHeaderBgWhite = false }) {
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
-        <nav className="flex items-center   justify-center w-full px-12 py-4">
+        <nav className="flex items-center justify-between  md:justify-center  w-full px-12 py-4">
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
@@ -158,7 +158,7 @@ function Header({ isHeaderBgWhite = false }) {
               </a>
             </h3>
           </div>
-          <div className="flex-grow basis-[80%] flex justify-center">
+          <div className="flex-grow basis-[80%] hidden md:flex  justify-center">
             <div className="flex items-center justify-center ">
               <ul className="flex items-center space-x-5 justify-center text-sm font-medium">
                 <li>
@@ -310,6 +310,12 @@ function Header({ isHeaderBgWhite = false }) {
               Login
             </a>
           </div> */}
+          <button
+            className="md:hidden p-2"
+          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <Menu size={24} className={`${scrolling ? "text-black" : "text-white"}`} />
+          </button>
         </nav>
       </nav>
     </header>
