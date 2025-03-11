@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu } from "lucide-react";
 import { useSelector } from "react-redux";
 // import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
@@ -21,9 +21,8 @@ const DropdownMenu = ({
     <li>
       <button
         onClick={() => toggleDropdown(stateKey)}
-        className={`font-semibold text-sm flex items-center gap-1 ${
-          scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"
-        }`}
+        className={`font-semibold text-sm flex items-center gap-1 ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"
+          }`}
       >
         {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
       </button>
@@ -37,7 +36,7 @@ const DropdownMenu = ({
                   <a
                     href={data._id ? `/${urlPrefix}/${data._id}` : data.href}
                     className="block px-4 py-2 hover:bg-gray-100"
-                    //target="_blank"
+                  //target="_blank"
                   >
                     {data?.title}
                   </a>
@@ -135,11 +134,10 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
-          ? "bg-white text-[#52525B] shadow-md"
-          : "bg-black text-white bg-opacity-0"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
+        ? "bg-white text-[#52525B] shadow-md"
+        : "bg-black text-white bg-opacity-0"
+        }`}
     >
       <nav>
         <div
@@ -147,21 +145,20 @@ function Header({ isHeaderBgWhite = false }) {
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
-        <nav className="flex items-center   justify-center w-full px-12 py-4">
+        <nav className="flex items-center justify-between  md:justify-center  w-full px-12 py-4">
           <div className="flex flex-grow-0 basis-[10%] items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
-                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
+                  }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
           </div>
-          <div className="flex-grow basis-[80%] flex justify-center">
+          <div className="flex-grow basis-[80%] hidden md:flex  justify-center">
             <div className="flex items-center justify-center ">
               <ul className="flex items-center space-x-5 justify-center text-sm font-medium">
                 <li>
@@ -212,6 +209,17 @@ function Header({ isHeaderBgWhite = false }) {
                   scrolling={scrolling}
                   isHeaderBgWhite={isHeaderBgWhite}
                 />
+                <li>
+                  <a
+                    href="/abroaedPlus"
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
+                  >
+                    Abroaed Plus
+                  </a>
+                </li>
                 <DropdownMenu
                   title="Destinations"
                   items={allDestinations.map((data) => ({
@@ -254,11 +262,10 @@ function Header({ isHeaderBgWhite = false }) {
                 <li>
                   <a
                     href="/finance"
-                    className={`font-semibold text-sm ${
-                      scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                    }`}
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
                   >
                     Finance
                   </a>
@@ -266,13 +273,23 @@ function Header({ isHeaderBgWhite = false }) {
                 <li>
                   <a
                     href="/pathways"
-                    className={`font-semibold text-sm ${
-                      scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                    }`}
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
                   >
                     Pathways
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/leaguageOfExcellence"
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
+                  >
+                    League of Excellence
                   </a>
                 </li>
                 <li>
@@ -293,6 +310,12 @@ function Header({ isHeaderBgWhite = false }) {
               Login
             </a>
           </div> */}
+          <button
+            className="md:hidden p-2"
+          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <Menu size={24} className={`${scrolling ? "text-black" : "text-white"}`} />
+          </button>
         </nav>
       </nav>
     </header>

@@ -12,7 +12,7 @@ const CareerContentSection = () => {
               Life at Abroaed: What It&apos;s Really Like Working Here
             </h2>
             <p className=" text-[#27272A] dark:text-gray-400 font-normal text-sm">
-              If you’re someone who loves to take on challenges, learn new things, and be part of a team that feels like family, then Abroaed is the place for you.  Abroaed is the haven for those who wants a job that’s not just about the tasks but also about making a real impact, we’ve got your back.                        </p>
+              If you’re someone who loves to take on challenges, learn new things, and be part of a team that feels like family, then Abroaed is the place for you.  Abroaed is the haven for those who wants a job that’s not just about the tasks but also about making a real impact, we’ve got your back.            </p>
           </div>
           {/* <div className="grid grid-cols-1 gap-8 lg:gap-16 px-6 mx-auto lg:grid-cols-2">
             <div className="hidden lg:block">

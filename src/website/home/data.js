@@ -88,8 +88,12 @@ export const teamMembers = [
 
 export const kpiCards = [
   {
-    cardName: "5+  Mentor expertise (5+ years of mentorship expertise)"
+    cardName: "5+ Years of Mentorship Expertise"
   },
   {
-    cardName: "9+ study abroad destinations"
-  }]
+    cardName: "Home and Virtual Consultation"
+  },
+  {
+    cardName: "9+ Study Abroad Destinations"
+  },
+]

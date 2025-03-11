@@ -16,38 +16,39 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
           className="absolute inset-0 bg-black opacity-30"
           style={{ mixBlendMode: "multiply" }}
         ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
+
         {/* Text Content */}
-        <div className="absolute bottom-0  px-12 mx-auto  rounded-lg shadow-lg max-w-3xl">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
+        <div className="absolute bottom-3    flex flex-col  justify-start  mx-auto px-12">
+          <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
             {collegeDetails?.name}
           </h1>
-
-          <div className="font-light text-white md:text-lg xl:text-xl">
-            <div className="text-white  mt-8 opacity-70 text-xl flex justify-between">
-              <p>{collegeDetails?.entityType}</p>
-              <div className="flex gap-2 whitespace-nowrap mx-5">
-                <img
-                  src={locationIcon}
-                  className="w-[22px] h-[22px] object-contain"
-                  alt="pic-location "
-                />
-                <p className="text-white">
-                  {collegeDetails?.stateId?.name},{" "}
-                  {collegeDetails?.destinationId?.countryId?.name}
-                </p>
-              </div>
-              <div className="flex gap-2 whitespace-nowrap">
-                <img
-                  src={worldIcon}
-                  alt="pic-location"
-                  className="w-[25px] h-[25px] object-contain"
-                />
-                <p className="text-white">{collegeDetails?.website}</p>
-                <div></div>
-              </div>
+          <div className=" font-medium text-[#F4F4F5] text-sm mt-3   flex justify-between">
+            <p>
+              {collegeDetails?.entityType}
+            </p>
+            <div className="flex gap-2 whitespace-nowrap items-center ">
+              <img
+                src={locationIcon}
+                className="w-[14px] h-[14px] object-contain"
+                alt="pic-location "
+              />
+              <p className="">
+                {collegeDetails?.stateId?.name},{" "}
+                {collegeDetails?.destinationId?.countryId?.name}
+              </p>
             </div>
-            <br />
+            <div className="flex gap-2 whitespace-nowrap items-center">
+              <img
+                src={worldIcon}
+                alt="pic-location"
+                className="w-[14px] h-[14px] object-contain"
+              />
+              <p className="">{collegeDetails?.website}</p>
+              <div></div>
+            </div>
           </div>
+          <br />
         </div>
       </section>
     </div>

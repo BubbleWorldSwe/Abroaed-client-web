@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 
+import { Download, Upload } from "lucide-react";
+
 const PathwaysProgramHeroSection = ({ header, text, img }) => {
     return (
-        <div className="font-rethink">
+        <div className="">
             <section
                 className="relative h-[73vh] bg-cover bg-center "
                 style={{
@@ -15,15 +17,25 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
                     style={{ mixBlendMode: "multiply" }}
                 ></div>
                 {/* Text Content */}
-                <div className="absolute bottom-8 left-12  p-6 rounded-lg shadow-lg max-w-2xl">
-                    <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
+                <div className="absolute bottom-6    flex flex-col  justify-start  mx-auto px-12">
+                    <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
                         {header}
                     </h1>
-
-                    <p className="font-light text-white md:text-lg xl:text-xl">
+                    <p className="font-bold text-[#D4D4D8] text-[24px]">
                         {text}
                         <br />
                     </p>
+                </div>
+                {/* button */}
+                <div className="absolute bottom-6  right-3  flex flex-col  justify-start  mx-auto px-12">
+                    <button
+                        onClick={() => { }}
+                        type="button"
+                        className="w-full whitespace-nowrap  flex items-center gap-2  py-2 px-4 text-base font-semibold  text-[#432205] focus:outline-none bg-[#FDDA24] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    >
+                        <Download className="w-4 h-4" />
+                        Book Counselling Now
+                    </button>
                 </div>
             </section>
         </div>

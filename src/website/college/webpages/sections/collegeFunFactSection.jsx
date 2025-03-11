@@ -16,7 +16,7 @@ const CollegeFunFactSection = ({ collegeDetails }) => {
       <section className=" py-4  antialiased dark:bg-gray-900 px-12 mx-auto">
         <div className=" max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
-            <p className="text-3xl font-semibold text-gray-900 dark:text-white">
+            <p className="text-[45px] font-extrabold text-[#27272A] ">
               Fun Facts
             </p>
           </div>

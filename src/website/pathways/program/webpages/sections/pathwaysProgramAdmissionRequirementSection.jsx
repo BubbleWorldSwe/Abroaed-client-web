@@ -2,23 +2,23 @@ import check_circle from '../../../../../assets/check_circle.png'
 
 const PathwaysProgramAdmissionRequirementSection = () => {
     return (
-        <div className="relative z-10">
-            <section className=" dark:bg-gray-900 relative px-10 mx-auto">
-                <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
-                    <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-                        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+        <div className="relative ">
+            <section className=" dark:bg-gray-900 relative px-8 mx-auto">
+                <div className="gap-8 items-center px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-5 lg:px-6">
+                    <div className=" dark:text-gray-400">
+                        <h2 className="mb-2 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                             Admission Requirements
                         </h2>
-                        <p className=" text-black ">
+                        <p className=" text-[#27272A] font-semibold text-[22px]">
                             Here are the major requirements to study in the USA, which you need to ensure while applying to a USA university:            </p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2  ">
                         {/* Top Row: 3 Cards */}
-                        {Array(12).fill().map((_, idx) => (
+                        {Array(6).fill().map((_, idx) => (
                             <div
                                 key={idx}
-                                className="flex items-center space-x-4 p-2"
-                            >
+                                className="flex items-center space-x-4 p-1">
+
 
                                 <div className="flex space-x-8 justify-between">
                                     <img
@@ -27,7 +27,7 @@ const PathwaysProgramAdmissionRequirementSection = () => {
                                         alt={""}
                                     />
 
-                                    <p className="  text-gray-900 dark:text-gray-400 py-1">
+                                    <p className="  text-[#52525B] text-[22px] font-normal  dark:text-gray-400 py-1">
 
                                         ACT/SAT/LSAT for UG programs, GMAT/GRE scores for PG programs
                                     </p>

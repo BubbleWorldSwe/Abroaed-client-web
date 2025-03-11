@@ -6,7 +6,7 @@ export const steps = [
     },
     {
         step: 2,
-        heading: "Exploring Financial Options",
+        heading: "Exploring Diverse Financial Options",
         description: "Once we know what you need, we'll give you the financial options we can offer for your situation. This may mean helping you get scholarships, cheap options, or budgetary advice on everyday expenses. We will also show you how to open a local bank account and manage foreign currency."
     },
     {
