@@ -9,14 +9,14 @@ const PathwaysProgramKpiMatrixCard = () => (
             alt="Decorative vector"
         />
         <h1
-            className="text-5xl lg:text-5xl font-bold bg-clip-text text-transparent z-10"
+            className=" text-[57px] font-bold bg-clip-text text-transparent z-10"
             style={{
                 backgroundImage: "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.3) 100%)",
             }}
         >
             KPI Metric
         </h1>
-        <p className="text-gray-100 lg:mb-2 sm:text-lg z-10 mt-2">Explore</p>
+        {/* <p className="text-gray-100 lg:mb-2 sm:text-lg z-10 mt-2">lorem ispum dolor sit amet</p> */}
     </div>
 );
 

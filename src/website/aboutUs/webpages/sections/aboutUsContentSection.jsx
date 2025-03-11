@@ -13,8 +13,7 @@ function AboutUsContentSection() {
               Our Story
             </h2>
             <p className=" text-[#263238] dark:text-gray-400 font-normal text-sm ">
-              Abroaed, established in 2025 under the prestigious 55-year legacy of IMM Business School, provides personalized guidance through your study overseas process in Delhi NCR. Our philosophy revolves around empowering students to unlock their full potential. Our focus is on holistic support and a promise of growth for every student.
-            </p>
+              Abroaed, established in 2025 under the prestigious 55-year legacy of IMM Business School, provides personalized guidance through your study overseas process in Delhi NCR. Our philosophy revolves around empowering students to unlock their full potential. Our focus is on holistic support and a promise of growth for every student.            </p>
           </div>
           {/* <div className="grid grid-cols-1 gap-8 lg:gap-16 px-6 mx-auto lg:grid-cols-2">
             <div className="hidden lg:block">

@@ -25,7 +25,8 @@ const DestinationFaqSection = ({ destinationDetails }) => {
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <span className="whitespace-normal text-[24px] font-bold text-[#27272A] ">{faq.question}</span>
+                  <span className="whitespace-normal text-[24px] font-bold text-[#27272A] ">
+                    {faq.question}</span>
                   <svg
                     className={`w-6 h-6 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""
                       }`}

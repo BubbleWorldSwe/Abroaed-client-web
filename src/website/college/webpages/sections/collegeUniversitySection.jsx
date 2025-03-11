@@ -7,7 +7,7 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
       <section className="dark:bg-gray-900 relative">
         <div className=" mx-auto py-14  px-2 relative z-10">
           <div className="py-8 text-center">
-            <h1 className="mb-4 text-5xl tracking-tight font-extrabold">
+            <h1 className="mb-4 text-[45px] text-[#27272A] font-extrabold">
               {collegeDetails?.name}at a Glance
             </h1>
           </div>

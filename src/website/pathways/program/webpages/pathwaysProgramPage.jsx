@@ -20,6 +20,8 @@ import PathwaysProgramFaqSection from "./sections/pathwaysProgramFaqSection";
 import PathwaysProgramAbroaedUpdateSection from "./sections/pathwaysProgramAbroaedUpdateSection";
 import PathwaysProgramLeadFormSection from "./sections/pathwaysProgramLeadFormSection";
 import ContactUsForm from "../../../comman/components/contactUsForm";
+import Testimonials from "../../../comman/components/testimonials";
+import Blogs from "../../../comman/components/blogs";
 
 const PathwaysProgramPage = () => {
   return (
@@ -51,7 +53,7 @@ const PathwaysProgramPage = () => {
 
       <div className="relative">
         <PathwaysProgramAdmissionRequirementSection />
-        <div className="absolute top-5 left-0 z-0">
+        <div className="absolute top-5 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorDownNose}
@@ -62,7 +64,7 @@ const PathwaysProgramPage = () => {
       <PathwaysProgramExpanseSection />
       <div className="relative">
         <PathwaysProgramScholarshipSection />
-        <div className="absolute bottom-10 right-0 z-0">
+        <div className="absolute bottom-10 right-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
             src={vectorLeftNoseSmall}
@@ -82,11 +84,14 @@ const PathwaysProgramPage = () => {
         </div>
       </div>
       <PathwaysProgramStudentAccommodationSection />
-      <PathwaysProgramBlogSection />
+      <Testimonials />
       <PathwaysProgramFaqSection />
-      <PathwaysProgramAbroaedUpdateSection />
-      <PathwaysProgramLeadFormSection />
-
+      <Blogs />
+      <ContactUsForm
+      // onFormSubmit={handleAddLead}
+      // source={source.destination}
+      // entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
+      />
       <Footer />
     </div>
   );

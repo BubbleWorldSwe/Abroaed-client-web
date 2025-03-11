@@ -95,7 +95,7 @@ function TestPrepLayout() {
       {testPrepsDetails?.faqs.length > 0 && (
         <div className="relative ">
           <TextPrepFaqSection testPrepsDetails={testPrepsDetails} />
-          <div className="absolute -top-10 left-0 z-0">
+          <div className="absolute -top-10 left-0 -z-10">
             <img
               className="rounded-lg max-w-full "
               src={vectorDownNose}

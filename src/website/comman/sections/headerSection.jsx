@@ -21,9 +21,8 @@ const DropdownMenu = ({
     <li>
       <button
         onClick={() => toggleDropdown(stateKey)}
-        className={`font-semibold text-sm flex items-center gap-1 ${
-          scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"
-        }`}
+        className={`font-semibold text-sm flex items-center gap-1 ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"
+          }`}
       >
         {title} {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
       </button>
@@ -37,7 +36,7 @@ const DropdownMenu = ({
                   <a
                     href={data._id ? `/${urlPrefix}/${data._id}` : data.href}
                     className="block px-4 py-2 hover:bg-gray-100"
-                    //target="_blank"
+                  //target="_blank"
                   >
                     {data?.title}
                   </a>
@@ -135,11 +134,10 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
-          ? "bg-white text-[#52525B] shadow-md"
-          : "bg-black text-white bg-opacity-0"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
+        ? "bg-white text-[#52525B] shadow-md"
+        : "bg-black text-white bg-opacity-0"
+        }`}
     >
       <nav>
         <div
@@ -153,9 +151,8 @@ function Header({ isHeaderBgWhite = false }) {
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
-                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
+                  }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
@@ -212,6 +209,17 @@ function Header({ isHeaderBgWhite = false }) {
                   scrolling={scrolling}
                   isHeaderBgWhite={isHeaderBgWhite}
                 />
+                <li>
+                  <a
+                    href="/abroaedPlus"
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
+                  >
+                    Abroaed Plus
+                  </a>
+                </li>
                 <DropdownMenu
                   title="Destinations"
                   items={allDestinations.map((data) => ({
@@ -254,11 +262,10 @@ function Header({ isHeaderBgWhite = false }) {
                 <li>
                   <a
                     href="/finance"
-                    className={`font-semibold text-sm ${
-                      scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                    }`}
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
                   >
                     Finance
                   </a>
@@ -266,13 +273,23 @@ function Header({ isHeaderBgWhite = false }) {
                 <li>
                   <a
                     href="/pathways"
-                    className={`font-semibold text-sm ${
-                      scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                    }`}
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
                   >
                     Pathways
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/leaguageOfExcellence"
+                    className={`font-semibold text-sm ${scrolling || isHeaderBgWhite
+                      ? "text-[#52525B]"
+                      : "text-white"
+                      }`}
+                  >
+                    League of Excellence
                   </a>
                 </li>
                 <li>

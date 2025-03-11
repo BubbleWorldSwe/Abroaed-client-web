@@ -18,8 +18,8 @@ const CollegeFunFactCard = ({ icon, title, desc }) => {
                 ></div>
                 <div className="text-yellow-500 text-4xl">{icon}</div>
                 <div className="flex flex-col gap-4 text-white text-left">
-                    <p className="text-2xl font-semibold">{title}</p>
-                    <p className="text-lg font-normal dark:text-gray-400">
+                    <p className="text-[32px] font-bold text-[#FFFFFF]">{title}</p>
+                    <p className="text-[22px] font-semibold text-[#F4F4F5] ">
                         {desc}
                     </p>
                 </div>

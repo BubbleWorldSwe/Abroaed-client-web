@@ -1,16 +1,17 @@
+/* eslint-disable react/prop-types */
 import image from "../../../../assets/dark.png";
 
 function LanguagePrepHero({ languagePrepsDetails }) {
   return (
-    <div className="font-rethink">
+    <div className="">
       <section
         className="relative h-[75vh] bg-cover bg-center"
         style={{
           backgroundImage: `url(${image})`,
         }}
       >
-        <div className="absolute bottom-8 left-11 p-6 rounded-lg shadow-lg max-w-2xl">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
+        <div className="absolute bottom-3  max-w-4xl  flex flex-col  justify-start  mx-auto px-12">
+          <h1 className="text-[57px]  font-extrabold leading-tight  text-[#F4F4F5] ">
             {languagePrepsDetails?.productName}
           </h1>
         </div>

@@ -27,6 +27,10 @@ function HomeHeroSection() {
           opacity: "1",
         }}
       >
+        <div
+          className="absolute inset-0 bg-black opacity-30"
+          style={{ mixBlendMode: "multiply" }}
+        ></div>
         {/* Gradient Overlay (White to Black) */}
         <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
         <div className="absolute bottom-10 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">

@@ -17,6 +17,7 @@ import {
 import { useParams } from "react-router-dom";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
+import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
 
 function AccomodationPage() {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ function AccomodationPage() {
     <div className="font-rethink">
       <Header />
       <AccommodationHeroSection selectedCountry={selectedCountry} />
+      <AccommodationHeaderTextSection />
       <AccommodationResultForCountry
         onSelectCountry={(destinationId) => {
           const newSelectedCountry = destinationsList.find(

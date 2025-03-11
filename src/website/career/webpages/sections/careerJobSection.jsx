@@ -1,8 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { benefits } from "../../data"
-
-
 function CareerJobSection() {
     return (
         <div>
@@ -16,17 +13,18 @@ function CareerJobSection() {
                     </h2>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {benefits.map((benefit, index) => (
+                    {Array(6).fill().map((_, index) => (
                         <a
                             key={index}
                             href="#"
                             className="block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                         >
                             <h5 className="mb-2 text-[32px] font-bold tracking-tight text-gray-900 dark:text-white">
-                                {benefit.heading}
+                                Job Title
+
                             </h5>
                             <p className="font-normal text-gray-700 text-sm dark:text-gray-400">
-                                {benefit.text}
+
                             </p>
                             <p>Location, India</p>
                         </a>

@@ -18,7 +18,7 @@ const HomeKpiMatrixCard = ({ cardName, name, role, description, socialLinks }) =
         >
             {cardName}
         </h1>
-        <p className="text-gray-100 lg:mb-2 sm:text-lg  mt-2">Explore</p>
+        {/* <p className="text-[#D4D4D8] mb-2 text-base font-normal  mt-2">lorem ispum dolor sit amet</p> */}
     </div>
 );
 

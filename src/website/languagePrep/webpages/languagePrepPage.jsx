@@ -95,7 +95,7 @@ function LanguagePrepLayout() {
       {languagePrepsDetails?.faqs.length > 0 && (
         <div className="relative ">
           <LanguagePrepFaqSection languagePrepsDetails={languagePrepsDetails} />
-          <div className="absolute -top-10 left-0 z-0">
+          <div className="absolute -top-10 left-0 -z-10">
             <img
               className="rounded-lg max-w-full "
               src={vectorDownNose}
