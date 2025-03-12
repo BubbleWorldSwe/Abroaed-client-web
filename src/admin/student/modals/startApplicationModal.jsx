@@ -23,7 +23,7 @@ const StartApplicationModal = ({
   const [destinationId, setDestinationId] = useState(null);
   const [formData, setFormData] = useState({
     college: "",
-    course: "",
+    courseName: "",
     intake: "",
     additionalDocuments: [{ category: "", title: "", deadline: "" }],
     lead: leadId,
@@ -67,7 +67,7 @@ const StartApplicationModal = ({
     // Validate required fields
     if (
       !formData.college.trim() ||
-      !formData.course.trim() ||
+      !formData.courseName.trim() ||
       !formData.intake.trim()
     ) {
       toast.error("Please fill in all required fields before submitting.");
@@ -86,6 +86,7 @@ const StartApplicationModal = ({
 
     console.log("Form Data:", formData);
     addApplication(formData);
+
     // Submit form data to API or process it
   };
 
@@ -131,9 +132,9 @@ const StartApplicationModal = ({
               />
               <TextInputField
                 label="Course"
-                name="course"
+                name="courseName"
                 type="text"
-                value={formData.course}
+                value={formData.courseName}
                 onChange={handleChange}
                 placeholder="Enter Course"
               />

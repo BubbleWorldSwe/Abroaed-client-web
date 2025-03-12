@@ -9,6 +9,10 @@ const StudentApplication = ({
   getCollegesList,
   leadId,
   addApplication,
+  isOpen,
+  onClose,
+  onOpen,
+  studentApplication,
 }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [openModal, setOpenModal] = useState(false);
@@ -19,8 +23,8 @@ const StudentApplication = ({
   return (
     <>
       <StartApplicationModal
-        isOpen={openModal}
-        onClose={() => setOpenModal(false)}
+        isOpen={isOpen}
+        onClose={onClose}
         collegesList={collegesList}
         getCollegesList={getCollegesList}
         leadId={leadId}
@@ -31,7 +35,7 @@ const StudentApplication = ({
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Applications</h2>
           <button
-            onClick={() => setOpenModal(true)}
+            onClick={onOpen}
             className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
           >
             <Plus size={15} />

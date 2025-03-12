@@ -15,6 +15,7 @@ import {
   EDIT_STUDENT_LEADS_SUCCESS,
   EDIT_STUDENT_LEADS_REQUEST,
   EDIT_STUDENT_LEADS_FAILURE,
+  ADD_STUDENT_APPLICATION,
 } from "../actions/studentsActions";
 
 const initialState = {
@@ -36,6 +37,7 @@ export const studentsReducer = (state = initialState, action) => {
     case FETCH_STUDENTS_REQUEST:
 
     case ADD_STUDENT_REQUEST:
+
     case DELETE_STUDENT_REQUEST:
     case EDIT_STUDENT_REQUEST:
     case EDIT_STUDENT_LEADS_REQUEST:
@@ -64,12 +66,37 @@ export const studentsReducer = (state = initialState, action) => {
         students: state.students.map((student) => ({
           ...student,
           data: student.data.map((item) =>
-            item._id === action.payload._id
+            item?._id === action?.payload?._id
               ? { ...item, ...action.payload }
               : item
           ),
         })),
         selectedStudent: action.payload,
+      };
+
+    case ADD_STUDENT_APPLICATION:
+      console.log("ADD_STUDENT_APPLICATION");
+      console.log(action);
+
+      return {
+        ...state,
+        loading: false,
+        students: state.students.map((student) => ({
+          ...student,
+          data: student.data.map((item) =>
+            item?._id === action?.payload?.lead?._id
+              ? {
+                  ...item,
+                  applications: action.payload || [],
+                }
+              : item
+          ),
+        })),
+
+        selectedStudent: {
+          ...state.selectedStudent,
+          applications: action.payload || [],
+        },
       };
 
     case DELETE_STUDENT_SUCCESS:
@@ -78,6 +105,7 @@ export const studentsReducer = (state = initialState, action) => {
 
     case FETCH_STUDENTS_FAILURE:
     case ADD_STUDENT_FAILURE:
+
     case DELETE_STUDENT_FAILURE:
     case EDIT_STUDENT_FAILURE:
     case EDIT_STUDENT_LEADS_FAILURE:
