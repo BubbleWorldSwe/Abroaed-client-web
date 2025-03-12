@@ -23,7 +23,7 @@ function CareerGallerySection() {
                                 </div>
 
                                 {/* Text Content */}
-                                <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                                {/* <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
                                     <div>
                                         <p className="text-gray-200 lg:mb-2 sm:text-xl">Explore</p>
                                         <h1 className="mb-4 text-3xl font-bold text-white">
@@ -32,7 +32,7 @@ function CareerGallerySection() {
                                     </div>
 
 
-                                </div>
+                                </div> */}
                             </div>
                         ))}
                 </div>

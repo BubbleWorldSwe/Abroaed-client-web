@@ -12,10 +12,10 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
             <p className="font-semibold  text-[16px] text-[#52525B] lg:mb-2 dark:text-gray-400">
               {title}
             </p>
-            <h2 className="mb-6 mt-3 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
+            <h2 className="mb-6 mt-3  text-[45px] font-extrabold text-[#27272A] dark:text-white">
               {header}
             </h2>
-            <p className="font-semibold text-[16px] text-[#52525B]  dark:text-gray-400">
+            <p className="font-semibold max-w-4xl text-[16px] text-[#52525B]  dark:text-gray-400">
               {subtitle}
             </p>
           </div>

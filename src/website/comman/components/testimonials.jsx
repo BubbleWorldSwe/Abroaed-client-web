@@ -7,22 +7,28 @@ const Testimonials = () => {
   const TestimonialsCard = ({ article }) => {
     return (
       <div className="max-w-full   bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div className="relative h-[300px]">
-          <a href="#">
-            <img
-              className="object-cover w-full h-full rounded-t-lg"
-              src={testimonialImg}
-              alt=""
-            />
-          </a>
-          {/* <div className="absolute bottom-3 left-2 z-0 text-white bg-slate-800 bg-opacity-40  flex justify-center  gap-2 p-2">
-            <img
-              className="rounded-lg max-w-full "
-              src={play_circle}
-              alt="Counselling session"
-            />
-            <p className="opacity-95 ">Watch History</p>
-          </div> */}
+        {/* <div className="relative h-[300px] w-full">
+          <img
+            className="w-full h-full object-cover rounded-t-lg"
+            src={testimonialImg}
+            alt=""
+          />
+
+          <div className="absolute bottom-3 left-2 z-0 text-white bg-slate-800 bg-opacity-40  flex justify-center  gap-2 p-2">
+    <img
+      className="rounded-lg max-w-full "
+      src={play_circle}
+      alt="Counselling session"
+    />
+    <p className="opacity-95 ">Watch History</p>
+  </div>
+        </div> */}
+        <div className="relative h-[300px] w-full overflow-hidden rounded-t-lg border border-gray-300">
+          <img
+            className="w-full h-full object-fill"
+            src={testimonialImg}
+            alt=""
+          />
         </div>
         <div className="flex p-3 items-center space-x-4">
           <img
@@ -33,7 +39,7 @@ const Testimonials = () => {
           <div className="font-medium dark:text-white">
             <div className="text-lg font-body">Jese Leos</div>
             <div className="text-sm font-semibold text-gray-500 dark:text-gray-400">
-              Aug 15, 2021 · 16 min read
+              Student Subscription Name
             </div>
           </div>
         </div>
@@ -48,7 +54,7 @@ const Testimonials = () => {
             100+ Success Stories
           </p>
           <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
-            Lorem Ipsum, Dolor Sit
+            Read Our Success Stories
           </h2>
         </div>
         <div className="grid  gap-8 sm:grid-cols-2 lg:grid-cols-3">

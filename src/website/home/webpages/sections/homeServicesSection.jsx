@@ -62,8 +62,8 @@ const HomeServicesSection = () => {
       )}
       <section className="dark:bg-gray-900 relative py-20  lg:py-1">
         <div className="px-12 mx-auto max-w-screen-2xl relative z-10">
-          <h2 className="mb-10 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
-            What we bring to the table (Services).
+          <h2 className="mb-10 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+            Discover Our Unique Offerings
           </h2>
         </div>
         <div className="overflow-x-auto">
@@ -80,7 +80,7 @@ const HomeServicesSection = () => {
                     src={service.imgUrl}
                     alt={`Service ${index + 1}`}
                   />
-                  <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+                  <div className="absolute inset-0 bg-black opacity-65"></div>{" "}
                   {/* Overlay */}
                 </div>
                 <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">

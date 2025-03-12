@@ -1,12 +1,12 @@
 import PlayStore from "../../../../assets/PlayStore.png";
-import iPhoneIcon from "../../../../assets/iPhoneIcon.png";
+import phoneHomeIcon from "../../../../assets/phoneHomeIcon.png";
 function HomeDownloadApp() {
   return (
     <div>
-      <section className=" dark:bg-gray-900 h-[80vh] flex justify-center items-end relative">
-        <div className="relative  mx-auto px-10 z-10">
-          <div className=" shadow-lg bg-[#F4F4F5]  items-center max-w-screen-2xl  mx-auto  xl:gap-16 md:grid md:grid-cols-2  lg:px-3">
-            <div className="px-5 py-8">
+      <section className=" dark:bg-gray-900 h-[75vh] flex justify-center items-end ">
+        <div className="  mx-auto px-10 py-5 z-10">
+          <div className=" shadow-lg relative bg-[#F4F4F5]  items-center max-w-screen-2xl  mx-auto  xl:gap-16 md:grid md:grid-cols-2  lg:px-3">
+            <div className="px-5 py-6">
               <h2 className="mb-4 text-5xl  font-extrabold text-[#27272A] dark:text-white">
                 For Convenient Access to Study Abroaed Resources
               </h2>
@@ -21,10 +21,10 @@ function HomeDownloadApp() {
                 <img src={PlayStore} alt="googlePic" />
               </div>
             </div>
-            <div className="absolute bottom-0 right-32">
+            <div className="absolute -bottom-9 right-32">
               <img
-                className="hidden mx-auto w-64  md:flex"
-                src={iPhoneIcon}
+                className="hidden mx-auto w-full h-[35rem]  md:flex"
+                src={phoneHomeIcon}
                 alt="mobile app"
               />
             </div>

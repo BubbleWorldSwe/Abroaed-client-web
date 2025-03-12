@@ -1,58 +1,49 @@
 /* eslint-disable react/prop-types */
 import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { setSelectedDestination } from "../../../redux/actions/destinationActions";
+import { useSelector } from "react-redux";
+import Flag from 'react-world-flags';
 
 const DestinationNavItemModal = ({
-  menuItems = [],
   handleMouseEnter,
   handleMouseLeave,
 }) => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const { allDestinations } = useSelector((state) => state.destinations);
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const handleViewDetails = (destination) => {
-    navigate(`/destinations/${encodeURIComponent(destination._id)}`, {
-      state: destination,
-    });
-  };
 
   return (
     <div
-      className="absolute left-0 top-full w-max bg-white shadow-lg rounded-b-lg p-4 z-50"
+      className="absolute left-0 top-full w-max py-5  z-50"
       onMouseEnter={() => handleMouseEnter("destinations")}
       onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
     >
-      <ul className="space-2 grid grid-cols-2">
+      <ul className="space-2 grid grid-cols-2 shadow-lg w-[30vw] gap-3  rounded-b-lg mt-2 bg-white" >
         {allDestinations?.map((item, index) => (
           <li
             key={item._id}
-            className="flex items-center justify-between gap-2 px-3 py-2 rounded-lg transition-all"
+            className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-3 py-5 hover:bg-gray-100 rounded-lg transition-all"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="flex items-center gap-2">
-              <span>{item?.countryId?.emoji}</span>
+            <div className="flex items-center gap-4">
+              <span className="">
+                <Flag width={50} code={item?.countryId?.code} style={{}} />
+              </span>
               <a
                 href={`/destinations/${item._id}`}
-                // onClick={() => handleViewDetails(item)}
-                className="hover:text-yellow-500 text-lg cursor-pointer"
-                // target="_blank"
+                className="  cursor-pointer"
               >
                 {item?.countryId?.name}
               </a>
             </div>
             <ChevronRightIcon
-              className={`w-5 h-5 text-gray-400 transition-transform ${
-                hoveredIndex === index
-                  ? "translate-x-1 opacity-100"
-                  : "opacity-0"
-              }`}
+              className={`w-5 h-5   ${hoveredIndex === index
+                ? " opacity-100"
+                : "opacity-0"
+                }`}
             />
           </li>
         ))}

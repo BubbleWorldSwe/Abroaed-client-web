@@ -99,7 +99,7 @@ function HomeLayout() {
       />
       {/* <PartnerUnis /> */}
       {/* <TimelineSlider slides={slidesData} /> */}
-      <div className="relative">
+      {/* <div className="relative">
         <OurPartners />
         <div className="absolute -top-10 left-0 z-0">
           <img
@@ -108,7 +108,7 @@ function HomeLayout() {
             alt="Counselling session"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* <HomeTestimonialsSection /> */}
       <Testimonials />
