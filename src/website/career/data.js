@@ -38,6 +38,6 @@ export const benefits = [
     },
     {
         heading: "Recognition and Rewards for Hard Work",
-        text: "At Abroaed, we ensure hard work finds expression. With various recognition processes in place with regards to both compensation packages and rewards/appraisals for the jobs performed, one knows that your input is invaluable at the working front."
+        text: "At Abroaed, we ensure hard work finds expression. With various recognition processes in place with regards to both compensation packages and rewards/appraisals for the jobs performed, one knows that your input is invaluable at the working front. "
     }
 ];

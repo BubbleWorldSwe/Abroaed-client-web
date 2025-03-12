@@ -1,5 +1,5 @@
 import { useState } from "react";
-import exploreDirectImg from "../../../../assets/exploreDirectImg.png";
+import directHomeImg from "../../../../assets/directHomeImg.png";
 import explorePathImg from "../../../../assets/explorePathImg.png";
 import VectorleftNose from "../../../../assets/vectorleftNose.png";
 
@@ -25,7 +25,7 @@ const HomePathwaySection = () => {
             >
               <img
                 className="w-full h-full object-dark"
-                src={exploreDirectImg}
+                src={directHomeImg}
                 alt="Direct"
               />
               <div className="absolute bottom-3 left-10 px-5">
@@ -34,7 +34,7 @@ const HomePathwaySection = () => {
                   Direct
                 </h1>
                 {hoverOn === "direct" && isHovered && (
-                  <div className="bg-opacity-50 flex items-center justify-center text-white text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-opacity-50 pb-6 flex items-center justify-center text-white text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Our Direct Programs are designed to make your study abroad experience simple and stress-free. We guide you through each step of the application process to top universities, ensuring everything goes smoothly. With expert guidance, personalized assistance, and partnerships with prestigious international institutions, we ensure you land in the right program suited to your career goals. Experience the world-class education you deserve with ease and confidence, all under the professional guidance of Abroaed.                  </div>
                 )}
               </div>
@@ -63,7 +63,7 @@ const HomePathwaySection = () => {
                   Pathways
                 </h1>
                 {hoverOn === "pathways" && isHovered && (
-                  <div className="bg-opacity-50 flex items-center justify-center text-white text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-opacity-50 pb-6 flex items-center justify-center text-white text-base opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Our Pathways Programs provide an opportunity to study a part of your degree in India and complete it overseas at top international universities. With the guidance of our visa overseas consultant, this flexible study approach makes your transition easy and cost-effective, allowing you to gain the benefits of both local and global education. It provides you with a strong foundation and enhances your career prospects on the global stage. With Abroaed, you’ll never lose sight of the right track.
                   </div>
                 )}

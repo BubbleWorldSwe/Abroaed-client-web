@@ -69,7 +69,7 @@ export const cardDetails = [
 
     },
     {
-        key: "Competitive Interest Rateson Loans",
+        key: "Competitive Interest Rates on Loans",
         value: 'Online'
 
     },

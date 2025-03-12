@@ -80,7 +80,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
           {/* Left Side: Text and Image */}
           <div className="flex flex-col gap-3 justify-center">
             {/* <div className="text-start "> */}
-            <h2 className="mb-2 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
+            <h2 className="mb-2 text-[45px] leading-tight  font-extrabold text-[#27272A] dark:text-white">
               Need Clarifications on Your Study Abroaed Plans?
             </h2>
             <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
@@ -109,10 +109,10 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
 
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start items-end">
-            <div className="flex flex-col items-start w-full rounded-lg p-8 bg-bal">
+            <div className="flex flex-col items-start w-full rounded-lg p-8 mt-16 ">
               {/* Tabs Row */}
               <div className="mb-3">
-                <h2 className="mb-4 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
+                <h2 className="mb-4 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                   Book Counselling Now
                 </h2>
 
@@ -249,7 +249,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     <button
                       onSubmit={handleAddLead}
                       type="submit"
-                      className="py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                      className="py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
                     >
                       Book Now
                     </button>
