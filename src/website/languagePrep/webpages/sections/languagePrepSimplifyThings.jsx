@@ -10,7 +10,7 @@ const LanguagePrepSimplifyThings = () => {
               <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 How We Simplify Things?
               </h2>
-              <p className="text-sm text-[#27272A] font-normal">
+              <p className="text-[18px] text-[#27272A] font-normal">
                 lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Curabitur tristique felis non odio accumsan laoreet. Integer
                 cursus libero placerat ex volutpat posuere. Quisque non nisl

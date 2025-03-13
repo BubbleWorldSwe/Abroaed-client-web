@@ -17,7 +17,7 @@ const PathwaysProgramKpiMatrixSection = ({ title, header, subtitle }) => {
                         <h2 className="mb-6 mt-3 text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
                             {header}
                         </h2>
-                        <p className="font-semibold text-[16px] text-[#52525B]  dark:text-gray-400">
+                        <p className="font-semibold text-[18px] text-[#52525B]  dark:text-gray-400">
                             {subtitle}
                         </p>
                     </div>

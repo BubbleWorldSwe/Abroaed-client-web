@@ -23,7 +23,7 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
           <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
             {collegeDetails?.name}
           </h1>
-          <div className=" font-medium text-[#F4F4F5] text-sm mt-3   flex justify-between">
+          <div className=" font-medium text-[#F4F4F5] text-sm mt-3   flex gap-5">
             <p>
               {collegeDetails?.entityType}
             </p>

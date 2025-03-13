@@ -21,7 +21,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 <h2 className="mb-4 text-[32px]  font-bold text-[#27272A] dark:text-white">
                   Cost of Studying
                 </h2>
-                <p className="mb-1 text-[22px] font-semibold w-10/12 text-[#52525B] ">
+                <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
                   Here’s a list of the minimum amount you should expect for
                   studying in the {destinationDetails?.countryId?.name}:
                 </p>
@@ -74,7 +74,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 <h2 className="mb-4 text-[32px]  font-bold text-[#27272A] dark:text-white">
                   Cost of Living
                 </h2>
-                <p className=" text-[#27272A] font-semibold text-[22px]">
+                <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
                   Here’s the basic cost of living.
                   <br /> <br />
                 </p>

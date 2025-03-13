@@ -30,7 +30,7 @@ const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
                       alt={""}
                     />
 
-                    <p className="  text-[#52525B] text-[22px] font-normal  dark:text-gray-400 py-1">
+                    <p className="  text-[#52525B] text-[20px] font-normal  dark:text-gray-400 py-1">
                       {data.name}
                     </p>
                   </div>

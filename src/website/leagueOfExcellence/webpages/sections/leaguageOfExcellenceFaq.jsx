@@ -27,8 +27,8 @@ const LeaguageOfExcellenceFaq = () => {
     ]
 
     return (
-        <div className="h-auto py-12 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-            <h2 className="mb-6 font-inter lg:mb-8 text-3xl lg:text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white">
+        <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
+            <h2 className="mb-1 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 Frequently Asked Questions
             </h2>
             <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
@@ -38,7 +38,8 @@ const LeaguageOfExcellenceFaq = () => {
                             <h2 id={`accordion-flush-heading-${index}`}>
                                 <button
                                     type="button"
-                                    className="flex justify-between items-center py-5 w-full font-medium text-left  bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                                    className={`flex justify-between items-center py-5 w-full font-medium text-left bg-white dark:bg-gray-900 dark:text-white 
+                                        ${activeIndex === index ? '' : 'border-b-2  border-gray-200 dark:border-gray-700'}`}
                                     onClick={() => toggleFAQ(index)}
                                     aria-expanded={activeIndex === index}
                                 >
@@ -70,7 +71,7 @@ const LeaguageOfExcellenceFaq = () => {
                                 className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${activeIndex === index ? "block" : "hidden"
                                     }`}
                             >
-                                <div className="py-5">
+                                <div className="">
                                     <p className="mb-2 text-[#27272A] font-normal text-base whitespace-pre-wrap">
                                         {faq.answer}
                                     </p>

@@ -6,7 +6,7 @@ const BookCounsellingNow = () => {
         <section className=" dark:bg-gray-900 relative px-10 mx-auto h-full">
             <div className="py-16 px-4 mx-auto max-w-screen-2xl   z-10">
                 {/* <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  "> */}
-                <h2 className="mb-4 text-4xl text-center tracking-tight font-bold text-gray-900 dark:text-white">
+                <h2 className="mb-4 text-[45px] text-center  font-extrabold text-[#27272A] dark:text-white">
                     Book Counselling Now
                 </h2>
                 <div className="flex justify-center text-center">

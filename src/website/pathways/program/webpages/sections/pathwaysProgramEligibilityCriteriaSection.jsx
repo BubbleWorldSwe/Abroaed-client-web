@@ -15,7 +15,7 @@ function PathwaysProgramEligibilityCriteria() {
                             {Array(2).fill().map((_, index) => (
                                 <div
                                     key={index}
-                                    className=" bg-white border py-2 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                                    className=" bg-white border py-2 border-gray-200 rounded-xl shadow dark:bg-gray-800 dark:border-gray-700"
                                 >
                                     <div className="p-5">
 
@@ -25,7 +25,7 @@ function PathwaysProgramEligibilityCriteria() {
                                         </h5>
                                         <div className="mb-2 px-6 ">
                                             <div>
-                                                <ul className="list-disc text-sm text-[#52525B] font-normal ">
+                                                <ul className="list-disc text-[16px] text-[#52525B] font-normal ">
                                                     <li className="mb-2">
                                                         lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere.
                                                     </li>

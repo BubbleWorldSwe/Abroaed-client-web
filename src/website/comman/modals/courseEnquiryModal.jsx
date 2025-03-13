@@ -68,8 +68,8 @@ const CourseEnquiryModal = ({
   return (
     <>
       {isOpen && (
-        <div className="fixed h-screen inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-white max-h-[63vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg z-50 relative">
+        <div className="fixed h-screen inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-[9999]">
+          <div className="bg-white max-h-[73vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg z-50 relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}

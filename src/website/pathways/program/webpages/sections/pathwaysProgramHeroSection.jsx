@@ -17,7 +17,7 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
                     style={{ mixBlendMode: "multiply" }}
                 ></div>
                 {/* Text Content */}
-                <div className="absolute bottom-6    flex flex-col  justify-start  mx-auto px-12">
+                <div className="absolute bottom-6 py-6   flex flex-col  justify-start  mx-auto px-12">
                     <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
                         {header}
                     </h1>
@@ -27,7 +27,7 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
                     </p>
                 </div>
                 {/* button */}
-                <div className="absolute bottom-6  right-3  flex flex-col  justify-start  mx-auto px-12">
+                <div className="absolute bottom-6  py-6 right-3  flex flex-col  justify-start  mx-auto px-12">
                     <button
                         onClick={() => { }}
                         type="button"

@@ -10,7 +10,7 @@ function TextPrepAbout({ testPrepsDetails }) {
           <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
             About {testPrepsDetails?.productName}
           </h2>
-          <p className="mt-3 font-normal text-sm text-gray-800">
+          <p className="mt-3 font-normal text-[18px] text-gray-800">
             {testPrepsDetails?.about}
           </p>
         </header>
@@ -18,8 +18,8 @@ function TextPrepAbout({ testPrepsDetails }) {
           testPrepsDetails?.aboutExam?.examCenter && (
             <div className="relative overflow-x-auto ">
               <div className="flex  items-center justify-center  mx-auto ">
-                <table className="w-full max-w-4xl text-sm text-left border-4 rtl:text-right text-gray-500 dark:text-gray-400">
-                  <thead className="text-xs text-gray-600 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                <table className=" bg-white  text-sm text-left text-gray-500 border-2 border-[#E4E4E7] dark:text-gray-400">
+                  <thead className="text-base  text-[#71717A] font-bold  bg-[#E4E4E7] dark:bg-gray-700 ">
                     <tr>
                       <th scope="col" className="px-6 py-3">
                         Particular

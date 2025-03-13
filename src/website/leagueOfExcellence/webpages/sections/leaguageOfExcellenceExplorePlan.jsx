@@ -13,7 +13,7 @@ const LeaguageOfExcellenceExplorePlan = () => {
                     {plans.map((plan, index) => (
                         <div
                             key={index}
-                            className={`relative p-6 border bg-white rounded-lg shadow-md w-full md:w-1/3 border-[#D4D4D8] "
+                            className={`relative p-6 py-10 border bg-white rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
                                 }`}
                         >
                             {plan.recommended && (
@@ -23,11 +23,11 @@ const LeaguageOfExcellenceExplorePlan = () => {
                             )}
 
                             <h3 className="text-4xl font-extrabold mb-2 text-[#71717A] text-center " >{plan.name}</h3>
-                            <p className="text-gray-500 text-sm mb-3 text-center ">lorem ipsum dolor sit amet</p>
+                            <p className="text-gray-500 text-base mb-3 text-center ">lorem ipsum dolor sit amet</p>
                             <p className="text-2xl text-center font-bold ">{plan.price}</p>
 
                             <button
-                                className={`w-full mt-4 py-2 rounded-full font-semibold 
+                                className={`w-full mt-4 py-4 rounded-full text-[18px] font-semibold 
                                      hover:text-white border border-gray-500
                                     hover:bg-black  
                                     `}
@@ -36,14 +36,14 @@ const LeaguageOfExcellenceExplorePlan = () => {
                             </button>
 
                             <div className="mt-6">
-                                <h4 className="text-md font-semibold text-gray-700">
+                                <h4 className="text-[18px] font-semibold text-gray-700">
                                     Features you’ll love
                                 </h4>
                                 <ul className="mt-2 space-y-2">
                                     {Array(5)
                                         .fill("lorem ipsum dolor sit amet")
                                         .map((feature, i) => (
-                                            <li key={i} className="flex text-sm items-center gap-2 text-gray-600">
+                                            <li key={i} className="flex text-base items-center gap-2 text-gray-600">
                                                 <Check size={16} className="text-green-500" />
                                                 {feature}
                                             </li>
@@ -54,8 +54,8 @@ const LeaguageOfExcellenceExplorePlan = () => {
                     ))}
                 </div>
 
-                <div className="flex justify-center mt-16">
-                    <button className="bg-[#FDDA24] text-xl text-[#432205] px-6 py-2 rounded-sm font-semibold">
+                <div className="flex justify-center mt-10">
+                    <button className="bg-[#FDDA24] text-xl text-[#432205] px-6 py-4  font-semibold rounded-lg">
                         See full feature comparison
                     </button>
                 </div>

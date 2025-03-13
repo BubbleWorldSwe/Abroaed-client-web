@@ -11,7 +11,7 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
               <h2 className="mb-10 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 Scholarships & Financial Aid
               </h2>
-              <p className="mb-4 text-[22px] font-semibold text-[#27272A]">
+              <p className="mb-4 text-[20px] font-semibold text-[#27272A]">
                 For Study in {destinationDetails?.countryId?.name}, the amount
                 of money available and the type of award varies between
                 institutions. Certain research programs may provide up to 100%
@@ -47,8 +47,7 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                           >
                             <th
                               scope="row"
-                              className="px-4 py-3 font-semibold text-[22px] text-[#27272A]  dark:text-white"
-                            >
+                              className="px-4 py-3 font-semibold text-[18px] text-[#27272A]  dark:text-white"                            >
                               <p
 
                               >
