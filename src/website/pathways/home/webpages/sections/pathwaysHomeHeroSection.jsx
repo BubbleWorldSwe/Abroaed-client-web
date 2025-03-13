@@ -11,28 +11,12 @@ function PathwaysHomeHero() {
                 }}
             >
                 {/* Text Content */}
-                <div className="absolute bottom-8 left-8 p-6 rounded-lg shadow-lg max-w-2xl">
-                    <h1 className="mb-4 text-4xl text-white font-extrabold tracking-tight leading-none  md:text-5xl xl:text-6xl">
+                <div className="absolute bottom-6    flex flex-col  justify-start  mx-auto px-12">
+                    <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
                         Pathways Program
                     </h1>
-                    <p className="font-light text-white md:text-lg xl:text-xl">
+                    <p className="font-bold text-[#D4D4D8] text-[24px]">
                         Your Pathway to Academic Success and Global Opportunities
-
-                        <br />
-                        <a
-                            className="font-medium text-primary-600 hover:underline"
-                            href="#"
-                        >
-                            Twitter
-                        </a>{" "}
-                        or our{" "}
-                        <a
-                            className="font-medium text-primary-600 hover:underline"
-                            href=""
-                        >
-                            blog
-                        </a>{" "}
-                        for the latest updates.
                     </p>
                 </div>
             </section>

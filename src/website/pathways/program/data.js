@@ -60,39 +60,33 @@ export const articles = [
 export const cardDetails = [
     {
         key: "Unlimited Home Counselling",
+        value: 'India'
 
     },
     {
         key: "Home Tutors for EPT",
+        value: '₹ 6,54,321'
 
     },
     {
-        key: "Competitive Interest Rateson Loans",
+        key: "Competitive Interest Rates on Loans",
+        value: 'Online'
 
     },
     {
         key: "Country Specific Coach",
-
+        value: 'Online'
     },
     {
         key: "24/7 Student Support (Post Arrival)",
-
+        value: 'Online'
     },
     {
         key: "GRE/GMAT Prep",
+        value: 'Online'
+
     },
-    {
-        key: "Comprehensive Profile Building",
-    },
-    {
-        key: "Small Cohorts Sizes for Extra Attention",
-    },
-    {
-        key: "Priority Admission Offers from Recommended Universities.",
-    },
-    {
-        key: "Alumni Connect from Various Universities.",
-    },
+
 ];
 
 export const teamMembers = [

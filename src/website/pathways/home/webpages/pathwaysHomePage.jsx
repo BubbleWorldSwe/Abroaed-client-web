@@ -6,7 +6,7 @@ import Footer from "../../../comman/sections/footerSection";
 import OurPartners from "../../../comman/sections/ourPartnersSection";
 import PathwaysHomeHowItWorkSection from "./sections/pathwaysHomeHowItWorkSection";
 import PathwaysHomeFaqSection from "./sections/pathwaysHomeFaqSection";
-import PathwaysHomeLeadForm from "./sections/pathwaysHomeLeadFormSection";
+// import PathwaysHomeLeadForm from "./sections/pathwaysHomeLeadFormSection";
 import ContactUsForm from "../../../comman/components/contactUsForm";
 
 function PathwaysHomePage() {

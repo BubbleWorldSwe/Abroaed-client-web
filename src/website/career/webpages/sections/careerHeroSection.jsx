@@ -18,7 +18,7 @@ function CareerHeroSections() {
             Work At Abroaed
           </h2>
           <p className="font-bold text-2xl text-[#52525B]  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
-            Get a glimpse of what it’d be like working at Abroaed! We value both, work & fun!
+            Connecting You to a World of Possibilities
           </p>
           <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:mt-12">
             <img

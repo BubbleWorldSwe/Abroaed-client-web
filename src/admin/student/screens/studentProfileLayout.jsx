@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
 import DocumentLibrary from "../components/documentLibrary";
 import StudentAdditionalDetails from "../components/studentAdditionalDetails";
-// import StudentAdditionalServices from "../components/studentAdditionalServices";
 import StudentApplication from "../components/studentApplication";
 import StudentAssignTeam from "../components/studentAssignTeam";
-// import StudentDocumentLibrary from "../components/studentDocumentLibrary";
 import StudentPersonalDetails from "../components/studentPersonDetails";
 import StudentProfile from "../components/studentProfile";
 import StudentSavedPreference from "../components/studentSavedPreference";
@@ -19,39 +17,39 @@ import {
   setSelectedStudent,
 } from "../../../redux/actions/studentsActions";
 import { editLeadsStudentRequest } from "../../../redux/actions/leadsActions";
-import UpdateLeadPersonalInfo from "../../lead/modals/updateLeadPersonalInfoModal";
 import UpdateStudentPersonalInfo from "../modals/updateStudentPersonalInfoModal";
 import UpdateStudentAdditionInfo from "../modals/updateStudentAdditionInfoModal";
-
 import StudentAssignTeamModal from "../modals/studentAssignTeamModal";
+import StartApplicationModal from "../modals/startApplicationModal";
 import { getTeamsByMembers } from "../../../api/teamsApi";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import {
   getStudentApplications,
   setCreateStudentApplication,
+  setUpdateStudentApplication,
 } from "../../../api/studentsApi";
 import { toast } from "react-toastify";
 import { getLeadDetailsById } from "../../../api/leadsApi";
+import UpdateApplicationModal from "../modals/updateApplicationModal";
+import UpdateDocApplicationModal from "../modals/uploadDocumentApplicationModal";
 
 const StudentProfileLayout = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
-  console.log(studentProfile.applications);
-
-  const dispatch = useDispatch();
 
   const [modal, setModal] = useState(null);
   const [collegesList, setCollegesList] = useState([]);
-
   const [membersList, setMembersList] = useState([]);
   const [rolesList, setRolesList] = useState([]);
-
   const [openApplicatinModal, setOpenApplicationModal] = useState(false);
+  const [updateApplicatinModal, setUpdateApplicationModal] = useState(false);
+  const [updateDocModal, setUpdateDocModal] = useState(false);
 
-  const [studentApplication, setStudentApplication] = useState([]);
+  const [selectedApplication, setSelectedApplication] = useState(null);
 
   const handleModal = (modalType) => {
     setModal(modalType);
@@ -59,7 +57,6 @@ const StudentProfileLayout = () => {
 
   async function onUpdateLead(data, id) {
     try {
-      // console.log(data, id);
       dispatch(editStudentLeadRequest(id, data));
       handleModal(null);
     } catch (error) {
@@ -80,21 +77,25 @@ const StudentProfileLayout = () => {
     try {
       const list = await getTeamsByMembers();
       const lead = await getLeadDetailsById(id);
-      const data = await getStudentApplications(id);
-
-      console.log(data.data?.result);
+      fetchStudentApplications();
 
       if (lead.status === 200) {
-        //dispatch(setSelectedStudent(lead.data));
         dispatch(setSelectedStudent(lead.data));
       }
 
       if (list.status === 200) {
         setRolesList(list.data);
       }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchStudentApplications() {
+    try {
+      const data = await getStudentApplications(id);
 
       if (data.status === 200) {
-        setStudentApplication(data.data?.result);
         dispatch(addStudentApplication(data.data?.result));
       } else {
         dispatch(addStudentApplication([]));
@@ -123,12 +124,30 @@ const StudentProfileLayout = () => {
 
       if (data.status === 200) {
         dispatch(addStudentApplication(data.data));
-        console.log("Added Successfully");
+        fetchStudentApplications();
         toast.success(data.message);
         setOpenApplicationModal(false);
       } else {
         toast.error(data.message);
-        // setOpenApplicationModal(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateStudentApplication(appData) {
+    try {
+      const data = await setUpdateStudentApplication(
+        appData,
+        selectedApplication?._id
+      );
+
+      if (data.status === 200) {
+        fetchStudentApplications();
+        toast.success(data.message);
+        setUpdateApplicationModal(false);
+      } else {
+        toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
@@ -141,6 +160,7 @@ const StudentProfileLayout = () => {
 
   return (
     <>
+      {/* Modals */}
       {modal === "personal" && (
         <UpdateStudentPersonalInfo
           isOpen={modal === "personal"}
@@ -188,20 +208,51 @@ const StudentProfileLayout = () => {
         />
       )}
 
-      {modal === "appointment" && (
-        <AppointmentModal
-          isOpen={modal === "appointment"}
-          leadId={id}
-          onClose={() => handleModal(null)}
-          onUpdate={onUpdateLead}
-          filledData={{
-            appointmentType: leadProfile?.scheduleDetails?.appointmentType,
-            preferredSlot: leadProfile?.scheduleDetails?.preferredSlot,
-          }}
-        />
-      )}
-      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">
-        <section className="max-w-7xl  p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
+      <StartApplicationModal
+        isOpen={openApplicatinModal}
+        onClose={() => setOpenApplicationModal(false)}
+        collegesList={collegesList}
+        getCollegesList={fetchCollegesList}
+        leadId={id}
+        addApplication={createStudentApplication}
+        selectedApplication={selectedApplication}
+        setSelectedApplication={setSelectedApplication}
+      />
+
+      <UpdateApplicationModal
+        isOpen={updateApplicatinModal}
+        onClose={() => setUpdateApplicationModal(false)}
+        collegesList={collegesList}
+        getCollegesList={fetchCollegesList}
+        leadId={id}
+        updateApplication={updateStudentApplication}
+        selectedApplication={selectedApplication}
+        setSelectedApplication={setSelectedApplication}
+        filledData={{
+          college: selectedApplication?.college?._id,
+          courseName: selectedApplication?.courseName,
+          intake: selectedApplication?.intake,
+          lead: id,
+        }}
+      />
+
+      <UpdateDocApplicationModal
+        isOpen={updateDocModal}
+        onClose={() => setUpdateDocModal(false)}
+        collegesList={collegesList}
+        getCollegesList={fetchCollegesList}
+        leadId={id}
+        updateApplication={updateStudentApplication}
+        selectedApplication={selectedApplication}
+        setSelectedApplication={setSelectedApplication}
+        filledData={{
+          additionalDocuments: selectedApplication?.additionalDocuments,
+        }}
+      />
+
+      {/* Page Content */}
+      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
+        <section className="max-w-7xl p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
           <StudentProfile />
           <StudentPersonalDetails onOpenModal={() => handleModal("personal")} />
           <StudentAdditionalDetails
@@ -212,22 +263,16 @@ const StudentProfileLayout = () => {
             onUpdate={onUpdateLead}
           />
           <DocumentLibrary />
-          {/* <StudentDocumentLibrary /> */}
           <StudentSavedPreference />
           <StudentApplication
-            collegesList={collegesList}
-            getCollegesList={fetchCollegesList}
-            leadId={id}
-            studentApplication={studentApplication}
-            addApplication={createStudentApplication}
-            isOpen={openApplicatinModal}
-            onClose={() => setOpenApplicationModal(false)}
             onOpen={() => setOpenApplicationModal(true)}
+            selectedApplication={selectedApplication}
+            setSelectedApplication={setSelectedApplication}
+            onOpenUpdate={() => setUpdateApplicationModal(true)}
+            onOpenDocUpdate={() => setUpdateDocModal(true)}
           />
-
           <StudentLangPrep />
           <StudentTransaction />
-          {/* <StudentAdditionalServices /> */}
         </section>
       </div>
     </>

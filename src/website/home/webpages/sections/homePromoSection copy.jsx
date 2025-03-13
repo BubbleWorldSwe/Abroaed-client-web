@@ -25,7 +25,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             <div className="flex flex-col gap-3 justify-center">
               {/* <div className="text-start "> */}
               <h1 className="text-5xl font-bold  text-black dark:text-white ">
-                Need Clarifications on Your Study Abroad Plans?
+                Need Clarifications on Your Study Abroaed Plans?
               </h1>
               <p className="text-[#52525B] font-medium text-[16px">
                 Our study abroad consultants will reach out to you and guide you

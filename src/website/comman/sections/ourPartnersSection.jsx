@@ -3,7 +3,7 @@ function OurPartners() {
     <div>
       <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
         <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
-          <h2 className="mb-4 text-center text-5xl tracking-tight font-extrabold text-[#27272A] dark:text-white">
+          <h2 className="mb-4 text-center text-[45px]   font-extrabold text-[#27272A] ">
             Our Partner
           </h2>
           <div className="flex mb-10 justify-center text-center">

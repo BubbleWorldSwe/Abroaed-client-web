@@ -6,12 +6,12 @@ const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
     <div className="relative z-10">
       <section className="dark:bg-gray-900 relative px-12 mx-auto">
         <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 lg:py-16">
-          <div className="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className="mb-4 text-3xl sm:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <div className="">
+            <h2 className="mb-4 text-[45px] font-extrabold text-[#27272A] ">
               Why Study at {collegeDetails?.name}?
             </h2>
-            <p className="mb-4">{text1}</p>
-            <p>{collegeDetails?.description}</p>
+            <p className="mb-4 font-normal  text-sm">{text1}</p>
+            <p className="text-sm font-normal" >{collegeDetails?.description}</p>
           </div>
         </div>
       </section>

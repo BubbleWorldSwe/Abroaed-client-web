@@ -11,11 +11,10 @@ function FinanceHeroSection() {
         }}
       >
         {/* Text Content */}
-        <div className="absolute bottom-1 left-8  p-5 rounded-lg shadow-lg max-w-2xl">
-          <h1 className="mb-4  font-extrabold tracking-tight leading-none text-white text-5xl ">
-            Smart Financial Planning for Your Study Abroad Success
-          </h1>
-
+        <div className="absolute bottom-3  max-w-4xl  flex flex-col  justify-start  mx-auto px-12">
+          <h3 className="text-[57px] leading-tight   font-extrabold  text-[#F4F4F5] ">
+            Smart Financial Planning for Your Study Abroaed Success
+          </h3>
         </div>
       </section>
     </div>

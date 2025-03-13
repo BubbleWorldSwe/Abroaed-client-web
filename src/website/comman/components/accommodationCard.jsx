@@ -91,13 +91,11 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
               </p>
             </div>
           </div>
-
           <div className="flex-grow">
             <p className="mb-5 font-normal  text-gray-500 dark:text-gray-400 line-clamp-4">
               {item.description}
             </p>
           </div>
-
           <div className="mt-auto">
             <EnquireButton onClick={handleOpenAddModal} />
           </div>

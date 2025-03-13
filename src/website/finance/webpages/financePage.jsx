@@ -1,12 +1,11 @@
 import FinanceHowItWorks from "./sections/financeHowItWorkSection";
 import FinanceHeroSection from "./sections/financeHeroSection";
-import vectorShoe from "../../../assets/vectorShoe.png";
+// import vectorShoe from "../../../assets/vectorShoe.png";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import OurPartners from "../../comman/sections/ourPartnersSection";
-import FinanceBlogSection from "./sections/financeBlogSection";
+// import FinanceBlogSection from "./sections/financeBlogSection";
 import FinanceFaqSection from "./sections/financeFaqSection";
-import FinanceLeadFromSection from "./sections/financeLeadFromSection";
 import { useDispatch } from "react-redux";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
@@ -31,7 +30,7 @@ function FinancePage() {
       <FinanceHeroSection />
       <FinanceHowItWorks />
       <OurPartners />
-      <div className="relative ">
+      {/* <div className="relative ">
         <FinanceBlogSection />
         <div className="absolute -bottom-4 left-0 z-0">
           <img
@@ -40,7 +39,7 @@ function FinancePage() {
             alt="Counselling session"
           />
         </div>
-      </div>
+      </div> */}
       <FinanceFaqSection />
       {/*  <FinanceLeadFromSection /> */}
       <ContactUsForm

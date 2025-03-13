@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import image from "../../../../assets/dark.png";
 
 function AccommodationHeroSection({ selectedCountry }) {
@@ -5,18 +6,28 @@ function AccommodationHeroSection({ selectedCountry }) {
   return (
     <div className="font-rethink">
       <section
-        className="relative h-[65vh] bg-cover bg-center"
+        className="relative h-[75vh] bg-cover bg-center"
         style={{
           backgroundImage: `url(${image})`,
         }}
       >
+        <div
+          className="absolute inset-0 bg-black opacity-30"
+          style={{ mixBlendMode: "multiply" }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
+
         {/* Text Content */}
-        <div className="absolute bottom-8 left-8 p-6 rounded-lg shadow-lg max-w-2xl">
-          <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-6xl">
+        <div className="absolute bottom-6    flex flex-col  justify-start  mx-auto px-12">
+          <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
             {selectedCountry?._id === "all"
               ? `Accomodations`
               : `Accomodations in ${selectedCountry?.countryId?.name}`}
           </h1>
+          <p className="font-bold text-[#D4D4D8] text-[22px] max-w-xl">
+            With Abroaed, scouting the perfect accommodation abroad has never been easier
+            <br />
+          </p>
           {/*   <p className="font-light text-white md:text-lg xl:text-xl">
             Irure do commodo voluptate excepteur est qui tempor officia. Cillum
             occaecat sint occaecat consequat in fugiat dolor. Voluptate ea

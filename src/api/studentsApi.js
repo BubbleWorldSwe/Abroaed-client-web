@@ -66,3 +66,19 @@ export const getStudentApplications = async (leadId) => {
     throw error;
   }
 };
+
+export const setUpdateStudentApplication = async (credentials, appId) => {
+  try {
+    console.log(credentials);
+
+    const data = await makePatchRequest(
+      `${BASE_URL}/api/v1/admin/applications/${appId}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

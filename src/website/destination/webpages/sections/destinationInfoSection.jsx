@@ -8,7 +8,6 @@ function DestinationInfoSection({ destinationDetails }) {
       <div className="relative z-10">
         <section className="dark:bg-gray-900 relative px-12 py-5 mx-auto">
           <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 py-14">
-
             <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
               Why Study in {destinationDetails?.countryId?.name} ?
             </h2>
