@@ -1,24 +1,38 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import DestinationFunFactCard from "../../components/destinationFunFactCard";
+import locationIconWhite from "../../../../assets/locationIconWhite.png";
+import schoolIconWhite from "../../../../assets/schoolIconWhite.png";
+import languageIconWhite from "../../../../assets/languageIconWhite.png";
+import currencyIconWhite from "../../../../assets/currencyIconWhite.png";
+import callIconWhite from "../../../../assets/callIconWhite.png";
+
 
 const DestinationFunFactSection = ({ items, destinationDetails }) => {
   const list = [
     {
       title: "Capital",
       value: destinationDetails?.capitalId?.name,
-      icon: "🌎",
+      icon: locationIconWhite,
     },
     {
       title: "Intr. Students",
       value: destinationDetails?.internationalStudent,
-      // value: destinationDetails?.totalPopulation,
-      icon: "🎓",
+      icon: schoolIconWhite,
     },
-    { title: "Language", value: destinationDetails?.language, icon: "𝗘𝗡╸" },
+    {
+      title: "Language", value: destinationDetails?.language,
+      icon: languageIconWhite
+    },
 
-    { title: "Currency", value: destinationDetails?.currency, icon: "💵" },
-    { title: "Dialing Code", value: destinationDetails?.dialcode, icon: "📞" },
+    {
+      title: "Currency", value: destinationDetails?.currency,
+      icon: currencyIconWhite
+    },
+    {
+      title: "Dialing Code", value: destinationDetails?.dialcode,
+      icon: callIconWhite
+    },
   ];
 
   return (

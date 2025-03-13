@@ -76,7 +76,7 @@ const AccomodationEnquiryModal = ({
     <>
       {isOpen && (
         <div className="fixed inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-white max-h-[63vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-2xl z-50 relative">
+          <div className="bg-white max-h-[73vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -84,46 +84,43 @@ const AccomodationEnquiryModal = ({
               &times;
             </button>
             <h2 className="text-xl font-semibold mb-4">Enquire Now</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Image */}
+
+            <div className="relative overflow-hidden">
+              {/* Image with Float */}
               <img
                 src={dark}
                 alt="Accommodation"
-                className="w-full h-auto rounded-lg shadow-md"
+                className="w-2/5 h-auto rounded-lg shadow-md float-left mr-6 mb-4"
               />
 
               {/* Details */}
-              <div>
+              <div className="">
                 <h3 className="text-lg font-semibold mb-2">
                   {accommodationDetails?.accomodationName}
                 </h3>
-                <div className="flex gap-3 text-center">
-                  <img
-                    className="rounded-t-lg w-[18px] h-[18px] object-contain mx-1"
-                    src={locationIcon}
-                    alt={"accomodation-img"}
-                  />
-                  <p className="text-gray-700 font-semibold ">
+
+                {/* Location */}
+                <div className="flex gap-2 items-center">
+                  <img className="w-4 h-4 object-contain" src={locationIcon} alt="Location Icon" />
+                  <p className="text-gray-700 font-semibold">
                     {accommodationDetails?.stateId?.name},{" "}
                     {accommodationDetails?.destinationId?.countryId?.name}
                   </p>
                 </div>
-                <div className="flex gap-3 text-center mt-1">
-                  <img
-                    className="rounded-t-lg w-[24px] h-[24px] object-contain"
-                    src={wallet}
-                    alt="wallet-pic"
-                  />
-                  <p className="text-gray-900">
-                    Rs. {accommodationDetails?.price} per month
-                  </p>
+
+                {/* Price */}
+                <div className="flex gap-2 items-center mt-2">
+                  <img className="w-5 h-5 object-contain" src={wallet} alt="Wallet Icon" />
+                  <p className="text-gray-900">Rs. {accommodationDetails?.price} per month</p>
                 </div>
 
+                {/* Description */}
                 <p className="text-gray-600 text-sm mt-2">
                   {accommodationDetails?.description}
                 </p>
               </div>
             </div>
+
             <form className="space-y-15 pt-5" onSubmit={handleSubmit}>
               <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
                 {/* F Name */}

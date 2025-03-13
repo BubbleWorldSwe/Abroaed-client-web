@@ -3,7 +3,7 @@ import PathwaysAccommodationCard from "../../components/pathwaysAccommodationCar
 
 const PathwaysProgramStudentAccommodationSection = () => {
   return (
-    <div className="relative  px-10 mx-auto">
+    <div className="relative py-10  px-10 mx-auto">
       <section className=" dark:bg-gray-900 relative">
         <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
           <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">

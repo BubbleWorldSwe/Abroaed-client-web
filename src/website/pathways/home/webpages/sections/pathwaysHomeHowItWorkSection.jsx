@@ -6,12 +6,12 @@ const PathwaysHomeHowItWorkSection = () => {
         <div className="relative mx-auto px-11">
             <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
                 <section className="dark:bg-gray-900">
-                    <div className="py-8 lg:py-16">
+                    <div className="py-8 ">
                         <div className="">
                             <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                                 How It Works?
                             </h2>
-                            <p className="text-sm text-[#27272A] font-normal">
+                            <p className="text-[18px] text-[#27272A] font-normal">
                                 Pathways programs offer students a seamless route to studying abroad by providing the academic, language, and cultural support needed for success. These programs help you build a strong foundation in core subjects, improve language proficiency, and gain cultural understanding to thrive in a foreign academic environment. With guaranteed progression to a degree program at a partner university, pathways programs not only prepare you academically but also guide you through personal and professional development, ensuring a smooth transition to university life abroad.                            </p>
                         </div>
                         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">

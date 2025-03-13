@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal";
-
+import bookmark from "../../../assets/bookmark.png";
 const CollegeCourseCard = ({ course, source, onAddLead }) => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -32,29 +32,18 @@ const CollegeCourseCard = ({ course, source, onAddLead }) => {
                 {course.name}
               </h5>
               <div>
-                <svg
-                  className="w-6 h-6 text-gray-800 dark:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="m17 21-5-4-5 4V3.889a.92.92 0 0 1 .244-.629.808.808 0 0 1 .59-.26h8.333a.81.81 0 0 1 .589.26.92.92 0 0 1 .244.63V21Z"
+                <button>
+                  <img
+                    src={bookmark}
+                    alt="bookmarkIcon"
                   />
-                </svg>
+                </button>
               </div>
             </div>
-            <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
+            {/* <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
               <span className="text-base font-semibold">College:</span>{" "}
               {course.collegeName}
-            </p>
+            </p> */}
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
               <span className="text-base font-semibold">Domain:</span>{" "}
               {course.domain}

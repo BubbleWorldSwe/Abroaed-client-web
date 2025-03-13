@@ -8,7 +8,7 @@ const CollegeCourseOfferSection = ({ collegeDetails, source, onAddLead }) => {
       <section className="px-10 mx-auto">
         <div className=" px-4  flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
           {/* Content */}
-          <div className="relative z-10 mt-10">
+          <div className=" mt-10">
             <h2 className="mb-2 text-[45px]  font-extrabold text-gray-900 dark:text-white">
               Course Offerings
             </h2>

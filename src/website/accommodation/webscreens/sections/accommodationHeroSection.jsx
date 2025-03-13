@@ -18,11 +18,13 @@ function AccommodationHeroSection({ selectedCountry }) {
         <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
 
         {/* Text Content */}
-        <div className="absolute bottom-6    flex flex-col  justify-start  mx-auto px-12">
+        <div className="absolute bottom-6  py-6   flex flex-col  justify-start  mx-auto px-12">
           <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
-            {selectedCountry?._id === "all"
-              ? `Accomodations`
-              : `Accomodations in ${selectedCountry?.countryId?.name}`}
+            Accomodations
+            {/* {selectedCountry?._id === "all"
+              ? 
+              `Accomodations`
+              : `Accomodations in ${selectedCountry?.countryId?.name}`} */}
           </h1>
           <p className="font-bold text-[#D4D4D8] text-[22px] max-w-xl">
             With Abroaed, scouting the perfect accommodation abroad has never been easier

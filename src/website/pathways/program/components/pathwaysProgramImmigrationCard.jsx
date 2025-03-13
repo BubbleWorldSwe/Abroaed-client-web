@@ -2,7 +2,7 @@
 const PathwaysProgramImmigrationCard = () => {
     return (
         <div
-            className="max-w-sm  bg-white flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+            className="max-w-sm  bg-white flex-shrink-0 border border-gray-200 rounded-xl shadow-lg dark:bg-gray-800 dark:border-gray-700"
         >
             <div className="p-5">
                 <div className="flex justify-between">

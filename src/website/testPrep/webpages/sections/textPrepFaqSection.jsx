@@ -21,7 +21,8 @@ const TextPrepFaqSection = ({ testPrepsDetails }) => {
               <h2 id={`accordion-flush-heading-${index}`}>
                 <button
                   type="button"
-                  className="flex justify-between items-center py-5 w-full font-medium text-left  bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                  className={`flex justify-between items-center py-5 w-full font-medium text-left bg-white dark:bg-gray-900 dark:text-white 
+                    ${activeIndex === index ? '' : 'border-b-2  border-gray-200 dark:border-gray-700'}`}
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={activeIndex === index}
                 >
