@@ -2,7 +2,7 @@
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton"
 import { IMAGES } from "../../../constants/images"
 import locationIcon from "../../../assets/locationIcon.png";
-
+import bookmark from "../../../assets/bookmark.png"
 const UniversityCardDetails = ({ item }) => {
     return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -15,37 +15,26 @@ const UniversityCardDetails = ({ item }) => {
             </a>
             <div className="p-5">
                 <div className="flex justify-between">
-                    <h5 className="mb-2 text-xl font-semibold tracking-tight text-gray-600 dark:text-white">
+                    <h5 className="mb-2 text-[22px] font-semibold  text-[#27272A] dark:text-white">
                         {item?.name}
                     </h5>
                     <div>
-                        <svg
-                            className="w-8 h-6 text-gray-800 dark:text-white"
-                            aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="m17 21-5-4-5 4V3.889a.92.92 0 0 1 .244-.629.808.808 0 0 1 .59-.26h8.333a.81.81 0 0 1 .589.26.92.92 0 0 1 .244.63V21Z"
+                        <button>
+                            <img
+                                src={bookmark}
+                                alt="bookmarkIcon"
                             />
-                        </svg>
+                        </button>
                     </div>
                 </div>
                 <div className="mb-3 flex justify-between text-center">
-                    <div className="flex gap-2 justify-between">
+                    <div className="flex gap-2 justify-between items-center">
                         <img
-                            className="rounded-t-lg w-[18px] h-[18px] object-contain"
+                            className="rounded-t-lg w-[14px] h-[14px] object-contain"
                             src={locationIcon}
                             alt={item.name}
                         />
-                        <p className="text-[16px] text-gray-600 dark:text-gray-400">
+                        <p className="text-[16px] text-gray-500 font-bold dark:text-gray-400">
                             {item.location}
                         </p>
                     </div>

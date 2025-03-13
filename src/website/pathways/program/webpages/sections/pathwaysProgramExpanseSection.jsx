@@ -17,7 +17,7 @@ const PathwaysProgramExpanseSection = () => {
                             <h2 className="mb-4 text-[32px]  font-bold text-[#27272A] dark:text-white">
                                 Cost of Studying
                             </h2>
-                            <p className="mb-1 text-[22px] font-semibold w-10/12 text-[#52525B] ">
+                            <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
                                 Here’s a list of the minimum monthly amount you should expect for studying in the UK:
                             </p>
                             <section className=" dark:bg-gray-900 py-3 sm:py-5">
@@ -36,16 +36,19 @@ const PathwaysProgramExpanseSection = () => {
                                                 </thead>
                                                 <tbody>
                                                     <tr
-                                                        className="border-b dark:border-gray-700">
+                                                        className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                                    >
                                                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 27&#34;</th>
                                                         <td className="px-4 py-3">PC</td>
 
                                                     </tr>
-                                                    <tr className="border-b dark:border-gray-700">
+                                                    <tr className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                                    >
                                                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 20&#34;</th>
                                                         <td className="px-4 py-3">PC</td>
                                                     </tr>
-                                                    <tr className="border-b dark:border-gray-700">
+                                                    <tr className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                                    >
                                                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iPhone 14</th>
                                                         <td className="px-4 py-3">Phone</td>
                                                     </tr>
@@ -63,7 +66,7 @@ const PathwaysProgramExpanseSection = () => {
                             <h2 className="mb-4 text-[32px]  font-bold text-[#27272A] dark:text-white">
                                 Cost of Studying
                             </h2>
-                            <p className=" text-[#27272A] font-semibold text-[22px]">
+                            <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
                                 Here’s a list of the minimum monthly amount you should expect for studying in the UK:
                             </p>
                             <section className=" dark:bg-gray-900 py-3 sm:py-5">
@@ -81,16 +84,20 @@ const PathwaysProgramExpanseSection = () => {
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr className="border-b dark:border-gray-700">
+                                                    <tr
+                                                        className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                                    >
                                                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 27&#34;</th>
                                                         <td className="px-4 py-3">PC</td>
 
                                                     </tr>
-                                                    <tr className="border-b dark:border-gray-700">
+                                                    <tr className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                                    >
                                                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iMac 20&#34;</th>
                                                         <td className="px-4 py-3">PC</td>
                                                     </tr>
-                                                    <tr className="border-b dark:border-gray-700">
+                                                    <tr className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                                    >
                                                         <th scope="row" className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple iPhone 14</th>
                                                         <td className="px-4 py-3">Phone</td>
                                                     </tr>

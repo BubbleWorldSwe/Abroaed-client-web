@@ -12,7 +12,7 @@ import LanguagePrepAbout from "./sections/languagePrepAboutSection";
 import LanguagePrepSimplifyThings from "./sections/languagePrepSimplifyThings";
 import LanguagePrepBatchDetaileSection from "./sections/languagePrepBatchDetailSection";
 import LanguagePrepFaqSection from "./sections/languagePrepFaqSection";
-import Blogs from "../../comman/components/blogs";
+// import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import { entity, source } from "../../../constants/values";
@@ -105,7 +105,7 @@ function LanguagePrepLayout() {
         </div>
       )}
 
-      <Blogs />
+      {/* <Blogs /> */}
 
       <ContactUsForm
         onFormSubmit={handleAddLead}

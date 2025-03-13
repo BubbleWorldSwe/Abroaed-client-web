@@ -10,7 +10,7 @@ function LanguagePrepHero({ languagePrepsDetails }) {
           backgroundImage: `url(${image})`,
         }}
       >
-        <div className="absolute bottom-3  max-w-4xl  flex flex-col  justify-start  mx-auto px-12">
+        <div className="absolute bottom-3 py-6  max-w-4xl  flex flex-col  justify-start  mx-auto px-12">
           <h1 className="text-[57px]  font-extrabold leading-tight  text-[#F4F4F5] ">
             {languagePrepsDetails?.productName}
           </h1>

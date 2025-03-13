@@ -26,8 +26,8 @@ function DestinationUniCoursersSection({
           <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
             {/* Content */}
             <div className="relative z-10">
-              <h2 className="mb-2 text-[45px]  font-extrabold text-gray-900 dark:text-white">
-                Top Universities
+              <h2 className="mb-2 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+                Top Universities in {destinationDetails?.countryId?.name}
               </h2>
               <div className=" border-t border-gray-300"></div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 py-10">
@@ -38,9 +38,9 @@ function DestinationUniCoursersSection({
             </div>
 
             <Element name="popular-course">
-              <div className="relative z-10 pt-5">
-                <h2 className="mb-2 text-[45px]  font-extrabold text-gray-900 dark:text-white">
-                  Popular Courses
+              <div className=" pt-5">
+                <h2 className="mb-2 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+                  Popular Courses in {destinationDetails?.countryId?.name}
                 </h2>
                 <div className="my-1 border-t border-gray-300"></div>
                 <p className="font-semibold  text-[#52525B] text-[22px] mt-4">

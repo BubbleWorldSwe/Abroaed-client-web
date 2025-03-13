@@ -11,7 +11,7 @@ function DestinationInfoSection({ destinationDetails }) {
             <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
               Why Study in {destinationDetails?.countryId?.name} ?
             </h2>
-            <p className="text-sm text-[#27272A] font-normal">{destinationDetails?.description || "----"}</p>
+            <p className="text-[18px] text-[#27272A] font-normal">{destinationDetails?.description || "----"}</p>
           </div>
         </section>
       </div>

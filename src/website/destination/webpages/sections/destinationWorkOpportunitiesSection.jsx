@@ -12,7 +12,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               <h2 className="mb-2 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 Work Opportunities in {destinationDetails?.countryId?.name}
               </h2>
-              <p className="mb-8 font-normal text-sm text-[#27272A]">
+              <p className="mb-8 font-normal text-[18px] text-[#27272A]">
                 Studying in the {destinationDetails?.countryId?.name} offers a
                 variety of experiences. The cultural and traditional values of
                 the
@@ -26,7 +26,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               <h3 className="mb-2  text-[32px]  font-bold text-[#27272A] dark:text-white">
                 Part-Time Work Opportunities
               </h3>
-              <p className="text-sm font-normal text-[#27272A] ">
+              <p className="text-[18px] font-normal text-[#27272A] ">
                 {destinationDetails?.workOpportunities?.partTimeStudents}
               </p>
             </div>
@@ -34,7 +34,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               <h3 className="mb-2  text-[32px]  font-bold text-[#27272A] dark:text-white">
                 Post Study Work Opportunities
               </h3>
-              <p className="text-sm font-normal text-[#27272A] ">
+              <p className="text-[18px] font-normal text-[#27272A] ">
                 {destinationDetails?.workOpportunities?.postDegreeOpportunity}
               </p>
             </div>
@@ -60,7 +60,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               )}
             </div>
             {destinationDetails?.workOpportunities?.additionalInformation && (
-              <p className="my-10 text-sm font-normal text-[#27272A]">
+              <p className="my-10 text-base font-normal text-[#27272A]">
                 {destinationDetails?.workOpportunities?.additionalInformation}
               </p>
             )}

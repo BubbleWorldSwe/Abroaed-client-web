@@ -27,7 +27,7 @@ const PathwaysProgramAdmissionRequirementSection = () => {
                                         alt={""}
                                     />
 
-                                    <p className="  text-[#52525B] text-[22px] font-normal  dark:text-gray-400 py-1">
+                                    <p className="  text-[#52525B] text-[20px] font-normal  dark:text-gray-400 py-1">
 
                                         ACT/SAT/LSAT for UG programs, GMAT/GRE scores for PG programs
                                     </p>

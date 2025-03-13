@@ -10,7 +10,7 @@ const LeaguageOfExcellenceHero = () => {
             }}
         >
             <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
-            <div className="absolute bottom-2    flex flex-col  justify-start  mx-auto px-12">
+            <div className="absolute bottom-2   pb-6  flex flex-col  justify-start  mx-auto px-12">
                 <h1 className="mb-2  text-4xl font-extrabold  text-white md:text-5xl xl:text-6xl ">
                     League of Excellence
                 </h1>

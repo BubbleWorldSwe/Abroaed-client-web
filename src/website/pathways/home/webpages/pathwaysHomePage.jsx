@@ -3,7 +3,6 @@ import vectorleftNose from "../../../../assets/vectorleftNose.png";
 import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png";
 import Header from "../../../comman/sections/headerSection";
 import Footer from "../../../comman/sections/footerSection";
-import OurPartners from "../../../comman/sections/ourPartnersSection";
 import PathwaysHomeHowItWorkSection from "./sections/pathwaysHomeHowItWorkSection";
 import PathwaysHomeFaqSection from "./sections/pathwaysHomeFaqSection";
 // import PathwaysHomeLeadForm from "./sections/pathwaysHomeLeadFormSection";
@@ -24,7 +23,7 @@ function PathwaysHomePage() {
           />
         </div>
       </div>
-      <OurPartners />
+      {/* <OurPartners /> */}
       {/* <PathwayHomeProgramExplore /> */}
       {/* <div className='relative'>
         <PathwaysHomeBlogSection />

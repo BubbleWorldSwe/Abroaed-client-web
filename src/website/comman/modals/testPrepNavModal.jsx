@@ -27,7 +27,7 @@ const TestPrepNavModal = ({
                         <div className="flex  w-full justify-between items-center ">
                             <a
                                 // href={`/testprep/${data._id}`}
-                                href={`/testprep/${data}`}
+                                href={`/testprep/${data._id}`}
                                 className="block px-4 py-2 "
                             >
                                 {data?.title}

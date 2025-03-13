@@ -7,11 +7,11 @@ const CollegeStudentAccommodation = ({
 }) => {
   return (
     <>
-      <div className="relative  px-10 mx-auto">
+      <div className="relative  px-7 mx-auto">
         <section className=" dark:bg-gray-900 relative">
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className="mb-10 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+              <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                 Popular Student Accommodations
               </h2>
               <div className="my-5 border-t border-gray-300"></div>

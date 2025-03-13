@@ -19,7 +19,7 @@ const HomeCounsellingHeroSection = ({ img, header, text }) => {
                         {header}
                     </h1>
 
-                    <p className="font-light text-white md:text-lg xl:text-xl">
+                    <p className="">
                         {text}
                         <br />
                     </p>

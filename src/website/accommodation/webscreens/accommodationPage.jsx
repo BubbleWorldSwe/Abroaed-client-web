@@ -6,7 +6,6 @@ import Footer from "../../comman/sections/footerSection";
 import AccommodationHowItWorkSection from "./sections/accommodationHowItWorkSection";
 import AccommodationFaqSection from "./sections/accommodationFaqSection";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import Blogs from "../../comman/components/blogs";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PageLoader from "../../../commons/components/loader/pageLoader";
@@ -18,6 +17,8 @@ import { useParams } from "react-router-dom";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
+import Testimonials from "../../comman/components/testimonials";
+import OurPartners from "../../comman/sections/ourPartnersSection";
 
 function AccomodationPage() {
   const dispatch = useDispatch();
@@ -107,8 +108,9 @@ function AccomodationPage() {
         onAddLead={handleAddLead}
       />
       <AccommodationHowItWorkSection />
+      <OurPartners />
       <AccommodationFaqSection />
-      <Blogs />
+      <Testimonials />
       <ContactUsForm
         onFormSubmit={handleAddLead}
         source={source.accommodation}

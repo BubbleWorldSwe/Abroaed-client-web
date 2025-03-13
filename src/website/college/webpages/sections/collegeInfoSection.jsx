@@ -10,8 +10,8 @@ const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
             <h2 className="mb-4 text-[45px] font-extrabold text-[#27272A] ">
               Why Study at {collegeDetails?.name}?
             </h2>
-            <p className="mb-4 font-normal  text-sm">{text1}</p>
-            <p className="text-sm font-normal" >{collegeDetails?.description}</p>
+            <p className="mb-4 font-normal  text-[18px]">{text1}</p>
+            <p className="text-[18px] font-normal" >{collegeDetails?.description}</p>
           </div>
         </div>
       </section>
