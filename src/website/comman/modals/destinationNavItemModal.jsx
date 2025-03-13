@@ -2,17 +2,12 @@
 import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Flag from 'react-world-flags';
+import Flag from "react-world-flags";
 
-const DestinationNavItemModal = ({
-  handleMouseEnter,
-  handleMouseLeave,
-}) => {
-
+const DestinationNavItemModal = ({ handleMouseEnter, handleMouseLeave }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
 
   return (
     <div
@@ -20,7 +15,7 @@ const DestinationNavItemModal = ({
       onMouseEnter={() => handleMouseEnter("destinations")}
       onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
     >
-      <ul className="space-2 grid grid-cols-2 shadow-lg w-[30vw] gap-3  rounded-b-lg mt-2 bg-white" >
+      <ul className="space-2 grid grid-cols-2 shadow-lg w-[30vw] gap-3  rounded-b-lg mt-2 bg-white">
         {allDestinations?.map((item, index) => (
           <li
             key={item._id}
@@ -40,10 +35,9 @@ const DestinationNavItemModal = ({
               </a>
             </div>
             <ChevronRightIcon
-              className={`w-5 h-5   ${hoveredIndex === index
-                ? " opacity-100"
-                : "opacity-0"
-                }`}
+              className={`w-5 h-5   ${
+                hoveredIndex === index ? " opacity-100" : "opacity-0"
+              }`}
             />
           </li>
         ))}

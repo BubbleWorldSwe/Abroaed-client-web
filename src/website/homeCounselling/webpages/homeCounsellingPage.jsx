@@ -1,4 +1,4 @@
-import dark from "../../../assets/dark.png";
+import homeCounsellingHero from "../../../assets/homeCounsellingHero.png";
 // import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
@@ -43,7 +43,7 @@ const HomeCounsellingPage = () => {
       <HomeCounsellingHeroSection
         header="Start Your Journey From the Comfort of Home!"
         text={<NavigationItems />}
-        img={dark}
+        img={homeCounsellingHero}
       />
       <div className="relative">
         <HomeCounsellingHowItWork />

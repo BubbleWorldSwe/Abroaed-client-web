@@ -111,7 +111,7 @@ function Header({ isHeaderBgWhite = false }) {
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
         ? "bg-white text-[#52525B] shadow-md"
-        : "bg-black text-white bg-opacity-0"
+        : "bg-black text-white bg-opacity-5"
         }`}
     >
       <nav>

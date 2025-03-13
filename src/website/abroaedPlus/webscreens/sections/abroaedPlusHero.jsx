@@ -1,4 +1,4 @@
-import dark from "../../../../assets/dark.png"
+import leaguageHero from "../../../../assets/leaguageHero.png"
 
 
 const AbroaedPlusHero = () => {
@@ -6,7 +6,7 @@ const AbroaedPlusHero = () => {
         <section
             className="relative h-[80vh]  bg-cover flex  bg-center"
             style={{
-                backgroundImage: `url(${dark})`,
+                backgroundImage: `url(${leaguageHero})`,
                 opacity: "1",
             }}
         >

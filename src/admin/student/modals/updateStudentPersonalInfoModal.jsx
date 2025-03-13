@@ -15,8 +15,6 @@ const UpdateStudentPersonalInfo = ({
 }) => {
   const [formData, setFormData] = useState(filledData);
 
-  console.log(formData);
-
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,7 +58,7 @@ const UpdateStudentPersonalInfo = ({
       e.preventDefault();
       if (validateForm()) {
         const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
-        console.log(updatedFormData, userId);
+        // console.log(updatedFormData, userId);
         onUpdate(updatedFormData, userId);
       }
     } catch (error) {

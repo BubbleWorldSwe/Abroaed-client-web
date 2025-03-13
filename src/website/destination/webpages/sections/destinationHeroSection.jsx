@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import Flag from 'react-world-flags';
+// import Flag from 'react-world-flags';
 
 
 function DestinationHeroSection({ destinationDetails, img }) {
@@ -22,13 +22,11 @@ function DestinationHeroSection({ destinationDetails, img }) {
         <div className="absolute bottom-6    flex flex-col  justify-start  mx-auto px-12">
           <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
             {/* <Flag width={100} code={destinationDetails?.countryId?.code} style={{ display: 'inline-block' }} /> */}
-            Study in{" "}
-            {destinationDetails?.countryId?.name}
+            Study in {destinationDetails?.countryId?.name}
           </h1>
           <p className="font-bold text-[#D4D4D8] text-[24px]">
             Experience Academic Excellence in the Land of Opportunities
             <br />
-
           </p>
         </div>
       </section>

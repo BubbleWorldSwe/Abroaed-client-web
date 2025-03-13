@@ -52,3 +52,33 @@ export const setCreateStudentApplication = async (credentials) => {
     console.log(error);
   }
 };
+
+export const getStudentApplications = async (leadId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/applications/list?filter={"lead":"${leadId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const setUpdateStudentApplication = async (credentials, appId) => {
+  try {
+    console.log(credentials);
+
+    const data = await makePatchRequest(
+      `${BASE_URL}/api/v1/admin/applications/${appId}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

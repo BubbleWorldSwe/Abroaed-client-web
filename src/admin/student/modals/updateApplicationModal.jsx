@@ -1,22 +1,20 @@
-/* eslint-disable react/prop-types */
-import { useState } from "react";
-import { Toaster } from "react-hot-toast";
-import { Plus } from "lucide-react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import trash from "../../../assets/delete.png";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
 
-const StartApplicationModal = ({
+const UpdateApplicationModal = ({
   isOpen,
   onClose,
   collegesList,
   getCollegesList,
   leadId,
-  addApplication,
+
+  filledData,
+  updateApplication,
 }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
 
@@ -46,10 +44,15 @@ const StartApplicationModal = ({
     }
 
     console.log("Form Data:", formData);
-    addApplication(formData);
-
-    // Submit form data to API or process it
+    updateApplication(formData);
   };
+
+  // **Use `useEffect` to update formData when filledData changes**
+  useEffect(() => {
+    if (filledData) {
+      setFormData(filledData);
+    }
+  }, [filledData, leadId]);
 
   return (
     <>
@@ -62,7 +65,9 @@ const StartApplicationModal = ({
             >
               &times;
             </button>
-            <h2 className="text-lg font-semibold">Start a New Application</h2>
+            <h2 className="text-lg font-semibold">
+              {filledData ? "Update Application" : "Start a New Application"}
+            </h2>
 
             {/* Dropdowns for College, Program, Course, and Intake */}
             <div className="grid grid-cols-2 gap-4 mt-4">
@@ -111,11 +116,8 @@ const StartApplicationModal = ({
 
             <div className="flex justify-end space-x-2 mt-10">
               <ModalCloseButton label="Close" onClick={onClose} />
-
               <ModalSubmitButton label="Submit" onClick={handleSubmit} />
             </div>
-
-            {/* Submit Button */}
           </div>
         </div>
       )}
@@ -123,4 +125,4 @@ const StartApplicationModal = ({
   );
 };
 
-export default StartApplicationModal;
+export default UpdateApplicationModal;

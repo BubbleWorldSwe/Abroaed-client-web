@@ -1,5 +1,5 @@
 import vectorDownNose from "../../../../assets/vectorDownNose.png";
-import dark from "../../../../assets/dark.png";
+import pathwaysProgramHero from "../../../../assets/pathwaysProgramHero.png";
 import vectorBelow from "../../../../assets/vectorBelow.png";
 import PathwaysProgramOverview from "./sections/pathwaysProgramOverviewSection";
 import vectorleftNose from "../../../../assets/vectorleftNose.png";
@@ -30,7 +30,7 @@ const PathwaysProgramPage = () => {
       <PathwaysProgramHeroSection
         header={"Pathways Program Name"}
         text={"Batch Starts: Jan 1, 2025 | Abroaed Intake: Aug’ 2025"}
-        img={dark}
+        img={pathwaysProgramHero}
       />
       <PathwaysProgramKpiMatrixSection
         title={""}
