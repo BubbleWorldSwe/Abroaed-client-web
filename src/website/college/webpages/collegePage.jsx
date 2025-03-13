@@ -5,7 +5,7 @@ import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
-import dark from "../../../assets/dark.png";
+import collegeHero from "../../../assets/collegeHero.png";
 import CollegeHeroSection from "./sections/collegeHeroSection";
 import CollegeInfoSection from "./sections/collegeInfoSection";
 import CollegeFunFactSection from "./sections/collegeFunFactSection";
@@ -76,7 +76,7 @@ function CollegePage() {
   return (
     <div className="font-rethink">
       <Header />
-      <CollegeHeroSection collegeDetails={collegeDetails} img={dark} />
+      <CollegeHeroSection collegeDetails={collegeDetails} img={collegeHero} />
       <CollegeInfoSection
         collegeDetails={collegeDetails}
         header={"Why Study in United Kingdom?"}

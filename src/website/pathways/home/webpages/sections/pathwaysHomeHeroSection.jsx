@@ -1,5 +1,5 @@
 
-import image from "../../../../../assets/dark.png";
+import pathwaysHome from "../../../../../assets/pathwaysHome.png";
 
 function PathwaysHomeHero() {
     return (
@@ -7,11 +7,11 @@ function PathwaysHomeHero() {
             <section
                 className="relative h-[75vh] bg-cover bg-center"
                 style={{
-                    backgroundImage: `url(${image})`,
+                    backgroundImage: `url(${pathwaysHome})`,
                 }}
             >
                 <div
-                    className="absolute inset-0 bg-black opacity-50"
+                    className="absolute inset-0 bg-black opacity-10"
                     style={{ mixBlendMode: "multiply" }}
                 ></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>

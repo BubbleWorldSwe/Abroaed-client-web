@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import image from "../../../../assets/dark.png";
+import accommodationHero from "../../../../assets/accommodationHero.png";
 
 function AccommodationHeroSection({ selectedCountry }) {
   console.log(selectedCountry);
@@ -8,7 +8,7 @@ function AccommodationHeroSection({ selectedCountry }) {
       <section
         className="relative h-[75vh] bg-cover bg-center"
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${accommodationHero})`,
         }}
       >
         <div

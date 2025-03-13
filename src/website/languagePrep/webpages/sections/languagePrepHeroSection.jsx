@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import image from "../../../../assets/dark.png";
+import languageHero from "../../../../assets/languageHero.png";
 
 function LanguagePrepHero({ languagePrepsDetails }) {
   return (
@@ -7,7 +7,7 @@ function LanguagePrepHero({ languagePrepsDetails }) {
       <section
         className="relative h-[75vh] bg-cover bg-center"
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${languageHero})`,
         }}
       >
         <div className="absolute bottom-3 py-6  max-w-4xl  flex flex-col  justify-start  mx-auto px-12">

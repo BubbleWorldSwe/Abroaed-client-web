@@ -1,12 +1,12 @@
 import PlayStore from "../../../../assets/PlayStore.png";
-import phoneHomeIcon from "../../../../assets/phoneHomeIcon.png";
+import PhoneImg from "../../../../assets/PhoneImg.png";
 function HomeDownloadApp() {
   return (
     <div>
       <section className=" dark:bg-gray-900 h-[75vh] flex justify-center items-end ">
         <div className="  mx-auto px-10 py-5 z-10">
           <div className=" shadow-lg relative bg-[#F4F4F5]  items-center max-w-screen-2xl  mx-auto  xl:gap-16 md:grid md:grid-cols-2  lg:px-3">
-            <div className="px-5 py-6">
+            <div className="px-8 py-10">
               <h2 className="mb-4 text-5xl  font-extrabold text-[#27272A] dark:text-white">
                 For Convenient Access to Study Abroaed Resources
               </h2>
@@ -24,7 +24,7 @@ function HomeDownloadApp() {
             <div className="absolute -bottom-9 right-32">
               <img
                 className="hidden mx-auto w-full h-[35rem]  md:flex"
-                src={phoneHomeIcon}
+                src={PhoneImg}
                 alt="mobile app"
               />
             </div>
