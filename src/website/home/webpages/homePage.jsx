@@ -5,7 +5,7 @@
 // import cover from "../../../assets/cover.jpg";
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
-import OurPartners from "../../comman/sections/ourPartnersSection";
+// import OurPartners from "../../comman/sections/ourPartnersSection";
 import HomeServicesSection from "./sections/homeServicesSection";
 // import HomeTestimonialsSection from "./sections/homeTestimonialsSection";
 import HomeHeroSection from "./sections/homeHeroSection";
@@ -28,7 +28,7 @@ import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePre
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
-import vectorDownNose from "../../../assets/vectorDownNose.png";
+// import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorBelow from "../../../assets/vectorBelow.png";

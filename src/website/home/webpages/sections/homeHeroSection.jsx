@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import homeHero from "../../../../assets/homeHero.png";
+import homeHeroImg from "../../../../assets/homeHeroImg.png";
 import { TextGenerateEffect } from "../../components/TextGenerateEffect";
 
 function HomeHeroSection() {
@@ -23,7 +23,7 @@ function HomeHeroSection() {
       <section
         className="relative h-[80vh]  bg-cover flex  bg-center"
         style={{
-          backgroundImage: `url(${homeHero})`,
+          backgroundImage: `url(${homeHeroImg})`,
           opacity: "1",
         }}
       >

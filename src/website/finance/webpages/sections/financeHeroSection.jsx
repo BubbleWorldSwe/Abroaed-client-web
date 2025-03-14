@@ -1,5 +1,5 @@
 
-import image from "../../../../assets/dark.png";
+import financeHero from "../../../../assets/financeHero.png";
 
 function FinanceHeroSection() {
   return (
@@ -7,7 +7,7 @@ function FinanceHeroSection() {
       <section
         className="relative h-[75vh] bg-cover bg-center"
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${financeHero})`,
         }}
       >
         <div

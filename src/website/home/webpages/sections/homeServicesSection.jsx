@@ -6,6 +6,8 @@ import homeService3 from "../../../../assets/homeService3.png";
 import homeService4 from "../../../../assets/homeService4.png";
 import homeService5 from "../../../../assets/homeService5.png";
 import homeService6 from "../../../../assets/homeService6.png";
+import homeService7 from "../../../../assets/homeService7.png";
+import homeService8 from "../../../../assets/homeService8.png";
 
 const serviceData = [
   {
@@ -41,12 +43,12 @@ const serviceData = [
   {
     text1: "ABROAED Plus",
     text2: "The ABROAED Plus program is your all-inclusive study abroad companion, designed to simplify every step of your journey to global education. Recognizing that the study abroad process extends far beyond securing admission, this service offers comprehensive support—from researching the right country, university, and course to managing finances, securing loans, booking accommodation, and even arranging flight tickets and airport transfers. ABROAED Plus eliminates the stress of hidden costs, confusing paperwork, and overwhelming choices, saving you time, money, and effort. With features like personalized consultations, country-specific mentors, tailored SOPs/LORs, visa assistance, and priority offer letters, this program ensures a seamless transition to your dream university. ABROAED Plus is more than just a service; it’s a commitment to empowering you with the tools, guidance, and confidence needed to thrive in your academic and professional pursuits abroad.",
-    imgUrl: homeService6,
+    imgUrl: homeService7,
   },
   {
     text1: "League of Excellence",
     text2: "For students aspiring to join the ranks of the world’s most prestigious institutions, the League of Excellence offers unparalleled, distinct assistance for admissions to Ivy League universities and other top-tier global institutions. This service is designed for high-achieving individuals who seek to elevate their academic and professional trajectories. Our experts provide personalized strategies, from crafting compelling application essays to preparing for rigorous interviews, ensuring you stand out in highly competitive admissions processes. With intimate knowledge of what best universities desire, we help you highlight your strengths, achievements, and potential. The League of Excellence is your doorway to making ambitious dreams a reality on the global stage.",
-    imgUrl: homeService6,
+    imgUrl: homeService8,
   },
 ];
 
