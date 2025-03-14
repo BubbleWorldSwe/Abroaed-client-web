@@ -5,10 +5,11 @@ import studentcolFrame from "../../../assets/studentcolFrame.png";
 
 const StudentApplicationCard = ({
   data,
-  selectedApplication,
   setSelectedApplication,
-  onOpen, // Function to open modal
+  onOpen,
   onOpenDocUpdate,
+  onOpenStatusModal,
+  status,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -17,6 +18,8 @@ const StudentApplicationCard = ({
     setIsMenuOpen((prev) => !prev);
     setSelectedApplication(data);
   };
+
+  console.log(status);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -61,15 +64,24 @@ const StudentApplicationCard = ({
                   >
                     Modify
                   </li>
-                  <li
-                    onClick={onOpenDocUpdate}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  >
-                    Request Documents
-                  </li>
-                  <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    Move Forward
-                  </li>
+                  {status !== "rejected" && (
+                    <li
+                      onClick={onOpenDocUpdate}
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                    >
+                      Request Documents
+                    </li>
+                  )}
+
+                  {status !== "rejected" &&
+                    status !== "offer_letter_received" && (
+                      <li
+                        onClick={onOpenStatusModal}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      >
+                        Move Forward
+                      </li>
+                    )}
                 </ul>
               </div>
             )}

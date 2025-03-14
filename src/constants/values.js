@@ -9,6 +9,8 @@ export const courseLevels = [
 
 export const intake = ["Spring", "Summer", "Fall", "Winter"];
 
+export const docCategory = ["Goverment", "Academic", "Finance", "Applications"];
+
 export const courseDomains = [
   "Engineering",
   "Medical",
@@ -78,3 +80,12 @@ export const entity = {
   contactUs: "Contact Us",
   bookCounselling: "Book Counselling",
 };
+
+export const statusSequence = [
+  "to_start",
+  "verifying_documents",
+  "application_filled",
+  "awaiting_response",
+  "rejected",
+  "offer_letter_received",
+];
