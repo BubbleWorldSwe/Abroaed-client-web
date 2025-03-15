@@ -8,12 +8,9 @@ import NurtureLeads from "../pages/admin/NurtureLeads";
 import Student from "../admin/student/screens/student";
 import Leads from "../admin/lead/screens/leads";
 import HomeLayout from "../website/home/webpages/homePage";
-import LayoutBlogs from "../Components/LayoutBlogs";
 import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 import SigninPage from "../pages/admin/SigninPage";
 import TestPrepLayout from "../website/testPrep/webpages/testPrepPage";
-import LayoutBlogHomePage from "../Components/LayoutBlogHomePage";
-import LayoutBlogsCategoryPage from "../Components/LayoutBlogsCategoryPage";
 import AboutUsPage from "../website/aboutUs/webpages/aboutUsPage";
 import LanguagePrep from "../admin/languagePrep/screens/languagePrep";
 import PathwaysProgramPage from "../website/pathways/program/webpages/pathwaysProgramPage";
@@ -45,6 +42,11 @@ import LeadProfileLayout from "../admin/lead/screens/leadProfile";
 import AdminLayout from "../admin/adminLayouts";
 import LeaguageOfExcellencePage from "../website/leagueOfExcellence/webpages/leaguageOfExcellencePage";
 import AbroaedPlusPage from "../website/abroaedPlus/webscreens/abroaedPlusPage";
+import BlogsCategoryPage from "../website/blogCategory/webpages/blogsCategoryPage";
+import BlogsHome from "../website/blogHome/webpages/blogHomePage";
+import BlogPage from "../website/blogPage/webpages/blogPage";
+import ContactUsPage from "../website/contactUs/webpages/contactUsPage";
+import FaqsPage from "../website/faqs/webpages/faqsPage";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -64,11 +66,11 @@ const AppRoutes = () => {
     { path: "/aboutus", element: <AboutUsPage />, isPrivate: false },
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
-    { path: "/blog/:id", element: <LayoutBlogs />, isPrivate: false },
-    { path: "/blog", element: <LayoutBlogHomePage />, isPrivate: false },
+    { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
+    { path: "/blog", element: <BlogsHome />, isPrivate: false },
     {
       path: "/blog/category/:id",
-      element: <LayoutBlogsCategoryPage />,
+      element: <BlogsCategoryPage />,
       isPrivate: false,
     },
     { path: "/finance", element: <FinancePage />, isPrivate: false },
@@ -121,6 +123,16 @@ const AppRoutes = () => {
     {
       path: "/homeCounselling",
       element: <HomeCounsellingPage />,
+      isPrivate: false,
+    },
+    {
+      path: "/contactUs",
+      element: <ContactUsPage />,
+      isPrivate: false,
+    },
+    {
+      path: "/faqs",
+      element: <FaqsPage />,
       isPrivate: false,
     },
     // Admin Dashboard Routes (Private)
