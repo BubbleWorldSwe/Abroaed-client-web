@@ -11,7 +11,6 @@ import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
 import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
 
-
 export const destinationMenuItems = [
   { name: "UK", flag: "🇬🇧", link: "/uk" },
   { name: "Ireland", flag: "🇮🇪", link: "/ireland" },
@@ -28,8 +27,6 @@ export const destinationMenuItems = [
   { name: "Spain", flag: "🇪🇸", link: "/spain" },
   { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
 ];
-
-
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -64,7 +61,6 @@ function Header({ isHeaderBgWhite = false }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   async function handleDestinationClick(destination) {
     setSelectedDestination(destination);
@@ -109,10 +105,11 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-white text-[#52525B] shadow-md"
-        : "bg-black text-white bg-opacity-5"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-white text-[#52525B] shadow-md"
+          : "bg-black text-white bg-opacity-5"
+      }`}
     >
       <nav>
         <div
@@ -126,8 +123,9 @@ function Header({ isHeaderBgWhite = false }) {
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                  }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
+                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
+                }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
@@ -135,7 +133,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <div className="flex-grow basis-[90%]   hidden md:flex  justify-center">
             <div className="flex items-center justify-center ">
-              <ul className="flex items-center space-x-5 justify-center text-sm font-medium">
+              <ul className="flex items-center space-x-3 justify-center text-sm font-medium">
                 <li
                   onMouseEnter={() => handleMouseEnter("exploreColleges")}
                   onMouseLeave={handleMouseLeave}
@@ -144,10 +142,18 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
+                     ${
+                       scrolling || isHeaderBgWhite
+                         ? "text-[#52525B]"
+                         : "text-white"
+                     }
                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${activeDropdown === "exploreColleges" ? "after:opacity-30" : ""}`}
+                     ${
+                       activeDropdown === "exploreColleges"
+                         ? "after:opacity-30"
+                         : ""
+                     }`}
                   >
                     Explore Colleges
                   </a>
@@ -208,7 +214,6 @@ function Header({ isHeaderBgWhite = false }) {
                   >
                     Abroaed Plus
                   </a>
-
                 </li>
                 <li
                   onMouseEnter={() => handleMouseEnter("destinations")}
@@ -217,10 +222,18 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
+                      }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "destinations" ? "after:opacity-30" : ""}`}
+                      ${
+                        activeDropdown === "destinations"
+                          ? "after:opacity-30"
+                          : ""
+                      }`}
                   >
                     Destinations
                   </a>
@@ -241,10 +254,16 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
+                      }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "testPrep" ? "after:opacity-30" : ""}`}
+                      ${
+                        activeDropdown === "testPrep" ? "after:opacity-30" : ""
+                      }`}
                   >
                     Test Prep
                   </a>
@@ -268,10 +287,18 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
+                      }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "languagePrep" ? "after:opacity-30" : ""}`}
+                      ${
+                        activeDropdown === "languagePrep"
+                          ? "after:opacity-30"
+                          : ""
+                      }`}
                   >
                     Language Prep
                   </a>
@@ -322,7 +349,6 @@ function Header({ isHeaderBgWhite = false }) {
                   </a>
                 </li>
 
-
                 <li
                   onMouseEnter={() => handleMouseEnter("leaguageOfExcellence")}
                   onMouseLeave={handleMouseLeave}
@@ -338,7 +364,6 @@ function Header({ isHeaderBgWhite = false }) {
                   >
                     League of Excellence
                   </a>
-
                 </li>
                 <li>
                   <button className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
@@ -360,9 +385,12 @@ function Header({ isHeaderBgWhite = false }) {
           </div> */}
           <button
             className="md:hidden p-2 basis-[0%]"
-          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            <Menu size={24} className={`${scrolling ? "text-black" : "text-white"}`} />
+            <Menu
+              size={24}
+              className={`${scrolling ? "text-black" : "text-white"}`}
+            />
           </button>
         </nav>
       </nav>
