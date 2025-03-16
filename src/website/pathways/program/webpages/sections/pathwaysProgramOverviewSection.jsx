@@ -42,7 +42,7 @@ const PathwaysProgramOverview = () => {
                         <h2 className="mb-2 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
                             Program Overview
                         </h2>
-                        <p className='mb-10 text-[#27272A] font-normal text-[18px'>
+                        <p className='mb-10 text-[#27272A] font-normal text-[18px]'>
                             lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.                           </p>
                     </div>
                     <section className='py-5'>
@@ -72,7 +72,7 @@ const PathwaysProgramOverview = () => {
                                 <h3 className="mb-4 text-[32px]  font-bold text-[#27272A] dark:text-white">
                                     University Name
                                 </h3>
-                                <p className="text-[#27272A] font-normal text-[18px">
+                                <p className="text-[#27272A] font-normal text-[18px]">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui.
                                 </p>
                             </div>

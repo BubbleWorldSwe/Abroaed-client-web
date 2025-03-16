@@ -11,6 +11,7 @@ const StudentApplication = ({
   setSelectedApplication,
   onOpenUpdate,
   onOpenDocUpdate,
+  onOpenStatusModal,
 }) => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -110,6 +111,8 @@ const StudentApplication = ({
                         setSelectedApplication={setSelectedApplication}
                         onOpen={onOpenUpdate}
                         onOpenDocUpdate={onOpenDocUpdate}
+                        onOpenStatusModal={onOpenStatusModal}
+                        status={tab?.status}
                       />
                     </div>
                   ))}

@@ -66,3 +66,23 @@ export const plans = [
         recommended: false,
     },
 ];
+
+export const targetYear = ["2025", "2026", "2027", "2028", "2029", "2030"];
+
+export const applyingFor = [
+    "Bachelor’s Degree",
+    "Master's Degree",
+    "PhD",
+    "Doctorate",
+    "Certificate",
+    "Diploma",
+];
+
+export const highestEducation = [
+    "Engineering",
+    "Medical",
+    "Law",
+    "Management",
+    "Arts & Humanities",
+    "Science",
+];

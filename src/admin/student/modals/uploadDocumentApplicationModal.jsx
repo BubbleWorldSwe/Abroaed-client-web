@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import { Toaster } from "react-hot-toast";
+import moment from "moment";
+import { toast } from "react-toastify";
 import { Plus } from "lucide-react";
-import { useSelector } from "react-redux";
-import { SelectField } from "../../../commons/components/inputFields/selectField";
-import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import trash from "../../../assets/delete.png";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
-import { toast } from "react-toastify";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { docCategory, intake } from "../../../constants/values";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
 
 const UpdateDocApplicationModal = ({
   isOpen,
   onClose,
   leadId,
-  addApplication,
+
   filledData,
+  updateApplication,
 }) => {
   const defaultDocument = {
     category: "",
@@ -22,17 +23,24 @@ const UpdateDocApplicationModal = ({
     deadline: "",
   };
 
+  const formatDateTime = (date) => {
+    return date ? moment(date).format("YYYY-MM-DDTHH:mm") : "";
+  };
+
   const [formData, setFormData] = useState({
-    additionalDocuments: filledData?.additionalDocuments?.length
-      ? filledData.additionalDocuments
-      : [defaultDocument],
+    additionalDocuments: [defaultDocument],
   });
 
   useEffect(() => {
     if (!filledData || !filledData.additionalDocuments?.length) {
       setFormData({ additionalDocuments: [defaultDocument] });
     } else {
-      setFormData(filledData);
+      setFormData({
+        additionalDocuments: filledData.additionalDocuments.map((doc) => ({
+          ...doc,
+          deadline: formatDateTime(doc.deadline),
+        })),
+      });
     }
   }, [filledData, leadId]);
 
@@ -46,18 +54,26 @@ const UpdateDocApplicationModal = ({
     }));
   };
 
-  const removeDocument = (id) => {
+  const removeDocument = (index) => {
+    console.log(index);
     setFormData((prev) => ({
       ...prev,
-      additionalDocuments: prev.additionalDocuments.filter((_, i) => i !== id),
+      additionalDocuments: prev.additionalDocuments.filter(
+        (_, i) => i !== index
+      ),
     }));
   };
 
-  const handleDocumentChange = (id, field, value) => {
+  const handleDocumentChange = (index, field, value) => {
     setFormData((prev) => ({
       ...prev,
       additionalDocuments: prev.additionalDocuments.map((doc, i) =>
-        i === id ? { ...doc, [field]: value } : doc
+        i === index
+          ? {
+              ...doc,
+              [field]: field === "deadline" ? formatDateTime(value) : value,
+            }
+          : doc
       ),
     }));
   };
@@ -74,8 +90,16 @@ const UpdateDocApplicationModal = ({
       return;
     }
 
-    console.log("Form Data:", formData);
-    addApplication(formData);
+    // Remove `_id` from each document
+    const formattedData = {
+      ...formData,
+      additionalDocuments: formData.additionalDocuments.map(
+        ({ _id, ...rest }) => rest
+      ),
+    };
+
+    console.log("formattedData Form Data:", formattedData);
+    updateApplication(formattedData);
   };
 
   return (
@@ -96,40 +120,49 @@ const UpdateDocApplicationModal = ({
             {/* Additional Documents Section */}
             <div className="mt-5">
               {formData.additionalDocuments.map((doc, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between mb-2 items-center gap-3 my-5"
-                >
-                  <TextInputField
-                    label="Document Category"
-                    name={`category-${index}`}
-                    type="text"
-                    value={doc.category}
-                    onChange={(e) =>
-                      handleDocumentChange(index, "category", e.target.value)
-                    }
-                    placeholder="Enter"
-                  />
-                  <TextInputField
-                    label="Title"
-                    name={`title-${index}`}
-                    type="text"
-                    value={doc.title}
-                    onChange={(e) =>
-                      handleDocumentChange(index, "title", e.target.value)
-                    }
-                    placeholder="Enter"
-                  />
-                  <TextInputField
-                    label="Deadline"
-                    name={`deadline-${index}`}
-                    type="datetime-local"
-                    value={doc.deadline}
-                    onChange={(e) =>
-                      handleDocumentChange(index, "deadline", e.target.value)
-                    }
-                    placeholder="Enter"
-                  />
+                <div key={index} className="flex gap-3 my-5 items-center">
+                  <div className="flex-1">
+                    <SelectField
+                      label="Document Category"
+                      name={`category-${index}`}
+                      value={doc.category}
+                      onChange={(e) =>
+                        handleDocumentChange(index, "category", e.target.value)
+                      }
+                      options={docCategory.map((data) => ({
+                        label: data,
+                        value: data,
+                      }))}
+                      required
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <TextInputField
+                      label="Title"
+                      name={`title-${index}`}
+                      type="text"
+                      value={doc.title}
+                      onChange={(e) =>
+                        handleDocumentChange(index, "title", e.target.value)
+                      }
+                      placeholder="Enter"
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <TextInputField
+                      label="Deadline"
+                      name={`deadline-${index}`}
+                      type="datetime-local"
+                      value={doc.deadline || ""}
+                      onChange={(e) =>
+                        handleDocumentChange(index, "deadline", e.target.value)
+                      }
+                      placeholder="Enter"
+                    />
+                  </div>
+
                   <button
                     type="button"
                     className="text-red-500 mt-5"
@@ -140,6 +173,7 @@ const UpdateDocApplicationModal = ({
                   </button>
                 </div>
               ))}
+
               <button
                 type="button"
                 className="mt-5 font-bold text-blue-500 py-1 rounded transition flex items-center gap-2"

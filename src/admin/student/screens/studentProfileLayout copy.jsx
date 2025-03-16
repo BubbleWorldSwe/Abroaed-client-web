@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom";
 import DocumentLibrary from "../components/documentLibrary";
 import StudentAdditionalDetails from "../components/studentAdditionalDetails";
-// import StudentAdditionalServices from "../components/studentAdditionalServices";
 import StudentApplication from "../components/studentApplication";
 import StudentAssignTeam from "../components/studentAssignTeam";
-// import StudentDocumentLibrary from "../components/studentDocumentLibrary";
 import StudentPersonalDetails from "../components/studentPersonDetails";
 import StudentProfile from "../components/studentProfile";
 import StudentSavedPreference from "../components/studentSavedPreference";
@@ -16,8 +14,6 @@ import {
   editStudentLeadRequest,
   editStudentRequest,
 } from "../../../redux/actions/studentsActions";
-import { editLeadsStudentRequest } from "../../../redux/actions/leadsActions";
-import UpdateLeadPersonalInfo from "../../lead/modals/updateLeadPersonalInfoModal";
 import UpdateStudentPersonalInfo from "../modals/updateStudentPersonalInfoModal";
 import UpdateStudentAdditionInfo from "../modals/updateStudentAdditionInfoModal";
 

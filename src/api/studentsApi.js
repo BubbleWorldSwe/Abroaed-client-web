@@ -75,6 +75,7 @@ export const setUpdateStudentApplication = async (credentials, appId) => {
       `${BASE_URL}/api/v1/admin/applications/${appId}`,
       credentials
     );
+
     if (data.success) {
       return data.data;
     }

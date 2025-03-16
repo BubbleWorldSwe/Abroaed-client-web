@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginRequest } from "../../redux/actions/authActions";
@@ -11,7 +11,7 @@ function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { loading, token, user } = useSelector((state) => state.auth);
+  const { loading, token, } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     try {
@@ -51,7 +51,7 @@ function SigninPage() {
               // action="#"
               onSubmit={handleSubmit}
             >
-              <h2 className="text-xl font-bold font-inter text-gray-900 dark:text-white">
+              <h2 className="text-xl font-bold   text-gray-900 dark:text-white">
                 Please Sign In to Continue
               </h2>
 
@@ -63,8 +63,8 @@ function SigninPage() {
 
               <div>
                 <label
-                  for="email"
-                  className="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium   text-gray-900 dark:text-gray-300"
                 >
                   Your email
                 </label>
@@ -81,8 +81,8 @@ function SigninPage() {
               </div>
               <div>
                 <label
-                  for="password"
-                  className="block mb-2 text-sm font-medium font-inter text-gray-900 dark:text-gray-300"
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium   text-gray-900 dark:text-gray-300"
                 >
                   Your password
                 </label>
@@ -111,20 +111,20 @@ function SigninPage() {
                   </div>
                   <div className="ml-3 text-sm">
                     <label
-                      for="terms"
-                      className="font-light font-inter text-gray-500 dark:text-gray-300"
+                      htmlFor="terms"
+                      className="font-light   text-gray-500 dark:text-gray-300"
                     >
                       By signing up, you are creating a Flowbite account, and
                       you agree to Flowbite’s{" "}
                       <a
-                        className="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
+                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
                       >
                         Terms of Use
                       </a>{" "}
                       and{" "}
                       <a
-                        className="font-medium font-inter text-primary-600 dark:text-primary-500 hover:underline"
+                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
                       >
                         Privacy Policy
@@ -145,8 +145,8 @@ function SigninPage() {
                   </div>
                   <div className="ml-3 text-sm">
                     <label
-                      for="newsletter"
-                      className="font-light font-inter text-gray-500 dark:text-gray-300"
+                      htmlFor="newsletter"
+                      className="font-light   text-gray-500 dark:text-gray-300"
                     >
                       Email me about product updates and resources.
                     </label>
@@ -159,7 +159,7 @@ function SigninPage() {
                 /* onClick={() => {
                   navigate("/admin/dashboard");
                 }} */
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium font-inter rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
+                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium   rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
               >
                 {loading ? (
                   <div className="flex justify-center items-center">
@@ -228,8 +228,8 @@ function SigninPage() {
                       y2="12.9901"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#1724C9" />
-                      <stop offset="1" stop-color="#1C64F2" />
+                      <stop stopColor="#1724C9" />
+                      <stop offset="1" stopColor="#1C64F2" />
                     </linearGradient>
                     <linearGradient
                       id="paint1_linear_11430_22515"
@@ -239,8 +239,8 @@ function SigninPage() {
                       y2="2.33321"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#1C64F2" />
-                      <stop offset="1" stop-color="#0092FF" />
+                      <stop stopColor="#1C64F2" />
+                      <stop offset="1" stopColor="#0092FF" />
                     </linearGradient>
                     <linearGradient
                       id="paint2_linear_11430_22515"
@@ -250,8 +250,8 @@ function SigninPage() {
                       y2="5.99375"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#0092FF" />
-                      <stop offset="1" stop-color="#45B2FF" />
+                      <stop stopColor="#0092FF" />
+                      <stop offset="1" stopColor="#45B2FF" />
                     </linearGradient>
                     <linearGradient
                       id="paint3_linear_11430_22515"
@@ -261,8 +261,8 @@ function SigninPage() {
                       y2="25.8192"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#1C64F2" />
-                      <stop offset="1" stop-color="#0092FF" />
+                      <stop stopColor="#1C64F2" />
+                      <stop offset="1" stopColor="#0092FF" />
                     </linearGradient>
                     <linearGradient
                       id="paint4_linear_11430_22515"
@@ -272,8 +272,8 @@ function SigninPage() {
                       y2="24.1181"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#1724C9" />
-                      <stop offset="1" stop-color="#1C64F2" />
+                      <stop stopColor="#1724C9" />
+                      <stop offset="1" stopColor="#1C64F2" />
                     </linearGradient>
                     <linearGradient
                       id="paint5_linear_11430_22515"
@@ -283,8 +283,8 @@ function SigninPage() {
                       y2="10.6178"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#0092FF" />
-                      <stop offset="1" stop-color="#45B2FF" />
+                      <stop stopColor="#0092FF" />
+                      <stop offset="1" stopColor="#45B2FF" />
                     </linearGradient>
                     <linearGradient
                       id="paint6_linear_11430_22515"
@@ -294,8 +294,8 @@ function SigninPage() {
                       y2="20.4898"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#1C64F2" />
-                      <stop offset="1" stop-color="#0092FF" />
+                      <stop stopColor="#1C64F2" />
+                      <stop offset="1" stopColor="#0092FF" />
                     </linearGradient>
                     <linearGradient
                       id="paint7_linear_11430_22515"
@@ -305,8 +305,8 @@ function SigninPage() {
                       y2="11.488"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#1724C9" />
-                      <stop offset="1" stop-color="#1C64F2" />
+                      <stop stopColor="#1724C9" />
+                      <stop offset="1" stopColor="#1C64F2" />
                     </linearGradient>
                     <linearGradient
                       id="paint8_linear_11430_22515"
@@ -316,17 +316,17 @@ function SigninPage() {
                       y2="31.9579"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stop-color="#0092FF" />
-                      <stop offset="1" stop-color="#45B2FF" />
+                      <stop stopColor="#0092FF" />
+                      <stop offset="1" stopColor="#45B2FF" />
                     </linearGradient>
                   </defs>
                 </svg>
                 ABROAED
               </a>
-              <h1 className="mb-4 text-3xl font-extrabold font-inter tracking-tight leading-none text-white xl:text-5xl">
+              <h1 className="mb-4 text-3xl font-extrabold   tracking-tight leading-none text-white xl:text-5xl">
                 Explore the world’s leading study Abroaed platform
               </h1>
-              <p className="mb-4 font-light font-inter text-primary-200 lg:mb-8">
+              <p className="mb-4 font-light   text-primary-200 lg:mb-8">
                 Millions of designers and agencies around the world showcase
                 their portfolio work on Flowbite - the home to the world’s best
                 design and creative professionals.
@@ -357,7 +357,7 @@ function SigninPage() {
                 <a href="#" className="pl-3 text-white sm:pl-5 dark:text-white">
                   <span className="text-sm text-primary-200">
                     Over{" "}
-                    <span className="font-medium font-inter font-inter text-white">
+                    <span className="font-medium     text-white">
                       15.7k
                     </span>{" "}
                     Happy Customers

@@ -171,13 +171,13 @@ const StudentProfileLayout = () => {
 
   const getNextStatus = (currentStatus) => {
     if (currentStatus === "awaiting_response") {
-      return ["rejected", "offer_letter_received"];
+      return ["rejected", "offer_letter_received"]; // Provide options for this case
     }
 
     const currentIndex = statusSequence.indexOf(currentStatus);
     return currentIndex !== -1 && currentIndex < statusSequence.length - 1
-      ? [statusSequence[currentIndex + 1]]
-      : [];
+      ? statusSequence[currentIndex + 1]
+      : null;
   };
 
   console.log(getNextStatus(selectedApplication?.status));
@@ -284,16 +284,14 @@ const StudentProfileLayout = () => {
         isOpen={changeStatusModal}
         onClose={() => setChangeStatusModal(false)}
         heading="Change Status!"
-        onSubmit={(selectedStatus) => {
-          updateStudentApplication({ status: selectedStatus });
+        onSubmit={() => {
+          updateStudentApplication({
+            status: getNextStatus(selectedApplication?.status),
+          });
         }}
-        title={
-          selectedApplication?.status === "awaiting_response"
-            ? "Select the next status for this application:"
-            : "Are you sure you want to move to the next step?"
-        }
-        options={getNextStatus(selectedApplication?.status)}
+        title={"Are you sure you want to move to next step?"}
       />
+
       {/* Page Content */}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="max-w-7xl p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
