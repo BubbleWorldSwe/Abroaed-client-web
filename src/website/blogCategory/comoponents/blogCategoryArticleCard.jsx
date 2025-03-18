@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom"
 
 const BlogCategoryArticleCard = () => {
+    const navigate = useNavigate();
     return (
-        <div className=" mx-auto w-full bg-white rounded-xl shadow-md dark:bg-gray-900 dark:border-gray-700">
-            <a href="#">
+        <button
+            className=" mx-auto w-full bg-white rounded-xl shadow-md dark:bg-gray-900 dark:border-gray-700"
+            onClick={() => navigate(`/blog/${1}`)}
+
+        >
+            <a>
                 <img
                     className=" rounded-t-xl"
                     src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png"
@@ -22,7 +28,7 @@ const BlogCategoryArticleCard = () => {
                     One line hook/ brief of the article.
                 </p>
             </div>
-        </div>
+        </button>
     )
 }
 
