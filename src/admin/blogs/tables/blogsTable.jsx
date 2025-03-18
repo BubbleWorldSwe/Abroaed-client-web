@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-import { Edit2, EllipsisVertical, Eye, PaintbrushVerticalIcon, Pencil, Trash2 } from "lucide-react";
+import { Edit2, EllipsisVertical, Eye, PaintbrushVerticalIcon, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
-import { setSelectedAccommodation } from "../../../redux/actions/accommodationActions";
 
 const BlogsTable = ({
   currentPage,
@@ -16,9 +14,7 @@ const BlogsTable = ({
 }) => {
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
-  const navigate = useNavigate();
   const dropdownRef = useRef(null);
-  const dispatch = useDispatch();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
@@ -29,21 +25,7 @@ const BlogsTable = ({
     }
   };
 
-  const handleViewDetails = (accommodation) => {
-    try {
-      console.log(accommodation);
-      dispatch(setSelectedAccommodation(accommodation));
 
-      navigate(
-        `/admin/accommodation/${encodeURIComponent(accommodation._id)}`,
-        {
-          state: accommodation,
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
