@@ -98,8 +98,9 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
               />
             </div>
             <div className="flex justify-center text-center mt-5">
-              <button className="py-2 px-5 border-2 rounded-lg font-semibold border-[#27272A] text-[#71717A] hover:bg-slate-100"
-                onClick={() => navigate('/homeCounselling')}
+              <button
+                className="py-2 px-5 border-2 rounded-lg font-semibold border-[#27272A] text-[#71717A] hover:bg-slate-100"
+                onClick={() => navigate("/homeCounselling")}
               >
                 Learn About Home Counselling
               </button>
