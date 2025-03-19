@@ -47,6 +47,8 @@ import BlogsHome from "../website/blogHome/webpages/blogHomePage";
 import BlogPage from "../website/blogPage/webpages/blogPage";
 import ContactUsPage from "../website/contactUs/webpages/contactUsPage";
 import FaqsPage from "../website/faqs/webpages/faqsPage";
+import Blogs from "../admin/blogs/screens/blogs";
+import BlogsDetails from "../admin/blogs/screens/blogsDetails";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -160,6 +162,8 @@ const AppRoutes = () => {
         { path: "colleges/:id", element: <CollegDetails /> },
         { path: "destinations/:id", element: <DestinationDetails /> },
         { path: "destinations", element: <Destinations /> },
+        { path: "blogs", element: <Blogs /> },
+        { path: "blogDetails", element: <BlogsDetails /> },
       ],
     },
     // Student Routes (Private)

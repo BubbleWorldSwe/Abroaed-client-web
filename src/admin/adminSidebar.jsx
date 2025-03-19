@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   BarChart2,
   BookUser,
@@ -10,6 +10,9 @@ import {
   School,
   MapPinned,
   Compass,
+
+  ClipboardList,
+
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -17,6 +20,7 @@ function CollapsableSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const isActive = (path) => window.location.pathname.startsWith(path);
+  const url = useLocation();
 
   const menuItems = [
     { path: "/admin/dashboard", label: "Home", icon: Home },
@@ -29,6 +33,7 @@ function CollapsableSidebar() {
     { path: "/admin/colleges", label: "Colleges", icon: School },
     { path: "/admin/destinations", label: "Destinations", icon: MapPinned },
     { path: "/admin/accommodation", label: "Accommodation", icon: Compass },
+    { path: "/admin/blogs", label: "Blogs", icon: ClipboardList, subPath: ["/admin/blogDetails"] },
   ];
 
   useEffect(() => {
@@ -41,17 +46,17 @@ function CollapsableSidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+
   return (
     <motion.div animate={{ width: isOpen ? 220 : 60 }} className="h-full">
       <aside className="h-[90vh] py-5 w-fit bg-white flex flex-col p-2">
         <nav className="flex flex-col gap-2">
-          {menuItems.map(({ path, label, icon: Icon }) => (
+          {menuItems.map(({ path, label, icon: Icon, subPath }) => (
             <button
               key={path}
               onClick={() => navigate(path)}
-              className={`flex items-center px-4 py-3 rounded-md cursor-pointer font-semibold transition ${
-                isActive(path) ? "text-black" : "text-[#A1A1AA]"
-              } hover:text-black`}
+              className={`flex items-center px-4 py-3 rounded-md cursor-pointer font-semibold transition ${isActive(path) || subPath?.includes(url.pathname) ? "text-black" : "text-[#A1A1AA]"
+                } hover:text-black`}
             >
               <Icon className="w-5 h-5" />
               {isOpen && (

@@ -1,30 +1,7 @@
-/* eslint-disable react/prop-types */
 import { articles } from "../data";
+import BlogCard from "./blogCard";
 
 const Blogs = () => {
-  const BlogsCard = ({ article }) => {
-    return (
-      <article className="p-4 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700">
-        <a href="#">
-          <img
-            className="mb-5 rounded-lg"
-            src={article.image}
-            alt="office laptop working"
-          />
-        </a>
-        <p className="mb-3 dark:text-gray-400">{article.content}</p>
-        <div className="text-end">
-          <button
-            type="submit"
-            className="py-2 px-4 text-md font-bold mt-4 text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-          >
-            Read more
-          </button>
-        </div>
-      </article>
-    );
-  };
-
   return (
     <section className=" dark:bg-gray-900 relative px-10 mx-auto">
       <div className=" px-3 mx-auto py-16  max-w-screen-2xl  dark:bg-gray-800 antialiased  relative">
@@ -38,7 +15,7 @@ const Blogs = () => {
         </div>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mx-auto max-w-screen-2xl">
           {articles.map((article, idx) => (
-            <BlogsCard article={article} key={idx} />
+            <BlogCard article={article} key={idx} />
           ))}
         </div>
       </div>
