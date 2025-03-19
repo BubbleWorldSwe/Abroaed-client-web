@@ -373,7 +373,7 @@ function Header({ isHeaderBgWhite = false }) {
               </ul>
             </div>
           </div>
-          {/*    <div className="flex flex-grow-0 basis-[10%] justify-end">
+          <div className="flex flex-grow-0 basis-[10%] justify-end">
             <a
               href="/admin/signin"
               className={`text-sm font-medium ${
@@ -382,7 +382,7 @@ function Header({ isHeaderBgWhite = false }) {
             >
               Login
             </a>
-          </div> */}
+          </div>
           <button
             className="md:hidden p-2 basis-[0%]"
             // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
