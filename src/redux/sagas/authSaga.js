@@ -1,30 +1,57 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-
 import {
-  LOGIN_REQUEST,
-  loginSuccess,
-  loginFailure,
+  STUDENT_LOGIN_REQUEST,
+  STUDENT_LOGIN_SUCCESS,
+  STUDENT_LOGIN_FAILURE,
+  ADMIN_LOGIN_REQUEST,
+  ADMIN_LOGIN_SUCCESS,
+  ADMIN_LOGIN_FAILURE,
+  studentLoginSuccess,
+  studentLoginFailure,
+  adminLoginSuccess,
+  adminLoginFailure,
 } from "../actions/authActions";
 
 import { loginApi } from "../../api/authApi";
 import { toast } from "react-toastify";
 
-function* handleLogin(action) {
+function* handleStudentLogin(action) {
   try {
     const response = yield call(loginApi, action.payload);
 
     if (response.status === 201) {
-      console.log("Success");
-      yield put(loginSuccess(response.data));
+      yield put(studentLoginSuccess(response.data));
     } else {
-      yield put(loginFailure(response.message));
+      yield put(studentLoginFailure(response.message));
       toast.error(response.message);
     }
   } catch (error) {
-    yield put(loginFailure(error.response?.data?.message || "Login failed"));
+    yield put(
+      studentLoginFailure(
+        error.response?.data?.message || "Student login failed"
+      )
+    );
+  }
+}
+
+function* handleAdminLogin(action) {
+  try {
+    const response = yield call(loginApi, action.payload);
+
+    if (response.status === 201) {
+      yield put(adminLoginSuccess(response.data));
+    } else {
+      yield put(adminLoginFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(
+      adminLoginFailure(error.response?.data?.message || "Admin login failed")
+    );
   }
 }
 
 export default function* authSaga() {
-  yield takeLatest(LOGIN_REQUEST, handleLogin);
+  yield takeLatest(STUDENT_LOGIN_REQUEST, handleStudentLogin);
+  yield takeLatest(ADMIN_LOGIN_REQUEST, handleAdminLogin);
 }

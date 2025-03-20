@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "../../redux/actions/authActions";
+import { studentLoginRequest } from "../../redux/actions/authActions";
 
 import { toast } from "react-toastify";
 import AbroaedInfo from "./components/abroaedInfo";
@@ -9,11 +9,12 @@ import { BorderTextInputField } from "../../commons/components/inputFields/borde
 
 function StudentSignIn() {
   const navigate = useNavigate();
-  const [tab, setTab] = useState("signin");
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { loading, token } = useSelector((state) => state.auth);
+  const { loading, token, role } = useSelector((state) => state.auth);
+  console.log(role + " Role", token);
 
   const handleSubmit = async (e) => {
     try {
@@ -31,15 +32,15 @@ function StudentSignIn() {
         return;
       }
 
-      dispatch(loginRequest({ email, password }));
+      dispatch(studentLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    if (token) {
-      navigate("/admin/dashboard");
+    if (token && role === "student") {
+      navigate("/home");
     }
   }, [token, navigate]);
 

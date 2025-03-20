@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -10,23 +10,9 @@ import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
 import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
-
-export const destinationMenuItems = [
-  { name: "UK", flag: "🇬🇧", link: "/uk" },
-  { name: "Ireland", flag: "🇮🇪", link: "/ireland" },
-  { name: "Germany", flag: "🇩🇪", link: "/germany" },
-  { name: "France", flag: "🇫🇷", link: "/france" },
-  { name: "Italy", flag: "🇮🇹", link: "/italy" },
-  { name: "Poland", flag: "🇵🇱", link: "/poland" },
-  { name: "Australia", flag: "🇦🇺", link: "/australia" },
-  { name: "USA", flag: "🇺🇸", link: "/usa" },
-  { name: "Canada", flag: "🇨🇦", link: "/canada" },
-  { name: "Dubai", flag: "🇦🇪", link: "/dubai" },
-  { name: "Europe", flag: "🇪🇺", link: "/europe" },
-  { name: "Netherlands", flag: "🇳🇱", link: "/netherlands" },
-  { name: "Spain", flag: "🇪🇸", link: "/spain" },
-  { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
-];
+import { logout } from "../../../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
+//import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -53,6 +39,17 @@ function Header({ isHeaderBgWhite = false }) {
   const [filteredColleges, setFilteredColleges] = useState([]);
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { token } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    dispatch(logout(null));
+    // localStorage.removeItem("token", token);
+    navigate("/home");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -240,7 +237,7 @@ function Header({ isHeaderBgWhite = false }) {
                   {activeDropdown === "destinations" && (
                     <div className="relative">
                       <DestinationNavItemModal
-                        menuItems={destinationMenuItems}
+                        //  menuItems={destinationMenuItems}
                         handleMouseEnter={handleMouseEnter}
                         handleMouseLeave={handleMouseLeave}
                       />
@@ -373,16 +370,28 @@ function Header({ isHeaderBgWhite = false }) {
               </ul>
             </div>
           </div>
-          <div className="flex flex-grow-0 basis-[10%] justify-end">
-            <a
-              href="/admin/signin"
-              className={`text-sm font-medium ${
-                scrolling ? "text-black" : "text-white"
-              } hover:underline`}
-            >
-              Login
-            </a>
-          </div>
+          {/*  <div className="flex flex-grow-0 basis-[10%] justify-end">
+            {token ? (
+              <button
+                onClick={() => handleSignOut()}
+                className={`text-sm font-medium ${
+                  scrolling ? "text-black" : "text-white"
+                } hover:underline`}
+              >
+                Logout
+              </button>
+            ) : (
+              <a
+                //  href="/admin/signin"
+                href="/signin"
+                className={`text-sm font-medium ${
+                  scrolling ? "text-black" : "text-white"
+                } hover:underline`}
+              >
+                Login
+              </a>
+            )}
+          </div> */}
           <button
             className="md:hidden p-2 basis-[0%]"
             // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

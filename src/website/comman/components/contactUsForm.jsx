@@ -90,7 +90,7 @@ const ContactUsForm = ({
                 label={"First Name*"}
                 placeholder="Enter"
                 name="firstName"
-                type={'text'}
+                type={"text"}
                 value={formData.firstName}
                 onChange={handleChange}
                 required
@@ -99,7 +99,7 @@ const ContactUsForm = ({
                 label={"Last Name*"}
                 placeholder="Enter"
                 name="lastName"
-                type={'text'}
+                type={"text"}
                 value={formData.lastName}
                 onChange={handleChange}
                 required
@@ -108,7 +108,7 @@ const ContactUsForm = ({
                 label={"Email ID*"}
                 placeholder="Enter"
                 name="email"
-                type={'email'}
+                type={"email"}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -117,7 +117,7 @@ const ContactUsForm = ({
                 label={"Contact Number*"}
                 placeholder="Enter"
                 name="mobile"
-                type={'phone'}
+                type={"phone"}
                 value={formData.mobile}
                 onChange={handleChange}
                 required

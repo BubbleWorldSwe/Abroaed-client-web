@@ -10,7 +10,7 @@ import {
   targetYear,
 } from "../../../../constants/values";
 
-const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
+const BookCounsellingNow = ({ source, entity, onFormSubmit, loading }) => {
   const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
   const [formData, setFormData] = useState({
@@ -154,7 +154,7 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                     }))}
                   />
 
-                  <BorderSelectField
+                  {/*  <BorderSelectField
                     label={"Mode of Counselling"}
                     options={[
                       { value: "1", label: "Home Counselling" },
@@ -163,19 +163,19 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                       { value: "4", label: "Others" },
                     ]}
                     required
+                  /> */}
+                  <BorderSelectField
+                    label="Preferred Study Destination"
+                    name="preferredDestination"
+                    value={formData.userDetail.preferredDestination}
+                    onChange={handleChange}
+                    options={allDestinations.map((data) => ({
+                      label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                      value: data?._id,
+                      ...data,
+                    }))}
+                    required
                   />
-                  {/*  <BorderSelectField
-                  label="Preferred Study Destination"
-                  name="preferredDestination"
-                  value={formData.userDetail.preferredDestination}
-                  onChange={handleChange}
-                  options={allDestinations.map((data) => ({
-                    label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                    value: data?._id,
-                    ...data,
-                  }))}
-                  required
-                /> */}
                 </div>
               </div>
               <div className="flex items-start mt-4">
@@ -208,7 +208,13 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                   type="submit"
                   className="py-2  px-7 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
                 >
-                  Book Now
+                  {loading ? (
+                    <div className="flex justify-center items-center">
+                      <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-black rounded-full"></div>
+                    </div>
+                  ) : (
+                    "Book Now"
+                  )}
                 </button>
               </div>
             </div>

@@ -21,7 +21,7 @@ import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavigationItems = () => {
   return (
@@ -41,6 +41,9 @@ const NavigationItems = () => {
 
 const HomeCounsellingPage = () => {
   const dispatch = useDispatch();
+
+  const { loading } = useSelector((state) => state?.leads);
+  console.log(loading, "loading");
 
   const handleAddLead = (data) => {
     // setIsLoading(true);
@@ -75,6 +78,7 @@ const HomeCounsellingPage = () => {
           onFormSubmit={handleAddLead}
           source={source.homeCounselling}
           entity={entity.bookCounselling}
+          loading={loading}
         />
         <div className="absolute top-48 right-0 -z-10">
           <img
@@ -98,7 +102,11 @@ const HomeCounsellingPage = () => {
           />
         </div>
       </div>
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.homeCounselling}
+        entity={entity.contactUs}
+      />
       <Footer />
     </div>
   );

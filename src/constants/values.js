@@ -75,6 +75,10 @@ export const source = {
   finance: "Finance",
   abroaedPlus: "Abroaed Plus",
   homeCounselling: "Home Counselling",
+  leaguageOfExcellence: "Leaguage Of Excellence",
+  leaguageOfExcellence: "Leaguage Of Excellence",
+  pathways: "Pathways",
+  pathwaysProgram: "Pathways Program",
 };
 
 export const entity = {
@@ -89,4 +93,22 @@ export const statusSequence = [
   "awaiting_response",
   "rejected",
   "offer_letter_received",
+];
+
+// src/constants/menuItems.js
+export const destinationMenuItems = [
+  { name: "UK", flag: "🇬🇧", link: "/uk" },
+  { name: "Ireland", flag: "🇮🇪", link: "/ireland" },
+  { name: "Germany", flag: "🇩🇪", link: "/germany" },
+  { name: "France", flag: "🇫🇷", link: "/france" },
+  { name: "Italy", flag: "🇮🇹", link: "/italy" },
+  { name: "Poland", flag: "🇵🇱", link: "/poland" },
+  { name: "Australia", flag: "🇦🇺", link: "/australia" },
+  { name: "USA", flag: "🇺🇸", link: "/usa" },
+  { name: "Canada", flag: "🇨🇦", link: "/canada" },
+  { name: "Dubai", flag: "🇦🇪", link: "/dubai" },
+  { name: "Europe", flag: "🇪🇺", link: "/europe" },
+  { name: "Netherlands", flag: "🇳🇱", link: "/netherlands" },
+  { name: "Spain", flag: "🇪🇸", link: "/spain" },
+  { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
 ];

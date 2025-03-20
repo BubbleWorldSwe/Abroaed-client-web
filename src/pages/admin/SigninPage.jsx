@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "../../redux/actions/authActions";
+import { adminLoginRequest } from "../../redux/actions/authActions";
 
 import { toast } from "react-toastify";
 
@@ -29,7 +29,7 @@ function SigninPage() {
         return;
       }
 
-      dispatch(loginRequest({ email, password }));
+      dispatch(adminLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
     }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "../../redux/actions/authActions";
+import { studentLoginRequest } from "../../redux/actions/authActions";
 
 import { toast } from "react-toastify";
 import AbroaedInfo from "./components/abroaedInfo";
@@ -31,7 +31,7 @@ function StudentSignUp() {
         return;
       }
 
-      dispatch(loginRequest({ email, password }));
+      dispatch(studentLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
     }

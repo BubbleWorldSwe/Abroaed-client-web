@@ -22,8 +22,24 @@ import PathwaysProgramFaqSection from "./sections/pathwaysProgramFaqSection";
 import ContactUsForm from "../../../comman/components/contactUsForm";
 import Testimonials from "../../../comman/components/testimonials";
 import Blogs from "../../../comman/components/blogs";
+import { addLeadRequest } from "../../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
+import { entity, source } from "../../../../constants/values";
 
 const PathwaysProgramPage = () => {
+  const dispatch = useDispatch();
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="font-rethink">
       <Header />
@@ -88,9 +104,9 @@ const PathwaysProgramPage = () => {
       <PathwaysProgramFaqSection />
       <Blogs />
       <ContactUsForm
-      // onFormSubmit={handleAddLead}
-      // source={source.destination}
-      // entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
+        onFormSubmit={handleAddLead}
+        source={source.pathwaysProgram}
+        entity={entity.contactUs}
       />
       <Footer />
     </div>
