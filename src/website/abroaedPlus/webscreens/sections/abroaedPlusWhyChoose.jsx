@@ -4,9 +4,9 @@ import vectorOutlinedRightFlat from "../../../../assets/vectorOutlinedRightFlat.
 
 const Cards = ({ header = "" }) => {
     return (
-        <div className="w-full relative bg-white flex-shrink-0 h-28 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+        <div className="w-full relative bg-white flex justify-center items-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
             <div className="p-5">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                     <h5 className="mb-2 text-[24px] font-semibold  text-[#27272A] dark:text-white">
                         {header}
                     </h5>
@@ -20,24 +20,19 @@ const Cards = ({ header = "" }) => {
                 />
             </div>
         </div>
-
     );
-
 }
 
 
 
 const AbroaedPlusWhyChoose = () => {
-
-
     return (
         <div >
             <section className="dark:bg-gray-900 relative px-12 mx-auto">
                 <div className=" mx-auto max-w-screen-2xl py-8">
                     <h2 className="text-[45px] font-extrabold text-[#27272A] mb-4">Why Choose ABROAED<sup>+</sup>?</h2>
                     <p className="font-normal mb-4 text-[#27272A] text-lg  dark:text-gray-400">
-                        lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.
-                    </p>
+                        We’re your study abroad wingman, making sure you nail every step—no stress, no guesswork. From unlimited home counseling and home tutors for English tests to guaranteed offers and killer loan rates, we’ve got you covered. With 24/7 support, GRE/GMAT prep, and personalized attention in small cohorts, we ensure you’re fully prepared. Plus, we help you connect with alumni mentors and get priority admission offers.                    </p>
                     <div className="grid  grid-cols-1 lg:grid-cols-3 gap-5 mb-5 mt-10">
                         {cardDetails.map((item, index) => (
                             <Cards header={item.key} text={item.value} key={index} />

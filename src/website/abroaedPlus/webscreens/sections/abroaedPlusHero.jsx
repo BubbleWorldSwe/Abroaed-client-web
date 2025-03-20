@@ -16,7 +16,8 @@ const AbroaedPlusHero = () => {
                     ABROAED <sup>+</sup>
                 </h1>
                 <p className="font-light mb-3 text-white md:text-lg opacity-90 xl:text-xl">
-                    Your complete study abroad companion.
+                    From Application to Arrival, We’ve Got You Covered!
+
                 </p>
                 <button className="bg-[#FDDA24] mt-7 text-lg text-[#432205] hover:bg-yellow-300  py-2 rounded-lg font-semibold">
                     Start Your Journey Today

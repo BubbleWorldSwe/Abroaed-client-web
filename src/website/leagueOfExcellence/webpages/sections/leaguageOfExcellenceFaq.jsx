@@ -9,22 +9,137 @@ const LeaguageOfExcellenceFaq = () => {
     };
     const faqs = [
         {
-            question: "Lorem ipsum dolor sit amet?",
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            question: "How is League of Excellence (LOE) different from Ivy League?",
+            answer: (
+                <table className="w-full border-collapse border border-gray-300 text-left">
+                    <thead className="bg-gray-100">
+                        <tr>
+                            <th className="border border-gray-300 px-4 py-2">Parameters</th>
+                            <th className="border border-gray-300 px-4 py-2">League of Excellence</th>
+                            <th className="border border-gray-300 px-4 py-2">Ivy League</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td className="border border-gray-300 px-4 py-2">Origin</td>
+                            <td className="border border-gray-300 px-4 py-2">
+                                A global collection of top-tier universities known for research, innovation, and global influence. Created by Abroaed to help students choose top universities worldwide.
+                            </td>
+                            <td className="border border-gray-300 px-4 py-2">
+                                A group of 8 private universities in the USA, originally formed as an athletic conference in 1954, now known for elite academics.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td className="border border-gray-300 px-4 py-2">Number of Schools</td>
+                            <td className="border border-gray-300 px-4 py-2">Multiple prestigious universities worldwide</td>
+                            <td className="border border-gray-300 px-4 py-2">Only 8 schools</td>
+                        </tr>
+                        <tr>
+                            <td className="border border-gray-300 px-4 py-2">Location</td>
+                            <td className="border border-gray-300 px-4 py-2">Global (USA, UK, Europe, Asia, Australia, etc.)</td>
+                            <td className="border border-gray-300 px-4 py-2">USA-centric (Northeast region)</td>
+                        </tr>
+                        <tr>
+                            <td className="border border-gray-300 px-4 py-2">Schools</td>
+                            <td className="border border-gray-300 px-4 py-2">
+                                Stanford, MIT, Oxford, Cambridge, ETH Zurich, NUS, University of Melbourne, and more.
+                            </td>
+                            <td className="border border-gray-300 px-4 py-2">
+                                Harvard, Yale, Princeton, Columbia, UPenn, Dartmouth, Brown, Cornell.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            ),
         },
         {
-            question: "Lorem ipsum dolor sit amet?",
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            question: "Which universities are part of the League of Excellence?",
+            answer: (
+                <div className="space-y-4">
+                    <p>Our League of Excellence service covers the following universities:</p>
+                    <ul className="list-disc list-inside space-y-2">
+                        <li>
+                            <strong>United States</strong>
+                            <ul className="list-disc list-inside pl-5">
+                                <li>Harvard University</li>
+                                <li>Yale University</li>
+                                <li>Princeton University</li>
+                                <li>Columbia University</li>
+                                <li>University of Pennsylvania (UPenn)</li>
+                                <li>Dartmouth College</li>
+                                <li>Brown University</li>
+                                <li>Cornell University</li>
+                                <li>Stanford University</li>
+                                <li>Massachusetts Institute of Technology (MIT)</li>
+                                <li>University of Chicago</li>
+                                <li>California Institute of Technology (Caltech)</li>
+                                <li>University of California, Berkeley</li>
+                                <li>Johns Hopkins University, etc.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>United Kingdom</strong>
+                            <ul className="list-disc list-inside pl-5">
+                                <li>University of Oxford</li>
+                                <li>University of Cambridge</li>
+                                <li>Imperial College London</li>
+                                <li>London School of Economics and Political Science (LSE)</li>
+                                <li>University College London (UCL), etc.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Europe (Other Top Institutions)</strong>
+                            <ul className="list-disc list-inside pl-5">
+                                <li>ETH Zurich (Switzerland)</li>
+                                <li>Technical University of Munich (TUM)</li>
+                                <li>University of Amsterdam (Netherlands)</li>
+                                <li>Sorbonne University (France)</li>
+                                <li>Karolinska Institute (Sweden), etc.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Canada</strong>
+                            <ul className="list-disc list-inside pl-5">
+                                <li>University of Toronto</li>
+                                <li>McGill University</li>
+                                <li>University of British Columbia (UBC), etc.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Asia-Pacific</strong>
+                            <ul className="list-disc list-inside pl-5">
+                                <li>National University of Singapore (NUS)</li>
+                                <li>University of Tokyo (Japan)</li>
+                                <li>Tsinghua University (China)</li>
+                                <li>Peking University (China)</li>
+                                <li>University of Hong Kong (HKU)</li>
+                                <li>Seoul National University (South Korea), etc.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Australia & New Zealand</strong>
+                            <ul className="list-disc list-inside pl-5">
+                                <li>University of Melbourne</li>
+                                <li>Australian National University (ANU)</li>
+                                <li>University of Sydney</li>
+                                <li>University of Queensland</li>
+                                <li>University of Auckland (New Zealand), etc.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            ),
         },
         {
-            question: "Lorem ipsum dolor sit amet?",
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+            question: "Can students from any country apply to LOE universities?",
+            answer: "Yes! LOE universities welcome students from all over the world and provide scholarships for overseas students.",
         },
         {
-            question: "Lorem ipsum dolor sit amet?",
-            answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-        },
-    ]
+            question: "Do LOE universities offer scholarships?",
+            answer: "Some LOE universities offer need-based financial aid but do not typically provide merit-based scholarships.",
+        }
+    ];
+
 
     return (
         <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">

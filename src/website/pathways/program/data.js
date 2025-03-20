@@ -59,30 +59,65 @@ export const articles = [
 ];
 export const cardDetails = [
     {
-        key: "Unlimited Home Counselling",
+        key: "Unlimited home or virtual counselling",
         value: 'India'
 
     },
     {
-        key: "Home Tutors for EPT",
+        key: "Country-specific, dedicated coach",
         value: '₹ 6,54,321'
 
     },
     {
-        key: "Competitive Interest Rates on Loans",
+        key: "Competitive interest rates on loan",
         value: 'Online'
 
     },
     {
-        key: "Country Specific Coach",
+        key: "Loan document collection right from your doorstep",
         value: 'Online'
     },
     {
-        key: "24/7 Student Support (Post Arrival)",
+        key: "1:1 virtual/ home coaching",
         value: 'Online'
     },
     {
-        key: "GRE/GMAT Prep",
+        key: "University application assistance with guaranteed offer letter",
+        value: 'Online'
+
+    },
+    {
+        key: "Comprehensive Visa interview preparation",
+        value: 'Online'
+
+    },
+    {
+        key: "Forex at lowest rates",
+        value: 'Online'
+
+    },
+    {
+        key: "International bank account opening",
+        value: 'Online'
+
+    },
+    {
+        key: "Easy and hassle-free accommodation",
+        value: 'Online'
+
+    },
+    {
+        key: "Flight ticket booking and cab services from the airport to your accommodation",
+        value: 'Online'
+
+    },
+    {
+        key: "City registration",
+        value: 'Online'
+
+    },
+    {
+        key: "24/7 student support post arrival",
         value: 'Online'
 
     },

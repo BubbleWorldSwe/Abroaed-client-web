@@ -19,7 +19,7 @@ const LeaguageOfExcellenceHero = () => {
                     League of Excellence
                 </h1>
                 <p className="font-light text-white md:text-lg xl:text-xl">
-                    One Liner
+                    Where prestige meets purpose and intellect sets new legacy
                 </p>
             </div>
         </section>
