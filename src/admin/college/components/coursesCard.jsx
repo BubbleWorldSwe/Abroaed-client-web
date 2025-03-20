@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
 import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
@@ -27,7 +29,7 @@ function CoursesCard({ onEdit, onUpdate }) {
 
       onUpdate({ courses: coursesWithoutId });
     } catch (error) {
-      console.log(first);
+      console.log(error);
     }
   }
 
@@ -50,7 +52,7 @@ function CoursesCard({ onEdit, onUpdate }) {
           </thead>
           <tbody>
             {collegeDetails?.courses?.map((data, i) => (
-              <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <tr key={i} className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
                 <td className=" px-4 py-3 font-semibold">{data?.name}</td>
                 <td className=" px-4 py-3">{data?.courseLevel}</td>
                 <td className=" px-4 py-3">{data?.duration}</td>
