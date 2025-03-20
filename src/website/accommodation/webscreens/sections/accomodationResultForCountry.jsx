@@ -25,18 +25,24 @@ function AccommodationResultForCountry({
                 {destinationsList.map((country) => (
                   <button
                     key={country._id}
-                    className={`px-4 py-2 text-gray-500 rounded-md text-left ${selectedCountry?._id === country._id
-                      ? "bg-gray-200 font-bold"
-                      : "hover:bg-gray-100"
-                      }`}
+                    className={`px-4 py-2 text-gray-500 rounded-md text-left ${
+                      selectedCountry?._id === country._id
+                        ? "bg-gray-200 font-bold"
+                        : "hover:bg-gray-100"
+                    }`}
                     onClick={(e) => {
                       e.preventDefault();
                       onSelectCountry(country._id);
                     }}
                   >
-                    <Flag width={20} code={country?.countryId?.code} style={{ display: 'inline-block' }} />   {country?.countryId?.name !== 'All' ? country?.countryId?.name : `All (${destinationsList?.length - 1})`}
-
-
+                    <Flag
+                      width={20}
+                      code={country?.countryId?.code}
+                      style={{ display: "inline-block" }}
+                    />{" "}
+                    {country?.countryId?.name !== "All"
+                      ? country?.countryId?.name
+                      : `All (${destinationsList?.length - 1})`}
                   </button>
                 ))}
               </div>

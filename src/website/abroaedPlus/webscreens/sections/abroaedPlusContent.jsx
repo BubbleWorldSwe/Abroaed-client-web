@@ -5,7 +5,8 @@ const AbroaedPlusContent = () => {
             <section className="dark:bg-gray-900 relative px-12 mx-auto">
                 <div className=" mx-auto max-w-screen-2xl py-14">
                     <p className="font-bold  text-[#27272A] text-2xl  dark:text-gray-400">
-                        We understand that your study abroad journey is more than just securing admission—it&lsquo;s about navigating every step with confidence. That’s where ABROAED+ comes in, offering end-to-end support to simplify your path to global education.                    </p>
+                        Abroaed+ is your ultimate study abroad companion, offering end-to-end support to simplify your global education journey. From choosing the right country, university, and course to acing IELTS/PTE/TOEFL, securing loans, and managing finances, we’ve got you covered. Avoid hidden costs (up to ₹4 Lakh+), confusing paperwork, and stress. With expert guidance, personalized plans, and a supportive student community, Abroaed+ ensures your journey is smooth, saving you time, money, and effort. Your dream university awaits!
+                    </p>
                 </div>
             </section>
         </div>

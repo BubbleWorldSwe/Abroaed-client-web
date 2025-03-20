@@ -1,5 +1,7 @@
+import { AbroaedServices } from "../../data";
 
 const AbroaedPlusHowItWork = () => {
+
     return (
         <div className="relative px-10 mx-auto">
             <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
@@ -10,44 +12,43 @@ const AbroaedPlusHowItWork = () => {
                             How It Works?
                         </h2>
                         <p className="text-[#27272A] text-lg  leading-7  ">
-                            Studying in the UK offers a variety of experiences. The cultural and traditional values of the UK attract several international students every year. The popular areas of employment in UK are as follows:
+                            At Abroaed+, we simplify your study abroad journey into clear, actionable steps, ensuring you’re supported every step of the way, from planning to settling in your dream destination.
                         </p>
                     </div>
                     <div className='py-5'>
                         <h3 className="mb-2  text-[32px]  font-bold text-gray-900 dark:text-white">
-                            lorem ipsum dolor sit
+                            Step 1: Dream & Discover
                         </h3>
                         <p className="text-[#27272A] text-lg leading-7 ">
-                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.
-                        </p>
+                            Your journey begins with unlimited home counseling, where our experts help you explore study abroad options, identify the right country, university, and course, and create a personalized roadmap. Next, we focus on test preparation—home tutors for English proficiency tests (IELTS/PTE/TOEFL) coaching ensure you achieve top scores. Simultaneously, we work on comprehensive profile building, helping you craft standout applications with strong SOPs, LORs, and resumes.                        </p>
                     </div>
                     <div className='py-5'>
                         <h3 className="mb-2  text-[32px]  font-bold text-gray-900 dark:text-white">
-                            lorem ipsum dolor sit
+                            Step 2: Apply & Secure
                         </h3>
                         <p className="text-[#27272A] text-lg leading-7 ">
-                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.
-                        </p>
+                            Once you’re ready, we guide you through the application process, ensuring you submit error-free applications to your dream universities. With guaranteed offers and priority admission support, you’ll secure your spot hassle-free. We also assist with education loans at competitive interest rates and provide guidance on managing finances. Post-admission, our country-specific coaches and 24/7 student support help you with visa processing, accommodation, and settling in. We will also help you connect with alumni mentors for insider tips and guidance.                        </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
-                        {Array(12).fill().map((_, index) => (
+                        {AbroaedServices.map((service, index) => (
                             <div
                                 key={index}
-                                className="w-full  bg-white flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                                className="w-full bg-white min-h-56 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
                             >
                                 <div className="p-5">
                                     <div className="flex justify-between">
                                         <h5 className="mb-2 text-[28px] font-bold tracking-tight text-[#27272A] dark:text-white">
-                                            Lorem Ipsum
+                                            {service.title}
                                         </h5>
                                     </div>
                                     <p className="mb-3 font-semibold text-[#52525B] text-[22px] dark:text-gray-400">
-                                        lorem ipsum dolor sit amet lorem ipsum dolor sit amet
+                                        {service.description}
                                     </p>
                                 </div>
                             </div>
                         ))}
+
                     </div>
                 </div>
 

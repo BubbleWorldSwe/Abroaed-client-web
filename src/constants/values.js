@@ -74,6 +74,7 @@ export const source = {
   testPrep: "Test Prep",
   finance: "Finance",
   abroaedPlus: "Abroaed Plus",
+  homeCounselling: "Home Counselling",
 };
 
 export const entity = {

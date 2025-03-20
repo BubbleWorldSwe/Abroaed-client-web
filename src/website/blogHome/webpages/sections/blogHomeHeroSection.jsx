@@ -5,10 +5,10 @@ const BlogHomeHeroSection = () => {
             <div
                 className="absolute top-0 left-0 right-0 p-28 z-0"
                 style={{
-                    background: `linear-gradient(to bottom, rgba(253,250,80,0.4), rgba(253,224,71,0.2), rgba(255,255,255,0.1))`,
+                    background: `linear-gradient(to bottom, rgba(255, 252, 194, 1), rgba(255, 252, 194, 0.8),rgba(255, 252, 194, 0.1))`,
                 }}
             ></div>
-            <div className=" px-12 py-16  mx-auto rounded-lg">
+            <div className=" px-12 pt-16  mx-auto rounded-lg">
                 <article
                     className="relative w-full h-screen bg-cover bg-center rounded-lg "
                     style={{

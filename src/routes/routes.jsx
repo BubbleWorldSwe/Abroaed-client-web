@@ -47,6 +47,10 @@ import BlogsHome from "../website/blogHome/webpages/blogHomePage";
 import BlogPage from "../website/blogPage/webpages/blogPage";
 import ContactUsPage from "../website/contactUs/webpages/contactUsPage";
 import FaqsPage from "../website/faqs/webpages/faqsPage";
+import Blogs from "../admin/blogs/screens/blogs";
+import BlogsDetails from "../admin/blogs/screens/blogsDetails";
+import StudentSignIn from "../website/auth/studentSignIn";
+import StudentSignUp from "../website/auth/studentSignUp";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -65,7 +69,8 @@ const AppRoutes = () => {
 
     { path: "/aboutus", element: <AboutUsPage />, isPrivate: false },
     { path: "/careers", element: <CareerPage />, isPrivate: false },
-    { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
+    { path: "/signin", element: <StudentSignIn />, isPrivate: false },
+    { path: "/signup", element: <StudentSignUp />, isPrivate: false },
     { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
     { path: "/blog", element: <BlogsHome />, isPrivate: false },
     {
@@ -136,6 +141,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     // Admin Dashboard Routes (Private)
+    { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     {
       path: "/admin",
       element: <AdminLayout />,
@@ -160,6 +166,8 @@ const AppRoutes = () => {
         { path: "colleges/:id", element: <CollegDetails /> },
         { path: "destinations/:id", element: <DestinationDetails /> },
         { path: "destinations", element: <Destinations /> },
+        { path: "blogs", element: <Blogs /> },
+        { path: "blogDetails", element: <BlogsDetails /> },
       ],
     },
     // Student Routes (Private)

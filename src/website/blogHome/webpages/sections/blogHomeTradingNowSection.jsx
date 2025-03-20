@@ -16,10 +16,10 @@ const BlogHomeTradingNowSection = () => {
                             aria-label="Related articles"
                             className="  dark:bg-gray-800 antialiased"
                         >
-                            <div className="px-4 mx-auto  flex justify-between">
+                            <div className="px-4 mx-auto  flex gap-16">
                                 <div className="w-3/4">
                                     <h2 className="mb-8 text-[45px] font-extrabold text-[#27272A] ">
-                                        Trending Now in
+                                        Trending Now
                                     </h2>
                                     <article className="flex gap-5 mb-8">
                                         <div className="w-2/5 flex-shrink-0  rounded-xl">

@@ -19,6 +19,9 @@ import Testimonials from "../../comman/components/testimonials";
 import ExploreOurServicesHomeCounselling from "./sections/exploreOurServicesHomeCounselling";
 import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
+import { entity, source } from "../../../constants/values";
+import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 const NavigationItems = () => {
   return (
@@ -37,6 +40,17 @@ const NavigationItems = () => {
 };
 
 const HomeCounsellingPage = () => {
+  const dispatch = useDispatch();
+
+  const handleAddLead = (data) => {
+    // setIsLoading(true);
+    console.log("handleAddLead");
+    console.log(data);
+
+    dispatch(addLeadRequest(data));
+    // setIsLoading(false);
+  };
+
   return (
     <div className="font-rethink">
       <Header />
@@ -57,7 +71,11 @@ const HomeCounsellingPage = () => {
       </div>
       <WhyChooseOurHomeCounselling />
       <div className="relative">
-        <BookCounsellingNow />
+        <BookCounsellingNow
+          onFormSubmit={handleAddLead}
+          source={source.homeCounselling}
+          entity={entity.bookCounselling}
+        />
         <div className="absolute top-48 right-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"

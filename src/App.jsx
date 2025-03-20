@@ -27,7 +27,7 @@ import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/routes";
 import "swiper/swiper-bundle.css"; // Swiper CSS
 
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (

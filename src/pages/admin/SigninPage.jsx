@@ -11,7 +11,7 @@ function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { loading, token, } = useSelector((state) => state.auth);
+  const { loading, token } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     try {
@@ -52,7 +52,7 @@ function SigninPage() {
               onSubmit={handleSubmit}
             >
               <h2 className="text-xl font-bold   text-gray-900 dark:text-white">
-                Please Sign In to Continue
+                Admin Login
               </h2>
 
               <div className="flex items-center">
@@ -357,9 +357,7 @@ function SigninPage() {
                 <a href="#" className="pl-3 text-white sm:pl-5 dark:text-white">
                   <span className="text-sm text-primary-200">
                     Over{" "}
-                    <span className="font-medium     text-white">
-                      15.7k
-                    </span>{" "}
+                    <span className="font-medium     text-white">15.7k</span>{" "}
                     Happy Customers
                   </span>
                 </a>
