@@ -7,7 +7,6 @@ import languageIconWhite from "../../../../assets/languageIconWhite.png";
 import currencyIconWhite from "../../../../assets/currencyIconWhite.png";
 import callIconWhite from "../../../../assets/callIconWhite.png";
 
-
 const DestinationFunFactSection = ({ items, destinationDetails }) => {
   const list = [
     {
@@ -16,22 +15,25 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
       icon: locationIconWhite,
     },
     {
-      title: "Intr. Students",
+      title: "Global Exposure",
       value: destinationDetails?.internationalStudent,
       icon: schoolIconWhite,
     },
     {
-      title: "Language", value: destinationDetails?.language,
-      icon: languageIconWhite
+      title: "Language",
+      value: destinationDetails?.language,
+      icon: languageIconWhite,
     },
 
     {
-      title: "Currency", value: destinationDetails?.currency,
-      icon: currencyIconWhite
+      title: "Currency",
+      value: destinationDetails?.currency,
+      icon: currencyIconWhite,
     },
     {
-      title: "Dialing Code", value: destinationDetails?.dialcode,
-      icon: callIconWhite
+      title: "Dialing Code",
+      value: destinationDetails?.dialcode,
+      icon: callIconWhite,
     },
   ];
 

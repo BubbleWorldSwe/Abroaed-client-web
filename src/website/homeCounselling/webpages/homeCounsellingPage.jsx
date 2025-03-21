@@ -27,7 +27,7 @@ const NavigationItems = () => {
   return (
     <div className="text-white  bg-opacity-70 text-xl ">
       <p>
-        Get personalized, one-on-one counseling with experienced consultants to
+        Get personalized, one-on-one counselling with experienced consultants to
         help you navigate your study abroaed plans for free.
       </p>
       <div className="flex gap-2 mt-5 whitespace-nowrap">

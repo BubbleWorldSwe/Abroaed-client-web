@@ -276,12 +276,10 @@ const SlidingHeader = () => {
   );
 };
 
-
-
 function ComingSoonPageLayout() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState("");
   const swiperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
@@ -318,9 +316,9 @@ function ComingSoonPageLayout() {
         }
       );
       setOpenModal(true);
-      setEmail('');
-      setName('');
-      setPhone('');
+      setEmail("");
+      setName("");
+      setPhone("");
     } catch (error) {
       console.error("Error:", error);
       alert("Error submitting data.");
@@ -328,8 +326,7 @@ function ComingSoonPageLayout() {
   };
   const handleClose = () => {
     setOpenModal(false);
-  }
-
+  };
 
   const words = ["coming", "soon!"];
   const belowWorld = ["launching", "early", "2025."];
@@ -351,15 +348,16 @@ function ComingSoonPageLayout() {
 
   const ConfirmModal = ({ onClick }) => (
     <div className="flex flex-col gap-3 justify-center ">
-      <p className="text-black text-2xl text-center">Thanks for submitting your information</p>
+      <p className="text-black text-2xl text-center">
+        Thanks for submitting your information
+      </p>
     </div>
-
-  )
+  );
 
   return (
     <div
       className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
-    // style={{ backgroundImage: `url(${comingSoon})` }}
+      // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards
@@ -563,7 +561,7 @@ function ComingSoonPageLayout() {
                     />
                   </svg>
                   <h3 className="mb-2 font-inter text-xl font-semibold text-yellow-500 dark:text-white">
-                    Personalized Counseling
+                    Personalized counselling
                   </h3>
                   <p className="text-md font-inter text-white">
                     Get personalized guidance on choosing the right courses and
@@ -607,9 +605,7 @@ function ComingSoonPageLayout() {
         onClose={handleClose}
         component={<ConfirmModal onClick={handleClose} />}
         openModal={openModal}
-
       />
-
     </div>
   );
 }

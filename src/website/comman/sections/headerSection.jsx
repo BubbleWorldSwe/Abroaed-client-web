@@ -110,7 +110,7 @@ function Header({ isHeaderBgWhite = false }) {
     >
       <nav>
         <div
-          className={`py-3 text-center font-inter text-sm bg-yellow-300 text-black`}
+          className={`py-3 text-center font-inter text-sm bg-[#27272A] text-white`}
         >
           Improve Your IELTS Writing with Our Free Tool 🔍
         </div>
@@ -209,7 +209,7 @@ function Header({ isHeaderBgWhite = false }) {
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
     ${activeDropdown === "abroaedPlus" ? "after:opacity-30" : ""}`}
                   >
-                    Abroaed Plus
+                    ABROAED +
                   </a>
                 </li>
                 <li
@@ -363,7 +363,10 @@ function Header({ isHeaderBgWhite = false }) {
                   </a>
                 </li>
                 <li>
-                  <button className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
+                  <button
+                    onClick={() => navigate("/homeCounselling")}
+                    className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg"
+                  >
                     Book Counselling Now
                   </button>
                 </li>

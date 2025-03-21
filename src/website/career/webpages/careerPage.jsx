@@ -1,4 +1,3 @@
-
 import CareerJobSection from "./sections/careerJobSection";
 import CareerJoinTeam from "./sections/careerJoinTeamSection";
 import Header from "../../comman/sections/headerSection";
@@ -15,7 +14,7 @@ function CareerPage() {
       <CareerContentSection />
       <CareerJobSection />
       <CareerJoinTeam />
-      <CareerGallerySection />
+      {/*  <CareerGallerySection /> */}
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ function Footer() {
     <div>
       <footer className="w-full bg-black dark:bg-gray-800">
         <div className=" py-6 mx-auto md:p-8  p-6">
-          <div className="grid grid-rows-1 md:grid-cols-2 gap-8 p-4 mb-20">
+          <div className="grid  grid-rows-2 md:grid-cols-2 gap-8 p-4">
             <div className="w-3/5 flex flex-col items-center justify-center  text-center">
               {/* <a href="#">
                 <img
@@ -180,11 +180,90 @@ function Footer() {
                   </li>
                 </ul>
               </div>
+              {/*   <div className="lg:mx-auto">
+                <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
+                  Help center
+                </h2>
+                <ul className="text-white">
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Discord Server
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Twitter
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Facebook
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Contact Us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="lg:mx-auto">
+                <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
+                  Legal
+                </h2>
+                <ul className="text-white">
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Licensing
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Terms
+                    </a>
+                  </li>
+                </ul>
+              </div> */}
+              {/*  <div className="lg:mx-auto">
+                <h2 className="mb-6 text-sm font-semibold text-yellow-300 uppercase dark:text-yellow-300">
+                  Download
+                </h2>
+                <ul className="text-white">
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      iOS
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Android
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Windows
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      MacOS
+                    </a>
+                  </li>
+                </ul>
+              </div> */}
             </div>
           </div>
           <span className="block text-sm text-center text-white">
-            © 2025-2026 <a className="hover:underline">ABROAED</a>. All Rights
-            Reserved.
+            © 2021-2022{" "}
+            <a href="#" className="hover:underline">
+              Flowbite™
+            </a>
+            . All Rights Reserved.
           </span>
         </div>
       </footer>

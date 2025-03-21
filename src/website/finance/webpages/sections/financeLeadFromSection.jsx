@@ -8,9 +8,9 @@ const FinanceLeadFromSection = () => {
               Keen to know more?
             </h1>
             <p className=" mt-3 md:mt-6 text-lg leading-6 text-gray-500 tracking-wide  font-medium">
-              Schedule your counseling session today Our specialized home
-              counseling session is available at your convenience. Don’t waste a
-              minute—take a stride towards your future by contacting our study
+              Schedule your counselling session today Our specialized home
+              counselling session is available at your convenience. Don’t waste
+              a minute—take a stride towards your future by contacting our study
               abroad expert today.
             </p>
           </div>

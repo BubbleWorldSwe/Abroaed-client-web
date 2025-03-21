@@ -250,7 +250,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     <button
                       onSubmit={handleAddLead}
                       type="submit"
-                      className="py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                      className={`py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
                     >
                       Book Now
                     </button>
