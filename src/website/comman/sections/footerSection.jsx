@@ -1,4 +1,4 @@
-import playStore from "../../../assets/PlayStore.png";
+import playStore from "../../../assets/gPlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
 import { FaInstagram, FaFacebook, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6";
 import { COLORS } from "../../../constants/colors";

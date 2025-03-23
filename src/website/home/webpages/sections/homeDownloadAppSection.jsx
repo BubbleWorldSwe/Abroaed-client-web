@@ -1,5 +1,5 @@
 import iPhoneIcon from "../../../../assets/iPhoneIcon.png";
-import playStore from "../../../../assets/playStore.png";
+import playStore from "../../../../assets/gPlayStore.png";
 import AppStore from "../../../../assets/AppStore.png";
 function HomeDownloadApp() {
   return (

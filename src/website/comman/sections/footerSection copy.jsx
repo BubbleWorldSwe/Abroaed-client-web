@@ -1,5 +1,4 @@
-import logoWithText from "../../../assets/logoWithText.png";
-import playStore from "../../../assets/PlayStore.png";
+import playStore from "../../../assets/gPlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
 
 function Footer() {
