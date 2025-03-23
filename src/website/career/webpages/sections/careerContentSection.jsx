@@ -1,4 +1,5 @@
 
+import { COLORS } from "../../../../constants/colors";
 import CardComponent from "../../../aboutUs/components/cardComponent";
 import { careerData } from "../../data"
 
@@ -8,13 +9,13 @@ const CareerContentSection = () => {
       <section className="bg-white dark:bg-gray-900 relative px-12 mx-auto">
         <div className=" px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
           <div className="flex flex-col gap-6 ">
-            <h2 className="text-[45px] w-full text-[#27272A] text-center leading-tight font-extrabold ">
-              Life at Abroaed:
+            <h2 className={`text-[45px] w-full text-[${COLORS.GRAY_PRIMARY}] text-center leading-tight font-extrabold `}>
+              Life at ABROAED:
               <br />
               What It&apos;s Really Like Working Here
             </h2>
-            <p className=" text-[#27272A] text-[18px]  dark:text-gray-400 font-medium">
-              If you’re someone who loves to take on challenges, learn new things, and be part of a team that feels like family, then Abroaed is the place for you.  Abroaed is the haven for those who wants a job that’s not just about the tasks but also about making a real impact, we’ve got your back.            </p>
+            <p className={`text-[${COLORS.GRAY_PRIMARY}] text-[18px]  dark:text-gray-400 font-medium`}>
+              If you’re someone who loves to take on challenges, learn new things, and be part of a team that feels like family, then ABROAED is the place for you.  ABROAED is the haven for those who wants a job that’s not just about the tasks but also about making a real impact, we’ve got your back.            </p>
           </div>
           {/* <div className="grid grid-cols-1 gap-8 lg:gap-16 px-6 mx-auto lg:grid-cols-2">
             <div className="hidden lg:block">

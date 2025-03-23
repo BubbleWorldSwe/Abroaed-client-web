@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
 import { toast } from "react-toastify";
+import { COLORS } from "../../../constants/colors";
 
 const ContactUsForm = ({
   onFormSubmit,
@@ -69,13 +70,13 @@ const ContactUsForm = ({
   return (
     <section className="relative isolate overflow-hidden  px-12 mx-auto">
       <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
-        <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
+        <div className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-[${COLORS.GRAY_PRIMARY}] rounded-lg `}>
           {/* Left Section - 60% Width */}
-          <div className="md:w-3/5   py-4 flex flex-col justify-center">
-            <h1 className="text-[45px] mb-5 font-extrabold  leading-tight  text-[#27272A]  max-w-3xl  ">
+          <div className="md:w-3/5   py-4 flex flex-col justify-center ">
+            <h1 className={`text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}>
               {title || `Book Your Counselling Session Today!`}
             </h1>
-            <p className=" text-[18px] max-w-3xl tracking-tight text-[#52525B]  font-normal">
+            <p className=" text-[18px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
               {text ||
                 `Our specialised home counselling session is available at your
               convenience. Don’t waste a minute—take a stride towards your
@@ -87,39 +88,43 @@ const ContactUsForm = ({
           <div className="lg:w-2/5  py-4 md:pt-5 max-w-md">
             <form className=" mx-auto" onSubmit={handleSubmit}>
               <BorderTextInputField
-                label={"First Name*"}
+                label={"First Name"}
                 placeholder="Enter"
                 name="firstName"
                 type={"text"}
                 value={formData.firstName}
                 onChange={handleChange}
+                sx={{ color: 'white' }}
                 required
               />
               <BorderTextInputField
-                label={"Last Name*"}
+                label={"Last Name"}
                 placeholder="Enter"
                 name="lastName"
                 type={"text"}
                 value={formData.lastName}
                 onChange={handleChange}
+                sx={{ color: 'white' }}
                 required
               />
               <BorderTextInputField
-                label={"Email ID*"}
+                label={"Email ID"}
                 placeholder="Enter"
                 name="email"
                 type={"email"}
                 value={formData.email}
                 onChange={handleChange}
+                sx={{ color: 'white' }}
                 required
               />
               <BorderTextInputField
-                label={"Contact Number*"}
+                label={"Contact Number"}
                 placeholder="Enter"
                 name="mobile"
                 type={"phone"}
                 value={formData.mobile}
                 onChange={handleChange}
+                sx={{ color: 'white' }}
                 required
               />
 
@@ -132,8 +137,8 @@ const ContactUsForm = ({
                   onChange={handleCheckboxChange}
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-[12px] text-[#71717A]">
-                  I agree to Abroaed{" "}
+                <label className="ml-2 text-[12px] text-white">
+                  I agree to ABROAED{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
                 </label>
@@ -148,16 +153,16 @@ const ContactUsForm = ({
                   onChange={handleCheckboxChange}
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-[12px] text-[#71717A]">
+                <label className="ml-2 text-[12px] text-white">
                   Please contact me by phone, email, or SMS to assist with my
                   enquiry. I would like to receive updates and offers from
-                  Abroaed.
+                  ABROAED.
                 </label>
               </div>
 
               <button
                 type="submit"
-                className="w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-[#FDDA24] hover:bg-yellow-300"
+                className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300`}
                 style={{ color: "#000" }}
               >
                 {isLoading ? (

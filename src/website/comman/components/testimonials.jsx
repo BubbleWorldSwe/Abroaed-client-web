@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import play_circle from "../../../assets/play_circle.png";
 import testimonialImg from "../../../assets/testimonialImg.png";
+import { COLORS } from "../../../constants/colors";
 
 const Testimonials = () => {
   const TestimonialsCard = ({ article }) => {
@@ -53,7 +54,7 @@ const Testimonials = () => {
           <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
             100+ Success Stories
           </p>
-          <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+          <h2 className={`mb-5 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
             Read Our Success Stories
           </h2>
         </div>

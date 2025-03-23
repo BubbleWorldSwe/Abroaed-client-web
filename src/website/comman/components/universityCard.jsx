@@ -5,7 +5,7 @@ import { IMAGES } from "../../../constants/images";
 
 const UniversityCard = ({ item }) => {
   return (
-    <div className="max-w-[330px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col">
+    <div className="max-w-[330px] bg-white  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col">
       {/* Row Layout: Image on Left, Name & Location on Right */}
       <div className="flex items-center">
         {/* Image */}

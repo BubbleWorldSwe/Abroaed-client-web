@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
+import { COLORS } from "../../../constants/colors";
 
 const ServiceTypePlanStudent = ({
   isOpen,
@@ -47,7 +48,7 @@ const ServiceTypePlanStudent = ({
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
                   {/* Service Type Dropdown */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                    <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                       Service Type
                     </label>
                     <select
@@ -65,7 +66,7 @@ const ServiceTypePlanStudent = ({
 
                   {/* Plan Type Dropdown */}
                   <div>
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                    <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                       Plan Type
                     </label>
                     <select
@@ -83,7 +84,7 @@ const ServiceTypePlanStudent = ({
 
                   {/* Service Charge Input (Full Width) */}
                   <div className="lg:col-span-2">
-                    <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                    <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                       Service Charge
                     </label>
                     <input

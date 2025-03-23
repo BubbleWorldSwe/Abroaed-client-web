@@ -1,3 +1,4 @@
+import { COLORS } from "../../../../constants/colors"
 
 
 const DestinationLeadForm = () => {
@@ -35,7 +36,7 @@ const DestinationLeadForm = () => {
                                     required
                                 />
                                 <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                                    I agree to Abroaed <span className="font-bold">Terms of Service</span> and <span className="font-bold">Privacy Policy</span>.
+                                    I agree to ABROAED <span className="font-bold">Terms of Service</span> and <span className="font-bold">Privacy Policy</span>.
                                 </label>
                             </div>
                             <div className="flex items-start mt-4 mb-5">
@@ -45,7 +46,7 @@ const DestinationLeadForm = () => {
                                     required
                                 />
                                 <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                                    Please contact me by phone, email, or SMS to assist with my enquiry. I would like to receive updates and offers from Abroaed.
+                                    Please contact me by phone, email, or SMS to assist with my enquiry. I would like to receive updates and offers from ABROAED.
                                 </label>
                             </div>
                             <div >
@@ -53,7 +54,7 @@ const DestinationLeadForm = () => {
                                     type="submit"
                                     className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                                     style={{
-                                        backgroundColor: '#FDDA24',
+                                        backgroundColor: `${COLORS.YELLOW_PRIMARY}`,
                                         color: '#000', // Adjust text color for better contrast
                                     }}
                                 >

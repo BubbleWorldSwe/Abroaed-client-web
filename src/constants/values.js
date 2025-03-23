@@ -73,7 +73,7 @@ export const source = {
   languagePrep: "Language Prep",
   testPrep: "Test Prep",
   finance: "Finance",
-  abroaedPlus: "Abroaed Plus",
+  abroaedPlus: "ABROAED Plus",
   homeCounselling: "Home Counselling",
   leaguageOfExcellence: "Leaguage Of Excellence",
   leaguageOfExcellence: "Leaguage Of Excellence",

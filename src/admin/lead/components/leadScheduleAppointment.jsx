@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
 import { formatDateTime } from "../../../utils/helper";
 import pencil from "../../../assets/pencil.png";
+import { COLORS } from "../../../constants/colors";
 
 const LeadScheduleAppointment = ({ onOpenModal }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
@@ -9,7 +11,7 @@ const LeadScheduleAppointment = ({ onOpenModal }) => {
     <div className="w-full mx-auto my-2 p-6 bg-white rounded-lg shadow-lg">
       <div className="space-y-4 mt-4">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-[#27272A]">
+          <h2 className={`text-2xl font-bold text-[${COLORS.GRAY_PRIMARY}`}>
             Schedule Appointment
           </h2>
           <button

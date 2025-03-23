@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { COLORS } from "../../../constants/colors";
 
 const FaqRightContent = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -9,7 +10,7 @@ const FaqRightContent = () => {
     };
     return (
         <div className="">
-            <h5 className="text-[#27272A] mb-5 text-[32px] font-bold ">Category 1</h5>
+            <h5 className={`text-[${COLORS.GRAY_PRIMARY}] mb-5 text-[32px] font-bold `}>Category 1</h5>
             <div className="flex-1 overflow-auto">
                 {Array(6).fill().map((_, index) => (
                     <div key={index}>
@@ -21,7 +22,7 @@ const FaqRightContent = () => {
                                 onClick={() => toggleFAQ(index)}
                                 aria-expanded={activeIndex === index}
                             >
-                                <span className="whitespace-normal text-[22px] font-bold text-[#27272A] ">
+                                <span className={`whitespace-normal text-[22px] font-bold text-[${COLORS.GRAY_PRIMARY}] `}>
                                     Lorem ipsum dolor sit amet?
                                 </span>
                                 <svg
@@ -50,7 +51,7 @@ const FaqRightContent = () => {
                                 }`}
                         >
                             <div className="">
-                                <p className="mb-2 text-[#27272A] font-normal text-base whitespace-pre-wrap">
+                                <p className={`mb-2 text-[${COLORS.GRAY_PRIMARY}] font-normal text-base whitespace-pre-wrap`}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                                 </p>
                             </div>

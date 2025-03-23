@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Toaster } from "react-hot-toast";
+import { COLORS } from "../../../constants/colors";
 
 const StudentTransactionModal = ({ isOpen, onClose }) => {
   return (
@@ -16,7 +17,7 @@ const StudentTransactionModal = ({ isOpen, onClose }) => {
             <h2 className="text-lg font-semibold">New Transaction</h2>
             <div className="grid grid-cols-1 gap-4 mt-4">
               <div>
-                <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                   Date
                 </label>
                 <input
@@ -26,7 +27,7 @@ const StudentTransactionModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                   Transaction Amount (INR)
                 </label>
                 <input
@@ -36,7 +37,7 @@ const StudentTransactionModal = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                   Payment Mode{" "}
                 </label>
                 <select className="w-full px-3 py-1 border-none bg-[#F4F4F5] text-[#3F3F46] rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -48,7 +49,7 @@ const StudentTransactionModal = ({ isOpen, onClose }) => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-semibold text-[#27272A] mb-1">
+                <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
                   Particulars
                 </label>
                 <input

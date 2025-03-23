@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AbroaedPlusfaqs } from "../../data";
+import { COLORS } from "../../../../constants/colors";
 
 const AbroaedPlusFaq = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -13,7 +14,7 @@ const AbroaedPlusFaq = () => {
         <div className="relative px-10 mx-auto">
             <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
                 <div className="h-auto py-12 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-                    <h2 className="mb-10 text-[45px] text-center  font-extrabold text-[#27272A] dark:text-white">
+                    <h2 className={`mb-10 text-[45px] text-center  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                         Frequently Asked Questions
                     </h2>
                     <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
@@ -28,7 +29,7 @@ const AbroaedPlusFaq = () => {
                                             onClick={() => toggleFAQ(index)}
                                             aria-expanded={activeIndex === index}
                                         >
-                                            <span className="whitespace-normal text-[24px] font-bold text-[#27272A] ">
+                                            <span className={`whitespace-normal text-[24px] font-bold text-[${COLORS.GRAY_PRIMARY}] `}>
                                                 {faq.question}
                                             </span>
                                             <svg
@@ -57,7 +58,7 @@ const AbroaedPlusFaq = () => {
                                             }`}
                                     >
                                         <div className="">
-                                            <p className="mb-2 text-[#27272A] font-normal text-base whitespace-pre-wrap">
+                                            <p className={`mb-2 text-[${COLORS.GRAY_PRIMARY}] font-normal text-base whitespace-pre-wrap`}>
                                                 {faq.answer}
                                             </p>
                                         </div>

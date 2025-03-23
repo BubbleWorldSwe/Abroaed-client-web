@@ -17,6 +17,7 @@ import diversity from "../assets/diversity.png";
 import iPhoneIcon from "../assets/iPhoneIcon.png";
 import homeIcon from "../assets/homeIcon.png";
 import ModalLayout from "../Components/Modals/ModalLayout";
+import { COLORS } from "../constants/colors";
 const carouselItems = [
   {
     title: "Home Counselling",
@@ -27,13 +28,13 @@ const carouselItems = [
   {
     title: "Designated Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-ABROAED journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroaed journey",
+      "Identify and secure scholarships for their study-ABROAED journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -63,13 +64,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-ABROAED journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroaed journey",
+      "Identify and secure scholarships for their study-ABROAED journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -99,13 +100,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-ABROAED journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroaed journey",
+      "Identify and secure scholarships for their study-ABROAED journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -135,13 +136,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-ABROAED journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroaed journey",
+      "Identify and secure scholarships for their study-ABROAED journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -171,13 +172,13 @@ const carouselItems = [
   {
     title: "Personalised Mentor",
     description:
-      "One-on-one guidance to navigate every step of your study-abroaed journey with confidence.",
+      "One-on-one guidance to navigate every step of your study-ABROAED journey with confidence.",
     imgSrc: diversity,
   },
   {
     title: "Scholarship Assistance",
     description:
-      "Identify and secure scholarships for their study-abroaed journey",
+      "Identify and secure scholarships for their study-ABROAED journey",
     imgSrc: squareAcademicCap,
   },
   {
@@ -276,7 +277,7 @@ const SlidingHeader = () => {
   );
 };
 
-function ComingSoonPageLayout() {
+function ComingSoonPage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -357,7 +358,7 @@ function ComingSoonPageLayout() {
   return (
     <div
       className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
-      // style={{ backgroundImage: `url(${comingSoon})` }}
+    // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards
@@ -456,7 +457,7 @@ function ComingSoonPageLayout() {
                       // onClick={(e) => handleSubmit(e)}
                       className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                       style={{
-                        backgroundColor: "#FDDA24",
+                        backgroundColor: `${COLORS.YELLOW_PRIMARY}`,
                         color: "#000", // Adjust text color for better contrast
                       }}
                     >
@@ -467,7 +468,7 @@ function ComingSoonPageLayout() {
               </div>
               {/* <div className=""> */}
               <div className=" hidden lg:flex flex-col justify-end  ">
-                <div className=" relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl ">
+                <div className={`relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl `}>
                   <div className="lg:max-w-xs  ">
                     <h2 className="mb-4 text-lg md:text-center  font-rethink md:px-6 lg:px-1 lg:text-start   lg:text-3xl  font-extrabold text-gray-300 dark:text-white">
                       Join Waitlist for ABROAED mobile app.
@@ -610,4 +611,4 @@ function ComingSoonPageLayout() {
   );
 }
 
-export default ComingSoonPageLayout;
+export default ComingSoonPage;

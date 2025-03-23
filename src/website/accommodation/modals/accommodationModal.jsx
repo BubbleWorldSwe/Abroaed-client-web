@@ -98,9 +98,9 @@ const AccomadationModal = () => {
                       required
                     />
                     <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                      I agree to Abroaed Terms and privacy policy. Please contact me by phone,
+                      I agree to ABROAED Terms and privacy policy. Please contact me by phone,
                       email, or SMS to assist with my enquiry. I would like to receive updates
-                      and offers from Abroaed.
+                      and offers from ABROAED.
                     </label>
 
                   </div>

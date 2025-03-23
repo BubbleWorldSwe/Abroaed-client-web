@@ -1,13 +1,22 @@
+/* eslint-disable react/prop-types */
+import { useState } from "react";
+import { COLORS } from "../../../../constants/colors";
 
-const LeaguageOfExcellenceServicesOverviews = () => {
-    const countriesName = ["United States of America", "United Kingdom", "Canada", "France", "Italy", "Germany", "Czech Republic", "Ireland", "Netherlands", "Australia"]
+const LeaguageOfExcellenceServicesOverviews = ({ setCountry, countriesName }) => {
+    const [activeTab, setActiveTab] = useState('USA');
+    const [title, setTitle] = useState(countriesName[0].title);
 
+    const handleSelectTab = (country) => {
+        setActiveTab(country.code);
+        setCountry(country.code);
+        setTitle(country.title)
+    }
     return (
         <div className="relative z-10">
             <section className="dark:bg-gray-900 relative px-12 mx-auto">
                 <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 lg:py-20">
                     <p className="font-normal mb-4 text-gray-500 text-[18px]  dark:text-gray-400">
-                        We at Abroaed help aspiring students get into top-tier universities across the UK, US, Australia, New Zealand, Canada, Asia, and Europe. We have a dedicated team to help students seek entrance into the renowned Ivy League schools in the USA. From admission support and mock interviews to VISA support and accommodation services in the destination country, we offer them all. Our League of Excellence program enable students to explore a range of educational opportunities, helping them join the elite groups of influential leaders and eminent scholars.
+                        We at ABROAED help aspiring students get into top-tier universities across the UK, US, Australia, New Zealand, Canada, Asia, and Europe. We have a dedicated team to help students seek entrance into the renowned Ivy League schools in the USA. From admission support and mock interviews to VISA support and accommodation services in the destination country, we offer them all. Our League of Excellence program enable students to explore a range of educational opportunities, helping them join the elite groups of influential leaders and eminent scholars.
                     </p>
                     <div className="pt-20">
                         <h2 className="mb-8 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
@@ -21,18 +30,25 @@ const LeaguageOfExcellenceServicesOverviews = () => {
                         </p>
                         <div className="py-10  font-medium flex gap-2 text-center justify-between flex-wrap">
                             {
-                                countriesName.map((name, index) => (
-                                    <button
-                                        key={index}
-                                        className="hover:bg-[#27272A] hover:border-none hover:text-white bg-white text-[#27272A] px-6 border-2 border-[#FDD674] py-2 rounded-full"
-                                    >
-                                        {name}
-                                    </button>
+                                countriesName.map((country, index) => (
+                                    <div key={index}>
+                                        <button
+                                            className={`px-6 py-2 hover:bg-[${COLORS.GRAY_PRIMARY}] hover:text-white rounded-full border-2 border-gray-600 transition-colors duration-200 
+                                        ${activeTab === country.code
+                                                    ? `bg-[${COLORS.GRAY_PRIMARY}] text-white border-none`
+                                                    : `bg-white text-[${COLORS.GRAY_PRIMARY}]`
+                                                }`}
+                                            onClick={() => handleSelectTab(country)}
+                                        >
+                                            {country.name}
+                                        </button>
+                                    </div>
                                 ))
                             }
                         </div>
-                        <p className="font-normal  text-gray-500 text-[18px]  dark:text-gray-400">
-                            LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!                        </p>
+                        <p className={`font-normal  text-[${COLORS.GRAY_PRIMARY} text-[18px]  dark:text-gray-400`}>
+                            {title}
+                        </p>
                     </div>
                 </div>
             </section>

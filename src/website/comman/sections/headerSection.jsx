@@ -12,6 +12,8 @@ import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
 import { logout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
+import { COLORS } from "../../../constants/colors";
+import ProfileModal from "../modals/profileModal";
 //import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
@@ -102,17 +104,24 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
-          ? "bg-white text-[#52525B] shadow-md"
-          : "bg-black text-white bg-opacity-5"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
+        ? "bg-white text-[#52525B] shadow-md"
+        : "bg-black text-white bg-opacity-5"
+        }`}
     >
       <nav>
         <div
-          className={`py-3 text-center font-inter text-sm bg-[#27272A] text-white`}
+          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-[${COLORS.GRAY_PRIMARY}] text-white`}
         >
-          Improve Your IELTS Writing with Our Free Tool 🔍
+          <p className="">
+            GET IN TOUCH WITH US TODAY !
+          </p>
+          <div> <button
+            onClick={() => navigate("/homeCounselling")}
+            className={`px-2 py-1 hover:bg-[#508030]  bg-[${COLORS.YELLOW_PRIMARY}] text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
+          >
+            Book Counselling Now
+          </button></div>
         </div>
         <nav className="flex items-center justify-between  md:justify-center   w-full px-12 py-4">
           <div className="flex  basis items-center">
@@ -120,9 +129,8 @@ function Header({ isHeaderBgWhite = false }) {
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
-                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
+                  }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
@@ -139,18 +147,10 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                     ${
-                       scrolling || isHeaderBgWhite
-                         ? "text-[#52525B]"
-                         : "text-white"
-                     }
+                     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${
-                       activeDropdown === "exploreColleges"
-                         ? "after:opacity-30"
-                         : ""
-                     }`}
+                     ${activeDropdown === "exploreColleges" ? "after:opacity-30" : ""}`}
                   >
                     Explore Colleges
                   </a>
@@ -184,7 +184,7 @@ function Header({ isHeaderBgWhite = false }) {
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
     ${activeDropdown === "whyAbroad" ? "after:opacity-30" : ""}`}
                   >
-                    Why Abroaed?
+                    Why ABROAED?
                   </a>
                   {activeDropdown === "whyAbroad" && (
                     <div className="relative">
@@ -219,18 +219,10 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${
-                        scrolling || isHeaderBgWhite
-                          ? "text-[#52525B]"
-                          : "text-white"
-                      }
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${
-                        activeDropdown === "destinations"
-                          ? "after:opacity-30"
-                          : ""
-                      }`}
+                      ${activeDropdown === "destinations" ? "after:opacity-30" : ""}`}
                   >
                     Destinations
                   </a>
@@ -245,22 +237,34 @@ function Header({ isHeaderBgWhite = false }) {
                   )}
                 </li>
                 <li
+
+                  onMouseEnter={() => handleMouseEnter("accomodation")}
+                  onMouseLeave={handleMouseLeave}
+                  className="relative cursor-pointer"
+                >
+                  <a
+                    href="/accomodation"
+                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
+                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
+                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
+                      ${activeDropdown === "accomodation" ? "after:opacity-30" : ""}`}
+                  >
+                    Accommodation
+                  </a>
+
+                </li>
+                <li
                   onMouseEnter={() => handleMouseEnter("testPrep")}
                   onMouseLeave={handleMouseLeave}
                   className="relative cursor-pointer"
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${
-                        scrolling || isHeaderBgWhite
-                          ? "text-[#52525B]"
-                          : "text-white"
-                      }
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${
-                        activeDropdown === "testPrep" ? "after:opacity-30" : ""
-                      }`}
+                      ${activeDropdown === "testPrep" ? "after:opacity-30" : ""}`}
                   >
                     Test Prep
                   </a>
@@ -284,18 +288,10 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${
-                        scrolling || isHeaderBgWhite
-                          ? "text-[#52525B]"
-                          : "text-white"
-                      }
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${
-                        activeDropdown === "languagePrep"
-                          ? "after:opacity-30"
-                          : ""
-                      }`}
+                      ${activeDropdown === "languagePrep" ? "after:opacity-30" : ""}`}
                   >
                     Language Prep
                   </a>
@@ -362,42 +358,36 @@ function Header({ isHeaderBgWhite = false }) {
                     League of Excellence
                   </a>
                 </li>
-                <li>
-                  <button
-                    onClick={() => navigate("/homeCounselling")}
-                    className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg"
-                  >
-                    Book Counselling Now
-                  </button>
-                </li>
               </ul>
             </div>
           </div>
-          {/*  <div className="flex flex-grow-0 basis-[10%] justify-end">
-            {token ? (
+          <div className="flex flex-grow-0 basis-[10%] justify-end "
+
+          >
+            <a
+              onMouseEnter={() => handleMouseEnter("login")}
+              onMouseLeave={handleMouseLeave}
+            // className={ }
+            >
               <button
-                onClick={() => handleSignOut()}
-                className={`text-sm font-medium ${
-                  scrolling ? "text-black" : "text-white"
-                } hover:underline`}
-              >
-                Logout
-              </button>
-            ) : (
-              <a
-                //  href="/admin/signin"
-                href="/signin"
-                className={`text-sm font-medium ${
-                  scrolling ? "text-black" : "text-white"
-                } hover:underline`}
+                onClick={() => navigate("/admin/signin")}
+                className={`px-4 py-2  bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-[#508030] font-semibold text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
               >
                 Login
-              </a>
-            )}
-          </div> */}
+              </button>
+              {activeDropdown === "login" && (
+                <div className="relative">
+                  <ProfileModal
+                    handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                  />
+                </div>
+              )}
+            </a>
+          </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}

@@ -15,10 +15,14 @@ import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { countriesName } from "../data";
+
+
 
 const LeaguageOfExcellencePage = () => {
+  const [selectCountryCode, setSelectCountryCode] = useState(countriesName[0].code);
   const dispatch = useDispatch();
-
   const handleAddLead = (data) => {
     try {
       console.log("handleAddLead");
@@ -29,14 +33,13 @@ const LeaguageOfExcellencePage = () => {
       console.log(error);
     }
   };
-
   return (
     <div className="font-rethink">
       <Header />
       <LeaguageOfExcellenceHero />
-      <LeaguageOfExcellenceServicesOverviews />
+      <LeaguageOfExcellenceServicesOverviews setCountry={setSelectCountryCode} countriesName={countriesName} />
       <div className="relative">
-        <LeaguageOfExcellenceUniversity />
+        <LeaguageOfExcellenceUniversity selectCountryCode={selectCountryCode} />
         <div className="absolute bottom-72 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -83,7 +86,12 @@ const LeaguageOfExcellencePage = () => {
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
+
+
+
+
+
 
 export default LeaguageOfExcellencePage;

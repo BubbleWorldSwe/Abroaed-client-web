@@ -22,16 +22,17 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
+import { COLORS } from "../../../constants/colors";
 
 const NavigationItems = () => {
   return (
     <div className="text-white  bg-opacity-70 text-xl ">
       <p>
         Get personalized, one-on-one counselling with experienced consultants to
-        help you navigate your study abroaed plans for free.
+        help you navigate your study ABROAED plans for free.
       </p>
       <div className="flex gap-2 mt-5 whitespace-nowrap">
-        <button className="px-4 py-3  text-base mb-2 font-semibold rounded-lg text-[#432205] hover:bg-[#EDFA29]  bg-[#FDDA24] ">
+        <button className={`px-4 py-3  text-base mb-2 font-semibold rounded-lg text-[#432205] hover:bg-[#EDFA29]  bg-[${COLORS.YELLOW_PRIMARY}] `}>
           Book Counselling Now
         </button>
       </div>

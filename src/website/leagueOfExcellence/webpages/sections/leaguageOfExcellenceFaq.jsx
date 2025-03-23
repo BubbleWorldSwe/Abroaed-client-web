@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { COLORS } from "../../../../constants/colors";
 
 
 const LeaguageOfExcellenceFaq = () => {
@@ -23,7 +24,7 @@ const LeaguageOfExcellenceFaq = () => {
                         <tr>
                             <td className="border border-gray-300 px-4 py-2">Origin</td>
                             <td className="border border-gray-300 px-4 py-2">
-                                A global collection of top-tier universities known for research, innovation, and global influence. Created by Abroaed to help students choose top universities worldwide.
+                                A global collection of top-tier universities known for research, innovation, and global influence. Created by ABROAED to help students choose top universities worldwide.
                             </td>
                             <td className="border border-gray-300 px-4 py-2">
                                 A group of 8 private universities in the USA, originally formed as an athletic conference in 1954, now known for elite academics.
@@ -143,7 +144,7 @@ const LeaguageOfExcellenceFaq = () => {
 
     return (
         <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-            <h2 className="mb-1 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+            <h2 className={`mb-1 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                 Frequently Asked Questions
             </h2>
             <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
@@ -158,7 +159,7 @@ const LeaguageOfExcellenceFaq = () => {
                                     onClick={() => toggleFAQ(index)}
                                     aria-expanded={activeIndex === index}
                                 >
-                                    <span className="whitespace-normal text-[24px] font-bold text-[#27272A] ">
+                                    <span className={`whitespace-normal text-[24px] font-bold text-[${COLORS.GRAY_PRIMARY}] `}>
                                         {faq.question}
                                     </span>
                                     <svg
@@ -187,7 +188,7 @@ const LeaguageOfExcellenceFaq = () => {
                                     }`}
                             >
                                 <div className="">
-                                    <p className="mb-2 text-[#27272A] font-normal text-base whitespace-pre-wrap">
+                                    <p className={`mb-2 text-[${COLORS.GRAY_PRIMARY}] font-normal text-base whitespace-pre-wrap`}>
                                         {faq.answer}
                                     </p>
                                 </div>

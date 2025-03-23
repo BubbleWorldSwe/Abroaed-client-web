@@ -12,6 +12,7 @@ import {
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { COLORS } from "../../../../constants/colors";
 
 function HomePromoSection({ source, entity, onFormSubmit }) {
   const navigate = useNavigate();
@@ -80,8 +81,8 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
           {/* Left Side: Text and Image */}
           <div className="flex flex-col gap-3 justify-center">
             {/* <div className="text-start "> */}
-            <h2 className="mb-2 text-[45px] leading-tight  font-extrabold text-[#27272A] dark:text-white">
-              Need Clarifications on Your Study Abroaed Plans?
+            <h2 className={`mb-2 text-[45px] leading-tight  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              Need Clarifications on Your Study ABROAED Plans?
             </h2>
             <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
               Our study abroad consultants will reach out to you and guide you
@@ -99,7 +100,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             </div>
             <div className="flex justify-center text-center mt-5">
               <button
-                className="py-2 px-5 border-2 rounded-lg font-semibold border-[#27272A] text-[#71717A] hover:bg-slate-100"
+                className={`py-2 px-5 border-2 rounded-lg font-semibold border-[${COLORS.GRAY_PRIMARY}] text-[#71717A] hover:bg-[${COLORS.GRAY_PRIMARY}] hover:text-white`}
                 onClick={() => navigate("/homeCounselling")}
               >
                 Learn About Home Counselling
@@ -113,7 +114,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             <div className="flex flex-col items-start w-full rounded-lg p-8 mt-16 ">
               {/* Tabs Row */}
               <div className="mb-3">
-                <h2 className="mb-4 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+                <h2 className={`mb-4 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                   Book Counselling Now
                 </h2>
 
@@ -227,7 +228,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                         required
                       />
                       <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                        I agree to Abroaed{" "}
+                        I agree to ABROAED{" "}
                         <span className="font-bold">Terms of Service</span> and{" "}
                         <span className="font-bold">Privacy Policy</span>.
                       </label>
@@ -239,10 +240,10 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                         required
                       />
                       <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                        I agree to Abroaed Terms and privacy policy. Please
+                        I agree to ABROAED Terms and privacy policy. Please
                         contact me by phone, email, or SMS to assist with my
                         enquiry. I would like to receive updates and offers from
-                        Abroaed.
+                        ABROAED.
                       </label>
                     </div>
                   </>
@@ -250,7 +251,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     <button
                       onSubmit={handleAddLead}
                       type="submit"
-                      className={`py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+                      className={`py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
                     >
                       Book Now
                     </button>

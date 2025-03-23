@@ -19,7 +19,7 @@ function FinanceHeroSection() {
         {/* Text Content */}
         <div className="absolute bottom-3  max-w-4xl pb-6  flex flex-col  justify-start  mx-auto px-12">
           <h3 className="text-[57px] leading-tight   font-extrabold  text-[#F4F4F5] ">
-            Smart Financial Planning for Your Study Abroaed Success
+            Smart Financial Planning for Your Study ABROAED Success
           </h3>
         </div>
       </section>

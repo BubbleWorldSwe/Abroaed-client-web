@@ -9,7 +9,7 @@ function CareerJoinTeam() {
             Why you should join our awesome team ?
           </h1>
           <h2 className=" text-[24px] font-bold text-[#52525B]   dark:text-white">
-            We want to feel like home when you are working at Abroaed & for that
+            We want to feel like home when you are working at ABROAED & for that
             we have curated a great set of benefits for you.{" "}
           </h2>
         </header>
@@ -17,16 +17,26 @@ function CareerJoinTeam() {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className=" w-full h-[15rem] overflow-y-auto flex flex-col flex-grow-0 p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+
+              className=" w-full h-[15rem] overflow-y-auto flex flex-col flex-grow-0 p-6 bg-black text-[#e8e8eb] border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
-              {/* <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img> */}
-              <h5 className="mt-2 text-[#52525B] leading-tight text-[28px] font-bold   dark:text-white">
-                {benefit.heading}
-              </h5>
-              <p className="font-semibold   text-sm mt-3 text-[#52525B] dark:text-gray-400">
-                {benefit.text}
-              </p>
-              {/* <p className="text-sm">Location, India</p> */}
+              <div
+                style={{
+                  backgroundImage:
+                    "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
+                }}
+                className="bg-clip-text text-transparent">
+                {/* <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img> */}
+                <h5 className="mt-2 bg-clip-text text-transparent  leading-tight text-[28px] font-bold   dark:text-white"
+                >
+                  {benefit.heading}
+                </h5>
+                <p className="font-semibold   text-sm mt-3  dark:text-gray-400">
+                  {benefit.text}
+                </p>
+                {/* <p className="text-sm">Location, India</p> */}
+
+              </div>
             </div>
           ))}
         </div>

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { COLORS } from "../../../../constants/colors";
 import CollegeFunFactCard from "../../components/collegeFunFactCard";
 
 const CollegeFunFactSection = ({ collegeDetails }) => {
@@ -16,7 +17,7 @@ const CollegeFunFactSection = ({ collegeDetails }) => {
       <section className=" py-4  antialiased dark:bg-gray-900 px-12 mx-auto">
         <div className=" max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
-            <p className="text-[45px] font-extrabold text-[#27272A] ">
+            <p className={`text-[45px] font-extrabold text-[${COLORS.GRAY_PRIMARY}] `}>
               Fun Facts
             </p>
           </div>

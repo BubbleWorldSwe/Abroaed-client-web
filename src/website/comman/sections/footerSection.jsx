@@ -1,25 +1,142 @@
-import logoWithText from "../../../assets/logoWithText.png";
 import playStore from "../../../assets/PlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
+import { FaInstagram, FaFacebook, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { COLORS } from "../../../constants/colors";
+
+const socialLinks = [
+  { icon: <FaInstagram size={20} />, url: "#" },
+  { icon: <FaFacebook size={20} />, url: "#" },
+  { icon: <FaLinkedin size={20} />, url: "#" },
+  { icon: <FaXTwitter size={20} />, url: "#" }, // X (formerly Twitter)
+  { icon: <FaYoutube size={20} />, url: "#" } // YouTube
+];
+
+const links = [
+  { title: "Important Links", items: ["Home", "Director Message", "Blog", "Contact Us"] },
+  { title: "Services", items: ["Social Media Marketing", "SEO", "Meta Ads", "Website Development", "Software Development"] },
+];
+
+const offices = [
+  {
+    location: "Amritsar Office",
+    address: "SCO-31, D-Block, Ranjit Avenue, Amritsar",
+    phone: "+91 87545 38506",
+  },
+  {
+    location: "Mumbai Office",
+    address: "Jeevansaathi building, Juhu Lane, Mumbai, Maharashtra",
+    phone: "+91 9478583733",
+    email: "hello@bubbleworld.in",
+  },
+  {
+    location: "Delhi Office",
+    address: "Shop no. G-35/1, Aditya Arcade, Preet Vihar, Delhi, 110092",
+    phone: "+91 82850 71111",
+  },
+];
+
 
 function Footer() {
   return (
     <div>
-      <footer className="w-full bg-black dark:bg-gray-800">
+      <footer className="bg-black text-white py-10">
+        <div className="container mx-auto px-10 md:px-16 flex flex-col sm:flex-row gap-8 md:text-left">
+          {/* Logo & Description */}
+          <div className="w-full md:w-[40%] ">
+            <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
+              <a
+
+                href="/home"
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] text-white`}
+              >
+                ABROA<span style={{ color: "#fbba18" }}>ED</span>
+              </a>
+            </h3>
+            <p className="my-4 font-light  text-gray-300 text-lg">
+              At ABROAED, we help students get admission to prestigious universities in the USA, UK, Canada, Australia, Europe, and Asia, including Ivy League schools. We offer personalized consultations and coaching (virtual/in-home), accommodation support, and financial assistance, fostering access to elite academic and leadership networks.
+            </p>
+            <h3 className="mt-4 font-semibold text-xl mb-5">Follow Us On</h3>
+            <div className="flex justify-center md:justify-start space-x-3 mt-2">
+              {socialLinks.map((link, index) => (
+                <a key={index} href={link.url} className="p-2 bg-white text-black rounded-full" aria-label="Social Link">
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+            <div className="flex gap-5 p-2 mt-5">
+              <div>
+                <img
+                  src={playStore}
+                  alt="googlePlayStoreIcon"
+                  className="w-full"
+                />
+              </div>
+              <div>
+                <img
+                  src={AppStore}
+                  alt="googlePlayStoreIcon"
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+          </div>
+          {/* Important Links & Services */}
+          <div className="w-full md:w-[60%]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+            {links.map((section, index) => (
+              <div key={index}>
+                <h3 className={`font-semibold text-2xl mb-3 text-[${COLORS.YELLOW_PRIMARY}]`}>{section.title}</h3>
+                <ul className="space-y-2 text-lg">
+                  {section.items.map((item, idx) => (
+                    <li key={idx}>
+                      <a href="#" className="hover:underline">{item}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {/* Contact Information */}
+            <div>
+              <h3 className={`font-semibold text-2xl mb-3 text-[${COLORS.YELLOW_PRIMARY}]`}>Get in Touch</h3>
+              <div className="text-sm space-y-3">
+                {offices.map((office, index) => (
+                  <div key={index}>
+                    <h4 className="font-semibold text-lg">{office.location}</h4>
+                    <p className="text-sm">{office.address}</p>
+                    <p>📞 {office.phone}</p>
+                    {office.email && <p>📧 {office.email}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Footer */}
+        <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm">
+          <p>            © 2025-2026 <a className="hover:underline">ABROAED</a>. All Rights
+          </p>
+          <div className="mt-2">
+            {["Privacy Policy", "Refund Policy", "Terms & Conditions"].map((item, index) => (
+              <span key={index}>
+                <a href="#" className="hover:underline">{item}</a>
+                {index < 2 && " | "}
+              </span>
+            ))}
+          </div>
+        </div>
+      </footer>
+
+
+      {/* <footer className="w-full bg-black dark:bg-gray-800">
         <div className=" py-6 mx-auto md:p-8  p-6">
           <div className="grid grid-rows-1 md:grid-cols-2 gap-8 p-4 mb-20">
-            <div className="w-3/5 flex flex-col items-center justify-center  text-center">
-              {/* <a href="#">
-                <img
-                  src={logoWithText}
-                  alt="logo"
-                  className="w-24 h-24 object-contain"
-                />
-              </a> */}
+            <div className="w-full  flex flex-col items-center justify-center  text-center">
 
               <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
                 <a
-                  // target="_blank"
+                  
                   href="/home"
                   className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] text-white`}
                 >
@@ -27,7 +144,7 @@ function Footer() {
                 </a>
               </h3>
 
-              <ul className="flex mt-5 space-x-6">
+              <ul className="flex mt-5 space-x-6 " >
                 <li>
                   <a
                     href="#"
@@ -118,7 +235,7 @@ function Footer() {
                   >
                     <svg
                       // className="w-12 h-12"
-                      className="w-8 h-8"
+                      className="w-7 h-7"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -132,7 +249,7 @@ function Footer() {
                 </li>
               </ul>
               <p className="my-4 font-light  text-gray-300 text-xl ">
-                Download the App
+                At ABROAED, we help students get admission to prestigious universities in the USA, UK, Canada, Australia, Europe, and Asia, including Ivy League schools. We offer personalized consultations and coaching (virtual/in-home), accommodation support, and financial assistance, fostering access to elite academic and leadership networks.
               </p>
 
               <div className="flex gap-5 p-2 w-">
@@ -187,7 +304,7 @@ function Footer() {
             Reserved.
           </span>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

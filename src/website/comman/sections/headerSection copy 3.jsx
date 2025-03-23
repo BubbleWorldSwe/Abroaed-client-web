@@ -8,6 +8,7 @@ import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
+import { COLORS } from "../../../constants/colors";
 
 
 export const destinationMenuItems = [
@@ -284,7 +285,7 @@ function Header({ isHeaderBgWhite = false }) {
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
     ${activeDropdown === "whyAbroad" ? "after:opacity-30" : ""}`}
                   >
-                    Why Abroaed?
+                    Why ABROAED?
                   </a>
 
                   {activeDropdown === "whyAbroad" && (
@@ -299,7 +300,7 @@ function Header({ isHeaderBgWhite = false }) {
 
 
                 {/* <DropdownMenu
-                  title="Why Abroaed?"
+                  title="Why ABROAED?"
                   items={[
                     { title: "About Us", href: "/aboutus" },
                     { title: "Career", href: "/careers" },
@@ -318,7 +319,7 @@ function Header({ isHeaderBgWhite = false }) {
                       : "text-white"
                       }`}
                   >
-                    Abroaed Plus
+                    ABROAED Plus
                   </a>
                 </li>
                 {/* <DropdownMenu
@@ -418,7 +419,7 @@ function Header({ isHeaderBgWhite = false }) {
                   </a>
                 </li>
                 <li>
-                  <button className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
+                  <button className={`px-3 py-2 bg-[${COLORS.YELLOW_PRIMARY}] text-[${COLORS.GRAY_PRIMARY}] font-semibold rounded-lg`}>
                     Book Counselling Now
                   </button>
                 </li>

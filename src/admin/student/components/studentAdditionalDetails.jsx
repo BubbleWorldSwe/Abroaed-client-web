@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import pencil from "../../../assets/pencil.png";
 import { useSelector } from "react-redux";
 import UpdateStudentAdditionInfo from "../modals/updateStudentAdditionInfoModal";
+import { COLORS } from "../../../constants/colors";
 
 const StudentAdditionalDetails = ({ onOpenModal }) => {
   const studentProfile = useSelector(
@@ -21,7 +23,7 @@ const StudentAdditionalDetails = ({ onOpenModal }) => {
       />
       <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold  text-[#27272A]">
+          <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
             Additional Information
           </h2>
           <button

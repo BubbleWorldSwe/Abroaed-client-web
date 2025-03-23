@@ -1,3 +1,4 @@
+import { COLORS } from "../../../../constants/colors"
 
 const BlogCategoryHeroSection = () => {
     return (
@@ -32,7 +33,7 @@ const BlogCategoryHeroSection = () => {
                         </div>
                         {/* Title */}
                         <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 lg:text-3xl">
-                            <a href="#" className=" text-[36px] text-[#27272A] font-extrabold">
+                            <a href="#" className={`text-[36px] text-[${COLORS.GRAY_PRIMARY}] font-extrabold`}>
                                 Blog Title: Lorem Ipsum Dolor Sit Amet, Lorem Ispum Dolor Sit Amet
                             </a>
                         </h3>

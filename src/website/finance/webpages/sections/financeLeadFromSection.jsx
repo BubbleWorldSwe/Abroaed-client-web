@@ -1,3 +1,5 @@
+import { COLORS } from "../../../../constants/colors";
+
 const FinanceLeadFromSection = () => {
   return (
     <section className=" relative isolate overflow-hidden z-10 px-6 mx-auto">
@@ -67,7 +69,7 @@ const FinanceLeadFromSection = () => {
                   required
                 />
                 <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                  I agree to Abroaed{" "}
+                  I agree to ABROAED{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
                 </label>
@@ -81,7 +83,7 @@ const FinanceLeadFromSection = () => {
                 <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
                   Please contact me by phone, email, or SMS to assist with my
                   enquiry. I would like to receive updates and offers from
-                  Abroaed.
+                  ABROAED.
                 </label>
               </div>
               <div>
@@ -89,7 +91,7 @@ const FinanceLeadFromSection = () => {
                   type="submit"
                   className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                   style={{
-                    backgroundColor: "#FDDA24",
+                    backgroundColor: `${COLORS.YELLOW_PRIMARY}`,
                     color: "#000",
                   }}
                 >

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { BorderTextInputField } from "../commons/components/inputFields/borderTextInputField";
 import { BorderSelectField } from "../commons/components/inputFields/borderSelectField";
+import { COLORS } from "../constants/colors";
 
 function Tabs() {
   const tabOptions = [
@@ -220,7 +221,7 @@ const BookButton = () => {
     <div>
       <button
         type="submit"
-        className="py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+        className={`py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
       >
         Book Now
       </button>
@@ -248,7 +249,7 @@ export const TermsAndConditions = () => (
         required
       />
       <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-        I agree to Abroaed <span className="font-bold">Terms of Service</span>{" "}
+        I agree to ABROAED <span className="font-bold">Terms of Service</span>{" "}
         and <span className="font-bold">Privacy Policy</span>.
       </label>
     </div>
@@ -259,9 +260,9 @@ export const TermsAndConditions = () => (
         required
       />
       <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-        I agree to Abroaed Terms and privacy policy. Please contact me by phone,
+        I agree to ABROAED Terms and privacy policy. Please contact me by phone,
         email, or SMS to assist with my enquiry. I would like to receive updates
-        and offers from Abroaed.
+        and offers from ABROAED.
       </label>
     </div>
   </>

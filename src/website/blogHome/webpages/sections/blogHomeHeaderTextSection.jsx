@@ -1,8 +1,8 @@
 import { COLORS } from "../../../../constants/colors"
 
-const BlogPageHeaderText = () => {
+const BlogHomeHeaderTestSection = () => {
     return (
-        <div className="relative z-10">
+        <div className="">
             <section className="dark:bg-gray-900 relative px-12 py-5 mx-auto">
                 <div
                     className="absolute top-0 left-0 right-0 p-28 z-0"
@@ -11,22 +11,10 @@ const BlogPageHeaderText = () => {
                     }}
                 ></div>
                 <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 ">
-                    {/* <div className="flex   text-[#52525B] font-semibold text-base px-10 mx-auto">
-                        {Array(6).fill().map((_, index) => (
-                            <div key={index} className="flex gap-2 items-center">
-                                <span >Blog </span>
-                                <ChevronRight size={15} />
-                                <span>Category</span>
-                            </div>
-                        ))}
-                    </div> */}
                     <div className="w-full flex flex-col gap-1 items-center  justify-center   ">
                         <h2 className={`text-[57px] font-extrabold text-[${COLORS.GRAY_PRIMARY}]`}>
                             Blog Post Title
                         </h2>
-                        {/* <h5 className="text-[28px] mb-2 font-extrabold text-[#52525B]">
-                            Blog Post Sub-Title
-                        </h5> */}
                         <div className="flex gap-2">
                             <p className="text-[#52525B] font-semibold text-base">
                                 Published on Dec 7, 2024
@@ -42,4 +30,4 @@ const BlogPageHeaderText = () => {
     )
 }
 
-export default BlogPageHeaderText
+export default BlogHomeHeaderTestSection

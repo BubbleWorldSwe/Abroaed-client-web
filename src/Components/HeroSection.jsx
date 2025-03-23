@@ -9,7 +9,7 @@ function HeroSection() {
     () => (
       <TextGenerateEffect
         headings={[
-          "Study Abroaed with ABROAED.",
+          "Study ABROAED with ABROAED.",
           "Get Dream Scholarships!",
           "Explore limitless opportunities.",
         ]}
