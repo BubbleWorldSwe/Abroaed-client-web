@@ -27,7 +27,7 @@ function AccommodationHeroSection({ selectedCountry }) {
               : `Accomodations in ${selectedCountry?.countryId?.name}`} */}
           </h1>
           <p className="font-bold text-[#D4D4D8] text-[22px] max-w-xl">
-            With Abroaed, scouting the perfect accommodation abroad has never been easier
+            With ABROAED, scouting the perfect accommodation abroad has never been easier
             <br />
           </p>
           {/*   <p className="font-light text-white md:text-lg xl:text-xl">

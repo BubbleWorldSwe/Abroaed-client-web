@@ -47,7 +47,7 @@ function FinancePage() {
         source={source.finance}
         entity={`${entity.contactUs}`}
         title={"Keen to know more?"}
-        text="Schedule your counseling session today Our specialized home counseling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today."
+        text="Schedule your counselling session today Our specialized home counselling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today."
       />
       <Footer />
     </div>

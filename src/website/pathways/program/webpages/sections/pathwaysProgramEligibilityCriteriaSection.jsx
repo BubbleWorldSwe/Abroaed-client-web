@@ -1,3 +1,4 @@
+import { COLORS } from "../../../../../constants/colors"
 
 
 function PathwaysProgramEligibilityCriteria() {
@@ -19,7 +20,7 @@ function PathwaysProgramEligibilityCriteria() {
                                 >
                                     <div className="p-5">
 
-                                        <h5 className="mb-5 text-[32px]  font-bold tracking-tight text-[#27272A] dark:text-white">
+                                        <h5 className={`mb-5 text-[32px]  font-bold tracking-tight text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                                             {/* {item.name} */}
                                             University Name
                                         </h5>

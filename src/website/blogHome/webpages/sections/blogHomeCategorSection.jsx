@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react"
 import BlogCategoryArticleCard from "../../comoponents/blogHomeArticleCard"
+import { COLORS } from "../../../../constants/colors"
 
 const BlogHomeCategorySection = () => {
     return (
@@ -7,7 +8,7 @@ const BlogHomeCategorySection = () => {
             <section className="dark:bg-gray-900 relative px-12 py-5 pb-16 mx-auto">
                 <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 ">
                     <div className="w-full  justify-between items-center py-8 flex ">
-                        <h2 className="  text-[45px] font-extrabold  text-[#27272A] dark:text-white">
+                        <h2 className={`text-[45px] font-extrabold  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                             Category Name
                         </h2>
                         <button className="bg-yellow-300 px-3 py-2 hover:bg-gray-100 text-gray-900 font-semibold flex gap-2 items-center    rounded-lg shadow">

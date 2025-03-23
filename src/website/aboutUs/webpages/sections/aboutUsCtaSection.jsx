@@ -1,4 +1,4 @@
-import essentialDeveloper from "../../../../assets/essentialDeveloper.png"
+import essentialDeveloper from "../../../../assets/essentialDeveloper.png";
 function AboutUsCtaSection() {
   return (
     <div>
@@ -13,8 +13,10 @@ function AboutUsCtaSection() {
               If so, Come work with us!
             </p> */}
               <p className="mb-6 text-black text-base font-medium dark:text-gray-400">
-                If so, we’d love to have you onboard. Join a passionate team that values both expertise and dedication. Together, we can shape the future of students and open doors to new possibilities and experiences.
-
+                If so, we’d love to have you onboard. Join a passionate team
+                that values both expertise and dedication. Together, we can
+                shape the future of students and open doors to new possibilities
+                and experiences.
               </p>
               <a
                 href="#"
@@ -23,8 +25,12 @@ function AboutUsCtaSection() {
                 Explore Oppurtunities
               </a>
             </div>
-            <div >
-              <img src={essentialDeveloper} alt="developer-pic" className="object-cover w-72" />
+            <div>
+              <img
+                src={essentialDeveloper}
+                alt="developer-pic"
+                className="object-cover w-72"
+              />
             </div>
           </div>
         </div>

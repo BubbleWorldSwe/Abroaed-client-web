@@ -21,7 +21,7 @@ import {
   // fetchDestinationsRequest,
 } from "../../../redux/actions/destinationActions";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 // import PageLoader from "../../../commons/components/loader/pageLoader";
 import { fetchAllTestPrepsRequest } from "../../../redux/actions/testPrepsActions";
 import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePrepsActions";
@@ -39,7 +39,7 @@ import PageLoader from "../../../commons/components/loader/pageLoader";
 function HomeLayout() {
   const dispatch = useDispatch();
 
-  const { loading } = useSelector((state) => state.destinations);
+  // const { loading } = useSelector((state) => state.destinations);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -76,9 +76,10 @@ function HomeLayout() {
       <Header />
       <HomeHeroSection />
       <HomeKpiMatrixSection
-        title={"Why Abroaed?"}
+        title={"Why ABROAED?"}
         header={"What sets us apart?"}
-        subtitle={"Abroaed distinguishes itself through its highly personalized and student-centric approach to study abroad consulting. We offer end-to-end support, customizing every step—from university selection and application strategy to visa assistance and pre-departure preparation—to align with each student’s unique goals and aspirations. Leveraging data-driven insights and a proven track record of success, we ensure students target the best-fit programs that align with their academic and career ambitions. At Abroaed, we’re not just helping you move across borders; we’re helping you create a future filled with endless possibilities."
+        subtitle={
+          "ABROAED distinguishes itself through its highly personalized and student-centric approach to study abroad consulting. We offer end-to-end support, customizing every step—from university selection and application strategy to visa assistance and pre-departure preparation—to align with each student’s unique goals and aspirations. Leveraging data-driven insights and a proven track record of success, we ensure students target the best-fit programs that align with their academic and career ambitions. At ABROAED, we’re not just helping you move across borders; we’re helping you create a future filled with endless possibilities."
         }
       />
       <HomePathwaySection />

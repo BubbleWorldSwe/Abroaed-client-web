@@ -1,42 +1,71 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "../../redux/actions/authActions";
-
+import { studentSignUpRequest } from "../../redux/actions/authActions";
 import { toast } from "react-toastify";
 import AbroaedInfo from "./components/abroaedInfo";
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
 
 function StudentSignUp() {
   const navigate = useNavigate();
-  const [tab, setTab] = useState("signin");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { loading, token } = useSelector((state) => state.auth);
 
-  const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
+  // State to hold form data
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    mobile: "",
+  });
 
-      const formData = new FormData(e.currentTarget);
-
-      if (!formData.get("email")?.trim() || !formData.get("password")) {
-        toast.error("Please enter Email ID and Password.");
-        return;
-      }
-
-      if (!formData.get("terms")) {
-        toast.error("You must accept the Terms and Conditions to proceed.");
-        return;
-      }
-
-      dispatch(loginRequest({ email, password }));
-    } catch (error) {
-      console.log(error);
-    }
+  // Function to handle input changes and update state
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value.trim(),
+    }));
   };
 
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { firstName, lastName, email, mobile } = formData;
+
+    const nameRegex = /^[A-Za-z]+$/; // Only alphabets allowed
+
+    if (!firstName || !nameRegex.test(firstName)) {
+      toast.error("Please enter a valid First Name (Only letters allowed).");
+      return;
+    }
+
+    if (!lastName || !nameRegex.test(lastName)) {
+      toast.error("Please enter a valid Last Name (Only letters allowed).");
+      return;
+    }
+
+    if (!email) {
+      toast.error("Please enter a valid Email ID.");
+      return;
+    }
+
+    if (!mobile || mobile.length < 10) {
+      toast.error("Phone Number must be at least 10 characters long.");
+      return;
+    }
+
+    if (!document.getElementById("terms").checked) {
+      toast.error("You must accept the Terms and Conditions to proceed.");
+      return;
+    }
+
+    // Dispatch form data
+    dispatch(studentSignUpRequest(formData));
+  };
+
+  // Navigate to dashboard if token is present
   useEffect(() => {
     if (token) {
       navigate("/admin/dashboard");
@@ -50,18 +79,11 @@ function StudentSignUp() {
           <div className="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0">
             <form
               className="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
-              // action="#"
               onSubmit={handleSubmit}
             >
-              <h2 className="text-xl font-bold   text-gray-900 dark:text-white">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                 Create an Account
               </h2>
-
-              <div className="flex items-center">
-                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-
-                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-              </div>
 
               <div className="flex gap-x-4">
                 <div className="w-1/2">
@@ -70,7 +92,8 @@ function StudentSignUp() {
                     type="text"
                     name="firstName"
                     id="firstName"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                    value={formData.firstName}
+                    onChange={handleChange}
                     placeholder="First Name"
                     required
                   />
@@ -81,7 +104,8 @@ function StudentSignUp() {
                     type="text"
                     name="lastName"
                     id="lastName"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                    value={formData.lastName}
+                    onChange={handleChange}
                     placeholder="Last Name"
                     required
                   />
@@ -90,30 +114,29 @@ function StudentSignUp() {
 
               <div>
                 <BorderTextInputField
-                  label={"Your email"}
+                  label="Your Email"
                   type="email"
                   name="email"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="name@company.com"
-                  required=""
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
+
               <div>
                 <BorderTextInputField
-                  label={"Phone Number"}
-                  //  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="+91 9876543210"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  required=""
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  label="Phone Number"
+                  name="mobile"
+                  id="mobile"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Enter Phone Number"
+                  required
                 />
               </div>
+
               <div className="space-y-3">
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
@@ -123,25 +146,24 @@ function StudentSignUp() {
                       aria-describedby="terms"
                       type="checkbox"
                       className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
+                      required
                     />
                   </div>
                   <div className="ml-3 text-sm">
                     <label
                       htmlFor="terms"
-                      className="font-light   text-gray-500 dark:text-gray-300"
+                      className="font-light text-gray-500 dark:text-gray-300"
                     >
-                      By signing up, you are creating a Flowbite account, and
-                      you agree to Flowbite’s{" "}
+                      By signing up, you agree to our{" "}
                       <a
-                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
+                        className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
                       >
                         Terms of Use
                       </a>{" "}
                       and{" "}
                       <a
-                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
+                        className="font-medium text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
                       >
                         Privacy Policy
@@ -150,33 +172,31 @@ function StudentSignUp() {
                     </label>
                   </div>
                 </div>
+
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
                     <input
                       id="newsletter"
-                      aria-describedby="newsletter"
+                      name="newsletter"
                       type="checkbox"
                       className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
                     />
                   </div>
                   <div className="ml-3 text-sm">
                     <label
                       htmlFor="newsletter"
-                      className="font-light   text-gray-500 dark:text-gray-300"
+                      className="font-light text-gray-500 dark:text-gray-300"
                     >
                       Email me about product updates and resources.
                     </label>
                   </div>
                 </div>
               </div>
+
               <button
                 type="submit"
                 disabled={loading}
-                /* onClick={() => {
-                  navigate("/admin/dashboard");
-                }} */
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium   rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
+                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
               >
                 {loading ? (
                   <div className="flex justify-center items-center">
@@ -192,7 +212,7 @@ function StudentSignUp() {
                   href="/signin"
                   className="text-sm text-yellow-500 hover:underline"
                 >
-                  Already have an account ? Sign In
+                  Already have an account? Sign In
                 </a>
               </div>
             </form>

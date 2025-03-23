@@ -7,6 +7,7 @@ import wallet from "../../../assets/wallet.png";
 import bookmark from "../../../assets/bookmark.png";
 import { useState } from "react";
 import AccomodationEnquiryModal from "../modals/accomodationEnquiryModal";
+import { COLORS } from "../../../constants/colors";
 
 const AccommodationCard = ({ item, source, onAddLead }) => {
   console.log(source);
@@ -41,7 +42,7 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
         <div className="p-5 flex flex-col flex-grow">
           {/* Header */}
           <div className="flex justify-between">
-            <h5 className="text-[22px] mb-1 font-semibold tracking-tight text-[#27272A] dark:text-white">
+            <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
               {item.accomodationName}
             </h5>
             <div>

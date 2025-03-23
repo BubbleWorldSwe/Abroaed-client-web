@@ -1,3 +1,4 @@
+import { COLORS } from "../../../../constants/colors";
 
 const BlogHomeTradingNowSection = () => {
 
@@ -18,7 +19,7 @@ const BlogHomeTradingNowSection = () => {
                         >
                             <div className="px-4 mx-auto  flex gap-16">
                                 <div className="w-3/4">
-                                    <h2 className="mb-8 text-[45px] font-extrabold text-[#27272A] ">
+                                    <h2 className={`mb-8 text-[45px] font-extrabold text-[${COLORS.GRAY_PRIMARY}] `}>
                                         Trending Now
                                     </h2>
                                     <article className="flex gap-5 mb-8">
@@ -33,7 +34,7 @@ const BlogHomeTradingNowSection = () => {
                                             <p className="mb-2 text-sm font-semibold  text-[#52525B] dark:text-white">
                                                 Blog Category • Date • Time To Read
                                             </p>
-                                            <h2 className="mb-1 text-[#27272A] leading-tight  text-[22px] font-semibold dark:text-gray-400">
+                                            <h2 className={`mb-1 text-[${COLORS.GRAY_PRIMARY}] leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
                                                 Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                                 Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                             </h2>
@@ -57,7 +58,8 @@ const BlogHomeTradingNowSection = () => {
                                             <p className="mb-2 text-sm font-semibold  text-[#52525B] dark:text-white">
                                                 Blog Category • Date • Time To Read
                                             </p>
-                                            <h2 className="mb-1 text-[#27272A]  text-[22px] font-semibold dark:text-gray-400">
+                                            <h2 className={`mb-1 text-[${COLORS.GRAY_PRIMARY}]   text-[22px] font-semibold dark:text-gray-400`}>
+
                                                 Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                                 Dolor Sit Amet
                                             </h2>
@@ -81,7 +83,7 @@ const BlogHomeTradingNowSection = () => {
                                             <p className="mb-2 text-sm font-semibold  text-[#52525B] dark:text-white">
                                                 Blog Category • Date • Time To Read
                                             </p>
-                                            <h2 className="mb-1 text-[#27272A]  text-[22px] font-semibold dark:text-gray-400">
+                                            <h2 className={`mb-1 text-[${COLORS.GRAY_PRIMARY}]  text-[22px] font-semibold dark:text-gray-400`}>
                                                 Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                                 Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                             </h2>
@@ -95,14 +97,14 @@ const BlogHomeTradingNowSection = () => {
                                     </article>
                                 </div>
                                 <div className=" w-1/4 px-6 py-5 mb-6 rounded-xl shadow-lg border border-gray-200 bg-white">
-                                    <h3 className="mb-4 text-[32px] font-bold text-[#27272A] dark:text-white ">
+                                    <h3 className={`mb-4 text-[32px] font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white `}>
                                         Most Popular
                                     </h3>
                                     <div>
                                         {blogPosts.map((post) => (
                                             <div key={post.id} className="border-b pb-4 mb-4">
                                                 <p className="text-[#52525B] font-semibold text-sm mb-2">Date • Time To Read</p>
-                                                <div className="flex items-center text-[18px] text-[#27272A] font-semibold space-x-3">
+                                                <div className={`flex items-center text-[18px] text-[${COLORS.GRAY_PRIMARY}] font-semibold space-x-3`}>
                                                     <span className="text-lg font-semibold">{post.id}</span>
                                                     <p className="font-semibold">{post.title}</p>
                                                 </div>

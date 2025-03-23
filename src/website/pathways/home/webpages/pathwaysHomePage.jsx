@@ -7,8 +7,24 @@ import PathwaysHomeHowItWorkSection from "./sections/pathwaysHomeHowItWorkSectio
 import PathwaysHomeFaqSection from "./sections/pathwaysHomeFaqSection";
 // import PathwaysHomeLeadForm from "./sections/pathwaysHomeLeadFormSection";
 import ContactUsForm from "../../../comman/components/contactUsForm";
+import { entity, source } from "../../../../constants/values";
+import { addLeadRequest } from "../../../../redux/actions/leadsActions";
+import { useDispatch } from "react-redux";
 
 function PathwaysHomePage() {
+  const dispatch = useDispatch();
+
+  const handleAddLead = (data) => {
+    try {
+      console.log("handleAddLead");
+      console.log(data);
+
+      dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="font-rethink">
       <Header />
@@ -45,8 +61,9 @@ function PathwaysHomePage() {
           />
         </div>
         <ContactUsForm
-        // title="abcd"
-        //  text="vvv"
+          onFormSubmit={handleAddLead}
+          source={source.pathways}
+          entity={entity.contactUs}
         />
       </div>
 

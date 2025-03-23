@@ -97,7 +97,7 @@ const BlogsTable = ({
               <td className="px-4 py-3">
                 Draft
               </td>
-              <td className="px-4 py-3">Abroaed</td>
+              <td className="px-4 py-3">ABROAED</td>
               <td className="px-4 py-1">
                 <span className="bg-[#F3F4F6] px-2 py-1 rounded-md">
 

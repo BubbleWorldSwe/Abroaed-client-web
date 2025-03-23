@@ -118,11 +118,10 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
           {statusList.map(({ label, bg, text, border }) => (
             <span
               key={label}
-              className={`text-sm rounded-md px-3 py-1 cursor-pointer border ${border} ${bg} ${text} ${
-                formData.status?.toLowerCase() === label.toLowerCase()
+              className={`text-sm rounded-md px-3 py-1 cursor-pointer border ${border} ${bg} ${text} ${formData.status?.toLowerCase() === label.toLowerCase()
                   ? "font-semibold border-1"
                   : "border-0"
-              }`}
+                }`}
               onClick={() => handleStatusSelect(label)}
             >
               {label}

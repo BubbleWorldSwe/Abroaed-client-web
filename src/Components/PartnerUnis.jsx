@@ -11,7 +11,7 @@ const testimonialData = [
     name: "John Doe",
     role: "Software Engineer",
     testimonial:
-      "This platform has completely transformed how I approach study abroaed consultations. Highly recommended!",
+      "This platform has completely transformed how I approach study ABROAED consultations. Highly recommended!",
     img: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png",
   },
   {
@@ -35,7 +35,7 @@ const testimonialData = [
     name: "John Doe",
     role: "Software Engineer",
     testimonial:
-      "This platform has completely transformed how I approach study abroaed consultations. Highly recommended!",
+      "This platform has completely transformed how I approach study ABROAED consultations. Highly recommended!",
     img: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png",
   },
   {
@@ -121,8 +121,8 @@ function Testimonials() {
             <SwiperSlide key={testimonial.id}>
               <article
                 className={`p-6  max-w-sm bg-white rounded-lg shadow-md border transition-transform duration-300 ${index === activeIndex
-                    ? "h-[250px] border-blue-500"
-                    : "h-[200px] border-gray-200"
+                  ? "h-[250px] border-blue-500"
+                  : "h-[200px] border-gray-200"
                   } dark:border-gray-700 dark:bg-gray-900`}
               >
                 {" "}

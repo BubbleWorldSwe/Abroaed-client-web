@@ -2,6 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import { CheckIcon } from "lucide-react";
+import { COLORS } from "../../../../constants/colors";
 
 function TestPrepBatchDetaileSection({ testPrepsDetails }) {
   return (
@@ -28,7 +29,7 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                 </div>
                 <a
                   href="#"
-                  className=" bg-[#FDDA24] hover:bg-primary-500 focus:ring-4 focus:ring-primary-200 font-semibold rounded-lg text-[22px] px-5 py-2.5 text-center "
+                  className={`bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-primary-500 focus:ring-4 focus:ring-primary-200 font-semibold rounded-lg text-[22px] px-5 py-2.5 text-center`}
                 >
                   Enroll Now
                 </a>
@@ -53,7 +54,7 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                 <ul role="list" className="mb-8 space-y-2 text-left">
                   {data.features?.map((item, i) => (
                     <li key={i} className="flex items-center space-x-3">
-                      <CheckIcon color="#27272A" size={14} />
+                      <CheckIcon color={COLORS.GRAY_PRIMARY} size={14} />
                       <span className="text-[12px] text-[#52525B] font-normal ">{item}</span>
                     </li>
                   ))}

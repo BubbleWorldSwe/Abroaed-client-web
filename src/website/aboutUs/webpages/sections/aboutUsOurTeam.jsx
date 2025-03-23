@@ -1,3 +1,4 @@
+import { COLORS } from "../../../../constants/colors"
 
 function AboutUsOurTeam() {
   return (
@@ -5,7 +6,7 @@ function AboutUsOurTeam() {
       <section className="bg-white dark:bg-gray-900 antialiased px-6 mx-auto">
         <div className="max-w-screen-2xl px-4 py-2 mx-auto lg:px-6 sm:py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-5xl font-extrabold  text-[#27272A]  dark:text-white">
+            <h2 className={`text-5xl w-full items-center text-left text-[${COLORS.GRAY_PRIMARY}]  font-extrabold `}>
               Our people make us great
             </h2>
             <p className="mt-4 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">

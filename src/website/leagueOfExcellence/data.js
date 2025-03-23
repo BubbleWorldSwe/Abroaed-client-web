@@ -1,51 +1,82 @@
 import image from "../../assets/dark.png";
 
-export const universities = [
-    {
-        name: "Harvard University",
-        location: "Cambridge, MA, USA",
-        fees: "$50,000/year",
-        description:
-            "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
-        imgUrl: image,
-    },
-    {
-        name: "Stanford University",
-        location: "Stanford, CA, USA",
-        fees: "$55,000/year",
-        entityType: 'Private',
-        description:
-            "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
-        imgUrl: image,
-    },
-    {
-        name: "MIT",
-        location: "Cambridge, MA, USA",
-        fees: "$52,000/year",
-        entityType: 'Private',
-        description:
-            "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
-        imgUrl: image,
-    },
-    {
-        name: "University of Oxford",
-        location: "Oxford, UK",
-        fees: "£30,000/year",
-        entityType: 'Private',
-        description:
-            "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
-        imgUrl: image,
-    },
-    {
-        name: "University of Oxford",
-        location: "Oxford, UK",
-        fees: "£30,000/year",
-        entityType: 'Private',
-        description:
-            "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
-        imgUrl: image,
-    },
-];
+export const universities = {
+    USA: [
+        {
+            name: "Harvard University",
+            location: "Cambridge, MA, USA",
+            fees: "$50,000/year",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+        {
+            name: "Stanford University",
+            location: "Stanford, CA, USA",
+            fees: "$55,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+        {
+            name: "MIT",
+            location: "Cambridge, MA, USA",
+            fees: "$52,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+        {
+            name: "MIT",
+            location: "Cambridge, MA, USA",
+            fees: "$52,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+        {
+            name: "MIT",
+            location: "Cambridge, MA, USA",
+            fees: "$52,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+    ],
+    UK: [
+        {
+            name: "University of Oxford",
+            location: "Oxford, UK",
+            fees: "£30,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+        {
+            name: "University of Oxford",
+            location: "Oxford, UK",
+            fees: "£30,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+        {
+            name: "University of Oxford",
+            location: "Oxford, UK",
+            fees: "£30,000/year",
+            entityType: "Private",
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+            imgUrl: image,
+        },
+    ],
+};
 export const plans = [
     {
         name: "Basic",
@@ -85,4 +116,57 @@ export const highestEducation = [
     "Management",
     "Arts & Humanities",
     "Science",
+];
+
+export const countriesName = [
+    {
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
+        name: "United States of America",
+        code: "USA"
+    },
+    {
+        title: "Content here should be dynamic",
+        name: "United Kingdom",
+        code: "UK"
+    },
+    {
+        title: "",
+        name: "Canada",
+        code: "CAN"
+    },
+    {
+        title: "",
+        name: "France",
+        code: "FRA"
+    },
+    {
+        title: "",
+        name: "Italy",
+        code: "ITA"
+    },
+    {
+        title: "",
+        name: "Germany",
+        code: "GER"
+    },
+    {
+        title: "",
+        name: "Czech Republic",
+        code: "CZE"
+    },
+    {
+        title: "",
+        name: "Ireland",
+        code: "IRL"
+    },
+    {
+        title: "",
+        name: "Netherlands",
+        code: "NLD"
+    },
+    {
+        title: "",
+        name: "Australia",
+        code: "AUS"
+    }
 ];

@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -10,23 +10,11 @@ import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
 import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
-
-export const destinationMenuItems = [
-  { name: "UK", flag: "🇬🇧", link: "/uk" },
-  { name: "Ireland", flag: "🇮🇪", link: "/ireland" },
-  { name: "Germany", flag: "🇩🇪", link: "/germany" },
-  { name: "France", flag: "🇫🇷", link: "/france" },
-  { name: "Italy", flag: "🇮🇹", link: "/italy" },
-  { name: "Poland", flag: "🇵🇱", link: "/poland" },
-  { name: "Australia", flag: "🇦🇺", link: "/australia" },
-  { name: "USA", flag: "🇺🇸", link: "/usa" },
-  { name: "Canada", flag: "🇨🇦", link: "/canada" },
-  { name: "Dubai", flag: "🇦🇪", link: "/dubai" },
-  { name: "Europe", flag: "🇪🇺", link: "/europe" },
-  { name: "Netherlands", flag: "🇳🇱", link: "/netherlands" },
-  { name: "Spain", flag: "🇪🇸", link: "/spain" },
-  { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
-];
+import { logout } from "../../../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
+import { COLORS } from "../../../constants/colors";
+import ProfileModal from "../modals/profileModal";
+//import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -53,6 +41,17 @@ function Header({ isHeaderBgWhite = false }) {
   const [filteredColleges, setFilteredColleges] = useState([]);
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { token } = useSelector((state) => state.auth);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSignOut = () => {
+    dispatch(logout(null));
+    // localStorage.removeItem("token", token);
+    navigate("/home");
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -105,17 +104,24 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
-          ? "bg-white text-[#52525B] shadow-md"
-          : "bg-black text-white bg-opacity-5"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
+        ? "bg-white text-[#52525B] shadow-md"
+        : "bg-black text-white bg-opacity-5"
+        }`}
     >
       <nav>
         <div
-          className={`py-3 text-center font-inter text-sm bg-yellow-300 text-black`}
+          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-[${COLORS.GRAY_PRIMARY}] text-white`}
         >
-          Improve Your IELTS Writing with Our Free Tool 🔍
+          <p className="">
+            GET IN TOUCH WITH US TODAY !
+          </p>
+          <div> <button
+            onClick={() => navigate("/homeCounselling")}
+            className={`px-2 py-1 hover:bg-[#508030]  bg-[${COLORS.YELLOW_PRIMARY}] text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
+          >
+            Book Counselling Now
+          </button></div>
         </div>
         <nav className="flex items-center justify-between  md:justify-center   w-full px-12 py-4">
           <div className="flex  basis items-center">
@@ -123,9 +129,8 @@ function Header({ isHeaderBgWhite = false }) {
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
-                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
+                  }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
@@ -142,18 +147,10 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                     ${
-                       scrolling || isHeaderBgWhite
-                         ? "text-[#52525B]"
-                         : "text-white"
-                     }
+                     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${
-                       activeDropdown === "exploreColleges"
-                         ? "after:opacity-30"
-                         : ""
-                     }`}
+                     ${activeDropdown === "exploreColleges" ? "after:opacity-30" : ""}`}
                   >
                     Explore Colleges
                   </a>
@@ -187,7 +184,7 @@ function Header({ isHeaderBgWhite = false }) {
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
     ${activeDropdown === "whyAbroad" ? "after:opacity-30" : ""}`}
                   >
-                    Why Abroaed?
+                    Why ABROAED?
                   </a>
                   {activeDropdown === "whyAbroad" && (
                     <div className="relative">
@@ -212,7 +209,7 @@ function Header({ isHeaderBgWhite = false }) {
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
     ${activeDropdown === "abroaedPlus" ? "after:opacity-30" : ""}`}
                   >
-                    Abroaed Plus
+                    ABROAED +
                   </a>
                 </li>
                 <li
@@ -222,30 +219,40 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${
-                        scrolling || isHeaderBgWhite
-                          ? "text-[#52525B]"
-                          : "text-white"
-                      }
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${
-                        activeDropdown === "destinations"
-                          ? "after:opacity-30"
-                          : ""
-                      }`}
+                      ${activeDropdown === "destinations" ? "after:opacity-30" : ""}`}
                   >
                     Destinations
                   </a>
                   {activeDropdown === "destinations" && (
                     <div className="relative">
                       <DestinationNavItemModal
-                        menuItems={destinationMenuItems}
+                        //  menuItems={destinationMenuItems}
                         handleMouseEnter={handleMouseEnter}
                         handleMouseLeave={handleMouseLeave}
                       />
                     </div>
                   )}
+                </li>
+                <li
+
+                  onMouseEnter={() => handleMouseEnter("accomodation")}
+                  onMouseLeave={handleMouseLeave}
+                  className="relative cursor-pointer"
+                >
+                  <a
+                    href="/accomodation"
+                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
+                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
+                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
+                      ${activeDropdown === "accomodation" ? "after:opacity-30" : ""}`}
+                  >
+                    Accommodation
+                  </a>
+
                 </li>
                 <li
                   onMouseEnter={() => handleMouseEnter("testPrep")}
@@ -254,16 +261,10 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${
-                        scrolling || isHeaderBgWhite
-                          ? "text-[#52525B]"
-                          : "text-white"
-                      }
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${
-                        activeDropdown === "testPrep" ? "after:opacity-30" : ""
-                      }`}
+                      ${activeDropdown === "testPrep" ? "after:opacity-30" : ""}`}
                   >
                     Test Prep
                   </a>
@@ -287,18 +288,10 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold text-sm px-1 relative transition-colors duration-300
-                      ${
-                        scrolling || isHeaderBgWhite
-                          ? "text-[#52525B]"
-                          : "text-white"
-                      }
+                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${
-                        activeDropdown === "languagePrep"
-                          ? "after:opacity-30"
-                          : ""
-                      }`}
+                      ${activeDropdown === "languagePrep" ? "after:opacity-30" : ""}`}
                   >
                     Language Prep
                   </a>
@@ -365,27 +358,36 @@ function Header({ isHeaderBgWhite = false }) {
                     League of Excellence
                   </a>
                 </li>
-                <li>
-                  <button className="px-3 py-2 bg-[#FDDA24] text-[#27272A] font-semibold rounded-lg">
-                    Book Counselling Now
-                  </button>
-                </li>
               </ul>
             </div>
           </div>
-          <div className="flex flex-grow-0 basis-[10%] justify-end">
+          <div className="flex flex-grow-0 basis-[10%] justify-end "
+
+          >
             <a
-              href="/admin/signin"
-              className={`text-sm font-medium ${
-                scrolling ? "text-black" : "text-white"
-              } hover:underline`}
+              onMouseEnter={() => handleMouseEnter("login")}
+              onMouseLeave={handleMouseLeave}
+            // className={ }
             >
-              Login
+              <button
+                onClick={() => navigate("/admin/signin")}
+                className={`px-4 py-2  bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-[#508030] font-semibold text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
+              >
+                Login
+              </button>
+              {activeDropdown === "login" && (
+                <div className="relative">
+                  <ProfileModal
+                    handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                  />
+                </div>
+              )}
             </a>
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}

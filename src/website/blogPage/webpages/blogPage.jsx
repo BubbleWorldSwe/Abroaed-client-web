@@ -4,15 +4,16 @@ import Header from "../../comman/sections/headerSection";
 import BlogPageContaintSection from "./sections/blogPageContaintSection";
 import BlogPageHeaderText from "./sections/blogPageHeaderText";
 import BlogPageRelatedArticle from "./sections/blogPageRelatedArticle";
-import BlogRountingSection from "./sections/blogRountingSection";
+// import BlogRountingSection from "./sections/blogPageRountingSection";
 import rightAngle from "../../../assets/rightAngle.png"
+
 function BlogPage() {
 
   return (
     <div className="font-rethink relative">
       <Header isHeaderBgWhite={true} />
-      <BlogRountingSection />
-      <div className="absolute top-40 left-0 w-full">
+      {/* <BlogRountingSection /> */}
+      <div className="absolute top-32 left-0 w-full">
         <BlogPageHeaderText />
         <BlogPageContaintSection />
         <div className="relative ">

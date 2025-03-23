@@ -21,17 +21,18 @@ import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { COLORS } from "../../../constants/colors";
 
 const NavigationItems = () => {
   return (
     <div className="text-white  bg-opacity-70 text-xl ">
       <p>
-        Get personalized, one-on-one counseling with experienced consultants to
-        help you navigate your study abroaed plans for free.
+        Get personalized, one-on-one counselling with experienced consultants to
+        help you navigate your study ABROAED plans for free.
       </p>
       <div className="flex gap-2 mt-5 whitespace-nowrap">
-        <button className="px-4 py-3  text-base mb-2 font-semibold rounded-lg text-[#432205] hover:bg-[#EDFA29]  bg-[#FDDA24] ">
+        <button className={`px-4 py-3  text-base mb-2 font-semibold rounded-lg text-[#432205] hover:bg-[#EDFA29]  bg-[${COLORS.YELLOW_PRIMARY}] `}>
           Book Counselling Now
         </button>
       </div>
@@ -41,6 +42,9 @@ const NavigationItems = () => {
 
 const HomeCounsellingPage = () => {
   const dispatch = useDispatch();
+
+  const { loading } = useSelector((state) => state?.leads);
+  console.log(loading, "loading");
 
   const handleAddLead = (data) => {
     // setIsLoading(true);
@@ -75,6 +79,7 @@ const HomeCounsellingPage = () => {
           onFormSubmit={handleAddLead}
           source={source.homeCounselling}
           entity={entity.bookCounselling}
+          loading={loading}
         />
         <div className="absolute top-48 right-0 -z-10">
           <img
@@ -98,7 +103,11 @@ const HomeCounsellingPage = () => {
           />
         </div>
       </div>
-      <ContactUsForm />
+      <ContactUsForm
+        onFormSubmit={handleAddLead}
+        source={source.homeCounselling}
+        entity={entity.contactUs}
+      />
       <Footer />
     </div>
   );

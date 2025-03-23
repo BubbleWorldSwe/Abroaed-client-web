@@ -1,4 +1,5 @@
 import vectorRightRing from "../../../../assets/vectorRightRing.png"
+import { COLORS } from "../../../../constants/colors"
 import { steps } from "../../data"
 
 
@@ -10,11 +11,11 @@ const AccommodationHowItWorkSection = () => {
                 <section className="dark:bg-gray-900">
                     <div className="py-8 lg:py-16">
                         <div className="">
-                            <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+                            <h2 className={`mb-5 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                                 How It Works?
                             </h2>
-                            <p className="text-[18px] text-[#27272A] font-normal">
-                                Finding accommodation abroad is a highly challenging task; however, when you are taking the services from Abroaed, finding accommodation becomes not only simple but also stress-free. We, at Abroaed Consultancy, provide a very structured three-step approach that assures every student gets a suitable and comfortable place to live in. From discussing your preferences to making all the needful arrangements for you, we are here for you at every stage. With Abroaed, you can completely focus on your studies while we take care of your house hunt.
+                            <p className={`text-[18px] text-[${COLORS.GRAY_PRIMARY}] font-normal`}>
+                                Finding accommodation abroad is a highly challenging task; however, when you are taking the services from ABROAED, finding accommodation becomes not only simple but also stress-free. We, at ABROAED Consultancy, provide a very structured three-step approach that assures every student gets a suitable and comfortable place to live in. From discussing your preferences to making all the needful arrangements for you, we are here for you at every stage. With ABROAED, you can completely focus on your studies while we take care of your house hunt.
                             </p>
                         </div>
                         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">

@@ -10,7 +10,7 @@ function Dashboard() {
 
   const handleSignOut = () => {
     dispatch(logout(null));
-    localStorage.removeItem("token", token);
+    // localStorage.removeItem("token", token);
     navigate("/home");
   };
   return (

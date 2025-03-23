@@ -8,7 +8,6 @@ import NurtureLeads from "../pages/admin/NurtureLeads";
 import Student from "../admin/student/screens/student";
 import Leads from "../admin/lead/screens/leads";
 import HomeLayout from "../website/home/webpages/homePage";
-import ComingSoonPage from "../Layouts/ComingSoonPageLayout";
 import SigninPage from "../pages/admin/SigninPage";
 import TestPrepLayout from "../website/testPrep/webpages/testPrepPage";
 import AboutUsPage from "../website/aboutUs/webpages/aboutUsPage";
@@ -42,7 +41,7 @@ import LeadProfileLayout from "../admin/lead/screens/leadProfile";
 import AdminLayout from "../admin/adminLayouts";
 import LeaguageOfExcellencePage from "../website/leagueOfExcellence/webpages/leaguageOfExcellencePage";
 import AbroaedPlusPage from "../website/abroaedPlus/webscreens/abroaedPlusPage";
-import BlogsCategoryPage from "../website/blogCategory/webpages/blogsCategoryPage";
+// import BlogsCategoryPage from "../website/blogCategory/webpages/blogsCategoryPage";
 import BlogsHome from "../website/blogHome/webpages/blogHomePage";
 import BlogPage from "../website/blogPage/webpages/blogPage";
 import ContactUsPage from "../website/contactUs/webpages/contactUsPage";
@@ -51,6 +50,8 @@ import Blogs from "../admin/blogs/screens/blogs";
 import BlogsDetails from "../admin/blogs/screens/blogsDetails";
 import StudentSignIn from "../website/auth/studentSignIn";
 import StudentSignUp from "../website/auth/studentSignUp";
+import StudentResetPassword from "../website/auth/studentResetPassword";
+import ComingSoonPage from "../Layouts/comingSoonPage";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -71,13 +72,18 @@ const AppRoutes = () => {
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/signin", element: <StudentSignIn />, isPrivate: false },
     { path: "/signup", element: <StudentSignUp />, isPrivate: false },
-    { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
-    { path: "/blog", element: <BlogsHome />, isPrivate: false },
     {
-      path: "/blog/category/:id",
-      element: <BlogsCategoryPage />,
+      path: "/update-password/:id",
+      element: <StudentResetPassword />,
       isPrivate: false,
     },
+    { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
+    { path: "/blog", element: <BlogsHome />, isPrivate: false },
+    // {
+    //   path: "/blog/category/:id",
+    //   element: <BlogsCategoryPage />,
+    //   isPrivate: false,
+    // },
     { path: "/finance", element: <FinancePage />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
     {

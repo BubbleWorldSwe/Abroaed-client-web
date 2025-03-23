@@ -37,6 +37,38 @@ export const constructPostRequestOptions = (payload) => {
   };
 };
 
+export const constructPostRequestWithTokenOptions = (payload) => {
+  const token = localStorage.getItem("token");
+  var requestHeaders = new Headers();
+  requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+  requestHeaders.append("Authorization", token);
+
+  var raw = JSON.stringify(payload);
+
+  return {
+    method: REQUEST_METHOD_POST,
+    headers: requestHeaders,
+    body: raw,
+  };
+};
+
+export const constructPutRequestWithTokenOptions = (payload) => {
+  console.log(payload);
+  const token = localStorage.getItem("token");
+  console.log(token);
+  var requestHeaders = new Headers();
+  requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+  requestHeaders.append("Authorization", `Bearer ${token}`);
+
+  var raw = JSON.stringify(payload);
+
+  return {
+    method: REQUEST_METHOD_PUT,
+    headers: requestHeaders,
+    body: raw,
+  };
+};
+
 export const constructPatchRequestOptions = (payload) => {
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);

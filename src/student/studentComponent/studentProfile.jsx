@@ -3,6 +3,7 @@ import pencil from "../../assets/pencil.png";
 import { additionalServiceDetails, additionalServiceTabColors } from "../data";
 import AdditionalServicesCard from "../components/additionalServicesCard";
 import StudentProfileEditModal from "../modals/studentProfileEditModal";
+import { COLORS } from "../../constants/colors";
 
 const StudentProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -44,7 +45,7 @@ const StudentProfile = () => {
         {/* personal information */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold  text-[#27272A]">
+            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
               Personal Information
             </h2>
             <button onClick={handleOpenAddModal}>
@@ -86,7 +87,7 @@ const StudentProfile = () => {
         {/* addition information */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold  text-[#27272A]">
+            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
               Additional Information
             </h2>
             <img src={pencil} alt="pencil-img" className="w-6 h-6" />
@@ -126,7 +127,7 @@ const StudentProfile = () => {
         {/* Assign Team */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold  text-[#27272A]">
+            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
               Assigned Team
             </h2>
           </div>
@@ -178,7 +179,7 @@ const StudentProfile = () => {
         {/* Additional service */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg ">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold  text-[#27272A]">
+            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
               Additional Services
             </h2>
           </div>
@@ -189,11 +190,10 @@ const StudentProfile = () => {
                   <div className="flex flex-col gap-4 w-full" key={index}>
                     <div>
                       <button
-                        className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${
-                          activeTab === index
-                            ? "text-black  border-b-4 border-blue-500"
-                            : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                        }`}
+                        className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${activeTab === index
+                          ? "text-black  border-b-4 border-blue-500"
+                          : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                          }`}
                         onClick={() => handleTabClick(index)}
                         role="tab"
                         aria-controls={`styled-${tab?.tabName
@@ -202,10 +202,9 @@ const StudentProfile = () => {
                         aria-selected={activeTab === index}
                       >
                         <span
-                          className={`px-3 py-1 rounded-full ${
-                            additionalServiceTabColors[tab.tabName] ||
+                          className={`px-3 py-1 rounded-full ${additionalServiceTabColors[tab.tabName] ||
                             "bg-gray-300"
-                          } `}
+                            } `}
                         >
                           {tab.tabName}
                         </span>

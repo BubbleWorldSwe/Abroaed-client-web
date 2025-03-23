@@ -3,6 +3,7 @@ import { useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { toast } from "react-toastify";
+import { COLORS } from "../../../constants/colors";
 
 const CourseEnquiryModal = ({
   isOpen,
@@ -151,7 +152,7 @@ const CourseEnquiryModal = ({
                   onChange={(e) => setTermsAgreed(e.target.checked)}
                 />
                 <label htmlFor="terms" className="text-sm text-gray-600">
-                  I agree to Abroaed{" "}
+                  I agree to ABROAED{" "}
                   <span className="text-black cursor-pointer">
                     Terms of Service
                   </span>{" "}
@@ -166,7 +167,7 @@ const CourseEnquiryModal = ({
               <div className="flex justify-center text-center">
                 <button
                   onClick={handleSubmit}
-                  className="mt-4 w-72 bg-[#FDDA24] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300"
+                  className={`mt-4 w-72 bg-[${COLORS.YELLOW_PRIMARY}] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
                 >
                   Submit
                 </button>

@@ -28,7 +28,7 @@ export const cardDetails = [
 export const AbroaedPlusfaqs = [
     {
         question: "How will you help me if I want to know the reviews of my preferred University?",
-        answer: "We will assist you by contacting willing students who are already studying in your selected university and came there through Abroaed or our partner agency."
+        answer: "We will assist you by contacting willing students who are already studying in your selected university and came there through ABROAED or our partner agency."
     },
     {
         question: "How safe is studying abroad?",

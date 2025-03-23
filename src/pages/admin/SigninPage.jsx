@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "../../redux/actions/authActions";
+import { adminLoginRequest } from "../../redux/actions/authActions";
 
 import { toast } from "react-toastify";
 
@@ -29,7 +29,7 @@ function SigninPage() {
         return;
       }
 
-      dispatch(loginRequest({ email, password }));
+      dispatch(adminLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
     }
@@ -324,7 +324,7 @@ function SigninPage() {
                 ABROAED
               </a>
               <h1 className="mb-4 text-3xl font-extrabold   tracking-tight leading-none text-white xl:text-5xl">
-                Explore the world’s leading study Abroaed platform
+                Explore the world’s leading study ABROAED platform
               </h1>
               <p className="mb-4 font-light   text-primary-200 lg:mb-8">
                 Millions of designers and agencies around the world showcase

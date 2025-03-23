@@ -1,5 +1,6 @@
 
 import vectorRightRing from "../../../../assets/vectorRightRing.png"
+import { COLORS } from "../../../../constants/colors";
 import { steps } from "../../data";
 
 function FinanceHowItWorks() {
@@ -9,11 +10,11 @@ function FinanceHowItWorks() {
         <section className="dark:bg-gray-900">
           <div className="py-8 ">
             <div className="">
-              <h2 className="mb-5 text-[45px]  font-extrabold text-[#27272A] dark:text-white">
+              <h2 className={`mb-5 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
                 How It Works?
               </h2>
-              <p className="text-[18px] text-[#27272A] font-normal">
-                Studying abroad can feel like a huge deal when it comes to managing your finances, but Abroaed Consultancy is here to help break it down and make it easier. We assist you through the simple three-step process so you&apos;re fully equipped with financial preparations for your study abroad. Understand your financial requirements, and best available funding options, and ensure that you feel comfortable with your financial planning. With our aid, you can concentrate on your academics while we manage all the necessary bookkeeping.
+              <p className={`text-[18px] text-[${COLORS.GRAY_PRIMARY}] font-normal`}>
+                Studying abroad can feel like a huge deal when it comes to managing your finances, but ABROAED Consultancy is here to help break it down and make it easier. We assist you through the simple three-step process so you&apos;re fully equipped with financial preparations for your study abroad. Understand your financial requirements, and best available funding options, and ensure that you feel comfortable with your financial planning. With our aid, you can concentrate on your academics while we manage all the necessary bookkeeping.
               </p>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">

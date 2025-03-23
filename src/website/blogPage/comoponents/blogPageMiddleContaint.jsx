@@ -1,4 +1,5 @@
 import dark from "../../../assets/dark.png"
+import { COLORS } from "../../../constants/colors"
 const BlogPageMiddleContaint = () => {
     return (
         <div>
@@ -10,7 +11,8 @@ const BlogPageMiddleContaint = () => {
                 />
             </div>
             <div className="py-6 ">
-                <h2 className="text-[32px] mb-5 text-[#27272A] font-bold " >Section Header</h2>
+                <h2 className={`text-[32px] mb-5 text-[${COLORS.GRAY_PRIMARY}] font-bold `} >
+                    Section Header</h2>
                 <p className="text-[18px] mb-3 text-[#52525B] font-normal ">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </p>
@@ -27,7 +29,9 @@ const BlogPageMiddleContaint = () => {
                 />
             </div>
             <div className="py-8 ">
-                <h2 className="text-[32px] mb-5 text-[#27272A] font-bold " >Section Header</h2>
+                <h2 className={`text-[32px] mb-5 text-[${COLORS.GRAY_PRIMARY}] font-bold `} >
+                    Section Header
+                </h2>
                 <p className="text-[18px] mb-3 text-[#52525B] font-normal ">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </p>
@@ -96,7 +100,7 @@ const BlogPageMiddleContaint = () => {
                                     i < 3 && (
                                         <tr
                                             key={i}
-                                            className="border-b text-base text-[#27272A] font-normal  dark:border-gray-700"
+                                            className={`border-b text-base text-[${COLORS.GRAY_PRIMARY}] font-normal  dark:border-gray-700`}
                                         >
 
                                             <td className="px-4 py-3"> Entry 1</td>

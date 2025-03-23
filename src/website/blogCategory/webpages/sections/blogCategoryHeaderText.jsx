@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react"
+import { COLORS } from "../../../../constants/colors"
 
 const BlogCategoryHeaderText = () => {
     return (
@@ -11,7 +12,7 @@ const BlogCategoryHeaderText = () => {
                         <span>Category</span>
                     </div>
                     <div className="w-full flex flex-col gap-1 items-center justify-center   ">
-                        <h2 className="text-[57px] font-extrabold text-[#27272A">
+                        <h2 className={`text-[57px] font-extrabold text-[${COLORS.GRAY_PRIMARY}`}>
                             Category Name
                         </h2>
                         <p className="text-[#52525B] font-semibold text-[22px]">

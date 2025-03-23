@@ -16,12 +16,8 @@ const AbroaedPlusHero = () => {
                     ABROAED <sup>+</sup>
                 </h1>
                 <p className="font-light mb-3 text-white md:text-lg opacity-90 xl:text-xl">
-                    From Application to Arrival, We’ve Got You Covered!
-
+                    From home counselling to post-arrival support – We’re with you, even on the other side!
                 </p>
-                <button className="bg-[#FDDA24] mt-7 text-lg text-[#432205] hover:bg-yellow-300  py-2 rounded-lg font-semibold">
-                    Start Your Journey Today
-                </button>
             </div>
         </section>
     )

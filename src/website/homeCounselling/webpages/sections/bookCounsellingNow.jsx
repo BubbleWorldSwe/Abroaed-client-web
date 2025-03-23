@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
@@ -9,8 +10,9 @@ import {
   highestEducation,
   targetYear,
 } from "../../../../constants/values";
+import { COLORS } from "../../../../constants/colors";
 
-const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
+const BookCounsellingNow = ({ source, entity, onFormSubmit, loading }) => {
   const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
   const [formData, setFormData] = useState({
@@ -74,7 +76,7 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
     <section className=" dark:bg-gray-900 relative px-10 mx-auto h-full">
       <div className="py-16 px-4 mx-auto max-w-screen-2xl   z-10">
         {/* <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  "> */}
-        <h2 className="mb-4 text-[45px] text-center  font-extrabold text-[#27272A] dark:text-white">
+        <h2 className={`mb-4 text-[45px] text-center  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
           Book Counselling Now
         </h2>
         <div className="flex justify-center text-center">
@@ -154,7 +156,7 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                     }))}
                   />
 
-                  <BorderSelectField
+                  {/*  <BorderSelectField
                     label={"Mode of Counselling"}
                     options={[
                       { value: "1", label: "Home Counselling" },
@@ -163,19 +165,19 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                       { value: "4", label: "Others" },
                     ]}
                     required
+                  /> */}
+                  <BorderSelectField
+                    label="Preferred Study Destination"
+                    name="preferredDestination"
+                    value={formData.userDetail.preferredDestination}
+                    onChange={handleChange}
+                    options={allDestinations.map((data) => ({
+                      label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                      value: data?._id,
+                      ...data,
+                    }))}
+                    required
                   />
-                  {/*  <BorderSelectField
-                  label="Preferred Study Destination"
-                  name="preferredDestination"
-                  value={formData.userDetail.preferredDestination}
-                  onChange={handleChange}
-                  options={allDestinations.map((data) => ({
-                    label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                    value: data?._id,
-                    ...data,
-                  }))}
-                  required
-                /> */}
                 </div>
               </div>
               <div className="flex items-start mt-4">
@@ -185,7 +187,7 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                   required
                 />
                 <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                  I agree to Abroaed{" "}
+                  I agree to ABROAED{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
                 </label>
@@ -197,18 +199,24 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                   required
                 />
                 <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400 text-start">
-                  I agree to Abroaed Terms and privacy policy. Please contact me
+                  I agree to ABROAED Terms and privacy policy. Please contact me
                   by phone, email, or SMS to assist with my enquiry.
-                  <br />I would like to receive updates and offers from Abroaed.
+                  <br />I would like to receive updates and offers from ABROAED.
                 </label>
               </div>
               <div className="py-6">
                 <button
                   onSubmit={handleAddLead}
                   type="submit"
-                  className="py-2  px-7 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[#FDDA24] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                  className={`py-2  px-7 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
                 >
-                  Book Now
+                  {loading ? (
+                    <div className="flex justify-center items-center">
+                      <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-black rounded-full"></div>
+                    </div>
+                  ) : (
+                    "Book Now"
+                  )}
                 </button>
               </div>
             </div>

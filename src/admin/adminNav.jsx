@@ -5,7 +5,17 @@ import { IMAGES } from "../constants/images";
 const AdminNav = () => {
   return (
     <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md">
-      <img src={IMAGES.logoBlack} alt="Logo" className="h-8 w-10" />
+      {/*  <img src={IMAGES.logoBlack} alt="Logo" className="h-8 w-10" /> */}
+      <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
+        <a
+          // target="_blank"
+          href="/home"
+          className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] text-black`}
+        >
+          ABROA<span style={{ color: "#fbba18" }}>ED</span>
+        </a>
+      </h3>
+
       <div className="flex items-center space-x-5">
         {/* <div className="flex-1 mx-4 max-w-md">
                     <div className="relative">
