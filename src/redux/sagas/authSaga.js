@@ -1,18 +1,24 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
   STUDENT_LOGIN_REQUEST,
-  STUDENT_LOGIN_SUCCESS,
-  STUDENT_LOGIN_FAILURE,
   ADMIN_LOGIN_REQUEST,
-  ADMIN_LOGIN_SUCCESS,
-  ADMIN_LOGIN_FAILURE,
   studentLoginSuccess,
   studentLoginFailure,
   adminLoginSuccess,
   adminLoginFailure,
+  studentSignUpSuccess,
+  studentSignUpFailure,
+  STUDENT_SIGNUP_REQUEST,
+  studentUpdatePasswordSuccess,
+  studentUpdatePasswordFailure,
+  STUDENT_UPDATE_PASSWORD_REQUEST,
 } from "../actions/authActions";
 
-import { loginApi } from "../../api/authApi";
+import {
+  loginApi,
+  setStudentSignUp,
+  setUpdateStudent,
+} from "../../api/authApi";
 import { toast } from "react-toastify";
 
 function* handleStudentLogin(action) {
@@ -29,6 +35,65 @@ function* handleStudentLogin(action) {
     yield put(
       studentLoginFailure(
         error.response?.data?.message || "Student login failed"
+      )
+    );
+  }
+}
+
+function* handleStudentSignUp(action) {
+  try {
+    const response = yield call(setStudentSignUp, action.payload);
+
+    console.log(response);
+    if (response.status === 201) {
+      const resetPasswordLink = response.data?.resetPasswordLink || "";
+      if (resetPasswordLink) {
+        // Replace "undefined" with the actual frontend URL
+        const formattedLink = resetPasswordLink.replace(
+          "undefined",
+          "http://localhost:5173"
+        );
+
+        // Extracting the token from the URL
+        const token = formattedLink.split("token=")[1];
+        localStorage.setItem("token", token);
+
+        // Navigate to the update-password page
+        window.location.href = formattedLink;
+
+        yield put(studentSignUpSuccess({ user: response.data.user, token }));
+      }
+    } else {
+      yield put(studentSignUpFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(
+      studentSignUpFailure(
+        error.response?.data?.message || "Student Sign Up failed"
+      )
+    );
+  }
+}
+
+function* handleStudentResetPassword(action) {
+  try {
+    const response = yield call(setUpdateStudent, action.payload);
+
+    console.log(response);
+    if (response.status === 200) {
+      yield put(studentUpdatePasswordSuccess(response.data));
+      toast.success("Password Set Sucessfully");
+
+      //   window.location.href = "/signin";
+    } else {
+      yield put(studentUpdatePasswordFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(
+      studentUpdatePasswordFailure(
+        error.response?.data?.message || "Student Update Password failed"
       )
     );
   }
@@ -53,5 +118,7 @@ function* handleAdminLogin(action) {
 
 export default function* authSaga() {
   yield takeLatest(STUDENT_LOGIN_REQUEST, handleStudentLogin);
+  yield takeLatest(STUDENT_SIGNUP_REQUEST, handleStudentSignUp);
   yield takeLatest(ADMIN_LOGIN_REQUEST, handleAdminLogin);
+  yield takeLatest(STUDENT_UPDATE_PASSWORD_REQUEST, handleStudentResetPassword);
 }

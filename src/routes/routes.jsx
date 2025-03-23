@@ -51,6 +51,7 @@ import Blogs from "../admin/blogs/screens/blogs";
 import BlogsDetails from "../admin/blogs/screens/blogsDetails";
 import StudentSignIn from "../website/auth/studentSignIn";
 import StudentSignUp from "../website/auth/studentSignUp";
+import StudentResetPassword from "../website/auth/studentResetPassword";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -71,6 +72,11 @@ const AppRoutes = () => {
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/signin", element: <StudentSignIn />, isPrivate: false },
     { path: "/signup", element: <StudentSignUp />, isPrivate: false },
+    {
+      path: "/update-password/:id",
+      element: <StudentResetPassword />,
+      isPrivate: false,
+    },
     { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
     { path: "/blog", element: <BlogsHome />, isPrivate: false },
     {
