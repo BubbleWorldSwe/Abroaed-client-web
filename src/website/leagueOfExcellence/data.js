@@ -1,4 +1,4 @@
-import image from "../../assets/dark.png";
+import image from "../../assets/college.jpg";
 
 export const universities = {
     USA: [
@@ -6,46 +6,74 @@ export const universities = {
             name: "Harvard University",
             location: "Cambridge, MA, USA",
             fees: "$50,000/year",
+            entityType: "Private",
             description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+                "Harvard University is devoted to excellence in teaching, learning, and research, and to developing leaders who make a difference globally.",
             imgUrl: image,
         },
         {
-            name: "Stanford University",
-            location: "Stanford, CA, USA",
+            name: "Yale University",
+            location: "New Haven, CT, USA",
             fees: "$55,000/year",
             entityType: "Private",
             description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+                "Since its founding in 1701, Yale has been dedicated to expanding and sharing knowledge, inspiring innovation, and preserving cultural and scientific information for future generations.",
             imgUrl: image,
         },
         {
-            name: "MIT",
-            location: "Cambridge, MA, USA",
+            name: "Princeton University",
+            location: "Princeton, NJ, USA",
             fees: "$52,000/year",
             entityType: "Private",
             description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+                "Princeton University is a vibrant community of scholarship and learning that stands in the nation’s service and the service of humanity.",
             imgUrl: image,
         },
         {
-            name: "MIT",
-            location: "Cambridge, MA, USA",
-            fees: "$52,000/year",
+            name: "Columbia University",
+            location: "New York, NY, USA",
+            fees: "$53,000/year",
             entityType: "Private",
             description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+                "Columbia University is one of the world's most important centers of research and at the same time a distinctive and distinguished learning environment.",
             imgUrl: image,
         },
         {
-            name: "MIT",
-            location: "Cambridge, MA, USA",
-            fees: "$52,000/year",
+            name: "University of Pennsylvania",
+            location: "Philadelphia, PA, USA",
+            fees: "$51,000/year",
             entityType: "Private",
             description:
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+                "Penn dates its founding to 1740, when a plan emerged to build a Philadelphia charity school that would double as a house of worship.",
             imgUrl: image,
         },
+        {
+            name: "Dartmouth College",
+            location: "Hanover, NH, USA",
+            fees: "$49,000/year",
+            entityType: "Private",
+            description:
+                "Over 40 departments and programs constitute Dartmouth’s liberal arts core, which promotes critical thinking, creativity, and collaboration.",
+            imgUrl: image,
+        },
+        {
+            name: "Brown University",
+            location: "Providence, RI, USA",
+            fees: "$48,000/year",
+            entityType: "Private",
+            description:
+                "Brown University is a private Ivy League research university in Providence, Rhode Island. It was founded in 1764.",
+            imgUrl: image,
+        },
+        {
+            name: "Cornell University",
+            location: "Ithaca, NY, USA",
+            fees: "$50,500/year",
+            entityType: "Private",
+            description:
+                "Cornell University is a private research university that provides an exceptional education for students.",
+            imgUrl: image,
+        }
     ],
     UK: [
         {

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import dark from "../../../assets/dark.png"
 import locationIcon from "../../../assets/locationIcon.png"
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField"
 import { TextInputField } from "../../../commons/components/inputFields/textInputField"
 
 const EnquiryLOEModal = ({
+    item,
     isOpen,
     onClose,
 }) => {
@@ -48,7 +48,7 @@ const EnquiryLOEModal = ({
                             {/* Image with Float */}
                             <div>
                                 <img
-                                    src={dark}
+                                    src={item.imgUrl}
                                     alt="Accommodation"
                                     className="  rounded-lg w-full object-fill shadow-md  h-48"
                                 />
@@ -56,7 +56,7 @@ const EnquiryLOEModal = ({
                             {/* Details */}
                             <div className="py-3">
                                 <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}>
-                                    College Name
+                                    {item?.name}
                                 </h5>
                                 <div className="flex justify-between w-4/5 items-center">
                                     <div className="flex items-center gap-2">
@@ -66,11 +66,10 @@ const EnquiryLOEModal = ({
                                             alt={'locotionIcon'}
                                         />
                                         <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400">
-                                            New York, USA
-                                        </p>
+                                            {item.location}                                        </p>
                                     </div>
                                     <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400">
-                                        Privacy
+                                        {item.entityType}
                                     </p>
                                 </div>
                             </div>

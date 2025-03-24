@@ -1,14 +1,15 @@
-import dark from "../../assets/dark.png";
+import wwUsContent1 from "../../assets/wwUsContent1.png";
+import wwUsContent2 from "../../assets/wwUsContent2.png";
 export const careerData = [
   {
     imgFirst: true,
-    imgUrl: dark,
+    imgUrl: wwUsContent1,
     heading: "What Makes ABROAED Feel Like Home?",
     text: `At ABROAED, we build a "home away from home" for our employees by infusing a strong culture of support, collaboration, and professional growth into our daily operations. This is achieved through heterogeneous team-building initiatives, regular check-ins, and clear communication channels that encourage open dialogue. Employees are paired with mentors to guide them through challenges and foster development in their roles. Cross-function collaboration and a team-centric way of solving issues that allow for joint knowledge sharing underlie our methods of problem-solving. We create continuous, solution-focused, constructive feedback that gives each employee lessons from every incident.`,
   },
   {
     imgFirst: false,
-    imgUrl: dark,
+    imgUrl: wwUsContent2,
     heading: "A Strong Focus on Personal Development",
     text: `We don't think growth should ever come to an end, and our senior guides have a track record of 500+ successful counselling sessions and they believe they have a long way to go. Here, growth doesn't have an end; it's a journey and one that we undertake together, side by side. Our philosophy is simple and profound: we invest in individuals because they are the heartbeat of our achievement. We invest in the growth of our people, with opportunities for leadership, skill development, and growth. After all, when the individuals behind the work grow, the work flourishes.
 `,
