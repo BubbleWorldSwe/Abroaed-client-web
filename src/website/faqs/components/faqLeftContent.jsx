@@ -1,4 +1,3 @@
-import { COLORS } from "../../../constants/colors"
 
 const FaqLeftContent = () => {
     const leftMenu = [
@@ -33,7 +32,7 @@ const FaqLeftContent = () => {
     ]
     return (
         <div>
-            <h5 className={`text-[${COLORS.GRAY_PRIMARY}] mb-5 text-[22px] font-semibold `}>CONTENTS</h5>
+            <h5 className={`text-gray-primary mb-5 text-[22px] font-semibold `}>CONTENTS</h5>
             {
                 leftMenu.map((data, index) => (
                     <div className="text-[18px] mb-2 text-[#52525B] font-normal " key={index}>

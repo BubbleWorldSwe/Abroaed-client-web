@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../../constants/colors"
 
 const PathwaysProgramWorkOpportunitiesSection = () => {
     return (
@@ -7,7 +6,7 @@ const PathwaysProgramWorkOpportunitiesSection = () => {
                 {/* Content */}
                 <div className="relative z-10">
                     <div className='py-1'>
-                        <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                             Work Opportunities in United Kingdom
                         </h2>
                         <p className='mb-10 text-[18px]'>
@@ -18,7 +17,7 @@ const PathwaysProgramWorkOpportunitiesSection = () => {
                     </div>
                     <div className='py-1'>
 
-                        <h3 className={`mb-2  text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
                             Part-Time Work Opportunities
                         </h3>
                         <p className="text-[18px]">
@@ -26,7 +25,7 @@ const PathwaysProgramWorkOpportunitiesSection = () => {
                         </p>
                     </div>
                     <div className='py-5'>
-                        <h3 className={`mb-2  text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
                             Post Study Work Opportunities
                         </h3>
                         <p className="text-[18px]">

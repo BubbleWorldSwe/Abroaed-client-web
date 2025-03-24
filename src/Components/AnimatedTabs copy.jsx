@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { BorderTextInputField } from "../commons/components/inputFields/borderTextInputField";
 import { BorderSelectField } from "../commons/components/inputFields/borderSelectField";
-import { COLORS } from "../constants/colors";
 
 function Tabs() {
   const tabOptions = [
@@ -221,7 +220,7 @@ const BookButton = () => {
     <div>
       <button
         type="submit"
-        className={`py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+        className={`py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
       >
         Book Now
       </button>

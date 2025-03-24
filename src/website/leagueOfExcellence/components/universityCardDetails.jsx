@@ -5,7 +5,6 @@ import locationIcon from "../../../assets/locationIcon.png";
 import bookmark from "../../../assets/bookmark.png"
 import EnquiryLOEModal from "../modals/enquiryLOEModal";
 import { useState } from "react";
-import { COLORS } from "../../../constants/colors";
 const UniversityCardDetails = ({ item }) => {
     const [openModal, setOpenModal] = useState(false);
 
@@ -34,7 +33,7 @@ const UniversityCardDetails = ({ item }) => {
                 </a>
                 <div className="p-5">
                     <div className="flex justify-between">
-                        <h5 className={`mb-2 text-[22px] font-semibold  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h5 className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}>
                             {item?.name}
                         </h5>
                         <div>

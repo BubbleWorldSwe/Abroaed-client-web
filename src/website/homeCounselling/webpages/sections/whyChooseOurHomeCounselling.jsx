@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import vectorOutlinedRightFlat from "../../../../assets/vectorOutlinedRightFlat.png";
-import { COLORS } from "../../../../constants/colors";
 import { cardDetails } from "../../data";
 
 const Cards = ({ header = "", text = "" }) => {
@@ -8,7 +7,7 @@ const Cards = ({ header = "", text = "" }) => {
     <div className="max-w-[40rem] relative bg-white flex-shrink-0 h-36 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5">
         <div className="">
-          <h5 className={`mb-2 text-[22px] font-semibold  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+          <h5 className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}>
             {header}
           </h5>
           <p className="text-[18px]">{text}</p>
@@ -32,7 +31,7 @@ const WhyChooseOurHomeCounselling = () => {
         <section className="dark:bg-gray-900">
           <div className="py-8 ">
             <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className={`mb-7 text-[45px]  font-extrabold  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h2 className={`mb-7 text-[45px]  font-extrabold  text-gray-primary dark:text-white`}>
                 Why Choose Our Home counselling?
               </h2>
             </div>

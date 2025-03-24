@@ -6,7 +6,6 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import locationIcon from "../../../assets/locationIcon.png";
 import wallet from "../../../assets/wallet.png";
 import { toast } from "react-toastify";
-import { COLORS } from "../../../constants/colors";
 
 const AccomodationEnquiryModal = ({
   isOpen,
@@ -190,7 +189,7 @@ const AccomodationEnquiryModal = ({
               <div className="flex justify-center text-center">
                 <button
                   type="submit" // ✅ Ensure button is of type submit
-                  className={`mt-4 w-72 bg-[${COLORS.YELLOW_PRIMARY}] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
+                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
                 >
                   Submit
                 </button>

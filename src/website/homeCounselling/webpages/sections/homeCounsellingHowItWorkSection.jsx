@@ -1,6 +1,5 @@
 import { steps } from "../../data"
 import vectorRightRing from "../../../../assets/vectorRightRing.png"
-import { COLORS } from "../../../../constants/colors"
 
 const HomeCounsellingHowItWork = () => {
     return (
@@ -9,17 +8,17 @@ const HomeCounsellingHowItWork = () => {
                 <section className="dark:bg-gray-900">
                     <div className="py-8 lg:py-16">
                         <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-                            <h2 className={`mb-7 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                            <h2 className={`mb-7 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                                 How It Works?
                             </h2>
-                            <p className={`mb-4 font-normal text-[${COLORS.GRAY_PRIMARY}] text-[18px]`}>
+                            <p className={`mb-4 font-normal text-gray-primary text-[18px]`}>
                                 Track work across the enterprise through an open, collaborative
                                 platform. Link issues across Jira and ingest data from other
                                 software development tools, so your IT support and operations
                                 teams have richer contextual information to rapidly respond to
                                 requests, incidents, and changes.
                             </p>
-                            <p className={`mb-4 font-normal text-[${COLORS.GRAY_PRIMARY}] text-[18px]`}>
+                            <p className={`mb-4 font-normal text-gray-primary text-[18px]`}>
                                 Deliver great service experiences fast - without the complexity of
                                 traditional ITSM solutions. Accelerate critical development work,
                                 eliminate toil, and deploy changes with ease.

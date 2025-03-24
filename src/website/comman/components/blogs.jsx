@@ -1,4 +1,3 @@
-import { COLORS } from "../../../constants/colors";
 import { articles } from "../data";
 import BlogCard from "./blogCard";
 
@@ -10,7 +9,7 @@ const Blogs = () => {
           <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
             The Latest
           </p>
-          <h2 className={`text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+          <h2 className={`text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
             ABROAED Updates
           </h2>
         </div>

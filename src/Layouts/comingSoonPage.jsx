@@ -17,7 +17,6 @@ import diversity from "../assets/diversity.png";
 import iPhoneIcon from "../assets/iPhoneIcon.png";
 import homeIcon from "../assets/homeIcon.png";
 import ModalLayout from "../Components/Modals/ModalLayout";
-import { COLORS } from "../constants/colors";
 const carouselItems = [
   {
     title: "Home Counselling",
@@ -457,7 +456,7 @@ function ComingSoonPage() {
                       // onClick={(e) => handleSubmit(e)}
                       className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                       style={{
-                        backgroundColor: `${COLORS.YELLOW_PRIMARY}`,
+                        backgroundColor: `yellow-primary`,
                         color: "#000", // Adjust text color for better contrast
                       }}
                     >

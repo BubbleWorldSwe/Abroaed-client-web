@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png";
-import { COLORS } from "../../../../constants/colors";
 import HomeKpiMatrixCard from "../../components/homeKpiMatrixCard";
 import { kpiCards } from "../../data";
 
@@ -13,7 +12,7 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
             <p className="font-semibold  text-[16px] text-[#52525B] lg:mb-2 dark:text-gray-400">
               {title}
             </p>
-            <h2 className={`mb-6 mt-3  text-[45px] font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+            <h2 className={`mb-6 mt-3  text-[45px] font-extrabold text-gray-primary dark:text-white`}>
               {header}
             </h2>
             <p className="font-semibold max-w-4xl text-[16px] text-[#52525B]  dark:text-gray-400">

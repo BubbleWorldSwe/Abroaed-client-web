@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../constants/colors"
 
 const BlogCategoryTradingNowSection = () => {
     return (
@@ -23,7 +22,7 @@ const BlogCategoryTradingNowSection = () => {
                                         <p className="mb-2 text-sm font-semibold  text-[#52525B] dark:text-white">
                                             Blog Category • Date • Time To Read
                                         </p>
-                                        <h2 className={`mb-1 text-[${COLORS.GRAY_PRIMARY}] leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
+                                        <h2 className={`mb-1 text-gray-primary leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
                                             Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                             Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                         </h2>
@@ -47,7 +46,7 @@ const BlogCategoryTradingNowSection = () => {
                                         <p className="mb-2 text-sm font-semibold  text-[#52525B] dark:text-white">
                                             Blog Category • Date • Time To Read
                                         </p>
-                                        <h2 className={`mb-1 text-[${COLORS.GRAY_PRIMARY}] leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
+                                        <h2 className={`mb-1 text-gray-primary leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
 
                                             Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                             Dolor Sit Amet
@@ -72,7 +71,7 @@ const BlogCategoryTradingNowSection = () => {
                                         <p className="mb-2 text-sm font-semibold  text-[#52525B] dark:text-white">
                                             Blog Category • Date • Time To Read
                                         </p>
-                                        <h2 className={`mb-1 text-[${COLORS.GRAY_PRIMARY}] leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
+                                        <h2 className={`mb-1 text-gray-primary leading-tight  text-[22px] font-semibold dark:text-gray-400`}>
 
                                             Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                                             Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet

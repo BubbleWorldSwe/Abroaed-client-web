@@ -12,7 +12,6 @@ import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
 import { logout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
-import { COLORS } from "../../../constants/colors";
 import ProfileModal from "../modals/profileModal";
 //import { destinationMenuItems } from "../../../constants/values";
 
@@ -111,14 +110,14 @@ function Header({ isHeaderBgWhite = false }) {
     >
       <nav>
         <div
-          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-[${COLORS.GRAY_PRIMARY}] text-white`}
+          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-gray-primary text-white`}
         >
           <p className="">
             GET IN TOUCH WITH US TODAY !
           </p>
           <div> <button
             onClick={() => navigate("/homeCounselling")}
-            className={`px-2 py-1 hover:bg-[#508030]  bg-[${COLORS.YELLOW_PRIMARY}] text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
+            className={`px-2 py-1 hover:bg-[#508030]  bg-yellow-primary text-gray-primary hover:border-none font-medium text-sm rounded-lg`}
           >
             Book Counselling Now
           </button></div>
@@ -371,7 +370,7 @@ function Header({ isHeaderBgWhite = false }) {
             >
               <button
                 onClick={() => navigate("/admin/signin")}
-                className={`px-4 py-2  bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-[#508030] font-semibold text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
+                className={`px-4 py-2  bg-yellow-primary hover:bg-[#508030] font-semibold text-gray-primary hover:border-none  text-sm rounded-lg`}
               >
                 Login
               </button>

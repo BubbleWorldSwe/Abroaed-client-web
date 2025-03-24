@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../constants/colors";
 
 const FinanceLeadFromSection = () => {
   return (
@@ -91,7 +90,7 @@ const FinanceLeadFromSection = () => {
                   type="submit"
                   className="w-full font-medium rounded-lg text-sm px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                   style={{
-                    backgroundColor: `${COLORS.YELLOW_PRIMARY}`,
+                    backgroundColor: `yellow-primary`,
                     color: "#000",
                   }}
                 >

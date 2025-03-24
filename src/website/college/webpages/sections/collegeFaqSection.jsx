@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { COLORS } from "../../../../constants/colors";
 
 const CollegeFaqSection = ({ collegeDetails }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -28,7 +27,7 @@ const CollegeFaqSection = ({ collegeDetails }) => {
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <span className={`whitespace-normal text-[24px] font-bold text-[${COLORS.GRAY_PRIMARY}] `}>
+                  <span className={`whitespace-normal text-[24px] font-bold text-gray-primary `}>
                     {faq.question}
                   </span>
                   <svg
@@ -57,7 +56,7 @@ const CollegeFaqSection = ({ collegeDetails }) => {
                   }`}
               >
                 <div className="">
-                  <p className={`mb-2 text-[${COLORS.GRAY_PRIMARY}] font-normal text-base whitespace-pre-wrap`}>
+                  <p className={`mb-2 text-gray-primary font-normal text-base whitespace-pre-wrap`}>
                     {faq.answer}
                   </p>
                 </div>

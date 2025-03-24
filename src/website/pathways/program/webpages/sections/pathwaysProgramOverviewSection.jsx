@@ -2,7 +2,6 @@
 
 import dark from '../../../../../assets/dark.png'
 import vectorOutlinedRightFlat from "../../../../../assets/vectorOutlinedRightFlat.png"
-import { COLORS } from '../../../../../constants/colors';
 import { cardDetails } from '../../data';
 
 const Cards = ({ header = "", text = "" }) => {
@@ -11,11 +10,11 @@ const Cards = ({ header = "", text = "" }) => {
             <div className="w-full relative bg-white flex-shrink-0 border border-gray-200 rounded-[12px] shadow-lg dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-5">
                     <div className="flex justify-between">
-                        <h5 className={`mb-2 text-2xl font-bold tracking-tight leading-tight  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h5 className={`mb-2 text-2xl font-bold tracking-tight leading-tight  text-gray-primary dark:text-white`}>
                             {header}
                         </h5>
                     </div>
-                    <p className={`font-semibold text-[${COLORS.GRAY_PRIMARY}] text-[18px] dark:text-gray-400`}>
+                    <p className={`font-semibold text-gray-primary text-[18px] dark:text-gray-400`}>
                         {text}
                     </p>
                 </div>
@@ -40,19 +39,19 @@ const PathwaysProgramOverview = () => {
                 {/* Content */}
                 <div className="relative z-10">
                     <div className=''>
-                        <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                             Program Overview
                         </h2>
-                        <p className={`mb-10 text-[${COLORS.GRAY_PRIMARY}] font-normal text-[18px]`}>
+                        <p className={`mb-10 text-gray-primary font-normal text-[18px]`}>
                             lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.                           </p>
                     </div>
                     <section className='py-5'>
                         <div className="flex mb-5 flex-col md:flex-row items-start justify-between space-y-5 md:space-y-0 md:space-x-10">
                             <div className="w-full md:w-2/3">
-                                <h3 className={`mb-4 text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                                <h3 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
                                     University Name
                                 </h3>
-                                <p className={`text-[${COLORS.GRAY_PRIMARY}] font-normal text-[18px]`}>
+                                <p className={`text-gray-primary font-normal text-[18px]`}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui.
                                 </p>
                             </div>
@@ -70,10 +69,10 @@ const PathwaysProgramOverview = () => {
                     <section className='py-10'>
                         <div className="flex mb-5 flex-col md:flex-row items-start justify-between space-y-5 md:space-y-0 md:space-x-10">
                             <div className="w-full md:w-2/3">
-                                <h3 className={`mb-4 text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                                <h3 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
                                     University Name
                                 </h3>
-                                <p className={`text-[${COLORS.GRAY_PRIMARY}] font-normal text-[18px]`}>
+                                <p className={`text-gray-primary font-normal text-[18px]`}>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui.
                                 </p>
                             </div>

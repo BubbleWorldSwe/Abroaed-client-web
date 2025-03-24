@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../constants/colors"
 
 const BlogPageHeaderText = () => {
     return (
@@ -21,7 +20,7 @@ const BlogPageHeaderText = () => {
                         ))}
                     </div> */}
                     <div className="w-full flex flex-col gap-1 items-center  justify-center   ">
-                        <h2 className={`text-[57px] font-extrabold text-[${COLORS.GRAY_PRIMARY}]`}>
+                        <h2 className={`text-[57px] font-extrabold text-gray-primary`}>
                             Blog Post Title
                         </h2>
                         {/* <h5 className="text-[28px] mb-2 font-extrabold text-[#52525B]">

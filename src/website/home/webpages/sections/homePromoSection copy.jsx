@@ -2,7 +2,6 @@ import { useState } from "react";
 import homeQuery from "../../../../assets/homeQuery.png";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
-import { COLORS } from "../../../../constants/colors";
 
 function HomePromoSection({ source, entity, onFormSubmit }) {
   const [formData, setFormData] = useState({
@@ -43,7 +42,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                 />
               </div>
               <div className="flex justify-center text-center mt-5">
-                <button className={`py-2 px-5 border-2 rounded-lg font-semibold border-[${COLORS.GRAY_PRIMARY}] text-[#71717A]`}>
+                <button className={`py-2 px-5 border-2 rounded-lg font-semibold border-gray-primary text-[#71717A]`}>
                   Learn About Home Counselling
                 </button>
               </div>
@@ -145,7 +144,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     <button
                       onSubmit={onFormSubmit}
                       type="submit"
-                      className={`py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+                      className={`py-3 w-full px-10 text-base font-semibold  mt-4 text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
                     >
                       Book Now
                     </button>

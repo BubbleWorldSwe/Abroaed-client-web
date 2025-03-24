@@ -1,5 +1,4 @@
 import contactMap from "../../../../assets/contactMap.png"
-import { COLORS } from "../../../../constants/colors"
 
 const ContactUs = () => {
     return (
@@ -7,13 +6,13 @@ const ContactUs = () => {
             <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
                 {/* Content */}
                 <div className="relative z-10">
-                    <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                    <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                         Contact Us
                     </h2>
                     <div className=" border-t border-gray-300"></div>
                     <div className="grid grid-cols-1 md:justify-center md:grid-cols-2   gap-3  py-16">
                         <div className="flex flex-col gap-5">
-                            <h5 className={`text-[18px] text-[${COLORS.GRAY_PRIMARY}] font-medium`}>
+                            <h5 className={`text-[18px] text-gray-primary font-medium`}>
                                 Before contacting us, please check the Frequently Asked Questions.
                             </h5>
                             <div>

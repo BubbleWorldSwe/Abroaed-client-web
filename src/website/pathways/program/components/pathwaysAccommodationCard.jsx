@@ -6,7 +6,6 @@ import { IMAGES } from "../../../../constants/images";
 import wallet from "../../../../assets/wallet.png";
 import locationIcon from "../../../../assets/locationIcon.png";
 import bookmark from "../../../../assets/bookmark.png";
-import { COLORS } from "../../../../constants/colors";
 
 const PathwaysAccommodationCard = ({ item, source, onAddLead }) => {
     console.log(source);
@@ -41,7 +40,7 @@ const PathwaysAccommodationCard = ({ item, source, onAddLead }) => {
                 <div className="p-5 flex flex-col flex-grow">
                     {/* Header */}
                     <div className="flex justify-between">
-                        <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}>
                             {item.accomodationName}
                         </h5>
                         <div>

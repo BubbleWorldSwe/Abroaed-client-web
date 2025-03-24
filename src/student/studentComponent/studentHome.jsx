@@ -5,7 +5,6 @@ import { myApplicationtabs, tabColors } from "../data";
 import ApplicationCardDetails from "../components/applicationCardDetails";
 import RecentlyViewCollegeCard from "../components/recentlyViewCollegeCard";
 import RecentlyViewCourseCard from "../components/recentlyViewCourseCard";
-import { COLORS } from "../../constants/colors";
 
 const StudentHome = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -99,7 +98,7 @@ const StudentHome = () => {
                                                 aria-controls={`styled-${tab?.tabName.toLowerCase().replace(' ', '-')}`}
                                                 aria-selected={activeTab === index}
                                             >
-                                                <span className={`px-2 py-1 rounded-full ${tabColors[tab.tabName] || "bg-gray-300"} text-${tab.tabName === 'Rejected' ? 'white' : COLORS.GRAY_PRIMARY}`}>
+                                                <span className={`px-2 py-1 rounded-full ${tabColors[tab.tabName] || "bg-gray-300"} text-${tab.tabName === 'Rejected' ? 'white' : "gray-primary"}`}>
                                                     {tab.tabName}
                                                 </span>
                                             </button>
