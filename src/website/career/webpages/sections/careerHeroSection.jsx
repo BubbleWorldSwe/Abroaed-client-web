@@ -1,6 +1,5 @@
 
 import blobImage from "../../../../assets/Vector.png";
-import { COLORS } from "../../../../constants/colors";
 
 function CareerHeroSections() {
   return (
@@ -15,7 +14,7 @@ function CareerHeroSections() {
           />
         </div>
         <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-2xl lg:px-12 sm:text-center lg:py-16 ">
-          <h2 className={`mb-4 text-[52px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+          <h2 className={`mb-4 text-[52px]  font-extrabold text-gray-primary dark:text-white`}>
             Work At ABROAED
           </h2>
           <p className="font-bold text-2xl text-[#52525B]  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
 import check_circle from "../../../../assets/check_circle.png";
-import { COLORS } from "../../../../constants/colors";
 
 const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
   return (
@@ -10,10 +9,10 @@ const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
         <section className=" dark:bg-gray-900 relative px-8 mx-auto">
           <div className="gap-8 items-center px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-5 lg:px-6">
             <div className=" dark:text-gray-400">
-              <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                 Admission Requirements
               </h2>
-              <p className={`text-[${COLORS.GRAY_PRIMARY}] font-semibold text-[22px]`}>
+              <p className={`text-gray-primary font-semibold text-[22px]`}>
                 Here are the major requirements to study in the{" "}
                 {destinationDetails?.countryId?.name}, which you need to ensure
                 while applying to a {destinationDetails?.countryId?.name}{" "}

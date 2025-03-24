@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { COLORS } from "../../../../constants/colors"
 import vector from ".././../../../assets/kpiVector.png"
 function CareerJobSection() {
     return (
         <div>
             <section className="bg-white dark:bg-gray-900 relative py-16  px-14 mx-auto">
                 <div className="py-7 px-1 mx-auto max-w-screen-2xl   relative z-10">
-                    <h1 className={`mb-6 text-[45px] font-extrabold  text-[${COLORS.GRAY_PRIMARY}]  dark:text-white`}>
+                    <h1 className={`mb-6 text-[45px] font-extrabold  text-gray-primary  dark:text-white`}>
                         We'd Love to work with someone like you!
                     </h1>
                     <h2 className=" text-[32px] font-bold  text-[#52525B]   dark:text-white">

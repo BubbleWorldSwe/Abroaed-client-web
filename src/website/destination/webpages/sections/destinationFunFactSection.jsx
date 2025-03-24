@@ -6,7 +6,6 @@ import schoolIconWhite from "../../../../assets/schoolIconWhite.png";
 import languageIconWhite from "../../../../assets/languageIconWhite.png";
 import currencyIconWhite from "../../../../assets/currencyIconWhite.png";
 import callIconWhite from "../../../../assets/callIconWhite.png";
-import { COLORS } from "../../../../constants/colors";
 
 const DestinationFunFactSection = ({ items, destinationDetails }) => {
   const list = [
@@ -43,7 +42,7 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
       <section className=" py-8 antialiased dark:bg-gray-900 md:py-2">
         <div className="mx-auto max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
-            <p className={`text-[45px] font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+            <p className={`text-[45px] font-extrabold text-gray-primary dark:text-white`}>
               Fun Facts
             </p>
           </div>

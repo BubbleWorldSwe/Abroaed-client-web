@@ -1,7 +1,6 @@
 import playStore from "../../../assets/gPlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
 import { FaInstagram, FaFacebook, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6";
-import { COLORS } from "../../../constants/colors";
 
 const socialLinks = [
   { icon: <FaInstagram size={20} />, url: "#" },
@@ -52,7 +51,7 @@ function Footer() {
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
-            <p className="my-4 font-light  text-gray-300 text-lg">
+            <p className="my-4 font-light  text-gray-300 text-base">
               At ABROAED, we help students get admission to prestigious universities in the USA, UK, Canada, Australia, Europe, and Asia, including Ivy League schools. We offer personalized consultations and coaching (virtual/in-home), accommodation support, and financial assistance, fostering access to elite academic and leadership networks.
             </p>
             <h3 className="mt-4 font-semibold text-xl mb-5">Follow Us On</h3>
@@ -85,7 +84,7 @@ function Footer() {
           <div className="w-full md:w-[60%]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {links.map((section, index) => (
               <div key={index}>
-                <h3 className={`font-semibold text-2xl mb-3 text-[${COLORS.YELLOW_PRIMARY}]`}>{section.title}</h3>
+                <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>{section.title}</h3>
                 <ul className="space-y-2 text-lg">
                   {section.items.map((item, idx) => (
                     <li key={idx}>
@@ -98,7 +97,7 @@ function Footer() {
 
             {/* Contact Information */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-[${COLORS.YELLOW_PRIMARY}]`}>Get in Touch</h3>
+              <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>Get in Touch</h3>
               <div className="text-sm space-y-3">
                 {offices.map((office, index) => (
                   <div key={index}>

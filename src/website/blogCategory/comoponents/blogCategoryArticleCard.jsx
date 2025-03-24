@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom"
-import { COLORS } from "../../../constants/colors";
 
 const BlogCategoryArticleCard = () => {
     const navigate = useNavigate();
@@ -22,7 +21,7 @@ const BlogCategoryArticleCard = () => {
                         Date • Time To Read
                     </div>
                 </div>
-                <h3 className={`mb-1 text-[22px] font-semibold leading-tight  text-[${COLORS.GRAY_PRIMARY}] `}>
+                <h3 className={`mb-1 text-[22px] font-semibold leading-tight  text-gray-primary `}>
                     Lorem Ipsum Dolor Sit Amet, Lorem Ipsum Dolor Sit Amet
                 </h3>
                 <p className="mb-3 text-base text-[#71717A]  font-normal">

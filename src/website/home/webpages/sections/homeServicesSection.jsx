@@ -8,7 +8,6 @@ import homeService5 from "../../../../assets/homeService5.png";
 import homeService6 from "../../../../assets/homeService6.png";
 import homeService7 from "../../../../assets/homeService7.png";
 import homeService8 from "../../../../assets/homeService8.png";
-import { COLORS } from "../../../../constants/colors";
 
 const serviceData = [
   {
@@ -65,7 +64,7 @@ const HomeServicesSection = () => {
       )}
       <section className="dark:bg-gray-900 relative py-20  lg:py-1">
         <div className="px-12 mx-auto max-w-screen-2xl relative z-10">
-          <h2 className={`mb-10 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+          <h2 className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
             Discover Our Unique Offerings
           </h2>
         </div>

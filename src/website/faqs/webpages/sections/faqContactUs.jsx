@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
 import { TextareaInputField } from "../../../../commons/components/inputFields/textareaInputField";
-import { COLORS } from "../../../../constants/colors";
 
 const FaqContactUs = ({ isLoading }) => {
     const [formData, setFormData] = useState({
@@ -39,7 +38,7 @@ const FaqContactUs = ({ isLoading }) => {
                 <div className="flex flex-col lg:flex-row justify-between gap-5 lg:gap-12">
                     {/* Left Section - 60% Width */}
                     <div className="md:w-3/5   py-4 flex flex-col justify-center">
-                        <h1 className={`text-[45px] mb-5 font-extrabold  leading-tight  text-[${COLORS.GRAY_PRIMARY}]  max-w-3xl  `}>
+                        <h1 className={`text-[45px] mb-5 font-extrabold  leading-tight  text-gray-primary  max-w-3xl  `}>
                             Couldn’t Find....
                             Write To Us.
                         </h1>
@@ -101,7 +100,7 @@ const FaqContactUs = ({ isLoading }) => {
 
                             <button
                                 type="submit"
-                                className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300`}
+                                className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
                                 style={{ color: "#000" }}
                             >
                                 {isLoading ? (

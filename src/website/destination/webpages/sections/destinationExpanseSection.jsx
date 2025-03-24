@@ -1,5 +1,4 @@
 import { Element } from "react-scroll";
-import { COLORS } from "../../../../constants/colors";
 
 /* eslint-disable react/prop-types */
 const DestinationExpansesSection = ({ destinationDetails }) => {
@@ -9,17 +8,17 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
         <section className=" dark:bg-gray-900 relative px-7 mx-auto">
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
             <div className="">
-              <h2 className={`mb-4 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h2 className={`mb-4 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                 Expenses
               </h2>
-              <p className={`text-[${COLORS.GRAY_PRIMARY}] font-semibold text-[22px]`}>
+              <p className={`text-gray-primary font-semibold text-[22px]`}>
                 Here’s a list of the minimum amount you should expect for living
                 expenses in the {destinationDetails?.countryId?.name}:
               </p>
             </div>
             <div className="grid grid-cols-2 gap-10 ">
               <div>
-                <h2 className={`mb-4 text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                <h2 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
                   Cost of Studying
                 </h2>
                 <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
@@ -48,7 +47,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                                 i < 3 && (
                                   <tr
                                     key={i}
-                                    className={`border-b text-base text-[${COLORS.GRAY_PRIMARY}] font-normal  dark:border-gray-700`}
+                                    className={`border-b text-base text-gray-primary font-normal  dark:border-gray-700`}
                                   >
                                     <th
                                       scope="row"
@@ -72,7 +71,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 </section>
               </div>
               <div>
-                <h2 className={`mb-4 text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                <h2 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
                   Cost of Living
                 </h2>
                 <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
@@ -100,7 +99,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                                 i >= 3 && (
                                   <tr
                                     key={i}
-                                    className={`border-b text-base text-[${COLORS.GRAY_PRIMARY}] font-normal  dark:border-gray-700`}
+                                    className={`border-b text-base text-gray-primary font-normal  dark:border-gray-700`}
                                   >
                                     <th
                                       scope="row"

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
-import { COLORS } from "../../../../constants/colors";
 
 const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
   return (
@@ -10,10 +9,10 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
           {/* Content */}
           <div className="relative">
             <div className="py-1">
-              <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                 Work Opportunities in {destinationDetails?.countryId?.name}
               </h2>
-              <p className={`mb-8 font-normal text-[18px] text-[${COLORS.GRAY_PRIMARY}]`}>
+              <p className={`mb-8 font-normal text-[18px] text-gray-primary`}>
                 Studying in the {destinationDetails?.countryId?.name} offers a
                 variety of experiences. The cultural and traditional values of
                 the
@@ -24,18 +23,18 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               </p>
             </div>
             <div className="py-1">
-              <h3 className={`mb-2  text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
                 Part-Time Work Opportunities
               </h3>
-              <p className={`text-[18px] font-normal text-[${COLORS.GRAY_PRIMARY}] `}>
+              <p className={`text-[18px] font-normal text-gray-primary `}>
                 {destinationDetails?.workOpportunities?.partTimeStudents}
               </p>
             </div>
             <div className="py-5">
-              <h3 className={`mb-2  text-[32px]  font-bold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
                 Post Study Work Opportunities
               </h3>
-              <p className={`text-[18px] font-normal text-[${COLORS.GRAY_PRIMARY}] `}>
+              <p className={`text-[18px] font-normal text-gray-primary `}>
                 {destinationDetails?.workOpportunities?.postDegreeOpportunity}
               </p>
             </div>
@@ -61,7 +60,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               )}
             </div>
             {destinationDetails?.workOpportunities?.additionalInformation && (
-              <p className={`my-10 text-base font-normal text-[${COLORS.GRAY_PRIMARY}]`}>
+              <p className={`my-10 text-base font-normal text-gray-primary`}>
                 {destinationDetails?.workOpportunities?.additionalInformation}
               </p>
             )}

@@ -4,7 +4,6 @@ import vectorleftNose from "../../../../assets/vectorleftNose.png"; // Add your 
 import UniversityDetailsCard from "../../components/destinationUniversityDetailsCard";
 import CourseCard from "../../components/destinationCourseCard";
 import { Element } from "react-scroll";
-import { COLORS } from "../../../../constants/colors";
 
 function DestinationUniCoursersSection({
   destinationDetails,
@@ -27,7 +26,7 @@ function DestinationUniCoursersSection({
           <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
             {/* Content */}
             <div className="relative z-10">
-              <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                 Top Universities in {destinationDetails?.countryId?.name}
               </h2>
               <div className=" border-t border-gray-300"></div>
@@ -40,7 +39,7 @@ function DestinationUniCoursersSection({
 
             <Element name="popular-course">
               <div className=" pt-5">
-                <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                   Popular Courses in {destinationDetails?.countryId?.name}
                 </h2>
                 <div className="my-1 border-t border-gray-300"></div>

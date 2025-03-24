@@ -3,7 +3,6 @@ import pencil from "../../assets/pencil.png";
 import { additionalServiceDetails, additionalServiceTabColors } from "../data";
 import AdditionalServicesCard from "../components/additionalServicesCard";
 import StudentProfileEditModal from "../modals/studentProfileEditModal";
-import { COLORS } from "../../constants/colors";
 
 const StudentProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -45,7 +44,7 @@ const StudentProfile = () => {
         {/* personal information */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
+            <h2 className={`text-2xl font-bold  text-gray-primary`}>
               Personal Information
             </h2>
             <button onClick={handleOpenAddModal}>
@@ -87,7 +86,7 @@ const StudentProfile = () => {
         {/* addition information */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
+            <h2 className={`text-2xl font-bold  text-gray-primary`}>
               Additional Information
             </h2>
             <img src={pencil} alt="pencil-img" className="w-6 h-6" />
@@ -127,7 +126,7 @@ const StudentProfile = () => {
         {/* Assign Team */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
-            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
+            <h2 className={`text-2xl font-bold  text-gray-primary`}>
               Assigned Team
             </h2>
           </div>
@@ -179,7 +178,7 @@ const StudentProfile = () => {
         {/* Additional service */}
         <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg ">
           <div className="flex justify-between items-center mb-4">
-            <h2 className={`text-2xl font-bold  text-[${COLORS.GRAY_PRIMARY}]`}>
+            <h2 className={`text-2xl font-bold  text-gray-primary`}>
               Additional Services
             </h2>
           </div>

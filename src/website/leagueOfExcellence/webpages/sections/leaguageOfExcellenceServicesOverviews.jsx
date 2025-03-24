@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { COLORS } from "../../../../constants/colors";
 
 const LeaguageOfExcellenceServicesOverviews = ({ setCountry, countriesName }) => {
     const [activeTab, setActiveTab] = useState('USA');
@@ -33,10 +32,10 @@ const LeaguageOfExcellenceServicesOverviews = ({ setCountry, countriesName }) =>
                                 countriesName.map((country, index) => (
                                     <div key={index}>
                                         <button
-                                            className={`px-6 py-2 hover:bg-[${COLORS.GRAY_PRIMARY}] hover:text-white rounded-full border-2 border-gray-600 transition-colors duration-200 
+                                            className={`px-6 py-2 hover:bg-gray-primary hover:text-white rounded-full border-2 border-gray-600 transition-colors duration-200 
                                         ${activeTab === country.code
-                                                    ? `bg-[${COLORS.GRAY_PRIMARY}] text-white border-none`
-                                                    : `bg-white text-[${COLORS.GRAY_PRIMARY}]`
+                                                    ? `bg-gray-primary text-white border-none`
+                                                    : `bg-white text-gray-primary`
                                                 }`}
                                             onClick={() => handleSelectTab(country)}
                                         >
@@ -46,7 +45,7 @@ const LeaguageOfExcellenceServicesOverviews = ({ setCountry, countriesName }) =>
                                 ))
                             }
                         </div>
-                        <p className={`font-normal  text-[${COLORS.GRAY_PRIMARY} text-[18px]  dark:text-gray-400`}>
+                        <p className={`font-normal  text-[${"gray-primary"} text-[18px]  dark:text-gray-400`}>
                             {title}
                         </p>
                     </div>

@@ -1,6 +1,5 @@
 import topLeftFlat from "../../../assets/topLeftFlat.png"
 import quadrent from "../../../assets/quadrent.png"
-import { COLORS } from "../../../constants/colors"
 
 const BlogPageRightContaint = () => {
     const rightContents = [
@@ -28,7 +27,7 @@ const BlogPageRightContaint = () => {
 
     return (
         <div>
-            <p className={`mb-2 font-semibold text-[${COLORS.GRAY_PRIMARY}] text-base `}>
+            <p className={`mb-2 font-semibold text-gray-primary text-base `}>
                 Share
             </p>
 
@@ -70,7 +69,7 @@ const BlogPageRightContaint = () => {
 
                     <div className="z-10 flex flex-col justify-between">
                         <div>
-                            <h2 className={`text-[28px] text-[${COLORS.GRAY_PRIMARY}] font-semibold  `}>
+                            <h2 className={`text-[28px] text-gray-primary font-semibold  `}>
                                 Lorem Ipsum
                                 Dolor Sit
                             </h2>
@@ -89,7 +88,7 @@ const BlogPageRightContaint = () => {
 
             </div>
             <div className="py-6 ">
-                <h4 className={`text-[22px] mb-5 text-[${COLORS.GRAY_PRIMARY}] font-semibold`}>Important Links</h4>
+                <h4 className={`text-[22px] mb-5 text-gray-primary font-semibold`}>Important Links</h4>
                 <div>
                     {
                         rightContents.map((data, index) => (

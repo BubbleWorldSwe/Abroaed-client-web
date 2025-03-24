@@ -4,7 +4,6 @@ import dark from "../../../assets/dark.png"
 import locationIcon from "../../../assets/locationIcon.png"
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField"
 import { TextInputField } from "../../../commons/components/inputFields/textInputField"
-import { COLORS } from "../../../constants/colors";
 
 const EnquiryLOEModal = ({
     isOpen,
@@ -56,7 +55,7 @@ const EnquiryLOEModal = ({
                             </div>
                             {/* Details */}
                             <div className="py-3">
-                                <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                                <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}>
                                     College Name
                                 </h5>
                                 <div className="flex justify-between w-4/5 items-center">
@@ -144,7 +143,7 @@ const EnquiryLOEModal = ({
                                 <div className="flex justify-center text-center">
                                     <button
                                         type="submit" // ✅ Ensure button is of type submit
-                                        className={`mt-4 w-72 bg-[${COLORS.YELLOW_PRIMARY}] text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
+                                        className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
                                     >
                                         Submit
                                     </button>

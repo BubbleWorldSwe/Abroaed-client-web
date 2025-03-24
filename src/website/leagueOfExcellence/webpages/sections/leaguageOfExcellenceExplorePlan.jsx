@@ -2,7 +2,6 @@ import { Check } from "lucide-react";
 import { plans } from "../../data";
 import { useState } from "react";
 import FeatureLOEModal from "../../modals/featureLOEModal";
-import { COLORS } from "../../../../constants/colors";
 
 const LeaguageOfExcellenceExplorePlan = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -72,7 +71,7 @@ const LeaguageOfExcellenceExplorePlan = () => {
 
                     <div className="flex justify-center mt-10">
                         <button
-                            className={`bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300 text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
+                            className={`bg-yellow-primary hover:bg-yellow-300 text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
                             onClick={handleOpenAddModal}
                         >
                             See full feature comparison

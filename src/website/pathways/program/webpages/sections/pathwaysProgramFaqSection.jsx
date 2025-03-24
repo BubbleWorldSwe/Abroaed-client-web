@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { COLORS } from "../../../../../constants/colors";
 
 const PathwaysProgramFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -11,7 +10,7 @@ const PathwaysProgramFaqSection = () => {
 
     return (
         <div className="h-auto py-12 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-            <h2 className={`mb-1 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+            <h2 className={`mb-1 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                 Frequently Asked Questions
             </h2>
             <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
@@ -56,7 +55,7 @@ const PathwaysProgramFaqSection = () => {
                                     onClick={() => toggleFAQ(index)}
                                     aria-expanded={activeIndex === index}
                                 >
-                                    <span className={`whitespace-normal text-[24px] font-bold text-[${COLORS.GRAY_PRIMARY}] `}>
+                                    <span className={`whitespace-normal text-[24px] font-bold text-gray-primary `}>
                                         {faq.question}
                                     </span>
                                     <svg

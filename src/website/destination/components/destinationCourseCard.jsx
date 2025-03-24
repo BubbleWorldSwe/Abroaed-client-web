@@ -4,7 +4,6 @@ import { useState } from "react";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal";
 import bookmark from "../../../assets/bookmark.png"
-import { COLORS } from "../../../constants/colors";
 const CourseCard = ({ course, source, onAddLead }) => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -30,7 +29,7 @@ const CourseCard = ({ course, source, onAddLead }) => {
         <div className="flex flex-col flex-grow">
           <div>
             <div className="flex justify-between">
-              <h5 className={`mb-2 text-[22px] font-semibold  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h5 className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}>
                 {course.name}
               </h5>
               <div>

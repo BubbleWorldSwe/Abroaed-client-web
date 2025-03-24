@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { COLORS } from "../../constants/colors";
 
 
 const ModalLayout = ({ openModal, onClose, component }) => {
@@ -29,7 +28,7 @@ const ModalLayout = ({ openModal, onClose, component }) => {
             onClick={onClose}
             className="max-w-max font-rethink font-medium text-[#FBBA18] rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
             style={{
-              backgroundColor: `${COLORS.YELLOW_PRIMARY}`,
+              backgroundColor: `yellow-primary`,
               color: "#000",
             }}
           >

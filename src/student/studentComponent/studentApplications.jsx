@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { myApplicationtabs, tabColors } from "../data"
 import ApplicationCardDetails from "../components/applicationCardDetails";
-import { COLORS } from "../../constants/colors";
 
 const StudentApplications = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -44,7 +43,7 @@ const StudentApplications = () => {
                                             aria-controls={`styled-${tab?.tabName.toLowerCase().replace(' ', '-')}`}
                                             aria-selected={activeTab === index}
                                         >
-                                            <span className={`px-2 py-1 rounded-full ${tabColors[tab.tabName] || "bg-gray-300"} text-${tab.tabName === 'Rejected' ? 'white' : COLORS.GRAY_PRIMARY}`}>
+                                            <span className={`px-2 py-1 rounded-full ${tabColors[tab.tabName] || "bg-gray-300"} text-${tab.tabName === 'Rejected' ? 'white' : "gray-primary"}`}>
                                                 {tab.tabName}
                                             </span>
                                         </button>

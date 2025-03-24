@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../constants/colors";
 import BlogCard from "../../../comman/components/blogCard";
 import { articles } from "../../../comman/data";
 
@@ -7,7 +6,7 @@ const BlogPageRelatedArticle = () => {
         <section className=" dark:bg-gray-900 relative px-10 mx-auto">
             <div className=" px-3 mx-auto py-12  max-w-screen-2xl  dark:bg-gray-800 antialiased  relative">
                 <div className="">
-                    <p className={`text-[45px] text-center font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                    <p className={`text-[45px] text-center font-extrabold text-gray-primary dark:text-white`}>
                         Related Articles
                     </p>
                 </div>

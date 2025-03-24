@@ -6,7 +6,6 @@ import StudentApplicationCard from "./studentApplicationCard";
 // import StartApplicationModal from "../modals/startApplicationModal";
 import { tabColors } from "../data";
 import { useSelector } from "react-redux";
-import { COLORS } from "../../../constants/colors";
 
 const StudentApplication = ({
   onOpen,
@@ -97,7 +96,7 @@ const StudentApplication = ({
                   >
                     <span
                       className={`px-2 py-1 rounded-full ${tabColors[tab.title] || "bg-gray-300"
-                        } text-${tab.title === "Rejected" ? "white" : `${COLORS.GRAY_PRIMARY}`}`}
+                        } text-${tab.title === "Rejected" ? "white" : 'gray-primary'}`}
                     >
                       {tab.title}
                     </span>
