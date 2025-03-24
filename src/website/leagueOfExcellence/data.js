@@ -125,47 +125,47 @@ export const countriesName = [
         code: "USA"
     },
     {
-        title: "Content here should be dynamic",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "United Kingdom",
         code: "UK"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Canada",
         code: "CAN"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "France",
         code: "FRA"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Italy",
         code: "ITA"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Germany",
         code: "GER"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Czech Republic",
         code: "CZE"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Ireland",
         code: "IRL"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Netherlands",
         code: "NLD"
     },
     {
-        title: "",
+        title: "LOE grads tend to keep an eye out for each other, and the connections can open doors you never knew existed. While it may not be the singular way to become successful, it is a proven one. So, if you want one place that will challenge you, inspire you, and set you up for a lifetime of opportunities, book a consultation for our League of Excellence services. From GRE/ GMAT preparation to mock interviews, we’ll assist you in every step of your journey!",
         name: "Australia",
         code: "AUS"
     }

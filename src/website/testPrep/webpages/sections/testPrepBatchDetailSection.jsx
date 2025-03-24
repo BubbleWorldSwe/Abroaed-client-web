@@ -4,6 +4,7 @@
 import { CheckIcon } from "lucide-react";
 
 function TestPrepBatchDetaileSection({ testPrepsDetails }) {
+
   return (
     <div className="relative mx-auto px-10">
       <div className=" px-4 py-3 flex flex-col gap-6 mx-auto max-w-screen-2xl ">
@@ -27,7 +28,7 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                   {/* <span className="text-gray-500">/month</span> */}
                 </div>
                 <a
-                  href="#"
+                  href="/batchLogin"
                   className={`bg-yellow-primary hover:bg-primary-500 focus:ring-4 focus:ring-primary-200 font-semibold rounded-lg text-[22px] px-5 py-2.5 text-center`}
                 >
                   Enroll Now

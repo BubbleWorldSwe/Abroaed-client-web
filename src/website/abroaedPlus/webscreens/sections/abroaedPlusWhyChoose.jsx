@@ -43,7 +43,7 @@ const AbroaedPlusWhyChoose = () => {
             We’re your study abroad wingman, making sure you nail every step—no
             stress, no guesswork. From unlimited home counselling and home
             tutors for English tests to guaranteed offers and killer loan rates,
-            we’ve got you covered. With 24/7 support, GRE/GMAT prep, and
+            we’ve got you covered. With 24/7 support, mock interviews, and
             personalized attention in small cohorts, we ensure you’re fully
             prepared. Plus, we help you connect with alumni mentors and get
             priority admission offers.{" "}

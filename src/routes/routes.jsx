@@ -52,6 +52,13 @@ import StudentSignIn from "../website/auth/studentSignIn";
 import StudentSignUp from "../website/auth/studentSignUp";
 import StudentResetPassword from "../website/auth/studentResetPassword";
 import ComingSoonPage from "../Layouts/comingSoonPage";
+import BatchLoginPage from "../website/authentication/batchLoginPage";
+import BatchSignupPage from "../website/authentication/batchSignupPage";
+import ForgetPasswordEmail from "../website/authentication/forgetPassword/forgetPasswordEmail";
+import ForgetPasswordOtp from "../website/authentication/forgetPassword/forgetPasswordOtp";
+import ForgetPasswordSet from "../website/authentication/forgetPassword/forgetPasswordSet";
+import ForgetPasswordSuccessfull from "../website/authentication/forgetPassword/forgetPasswordSuccessfull";
+import Login from "../website/authentication/login";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -72,7 +79,38 @@ const AppRoutes = () => {
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/signin", element: <StudentSignIn />, isPrivate: false },
     { path: "/signup", element: <StudentSignUp />, isPrivate: false },
+    { path: "/batchLogin", element: <BatchLoginPage />, isPrivate: false },
+    { path: "/batchSignup", element: <BatchSignupPage />, isPrivate: false },
     {
+      path: "/forgetPassword",
+      element: <ForgetPasswordEmail />,
+      isPrivate: false,
+
+    },
+    {
+      path: "/sendOtp",
+      element: <ForgetPasswordOtp />,
+      isPrivate: false,
+
+    },
+    {
+      path: "/setPassword",
+      element: <ForgetPasswordSet />,
+      isPrivate: false,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+      isPrivate: false,
+    },
+    {
+      path: "/setPasswordSuccessfull",
+      element: <ForgetPasswordSuccessfull />,
+      isPrivate: false,
+
+    },
+    {
+
       path: "/update-password/:id",
       element: <StudentResetPassword />,
       isPrivate: false,
@@ -190,6 +228,7 @@ const AppRoutes = () => {
         { path: "transactions", element: <StudentTransactions /> },
       ],
     },
+
   ];
 
   return (

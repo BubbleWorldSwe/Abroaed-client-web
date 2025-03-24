@@ -9,7 +9,7 @@ function HomeDownloadApp() {
           <div className=" shadow-lg rounded-xl relative bg-[#26262A]  items-center max-w-screen-2xl  mx-auto  xl:gap-16 md:grid md:grid-cols-2  lg:px-3">
             <div className="px-8 py-8">
               <h2 className="mb-2 text-[45px]  font-extrabold text-white leading-tight dark:text-white">
-                For Convenient Access to Study Abroaed Resources
+                For Convenient Access to Study Abroad Resources
               </h2>
               <h2 className="mb-4 text-[32px] tracking-tight font-extrabold text-white dark:text-white">
                 Download Our App
