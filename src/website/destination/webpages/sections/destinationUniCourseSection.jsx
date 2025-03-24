@@ -18,7 +18,7 @@ function DestinationUniCoursersSection({
         {/* Blob Background */}
         <section className="px-10 pt-12 mx-auto">
           <div
-            className="absolute right-0 top-20 h-full w-1/2 bg-cover bg-no-repeat z-0"
+            className="absolute right-0 top-20 h-full w-1/2 bg-cover bg-no-repeat -z-10"
             style={{
               backgroundImage: `url(${vectorleftNose})`,
             }}
@@ -38,7 +38,7 @@ function DestinationUniCoursersSection({
             </div>
 
             <Element name="popular-course">
-              <div className=" pt-5">
+              <div className=" pt-5 ">
                 <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                   Popular Courses in {destinationDetails?.countryId?.name}
                 </h2>
