@@ -20,6 +20,7 @@ import {
   setUpdateStudent,
 } from "../../api/authApi";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../constants/baseUrl";
 
 function* handleStudentLogin(action) {
   try {
@@ -51,7 +52,8 @@ function* handleStudentSignUp(action) {
         // Replace "undefined" with the actual frontend URL
         const formattedLink = resetPasswordLink.replace(
           "undefined",
-          "http://localhost:5173"
+          //    "http://localhost:5173"
+          BASE_URL
         );
 
         // Extracting the token from the URL
