@@ -11,6 +11,7 @@ import {
   STUDENT_UPDATE_PASSWORD_REQUEST,
   STUDENT_UPDATE_PASSWORD_FAILURE,
   STUDENT_UPDATE_PASSWORD_SUCCESS,
+  STUDENT_SIGNUP_REQUEST,
 } from "../actions/authActions";
 
 import storage from "redux-persist/lib/storage";
@@ -26,7 +27,7 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case STUDENT_LOGIN_REQUEST:
-    case STUDENT_SIGNUP_SUCCESS:
+    case STUDENT_SIGNUP_REQUEST:
     case STUDENT_UPDATE_PASSWORD_REQUEST:
     case ADMIN_LOGIN_REQUEST:
       return { ...state, loading: true, error: null };

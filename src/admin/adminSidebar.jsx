@@ -10,9 +10,7 @@ import {
   School,
   MapPinned,
   Compass,
-
   ClipboardList,
-
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -33,7 +31,12 @@ function CollapsableSidebar() {
     { path: "/admin/colleges", label: "Colleges", icon: School },
     { path: "/admin/destinations", label: "Destinations", icon: MapPinned },
     { path: "/admin/accommodation", label: "Accommodation", icon: Compass },
-    { path: "/admin/blogs", label: "Blogs", icon: ClipboardList, subPath: ["/admin/blogDetails"] },
+    {
+      path: "/admin/blogs",
+      label: "Blogs",
+      icon: ClipboardList,
+      subPath: ["/admin/blogDetails"],
+    },
   ];
 
   useEffect(() => {
@@ -46,7 +49,6 @@ function CollapsableSidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-
   return (
     <motion.div animate={{ width: isOpen ? 220 : 60 }} className="h-full">
       <aside className="h-[90vh] py-5 w-fit bg-white flex flex-col p-2">
@@ -55,8 +57,11 @@ function CollapsableSidebar() {
             <button
               key={path}
               onClick={() => navigate(path)}
-              className={`flex items-center px-4 py-3 rounded-md cursor-pointer font-semibold transition ${isActive(path) || subPath?.includes(url.pathname) ? "text-black" : "text-[#A1A1AA]"
-                } hover:text-black`}
+              className={`flex items-center px-4 py-3 rounded-md cursor-pointer font-semibold transition ${
+                isActive(path) || subPath?.includes(url.pathname)
+                  ? "text-black"
+                  : "text-[#A1A1AA]"
+              } hover:text-black`}
             >
               <Icon className="w-5 h-5" />
               {isOpen && (

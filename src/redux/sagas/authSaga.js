@@ -85,6 +85,10 @@ function* handleStudentResetPassword(action) {
       yield put(studentUpdatePasswordSuccess(response.data));
       toast.success("Password Set Sucessfully");
 
+      //  window.location.replace("/signin");
+
+      // yield put(push("/signin"));
+
       //   window.location.href = "/signin";
     } else {
       yield put(studentUpdatePasswordFailure(response.message));

@@ -65,13 +65,6 @@ function StudentSignUp() {
     dispatch(studentSignUpRequest(formData));
   };
 
-  // Navigate to dashboard if token is present
-  useEffect(() => {
-    if (token) {
-      navigate("/admin/dashboard");
-    }
-  }, [token, navigate]);
-
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">

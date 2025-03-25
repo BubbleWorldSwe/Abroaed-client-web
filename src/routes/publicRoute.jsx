@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const PublicRoute = ({ component: Component }) => {
   const isLoggedIn = false; // Replace with actual authentication logic
@@ -7,7 +7,7 @@ const PublicRoute = ({ component: Component }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/admin'); // Redirect authenticated users to private route
+      navigate("/admin"); // Redirect authenticated users to private route
     }
   }, [isLoggedIn]);
 
