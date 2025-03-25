@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { cardDetails } from "../../../pathways/program/data";
 import vectorOutlinedRightFlat from "../../../../assets/vectorOutlinedRightFlat.png";
-import { COLORS } from "../../../../constants/colors";
 
 const Cards = ({ header = "" }) => {
   return (
@@ -36,15 +35,15 @@ const AbroaedPlusWhyChoose = () => {
     <div>
       <section className="dark:bg-gray-900 relative px-12 mx-auto">
         <div className=" mx-auto max-w-screen-2xl py-8">
-          <h2 className={`text-[45px] font-extrabold text-[${COLORS.GRAY_PRIMARY}] mb-4 `}>
+          <h2 className={`text-[45px] font-extrabold text-gray-primary mb-4 `}>
             Why Choose ABROA<span style={{ color: "#fbba18" }}>ED</span>
             <sup>+</sup> ?
           </h2>
-          <p className={`font-normal mb-4 text-[${COLORS.GRAY_PRIMARY}] text-lg  dark:text-gray-400`}>
+          <p className={`font-normal mb-4 text-gray-primary text-lg  dark:text-gray-400`}>
             We’re your study abroad wingman, making sure you nail every step—no
             stress, no guesswork. From unlimited home counselling and home
             tutors for English tests to guaranteed offers and killer loan rates,
-            we’ve got you covered. With 24/7 support, GRE/GMAT prep, and
+            we’ve got you covered. With 24/7 support, mock interviews, and
             personalized attention in small cohorts, we ensure you’re fully
             prepared. Plus, we help you connect with alumni mentors and get
             priority admission offers.{" "}

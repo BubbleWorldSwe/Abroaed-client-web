@@ -11,7 +11,7 @@ function Dashboard() {
   const handleSignOut = () => {
     dispatch(logout(null));
     // localStorage.removeItem("token", token);
-    navigate("/home");
+    navigate("/admin/signin");
   };
   return (
     <div className="h-screen flex flex-col p-2">

@@ -57,6 +57,9 @@ export default {
           900: "#4d3f00",
           950: "#2a2200",
         },
+        "primary-dark": "#e2a303",
+        "yellow-primary": "#FDDA24",
+        "gray-primary": "#27272A",
       },
       animation: {
         scroll: "scroll var(--animation-duration) linear infinite",

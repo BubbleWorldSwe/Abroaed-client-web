@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 
 const ImageComponent = ({ imgFirst, imgUrl }) => (
-    <div className={`flex ${imgFirst ? "justify-start" : "justify-end"} `}>
+    <div className={`flex ${imgFirst ? "justify-start" : "justify-end"} h-[90%] `}>
         <img
             src={imgUrl}
             alt="Night Scene"
-            className="w-4/5 rounded-lg shadow-lg"
+            className="w-full  rounded-lg"
         />
     </div>
 );

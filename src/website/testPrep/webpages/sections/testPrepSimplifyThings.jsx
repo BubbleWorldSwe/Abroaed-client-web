@@ -1,5 +1,4 @@
 import vectorRightRing from "../../../../assets/vectorRightRing.png";
-import { COLORS } from "../../../../constants/colors";
 import { steps } from "../../data";
 
 const TestPrepSimplifyThings = () => {
@@ -9,10 +8,10 @@ const TestPrepSimplifyThings = () => {
         <section className="dark:bg-gray-900">
           <div className="py-8 lg:py-16">
             <div className="">
-              <h2 className={`mb-5 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+              <h2 className={`mb-5 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                 How We Simplify Things?
               </h2>
-              <p className={`text-[18px] text-[${COLORS.GRAY_PRIMARY}] font-normal`}>
+              <p className={`text-[18px] text-gray-primary font-normal`}>
                 lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Curabitur tristique felis non odio accumsan laoreet. Integer
                 cursus libero placerat ex volutpat posuere. Quisque non nisl

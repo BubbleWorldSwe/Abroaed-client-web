@@ -111,10 +111,18 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddTeam, roles }) {
               name="role"
               value={formData.role}
               onChange={handleChange}
-              options={roles.map((data) => ({
+              /*   options={roles.map((data) => ({
                 label: data.roleName,
                 value: data._id,
-              }))}
+              }))} */
+              options={roles
+                ?.filter(
+                  (data) => !["Admin", "Student"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                )
+                .map((data) => ({
+                  label: data?.roleName,
+                  value: data?.roleId,
+                }))}
               required
             />
 

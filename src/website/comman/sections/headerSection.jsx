@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-// import ExploreCourseNavItemModal from "../modals/exploreCourseNavItemModal";
+
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import DestinationNavItemModal from "../modals/destinationNavItemModal";
@@ -12,9 +10,7 @@ import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
 import { logout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
-import { COLORS } from "../../../constants/colors";
 import ProfileModal from "../modals/profileModal";
-//import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -34,6 +30,8 @@ function Header({ isHeaderBgWhite = false }) {
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
 
+  const {} = useSelector((state) => state.auth);
+
   // State lifted up from ExploreCollegesNavItemModal
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [states, setStates] = useState([]);
@@ -42,7 +40,9 @@ function Header({ isHeaderBgWhite = false }) {
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { token } = useSelector((state) => state.auth);
+  const { token, user, role } = useSelector((state) => state.auth);
+
+  console.log(token, role);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -112,14 +112,14 @@ function Header({ isHeaderBgWhite = false }) {
     >
       <nav>
         <div
-          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-[${COLORS.GRAY_PRIMARY}] text-white`}
+          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-gray-primary text-white`}
         >
           <p className="">GET IN TOUCH WITH US TODAY !</p>
           <div>
             {" "}
             <button
               onClick={() => navigate("/homeCounselling")}
-              className={`px-2 py-1 hover:bg-[#508030]  bg-[${COLORS.YELLOW_PRIMARY}] text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
+              className={`px-2 py-1 hover:bg-[#508030]  bg-yellow-primary text-gray-primary hover:border-none font-medium text-sm rounded-lg`}
             >
               Book Counselling Now
             </button>
@@ -406,19 +406,31 @@ function Header({ isHeaderBgWhite = false }) {
               onMouseLeave={handleMouseLeave}
               // className={ }
             >
-              <button
-                onClick={() => navigate("/signin")}
-                className={`px-4 py-2  bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-[#508030] font-semibold text-[${COLORS.GRAY_PRIMARY}] hover:border-none font-medium text-sm rounded-lg`}
-              >
-                Login
-              </button>
-              {activeDropdown === "login" && (
-                <div className="relative">
-                  <ProfileModal
-                    handleMouseEnter={handleMouseEnter}
-                    handleMouseLeave={handleMouseLeave}
-                  />
-                </div>
+              {role === "Student" && token ? (
+                <>
+                  <button
+                    // onClick={() => navigate("/signin")}
+                    className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                  >
+                    Hello, User
+                  </button>
+                  {activeDropdown === "login" && (
+                    <div className="relative">
+                      <ProfileModal
+                        handleMouseEnter={handleMouseEnter}
+                        handleMouseLeave={handleMouseLeave}
+                        logout={handleSignOut}
+                      />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <button
+                  onClick={() => navigate("/signin")}
+                  className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                >
+                  Login
+                </button>
               )}
             </a>
           </div>

@@ -1,11 +1,9 @@
 /* eslint-disable react/prop-types */
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton"
-import { IMAGES } from "../../../constants/images"
 import locationIcon from "../../../assets/locationIcon.png";
 import bookmark from "../../../assets/bookmark.png"
 import EnquiryLOEModal from "../modals/enquiryLOEModal";
 import { useState } from "react";
-import { COLORS } from "../../../constants/colors";
 const UniversityCardDetails = ({ item }) => {
     const [openModal, setOpenModal] = useState(false);
 
@@ -22,19 +20,20 @@ const UniversityCardDetails = ({ item }) => {
             <EnquiryLOEModal
                 isOpen={openModal}
                 onClose={handleCloseAddModal}
+                item={item}
 
             />
-            <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm bg-white border min-h-[30rem] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img
                         className="rounded-t-lg w-full h-48 object-cover"
-                        src={IMAGES.collegeImage}
+                        src={item.imgUrl}
                         alt={item.name}
                     />
                 </a>
                 <div className="p-5">
                     <div className="flex justify-between">
-                        <h5 className={`mb-2 text-[22px] font-semibold  text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                        <h5 className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}>
                             {item?.name}
                         </h5>
                         <div>
@@ -57,14 +56,16 @@ const UniversityCardDetails = ({ item }) => {
                                 {item.location}
                             </p>
                         </div>
-                        <div className="font-bold text-gray-500">Private</div>
+                        <div className="font-bold text-gray-500">{item.entityType}</div>
                     </div>
-                    <p className="mb-5 text-gray-500 dark:text-gray-400 line-clamp-4">
-                        {item.description}
-                    </p>
-                    <EnquireButton
-                        onClick={handleOpenAddModal}
-                    />
+                    <div className="flex flex-col justify-between h-[10rem]">
+                        <p className="mb-5 text-gray-500 dark:text-gray-400 line-clamp-4">
+                            {item.description}
+                        </p>
+                        <EnquireButton
+                            onClick={handleOpenAddModal}
+                        />
+                    </div>
                 </div>
             </div>
         </>

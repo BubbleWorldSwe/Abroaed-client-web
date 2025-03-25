@@ -3,7 +3,6 @@ import locationIcon from "../../../assets/locationIcon.png";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import { IMAGES } from "../../../constants/images";
 import bookmark from "../../../assets/bookmark.png"
-import { COLORS } from "../../../constants/colors";
 
 const UniversityDetailsCard = ({ item }) => {
   return (
@@ -17,7 +16,7 @@ const UniversityDetailsCard = ({ item }) => {
       </a>
       <div className="p-5">
         <div className="flex justify-between">
-          <h5 className={`mb-2  font-bold tracking-tight text-[${COLORS.GRAY_PRIMARY}] text-[22px] dark:text-white`}>
+          <h5 className={`mb-2  font-bold tracking-tight text-gray-primary text-[22px] dark:text-white`}>
             {item?.name}
           </h5>
           <div>

@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../constants/colors"
 import FaqLeftContent from "../../components/faqLeftContent"
 import FaqRightContent from "../../components/faqRightContent"
 
@@ -8,7 +7,7 @@ const FaqsHeader = () => {
             <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
                 {/* Content */}
                 <div className="relative z-10">
-                    <h2 className={`mb-2 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+                    <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                         Frequently Asked Questions                    </h2>
 
                     <div className=" border-t border-gray-300"></div>

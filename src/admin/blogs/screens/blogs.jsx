@@ -7,26 +7,11 @@ const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
+  const handleNextPage = () => {};
 
+  const handlePrevPage = () => {};
 
-  const handleNextPage = () => {
-
-  };
-
-  const handlePrevPage = () => {
-
-  };
-
-
-
-  const handleDelete = () => {
-
-  };
-
-
-
-
-
+  const handleDelete = () => {};
 
   return (
     <>
@@ -75,9 +60,10 @@ const Blogs = () => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-
                   <button
-                    onClick={() => { navigate('/admin/blogDetails') }}
+                    onClick={() => {
+                      navigate("/admin/blogDetails");
+                    }}
                     type="button"
                     className="w-full whitespace-nowrap  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                   >
@@ -100,7 +86,6 @@ const Blogs = () => {
                     </svg>
                     New Blog
                   </button>
-
                 </div>
               </div>
             </div>

@@ -3,7 +3,6 @@
 
 import { Search, Upload } from "lucide-react";
 import { Toaster } from "react-hot-toast";
-import { COLORS } from "../../../constants/colors";
 
 const StudentUploadDocument = ({ isOpen, onClose }) => {
 
@@ -24,7 +23,7 @@ const StudentUploadDocument = ({ isOpen, onClose }) => {
                                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-3">
                                     {/* Highest Education Qualification (Dropdown) */}
                                     <div>
-                                        <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+                                        <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
                                             Document Category</label>
                                         <select
                                             name="education"
@@ -42,7 +41,7 @@ const StudentUploadDocument = ({ isOpen, onClose }) => {
                                     </div>
 
                                     <div>
-                                        <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+                                        <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
                                             College</label>
                                         <select
                                             name="studyDestination"
@@ -59,7 +58,7 @@ const StudentUploadDocument = ({ isOpen, onClose }) => {
                                         </select>
                                     </div>
                                     <div>
-                                        <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+                                        <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
                                             Title</label>
                                         <input
                                             className="w-full px-3 py-1 border-none bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"

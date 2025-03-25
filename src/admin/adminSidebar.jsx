@@ -13,31 +13,105 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 function CollapsableSidebar() {
+  const { user, role } = useSelector((state) => state.auth);
+
+  console.log(user, role);
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const isActive = (path) => window.location.pathname.startsWith(path);
   const url = useLocation();
 
   const menuItems = [
-    { path: "/admin/dashboard", label: "Home", icon: Home },
-    { path: "/admin/teams", label: "Teams", icon: Users },
-    { path: "/admin/leads", label: "Leads", icon: BarChart2 },
-    { path: "/admin/students", label: "Enrolled Students", icon: User },
-    { path: "/admin/transaction", label: "Transactions", icon: Landmark },
-    { path: "/admin/testPrep", label: "Test Prep", icon: BookUser },
-    { path: "/admin/langPrep", label: "Language Prep", icon: BookUser },
-    { path: "/admin/colleges", label: "Colleges", icon: School },
-    { path: "/admin/destinations", label: "Destinations", icon: MapPinned },
-    { path: "/admin/accommodation", label: "Accommodation", icon: Compass },
+    { path: "/admin/dashboard", label: "Home", icon: Home, roles: ["Admin"] },
+    {
+      path: "/admin/teams",
+      label: "Teams",
+      icon: Users,
+      roles: ["Admin", "Backend Manager", "Counsellor Manager"],
+    },
+    {
+      path: "/admin/leads",
+      label: "Leads",
+      icon: BarChart2,
+      roles: [
+        "Admin",
+        "Counsellor",
+        "Backend Associate",
+        "Backend Manager",
+        "Counsellor Manager",
+      ],
+    },
+    {
+      path: "/admin/students",
+      label: "Enrolled Students",
+      icon: User,
+      roles: [
+        "Admin",
+        "Counsellor",
+        "Backend Associate",
+        "Backend Manager",
+        "Counsellor Manager",
+      ],
+    },
+    {
+      path: "/admin/transaction",
+      label: "Transactions",
+      icon: Landmark,
+      roles: [
+        "Admin",
+        "Counsellor",
+        "Backend Associate",
+        "Backend Manager",
+        "Counsellor Manager",
+      ],
+    },
+    {
+      path: "/admin/testPrep",
+      label: "Test Prep",
+      icon: BookUser,
+      roles: ["Admin", "Content Manager"],
+    },
+    {
+      path: "/admin/langPrep",
+      label: "Language Prep",
+      icon: BookUser,
+      roles: ["Admin", "Content Manager"],
+    },
+    {
+      path: "/admin/colleges",
+      label: "Colleges",
+      icon: School,
+      roles: ["Admin", "Content Manager"],
+    },
+    {
+      path: "/admin/destinations",
+      label: "Destinations",
+      icon: MapPinned,
+      roles: ["Admin", "Content Manager"],
+    },
+    {
+      path: "/admin/accommodation",
+      label: "Accommodation",
+      icon: Compass,
+      roles: ["Admin", "Content Manager"],
+    },
     {
       path: "/admin/blogs",
       label: "Blogs",
       icon: ClipboardList,
+      roles: ["Admin", "Content Manager"],
       subPath: ["/admin/blogDetails"],
     },
   ];
+
+  const filteredMenuItems = menuItems.filter((item) =>
+    item.roles.includes(role)
+  );
+
+  console.log(filteredMenuItems);
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,11 +123,17 @@ function CollapsableSidebar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (!role) {
+      navigate("/admin/signin");
+    }
+  }, [role, navigate]);
+
   return (
     <motion.div animate={{ width: isOpen ? 220 : 60 }} className="h-full">
       <aside className="h-[90vh] py-5 w-fit bg-white flex flex-col p-2">
         <nav className="flex flex-col gap-2">
-          {menuItems.map(({ path, label, icon: Icon, subPath }) => (
+          {filteredMenuItems.map(({ path, label, icon: Icon, subPath }) => (
             <button
               key={path}
               onClick={() => navigate(path)}

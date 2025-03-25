@@ -39,7 +39,7 @@ function StudentSignIn() {
   };
 
   useEffect(() => {
-    if (token && role === "student") {
+    if (token && role === "Student") {
       navigate("/home");
     }
   }, [token, navigate]);

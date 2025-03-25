@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeLatest } from "redux-saga/effects";
 import {
   STUDENT_LOGIN_REQUEST,
   ADMIN_LOGIN_REQUEST,
@@ -83,9 +83,11 @@ function* handleStudentResetPassword(action) {
     console.log(response);
     if (response.status === 200) {
       yield put(studentUpdatePasswordSuccess(response.data));
-      toast.success("Password Set Sucessfully");
+      toast.success("Password Set Successfully, Please Login to Continue");
 
-      //  window.location.replace("/signin");
+      yield delay(2000); // Using Redux-Saga's delay
+
+      window.location.replace("/signin");
 
       // yield put(push("/signin"));
 

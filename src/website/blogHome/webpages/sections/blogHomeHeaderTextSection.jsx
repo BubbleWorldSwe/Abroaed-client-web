@@ -1,4 +1,3 @@
-import { COLORS } from "../../../../constants/colors"
 
 const BlogHomeHeaderTestSection = () => {
     return (
@@ -12,7 +11,7 @@ const BlogHomeHeaderTestSection = () => {
                 ></div>
                 <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 ">
                     <div className="w-full flex flex-col gap-1 items-center  justify-center   ">
-                        <h2 className={`text-[57px] font-extrabold text-[${COLORS.GRAY_PRIMARY}]`}>
+                        <h2 className={`text-[57px] font-extrabold text-gray-primary`}>
                             Blog Post Title
                         </h2>
                         <div className="flex gap-2">

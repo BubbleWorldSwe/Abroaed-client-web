@@ -105,13 +105,13 @@ const AssignTeamMemberStudentModal = ({
               options={rolesList
                 ?.filter(
                   (data) =>
-                    !["Admin", "Content Manager"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                    !["Admin", "Content Manager"].includes(data.roleName)
                 )
                 .filter((data) => {
                   const assignedRoleIds = assignTeamMembers.map(
                     (member) => member.roleId?._id
                   );
-                  return !assignedRoleIds.includes(data.roleId); // Step 2: Exclude already assigned roles
+                  return !assignedRoleIds.includes(data.roleId);
                 })
                 .map((data) => ({
                   label: data?.roleName,

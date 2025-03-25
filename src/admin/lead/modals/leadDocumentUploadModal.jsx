@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Search, Upload } from "lucide-react";
 import { Toaster } from "react-hot-toast";
-import { COLORS } from "../../../constants/colors";
 
 const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
   return (
@@ -21,7 +20,7 @@ const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-3">
                   {/* Highest Education Qualification (Dropdown) */}
                   <div>
-                    <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
                       {" "}
                       Document Type
                     </label>
@@ -45,7 +44,7 @@ const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
                       Select Document Name
                     </label>
                     <select
@@ -63,7 +62,7 @@ const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
                     </select>
                   </div>
                   <div>
-                    <label className={`block text-sm font-semibold text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
                       Title
                     </label>
                     <input

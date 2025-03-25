@@ -8,7 +8,6 @@ import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
-import { COLORS } from "../../../constants/colors";
 
 
 export const destinationMenuItems = [
@@ -419,7 +418,7 @@ function Header({ isHeaderBgWhite = false }) {
                   </a>
                 </li>
                 <li>
-                  <button className={`px-3 py-2 bg-[${COLORS.YELLOW_PRIMARY}] text-[${COLORS.GRAY_PRIMARY}] font-semibold rounded-lg`}>
+                  <button className={`px-3 py-2 bg-yellow-primary text-gray-primary font-semibold rounded-lg`}>
                     Book Counselling Now
                   </button>
                 </li>

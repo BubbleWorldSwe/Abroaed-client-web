@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
 import { toast } from "react-toastify";
-import { COLORS } from "../../../constants/colors";
 
 const ContactUsForm = ({
   onFormSubmit,
@@ -70,7 +69,7 @@ const ContactUsForm = ({
   return (
     <section className="relative isolate overflow-hidden  px-12 mx-auto">
       <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
-        <div className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-[${COLORS.GRAY_PRIMARY}] rounded-lg `}>
+        <div className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-gray-primary rounded-lg `}>
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
             <h1 className={`text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}>
@@ -162,7 +161,7 @@ const ContactUsForm = ({
 
               <button
                 type="submit"
-                className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-[${COLORS.YELLOW_PRIMARY}] hover:bg-yellow-300`}
+                className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
                 style={{ color: "#000" }}
               >
                 {isLoading ? (

@@ -1,5 +1,4 @@
 
-import { COLORS } from "../../../../constants/colors";
 import CardComponent from "../../components/cardComponent";
 import { aboutUs } from "../../data";
 
@@ -10,7 +9,7 @@ function AboutUsContentSection() {
       <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
         <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
           <div className="flex flex-col gap-6 py-4">
-            <h2 className={`text-5xl w-full items-center text-left text-[${COLORS.GRAY_PRIMARY}]  font-extrabold `}>
+            <h2 className={`text-5xl w-full items-center text-left text-gray-primary  font-extrabold `}>
               Our Story
             </h2>
             <p className=" text-[#263238]   font-semibold text-[18px] ">

@@ -45,9 +45,10 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        user: action.payload.user,
-        token: action.payload.token,
-        role: "Student",
+        // user: action.payload.user,
+        //  token: action.payload.token,
+        //  role: "Student",
+        message: action.payload,
       };
 
     case STUDENT_UPDATE_PASSWORD_SUCCESS:
@@ -59,7 +60,7 @@ export const authReducer = (state = initialState, action) => {
         loading: false,
         user: action.payload.user,
         token: action.payload.token,
-        role: "Admin",
+        role: action.payload?.user?.roleId?.roleName,
       };
 
     case STUDENT_LOGIN_FAILURE:

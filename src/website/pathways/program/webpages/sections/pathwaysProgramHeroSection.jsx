@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import { Download } from "lucide-react";
-import { COLORS } from "../../../../../constants/colors";
 
 const PathwaysProgramHeroSection = ({ header, text, img }) => {
     return (
@@ -32,7 +31,7 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
                     <button
                         onClick={() => { }}
                         type="button"
-                        className={`w-full whitespace-nowrap  flex items-center gap-2  py-2 px-4 text-base font-semibold  text-[#432205] focus:outline-none bg-[${COLORS.YELLOW_PRIMARY}] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700`}
+                        className={`w-full whitespace-nowrap  flex items-center gap-2  py-2 px-4 text-base font-semibold  text-[#432205] focus:outline-none bg-yellow-primary rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700`}
                     >
                         <Download className="w-4 h-4" />
                         Book Counselling Now

@@ -1,4 +1,3 @@
-import { COLORS } from "../../../constants/colors";
 
 /* eslint-disable react/prop-types */
 export function BorderTextInputField({
@@ -14,7 +13,7 @@ export function BorderTextInputField({
 }) {
   return (
     <div className="my-2 ">
-      <label style={sx} className={`block text-sm font-medium text-[${COLORS.GRAY_PRIMARY}] mb-1`}>
+      <label style={sx} className={`block text-sm font-medium text-gray-primary mb-1`}>
         {label}*
       </label>
       <input

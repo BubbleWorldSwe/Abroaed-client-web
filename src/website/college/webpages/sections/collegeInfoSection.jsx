@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
-import { COLORS } from "../../../../constants/colors";
 
 const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
   return (
@@ -9,7 +8,7 @@ const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
       <section className="dark:bg-gray-900 relative px-12 mx-auto">
         <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 lg:py-16">
           <div className="">
-            <h2 className={`mb-4 text-[45px] font-extrabold text-[${COLORS.GRAY_PRIMARY}] `}>
+            <h2 className={`mb-4 text-[45px] font-extrabold text-gray-primary `}>
               Why Study at {collegeDetails?.name}?
             </h2>
             <p className="mb-4 font-normal  text-[18px]">{text1}</p>

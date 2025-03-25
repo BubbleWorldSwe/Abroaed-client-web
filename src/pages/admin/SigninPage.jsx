@@ -38,7 +38,7 @@ function SigninPage() {
   console.log(role);
 
   useEffect(() => {
-    if (token && role === "Admin") {
+    if (token && role !== "Student") {
       navigate("/admin/dashboard");
     }
   }, [token, navigate]);
@@ -54,7 +54,7 @@ function SigninPage() {
               onSubmit={handleSubmit}
             >
               <h2 className="text-xl font-bold   text-gray-900 dark:text-white">
-                Admin Login
+                Admin & Team Login
               </h2>
 
               <div className="flex items-center">

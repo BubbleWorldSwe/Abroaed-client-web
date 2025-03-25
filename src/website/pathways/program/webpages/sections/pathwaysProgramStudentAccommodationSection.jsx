@@ -1,6 +1,5 @@
 import { accommodations } from "../../data";
 import PathwaysAccommodationCard from "../../components/pathwaysAccommodationCard"
-import { COLORS } from "../../../../../constants/colors";
 
 const PathwaysProgramStudentAccommodationSection = () => {
   return (
@@ -8,7 +7,7 @@ const PathwaysProgramStudentAccommodationSection = () => {
       <section className=" dark:bg-gray-900 relative">
         <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
           <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className={`mb-10 text-[45px]  font-extrabold text-[${COLORS.GRAY_PRIMARY}] dark:text-white`}>
+            <h2 className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
               Popular Student Accommodations
             </h2>
             <div className="my-5 border-t-2 border-gray-300"></div>
