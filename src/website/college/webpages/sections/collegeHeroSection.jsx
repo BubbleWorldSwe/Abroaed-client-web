@@ -4,9 +4,9 @@ import worldIcon from "../../../../assets/worldIcon.png";
 
 const CollegeHeroSection = ({ img, collegeDetails }) => {
   return (
-    <div className="font-rethink">
+    <div className="">
       <section
-        className="relative h-[75vh] bg-cover bg-center "
+        className="relative h-[100vh] bg-cover bg-center "
         style={{
           backgroundImage: `url(${img})`,
           opacity: "1",

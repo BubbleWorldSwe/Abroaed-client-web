@@ -18,7 +18,7 @@ const WhyAbroaedNavModal = ({ handleMouseEnter,
             onMouseEnter={() => handleMouseEnter("whyAbroad")}
             onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
         >
-            <ul className="space-2 grid grid-cols-1 shadow-lg w-[30vw]  rounded-b-lg mt-2 bg-white" >
+            <ul className="space-2 grid grid-cols-1 shadow-lg w-[15vw]  rounded-b-lg mt-2 bg-white" >
                 {items?.map((data, index) => (
                     <li
                         key={index}

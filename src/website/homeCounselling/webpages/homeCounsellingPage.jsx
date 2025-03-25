@@ -30,11 +30,11 @@ const NavigationItems = () => {
         Get personalized, one-on-one counselling with experienced consultants to
         help you navigate your study ABROAED plans for free.
       </p>
-      <div className="flex gap-2 mt-5 whitespace-nowrap">
+      {/* <div className="flex gap-2 mt-5 whitespace-nowrap">
         <button className={`px-4 py-3  text-base mb-2 font-semibold rounded-lg text-[#432205] hover:bg-[#EDFA29]  bg-yellow-primary `}>
           Book Counselling Now
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

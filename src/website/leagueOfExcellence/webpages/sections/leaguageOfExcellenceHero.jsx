@@ -3,7 +3,7 @@ import leaguageHero from "../../../../assets/leaguageHero.png"
 const LeaguageOfExcellenceHero = () => {
     return (
         <section
-            className="relative h-[80vh]  bg-cover flex  bg-center"
+            className="relative h-[100vh]  bg-cover flex  bg-center"
             style={{
                 backgroundImage: `url(${leaguageHero})`,
                 opacity: "1",

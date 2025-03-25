@@ -8,8 +8,10 @@ const CareerContentSection = () => {
       <section className="bg-white dark:bg-gray-900 relative px-12 mx-auto">
         <div className=" px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
           <div className="flex flex-col gap-6 ">
-            <h2 className={`text-[45px] w-full text-gray-primary text-center leading-tight font-extrabold `}>
-              Life at ABROAED:
+            <h2 className={`text-[45px] w-full text-gray-primary text-center leading-tight font-bold `}>
+              <span className="font-extrabold text-[57px]">
+                Life at ABROAED
+              </span>
               <br />
               What It&apos;s Really Like Working Here
             </h2>

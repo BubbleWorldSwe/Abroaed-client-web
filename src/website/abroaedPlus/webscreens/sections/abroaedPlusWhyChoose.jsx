@@ -9,7 +9,7 @@ const Cards = ({ header = "" }) => {
         <div className="flex justify-between items-center">
           <h5
             // className={`mb-2 text-[24px] font-semibold   dark:text-white `}
-            className="text-4xl font-semibold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
+            className="text-3xl font-semibold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
             style={{
               backgroundImage:
                 "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
@@ -39,7 +39,9 @@ const AbroaedPlusWhyChoose = () => {
             Why Choose ABROA<span style={{ color: "#fbba18" }}>ED</span>
             <sup>+</sup> ?
           </h2>
-          <p className={`font-normal mb-4 text-gray-primary text-lg  dark:text-gray-400`}>
+          <p
+            className="text-[#52525B] text-[18px]  font-normal"
+          >
             We’re your study abroad wingman, making sure you nail every step—no
             stress, no guesswork. From unlimited home counselling and home
             tutors for English tests to guaranteed offers and killer loan rates,

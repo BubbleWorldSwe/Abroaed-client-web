@@ -12,7 +12,9 @@ function AboutUsContentSection() {
             <h2 className={`text-5xl w-full items-center text-left text-gray-primary  font-extrabold `}>
               Our Story
             </h2>
-            <p className=" text-[#263238]   font-semibold text-[18px] ">
+            <p
+              className=" text-[#263238]   font-semibold text-[18px] "
+            >
               ABROAED, established in 2025 under the prestigious 55-year legacy of IMM Business School, provides personalized guidance through your study overseas process in Delhi NCR. Our philosophy revolves around empowering students to unlock their full potential. Our focus is on holistic support and a promise of growth for every student.            </p>
           </div>
 

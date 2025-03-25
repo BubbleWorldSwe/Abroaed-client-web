@@ -117,7 +117,7 @@ function Header({ isHeaderBgWhite = false }) {
           </p>
           <div> <button
             onClick={() => navigate("/homeCounselling")}
-            className={`px-2 py-1 hover:bg-[#508030]  bg-yellow-primary text-gray-primary hover:border-none font-medium text-sm rounded-lg`}
+            className={`px-4 py-1 hover:bg-yellow-primary hover:text-gray-primary text-sm  bg-transparent text-white border-2 hover:border-none border-white font-normal  rounded-lg`}
           >
             Book Counselling Now
           </button></div>
@@ -145,7 +145,7 @@ function Header({ isHeaderBgWhite = false }) {
                    ${activeDropdown === "exploreColleges" ? "" : ""}`}
                 >
                   <a
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
                      ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -177,7 +177,7 @@ function Header({ isHeaderBgWhite = false }) {
     ${activeDropdown === "whyAbroad" ? "" : ""}`}
                 >
                   <a
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
     after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -202,7 +202,7 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     href="/abroaedPlus"
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
     after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -217,7 +217,7 @@ function Header({ isHeaderBgWhite = false }) {
                   className="relative cursor-pointer"
                 >
                   <a
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
                       ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -243,7 +243,7 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     href="/accomodation"
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
                       ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -259,13 +259,13 @@ function Header({ isHeaderBgWhite = false }) {
                   className="relative cursor-pointer"
                 >
                   <a
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
                       ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
                       ${activeDropdown === "testPrep" ? "after:opacity-30" : ""}`}
                   >
-                    Test Prep
+                    ELT Prep
                   </a>
                   {activeDropdown === "testPrep" && (
                     <div className="relative">
@@ -286,7 +286,7 @@ function Header({ isHeaderBgWhite = false }) {
                   className="relative cursor-pointer"
                 >
                   <a
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
                       ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -315,7 +315,7 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     href="/finance"
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
     after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -331,7 +331,7 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     href="/pathways"
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
     after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
@@ -348,7 +348,7 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     href="/leaguageOfExcellence"
-                    className={`font-semibold text-sm px-1 relative transition-colors duration-300
+                    className={`font-semibold  px-1 relative transition-colors duration-300
     ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
     after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
