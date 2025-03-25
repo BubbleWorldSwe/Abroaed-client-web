@@ -7,10 +7,14 @@ const AbroaedPlusHowItWork = () => {
         {/* Content */}
         <div className="relative z-10">
           <div className="pb-5">
-            <h2 className={`mb-2 text-[45px] font-extrabold text-gray-primary dark:text-white`}>
+            <h2
+              className="text-[#52525B] text-[18px]  font-normal"
+            >
               How It Works?
             </h2>
-            <p className={`text-gray-primary text-lg  leading-7  `}>
+            <p
+              className="text-[#52525B] text-[18px]  font-normal"
+            >
               At ABROAED+, we simplify your study abroad journey into clear,
               actionable steps, ensuring you’re supported every step of the way,
               from planning to settling in your dream destination.
@@ -20,7 +24,9 @@ const AbroaedPlusHowItWork = () => {
             <h3 className="mb-2  text-[32px]  font-bold text-gray-900 dark:text-white">
               Step 1: Dream & Discover
             </h3>
-            <p className={`text-gray-primary text-lg leading-7 `}>
+            <p
+              className="text-[#52525B] text-[18px]  font-normal"
+            >
               Your journey begins with unlimited home counselling, where our
               experts help you explore study abroad options, identify the right
               country, university, and course, and create a personalized
@@ -35,7 +41,9 @@ const AbroaedPlusHowItWork = () => {
             <h3 className="mb-2  text-[32px]  font-bold text-gray-900 dark:text-white">
               Step 2: Apply & Secure
             </h3>
-            <p className={`text-gray-primary text-lg leading-7 `}>
+            <p
+              className="text-[#52525B] text-[18px]  font-normal"
+            >
               Once you’re ready, we guide you through the application process,
               ensuring you submit error-free applications to your dream
               universities. With guaranteed offers and priority admission

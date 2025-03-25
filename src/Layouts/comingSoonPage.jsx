@@ -454,11 +454,7 @@ function ComingSoonPage() {
                     <button
                       type="submit"
                       // onClick={(e) => handleSubmit(e)}
-                      className="w-full font-rethink font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
-                      style={{
-                        backgroundColor: `yellow-primary`,
-                        color: "#000", // Adjust text color for better contrast
-                      }}
+                      className="w-full font-rethink bg-yellow-primary text-gray-primary font-medium rounded-lg text-lg px-5 py-2.5 text-center focus:ring-4 focus:outline-none focus:ring-yellow-400"
                     >
                       Notify Me
                     </button>

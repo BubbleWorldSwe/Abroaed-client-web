@@ -6,7 +6,7 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
     return (
         <div className="">
             <section
-                className="relative h-[73vh] bg-cover bg-center "
+                className="relative h-[100vh] bg-cover bg-center "
                 style={{
                     backgroundImage: `url(${img})`,
                     opacity: '1'
@@ -27,7 +27,7 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
                     </p>
                 </div>
                 {/* button */}
-                <div className="absolute bottom-6  py-6 right-3  flex flex-col  justify-start  mx-auto px-12">
+                {/* <div className="absolute bottom-6  py-6 right-3  flex flex-col  justify-start  mx-auto px-12">
                     <button
                         onClick={() => { }}
                         type="button"
@@ -36,7 +36,7 @@ const PathwaysProgramHeroSection = ({ header, text, img }) => {
                         <Download className="w-4 h-4" />
                         Book Counselling Now
                     </button>
-                </div>
+                </div> */}
             </section>
         </div>
     );

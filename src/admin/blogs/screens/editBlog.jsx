@@ -1,81 +1,80 @@
-/* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-import TextEditer from "../components/textEditer";
+import { useDispatch, useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import ReactQuill from "react-quill";
+import { toast } from "react-toastify";
+import {
+  addBlogRequest,
+  editBlogRequest,
+} from "../../../redux/actions/blogActions";
 import { getBlogsCategory } from "../../../api/blogsApi";
 
-import ReactQuill from "react-quill";
-import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
-import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
-import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { addBlogRequest } from "../../../redux/actions/blogActions";
-
-const AddBlog = () => {
-  const [formData, setFormData] = useState({ content: "" });
-  const [text, setText] = useState("Lorem ipsum...");
-  const [image, setImage] = useState(null);
-
-  const [blogsCategory, setBlogsCategory] = useState([]);
+const EditBlog = () => {
   const dispatch = useDispatch();
-  const [content, setContent] = useState("");
+  const blogDetails = useSelector((state) => state?.blogs?.selectedBlog);
+  const [formData, setFormData] = useState({
+    title: "",
+    category: "",
+    content: "",
+  });
+  const [blogsCategory, setBlogsCategory] = useState([]);
 
-  const handleChangeContent = (value) => {
+  useEffect(() => {
+    if (blogDetails) {
+      setFormData({
+        title: blogDetails.title || "",
+        category: blogDetails.category?._id || "",
+        content: blogDetails.content || "",
+      });
+    }
+  }, [blogDetails]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const list = await getBlogsCategory();
+        if (list.status === 200) {
+          setBlogsCategory(list.data.result);
+        }
+      } catch (error) {
+        console.error("Error fetching blog categories:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleContentChange = (value) => {
     setFormData((prevData) => ({
       ...prevData,
       content: value,
     }));
   };
 
-  const handleChange = (e) => {
-    console.log(e.target.name);
-    console.log("e.target.name");
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  console.log(formData);
-
-  const addBlog = () => {
-    try {
-      console.log("Add");
-      const { title, category, content } = formData;
-
-      if (!title || !category || !content) {
-        toast.error("Please fill out all fields.");
-        return;
-      }
-
-      dispatch(addBlogRequest(formData));
-      //onAddAccommodation(formData);
-    } catch (error) {
-      console.log(error);
+  const handleSubmit = () => {
+    const { title, category, content } = formData;
+    if (!title || !category || !content) {
+      toast.error("Please fill out all fields.");
+      return;
     }
+    dispatch(editBlogRequest(blogDetails?._id, formData));
   };
-
-  async function fetchData() {
-    try {
-      const list = await getBlogsCategory();
-
-      if (list.status === 200) {
-        setBlogsCategory(list.data.result);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <>
-      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">
-        <section className=" py-3 sm:py-5 flex-grow">
-          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
+      <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
+        <section className="py-3 sm:py-5 flex-grow">
+          <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">
             <div className="flex justify-between items-center mb-4">
-              <div className="font-bold text-xl">Add New Blog</div>
+              <div className="font-bold text-xl">Edit Blog</div>
               <div className="space-x-2">
                 <button className="px-4 py-2 bg-gray-200 rounded-lg">
                   Preview
@@ -88,17 +87,17 @@ const AddBlog = () => {
                 </button>
               </div>
             </div>
-
             <div className="text-sm text-gray-500 mb-4">
-              Last Updated Feb 21, 2025
+              Last Updated{" "}
+              {new Date(blogDetails.updatedAt).toLocaleDateString()}
             </div>
             <div className="w-full mx-auto my-6 p-4 border rounded-lg shadow-lg bg-white">
               <TextInputField
                 label="Title"
                 name="title"
-                value={formData?.title}
+                value={formData.title}
                 onChange={handleChange}
-                placeholder={"Enter Title"}
+                placeholder="Enter Title"
               />
               <div className="my-5 mb-6">
                 <SelectField
@@ -107,8 +106,8 @@ const AddBlog = () => {
                   value={formData.category}
                   onChange={handleChange}
                   options={blogsCategory.map((data) => ({
-                    label: data?.name,
-                    value: data?._id,
+                    label: data.name,
+                    value: data._id,
                   }))}
                   required
                 />
@@ -119,15 +118,16 @@ const AddBlog = () => {
               <div className="rounded-lg border-none bg-[#F4F4F5] p-2">
                 <ReactQuill
                   value={formData.content}
-                  onChange={handleChangeContent}
+                  onChange={handleContentChange}
                   className="border-none"
-                  style={{
-                    minHeight: "300px",
-                  }}
+                  style={{ minHeight: "300px" }}
                 />
               </div>
               <div className="text-center mt-10">
-                <ModalSubmitButton label={"Save Blog"} onClick={addBlog} />
+                <ModalSubmitButton
+                  label="Save Changes"
+                  onClick={handleSubmit}
+                />
               </div>
             </div>
           </div>
@@ -162,4 +162,4 @@ const AddBlog = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;

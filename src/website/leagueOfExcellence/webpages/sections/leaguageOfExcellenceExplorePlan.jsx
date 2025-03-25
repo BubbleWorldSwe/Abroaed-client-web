@@ -41,14 +41,14 @@ const LeaguageOfExcellenceExplorePlan = () => {
                                 <p className="text-gray-500 text-base mb-3 text-center ">lorem ipsum dolor sit amet</p>
                                 <p className="text-2xl text-center font-bold ">{plan.price}</p>
 
-                                <button
+                                {/* <button
                                     className={`w-full mt-4 py-4 rounded-full text-[18px] font-semibold 
                                      hover:text-white border border-gray-500
                                     hover:bg-black  
                                     `}
                                 >
                                     {plan.buttonText}
-                                </button>
+                                </button> */}
 
                                 <div className="mt-6">
                                     <h4 className="text-[18px] font-semibold text-gray-700">

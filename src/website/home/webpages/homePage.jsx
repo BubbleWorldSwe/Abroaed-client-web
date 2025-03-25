@@ -35,6 +35,7 @@ import vectorBelow from "../../../assets/vectorBelow.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import PageLoader from "../../../commons/components/loader/pageLoader";
+import { fetchAllBlogsRequest } from "../../../redux/actions/blogActions";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function HomeLayout() {
       dispatch(fetchAllTestPrepsRequest());
       dispatch(fetchAllLanguagePrepsRequest());
       dispatch(fetchAllDestinationsRequest());
+      dispatch(fetchAllBlogsRequest());
       setIsLoading(false);
     } catch (error) {
       console.log(error);

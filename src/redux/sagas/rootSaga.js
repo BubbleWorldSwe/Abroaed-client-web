@@ -9,6 +9,7 @@ import collegesSaga from "./collegeSaga";
 import accommodationsSaga from "./accommodationSaga";
 import leadsSaga from "./leadsSaga";
 import studentsSaga from "./studentsSaga";
+import blogsSaga from "./blogSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     accommodationsSaga(),
     leadsSaga(),
     studentsSaga(),
+    blogsSaga(),
   ]);
 }

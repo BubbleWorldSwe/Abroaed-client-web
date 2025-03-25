@@ -1,4 +1,5 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { pageDataLimit } from "../constants/values";
 import {
   makeDeleteRequest,
   makeGetRequest,
@@ -9,7 +10,7 @@ import {
 export const getColleges = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=20`
+      `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=${pageDataLimit}`
     );
     console.log(data);
     if (data.success) {

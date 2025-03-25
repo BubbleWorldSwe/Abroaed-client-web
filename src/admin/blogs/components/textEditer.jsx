@@ -30,7 +30,7 @@ const TextEditer = () => {
   if (!editor) return null;
 
   return (
-    <div className="w-full mx-auto my-6 p-4 border rounded-lg shadow-lg bg-white">
+    <>
       {/* Toolbar */}
       <div className="flex gap-2 p-2 border-b bg-gray-100">
         <button
@@ -80,7 +80,7 @@ const TextEditer = () => {
 
       {/* Text Editor Content */}
       <EditorContent editor={editor} className="p-4 min-h-[200px] border" />
-    </div>
+    </>
   );
 };
 

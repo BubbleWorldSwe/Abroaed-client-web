@@ -11,27 +11,38 @@ const socialLinks = [
 ];
 
 const links = [
-  { title: "Important Links", items: ["Home", "Director Message", "Blog", "Contact Us"] },
-  { title: "Services", items: ["Social Media Marketing", "SEO", "Meta Ads", "Website Development", "Software Development"] },
+  {
+    title: "Important Links",
+    items: [
+      { name: "Home", link: "/home" },
+      { name: "Our Story", link: "/aboutus" },
+      // { name: "Founder's Desk", link: "/founders-desk" },
+      { name: "Blog", link: "/blog" },
+      { name: "Explore Colleges", link: "/" },
+      // { name: "Destinations", link: "/destinations" }
+    ]
+  },
+  {
+    title: "Services",
+    items: [
+      { name: "ABROAD+", link: "/abroaedPlus" },
+      { name: "Accommodation", link: "/accomodation" },
+      { name: "League of Excellence", link: "/leaguageOfExcellence" },
+      // { name: "Test Prep", link: "/test-prep" },
+      { name: "Finance", link: "/finance" }
+    ]
+  },
 ];
 
 const offices = [
-  {
-    location: "Amritsar Office",
-    address: "SCO-31, D-Block, Ranjit Avenue, Amritsar",
-    phone: "+91 87545 38506",
-  },
-  {
-    location: "Mumbai Office",
-    address: "Jeevansaathi building, Juhu Lane, Mumbai, Maharashtra",
-    phone: "+91 9478583733",
-    email: "hello@bubbleworld.in",
-  },
+
   {
     location: "Delhi Office",
     address: "Shop no. G-35/1, Aditya Arcade, Preet Vihar, Delhi, 110092",
-    phone: "+91 82850 71111",
+    phone: "+91 947999999",
+    email: "info@abroaed.com",
   },
+
 ];
 
 
@@ -51,7 +62,7 @@ function Footer() {
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
-            <p className="my-4 font-light  text-gray-300 text-base">
+            <p className="my-4 font-light text-base">
               At ABROAED, we help students get admission to prestigious universities in the USA, UK, Canada, Australia, Europe, and Asia, including Ivy League schools. We offer personalized consultations and coaching (virtual/in-home), accommodation support, and financial assistance, fostering access to elite academic and leadership networks.
             </p>
             <h3 className="mt-4 font-semibold text-xl mb-5">Follow Us On</h3>
@@ -85,10 +96,10 @@ function Footer() {
             {links.map((section, index) => (
               <div key={index}>
                 <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>{section.title}</h3>
-                <ul className="space-y-2 text-lg">
+                <ul className="space-y-2 text-base font-semibold  ">
                   {section.items.map((item, idx) => (
                     <li key={idx}>
-                      <a href="#" className="hover:underline">{item}</a>
+                      <a href={item?.link} className="hover:underline">{item.name}</a>
                     </li>
                   ))}
                 </ul>

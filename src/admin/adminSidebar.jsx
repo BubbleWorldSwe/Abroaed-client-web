@@ -25,7 +25,7 @@ function CollapsableSidebar() {
   const url = useLocation();
 
   const menuItems = [
-    { path: "/admin/dashboard", label: "Home", icon: Home, roles: ["Admin"] },
+    { path: "/admin/dashboard", label: "Home", icon: Home },
     {
       path: "/admin/teams",
       label: "Teams",
@@ -103,12 +103,11 @@ function CollapsableSidebar() {
       label: "Blogs",
       icon: ClipboardList,
       roles: ["Admin", "Content Manager"],
-      subPath: ["/admin/blogDetails"],
     },
   ];
 
-  const filteredMenuItems = menuItems.filter((item) =>
-    item.roles.includes(role)
+  const filteredMenuItems = menuItems.filter(
+    (item) => !item.roles || item.roles.includes(role)
   );
 
   console.log(filteredMenuItems);
@@ -133,14 +132,12 @@ function CollapsableSidebar() {
     <motion.div animate={{ width: isOpen ? 220 : 60 }} className="h-full">
       <aside className="h-[90vh] py-5 w-fit bg-white flex flex-col p-2">
         <nav className="flex flex-col gap-2">
-          {filteredMenuItems.map(({ path, label, icon: Icon, subPath }) => (
+          {filteredMenuItems.map(({ path, label, icon: Icon }) => (
             <button
               key={path}
               onClick={() => navigate(path)}
               className={`flex items-center px-4 py-3 rounded-md cursor-pointer font-semibold transition ${
-                isActive(path) || subPath?.includes(url.pathname)
-                  ? "text-black"
-                  : "text-[#A1A1AA]"
+                isActive(path) ? "text-black" : "text-[#A1A1AA]"
               } hover:text-black`}
             >
               <Icon className="w-5 h-5" />

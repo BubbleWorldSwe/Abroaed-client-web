@@ -108,7 +108,7 @@ function AccomodationPage() {
         onAddLead={handleAddLead}
       />
       <AccommodationHowItWorkSection />
-      <OurPartners />
+      {/* <OurPartners /> */}
       <AccommodationFaqSection />
       <Testimonials />
       <ContactUsForm

@@ -14,6 +14,10 @@ export const EDIT_BLOG_REQUEST = "EDIT_BLOG_REQUEST";
 export const EDIT_BLOG_SUCCESS = "EDIT_BLOG_SUCCESS";
 export const EDIT_BLOG_FAILURE = "EDIT_BLOG_FAILURE";
 
+export const FETCH_ALL_BLOGS_REQUEST = "FETCH_ALL_BLOGS_REQUEST";
+export const FETCH_ALL_BLOGS_SUCCESS = "FETCH_ALL_BLOGS_SUCCESS";
+export const FETCH_ALL_BLOGS_FAILURE = "FETCH_ALL_BLOGS_FAILURE";
+
 export const SET_SELECTED_BLOG = "SET_SELECTED_BLOG";
 
 export const fetchBlogsRequest = (page) => ({
@@ -31,10 +35,28 @@ export const fetchBlogsFailure = (error) => ({
   payload: error,
 });
 
-export const addBlogRequest = (blogData) => ({
-  type: ADD_BLOG_REQUEST,
-  payload: blogData,
+export const fetchAllBlogsRequest = () => ({
+  type: FETCH_ALL_BLOGS_REQUEST,
 });
+
+export const fetchAllBlogsSuccess = (blogs) => {
+  return {
+    type: FETCH_ALL_BLOGS_SUCCESS,
+    payload: blogs,
+  };
+};
+
+export const fetchAllBlogsFailure = (error) => ({
+  type: FETCH_ALL_BLOGS_FAILURE,
+  payload: error,
+});
+
+export const addBlogRequest = (blogData) => {
+  return {
+    type: ADD_BLOG_REQUEST,
+    payload: blogData,
+  };
+};
 
 export const addBlogSuccess = (blog) => ({
   type: ADD_BLOG_SUCCESS,

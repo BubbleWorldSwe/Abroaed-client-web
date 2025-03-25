@@ -10,10 +10,10 @@ import {
 
 export const getLeads = async (page) => {
   try {
-    const path = page ? `?page=${page}&limit=${pageDataLimit}` : "";
+    const path = page ? `page=${page}&limit=${pageDataLimit}&` : "";
 
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list${path}`
+      `${BASE_URL}/api/v1/admin/leads/list?${path}filter={"type":"lead"}`
     );
     console.log(data);
     if (data.success) {

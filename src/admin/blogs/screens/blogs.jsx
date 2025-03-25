@@ -1,17 +1,58 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import BlogsTable from "../tables/blogsTable";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  deleteBlogRequest,
+  fetchBlogsRequest,
+} from "../../../redux/actions/blogActions";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
-  const handleNextPage = () => {};
+  const dispatch = useDispatch();
 
-  const handlePrevPage = () => {};
+  const { blogs, totalPages } = useSelector((state) => state.blogs);
 
-  const handleDelete = () => {};
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      const pageExists = blogs.some((item) => item.index === currentPage + 1);
+
+      if (!pageExists) {
+        dispatch(fetchBlogsRequest(currentPage + 1));
+      }
+
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const pageExists = blogs.some((item) => item.index === currentPage - 1);
+
+      if (!pageExists) {
+        dispatch(fetchBlogsRequest(currentPage - 1));
+      }
+
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleDelete = (id) => {
+    console.log("handleDelete " + id);
+    dispatch(deleteBlogRequest(id));
+    setCurrentPage(1);
+    dispatch(fetchBlogsRequest(1));
+  };
+
+  useEffect(() => {
+    if (blogs?.length === 0) {
+      console.log("fetchBlogsRequest");
+      dispatch(fetchBlogsRequest(currentPage));
+    }
+  }, [dispatch, blogs, currentPage]);
 
   return (
     <>
@@ -62,7 +103,7 @@ const Blogs = () => {
                 <div className="flex gap-2">
                   <button
                     onClick={() => {
-                      navigate("/admin/blogDetails");
+                      navigate("/admin/blogs/addBlog");
                     }}
                     type="button"
                     className="w-full whitespace-nowrap  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
@@ -91,7 +132,6 @@ const Blogs = () => {
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
               <BlogsTable
-                blogData={[]}
                 currentPage={currentPage}
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}

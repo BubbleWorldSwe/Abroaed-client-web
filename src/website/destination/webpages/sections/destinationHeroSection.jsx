@@ -8,7 +8,7 @@ function DestinationHeroSection({ destinationDetails, img }) {
   return (
     <div className="">
       <section
-        className="relative h-[70vh] bg-cover bg-center "
+        className="relative h-[100vh] bg-cover bg-center "
         style={{
           backgroundImage: `url(${img})`,
           opacity: "1",

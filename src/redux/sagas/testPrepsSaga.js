@@ -43,7 +43,8 @@ function* fetchAllTestPreps(action) {
     yield put(fetchAllTestPrepsSuccess(data.data));
   } catch (error) {
     yield put(fetchAllTestPrepsFailure(error.message));
-    toast.error(error.message);
+    console.log(error.message);
+    // toast.error(error.message);
   }
 }
 

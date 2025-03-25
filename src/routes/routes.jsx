@@ -59,6 +59,8 @@ import ForgetPasswordOtp from "../website/authentication/forgetPassword/forgetPa
 import ForgetPasswordSet from "../website/authentication/forgetPassword/forgetPasswordSet";
 import ForgetPasswordSuccessfull from "../website/authentication/forgetPassword/forgetPasswordSuccessfull";
 import Login from "../website/authentication/login";
+import AddBlog from "../admin/blogs/screens/addBlog";
+import EditBlog from "../admin/blogs/screens/editBlog";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -85,13 +87,11 @@ const AppRoutes = () => {
       path: "/forgetPassword",
       element: <ForgetPasswordEmail />,
       isPrivate: false,
-
     },
     {
       path: "/sendOtp",
       element: <ForgetPasswordOtp />,
       isPrivate: false,
-
     },
     {
       path: "/setPassword",
@@ -107,10 +107,8 @@ const AppRoutes = () => {
       path: "/setPasswordSuccessfull",
       element: <ForgetPasswordSuccessfull />,
       isPrivate: false,
-
     },
     {
-
       path: "/update-password/:id",
       element: <StudentResetPassword />,
       isPrivate: false,
@@ -211,7 +209,9 @@ const AppRoutes = () => {
         { path: "destinations/:id", element: <DestinationDetails /> },
         { path: "destinations", element: <Destinations /> },
         { path: "blogs", element: <Blogs /> },
-        { path: "blogDetails", element: <BlogsDetails /> },
+        { path: "blogs/blogDetails/:id", element: <BlogsDetails /> },
+        { path: "blogs/addBlog", element: <AddBlog /> },
+        { path: "blogs/editBlog/:id", element: <EditBlog /> },
       ],
     },
     // Student Routes (Private)
@@ -228,7 +228,6 @@ const AppRoutes = () => {
         { path: "transactions", element: <StudentTransactions /> },
       ],
     },
-
   ];
 
   return (

@@ -12,11 +12,15 @@ import {
   EDIT_BLOG_SUCCESS,
   EDIT_BLOG_FAILURE,
   SET_SELECTED_BLOG,
+  FETCH_ALL_BLOGS_SUCCESS,
+  FETCH_ALL_BLOGS_REQUEST,
+  FETCH_ALL_BLOGS_FAILURE,
 } from "../actions/blogActions";
 
 const initialState = {
   loading: false,
   blogs: [],
+  allBlogs: [],
   error: null,
   totalPages: null,
   page: 1,
@@ -28,6 +32,7 @@ const initialState = {
 export const blogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_BLOGS_REQUEST:
+    case FETCH_ALL_BLOGS_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_BLOGS_SUCCESS:
@@ -45,7 +50,15 @@ export const blogsReducer = (state = initialState, action) => {
         page: action.payload.page,
       };
 
+    case FETCH_ALL_BLOGS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        allBlogs: action.payload.result,
+      };
+
     case FETCH_BLOGS_FAILURE:
+    case FETCH_ALL_BLOGS_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case ADD_BLOG_REQUEST:

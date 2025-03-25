@@ -21,7 +21,7 @@ function HomeHeroSection() {
   return (
     <div className="font-rethink">
       <section
-        className="relative h-[80vh]  bg-cover flex  bg-center"
+        className="relative h-[100vh]  bg-cover flex  bg-center"
         style={{
           backgroundImage: `url(${homeHeroImg})`,
           opacity: "1",

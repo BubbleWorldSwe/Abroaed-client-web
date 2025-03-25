@@ -47,7 +47,8 @@ function* fetchAllTeams() {
     yield put(fetchAllTeamsSuccess(response.data));
   } catch (error) {
     yield put(fetchAllTeamsFailure(error.message));
-    toast.error(error.message);
+    //toast.error(error.message);
+    console.log(error.message);
   }
 }
 

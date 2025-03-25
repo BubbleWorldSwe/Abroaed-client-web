@@ -45,7 +45,8 @@ function* fetchAllDestinations(action) {
     yield put(fetchAllDestinationsSuccess(data.data));
   } catch (error) {
     yield put(fetchAllDestinationsFailure(error.message));
-    toast.error(error.message);
+    console.log(error.message);
+    // toast.error(error.message);
   }
 }
 

@@ -4,7 +4,7 @@ const HomeCounsellingHeroSection = ({ img, header, text }) => {
     return (
         <div className="font-rethink">
             <section
-                className="relative h-[75vh] bg-cover bg-center "
+                className="relative h-[100vh] bg-cover bg-center "
                 style={{
                     backgroundImage: `url(${img})`,
                     opacity: '1'

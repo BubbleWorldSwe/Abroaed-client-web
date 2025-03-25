@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
-import vectorOutlinedRightFlat from "../../../../assets/vectorOutlinedRightFlat.png";
+import vectorRightFlat from "../../../../assets/vectorRightFlat.png";
+
 import { cardDetails } from "../../data";
 
 const Cards = ({ header = "", text = "" }) => {
   return (
-    <div className="max-w-[40rem] relative bg-white flex-shrink-0 h-36 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-[40rem] relative bg-black bg-opacity-80 text-white flex-shrink-0 h-36 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5">
         <div className="">
-          <h5 className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}>
+          <h5 className={`mb-2 text-[22px] font-semibold   dark:text-white`}>
             {header}
           </h5>
           <p className="text-[18px]">{text}</p>
@@ -16,7 +17,7 @@ const Cards = ({ header = "", text = "" }) => {
       <div className="absolute right-0 top-0 bottom-0 overflow-hidden z-0">
         <img
           className="rounded-lg w-full h-full object-contain"
-          src={vectorOutlinedRightFlat}
+          src={vectorRightFlat}
           alt="Counselling session"
         />
       </div>

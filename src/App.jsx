@@ -26,6 +26,7 @@
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/routes";
 import "swiper/swiper-bundle.css"; // Swiper CSS
+import "react-quill/dist/quill.snow.css";
 
 import { ToastContainer } from "react-toastify";
 

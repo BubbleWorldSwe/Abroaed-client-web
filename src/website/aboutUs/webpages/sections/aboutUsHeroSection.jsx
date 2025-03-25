@@ -1,12 +1,12 @@
-import image from "../../../../assets/dark.png";
+import aboutUs from "../../../../assets/aboutUs.png";
 
 function AboutUsHeroSection() {
   return (
     <div className="font-rethink">
       <section
-        className="relative h-[75vh] bg-cover bg-center "
+        className="relative h-[100vh] bg-cover bg-center "
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${aboutUs})`,
           opacity: '1'
         }}
       >
