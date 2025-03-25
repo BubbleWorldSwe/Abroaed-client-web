@@ -35,14 +35,20 @@ function AccommodationResultForCountry({
                       onSelectCountry(country._id);
                     }}
                   >
-                    <Flag
-                      width={20}
-                      code={country?.countryId?.code}
-                      style={{ display: "inline-block" }}
-                    />{" "}
+                    {country?.countryId?.name === "All" ? (
+                      <p style={{ display: "inline-block", width: 20 }}>
+                        {country?.countryId?.emoji}
+                      </p>
+                    ) : (
+                      <Flag
+                        width={20}
+                        code={country?.countryId?.code}
+                        style={{ display: "inline-block" }}
+                      />
+                    )}{" "}
                     {country?.countryId?.name !== "All"
                       ? country?.countryId?.name
-                      : `All (${destinationsList?.length - 1})`}
+                      : `All ( ${destinationsList?.length - 1} )`}
                   </button>
                 ))}
               </div>

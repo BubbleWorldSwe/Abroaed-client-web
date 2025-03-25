@@ -23,7 +23,7 @@ const UniversityCardDetails = ({ item }) => {
                 item={item}
 
             />
-            <div className="max-w-sm bg-white border min-h-[30rem] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-sm bg-white border overflow-y-auto h-[30rem] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <img
                         className="rounded-t-lg w-full h-48 object-cover"

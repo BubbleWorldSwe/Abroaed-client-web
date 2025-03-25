@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 
+import image from "../../../assets/dark.png";
+
 const BlogCard = ({ article }) => {
   return (
     <article className="p-4 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700">
       <a href="#">
         <img
           className="mb-5 rounded-lg"
-          src={article.image}
+          src={image}
           alt="office laptop working"
         />
       </a>

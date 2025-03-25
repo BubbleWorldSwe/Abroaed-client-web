@@ -11,6 +11,8 @@ import LanguageNavModal from "../modals/languageNavModal";
 import { logout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import ProfileModal from "../modals/profileModal";
+import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+//import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -67,7 +69,7 @@ function Header({ isHeaderBgWhite = false }) {
     setIsLoading(true);
     try {
       const response = await getCollegesByDestinationId(destination._id);
-      if (response.status === 200) {
+      if (response?.status === 200) {
         setColleges(response.data.result);
         setFilteredColleges(response.data.result); // Show all initially
         const uniqueStates = [
@@ -101,6 +103,22 @@ function Header({ isHeaderBgWhite = false }) {
       handleDestinationClick(allDestinations[0]);
     }
   }, [allDestinations]);
+  const socialLinks = [
+    {
+      icon: <FaInstagram size={20} />,
+      url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
+    },
+    // { icon: <FaFacebook size={20} />, url: "#" },
+    {
+      icon: <FaLinkedin size={20} />,
+      url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all",
+    },
+    {
+      icon: <FaXTwitter size={20} />,
+      url: "https://x.com/i/flow/login?redirect_after_login=%2Fabroaed",
+    }, // X (formerly Twitter)
+    // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
+  ];
 
   return (
     <header
@@ -112,17 +130,28 @@ function Header({ isHeaderBgWhite = false }) {
     >
       <nav>
         <div
-          className={`py-3 flex gap-5  justify-center items-center font-inter text-sm bg-gray-primary text-white`}
+          className={`py-3 flex gap-5 relative  justify-center items-center font-inter text-sm bg-gray-primary text-white`}
         >
           <p className="">GET IN TOUCH WITH US TODAY !</p>
           <div>
-            {" "}
             <button
               onClick={() => navigate("/homeCounselling")}
-              className={`px-4 py-1 hover:bg-yellow-primary hover:text-gray-primary text-sm  bg-transparent text-white border-2 hover:border-none border-white font-normal  rounded-lg`}
+              className={`px-4 py-1 text-sm bg-transparent text-white border-2 border-white hover:border-yellow-primary hover:bg-yellow-primary hover:text-gray-primary font-normal rounded-lg`}
             >
               Book Counselling Now
             </button>
+          </div>
+          <div className="flex absolute right-5  md:justify-end space-x-3 mt-2">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.url}
+                className=" text-white hover:text-gray-300 rounded-full"
+                aria-label="Social Link"
+              >
+                {link.icon}
+              </a>
+            ))}
           </div>
         </div>
         <nav className="flex items-center justify-between  md:justify-center   w-full px-12 py-4">

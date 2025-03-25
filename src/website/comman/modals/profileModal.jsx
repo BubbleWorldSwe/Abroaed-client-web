@@ -25,7 +25,7 @@ const ProfileModal = ({ handleMouseEnter, handleMouseLeave, logout }) => {
         >
           <div className="">
             <a
-              style={{ backgroundColor: "olive" }}
+              // style={{ backgroundColor: "olive" }}
               href={"/student/profile"}
               className=" gap-2 px-4 py-2  w-full flex  items-center "
             >
