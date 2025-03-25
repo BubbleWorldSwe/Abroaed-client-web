@@ -80,7 +80,9 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
           {/* Left Side: Text and Image */}
           <div className="flex flex-col gap-3 justify-center">
             {/* <div className="text-start "> */}
-            <h2 className={`mb-2 text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}>
+            <h2
+              className={`mb-2 text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
+            >
               Need Clarifications on Your Study ABROAED Plans?
             </h2>
             <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
@@ -113,7 +115,9 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             <div className="flex flex-col items-start w-full rounded-lg p-8 mt-16 ">
               {/* Tabs Row */}
               <div className="mb-3">
-                <h2 className={`mb-4 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+                <h2
+                  className={`mb-4 text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+                >
                   Book Counselling Now
                 </h2>
 

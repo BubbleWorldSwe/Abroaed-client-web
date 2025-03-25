@@ -18,10 +18,10 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { countriesName } from "../data";
 
-
-
 const LeaguageOfExcellencePage = () => {
-  const [selectCountryCode, setSelectCountryCode] = useState(countriesName[0].code);
+  const [selectCountryCode, setSelectCountryCode] = useState(
+    countriesName[0].code
+  );
   const dispatch = useDispatch();
   const handleAddLead = (data) => {
     try {
@@ -37,7 +37,10 @@ const LeaguageOfExcellencePage = () => {
     <div className="font-rethink">
       <Header />
       <LeaguageOfExcellenceHero />
-      <LeaguageOfExcellenceServicesOverviews setCountry={setSelectCountryCode} countriesName={countriesName} />
+      <LeaguageOfExcellenceServicesOverviews
+        setCountry={setSelectCountryCode}
+        countriesName={countriesName}
+      />
       <div className="relative">
         <LeaguageOfExcellenceUniversity selectCountryCode={selectCountryCode} />
         <div className="absolute bottom-72 left-0 -z-10">
@@ -49,7 +52,11 @@ const LeaguageOfExcellencePage = () => {
         </div>
       </div>
       <div className="relative">
-        <LeaguageOfExcellenceExplorePlan />
+        <LeaguageOfExcellenceExplorePlan
+          onFormSubmit={handleAddLead}
+          source={source.leaguageOfExcellence}
+          entity={entity.explorePlans}
+        />
         <div className="absolute top-20 right-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -86,12 +93,7 @@ const LeaguageOfExcellencePage = () => {
       </div>
       <Footer />
     </div>
-  )
-}
-
-
-
-
-
+  );
+};
 
 export default LeaguageOfExcellencePage;

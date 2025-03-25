@@ -69,10 +69,14 @@ const ContactUsForm = ({
   return (
     <section className="relative isolate overflow-hidden  px-12 mx-auto">
       <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
-        <div className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-gray-primary rounded-lg `}>
+        <div
+          className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-gray-primary rounded-lg `}
+        >
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
-            <h1 className={`text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}>
+            <h1
+              className={`text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}
+            >
               {title || `Book Your Counselling Session Today!`}
             </h1>
             <p className=" text-[18px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
@@ -93,7 +97,7 @@ const ContactUsForm = ({
                 type={"text"}
                 value={formData.firstName}
                 onChange={handleChange}
-                sx={{ color: 'white' }}
+                sx={{ color: "white" }}
                 required
               />
               <BorderTextInputField
@@ -103,7 +107,7 @@ const ContactUsForm = ({
                 type={"text"}
                 value={formData.lastName}
                 onChange={handleChange}
-                sx={{ color: 'white' }}
+                sx={{ color: "white" }}
                 required
               />
               <BorderTextInputField
@@ -113,7 +117,7 @@ const ContactUsForm = ({
                 type={"email"}
                 value={formData.email}
                 onChange={handleChange}
-                sx={{ color: 'white' }}
+                sx={{ color: "white" }}
                 required
               />
               <BorderTextInputField
@@ -123,7 +127,7 @@ const ContactUsForm = ({
                 type={"phone"}
                 value={formData.mobile}
                 onChange={handleChange}
-                sx={{ color: 'white' }}
+                sx={{ color: "white" }}
                 required
               />
 

@@ -83,6 +83,7 @@ export const source = {
 
 export const entity = {
   contactUs: "Contact Us",
+  explorePlans: "Explore Plans",
   bookCounselling: "Book Counselling",
 };
 
