@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { plans } from "../../data";
 import { useState } from "react";
 import FeatureLOEModal from "../../modals/featureLOEModal";
@@ -28,7 +27,7 @@ const LeaguageOfExcellenceExplorePlan = () => {
                         {plans.map((plan, index) => (
                             <div
                                 key={index}
-                                className={`relative p-6 py-10 border bg-white rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
+                                className={`relative p-6 hover:bg-opacity-75 py-10 border bg-black text-white bg-opacity-80 rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
                                 }`}
                             >
                                 {plan.recommended && (
@@ -37,9 +36,9 @@ const LeaguageOfExcellenceExplorePlan = () => {
                                     </div>
                                 )}
 
-                                <h3 className="text-4xl font-extrabold mb-2 text-[#71717A] text-center " >{plan.name}</h3>
-                                <p className="text-gray-500 text-base mb-3 text-center ">lorem ipsum dolor sit amet</p>
-                                <p className="text-2xl text-center font-bold ">{plan.price}</p>
+                                <h3 className="text-[57px] font-extrabold mb-3  text-center " >{plan.name}</h3>
+                                <p className="text-[25px] text-center font-bold mb-1 ">{plan.price}</p>
+                                <p className=" text-lg mb-3 text-center ">{plan.title}</p>
 
                                 {/* <button
                                     className={`w-full mt-4 py-4 rounded-full text-[18px] font-semibold 
@@ -50,24 +49,22 @@ const LeaguageOfExcellenceExplorePlan = () => {
                                     {plan.buttonText}
                                 </button> */}
 
-                                <div className="mt-6">
-                                    <h4 className="text-[18px] font-semibold text-gray-700">
+                                <div className="mt-6" >
+                                    <h4 className="text-[25px] font-semibold">
                                         Features you’ll love
                                     </h4>
-                                    <ul className="mt-2 space-y-2">
-                                        {Array(5)
-                                            .fill("lorem ipsum dolor sit amet")
-                                            .map((feature, i) => (
-                                                <li key={i} className="flex text-base items-center gap-2 text-gray-600">
-                                                    <Check size={16} className="text-green-500" />
-                                                    {feature}
-                                                </li>
-                                            ))}
+                                    <ul className="mt-2 space-y-2 list-disc px-5 ">
+                                        {plan.features?.map((feature, i) => (
+                                            <li key={i} className=" text-base list-item items-center gap-1 text-white">
+                                                {/* <Check size={16} /> */}
+                                                {feature}
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                             </div>
                         ))}
-                    </div>
+                    </div >
 
                     <div className="flex justify-center mt-10">
                         <button
@@ -77,8 +74,8 @@ const LeaguageOfExcellenceExplorePlan = () => {
                             See full feature comparison
                         </button>
                     </div>
-                </section>
-            </div>
+                </section >
+            </div >
         </>
     )
 }

@@ -1,13 +1,15 @@
 import playStore from "../../../assets/gPlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
-import { FaInstagram, FaFacebook, FaLinkedin, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { FaInstagram, FaLinkedin, FaXTwitter, } from "react-icons/fa6";
+import { useSelector } from "react-redux";
+import Flag from "react-world-flags";
 
 const socialLinks = [
-  { icon: <FaInstagram size={20} />, url: "#" },
-  { icon: <FaFacebook size={20} />, url: "#" },
-  { icon: <FaLinkedin size={20} />, url: "#" },
-  { icon: <FaXTwitter size={20} />, url: "#" }, // X (formerly Twitter)
-  { icon: <FaYoutube size={20} />, url: "#" } // YouTube
+  { icon: <FaInstagram size={20} />, url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#" },
+  // { icon: <FaFacebook size={20} />, url: "#" },
+  { icon: <FaLinkedin size={20} />, url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all" },
+  { icon: <FaXTwitter size={20} />, url: "https://x.com/i/flow/login?redirect_after_login=%2Fabroaed" }, // X (formerly Twitter)
+  // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
 ];
 
 const links = [
@@ -18,7 +20,7 @@ const links = [
       { name: "Our Story", link: "/aboutus" },
       // { name: "Founder's Desk", link: "/founders-desk" },
       { name: "Blog", link: "/blog" },
-      { name: "Explore Colleges", link: "/" },
+      // { name: "Explore Colleges", link: "/" },
       // { name: "Destinations", link: "/destinations" }
     ]
   },
@@ -35,18 +37,19 @@ const links = [
 ];
 
 const offices = [
-
   {
     location: "Delhi Office",
-    address: "Shop no. G-35/1, Aditya Arcade, Preet Vihar, Delhi, 110092",
-    phone: "+91 947999999",
-    email: "info@abroaed.com",
+    address: "B11, Block B, Qutab Institutional Area, New Delhi, Delhi 110016",
+    phone: " +91 73033 68820,+91 73033 68819",
+    email: "info@abroaed.com ",
   },
-
 ];
 
 
 function Footer() {
+  const { allDestinations } = useSelector((state) => state.destinations);
+  const { allTestPreps } = useSelector((state) => state.testPreps);
+  // const { allLanguagePreps } = useSelector((state) => state.languagePreps);
   return (
     <div>
       <footer className="bg-black text-white py-10">
@@ -68,7 +71,7 @@ function Footer() {
             <h3 className="mt-4 font-semibold text-xl mb-5">Follow Us On</h3>
             <div className="flex justify-center md:justify-start space-x-3 mt-2">
               {socialLinks.map((link, index) => (
-                <a key={index} href={link.url} className="p-2 bg-white text-black rounded-full" aria-label="Social Link">
+                <a key={index} href={link.url} className="p-2 hover:bg-opacity-85 bg-white text-black rounded-full" aria-label="Social Link">
                   {link.icon}
                 </a>
               ))}
@@ -119,6 +122,55 @@ function Footer() {
                   </div>
                 ))}
               </div>
+            </div>
+            {/* Destination */}
+            <div>
+              <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>Destinations</h3>
+              <ul>
+                {allDestinations.map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex  items-center justify-between  font-semibold text-base    py-1 rounded-lg transition-all"
+                  >
+                    <a
+                      href={`/destinations/${item._id}`}
+                      className="cursor-pointer hover:underline"
+                    >
+                      <div className="flex items-center  gap-4">
+                        <span className="">
+                          <Flag width={30} code={item?.countryId?.code} style={{}} />
+                        </span>
+
+                        {item?.countryId?.name}
+                      </div>
+                    </a>
+
+                  </li>
+                ))}
+
+              </ul>
+            </div>
+            {/* testPrep */}
+            <div>
+              <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>ELT Prep</h3>
+              <ul >
+                {allTestPreps?.map((data, index) => (
+                  <li
+                    key={index}
+                    className="flex text-white items-center justify-between  font-semibold text-base    py-1 rounded-lg transition-all"
+                  >
+                    <a
+                      href={`/testprep/${data?._id}`}
+                      className="cursor-pointer hover:underline"
+                    >
+                      <div className="flex  text-white w-full justify-between items-center ">
+                        {data?.productName}
+                      </div>
+                    </a>
+                  </li>
+                ))}
+
+              </ul>
             </div>
           </div>
         </div>
