@@ -115,7 +115,7 @@ const StudentTable = ({
                 </td>
                 <td className="px-4 py-3"> {member.level}</td>
                 <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {member?.planType || "--"}
+                  {member?.servicerType || "--"}
                 </td>
                 <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   {member.counsellor}

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
@@ -13,6 +13,7 @@ import {
 import { toast } from "react-toastify";
 
 const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
+  const { error } = useSelector((state) => state.leads);
   const { allDestinations } = useSelector((state) => state.destinations);
 
   const [formData, setFormData] = useState({
@@ -70,6 +71,17 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
     console.log("Lead Data:", formData);
     onAddLead({ user: formData, source: "Websites", entity: "admin" });
   };
+
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+      });
+    }
+  }, [error]);
 
   return (
     <>

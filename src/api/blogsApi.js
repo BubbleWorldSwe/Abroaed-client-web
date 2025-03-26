@@ -77,7 +77,9 @@ export const setDeleteBlog = async (id) => {
 
 export const getBlogDetailsById = async (id) => {
   try {
-    const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/blogs/${id}`);
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/blogs/post/${id}`
+    );
     if (data.success) {
       return data.data;
     }
@@ -90,6 +92,20 @@ export const getBlogsCategory = async () => {
   try {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/blogs/category`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBlogsByCategoryId = async (id) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/blogs/category/${id}`
     );
     console.log(data);
     if (data.success) {

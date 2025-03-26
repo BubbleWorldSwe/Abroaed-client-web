@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const ContactUsForm = ({
   onFormSubmit,
@@ -11,7 +12,10 @@ const ContactUsForm = ({
   title,
   text,
 }) => {
-  console.log(isLoading + " Is Loading");
+  const { error } = useSelector((state) => state.leads);
+
+  console.log(error + " : Error");
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -63,8 +67,17 @@ const ContactUsForm = ({
   };
 
   useEffect(() => {
-    console.log(isLoading);
-  }, [isLoading]);
+    if (!error) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+      });
+    }
+  }, [isLoading, error]);
+
+  console.log(formData);
 
   return (
     <section className="relative isolate overflow-hidden  px-12 mx-auto">

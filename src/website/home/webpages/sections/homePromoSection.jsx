@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import homeQuery from "../../../../assets/homeQuery.png";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 function HomePromoSection({ source, entity, onFormSubmit }) {
   const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
+  const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -72,6 +73,23 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
     console.log("Lead Data:", formData);
     onFormSubmit({ user: formData, source: source, entity: entity });
   };
+
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        email: "",
+        firstName: "",
+        lastName: "",
+        mobile: "",
+        userDetail: {
+          highestEducation: "",
+          preferredDestination: "",
+          applyingFor: "",
+          targetYear: "",
+        },
+      });
+    }
+  }, [error]);
 
   return (
     <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto h-full">

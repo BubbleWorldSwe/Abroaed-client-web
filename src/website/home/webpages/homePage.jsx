@@ -79,7 +79,7 @@ function HomeLayout() {
       <HomeHeroSection />
       <HomeKpiMatrixSection
         title={"Why ABROAED?"}
-        header={"What sets us apart?"}
+        header={"What Sets Us Apart?"}
         subtitle={
           "ABROAED distinguishes itself through its highly personalized and student-centric approach to study abroad consulting. We offer end-to-end support, customizing every step—from university selection and application strategy to visa assistance and pre-departure preparation—to align with each student’s unique goals and aspirations. Leveraging data-driven insights and a proven track record of success, we ensure students target the best-fit programs that align with their academic and career ambitions. At ABROAED, we’re not just helping you move across borders; we’re helping you create a future filled with endless possibilities."
         }

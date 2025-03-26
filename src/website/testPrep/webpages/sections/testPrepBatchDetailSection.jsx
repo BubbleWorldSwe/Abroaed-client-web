@@ -4,24 +4,25 @@
 import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import LoginModal from "../../../comman/modals/loginModal";
+import { useSelector } from "react-redux";
 
-function TestPrepBatchDetaileSection({ testPrepsDetails }) {
+function TestPrepBatchDetaileSection({
+  testPrepsDetails,
+  onClickPayment,
+  disabledPayment,
+}) {
   const [openModal, setOpenModal] = useState(false);
-
+  const { token, role } = useSelector((state) => state.auth);
   const handleEnroll = () => {
-    setOpenModal(true)
-  }
+    setOpenModal(true);
+  };
   const handleClose = () => {
     setOpenModal(false);
-  }
+  };
 
   return (
     <>
-      <LoginModal
-        isOpen={openModal}
-        onClose={handleClose}
-
-      />
+      <LoginModal isOpen={openModal} onClose={handleClose} />
       <div className="relative mx-auto px-10">
         <div className=" px-4 py-3 flex flex-col gap-6 mx-auto max-w-screen-2xl ">
           {/* Content */}
@@ -40,18 +41,24 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                     {data.batchName}
                   </h3>
                   <div className="flex justify-center items-baseline my-4">
-                    <span className="mr-2 text-[32px] font-bold">₹ {data.fees}</span>
+                    <span className="mr-2 text-[32px] font-bold">
+                      ₹ {data.fees}
+                    </span>
                     {/* <span className="text-gray-500">/month</span> */}
                   </div>
                   <button
-                    onClick={handleEnroll}
+                    onClick={() =>
+                      token && role === "Student"
+                        ? onClickPayment(data)
+                        : setOpenModal(true)
+                    }
                     className={`bg-yellow-primary hover:bg-primary-500 focus:ring-4 focus:ring-primary-200 font-semibold rounded-lg text-[22px] px-5 py-2.5 text-center`}
                   >
                     Enroll Now
                   </button>
                   <div className="flex justify-between items-baseline mt-5 mb-2 w-9/12 ">
                     <p className="">
-                      <strong >Duration :</strong>{" "}
+                      <strong>Duration :</strong>{" "}
                       <span className="text-gray-500">
                         {data.duration} months
                       </span>
@@ -71,7 +78,9 @@ function TestPrepBatchDetaileSection({ testPrepsDetails }) {
                     {data.features?.map((item, i) => (
                       <li key={i} className="flex items-center space-x-3">
                         <CheckIcon color={"gray-primary"} size={14} />
-                        <span className="text-[12px] text-[#52525B] font-normal ">{item}</span>
+                        <span className="text-[12px] text-[#52525B] font-normal ">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>

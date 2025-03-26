@@ -31,7 +31,7 @@ export const languages = [
 ];
 export const testMode = ["Online", "Offline"];
 
-export const pageDataLimit = 20;
+export const pageDataLimit = 10;
 
 export const targetYear = ["2025", "2026", "2027", "2028", "2029", "2030"];
 
@@ -63,6 +63,8 @@ export const servicerType = [
 ];
 
 export const planType = ["Basic", "Advance", "Elite"];
+
+export const razorpayKey = "rzp_test_wt3VZ7nDSv5COS";
 
 export const source = {
   home: "Home",

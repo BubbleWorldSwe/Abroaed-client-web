@@ -16,16 +16,11 @@ const TestPrepTable = ({
 }) => {
   const { testPreps, totalPages } = useSelector((state) => state.testPreps);
 
-  const { testPreps: data } = useSelector((state) => state);
-
-  console.log(data);
   const dispatch = useDispatch();
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
-
-  console.log(testPreps);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);

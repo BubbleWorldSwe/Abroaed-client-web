@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import {
   applyingFor,
@@ -14,6 +14,7 @@ import {
 const BookCounsellingNow = ({ source, entity, onFormSubmit, loading }) => {
   const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
+  const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -71,11 +72,30 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit, loading }) => {
     onFormSubmit({ user: formData, source: source, entity: entity });
   };
 
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        email: "",
+        firstName: "",
+        lastName: "",
+        mobile: "",
+        userDetail: {
+          highestEducation: "",
+          preferredDestination: "",
+          applyingFor: "",
+          targetYear: "",
+        },
+      });
+    }
+  }, [error]);
+
   return (
     <section className=" dark:bg-gray-900 relative px-10 mx-auto h-full">
       <div className="py-16 px-4 mx-auto max-w-screen-2xl   z-10">
         {/* <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  "> */}
-        <h2 className={`mb-4 text-[45px] text-center  font-extrabold text-gray-primary dark:text-white`}>
+        <h2
+          className={`mb-4 text-[45px] text-center  font-extrabold text-gray-primary dark:text-white`}
+        >
           Book Counselling Now
         </h2>
         <div className="flex justify-center text-center">

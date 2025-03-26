@@ -81,7 +81,7 @@ const LeadTable = ({
             Lead Source
           </th>
           <th scope="col" className="px-4 py-3 min-w-[6rem]">
-            Counsellor
+            Entity
           </th>
           <th scope="col" className="px-4 py-3 min-w-[7rem]">
             Lead Status
@@ -118,7 +118,7 @@ const LeadTable = ({
                 <td className="px-4 py-3">{lead?.user?.mobile}</td>
                 <td className="px-4 py-3">{lead?.source}</td>
 
-                <td className="px-4 py-3">{lead?.counsellor}</td>
+                <td className="px-4 py-3">{lead?.entity}</td>
 
                 <td className="px-4 py-3">
                   <span

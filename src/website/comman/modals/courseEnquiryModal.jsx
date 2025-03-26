@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const CourseEnquiryModal = ({
   isOpen,
@@ -12,6 +13,7 @@ const CourseEnquiryModal = ({
   onAddLead,
   courseDetails,
 }) => {
+  const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -64,6 +66,17 @@ const CourseEnquiryModal = ({
     onAddLead({ user: formData, source, entity });
     onClose();
   };
+
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+      });
+    }
+  }, [error]);
 
   return (
     <>

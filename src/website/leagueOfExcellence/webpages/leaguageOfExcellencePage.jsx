@@ -22,6 +22,7 @@ const LeaguageOfExcellencePage = () => {
   const [selectCountryCode, setSelectCountryCode] = useState(
     countriesName[0].code
   );
+
   const dispatch = useDispatch();
   const handleAddLead = (data) => {
     try {
@@ -42,7 +43,10 @@ const LeaguageOfExcellencePage = () => {
         countriesName={countriesName}
       />
       <div className="relative">
-        <LeaguageOfExcellenceUniversity selectCountryCode={selectCountryCode} />
+        <LeaguageOfExcellenceUniversity
+          selectCountryCode={selectCountryCode}
+          onFormSubmit={handleAddLead}
+        />
         <div className="absolute bottom-72 left-0 -z-10">
           <img
             className="rounded-lg w-full h-full object-cover"

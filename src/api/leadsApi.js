@@ -111,3 +111,30 @@ export const getLeadDetailsById = async (id) => {
     throw error;
   }
 };
+
+export const setLeadSubscribeBatch = async (
+  lead,
+  type,
+  prepId,
+  batchId,
+  paymentId
+) => {
+  try {
+    const data = await makePostRequest(
+      `${BASE_URL}/api/v1/admin/subscribe-batches/create`,
+      {
+        lead,
+        type,
+        prepId,
+        batchId,
+        //paymentId
+      }
+    );
+
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

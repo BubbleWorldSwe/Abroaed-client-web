@@ -14,12 +14,9 @@ import { addBlogRequest } from "../../../redux/actions/blogActions";
 
 const AddBlog = () => {
   const [formData, setFormData] = useState({ content: "" });
-  const [text, setText] = useState("Lorem ipsum...");
-  const [image, setImage] = useState(null);
 
   const [blogsCategory, setBlogsCategory] = useState([]);
   const dispatch = useDispatch();
-  const [content, setContent] = useState("");
 
   const handleChangeContent = (value) => {
     setFormData((prevData) => ({

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
 import { BorderSelectField } from "../../../commons/components/inputFields/borderSelectField";
@@ -19,6 +19,8 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
       targetYear: "",
     },
   });
+
+  const { error } = useSelector((state) => state.leads);
 
   const { allDestinations } = useSelector((state) => state.destinations);
 
@@ -67,6 +69,23 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
     onFormSubmit({ user: formData, source: source, entity: entity });
     onClose();
   };
+
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        email: "",
+        firstName: "",
+        lastName: "",
+        mobile: "",
+        userDetail: {
+          highestEducation: "",
+          preferredDestination: "",
+          applyingFor: "",
+          targetYear: "",
+        },
+      });
+    }
+  }, [error]);
 
   return (
     <>

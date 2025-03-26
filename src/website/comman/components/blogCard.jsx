@@ -20,12 +20,13 @@ const BlogCard = ({ article }) => {
 
       {/*  <p className="mb-3 dark:text-gray-400">{article.content}</p> */}
       <div className="flex justify-end items-end mt-auto">
-        <button
+        <a
+          href={`/blog/${article._id}`}
           type="submit"
           className="py-2 px-4 text-md font-bold text-center text-black rounded-lg bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
         >
           Read more
-        </button>
+        </a>
       </div>
     </article>
   );

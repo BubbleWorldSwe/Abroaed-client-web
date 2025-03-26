@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dark from "../../../assets/dark.png";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import locationIcon from "../../../assets/locationIcon.png";
 import wallet from "../../../assets/wallet.png";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const AccomodationEnquiryModal = ({
   isOpen,
@@ -15,6 +16,7 @@ const AccomodationEnquiryModal = ({
   onAddLead,
   accommodationDetails,
 }) => {
+  const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -72,6 +74,17 @@ const AccomodationEnquiryModal = ({
     }
   };
 
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+      });
+    }
+  }, [error]);
+
   return (
     <>
       {isOpen && (
@@ -101,7 +114,11 @@ const AccomodationEnquiryModal = ({
 
                 {/* Location */}
                 <div className="flex gap-2 items-center">
-                  <img className="w-4 h-4 object-contain" src={locationIcon} alt="Location Icon" />
+                  <img
+                    className="w-4 h-4 object-contain"
+                    src={locationIcon}
+                    alt="Location Icon"
+                  />
                   <p className="text-gray-700 font-semibold">
                     {accommodationDetails?.stateId?.name},{" "}
                     {accommodationDetails?.destinationId?.countryId?.name}
@@ -110,8 +127,14 @@ const AccomodationEnquiryModal = ({
 
                 {/* Price */}
                 <div className="flex gap-2 items-center mt-2">
-                  <img className="w-5 h-5 object-contain" src={wallet} alt="Wallet Icon" />
-                  <p className="text-gray-900">Rs. {accommodationDetails?.price} per month</p>
+                  <img
+                    className="w-5 h-5 object-contain"
+                    src={wallet}
+                    alt="Wallet Icon"
+                  />
+                  <p className="text-gray-900">
+                    Rs. {accommodationDetails?.price} per month
+                  </p>
                 </div>
 
                 {/* Description */}

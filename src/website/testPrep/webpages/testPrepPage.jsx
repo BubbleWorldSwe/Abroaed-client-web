@@ -17,12 +17,16 @@ import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import TestPrepSimplifyThings from "./sections/testPrepSimplifyThings";
 // import Blogs from "../../comman/components/blogs";
-import { entity, source } from "../../../constants/values";
+import { entity, razorpayKey, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useRazorpay } from "react-razorpay";
+import { setLeadSubscribeBatch } from "../../../api/leadsApi";
 
 function TestPrepLayout() {
   const { id } = useParams();
+  const { user } = useSelector((state) => state.auth);
   // const { state: destinationDetails } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [testPrepsDetails, setTestPrepsDetails] = useState(null);
@@ -51,6 +55,58 @@ function TestPrepLayout() {
       console.log(error);
     }
   };
+
+  const { error, isLoading: loading, Razorpay } = useRazorpay();
+
+  const handlePayment = (data) => {
+    const options = {
+      key: razorpayKey,
+      amount: parseFloat(data.fees) * 100,
+      currency: "INR",
+      name: "ABROAED",
+      description: "Test Transaction",
+
+      handler: (response) => {
+        console.log(response);
+        subscribeBatches(data, response.razorpay_payment_id);
+        // toast.success("Payment Successful!");
+      },
+      prefill: {
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        contact: user.mobile,
+      },
+      theme: {
+        color: "#e2a303",
+      },
+    };
+
+    const razorpayInstance = new Razorpay(options);
+    razorpayInstance.open();
+  };
+
+  async function subscribeBatches(data, paymentId) {
+    try {
+      console.log(user._id, "test_prep", id, data._id, paymentId);
+      const prep = await setLeadSubscribeBatch(
+        user._id,
+        "test_prep",
+        id,
+        data._id,
+        paymentId
+      );
+      console.log(prep);
+
+      if (prep?.status === 200) {
+        toast.success(prep?.message);
+      } else {
+        toast.error(prep?.message);
+      }
+      //  setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   console.log(testPrepsDetails);
 
@@ -81,7 +137,11 @@ function TestPrepLayout() {
 
       {testPrepsDetails?.batches.length > 0 && (
         <div className="relative ">
-          <TestPrepBatchDetaileSection testPrepsDetails={testPrepsDetails} />
+          <TestPrepBatchDetaileSection
+            onClickPayment={handlePayment}
+            disabledPayment={loading}
+            testPrepsDetails={testPrepsDetails}
+          />
           <div className="absolute bottom-0 right-0 z-0">
             <img
               className="rounded-lg max-w-full "
