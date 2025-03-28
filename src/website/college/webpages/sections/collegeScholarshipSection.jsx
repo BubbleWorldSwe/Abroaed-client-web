@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
+
 
 const CollegeScholarshipSection = ({ collegeDetails }) => {
   return (
@@ -7,10 +10,10 @@ const CollegeScholarshipSection = ({ collegeDetails }) => {
       <section className=" dark:bg-gray-900 relative px-7 mx-auto">
         <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
           <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-            <h2 className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+            <SectionMainHeader className={`mb-10`}>
               Scholarships & Financial Aid
-            </h2>
-            <p className={`mb-4 text-[20px] font-semibold text-gray-primary`}>
+            </SectionMainHeader>
+            <PrimaryBodyText className={`mb-4`}>
               For Study in {collegeDetails?.destinationId?.countryId?.name}, the
               amount of money available and the type of award varies between
               institutions. Certain research programs may provide up to 100% of
@@ -19,7 +22,7 @@ const CollegeScholarshipSection = ({ collegeDetails }) => {
               programs you can apply to study in{" "}
               {collegeDetails?.destinationId?.countryId?.name} as an Indian
               student:
-            </p>
+            </PrimaryBodyText>
           </div>
           <section className=" dark:bg-gray-900  ">
             <div className=" w-full ">
@@ -61,10 +64,10 @@ const CollegeScholarshipSection = ({ collegeDetails }) => {
             </div>
           </section>
           <div>
-            <p className="mb-4 text-black ">
+            <PrimaryBodyText className="mb-4">
               If you want to bring down your educational expenses, it is best to
               apply to various scholarships available for Indian students.
-            </p>
+            </PrimaryBodyText>
           </div>
         </div>
       </section>

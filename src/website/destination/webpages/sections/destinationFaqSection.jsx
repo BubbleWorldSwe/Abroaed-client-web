@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { motion } from "framer-motion";
+import FaqsQuestionText from "../../../typographies/faqsQuestionText";
+import FaqsAnswerText from "../../../typographies/faqsAnswerText";
 
 const DestinationFaqSection = ({ destinationDetails }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -26,8 +28,9 @@ const DestinationFaqSection = ({ destinationDetails }) => {
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <span className={`whitespace-normal text-[24px] font-bold text-gray-primary `}>
-                    {faq.question}</span>
+                  <FaqsQuestionText>
+                    {faq.question}
+                  </FaqsQuestionText>
                   <svg
                     className={`w-6 h-6 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""
                       }`}
@@ -53,11 +56,9 @@ const DestinationFaqSection = ({ destinationDetails }) => {
                 className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${activeIndex === index ? "block" : "hidden"
                   }`}
               >
-                <div className="">
-                  <p className={`mb-2 text-gray-primary font-normal text-base whitespace-pre-wrap`}>
-                    {faq.answer}
-                  </p>
-                </div>
+                <FaqsAnswerText >
+                  {faq.answer}
+                </FaqsAnswerText>
               </motion.div>
             </div>
           ))}

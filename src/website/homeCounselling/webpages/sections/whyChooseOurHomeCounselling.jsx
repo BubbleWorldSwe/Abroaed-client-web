@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import vectorRightFlat from "../../../../assets/vectorRightFlat.png";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 import { cardDetails } from "../../data";
 
 const Cards = ({ header = "", text = "" }) => {
   return (
-    <div className="max-w-[40rem] relative bg-black bg-opacity-80 text-white flex-shrink-0 h-36 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <div className=" relative bg-black bg-opacity-80 text-white flex-shrink-0 h-36 overflow-y-auto border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5">
         <div className="">
           <h5 className={`mb-2 text-[22px] font-semibold   dark:text-white`}>
@@ -27,16 +28,16 @@ const Cards = ({ header = "", text = "" }) => {
 
 const WhyChooseOurHomeCounselling = () => {
   return (
-    <div className=" mx-auto px-12">
+    <div className=" mx-auto px-6  md:px-12">
       <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
         <section className="dark:bg-gray-900">
           <div className="py-8 ">
             <div className="text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className={`mb-7 text-[45px]  font-extrabold  text-gray-primary dark:text-white`}>
+              <SectionMainHeader className={`mb-7 leading-tight md:leading-normal tracking-tighter md:tracking-normal `}>
                 Why Choose Our Home counselling?
-              </h2>
+              </SectionMainHeader>
             </div>
-            <div className="grid  grid-cols-1 lg:grid-cols-2 gap-y-10   mb-5 mt-10  mx-auto ">
+            <div className="grid  grid-cols-1 lg:grid-cols-2 gap-10   mb-5 mt-10  mx-auto ">
               {cardDetails.map((item, index) => (
                 <Cards header={item.key} text={item.value} key={index} />
               ))}

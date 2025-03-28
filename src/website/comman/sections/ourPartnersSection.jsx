@@ -1,12 +1,13 @@
+import SectionMainHeader from "../../typographies/sectionMainHeader";
 
 function OurPartners() {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto">
         <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
-          <h2 className={`mb-1 text-center text-[45px]   font-extrabold text-gray-primary `}>
+          <SectionMainHeader className={`mb-1 text-center`}>
             Our Partner
-          </h2>
+          </SectionMainHeader>
           <div className="flex mb-10 justify-center text-center">
             <p className="text-center max-w-[50vw] text-[#52525B] text-[18px] font-semibold">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

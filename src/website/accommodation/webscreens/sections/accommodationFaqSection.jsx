@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import FaqsQuestionText from "../../../typographies/faqsQuestionText";
+import FaqsAnswerText from "../../../typographies/faqsAnswerText";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const AccommodationFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -10,9 +13,11 @@ const AccommodationFaqSection = () => {
 
     return (
         <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-            <h2 className={`mb-1 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+            <SectionMainHeader
+                className="mb-1"
+            >
                 Frequently Asked Questions
-            </h2>
+            </SectionMainHeader>
             <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
                 <div className="flex-1 overflow-auto">
                     {[
@@ -51,9 +56,9 @@ const AccommodationFaqSection = () => {
                                     onClick={() => toggleFAQ(index)}
                                     aria-expanded={activeIndex === index}
                                 >
-                                    <span className={`whitespace-normal text-[24px] font-bold text-gray-primary `}>
+                                    <FaqsQuestionText >
                                         {faq.question}
-                                    </span>
+                                    </FaqsQuestionText>
                                     <svg
                                         className={`w-6 h-6 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""
                                             }`}
@@ -79,11 +84,9 @@ const AccommodationFaqSection = () => {
                                 className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${activeIndex === index ? "block" : "hidden"
                                     }`}
                             >
-                                <div className="">
-                                    <p className={`text-gray-primary mb-2 font-normal text-start text-base whitespace-pre-wrap`}>
-                                        {faq.answer}
-                                    </p>
-                                </div>
+                                <FaqsAnswerText >
+                                    {faq.answer}
+                                </FaqsAnswerText>
                             </motion.div>
                         </div>
                     ))}

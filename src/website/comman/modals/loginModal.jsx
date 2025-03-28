@@ -43,7 +43,7 @@ const LoginModal = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
           <div className="bg-white  overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg  min-w-max z-50 relative">
             <button
-              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              className="absolute w-12 h-12 top-2 right-2 text-gray-600 hover:text-gray-900 text-4xl"
               onClick={onClose}
             >
               &times;
@@ -83,7 +83,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                         <div>
                           <a
                             href="/forgetPassword"
-                            className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            className="text-sm  text-gray-primary font-semibold hover:underline dark:text-primary-500"
                           >
                             Forgot password?
                           </a>
@@ -98,7 +98,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                           Don’t have an account yet?{" "}
                           <a
                             href="/signup"
-                            className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            className=" text-gray-primary font-semibold hover:underline dark:text-primary-500"
                           >
                             Sign up
                           </a>

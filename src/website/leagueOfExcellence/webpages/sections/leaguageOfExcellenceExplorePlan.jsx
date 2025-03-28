@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import { plans } from "../../data";
 import { useState } from "react";
 import FeatureLOEModal from "../../modals/featureLOEModal";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -21,9 +23,9 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
         onClose={handleCloseAddModal}
       />
       <div className="relative z-10 py-5">
-        <section className="dark:bg-gray-900 relative px-12 mx-auto">
-          <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 py-14">
-            <h2 className="text-3xl font-bold mb-4">Explore Plans</h2>
+        <section className="dark:bg-gray-900 relative px-6 md:px-12 mx-auto">
+          <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 py-6 md:py-14">
+            <SectionMainHeader className="">Explore Plans</SectionMainHeader>
             <hr className="" />
           </div>
           <div className="flex flex-col md:flex-row gap-6 justify-center">
@@ -39,10 +41,10 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                   </div>
                 )}
 
-                <h3 className="text-[57px] font-extrabold mb-3  text-center ">
+                <h3 className="text-[32px] md:text-[57px] font-extrabold md-1 md:mb-3  text-center ">
                   {plan.name}
                 </h3>
-                <p className="text-[25px] text-center font-bold mb-1 ">
+                <p className="text-[18px] md:text-[25px] text-center font-bold mb-1 ">
                   {plan.price}
                 </p>
                 <p className=" text-lg mb-3 text-center ">{plan.title}</p>
@@ -57,14 +59,14 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                                 </button> */}
 
                 <div className="mt-6">
-                  <h4 className="text-[25px] font-semibold">
+                  <h4 className="text-[18px] md:text-[25px] font-semibold">
                     Features you’ll love
                   </h4>
                   <ul className="mt-2 space-y-2 list-disc px-5 ">
                     {plan.features?.map((feature, i) => (
                       <li
                         key={i}
-                        className=" text-base list-item items-center gap-1 text-white"
+                        className="text-[12px] md:text-base list-item items-center gap-1 text-white"
                       >
                         {/* <Check size={16} /> */}
                         {feature}
@@ -78,7 +80,7 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
 
           <div className="flex justify-center mt-10">
             <button
-              className={`bg-yellow-primary hover:bg-yellow-300 text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
+              className={`bg-yellow-primary hover:bg-yellow-300 text-[16px] md:text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
               onClick={handleOpenAddModal}
             >
               See full feature comparison

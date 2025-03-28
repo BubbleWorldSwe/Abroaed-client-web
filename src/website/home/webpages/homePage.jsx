@@ -100,20 +100,6 @@ function HomeLayout() {
         source={source.home}
         entity={entity.bookCounselling}
       />
-      {/* <PartnerUnis /> */}
-      {/* <TimelineSlider slides={slidesData} /> */}
-      {/* <div className="relative">
-        <OurPartners />
-        <div className="absolute -top-10 left-0 z-0">
-          <img
-            className="rounded-lg max-w-full "
-            src={vectorDownNose}
-            alt="Counselling session"
-          />
-        </div>
-      </div> */}
-
-      {/* <HomeTestimonialsSection /> */}
       <Testimonials />
       <div className="relative ">
         <div className="absolute -top-10 left-0 z-0">

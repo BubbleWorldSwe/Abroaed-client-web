@@ -2,6 +2,9 @@
 
 import dark from '../../../../../assets/dark.png'
 import vectorOutlinedRightFlat from "../../../../../assets/vectorOutlinedRightFlat.png"
+import PrimaryBodyText from '../../../../typographies/primaryBodyText';
+import SecondaryTitle from '../../../../typographies/secondaryTitle';
+import SectionMainHeader from '../../../../typographies/sectionMainHeader';
 import { cardDetails } from '../../data';
 
 const Cards = ({ header = "", text = "" }) => {
@@ -39,21 +42,22 @@ const PathwaysProgramOverview = () => {
                 {/* Content */}
                 <div className="relative z-10">
                     <div className=''>
-                        <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+                        <SectionMainHeader className={`mb-2`}>
                             Program Overview
-                        </h2>
-                        <p className={`mb-10 text-gray-primary font-normal text-[18px]`}>
-                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.                           </p>
+                        </SectionMainHeader>
+                        <PrimaryBodyText className={`mb-10`}>
+                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.
+                        </PrimaryBodyText>
                     </div>
                     <section className='py-5'>
                         <div className="flex mb-5 flex-col md:flex-row items-start justify-between space-y-5 md:space-y-0 md:space-x-10">
                             <div className="w-full md:w-2/3">
-                                <h3 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
+                                <SecondaryTitle className={`mb-4 `}>
                                     University Name
-                                </h3>
-                                <p className={`text-gray-primary font-normal text-[18px]`}>
+                                </SecondaryTitle>
+                                <PrimaryBodyText >
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui.
-                                </p>
+                                </PrimaryBodyText>
                             </div>
                             {/* Image Section */}
                             <div className="w-full md:w-1/3 flex justify-center md:justify-end">
@@ -69,12 +73,12 @@ const PathwaysProgramOverview = () => {
                     <section className='py-10'>
                         <div className="flex mb-5 flex-col md:flex-row items-start justify-between space-y-5 md:space-y-0 md:space-x-10">
                             <div className="w-full md:w-2/3">
-                                <h3 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
+                                <SecondaryTitle className={`mb-4`}>
                                     University Name
-                                </h3>
-                                <p className={`text-gray-primary font-normal text-[18px]`}>
+                                </SecondaryTitle>
+                                <PrimaryBodyText >
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui.
-                                </p>
+                                </PrimaryBodyText>
                             </div>
 
                             {/* Image Section */}

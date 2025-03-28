@@ -1,3 +1,6 @@
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SecondaryTitle from "../../../typographies/secondaryTitle";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 import { AbroaedServices } from "../../data";
 
 const AbroaedPlusHowItWork = () => {
@@ -7,43 +10,38 @@ const AbroaedPlusHowItWork = () => {
         {/* Content */}
         <div className="relative z-10">
           <div className="pb-5">
-            <h2
-              className="text-[#52525B] text-[18px]  font-normal"
-            >
-              How It Works?
-            </h2>
-            <p
-              className="text-[#52525B] text-[18px]  font-normal"
-            >
-              At ABROAED+, we simplify your study abroad journey into clear,
+            <SectionMainHeader className={'mb-2'} text="How It Works?" />
+            <PrimaryBodyText
+              text={`At ABROAED+, we simplify your study abroad journey into clear,
               actionable steps, ensuring you’re supported every step of the way,
-              from planning to settling in your dream destination.
-            </p>
+              from planning to settling in your dream destination.`}
+            />
+
           </div>
           <div className="py-5">
-            <h3 className="mb-2  text-[32px]  font-bold text-gray-900 dark:text-white">
-              Step 1: Dream & Discover
-            </h3>
-            <p
-              className="text-[#52525B] text-[18px]  font-normal"
-            >
-              Your journey begins with unlimited home counselling, where our
+            <SecondaryTitle
+              className={'mb-2'}
+              text={`Step 1: Dream & Discover`}
+            />
+            <PrimaryBodyText
+              text={` Your journey begins with unlimited home counselling, where our
               experts help you explore study abroad options, identify the right
               country, university, and course, and create a personalized
               roadmap. Next, we focus on test preparation—home tutors for
               English proficiency tests (IELTS/PTE/TOEFL) coaching ensure you
               achieve top scores. Simultaneously, we work on comprehensive
               profile building, helping you craft standout applications with
-              strong SOPs, LORs, and resumes.{" "}
-            </p>
+              strong SOPs, LORs, and resumes.`}
+            />
+
           </div>
           <div className="py-5">
-            <h3 className="mb-2  text-[32px]  font-bold text-gray-900 dark:text-white">
-              Step 2: Apply & Secure
-            </h3>
-            <p
-              className="text-[#52525B] text-[18px]  font-normal"
+            <SecondaryTitle
+              className={'mb-2'}
             >
+              Step 2: Apply & Secure
+            </SecondaryTitle>
+            <PrimaryBodyText>
               Once you’re ready, we guide you through the application process,
               ensuring you submit error-free applications to your dream
               universities. With guaranteed offers and priority admission
@@ -52,15 +50,14 @@ const AbroaedPlusHowItWork = () => {
               on managing finances. Post-admission, our country-specific coaches
               and 24/7 student support help you with visa processing,
               accommodation, and settling in. We will also help you connect with
-              alumni mentors for insider tips and guidance.{" "}
-            </p>
+              alumni mentors for insider tips and guidance.
+            </PrimaryBodyText>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
             {AbroaedServices.map((service, index) => (
               <div
                 key={index}
-                className="w-full bg-black min-h-56 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                className="w-full bg-black min-h-44 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
               >
                 <div className="p-5 bg-clip-text text-transparent"
                   style={{
@@ -73,7 +70,7 @@ const AbroaedPlusHowItWork = () => {
                       {service.title}
                     </h5>
                   </div>
-                  <p className="mb-3 font-semibold  text-[22px] dark:text-gray-400">
+                  <p className="mb-3 font-semibold  text-[20px] dark:text-gray-400">
                     {service.description}
                   </p>
                 </div>

@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { useNavigate } from "react-router-dom";
 import { BorderSelectField } from "../../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../../commons/components/inputFields/borderTextInputField";
 import { useSelector } from "react-redux";
@@ -10,9 +9,9 @@ import {
   highestEducation,
   targetYear,
 } from "../../../../constants/values";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const BookCounsellingNow = ({ source, entity, onFormSubmit, loading }) => {
-  const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
   const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({
@@ -90,18 +89,18 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit, loading }) => {
   }, [error]);
 
   return (
-    <section className=" dark:bg-gray-900 relative px-10 mx-auto h-full">
-      <div className="py-16 px-4 mx-auto max-w-screen-2xl   z-10">
+    <section className=" dark:bg-gray-900 relative px-5 md:px-10 mx-auto h-full">
+      <div className="py-3 md:py-16 px-4 mx-auto max-w-screen-2xl   z-10">
         {/* <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  "> */}
-        <h2
-          className={`mb-4 text-[45px] text-center  font-extrabold text-gray-primary dark:text-white`}
+        <SectionMainHeader
+          className={`mb-4  text-start md:text-center`}
         >
           Book Counselling Now
-        </h2>
+        </SectionMainHeader>
         <div className="flex justify-center text-center">
           <form onSubmit={handleAddLead}>
-            <div className="px-10 max-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-start">
+            <div className="mx:px-10 px-1 max-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4 text-start">
                 <div>
                   <BorderTextInputField
                     label="First Name"

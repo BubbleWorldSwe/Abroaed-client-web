@@ -1,8 +1,7 @@
-import contactMap from "../../../../assets/contactMap.png"
 
 const ContactUs = () => {
     return (
-        <section className="px-10 pt-12 mt-10 mx-auto">
+        <section className="px-10 pt-20 mt-10 mx-auto">
             <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
                 {/* Content */}
                 <div className="relative z-10">
@@ -20,12 +19,15 @@ const ContactUs = () => {
                                     Corporate Office
                                 </h5>
                                 <p className="text-[#71717A] text-base font-normal ">
-                                    Lorem Ipsum DolorSit Amet
+                                    Delhi Office
+                                    B11, Block B, Qutab Institutional Area, New Delhi, Delhi 110016
+                                    <br />
+                                    📞 +91 73033 68820, +91 73033 68819
                                 </p>
                             </div>
                             <div>
                                 <h5 className="text-[16px] text-[#52525B] font-semibold">
-                                    Here are contact emails for different parts of Wasserstoff:
+                                    Here are contact emails for different parts of ABROAED:
                                 </h5>
 
                             </div>
@@ -34,36 +36,28 @@ const ContactUs = () => {
                                     General Inquiries
                                 </h5>
                                 <p className="text-[#71717A] text-base font-normal ">
-                                    info@ABROAED.com
+                                    info@abroaed.com
                                 </p>
                             </div>
-                            <div>
-                                <h5 className="text-[16px] text-[#52525B] font-semibold">
-                                    Press Inquiries
-                                </h5>
-                                <p className="text-[#71717A] text-base font-normal ">
-                                    press@ABROAED.com
-                                </p>
-                            </div>
+
                             <div>
                                 <h5 className="text-[16px] text-[#52525B] font-semibold">
                                     Work With Us
                                 </h5>
                                 <p className="text-[#71717A] text-base font-normal ">
-                                    careers@ABROAED.com
+                                    career@abroaed.com
                                 </p>
                             </div>
-                            <div>
-                                <h5 className="text-[16px] text-[#52525B] font-semibold">
-                                    Press Inquiries
-                                </h5>
-                                <p className="text-[#71717A] text-base font-normal ">
-                                    press@ABROAED.com
-                                </p>
-                            </div>
+
                         </div>
                         <div >
-                            <img src={contactMap} alt="contact-img" />
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.01986897468!2d77.18173!3d28.539122499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1de55d079a9b%3A0x98a4506124dd984a!2s3rd%20Floor%2C%20B-11%2C%20Block%20B%2C%20Qutab%20Institutional%20Area%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1743078232400!5m2!1sen!2sin"
+                                className="w-full h-full border-0 rounded-lg shadow-md"
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            />
                         </div>
                     </div>
                 </div>

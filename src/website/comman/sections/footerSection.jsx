@@ -28,7 +28,7 @@ const links = [
       { name: "Home", link: "/home" },
       { name: "Our Story", link: "/aboutus" },
       // { name: "Founder's Desk", link: "/founders-desk" },
-      { name: "Blog", link: "/blog" },
+      { name: "Blogs", link: "/blogs" },
       // { name: "Explore Colleges", link: "/" },
       // { name: "Destinations", link: "/destinations" }
     ],
@@ -61,7 +61,7 @@ function Footer() {
   return (
     <div>
       <footer className="bg-black text-white py-10">
-        <div className="container mx-auto px-10 md:px-16 flex flex-col sm:flex-row gap-8 md:text-left">
+        <div className="container mx-auto px-10 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
@@ -71,8 +71,11 @@ function Footer() {
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
+              <p className="text-sm leading-5 tracking-normal">
+                The World is Waiting
+              </p>
             </h3>
-            <p className="my-4 font-light text-base">
+            <p className="my-4 font-light text-sm">
               At ABROAED, we help students get admission to prestigious
               universities in the USA, UK, Canada, Australia, Europe, and Asia,
               including Ivy League schools. We offer personalized consultations
@@ -88,6 +91,7 @@ function Footer() {
                   href={link.url}
                   className="p-2 hover:bg-opacity-85 bg-white text-black rounded-full"
                   aria-label="Social Link"
+                  target="_blank"
                 >
                   {link.icon}
                 </a>
@@ -115,7 +119,7 @@ function Footer() {
             {links.map((section, index) => (
               <div key={index}>
                 <h3
-                  className={`font-semibold text-2xl mb-3 text-yellow-primary`}
+                  className={`font-semibold text-2xl mb-3 text-[#fbba18]`}
                 >
                   {section.title}
                 </h3>
@@ -133,7 +137,7 @@ function Footer() {
 
             {/* Contact Information */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>
+              <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
                 Get in Touch
               </h3>
               <div className="text-sm space-y-3">
@@ -149,7 +153,7 @@ function Footer() {
             </div>
             {/* Destination */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>
+              <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
                 Destinations
               </h3>
               <ul>
@@ -180,7 +184,7 @@ function Footer() {
             </div>
             {/* testPrep */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-yellow-primary`}>
+              <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
                 ELT Prep
               </h3>
               <ul>

@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { articles } from "../data";
 import BlogCard from "./blogCard";
 
 const Blogs = () => {
@@ -8,14 +7,14 @@ const Blogs = () => {
   console.log(allBlogs);
   return (
     allBlogs.length > 0 && (
-      <section className=" dark:bg-gray-900 relative px-10 mx-auto">
-        <div className=" px-3 mx-auto py-16  max-w-screen-2xl  dark:bg-gray-800 antialiased  relative">
-          <div className="flex flex-col items-start justify-center mb-10">
+      <section className=" dark:bg-gray-900 relative px-3 md:px-10 mx-auto">
+        <div className=" px-3 mx-auto py-10 md:py-16  max-w-screen-2xl  dark:bg-gray-800 antialiased  relative">
+          <div className="flex flex-col items-start justify-center mb-5 md:mb-10">
             <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
               The Latest
             </p>
             <h2
-              className={`text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+              className={`text-[24px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
             >
               ABROAED Updates
             </h2>

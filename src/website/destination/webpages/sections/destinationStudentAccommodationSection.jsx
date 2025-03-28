@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
 import AccommodationCard from "../../../comman/components/accommodationCard";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const DestinationStudentAccommodationsSection = ({
   accommodationList,
@@ -14,9 +15,11 @@ const DestinationStudentAccommodationsSection = ({
         <section className=" dark:bg-gray-900 relative">
           <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+              <SectionMainHeader
+                className="mb-10"
+              >
                 Popular Student Accommodations
-              </h2>
+              </SectionMainHeader>
               <div className="my-5 border-t-2 border-gray-300"></div>
             </div>
 

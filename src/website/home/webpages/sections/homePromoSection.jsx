@@ -92,14 +92,14 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
   }, [error]);
 
   return (
-    <section className="bg-white dark:bg-gray-900 relative px-10 mx-auto h-full">
+    <section className="bg-white dark:bg-gray-900 relative px-1 md:px-10 mx-auto h-full">
       <div className="py-20 px-4 mx-auto max-w-screen-2xl  lg:px-3  z-10">
-        <div className="grid grid-cols-1  lg:grid-cols-2 gap-28 mx-auto  ">
+        <div className="grid grid-cols-1  lg:grid-cols-2 gap-2 md:gap-28 mx-auto  ">
           {/* Left Side: Text and Image */}
           <div className="flex flex-col gap-3 justify-center">
             {/* <div className="text-start "> */}
             <h2
-              className={`mb-2 text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
+              className={`mb-2 text-[28px] md:text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
             >
               Need Clarifications on Your Study ABROAED Plans?
             </h2>
@@ -130,11 +130,11 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
 
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start items-end">
-            <div className="flex flex-col items-start w-full rounded-lg p-8 mt-16 ">
+            <div className="flex flex-col items-start w-full rounded-lg  md:p-8 mt-16 ">
               {/* Tabs Row */}
               <div className="mb-3">
                 <h2
-                  className={`mb-4 text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+                  className={`mb-4 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
                 >
                   Book Counselling Now
                 </h2>

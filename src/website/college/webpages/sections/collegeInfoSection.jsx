@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
+
 
 const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
   return (
@@ -8,11 +11,11 @@ const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
       <section className="dark:bg-gray-900 relative px-12 mx-auto">
         <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 lg:py-16">
           <div className="">
-            <h2 className={`mb-4 text-[45px] font-extrabold text-gray-primary `}>
+            <SectionMainHeader className={`mb-4`}>
               Why Study at {collegeDetails?.name}?
-            </h2>
-            <p className="mb-4 font-normal  text-[18px]">{text1}</p>
-            <p className="text-[18px] font-normal" >{collegeDetails?.description}</p>
+            </SectionMainHeader>
+            <PrimaryBodyText className="mb-4 ">{text1}</PrimaryBodyText>
+            <PrimaryBodyText >{collegeDetails?.description}</PrimaryBodyText>
           </div>
         </div>
       </section>

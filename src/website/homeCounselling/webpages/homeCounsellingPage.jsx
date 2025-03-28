@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 const NavigationItems = () => {
   return (
     <div className="text-white  bg-opacity-70 text-xl ">
-      <p>
+      <p className="font-light text-white  text-base md:text-lg xl:text-xl">
         Get personalized, one-on-one counselling with experienced consultants to
         help you navigate your study ABROAED plans for free.
       </p>

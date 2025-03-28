@@ -73,9 +73,9 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
     <>
       {isOpen && (
         <div className="fixed inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-white max-h-[73vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
+          <div className="bg-white max-h-[73vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-72 md:w-full max-w-3xl z-50 relative">
             <button
-              className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
+              className="absolute w-12 h-12 top-2 right-2 text-gray-600 hover:text-gray-900 text-4xl"
               onClick={onClose}
             >
               &times;

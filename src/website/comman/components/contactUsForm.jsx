@@ -80,7 +80,7 @@ const ContactUsForm = ({
   console.log(formData);
 
   return (
-    <section className="relative isolate overflow-hidden  px-12 mx-auto">
+    <section className="relative isolate overflow-hidden px-6 md:px-12 mx-auto">
       <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
         <div
           className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-gray-primary rounded-lg `}
@@ -88,11 +88,11 @@ const ContactUsForm = ({
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
             <h1
-              className={`text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}
+              className={`text-[24px] md:text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}
             >
               {title || `Book Your Counselling Session Today!`}
             </h1>
-            <p className=" text-[18px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
+            <p className="text-[14px] md:text-[18px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
               {text ||
                 `Our specialised home counselling session is available at your
               convenience. Don’t waste a minute—take a stride towards your
@@ -101,7 +101,7 @@ const ContactUsForm = ({
           </div>
 
           {/* Right Section - 40% Width */}
-          <div className="lg:w-2/5  py-4 md:pt-5 max-w-md">
+          <div className="lg:w-2/5   py-14 md:pt-5 md:pb-10 max-w-md">
             <form className=" mx-auto" onSubmit={handleSubmit}>
               <BorderTextInputField
                 label={"First Name"}

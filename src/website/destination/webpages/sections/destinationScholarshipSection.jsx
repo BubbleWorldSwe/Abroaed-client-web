@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
 
 const DestinationScholarshipSection = ({ destinationDetails }) => {
   return (
@@ -7,11 +9,16 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
       <div className="relative ">
         <section className=" dark:bg-gray-900 relative px-7 mx-auto">
           <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
-            <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <h2 className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+            <div className="flex flex-col gap-6  text-gray-500 sm:text-lg dark:text-gray-400">
+              <SectionMainHeader
+                className="mb-2"
+              >
                 Scholarships & Financial Aid
-              </h2>
-              <p className={`mb-4 text-[20px] font-semibold text-gray-primary`}>
+              </SectionMainHeader>
+              <PrimaryBodyText
+                className={'font-semibold'}
+                style={{ fontSize: '22px' }}
+              >
                 For Study in {destinationDetails?.countryId?.name}, the amount
                 of money available and the type of award varies between
                 institutions. Certain research programs may provide up to 100%
@@ -19,10 +26,10 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                 expenditures. Here are some popular government scholarship
                 programs you can apply to study in{" "}
                 {destinationDetails?.countryId?.name} as an Indian student:
-              </p>
+              </PrimaryBodyText>
             </div>
-            <section className=" dark:bg-gray-900  ">
-              <div className=" w-full ">
+            <section className=" dark:bg-gray-900   ">
+              <div className=" w-full mt-5 ">
                 <div className=" dark:bg-gray-800 relative   overflow-hidden">
                   <div className="overflow-x-auto">
                     <table className="w-full   text-left  border-t-2 border-gray-400  dark:text-gray-400">
@@ -70,10 +77,11 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
               </div>
             </section>
             <div className="pb-10">
-              <p className={`mb-4 text-gray-primary font-normal text-base `}>
+              <PrimaryBodyText>
                 If you want to bring down your educational expenses, it is best
                 to apply to various scholarships available for Indian students.
-              </p>
+              </PrimaryBodyText>
+
             </div>
           </div>
         </section>

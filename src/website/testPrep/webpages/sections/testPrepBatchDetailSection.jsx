@@ -5,6 +5,7 @@ import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import LoginModal from "../../../comman/modals/loginModal";
 import { useSelector } from "react-redux";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 function TestPrepBatchDetaileSection({
   testPrepsDetails,
@@ -25,9 +26,11 @@ function TestPrepBatchDetaileSection({
         <div className=" px-4 py-3 flex flex-col gap-6 mx-auto max-w-screen-2xl ">
           {/* Content */}
           <div className="relative z-10">
-            <h2 className="mb-2 text-[45px]  font-extrabold text-gray-900 dark:text-white">
+            <SectionMainHeader
+              className="mb-2"
+            >
               Batches
-            </h2>
+            </SectionMainHeader>
             <div className=" border-t border-gray-300"></div>
             <div className="grid grid-cols-1 md:grid-cols-3  gap-3 py-10 ">
               {testPrepsDetails?.batches?.map((data, index) => (

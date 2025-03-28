@@ -19,8 +19,12 @@ import { useState } from "react";
 import { countriesName } from "../data";
 
 const LeaguageOfExcellencePage = () => {
-  const [selectCountryCode, setSelectCountryCode] = useState(
-    countriesName[0].code
+  const [selectCountry, setSelectCountry] = useState(
+    {
+      code: countriesName[0].code,
+      name: countriesName[0].name
+
+    }
   );
 
   const dispatch = useDispatch();
@@ -39,12 +43,12 @@ const LeaguageOfExcellencePage = () => {
       <Header />
       <LeaguageOfExcellenceHero />
       <LeaguageOfExcellenceServicesOverviews
-        setCountry={setSelectCountryCode}
+        setCountry={setSelectCountry}
         countriesName={countriesName}
       />
       <div className="relative">
         <LeaguageOfExcellenceUniversity
-          selectCountryCode={selectCountryCode}
+          selectCountry={selectCountry}
           onFormSubmit={handleAddLead}
         />
         <div className="absolute bottom-72 left-0 -z-10">

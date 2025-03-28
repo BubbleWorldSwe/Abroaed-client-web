@@ -1,3 +1,5 @@
+import PrimaryBodyText from "../../../typographies/primaryBodyText"
+import SectionMainHeader from "../../../typographies/sectionMainHeader"
 
 const AccommodationHeaderTextSection = () => {
     return (
@@ -5,11 +7,16 @@ const AccommodationHeaderTextSection = () => {
             <div className="mx-auto w-full px-2 max-w-screen-2xl relative">
                 <section className="dark:bg-gray-900">
                     <div className="py-14">
-                        <h2 className={`mb-4 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
-                            Header
-                        </h2>
-                        <p className={`mb-4 font-normal text-gray-primary text-[18px] `}>
-                            lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.                            </p>
+                        <SectionMainHeader
+                            className="mb-4"
+                        >
+                            Accommodation Made Easy at ABROAED
+                        </SectionMainHeader>
+                        <PrimaryBodyText
+                            className={'mb-4'}
+                        >
+                            Choosing a place to live is one of the first major steps in relocating to a new country, and it can be a little intimidating. There are many factors to consider, ranging from various housing styles to determining what is affordable, safe, and close by. Having someone to help you navigate it all is crucial for this reason. We at ABROAED streamline the process so that your lodging is taken care of before you even pack your bags!
+                        </PrimaryBodyText>
                     </div>
                 </section>
             </div>

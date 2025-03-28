@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import locationIcon from "../../../assets/locationIcon.png";
-import bookmark from "../../../assets/bookmark.png";
 import EnquiryLOEModal from "../modals/enquiryLOEModal";
 import { useState } from "react";
 const UniversityCardDetails = ({ item, onAddLead }) => {
@@ -23,7 +22,7 @@ const UniversityCardDetails = ({ item, onAddLead }) => {
         item={item}
         onAddLead={onAddLead}
       />
-      <div className="max-w-sm bg-white border overflow-y-auto h-[30rem] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-[18rem] md:w-[25rem] bg-white border overflow-y-auto h-[30rem] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
           <img
             className="rounded-t-lg w-full h-48 object-cover"

@@ -6,6 +6,7 @@ import workWithUs3 from "../../../../assets/workWithUs3.png";
 import workWithUs4 from "../../../../assets/workWithUs4.png";
 import workWithUs5 from "../../../../assets/workWithUs5.png";
 import workWithUs6 from "../../../../assets/workWithUs6.png";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 function CareerHeroSections() {
   return (
@@ -20,44 +21,48 @@ function CareerHeroSections() {
           />
         </div>
         <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-2xl lg:px-12 sm:text-center lg:py-16 ">
-          <h2 className={`mb-4 text-[52px]  font-extrabold text-gray-primary dark:text-white`}>
+          <SectionMainHeader
+            className={'mb-1'}
+          >
             Work At ABROAED
-          </h2>
+          </SectionMainHeader>
+
           <p className="font-bold text-2xl text-[#52525B]  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
             Connecting You to a World of Possibilities
           </p>
-          <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:mt-12">
+          <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:grid-rows-[auto] sm:mt-12">
             <img
-              className="col-span-2 mb-4 sm:mb-0 rounded-lg"
+              className="col-span-2 mb-4 sm:mb-0 rounded-lg h-full object-cover"
               src={workWithUs1}
               alt="content gallery 1"
             />
             <img
-              className="hidden col-span-1 sm:block rounded-lg"
+              className="hidden col-span-1 sm:block rounded-lg h-full object-cover"
               src={workWithUs2}
               alt="content gallery 2"
             />
             <img
-              className="hidden col-span-1 sm:block rounded-lg"
+              className="hidden col-span-1 sm:block rounded-lg h-full object-cover"
               src={workWithUs3}
               alt="content gallery 3"
             />
             <img
-              className="hidden col-span-1 sm:block rounded-lg"
+              className="hidden col-span-1 sm:block rounded-lg h-full object-cover"
               src={workWithUs4}
               alt="content gallery 4"
             />
             <img
-              className="col-span-2 rounded-lg"
+              className="col-span-2 rounded-lg h-full object-cover"
               src={workWithUs5}
               alt="content gallery 5"
             />
             <img
-              className="hidden col-span-1 sm:block rounded-lg"
+              className="hidden col-span-1 sm:block rounded-lg h-full object-cover"
               src={workWithUs6}
               alt="content gallery 6"
             />
           </div>
+
         </div>
       </section>
     </div>

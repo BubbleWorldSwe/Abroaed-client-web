@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 import vectorLeftFlat from "../../../../../assets/vectoreLeftFlat.png";
+import PrimaryBodyText from "../../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../../typographies/sectionMainHeader";
 import PathwaysProgramKpiMatrixCard from "../../components/pathwaysProgramKpiMatrixCard";
 import { teamMembers } from "../../data";
 
@@ -14,12 +16,12 @@ const PathwaysProgramKpiMatrixSection = ({ title, header, subtitle }) => {
                         <p className="font-semibold  text-[16px] text-[#52525B] lg:mb-2 dark:text-gray-400">
                             {title}
                         </p>
-                        <h2 className={`mb-6 mt-3 text-5xl tracking-tight font-extrabold text-gray-primary dark:text-white`}>
+                        <SectionMainHeader className={`mb-3 mt-3`}>
                             {header}
-                        </h2>
-                        <p className="font-semibold text-[18px] text-[#52525B]  dark:text-gray-400">
+                        </SectionMainHeader>
+                        <PrimaryBodyText>
                             {subtitle}
-                        </p>
+                        </PrimaryBodyText>
                     </div>
 
                     <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 overflow-hidden">

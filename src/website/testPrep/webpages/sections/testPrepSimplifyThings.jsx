@@ -1,4 +1,6 @@
 import vectorRightRing from "../../../../assets/vectorRightRing.png";
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 import { steps } from "../../data";
 
 const TestPrepSimplifyThings = () => {
@@ -8,10 +10,13 @@ const TestPrepSimplifyThings = () => {
         <section className="dark:bg-gray-900">
           <div className="py-8 lg:py-16">
             <div className="">
-              <h2 className={`mb-5 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+              <SectionMainHeader
+                className="mb-5"
+              >
                 How We Simplify Things?
-              </h2>
-              <p className={`text-[18px] text-gray-primary font-normal`}>
+              </SectionMainHeader>
+              <PrimaryBodyText
+              >
                 lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Curabitur tristique felis non odio accumsan laoreet. Integer
                 cursus libero placerat ex volutpat posuere. Quisque non nisl
@@ -22,7 +27,8 @@ const TestPrepSimplifyThings = () => {
                 fermentum erat commodo. Quisque semper arcu sit amet auctor
                 consequat. Mauris diam urna, dignissim sed metus eu, congue
                 porttitor nisi. Nulla facilisi.
-              </p>
+              </PrimaryBodyText>
+
             </div>
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">
               {steps.map((step) => (
@@ -58,8 +64,8 @@ const TestPrepSimplifyThings = () => {
             </div>
           </div>
         </section>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

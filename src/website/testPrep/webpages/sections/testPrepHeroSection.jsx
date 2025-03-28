@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ieltsImg from "../../../../assets/ieltsImg.png";
 
 function TestPrepHero({ testPrepsDetails }) {
@@ -12,9 +13,9 @@ function TestPrepHero({ testPrepsDetails }) {
               className="object-cover w-full"
             />
           </div>
-          <h1 className="text-5xl font-extrabold text-black">
+          {/* <h1 className="text-5xl font-extrabold text-black">
             {testPrepsDetails.productName}
-          </h1>
+          </h1> */}
         </div>
       </section>
     </div>

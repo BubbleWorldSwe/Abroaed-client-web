@@ -1,3 +1,6 @@
+import PrimaryBodyText from "../../../../typographies/primaryBodyText"
+import SecondaryTitle from "../../../../typographies/secondaryTitle"
+import SectionMainHeader from "../../../../typographies/sectionMainHeader"
 
 const PathwaysProgramWorkOpportunitiesSection = () => {
     return (
@@ -6,31 +9,31 @@ const PathwaysProgramWorkOpportunitiesSection = () => {
                 {/* Content */}
                 <div className="relative z-10">
                     <div className='py-1'>
-                        <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+                        <SectionMainHeader className={`mb-2`}>
                             Work Opportunities in United Kingdom
-                        </h2>
-                        <p className='mb-10 text-[18px]'>
+                        </SectionMainHeader>
+                        <PrimaryBodyText className='mb-10'>
                             Studying in the UK offers a variety of experiences. The cultural and traditional values of the UK attract several international students every year. The popular areas of employment in UK are as follows:
                             Studying in the UK offers a variety of experiences. The cultural and traditional values of the UK attract several international students every year. The popular areas of employment in UK are as follows:
-                        </p>
+                        </PrimaryBodyText>
 
                     </div>
                     <div className='py-1'>
 
-                        <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
+                        <SecondaryTitle className={`mb-2`}>
                             Part-Time Work Opportunities
-                        </h3>
-                        <p className="text-[18px]">
+                        </SecondaryTitle>
+                        <PrimaryBodyText >
                             Studying in the UK offers a variety of experiences. The cultural and traditional values of the UK attract several international students every year. The popular areas of employment in UK are as follows:
-                        </p>
+                        </PrimaryBodyText>
                     </div>
                     <div className='py-5'>
-                        <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
+                        <SecondaryTitle className={`mb-2 `}>
                             Post Study Work Opportunities
-                        </h3>
-                        <p className="text-[18px]">
+                        </SecondaryTitle>
+                        <PrimaryBodyText>
                             Studying in the UK offers a variety of experiences. The cultural and traditional values of the UK attract several international students every year. The popular areas of employment in UK are as follows:
-                        </p>
+                        </PrimaryBodyText>
                     </div>
                     <div className="grid grid-cols-3 gap-5 mt-3">
                         {Array(12).fill().map((_, index) => (

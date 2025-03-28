@@ -1,4 +1,7 @@
 import { Element } from "react-scroll";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SecondaryTitle from "../../../typographies/secondaryTitle";
 
 /* eslint-disable react/prop-types */
 const DestinationExpansesSection = ({ destinationDetails }) => {
@@ -8,22 +11,33 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
         <section className=" dark:bg-gray-900 relative px-7 mx-auto">
           <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-16 lg:px-6">
             <div className="">
-              <h2 className={`mb-4 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+              <SectionMainHeader
+                className="mb-2"
+              >
                 Expenses
-              </h2>
-              <p className={`text-gray-primary font-semibold text-[22px]`}>
+              </SectionMainHeader>
+
+              <PrimaryBodyText
+                className={'font-semibold'}
+                style={{ fontSize: '22px' }}
+              >
                 Here’s a list of the minimum amount you should expect for living
                 expenses in the {destinationDetails?.countryId?.name}:
-              </p>
+              </PrimaryBodyText>
             </div>
             <div className="grid grid-cols-2 gap-10 ">
               <div>
-                <h2 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
+                <SecondaryTitle
+                  className="mb-2"
+                >
                   Cost of Studying
-                </h2>
-                <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
+                </SecondaryTitle>
+                <PrimaryBodyText >
                   Here’s a list of the minimum amount you should expect for
                   studying in the {destinationDetails?.countryId?.name}:
+                </PrimaryBodyText>
+                <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
+
                 </p>
                 <section className=" dark:bg-gray-900 py-3 sm:py-5">
                   <div className=" w-11/12 ">
@@ -71,13 +85,15 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                 </section>
               </div>
               <div>
-                <h2 className={`mb-4 text-[32px]  font-bold text-gray-primary dark:text-white`}>
+                <SecondaryTitle
+                  className="mb-4"
+                >
                   Cost of Living
-                </h2>
-                <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
-                  Here’s the basic cost of living.
-                  <br /> <br />
-                </p>
+                </SecondaryTitle>
+                <PrimaryBodyText >
+                  Here’s the basic cost of living:
+                </PrimaryBodyText>
+
                 <section className=" dark:bg-gray-900 py-3 sm:py-5">
                   <div className=" w-11/12 ">
                     <div className=" dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">

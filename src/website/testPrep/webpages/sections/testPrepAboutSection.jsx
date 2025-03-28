@@ -1,18 +1,25 @@
 /* eslint-disable react/prop-types */
 
 import { formatDate } from "../../../../utils/helper";
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 function TextPrepAbout({ testPrepsDetails }) {
   return (
     <div className="relative z-10 mx-auto px-10">
       <div className="mx-auto  max-w-screen-2xl mt-8 py-4 flex flex-col gap-6">
         <header className="mb-4 lg:mb-6 not-format">
-          <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 dark:text-white">
+          <SectionMainHeader
+            className="mb-4"
+          >
             About {testPrepsDetails?.productName}
-          </h2>
-          <p className="mt-3 font-normal text-[18px] text-gray-800">
+          </SectionMainHeader>
+          <PrimaryBodyText
+            className={'mt-2'}
+          >
             {testPrepsDetails?.about}
-          </p>
+          </PrimaryBodyText>
+
         </header>
         {testPrepsDetails?.aboutExam?.examDate &&
           testPrepsDetails?.aboutExam?.examCenter && (

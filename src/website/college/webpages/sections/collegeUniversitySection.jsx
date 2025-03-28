@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import dark from "../../../../assets/dark.png";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const CollegeUniversitySection = ({ collegeDetails }) => {
   return (
@@ -7,9 +8,9 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
       <section className="dark:bg-gray-900 relative">
         <div className=" mx-auto py-14  px-2 relative z-10">
           <div className="py-8 text-center">
-            <h1 className={`mb-4 text-[45px] text-gray-primary font-extrabold`}>
+            <SectionMainHeader className={`mb-4`}>
               {collegeDetails?.name} at a Glance
-            </h1>
+            </SectionMainHeader>
           </div>
           <div className="overflow-x-auto">
             <div className="flex gap-5 pl-12" style={{ minWidth: "max-content" }}>

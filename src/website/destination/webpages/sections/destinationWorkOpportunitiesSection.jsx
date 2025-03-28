@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SecondaryTitle from "../../../typographies/secondaryTitle";
 
 const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
   return (
@@ -9,10 +12,16 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
           {/* Content */}
           <div className="relative">
             <div className="py-1">
-              <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+              <SectionMainHeader
+                className="mb-2"
+              >
                 Work Opportunities in {destinationDetails?.countryId?.name}
-              </h2>
-              <p className={`mb-8 font-normal text-[18px] text-gray-primary`}>
+              </SectionMainHeader>
+
+              <PrimaryBodyText
+                className={'mb-8'}
+              // style={{ fontSize: '22px' }}
+              >
                 Studying in the {destinationDetails?.countryId?.name} offers a
                 variety of experiences. The cultural and traditional values of
                 the
@@ -20,23 +29,36 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
                 international students every year. The popular areas of
                 employment in {destinationDetails?.countryId?.name} are as
                 follows:
-              </p>
+              </PrimaryBodyText>
+
             </div>
             <div className="py-1">
-              <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
+              <SecondaryTitle
+                className="mb-2"
+              >
                 Part-Time Work Opportunities
-              </h3>
-              <p className={`text-[18px] font-normal text-gray-primary `}>
+              </SecondaryTitle>
+              <PrimaryBodyText
+              // className={'font-semibold'}
+              // style={{ fontSize: '22px' }}
+              >
                 {destinationDetails?.workOpportunities?.partTimeStudents}
-              </p>
+              </PrimaryBodyText>
+
             </div>
             <div className="py-5">
-              <h3 className={`mb-2  text-[32px]  font-bold text-gray-primary dark:text-white`}>
+              <SecondaryTitle
+                className="mb-2"
+              >
                 Post Study Work Opportunities
-              </h3>
-              <p className={`text-[18px] font-normal text-gray-primary `}>
+              </SecondaryTitle>
+
+              <PrimaryBodyText
+                className={'mb-5'}
+              // style={{ fontSize: '22px' }}
+              >
                 {destinationDetails?.workOpportunities?.postDegreeOpportunity}
-              </p>
+              </PrimaryBodyText>
             </div>
             <div className="grid grid-cols-3 gap-5 ">
               {destinationDetails?.workOpportunities?.professions?.map(
@@ -60,9 +82,12 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               )}
             </div>
             {destinationDetails?.workOpportunities?.additionalInformation && (
-              <p className={`my-10 text-base font-normal text-gray-primary`}>
-                {destinationDetails?.workOpportunities?.additionalInformation}
-              </p>
+              <PrimaryBodyText
+                className={'my-10'}
+              // style={{ fontSize: '1px' }}
+              > {destinationDetails?.workOpportunities?.additionalInformation}
+              </PrimaryBodyText>
+
             )}
           </div>
         </div>

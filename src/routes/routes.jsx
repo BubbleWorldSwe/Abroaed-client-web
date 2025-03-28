@@ -114,7 +114,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
-    { path: "/blog", element: <BlogsHome />, isPrivate: false },
+    { path: "/blogs", element: <BlogsHome />, isPrivate: false },
     // {
     //   path: "/blog/category/:id",
     //   element: <BlogsCategoryPage />,

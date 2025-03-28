@@ -70,10 +70,10 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className="dark:bg-gray-900 relative py-20  lg:py-1">
-        <div className="px-12 mx-auto max-w-screen-2xl relative z-10">
+      <section className="dark:bg-gray-900 relative  py-2  lg:py-1">
+        <div className="px-5 md:px-12 mx-auto max-w-screen-2xl relative z-10">
           <h2
-            className={`my-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+            className={`my-10 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
           >
             Discover Our Unique Offerings
           </h2>
@@ -83,7 +83,7 @@ const HomeServicesSection = () => {
             {serviceData?.map((service, index) => (
               <div
                 key={index}
-                className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden ml-12 "
+                className="w-full lg:w-96 md:w-80 sm:w-60 h-[30rem] relative rounded-lg overflow-hidden ml-6 md:ml-12 "
               >
                 {/* Background Image with Overlay */}
                 <div className="relative w-full h-full">
@@ -104,29 +104,6 @@ const HomeServicesSection = () => {
                       {service.text2}
                     </p>
                   </div>
-
-                  {/* Button */}
-                  {/* <button
-                      type="button"
-                      onClick={() => setModalOpen(true)}
-                      className="w-12 h-12 flex items-center justify-center font-medium bg-black bg-opacity-40 rounded-full hover:bg-opacity-60 focus:outline-none transition-all"
-                    >
-                      <svg
-                        className="w-5 h-5 text-white"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 18 18"
-                      >
-                        <path
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M9 1v16M1 9h16"
-                        />
-                      </svg>
-                    </button> */}
                 </div>
               </div>
             ))}

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
 import DestinationImmigrationDetailsCard from "../../components/destinationImmigrationDetailsCard";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const DestinationImmigrationDetailsSection = ({ destinationDetails }) => {
   return (
@@ -9,9 +10,12 @@ const DestinationImmigrationDetailsSection = ({ destinationDetails }) => {
         <div className=" px-4  flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
           {/* Content */}
           <div className="relative">
-            <h2 className={`mb-3 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+
+            <SectionMainHeader
+              className="mb-2"
+            >
               Immigration Details
-            </h2>
+            </SectionMainHeader>
             <div className="my-4 border-t border-gray-300"></div>
             <div className="flex gap-5 py-2 overflow-x-auto flex-nowrap">
               {destinationDetails?.immigrations.map((data, index) => (

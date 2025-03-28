@@ -1,5 +1,6 @@
 
 import dark from "../../../../assets/dark.png"
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const serviceData = [
     {
@@ -42,17 +43,17 @@ const serviceData = [
 const ExploreOurServicesHomeCounselling = () => {
     return (
         <section className="dark:bg-gray-900  relative py-10">
-            <div className=" px-12 mx-auto max-w-screen-2xl   relative z-10">
-                <h1 className="mb-10 text-5xl tracking-tight font-extrabold">
+            <div className=" px-6 md:px-12 mx-auto max-w-screen-2xl   relative z-10">
+                <SectionMainHeader className="mb-8">
                     Explore Our Other Services
-                </h1>
+                </SectionMainHeader>
             </div>
             <div className="overflow-x-auto">
-                <div className="flex space-x-5" style={{ minWidth: "max-content" }}>
+                <div className="flex space-x-5 pl-6 md:pl-12" style={{ minWidth: "max-content" }}>
                     {serviceData?.map((service, index) => (
                         <div
                             key={index}
-                            className="w-full lg:w-96 md:w-80 sm:w-72 h-[30rem] relative rounded-lg overflow-hidden"
+                            className="  w-72 md:w-96 h-[30rem] relative rounded-lg overflow-hidden"
                         >
                             {/* Background Image with Overlay */}
                             <div className="relative w-full h-full">

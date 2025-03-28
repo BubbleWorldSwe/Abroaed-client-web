@@ -14,10 +14,9 @@ const BlogHomeHeaderTestSection = () => {
               Our Blogs
             </h2>
             <div className="flex gap-2">
-              <p className="text-[#52525B] font-semibold text-base">
-                Whether you’re looking to deepen your knowledge, stay up-to-date
-                with emerging innovations, or simply find inspiration, our blog
-                is the go-to resource.
+              <p className="text-[#52525B] font-semibold text-lg">
+                {/* Trusted by Visionaries Worldwide */}
+                Whether you're exploring global education, seeking expert guidance, or preparing for a world-class future—our insights are your gateway to informed decisions and boundless opportunity.
               </p>
             </div>
           </div>

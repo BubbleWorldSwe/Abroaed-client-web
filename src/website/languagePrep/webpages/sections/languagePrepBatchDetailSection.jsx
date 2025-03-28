@@ -5,6 +5,7 @@ import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import LoginModal from "../../../comman/modals/loginModal";
 import { useSelector } from "react-redux";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 function LanguagePrepBatchDetaileSection({
   languagePrepsDetails,
@@ -28,11 +29,12 @@ function LanguagePrepBatchDetaileSection({
         <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl ">
           {/* Content */}
           <div className="relative z-10">
-            <h2
-              className={`mb-5 text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+
+            <SectionMainHeader
+              className={`mb-5`}
             >
               Batches
-            </h2>
+            </SectionMainHeader>
             <div className="my-4 border-t border-gray-300"></div>
             <div
               className={`grid grid-cols-1 text-gray-primary md:grid-cols-3  gap-3 py-10 `}
@@ -59,20 +61,20 @@ function LanguagePrepBatchDetaileSection({
                   >
                     Enroll Now
                   </button>
-                  <div className="flex justify-between items-baseline mt-5 mb-2 w-9/12 ">
-                    <p className="">
+                  <div className="flex justify-between items-baseline mt-5 mb-1 w-9/12 ">
+                    <p className="text-[18px]">
                       <strong>Duration :</strong>{" "}
                       <span className="text-gray-500">
                         {data.duration} months
                       </span>
                     </p>
-                    <p className="">
+                    <p className="text-[18px]">
                       <strong>Seats:</strong>{" "}
                       <span className="text-gray-500">{data.seats}</span>
                     </p>
                   </div>
 
-                  <p className="font-semibold text-base mb-3 mt-2">
+                  <p className="font-semibold text-[18px] mb-3 mt-2">
                     {" "}
                     Features you'll love{" "}
                   </p>
@@ -80,8 +82,8 @@ function LanguagePrepBatchDetaileSection({
                   <ul role="list" className="mb-8 space-y-2 text-left">
                     {data.features?.map((item, i) => (
                       <li key={i} className="flex items-center space-x-3">
-                        <CheckIcon color={"gray-primary"} size={14} />
-                        <span className="text-[12px] text-[#52525B] font-normal ">
+                        <CheckIcon className={"text-gray-primary"} size={14} />
+                        <span className="text-[18px] text-[#52525B] font-normal ">
                           {item}
                         </span>
                       </li>

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import FaqsQuestionText from "../../../typographies/faqsQuestionText";
+import FaqsAnswerText from "../../../typographies/faqsAnswerText";
 
 const LeaguageOfExcellenceFaq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -162,37 +165,32 @@ const LeaguageOfExcellenceFaq = () => {
   ];
 
   return (
-    <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-      <h2
-        className={`mb-1 text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+    <div className=" py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center px-7 mx-auto justify-center">
+      <SectionMainHeader className={`mb-1`}
       >
         Frequently Asked Questions
-      </h2>
-      <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
-        <div className="flex-1 overflow-auto">
+      </SectionMainHeader>
+      <section className=" bg-white w-80  dark:bg-gray-900 md:max-w-[80rem] min-h-max  lg:w-[80rem] md:w-[40rem] p-6  rounded-md shadow-md flex flex-col">
+        <div className="flex-1">
           {faqs?.map((faq, index) => (
-            <div key={index}>
+            <div key={index} className="">
               <h2 id={`accordion-flush-heading-${index}`}>
                 <button
                   type="button"
                   className={`flex justify-between items-center py-5 w-full font-medium text-left bg-white dark:bg-gray-900 dark:text-white 
-                                        ${
-                                          activeIndex === index
-                                            ? ""
-                                            : "border-b-2  border-gray-200 dark:border-gray-700"
-                                        }`}
+                                        ${activeIndex === index
+                      ? ""
+                      : "border-b-2  border-gray-200 dark:border-gray-700"
+                    }`}
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <span
-                    className={`whitespace-normal text-[24px] font-bold text-gray-primary `}
-                  >
+                  <FaqsQuestionText FaqsQuestionText>
                     {faq.question}
-                  </span>
+                  </FaqsQuestionText>
                   <svg
-                    className={`w-6 h-6 transition-transform duration-300 ${
-                      activeIndex === index ? "rotate-180" : ""
-                    }`}
+                    className={`w-6 h-6 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""
+                      }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -212,13 +210,12 @@ const LeaguageOfExcellenceFaq = () => {
                   height: activeIndex === index ? "auto" : 0,
                 }}
                 transition={{ duration: 0.3 }}
-                className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${
-                  activeIndex === index ? "block" : "hidden"
-                }`}
+                className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${activeIndex === index ? "block" : "hidden"
+                  }`}
               >
-                <div className="mb-2 text-gray-primary font-normal text-base whitespace-pre-wrap">
+                <FaqsAnswerText className="mb-2 overflow-x-auto ">
                   {faq.answer}
-                </div>
+                </FaqsAnswerText>
               </motion.div>
             </div>
           ))}

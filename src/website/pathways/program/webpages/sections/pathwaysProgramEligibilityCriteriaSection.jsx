@@ -1,3 +1,4 @@
+import SectionMainHeader from "../../../../typographies/sectionMainHeader"
 
 
 function PathwaysProgramEligibilityCriteria() {
@@ -7,9 +8,9 @@ function PathwaysProgramEligibilityCriteria() {
                 <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
                     {/* Content */}
                     <div className="relative z-10">
-                        <h2 className="mb-2 text-[45px]  font-extrabold text-gray-900 dark:text-white">
+                        <SectionMainHeader className="mb-2 ">
                             Eligibility Criteria
-                        </h2>
+                        </SectionMainHeader>
                         <div className=" border-t border-gray-300"></div>
                         <div className="grid grid-cols-1  lg:grid-cols-2 gap-10  py-10">
                             {Array(2).fill().map((_, index) => (

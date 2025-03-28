@@ -1,12 +1,20 @@
 /* eslint-disable react/prop-types */
 
+import PrimaryBodyText from "../../typographies/primaryBodyText";
+import SecondaryTitle from "../../typographies/secondaryTitle";
+
 const TextComponent = ({ text, heading }) => (
   <div>
-    <h2 className="text-[32px]  font-bold mb-4">{heading}</h2>
-    <p
-      className="text-[#52525B] text-[18px]  font-normal"
-    >{text}</p>
+    <SecondaryTitle
+      className="mb-4"
+    >
+      {heading}
+    </SecondaryTitle>
+    <PrimaryBodyText>
+      {text}
+    </PrimaryBodyText>
   </div>
 );
+
 
 export default TextComponent;

@@ -1,3 +1,5 @@
+import PrimaryBodyText from "../../../typographies/primaryBodyText"
+import SectionMainHeader from "../../../typographies/sectionMainHeader"
 
 function AboutUsOurTeam() {
   return (
@@ -5,13 +7,17 @@ function AboutUsOurTeam() {
       <section className="bg-white dark:bg-gray-900 antialiased px-6 mx-auto">
         <div className="max-w-screen-2xl px-4 py-2 mx-auto lg:px-6 sm:py-16 lg:py-24">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className={`text-5xl w-full items-center text-left text-gray-primary  font-extrabold `}>
+            <SectionMainHeader
+              className={"items-center"}
+            >
               Our people make us great
-            </h2>
-            <p className="mt-4 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
+            </SectionMainHeader>
+            <PrimaryBodyText
+              className={""}
+            >
               interact with talented professionals, will be challenged to solve difficult problems and think in new and
               creative ways.
-            </p>
+            </PrimaryBodyText>
           </div>
           <div className="grid grid-cols-1 gap-4 mt-8 lg:mt-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <div className="relative overflow-hidden rounded-lg group">

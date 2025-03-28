@@ -1,4 +1,6 @@
 import vectorRightRing from "../../../../../assets/vectorRightRing.png"
+import PrimaryBodyText from "../../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../../typographies/sectionMainHeader";
 import { steps } from "../../data";
 
 const PathwaysHomeHowItWorkSection = () => {
@@ -8,11 +10,12 @@ const PathwaysHomeHowItWorkSection = () => {
                 <section className="dark:bg-gray-900">
                     <div className="py-8 ">
                         <div className="">
-                            <h2 className={`mb-5 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+                            <SectionMainHeader className={`mb-5`}>
                                 How It Works?
-                            </h2>
-                            <p className={`text-[18px] text-gray-primary font-normal`}>
-                                Pathways programs offer students a seamless route to studying abroad by providing the academic, language, and cultural support needed for success. These programs help you build a strong foundation in core subjects, improve language proficiency, and gain cultural understanding to thrive in a foreign academic environment. With guaranteed progression to a degree program at a partner university, pathways programs not only prepare you academically but also guide you through personal and professional development, ensuring a smooth transition to university life abroad.                            </p>
+                            </SectionMainHeader>
+                            <PrimaryBodyText>
+                                Pathways programs offer students a seamless route to studying abroad by providing the academic, language, and cultural support needed for success. These programs help you build a strong foundation in core subjects, improve language proficiency, and gain cultural understanding to thrive in a foreign academic environment. With guaranteed progression to a degree program at a partner university, pathways programs not only prepare you academically but also guide you through personal and professional development, ensuring a smooth transition to university life abroad.
+                            </PrimaryBodyText>
                         </div>
                         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">
                             {steps.map((step) => (
