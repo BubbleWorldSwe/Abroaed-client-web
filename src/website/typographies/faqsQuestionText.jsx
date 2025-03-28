@@ -1,0 +1,11 @@
+/* eslint-disable react/prop-types */
+
+const FaqsQuestionText = ({ children, text = "", className = "", style = {} }) => {
+    return (
+        <span className={`whitespace-normal text-[24px] font-bold text-gray-primary ${className}`} style={style}>
+            {text || children}
+        </span>
+    );
+};
+
+export default FaqsQuestionText;

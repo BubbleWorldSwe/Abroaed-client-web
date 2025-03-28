@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
