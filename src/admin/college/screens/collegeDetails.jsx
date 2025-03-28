@@ -31,7 +31,7 @@ function CollegDetails() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [destinationsList, setDestinationsList] = useState([]);
   const [statesList, setStatesList] = useState([]);
 
@@ -217,6 +217,7 @@ function CollegDetails() {
                 >
                   <span>{sectionItem.name}</span>
                   <button
+                    disabled={!isWriteAccess}
                     className="px-4 py-4"
                     onClick={(e) => {
                       e.stopPropagation();

@@ -5,6 +5,7 @@ import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationMo
 import { useState } from "react";
 
 const LanguageFaqs = ({ onEdit, onUpdate }) => {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const testPrepDetails = useSelector(
     (state) => state.testPreps.selectedTestPrep
   );
@@ -49,24 +50,26 @@ const LanguageFaqs = ({ onEdit, onUpdate }) => {
                   {data.answer}
                 </td>
                 <td className="text-center w-[100px]">
-                  <div className="flex items-center justify-center space-x-5">
-                    <img
-                      src={pencil}
-                      alt="Edit"
-                      className="w-5 h-5 cursor-pointer"
-                      onClick={() => handleEditClick(data)}
-                    />
-                    <img
-                      src={trash}
-                      alt="Delete"
-                      className="w-5 h-5 cursor-pointer"
-                      //     onClick={() => handleDeleteClick(data?._id)}
-                      onClick={() => {
-                        setDeleteId(data?._id);
-                        setIsModalOpen(!isModalOpen);
-                      }}
-                    />
-                  </div>
+                  {isWriteAccess && (
+                    <div className="flex items-center justify-center space-x-5">
+                      <img
+                        src={pencil}
+                        alt="Edit"
+                        className="w-5 h-5 cursor-pointer"
+                        onClick={() => handleEditClick(data)}
+                      />
+                      <img
+                        src={trash}
+                        alt="Delete"
+                        className="w-5 h-5 cursor-pointer"
+                        //     onClick={() => handleDeleteClick(data?._id)}
+                        onClick={() => {
+                          setDeleteId(data?._id);
+                          setIsModalOpen(!isModalOpen);
+                        }}
+                      />
+                    </div>
+                  )}
                 </td>
               </tr>
             </tbody>

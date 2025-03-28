@@ -19,6 +19,7 @@ import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 
 const AccommodationDetails = () => {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);

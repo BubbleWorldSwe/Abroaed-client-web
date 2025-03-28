@@ -23,6 +23,7 @@ const StudentTable = ({
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
+  const { isWriteAccess } = useSelector((state) => state.auth);
 
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -146,19 +147,21 @@ const StudentTable = ({
                       }`}
                     >
                       <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                        <li>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              handleOpenAddModal("assign");
-                              handleAssignTeamMember(member);
-                            }}
-                            className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Plus className="w-4 h-4" />
-                            <span>Assign Member</span>
-                          </button>
-                        </li>
+                        {isWriteAccess && (
+                          <li>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                handleOpenAddModal("assign");
+                                handleAssignTeamMember(member);
+                              }}
+                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              <Plus className="w-4 h-4" />
+                              <span>Assign Member</span>
+                            </button>
+                          </li>
+                        )}
                         <li>
                           <button
                             type="button"

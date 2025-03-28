@@ -14,7 +14,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
   const testPrepDetails = useSelector(
     (state) => state.testPreps.selectedTestPrep
   );
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState(
     filledData || {
       batchName: "",

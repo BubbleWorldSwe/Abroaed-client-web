@@ -16,9 +16,8 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
 function CollapsableSidebar() {
-  const { user, role } = useSelector((state) => state.auth);
+  const { role, admin } = useSelector((state) => state.auth);
 
-  console.log(user, role);
   const [isOpen, setIsOpen] = useState(true);
   const navigate = useNavigate();
   const isActive = (path) => window.location.pathname.startsWith(path);

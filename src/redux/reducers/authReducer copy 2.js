@@ -12,8 +12,8 @@ import {
   STUDENT_UPDATE_PASSWORD_FAILURE,
   STUDENT_UPDATE_PASSWORD_SUCCESS,
   STUDENT_SIGNUP_REQUEST,
-  ADMIN_LOGOUT,
   STUDENT_LOGOUT,
+  ADMIN_LOGOUT,
 } from "../actions/authActions";
 
 import storage from "redux-persist/lib/storage";
@@ -21,15 +21,12 @@ import storage from "redux-persist/lib/storage";
 const initialState = {
   loading: false,
   token: null,
+  user: null,
 
   role: null,
   error: null,
-
-  adminToken: null,
   admin: null,
   student: null,
-  studentToken: null,
-  isWriteAccess: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -44,16 +41,17 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-
-        studentToken: action.payload.token,
+        user: action.payload.user,
         student: action.payload.user,
-        //role: "Student",
+        token: action.payload.token,
+        role: "Student",
       };
 
     case STUDENT_SIGNUP_SUCCESS:
       return {
         ...state,
         loading: false,
+
         message: action.payload,
       };
 
@@ -64,10 +62,10 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        adminToken: action.payload.token,
-        role: action.payload?.user?.roleId?.roleName,
+        user: action.payload.user,
         admin: action.payload.user,
-        isWriteAccess: action.payload?.user?.isWriteAccess,
+        token: action.payload.token,
+        role: action.payload?.user?.roleId?.roleName,
       };
 
     case STUDENT_LOGIN_FAILURE:
@@ -81,16 +79,10 @@ export const authReducer = (state = initialState, action) => {
       return initialState;
 
     case STUDENT_LOGOUT:
-      return { ...state, student: null, studentToken: null };
+      return { ...state, student: null };
 
     case ADMIN_LOGOUT:
-      return {
-        ...state,
-        admin: null,
-        adminToken: null,
-        role: null,
-        isWriteAccess: null,
-      };
+      return { ...state, admin: null };
 
     default:
       return state;

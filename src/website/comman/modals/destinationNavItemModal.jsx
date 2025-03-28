@@ -34,8 +34,9 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
               </a>
             </div>
             <ChevronRightIcon
-              className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
-                }`}
+              className={`w-5 h-5   ${
+                hoveredIndex === index ? " opacity-100" : "opacity-0"
+              }`}
             />
           </li>
         ))}

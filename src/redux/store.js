@@ -20,7 +20,15 @@ const sagaMiddleware = createSagaMiddleware();
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token", "user", "role"],
+  whitelist: [
+    "user",
+    "role",
+    "adminToken",
+    "admin",
+    "student",
+    "studentToken",
+    "isWriteAccess",
+  ],
   //  blacklist: ["token", "user", "role"],
 };
 

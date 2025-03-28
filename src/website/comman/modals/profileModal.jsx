@@ -3,11 +3,8 @@ import { CircleUser, LayoutDashboard, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../../redux/actions/authActions";
 
 const ProfileModal = ({ handleMouseEnter, handleMouseLeave, logout }) => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (

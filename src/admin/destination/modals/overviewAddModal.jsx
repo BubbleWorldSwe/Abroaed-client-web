@@ -17,7 +17,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
   const [formData, setFormData] = useState({
     description: details?.description || "",
     capitalId: details?.capitalId?._id || "",
-    number: details?.number || "",
+
     language: details?.language || "",
     intrStudents: details?.intrStudents || "",
     currency: details?.countryId?.currency || "",
@@ -111,16 +111,17 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           disabled
         />
 
-        <TextInputField
-          label="Language"
-          name="language"
-          type="text"
-          value={formData.language}
-          onChange={(e) => handleInputChange(e?.target?.value, "language")}
-          placeholder="Enter Language"
+        {/*  <TextInputField
+          label="Total Population"
+          name="totalPopulation"
+          type="number"
+          value={formData.totalPopulation}
+          onChange={(e) =>
+            handleInputChange(e?.target?.value, "totalPopulation")
+          }
+          placeholder="Enter Total Population"
           required
-        />
-
+        /> */}
         <TextInputField
           label="International Students"
           name="intrStudents"

@@ -3,10 +3,12 @@ import { useState } from "react";
 import LeadDocumentUploadModal from "../modals/leadDocumentUploadModal";
 import pencil from "../../../assets/pencil.png";
 import LeadDocumentCard from "../components/leadDocumentCard";
+import { useSelector } from "react-redux";
 const LeadDocumentLibrary = () => {
-  const [activeTab, setActiveTab] = useState(0); // State to keep track of the active tab
+  const [activeTab, setActiveTab] = useState(0);
   const tabs = ["Government Docs", "Academic Docs", "Finance Docs", "Others"];
   const [openModal, setOpenModal] = useState(false);
+  const { isWriteAccess } = useSelector((state) => state.auth);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -26,7 +28,9 @@ const LeadDocumentLibrary = () => {
         {/* Header with title and pencil icon button */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Document Library</h2>
-          <img src={pencil} alt="pencil-pic" className="w-6 h-6" />
+          {isWriteAccess && (
+            <img src={pencil} alt="pencil-pic" className="w-6 h-6" />
+          )}
         </div>
         <div>
           <div className="mb-4 dark:border-gray-700">

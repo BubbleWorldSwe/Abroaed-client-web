@@ -23,7 +23,7 @@ import { getTeamsByMembers } from "../../../api/teamsApi";
 
 function Leads() {
   const dispatch = useDispatch();
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [currentPage, setCurrentPage] = useState(1);
 
   const { leads, totalPages } = useSelector((state) => state.leads);
@@ -246,7 +246,10 @@ function Leads() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <AddButton onClick={handleOpenAddModal} label={" New Lead"} />
+
+                {isWriteAccess && (
+                  <AddButton onClick={handleOpenAddModal} label={" New Lead"} />
+                )}
               </div>
             </div>
           </div>

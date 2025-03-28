@@ -23,9 +23,7 @@ import { setLeadSubscribeBatch } from "../../../api/leadsApi";
 import { toast } from "react-toastify";
 
 function LanguagePrepLayout() {
-  const { user } = useSelector((state) => state.auth);
-
-  console.log(user);
+  const { student } = useSelector((state) => state.auth);
 
   const { id } = useParams();
   // const { state: destinationDetails } = useLocation();
@@ -73,9 +71,9 @@ function LanguagePrepLayout() {
         toast.success("Payment Successful!");
       },
       prefill: {
-        name: `${user.firstName} ${user.lastName}`,
-        email: user.email,
-        contact: user.mobile,
+        name: `${student.firstName} ${student.lastName}`,
+        email: student.email,
+        contact: student.mobile,
       },
       theme: {
         color: "#e2a303",
@@ -88,9 +86,9 @@ function LanguagePrepLayout() {
 
   async function subscribeBatches(data, paymentId) {
     try {
-      console.log(user._id, "language_prep", id, data._id, paymentId);
+      console.log(student._id, "language_prep", id, data._id, paymentId);
       const prep = await setLeadSubscribeBatch(
-        user._id,
+        student._id,
         "language_prep",
         id,
         data._id,

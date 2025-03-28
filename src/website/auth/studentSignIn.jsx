@@ -13,8 +13,7 @@ function StudentSignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { loading, token, role } = useSelector((state) => state.auth);
-  console.log(role + " Role", token);
+  const { loading, studentToken } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     try {
@@ -39,10 +38,10 @@ function StudentSignIn() {
   };
 
   useEffect(() => {
-    if (token && role === "Student") {
+    if (studentToken) {
       navigate("/home");
     }
-  }, [token, navigate]);
+  }, [studentToken, navigate]);
 
   return (
     <div>

@@ -49,21 +49,11 @@ function* handleStudentSignUp(action) {
     if (response.status === 201) {
       const resetPasswordLink = response.data?.resetPasswordLink || "";
       if (resetPasswordLink) {
-        // Replace "undefined" with the actual frontend URL
-        const formattedLink = resetPasswordLink.replace(
-          "undefined",
-          //    "http://localhost:5173"
-          BASE_URL
-        );
+        const extractedPath =
+          resetPasswordLink.match(/\/update-password\/[^?]+/)?.[0] || "";
 
-        // Extracting the token from the URL
-        const token = formattedLink.split("token=")[1];
-        localStorage.setItem("token", token);
-
-        // Navigate to the update-password page
-        window.location.href = formattedLink;
-
-        yield put(studentSignUpSuccess({ user: response.data.user, token }));
+        window.location.href = extractedPath;
+        yield put(studentSignUpSuccess({ user: response.data.user }));
       }
     } else {
       yield put(studentSignUpFailure(response.message));

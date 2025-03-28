@@ -14,10 +14,8 @@ const ExploreCollegesNavItemModal = ({
   handleStateClick,
 }) => {
   return (
-    <div className="absolute left-0  transform  top-full w-[50rem] min-w-max h-[60vh] py-5 z-50">
-      <div
-        className="bg-white border border-gray-100 shadow-lg rounded-b-lg flex mt-2  overflow-hidden"
-      >
+    <div className="absolute left-0 transform top-full w-[60rem] min-w-max h-[60vh] py-5 z-50">
+      <div className="bg-white border border-gray-100 shadow-lg rounded-b-lg flex mt-2  overflow-hidden">
         {/* Left Sidebar: Destination List */}
         <div className="p-3 w-1/4 overflow-y-auto text-gray-900 bg-white dark:text-white dark:bg-gray-800">
           <h3 className="mb-4 text-lg font-bold">Destinations</h3>
@@ -26,10 +24,11 @@ const ExploreCollegesNavItemModal = ({
               <li key={destination._id}>
                 <button
                   onClick={() => handleDestinationClick(destination)}
-                  className={`flex justify-between whitespace-nowrap p-3 w-full text-left rounded-lg ${selectedDestination?._id === destination._id
-                    ? "bg-gray-200 dark:bg-gray-600"
-                    : "hover:bg-gray-50 dark:hover:bg-gray-700"
-                    }`}
+                  className={`flex justify-between whitespace-nowrap p-3 w-full text-left rounded-lg ${
+                    selectedDestination?._id === destination._id
+                      ? "bg-gray-200 dark:bg-gray-600"
+                      : "hover:bg-gray-50 dark:hover:bg-gray-700"
+                  }`}
                 >
                   <span className="font-semibold text-base">
                     {`${destination.countryId.emoji} ${destination.countryId.name}`}
@@ -45,6 +44,12 @@ const ExploreCollegesNavItemModal = ({
         <div className="py-5 w-3/4 px-5 bg-gray-50 dark:bg-gray-700 overflow-y-auto">
           {isLoading ? (
             <Loader />
+          ) : states.length <= 0 ? (
+            <>
+              <p className="my-20 text-[16px] font-semibold text-gray-700 text-center">
+                No colleges available for the selected destination.
+              </p>
+            </>
           ) : (
             <>
               {/* States List */}
@@ -60,10 +65,11 @@ const ExploreCollegesNavItemModal = ({
                   <button
                     key={state._id}
                     onClick={() => handleStateClick(state)}
-                    className={`px-4 py-2 border rounded-full font-semibold ${selectedState?._id === state._id
-                      ? "bg-gray-800 text-white"
-                      : "bg-white text-gray-700"
-                      }`}
+                    className={`px-4 py-2 border rounded-full font-semibold ${
+                      selectedState?._id === state._id
+                        ? "bg-gray-800 text-white"
+                        : "bg-white text-gray-700"
+                    }`}
                   >
                     {state.name}
                   </button>

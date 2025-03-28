@@ -4,6 +4,7 @@ import { useState } from "react";
 import dark from "../../../assets/dark.png";
 import { useSelector } from "react-redux";
 import { Trash2 } from "lucide-react";
+
 const TestPrepImageUpdate = () => {
   const [openMadal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState(null);
@@ -11,6 +12,7 @@ const TestPrepImageUpdate = () => {
     setOpenModal(false);
     setModalType(null);
   };
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const testPrepDetails = useSelector(
     (state) => state.testPreps.selectedTestPrep
   );
@@ -26,32 +28,33 @@ const TestPrepImageUpdate = () => {
       ></div>
       <div className="rounded-b-xl px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white dark:bg-gray-800">
         <p className="text-2xl font-semibold">{testPrepDetails?.productName}</p>
-
-        <div className="flex align-center ">
-          <div>
-            <button
-              type="button"
-              className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2  "
-              onClick={(e) => {
-                e.preventDefault();
-                setModalType("edit");
-                setOpenModal(true);
-              }}
-            >
-              <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
-              Edit Info
-            </button>
-          </div>
+        {isWriteAccess && (
           <div className="flex align-center ">
-            <button
-              type="button"
-              className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
-            >
-              <Trash2 size={20} style={{ marginRight: 10 }} />
-              <span>Delete</span>
-            </button>
+            <div>
+              <button
+                type="button"
+                className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2  "
+                onClick={(e) => {
+                  e.preventDefault();
+                  setModalType("edit");
+                  setOpenModal(true);
+                }}
+              >
+                <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
+                Edit Info
+              </button>
+            </div>
+            <div className="flex align-center ">
+              <button
+                type="button"
+                className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
+              >
+                <Trash2 size={20} style={{ marginRight: 10 }} />
+                <span>Delete</span>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {openMadal && modalType === "add" && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">

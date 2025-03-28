@@ -8,6 +8,7 @@ const Batches = ({ onEdit, onUpdate }) => {
   const testPrepDetails = useSelector(
     (state) => state.testPreps.selectedTestPrep
   );
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const handleEditClick = (batches) => {
@@ -35,7 +36,7 @@ const Batches = ({ onEdit, onUpdate }) => {
             <tr>
               <th className="px-4 py-3">Batch Name</th>
               <th className="px-4 py-3 whitespace-nowrap">Batch Brief</th>
-              <th className="px-4 py-3"></th>
+              {isWriteAccess && <th className="px-4 py-3"></th>}
             </tr>
           </thead>
           <tbody>
@@ -47,26 +48,28 @@ const Batches = ({ onEdit, onUpdate }) => {
                   </td>
                   <td className=" px-4 py-3">{data?.batchBrief}</td>
 
-                  <td className="text-center w-[100px]">
-                    <div className="flex items-center justify-center space-x-5">
-                      <img
-                        src={pencil}
-                        alt="Edit"
-                        className="w-5 h-5 cursor-pointer"
-                        onClick={() => handleEditClick(data)}
-                      />
-                      <img
-                        src={trash}
-                        alt="Delete"
-                        className="w-5 h-5 cursor-pointer"
-                        //  onClick={() => handleDeleteClick(data?._id)}
-                        onClick={() => {
-                          setDeleteId(data?._id);
-                          setIsModalOpen(!isModalOpen);
-                        }}
-                      />
-                    </div>
-                  </td>
+                  {isWriteAccess && (
+                    <td className="text-center w-[100px]">
+                      <div className="flex items-center justify-center space-x-5">
+                        <img
+                          src={pencil}
+                          alt="Edit"
+                          className="w-5 h-5 cursor-pointer"
+                          onClick={() => handleEditClick(data)}
+                        />
+                        <img
+                          src={trash}
+                          alt="Delete"
+                          className="w-5 h-5 cursor-pointer"
+                          //  onClick={() => handleDeleteClick(data?._id)}
+                          onClick={() => {
+                            setDeleteId(data?._id);
+                            setIsModalOpen(!isModalOpen);
+                          }}
+                        />
+                      </div>
+                    </td>
+                  )}
                 </tr>
               ))
             ) : (

@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteBlogRequest,
+  editBlogRequest,
   fetchBlogsRequest,
 } from "../../../redux/actions/blogActions";
+import { AddButton } from "../../../commons/components/buttons/addButton";
 
 const Blogs = () => {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
@@ -45,6 +48,14 @@ const Blogs = () => {
     dispatch(deleteBlogRequest(id));
     setCurrentPage(1);
     dispatch(fetchBlogsRequest(1));
+  };
+
+  const changeBlogStatus = (id, status) => {
+    try {
+      dispatch(editBlogRequest(id, { status }));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -100,34 +111,14 @@ const Blogs = () => {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <div className="flex gap-2">
-                  <button
+                {isWriteAccess && (
+                  <AddButton
                     onClick={() => {
                       navigate("/admin/blogs/addBlog");
                     }}
-                    type="button"
-                    className="w-full whitespace-nowrap  md:w-auto flex items-center justify-center py-2 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                  >
-                    <svg
-                      className="w-6 h-6 p-1 text-gray-800 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 12h14m-7 7V5"
-                      />
-                    </svg>
-                    New Blog
-                  </button>
-                </div>
+                    label={"New Blog"}
+                  />
+                )}
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">
@@ -136,6 +127,7 @@ const Blogs = () => {
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
+                changeStatus={changeBlogStatus}
               />
             </div>
           </div>

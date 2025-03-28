@@ -15,7 +15,7 @@ const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
   const handleEditClick = (data) => {
     onEdit(data);
   };
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   function handleDeleteClick(id) {
     console.log("Delete immigrations : " + id);
 
@@ -42,24 +42,28 @@ const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
               <h2 className="mb-2 font-semibold">
                 {data?.visaName} | {data?.visaType?.name}
               </h2>
-              <button
-                type="button"
-                onClick={() => handleEditClick(data)}
-                className="p-0 bg-transparent border-0"
-              >
-                <img src={pencil} alt="edit Icon" className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                // onClick={() => handleDeleteClick(data?._id)}
-                onClick={() => {
-                  setDeleteId(data?._id);
-                  setIsModalOpen(!isModalOpen);
-                }}
-                className="p-0 bg-transparent border-0"
-              >
-                <img src={trash} alt="delete Icon" className="w-4 h-4" />
-              </button>
+              {isWriteAccess && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => handleEditClick(data)}
+                    className="p-0 bg-transparent border-0"
+                  >
+                    <img src={pencil} alt="edit Icon" className="w-4 h-4" />
+                  </button>
+                  <button
+                    type="button"
+                    // onClick={() => handleDeleteClick(data?._id)}
+                    onClick={() => {
+                      setDeleteId(data?._id);
+                      setIsModalOpen(!isModalOpen);
+                    }}
+                    className="p-0 bg-transparent border-0"
+                  >
+                    <img src={trash} alt="delete Icon" className="w-4 h-4" />
+                  </button>
+                </>
+              )}
             </div>
             <p className="text-gray-700 dark:text-gray-300">
               {data.description || "No details available"}

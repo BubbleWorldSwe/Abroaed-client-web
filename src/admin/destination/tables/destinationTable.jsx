@@ -27,6 +27,7 @@ const DestinationTable = ({
   const { destinations, totalPages } = useSelector(
     (state) => state.destinations
   );
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -166,39 +167,43 @@ const DestinationTable = ({
                               <span>View Details</span>
                             </button>
                           </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                setDeleteId(destination._id);
-                                setIsModalOpen(!isModalOpen);
-                              }}
-                              // onClick={() => handleDelete(destination._id)}
-                              className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                              <span>Delete</span>
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() =>
-                                handleSubmit(
-                                  destination?.status === "draft"
-                                    ? "complete"
-                                    : "draft",
-                                  destination._id
-                                )
-                              }
-                              className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                            >
-                              <Edit className="w-4 h-4" />
-                              <span>
-                                {destination?.status === "draft"
-                                  ? "Publish Page"
-                                  : "Withdraw Page"}
-                              </span>
-                            </button>
-                          </li>
+                          {isWriteAccess && (
+                            <>
+                              <li>
+                                <button
+                                  onClick={() => {
+                                    setDeleteId(destination._id);
+                                    setIsModalOpen(!isModalOpen);
+                                  }}
+                                  // onClick={() => handleDelete(destination._id)}
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                  <span>Delete</span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleSubmit(
+                                      destination?.status === "draft"
+                                        ? "complete"
+                                        : "draft",
+                                      destination._id
+                                    )
+                                  }
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                  <span>
+                                    {destination?.status === "draft"
+                                      ? "Publish Page"
+                                      : "Withdraw Page"}
+                                  </span>
+                                </button>
+                              </li>
+                            </>
+                          )}
                         </ul>
                       </div>
                     )}

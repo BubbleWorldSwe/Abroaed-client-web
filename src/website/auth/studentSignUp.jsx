@@ -7,9 +7,8 @@ import AbroaedInfo from "./components/abroaedInfo";
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
 
 function StudentSignUp() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, token } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
 
   // State to hold form data
   const [formData, setFormData] = useState({

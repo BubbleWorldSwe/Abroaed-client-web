@@ -23,6 +23,7 @@ function Teams() {
   const [modalType, setModalType] = useState("");
   const [editData, setEditData] = useState(null);
   const [isDone, setIsDone] = useState(false);
+  const { isWriteAccess } = useSelector((state) => state.auth);
 
   const [roles, setRoles] = useState([]);
 
@@ -163,10 +164,13 @@ function Teams() {
                     <img src={filter_list} alt="Filter" />
                   </div>
                 </div>
-                <AddButton
-                  onClick={handleOpenAddModal}
-                  label={" New Team Member"}
-                />
+
+                {isWriteAccess && (
+                  <AddButton
+                    onClick={handleOpenAddModal}
+                    label={" New Team Member"}
+                  />
+                )}
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

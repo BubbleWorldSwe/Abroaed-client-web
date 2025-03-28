@@ -98,8 +98,9 @@ export const teamReducer = (state = initialState, action) => {
         error: action.payload,
       };
 
-    case LOGOUT:
-      return initialState;
+    /* case LOGOUT:
+      return initialState; */
+
     default:
       return state;
   }

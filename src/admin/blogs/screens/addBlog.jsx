@@ -50,6 +50,23 @@ const AddBlog = () => {
     }
   };
 
+  const publishBlog = () => {
+    try {
+      console.log("Add");
+      const { title, category, content } = formData;
+
+      if (!title || !category || !content) {
+        toast.error("Please fill out all fields.");
+        return;
+      }
+
+      dispatch(addBlogRequest({ ...formData, status: "publish" }));
+      //onAddAccommodation(formData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   async function fetchData() {
     try {
       const list = await getBlogsCategory();
@@ -74,13 +91,19 @@ const AddBlog = () => {
             <div className="flex justify-between items-center mb-4">
               <div className="font-bold text-xl">Add New Blog</div>
               <div className="space-x-2">
-                <button className="px-4 py-2 bg-gray-200 rounded-lg">
+                {/*    <button className="px-4 py-2 bg-gray-200 rounded-lg">
                   Preview
-                </button>
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">
+                </button> */}
+                <button
+                  onClick={addBlog}
+                  className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                >
                   Save Draft
                 </button>
-                <button className="px-4 py-2 bg-green-500 text-white rounded-lg">
+                <button
+                  onClick={publishBlog}
+                  className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                >
                   Publish
                 </button>
               </div>
@@ -122,9 +145,6 @@ const AddBlog = () => {
                     minHeight: "300px",
                   }}
                 />
-              </div>
-              <div className="text-center mt-10">
-                <ModalSubmitButton label={"Save Blog"} onClick={addBlog} />
               </div>
             </div>
           </div>

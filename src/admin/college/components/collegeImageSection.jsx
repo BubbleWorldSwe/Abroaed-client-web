@@ -11,7 +11,7 @@ const CollegeImageSection = () => {
     setOpenModal(false);
   };
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   return (
     <div className="flex flex-col">
       <div
@@ -79,17 +79,19 @@ const CollegeImageSection = () => {
             </div> */}
           </div>
         </div>
-        <div className="flex align-center">
-          <div>
-            <button
-              type="button"
-              className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
-            >
-              <Trash2 size={20} style={{ marginRight: 10 }} />
-              <span>Delete</span>
-            </button>
+        {isWriteAccess && (
+          <div className="flex align-center">
+            <div>
+              <button
+                type="button"
+                className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
+              >
+                <Trash2 size={20} style={{ marginRight: 10 }} />
+                <span>Delete</span>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {openMadal && (

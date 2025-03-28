@@ -10,14 +10,17 @@ import {
   editBlogRequest,
 } from "../../../redux/actions/blogActions";
 import { getBlogsCategory } from "../../../api/blogsApi";
+import { useNavigate } from "react-router-dom";
 
 const EditBlog = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const blogDetails = useSelector((state) => state?.blogs?.selectedBlog);
   const [formData, setFormData] = useState({
     title: "",
     category: "",
     content: "",
+    status: "",
   });
   const [blogsCategory, setBlogsCategory] = useState([]);
 
@@ -25,8 +28,9 @@ const EditBlog = () => {
     if (blogDetails) {
       setFormData({
         title: blogDetails.title || "",
-        category: blogDetails.category?._id || "",
+        category: blogDetails.category?._id || blogDetails.category,
         content: blogDetails.content || "",
+        status: blogDetails.status || "",
       });
     }
   }, [blogDetails]);
@@ -68,6 +72,17 @@ const EditBlog = () => {
     dispatch(editBlogRequest(blogDetails?._id, formData));
   };
 
+  const publishBlog = (status) => {
+    console.log("status", status);
+    try {
+      dispatch(editBlogRequest(blogDetails?._id, { status }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(blogDetails.status);
+
   return (
     <>
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
@@ -76,15 +91,42 @@ const EditBlog = () => {
             <div className="flex justify-between items-center mb-4">
               <div className="font-bold text-xl">Edit Blog</div>
               <div className="space-x-2">
-                <button className="px-4 py-2 bg-gray-200 rounded-lg">
+                <button
+                  className="px-4 py-2 bg-gray-200 rounded-lg"
+                  onClick={() =>
+                    navigate(
+                      `/admin/blogs/blogDetails/${encodeURIComponent(
+                        blogDetails._id
+                      )}`,
+                      {
+                        state: blogDetails,
+                      }
+                    )
+                  }
+                >
                   Preview
                 </button>
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">
-                  Save Draft
+                <button
+                  onClick={handleSubmit}
+                  className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+                >
+                  Save Blog
                 </button>
-                <button className="px-4 py-2 bg-green-500 text-white rounded-lg">
-                  Publish
-                </button>
+                {blogDetails.status === "draft" ? (
+                  <button
+                    onClick={() => publishBlog("publish")}
+                    className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                  >
+                    Publish Blog
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => publishBlog("draft")}
+                    className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                  >
+                    Save as Draft
+                  </button>
+                )}
               </div>
             </div>
             <div className="text-sm text-gray-500 mb-4">
@@ -121,12 +163,6 @@ const EditBlog = () => {
                   onChange={handleContentChange}
                   className="border-none"
                   style={{ minHeight: "300px" }}
-                />
-              </div>
-              <div className="text-center mt-10">
-                <ModalSubmitButton
-                  label="Save Changes"
-                  onClick={handleSubmit}
                 />
               </div>
             </div>

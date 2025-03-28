@@ -12,6 +12,7 @@ import ConfirmModal from "../../../commons/modal/confirmModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 
 const LanguagePrep = () => {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -138,7 +139,12 @@ const LanguagePrep = () => {
                   </div>
                 </div>
 
-                <AddButton onClick={handleOpenAddModal} label={"New Product"} />
+                {isWriteAccess && (
+                  <AddButton
+                    onClick={handleOpenAddModal}
+                    label={"New Product"}
+                  />
+                )}
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

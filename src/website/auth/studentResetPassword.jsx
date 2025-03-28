@@ -14,7 +14,7 @@ function StudentResetPassword() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { loading, token } = useSelector((state) => state.auth);
+  const { loading, studentToken } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     password: "",
@@ -59,10 +59,25 @@ function StudentResetPassword() {
   };
 
   useEffect(() => {
+    // Get the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    // Extract the token
+    const token = urlParams.get("token");
+
     if (token) {
+      // Store the token in localStorage
+      localStorage.setItem("token", token);
+      console.log("Token stored successfully:", token);
+    } else {
+      console.log("Token not found in URL.");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (studentToken) {
       // navigate("/admin/dashboard");
     }
-  }, [token, navigate]);
+  }, [studentToken, navigate]);
 
   return (
     <div>

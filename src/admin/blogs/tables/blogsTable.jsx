@@ -21,7 +21,9 @@ const BlogsTable = ({
   handleNextPage,
   handlePrevPage,
   handleDelete,
+  changeStatus,
 }) => {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const { blogs, totalPages } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,6 +52,19 @@ const BlogsTable = ({
       dispatch(setSelectedBlog(blog));
 
       navigate(`/admin/blogs/editBlog/${encodeURIComponent(blog._id)}`, {
+        state: blog,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleViewBlogs = (blog) => {
+    try {
+      console.log(blog);
+      dispatch(setSelectedBlog(blog));
+
+      navigate(`/admin/blogs/blogDetails/${encodeURIComponent(blog._id)}`, {
         state: blog,
       });
     } catch (error) {
@@ -142,48 +157,67 @@ const BlogsTable = ({
                           <li>
                             <button
                               type="button"
-                              onClick={() => {}}
+                              onClick={() => handleViewBlogs(blog)}
                               className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
                               <Eye className="w-4 h-4" />
                               <span>View blog</span>
                             </button>
                           </li>
-                          <li>
-                            <button
-                              type="button"
-                              onClick={() => handleEditBlogs(blog)}
-                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              <Edit2 className="w-4 h-4" />
-                              <span>Edit Blog</span>
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              type="button"
-                              onClick={() => {}}
-                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              <PaintbrushVerticalIcon className="w-4 h-4" />
-                              <span>Publish Blog</span>
-                            </button>
-                          </li>
+                          {isWriteAccess && (
+                            <>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => handleEditBlogs(blog)}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Edit2 className="w-4 h-4" />
+                                  <span>Edit Blog</span>
+                                </button>
+                              </li>
+                              <li>
+                                {blog?.status === "publish" ? (
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      changeStatus(blog?._id, "draft")
+                                    }
+                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    <PaintbrushVerticalIcon className="w-4 h-4" />
+                                    <span>Save as Draft</span>
+                                  </button>
+                                ) : (
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      changeStatus(blog?._id, "publish")
+                                    }
+                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    <PaintbrushVerticalIcon className="w-4 h-4" />
+                                    <span>Publish Blog</span>
+                                  </button>
+                                )}
+                              </li>
 
-                          <li>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setDeleteId(blog?._id);
-                                setIsModalOpen(!isModalOpen);
-                                //setDropdownVisible(null);
-                              }}
-                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                              <span>Delete</span>
-                            </button>
-                          </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setDeleteId(blog?._id);
+                                    setIsModalOpen(!isModalOpen);
+                                    //setDropdownVisible(null);
+                                  }}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                  <span>Delete</span>
+                                </button>
+                              </li>
+                            </>
+                          )}
                         </ul>
                       </div>
                     )}

@@ -11,7 +11,7 @@ function SigninPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { loading, token, role } = useSelector((state) => state.auth);
+  const { loading, adminToken, role } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     try {
@@ -38,10 +38,10 @@ function SigninPage() {
   console.log(role);
 
   useEffect(() => {
-    if (token && role !== "Student") {
+    if (adminToken && role !== "Student") {
       navigate("/admin/dashboard");
     }
-  }, [token, navigate]);
+  }, [adminToken, navigate]);
 
   return (
     <div>

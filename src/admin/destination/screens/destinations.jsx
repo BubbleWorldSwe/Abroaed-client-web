@@ -13,7 +13,7 @@ import { AddButton } from "../../../commons/components/buttons/addButton";
 
 function Destinations() {
   const dispatch = useDispatch();
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [query, setQuery] = useState("");
@@ -138,10 +138,12 @@ function Destinations() {
                   </div>
                 </div>
 
-                <AddButton
-                  onClick={() => setIsAddModalOpen(true)}
-                  label={"New Destination"}
-                />
+                {isWriteAccess && (
+                  <AddButton
+                    onClick={() => setIsAddModalOpen(true)}
+                    label={"New Destination"}
+                  />
+                )}
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

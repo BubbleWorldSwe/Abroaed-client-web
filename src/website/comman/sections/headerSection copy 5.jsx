@@ -8,7 +8,6 @@ import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
 import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
-import { logout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import ProfileModal from "../modals/profileModal";
 
@@ -38,16 +37,10 @@ function Header({ isHeaderBgWhite = false }) {
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { token, user, role } = useSelector((state) => state.auth);
+  const { studentToken, student, role } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const handleSignOut = () => {
-    dispatch(logout(null));
-    // localStorage.removeItem("token", token);
-    navigate("/home");
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -420,7 +413,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
 
           <div className="flex flex-grow-0 basis-[10%] justify-end">
-            {role === "Student" && token ? (
+            {studentToken ? (
               // Show "Login" button if user is a Student and has a token
               <button
                 onClick={() => navigate("/signin")}
@@ -436,7 +429,7 @@ function Header({ isHeaderBgWhite = false }) {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 font-semibold text-gray-800 rounded-lg">
-                  Hello, {user?.name || "User"}
+                  Hello, {student?.name || "User"}
                 </button>
                 {activeDropdown === "profile" && (
                   <div className="absolute right-0 mt-2">

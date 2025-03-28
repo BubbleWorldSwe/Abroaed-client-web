@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const LeadAdditionInfo = ({ onOpenModal }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [openModal, setOpenModal] = useState(false);
   const handleCloseAddModal = () => {
     setOpenModal(false);
@@ -25,16 +26,18 @@ const LeadAdditionInfo = ({ onOpenModal }) => {
           <h2 className={`text-2xl font-bold  text-gray-primary`}>
             Additional Information
           </h2>
-          <button
-            onClick={onOpenModal}
-            className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"
-          >
-            <img
-              src={pencil}
-              alt="pencil-img"
-              className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
-            />
-          </button>
+          {isWriteAccess && (
+            <button
+              onClick={onOpenModal}
+              className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"
+            >
+              <img
+                src={pencil}
+                alt="pencil-img"
+                className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
+              />
+            </button>
+          )}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div className="flex flex-col">

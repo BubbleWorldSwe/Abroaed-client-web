@@ -11,13 +11,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
 import {
   editStudentLeadRequest,
-  editStudentRequest,
   fetchStudentsRequest,
 } from "../../../redux/actions/studentsActions";
-import AssignTeamModal from "../../lead/modals/assignTeamMemberModal";
-import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
+
 import { getTeamsByMembers } from "../../../api/teamsApi";
-import { editLeadRequest } from "../../../redux/actions/leadsActions";
 
 function Student() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);

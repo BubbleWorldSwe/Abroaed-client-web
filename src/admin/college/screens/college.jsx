@@ -17,6 +17,7 @@ import {
 import { getStatesByCountryId } from "../../../api/countriesApi";
 
 function College() {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
 
   const handleCloseAddModal = () => {
@@ -165,21 +166,22 @@ function College() {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-
-                <div className="flex gap-4">
-                  <AddButton
-                    onClick={() => setIsAddModalOpen(true)}
-                    label={"New College"}
-                  />
-                  <button
-                    onClick={() => {}}
-                    type="button"
-                    className="w-full whitespace-nowrap md:w-auto flex items-center gap-2  py-1 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                  >
-                    <Upload className="w-4 h-4" />
-                    Upload CSV
-                  </button>
-                </div>
+                {isWriteAccess && (
+                  <div className="flex gap-4">
+                    <AddButton
+                      onClick={() => setIsAddModalOpen(true)}
+                      label={"New College"}
+                    />
+                    <button
+                      onClick={() => {}}
+                      type="button"
+                      className="w-full whitespace-nowrap md:w-auto flex items-center gap-2  py-1 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    >
+                      <Upload className="w-4 h-4" />
+                      Upload CSV
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

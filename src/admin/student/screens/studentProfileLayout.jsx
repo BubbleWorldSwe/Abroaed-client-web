@@ -36,6 +36,7 @@ import { statusSequence } from "../../../constants/values";
 import StatusConfirmationModal from "../modals/statusConfirmationModal";
 
 const StudentProfileLayout = () => {
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -302,6 +303,7 @@ const StudentProfileLayout = () => {
           <StudentAdditionalDetails
             onOpenModal={() => handleModal("addition")}
           />
+
           <StudentAssignTeam
             onOpenModal={() => handleModal("assignTeam")}
             onUpdate={onUpdateLead}

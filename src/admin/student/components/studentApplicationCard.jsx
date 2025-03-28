@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { MoreVerticalIcon } from "lucide-react";
 import studentColImg from "../../../assets/studentColImg.png";
 import studentcolFrame from "../../../assets/studentcolFrame.png";
+import { useSelector } from "react-redux";
 
 const StudentApplicationCard = ({
   data,
@@ -13,7 +14,7 @@ const StudentApplicationCard = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const toggleMenu = (data) => {
     setIsMenuOpen((prev) => !prev);
     setSelectedApplication(data);
@@ -51,42 +52,45 @@ const StudentApplicationCard = ({
           <h5 className="text-xl font-semibold text-gray-900">
             {data?.college?.name}
           </h5>
-          <div className="relative" ref={menuRef}>
-            <button onClick={() => toggleMenu(data)} className="p-2">
-              <MoreVerticalIcon size={20} color="#71717A" />
-            </button>
-            {isMenuOpen && (
-              <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                <ul className="text-gray-700">
-                  <li
-                    onClick={onOpen}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  >
-                    Modify
-                  </li>
-                  {status !== "rejected" && (
+          {isWriteAccess && (
+            <div className="relative" ref={menuRef}>
+              <button onClick={() => toggleMenu(data)} className="p-2">
+                <MoreVerticalIcon size={20} color="#71717A" />
+              </button>
+              {isMenuOpen && (
+                <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                  <ul className="text-gray-700">
                     <li
-                      onClick={onOpenDocUpdate}
+                      onClick={onOpen}
                       className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                     >
-                      Request Documents
+                      Modify
                     </li>
-                  )}
-
-                  {status !== "rejected" &&
-                    status !== "offer_letter_received" && (
+                    {status !== "rejected" && (
                       <li
-                        onClick={onOpenStatusModal}
+                        onClick={onOpenDocUpdate}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
-                        Move Forward
+                        Request Documents
                       </li>
                     )}
-                </ul>
-              </div>
-            )}
-          </div>
+
+                    {status !== "rejected" &&
+                      status !== "offer_letter_received" && (
+                        <li
+                          onClick={onOpenStatusModal}
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        >
+                          Move Forward
+                        </li>
+                      )}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
         </div>
+
         <p className="text-gray-500 mt-2">{data?.intake}</p>
         <p className="text-gray-500 mb-2">{data?.courseName}</p>
       </div>

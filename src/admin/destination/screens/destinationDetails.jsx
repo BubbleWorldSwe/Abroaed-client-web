@@ -34,6 +34,7 @@ function DestinationDetails() {
   const destinationDetails = useSelector(
     (state) => state.destinations.selectedDestination
   );
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [visaTypes, setVisaTypes] = useState([]);
   const [selectedSection, setSelectedSection] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
@@ -235,6 +236,7 @@ function DestinationDetails() {
                 >
                   <span>{sectionItem.name}</span>
                   <button
+                    disabled={!isWriteAccess}
                     className="px-4 py-4"
                     onClick={(e) => {
                       e.stopPropagation();

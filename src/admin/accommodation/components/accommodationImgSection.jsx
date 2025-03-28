@@ -12,6 +12,7 @@ const AccommodationImageSection = () => {
     setOpenModal(false);
     setModalType(null);
   };
+  const { isWriteAccess } = useSelector((state) => state.auth);
 
   const accommodationDetails = useSelector(
     (state) => state?.accommodations?.selectedAccommodation
@@ -31,32 +32,34 @@ const AccommodationImageSection = () => {
         <p className="text-2xl font-semibold">
           {accommodationDetails?.accomodationName}
         </p>
-        <div className="flex align-center ">
-          <div>
-            <button
-              type="button"
-              className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2  "
-              onClick={(e) => {
-                e.preventDefault();
-                setModalType("edit");
-                setOpenModal(true);
-              }}
-            >
-              <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
-              Edit Info
-            </button>
-          </div>
+        {isWriteAccess && (
+          <div className="flex align-center ">
+            <div>
+              <button
+                type="button"
+                className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2  "
+                onClick={(e) => {
+                  e.preventDefault();
+                  setModalType("edit");
+                  setOpenModal(true);
+                }}
+              >
+                <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
+                Edit Info
+              </button>
+            </div>
 
-          <div>
-            <button
-              type="button"
-              className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
-            >
-              <Trash2 size={20} style={{ marginRight: 10 }} />
-              <span>Delete</span>
-            </button>
+            <div>
+              <button
+                type="button"
+                className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
+              >
+                <Trash2 size={20} style={{ marginRight: 10 }} />
+                <span>Delete</span>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {openMadal && modalType === "add" && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">

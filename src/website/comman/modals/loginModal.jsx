@@ -8,13 +8,11 @@ import { BorderTextInputField } from "../../../commons/components/inputFields/bo
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
 const LoginModal = ({ isOpen, onClose }) => {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const { loading, token, role } = useSelector((state) => state.auth);
-  console.log(role + " Role", token);
+  const { loading, studentToken } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     try {
@@ -34,10 +32,10 @@ const LoginModal = ({ isOpen, onClose }) => {
   };
 
   useEffect(() => {
-    if (token && role === "Student") {
+    if (studentToken) {
       onClose();
     }
-  }, [token, onClose]);
+  }, [studentToken, onClose]);
 
   return (
     <>

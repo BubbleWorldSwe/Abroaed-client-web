@@ -18,6 +18,9 @@ const TeamTable = ({
   onSetEditData,
 }) => {
   const { teams, totalPages } = useSelector((state) => state.teams);
+  const { isWriteAccess } = useSelector((state) => state.auth);
+
+  console.log("isWriteAccess ", isWriteAccess);
   const [deleteId, setDeleteId] = useState(null);
   const dropdownRef = useRef(null);
   const [dropdownDirection, setDropdownDirection] = useState(null);
@@ -97,57 +100,62 @@ const TeamTable = ({
                       </span>
                     )}
                   </td>
-                  <td className="px-4 py-3 relative flex justify-center items-center group">
-                    <button
-                      aria-haspopup="true"
-                      aria-expanded={
-                        dropdownVisible === index ? "true" : "false"
-                      }
-                      className="focus:outline-none"
-                      onClick={(e) => {
-                        handleDropdownToggle(e, index);
-                        onSetEditData(member);
-                      }}
-                    >
-                      <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300" />
-                    </button>
 
-                    {dropdownVisible === index && (
-                      <div
-                        ref={dropdownRef}
-                        className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${
-                          dropdownDirection === "up"
-                            ? "bottom-full mb-2"
-                            : "top-full mt-2"
-                        }`}
+                  {isWriteAccess ? (
+                    <td className="px-4 py-3 relative flex justify-center items-center group">
+                      <button
+                        aria-haspopup="true"
+                        aria-expanded={
+                          dropdownVisible === index ? "true" : "false"
+                        }
+                        className="focus:outline-none"
+                        onClick={(e) => {
+                          handleDropdownToggle(e, index);
+                          onSetEditData(member);
+                        }}
                       >
-                        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                          <li>
-                            <button
-                              onClick={() => handleOpenEditModal(member)}
-                              className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                            >
-                              <Edit className="w-4 h-4" />
-                              <span>Update Member</span>
-                            </button>
-                          </li>
-                          <li>
-                            <button
-                              onClick={() => {
-                                setDeleteId(member._id);
-                                setIsModalOpen(!isModalOpen);
-                              }}
-                              // onClick={() => handleDelete(member._id)}
-                              className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                              <span>Delete</span>
-                            </button>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </td>
+                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300" />
+                      </button>
+
+                      {dropdownVisible === index && (
+                        <div
+                          ref={dropdownRef}
+                          className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${
+                            dropdownDirection === "up"
+                              ? "bottom-full mb-2"
+                              : "top-full mt-2"
+                          }`}
+                        >
+                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                            <li>
+                              <button
+                                onClick={() => handleOpenEditModal(member)}
+                                className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                              >
+                                <Edit className="w-4 h-4" />
+                                <span>Update Member</span>
+                              </button>
+                            </li>
+                            <li>
+                              <button
+                                onClick={() => {
+                                  setDeleteId(member._id);
+                                  setIsModalOpen(!isModalOpen);
+                                }}
+                                // onClick={() => handleDelete(member._id)}
+                                className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                                <span>Delete</span>
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                      )}
+                    </td>
+                  ) : (
+                    <td></td>
+                  )}
                 </tr>
               ))
           )}

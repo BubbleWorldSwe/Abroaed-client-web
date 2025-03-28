@@ -31,6 +31,7 @@ const LeadTable = ({
 }) => {
   const dispatch = useDispatch();
   const { leads, totalPages } = useSelector((state) => state.leads);
+  const { isWriteAccess } = useSelector((state) => state.auth);
 
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const dropdownRef = useRef(null);
@@ -172,33 +173,38 @@ const LeadTable = ({
                         className="py-1 text-sm text-gray-700 dark:text-gray-200"
                         aria-labelledby="apple-imac-27-dropdown-button"
                       >
-                        <li>
-                          <button
-                            onClick={() => handleAssignTeamMember(lead)}
-                            className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Plus className="w-5 h-5" />
-                            <span>Assign Team</span>
-                          </button>
-                        </li>
-                        <li>
-                          <button
-                            onClick={() => handleUpdateTeamMember(lead)}
-                            className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Pencil className="w-4 h-4" />
-                            <span>Update Lead Status</span>
-                          </button>
-                        </li>
-                        <li>
-                          <button
-                            onClick={() => handleScheduleAppointment(lead)}
-                            className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <CalendarDays className="w-4 h-4" />
-                            <span>Schedule Appointment</span>
-                          </button>
-                        </li>
+                        {isWriteAccess && (
+                          <>
+                            <li>
+                              <button
+                                onClick={() => handleAssignTeamMember(lead)}
+                                className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                <Plus className="w-5 h-5" />
+                                <span>Assign Team</span>
+                              </button>
+                            </li>
+                            <li>
+                              <button
+                                onClick={() => handleUpdateTeamMember(lead)}
+                                className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                <Pencil className="w-4 h-4" />
+                                <span>Update Lead Status</span>
+                              </button>
+                            </li>
+                            <li>
+                              <button
+                                onClick={() => handleScheduleAppointment(lead)}
+                                className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                <CalendarDays className="w-4 h-4" />
+                                <span>Schedule Appointment</span>
+                              </button>
+                            </li>
+                          </>
+                        )}
+
                         <li>
                           <button
                             type="button"

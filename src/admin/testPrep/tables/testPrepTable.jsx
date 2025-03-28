@@ -15,7 +15,7 @@ const TestPrepTable = ({
   handleDelete,
 }) => {
   const { testPreps, totalPages } = useSelector((state) => state.testPreps);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -132,25 +132,26 @@ const TestPrepTable = ({
                               <span>View Details</span>
                             </button>
                           </li>
-
-                          <li>
-                            <button
-                              type="button"
-                              onClick={() => {
-                                setDeleteId(test._id);
-                                setIsModalOpen(!isModalOpen);
-                                //setDropdownVisible(null);
-                              }}
-                              /* onClick={() => {
-                              handleDelete(test._id);
-                              setDropdownVisible(null);
-                            }} */
-                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              <Trash2 className="w-4 h-4" />
-                              <span>Delete</span>
-                            </button>
-                          </li>
+                          {isWriteAccess && (
+                            <li>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setDeleteId(test._id);
+                                  setIsModalOpen(!isModalOpen);
+                                  //setDropdownVisible(null);
+                                }}
+                                /* onClick={() => {
+                                handleDelete(test._id);
+                                setDropdownVisible(null);
+                              }} */
+                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                <Trash2 className="w-4 h-4" />
+                                <span>Delete</span>
+                              </button>
+                            </li>
+                          )}
                         </ul>
                       </div>
                     )}

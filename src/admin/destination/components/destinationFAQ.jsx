@@ -13,6 +13,7 @@ function DestinationFAQ({ onEdit, onUpdate }) {
   const handleEditClick = (faq) => {
     onEdit(faq);
   };
+  const { isWriteAccess } = useSelector((state) => state.auth);
 
   function handleDeleteClick(id) {
     console.log("Delete onDeleteFaq : " + id);
@@ -44,24 +45,26 @@ function DestinationFAQ({ onEdit, onUpdate }) {
               <tr className="">
                 <td>{data.answer}</td>
                 <td className="text-center w-[100px]">
-                  <div className="flex items-center justify-center space-x-5">
-                    <img
-                      src={pencil}
-                      alt="Edit"
-                      className="w-5 h-5 cursor-pointer"
-                      onClick={() => handleEditClick(data)}
-                    />
-                    <img
-                      src={trash}
-                      alt="Delete"
-                      className="w-5 h-5 cursor-pointer"
-                      // onClick={() => handleDeleteClick(data?._id)}
-                      onClick={() => {
-                        setDeleteId(data?._id);
-                        setIsModalOpen(!isModalOpen);
-                      }}
-                    />
-                  </div>
+                  {isWriteAccess && (
+                    <div className="flex items-center justify-center space-x-5">
+                      <img
+                        src={pencil}
+                        alt="Edit"
+                        className="w-5 h-5 cursor-pointer"
+                        onClick={() => handleEditClick(data)}
+                      />
+                      <img
+                        src={trash}
+                        alt="Delete"
+                        className="w-5 h-5 cursor-pointer"
+                        // onClick={() => handleDeleteClick(data?._id)}
+                        onClick={() => {
+                          setDeleteId(data?._id);
+                          setIsModalOpen(!isModalOpen);
+                        }}
+                      />
+                    </div>
+                  )}
                 </td>
               </tr>
             </tbody>

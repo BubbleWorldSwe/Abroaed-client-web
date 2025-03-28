@@ -15,7 +15,7 @@ import { AddButton } from "../../../commons/components/buttons/addButton";
 const TestPrep = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const { testPreps, totalPages } = useSelector((state) => state.testPreps);
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -137,7 +137,12 @@ const TestPrep = () => {
                     <img src={filter_list} alt="filterIcon" />
                   </div>
                 </div>
-                <AddButton onClick={handleOpenAddModal} label={"New Product"} />
+                {isWriteAccess && (
+                  <AddButton
+                    onClick={handleOpenAddModal}
+                    label={"New Product"}
+                  />
+                )}
               </div>
             </div>
             <div className="flex-grow mt-1 overflow-auto bg-white dark:bg-gray-800 px-5">

@@ -8,7 +8,7 @@ function FAQsCard({ onEdit, onUpdate }) {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const handleEditClick = (faq) => {
     onEdit(faq);
   };
@@ -50,25 +50,27 @@ function FAQsCard({ onEdit, onUpdate }) {
                   {data.answer}
                 </td>
                 <td className="text-center w-[100px]">
-                  <div className="flex items-center justify-center space-x-5">
-                    <img
-                      src={pencil}
-                      alt="Edit"
-                      className="w-5 h-5 cursor-pointer"
-                      onClick={() => handleEditClick(data)}
-                    />
-                    <img
-                      src={trash}
-                      alt="Delete"
-                      className="w-5 h-5 cursor-pointer"
-                      //  onClick={() => handleDeleteClick(data?._id)}
+                  {isWriteAccess && (
+                    <div className="flex items-center justify-center space-x-5">
+                      <img
+                        src={pencil}
+                        alt="Edit"
+                        className="w-5 h-5 cursor-pointer"
+                        onClick={() => handleEditClick(data)}
+                      />
+                      <img
+                        src={trash}
+                        alt="Delete"
+                        className="w-5 h-5 cursor-pointer"
+                        //  onClick={() => handleDeleteClick(data?._id)}
 
-                      onClick={() => {
-                        setDeleteId(data?._id);
-                        setIsModalOpen(!isModalOpen);
-                      }}
-                    />
-                  </div>
+                        onClick={() => {
+                          setDeleteId(data?._id);
+                          setIsModalOpen(!isModalOpen);
+                        }}
+                      />
+                    </div>
+                  )}
                 </td>
               </tr>
             </tbody>

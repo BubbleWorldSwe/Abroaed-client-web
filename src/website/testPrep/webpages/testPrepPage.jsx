@@ -26,7 +26,7 @@ import { setLeadSubscribeBatch } from "../../../api/leadsApi";
 
 function TestPrepLayout() {
   const { id } = useParams();
-  const { user } = useSelector((state) => state.auth);
+  const { student } = useSelector((state) => state.auth);
   // const { state: destinationDetails } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const [testPrepsDetails, setTestPrepsDetails] = useState(null);
@@ -72,9 +72,9 @@ function TestPrepLayout() {
         // toast.success("Payment Successful!");
       },
       prefill: {
-        name: `${user.firstName} ${user.lastName}`,
-        email: user.email,
-        contact: user.mobile,
+        name: `${student.firstName} ${student.lastName}`,
+        email: student.email,
+        contact: student.mobile,
       },
       theme: {
         color: "#e2a303",
@@ -87,9 +87,8 @@ function TestPrepLayout() {
 
   async function subscribeBatches(data, paymentId) {
     try {
-      console.log(user._id, "test_prep", id, data._id, paymentId);
       const prep = await setLeadSubscribeBatch(
-        user._id,
+        student._id,
         "test_prep",
         id,
         data._id,

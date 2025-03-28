@@ -19,6 +19,9 @@ export const ADMIN_LOGIN_FAILURE = "ADMIN_LOGIN_FAILURE";
 
 export const LOGOUT = "LOGOUT";
 
+export const STUDENT_LOGOUT = "STUDENT_LOGOUT";
+export const ADMIN_LOGOUT = "ADMIN_LOGOUT";
+
 export const studentLoginRequest = (credentials) => ({
   type: STUDENT_LOGIN_REQUEST,
   payload: credentials,
@@ -39,7 +42,7 @@ export const studentSignUpRequest = (credentials) => ({
   payload: credentials,
 });
 
-export const studentSignUpSuccess = (user) => ({
+export const studentSignUpSuccess = ({ user }) => ({
   type: STUDENT_SIGNUP_SUCCESS,
   payload: user,
 });
@@ -81,4 +84,12 @@ export const adminLoginFailure = (error) => ({
 
 export const logout = () => ({
   type: LOGOUT,
+});
+
+export const studentLogout = () => ({
+  type: STUDENT_LOGOUT,
+});
+
+export const adminLogout = () => ({
+  type: ADMIN_LOGOUT,
 });

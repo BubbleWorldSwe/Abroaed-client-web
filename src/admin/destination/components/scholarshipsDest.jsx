@@ -8,7 +8,7 @@ function ScholarshipsDest({ onEdit, onUpdate }) {
   const handleEditClick = (data) => {
     onEdit(data);
   };
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -45,7 +45,7 @@ function ScholarshipsDest({ onEdit, onUpdate }) {
                 <tr>
                   <th className="px-4 py-3">Scholarship Name</th>
                   <th className="px-4 py-3">Link</th>
-                  <th className="px-4 py-3"></th>
+                  {isWriteAccess && <th className="px-4 py-3"></th>}
                 </tr>
               </thead>
               <tbody>
@@ -67,26 +67,28 @@ function ScholarshipsDest({ onEdit, onUpdate }) {
                         </a>
                       </td>
 
-                      <td className="text-center w-[100px]">
-                        <div className="flex items-center justify-center space-x-5">
-                          <img
-                            src={pencil}
-                            alt="Edit"
-                            className="w-5 h-5 cursor-pointer"
-                            onClick={() => handleEditClick(data)}
-                          />
-                          <img
-                            src={trash}
-                            alt="Delete"
-                            className="w-5 h-5 cursor-pointer"
-                            // onClick={() => handleDeleteClick(data?._id)}
-                            onClick={() => {
-                              setDeleteId(data?._id);
-                              setIsModalOpen(!isModalOpen);
-                            }}
-                          />
-                        </div>
-                      </td>
+                      {isWriteAccess && (
+                        <td className="text-center w-[100px]">
+                          <div className="flex items-center justify-center space-x-5">
+                            <img
+                              src={pencil}
+                              alt="Edit"
+                              className="w-5 h-5 cursor-pointer"
+                              onClick={() => handleEditClick(data)}
+                            />
+                            <img
+                              src={trash}
+                              alt="Delete"
+                              className="w-5 h-5 cursor-pointer"
+                              // onClick={() => handleDeleteClick(data?._id)}
+                              onClick={() => {
+                                setDeleteId(data?._id);
+                                setIsModalOpen(!isModalOpen);
+                              }}
+                            />
+                          </div>
+                        </td>
+                      )}
                     </tr>
                   ))
                 ) : (

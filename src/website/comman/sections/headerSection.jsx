@@ -8,7 +8,7 @@ import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
 import TestPrepNavModal from "../modals/testPrepNavModal";
 import LanguageNavModal from "../modals/languageNavModal";
-import { logout } from "../../../redux/actions/authActions";
+import { studentLogout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import ProfileModal from "../modals/profileModal";
 import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
@@ -32,8 +32,6 @@ function Header({ isHeaderBgWhite = false }) {
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
 
-  const {} = useSelector((state) => state.auth);
-
   // State lifted up from ExploreCollegesNavItemModal
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [states, setStates] = useState([]);
@@ -42,16 +40,13 @@ function Header({ isHeaderBgWhite = false }) {
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { token, user, role } = useSelector((state) => state.auth);
-
-  // console.log(token, role);
+  const { studentToken } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
-    dispatch(logout(null));
-    // localStorage.removeItem("token", token);
+    dispatch(studentLogout(null));
     navigate("/home");
   };
 
@@ -81,6 +76,10 @@ function Header({ isHeaderBgWhite = false }) {
           ).values(),
         ];
         setStates(uniqueStates);
+      } else {
+        setStates([]);
+        setColleges([]);
+        setFilteredColleges([]);
       }
     } catch (error) {
       console.log(error);
@@ -435,7 +434,7 @@ function Header({ isHeaderBgWhite = false }) {
               onMouseLeave={handleMouseLeave}
               // className={ }
             >
-              {role === "Student" && token ? (
+              {studentToken ? (
                 <>
                   <button
                     // onClick={() => navigate("/signin")}

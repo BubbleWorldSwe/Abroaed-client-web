@@ -1,18 +1,20 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/actions/authActions";
+import { useDispatch } from "react-redux";
+import { adminLogout } from "../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
 
   const handleSignOut = () => {
-    dispatch(logout(null));
+    dispatch(adminLogout(null));
     // localStorage.removeItem("token", token);
     navigate("/admin/signin");
   };
+
+  let currentLocation = window.location;
+  console.log(currentLocation.origin);
   return (
     <div className="h-screen flex flex-col p-2">
       {/* Adjust padding and spacing */}

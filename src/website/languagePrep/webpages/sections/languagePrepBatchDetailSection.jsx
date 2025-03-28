@@ -12,7 +12,7 @@ function LanguagePrepBatchDetaileSection({
   disabledPayment,
 }) {
   const [openModal, setOpenModal] = useState(false);
-  const { token, role } = useSelector((state) => state.auth);
+  const { studentToken } = useSelector((state) => state.auth);
 
   const handleEnroll = () => {
     setOpenModal(true);
@@ -53,9 +53,7 @@ function LanguagePrepBatchDetaileSection({
                   </div>
                   <button
                     onClick={() =>
-                      token && role === "Student"
-                        ? onClickPayment(data)
-                        : setOpenModal(true)
+                      studentToken ? onClickPayment(data) : setOpenModal(true)
                     }
                     className={`bg-yellow-primary hover:bg-primary-500 focus:ring-4 focus:ring-primary-200 font-semibold rounded-lg text-[22px] px-5 py-2.5 text-center`}
                   >

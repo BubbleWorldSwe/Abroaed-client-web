@@ -16,7 +16,7 @@ const StudentApplication = ({
   onOpenStatusModal,
 }) => {
   const [activeTab, setActiveTab] = useState(0);
-
+  const { isWriteAccess } = useSelector((state) => state.auth);
   const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
@@ -66,13 +66,15 @@ const StudentApplication = ({
         {/* Header with title and pencil icon button */}
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Applications</h2>
-          <button
-            onClick={onOpen}
-            className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
-          >
-            <Plus size={15} />
-            Start a New Application
-          </button>
+          {isWriteAccess && (
+            <button
+              onClick={onOpen}
+              className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
+            >
+              <Plus size={15} />
+              Start a New Application
+            </button>
+          )}
         </div>
         <div className="flex gap-4 overflow-auto max-h-screen">
           {studentApplication.map((tab, index) => {
@@ -83,10 +85,11 @@ const StudentApplication = ({
               >
                 <div className="" role="">
                   <button
-                    className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${activeTab === index
-                      ? "text-black border-b-4 border-blue-500"
-                      : "text-gray-500 hover:text-gray-600 hover:border-gray-300"
-                      }`}
+                    className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${
+                      activeTab === index
+                        ? "text-black border-b-4 border-blue-500"
+                        : "text-gray-500 hover:text-gray-600 hover:border-gray-300"
+                    }`}
                     onClick={() => handleTabClick(index)}
                     role="tab"
                     aria-controls={`styled-${tab?.title
@@ -95,8 +98,11 @@ const StudentApplication = ({
                     aria-selected={activeTab === index}
                   >
                     <span
-                      className={`px-2 py-1 rounded-full ${tabColors[tab.title] || "bg-gray-300"
-                        } text-${tab.title === "Rejected" ? "white" : 'gray-primary'}`}
+                      className={`px-2 py-1 rounded-full ${
+                        tabColors[tab.title] || "bg-gray-300"
+                      } text-${
+                        tab.title === "Rejected" ? "white" : "gray-primary"
+                      }`}
                     >
                       {tab.title}
                     </span>

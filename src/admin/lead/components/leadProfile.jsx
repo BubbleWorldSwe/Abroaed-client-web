@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 const LeadProfile = () => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
+  const { isWriteAccess } = useSelector((state) => state.auth);
   return (
     <div className="flex justify-between ">
       <div className="flex items-center gap-4">
@@ -21,12 +22,14 @@ const LeadProfile = () => {
           </div>
         </div>
       </div>
-      <div className="my-auto ">
-        <button className="flex items-center gap-2 bg-[#C80E41] text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none">
-          <Trash2 className="w-4 h-4" />
-          <span>Delete</span>
-        </button>
-      </div>
+      {isWriteAccess && (
+        <div className="my-auto ">
+          <button className="flex items-center gap-2 bg-[#C80E41] text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none">
+            <Trash2 className="w-4 h-4" />
+            <span>Delete</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
