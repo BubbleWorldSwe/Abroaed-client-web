@@ -55,7 +55,7 @@ function Header({ isHeaderBgWhite = false }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolling(window.scrollY > window.innerHeight * 0.65);
+      setScrolling(window.scrollY > window.innerHeight * 0.4);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -121,16 +121,27 @@ function Header({ isHeaderBgWhite = false }) {
     }, // X (formerly Twitter)
     // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
   ];
+  const menuItems = [
+    { key: "whyAbroad", label: "Why ABROAED?", component: WhyAbroaedNavModal },
+    { key: "abroaedPlus", label: <>ABROAED<sup>+</sup></>, link: "/abroaedPlus" },
+    { key: "destinations", label: "Destinations", component: DestinationNavItemModal },
+    { key: "accomodation", label: "Accommodation", link: "/accomodation" },
+    { key: "testPrep", label: "ELT Prep", component: TestPrepNavModal, data: allTestPreps },
+    { key: "languagePrep", label: "Language Prep", component: LanguageNavModal, data: allLanguagePreps },
+    { key: "finance", label: "Finance", link: "/finance" },
+    { key: "pathways", label: "Pathways", link: "/pathways" },
+    { key: "leaguageOfExcellence", label: "League of Excellence", link: "/leaguageOfExcellence" },
+  ];
 
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-white text-[#52525B] shadow-md"
-        : "bg-black text-white bg-opacity-5"
+        ? "bg-black  shadow-md"
+        : "bg-black text-white bg-opacity-10"
         }`}
     >
       <nav>
-        <div
+        {/* <div
           className={`py-3 flex gap-5 relative  justify-center items-center font-inter text-sm bg-gray-primary text-white`}
         >
           <p className="">GET IN TOUCH WITH US TODAY !</p>
@@ -142,36 +153,35 @@ function Header({ isHeaderBgWhite = false }) {
               Book Counselling Now
             </button>
           </div>
-          <div className="flex absolute right-5  md:justify-end space-x-3 mt-2">
-            {socialLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                className=" text-white hover:text-gray-300 rounded-full"
-                aria-label="Social Link"
-                target="_blank"
-              >
-                {link.icon}
-              </a>
-            ))}
-          </div>
+        <div className="flex absolute right-5  md:justify-end space-x-3 mt-2">
+          {socialLinks.map((link, index) => (
+            <a
+              key={index}
+              href={link.url}
+              className=" text-white hover:text-gray-300 rounded-full"
+              aria-label="Social Link"
+              target="_blank"
+            >
+              {link.icon}
+            </a>
+          ))}
         </div>
-        <nav className="flex items-center justify-between  md:justify-center   w-full px-12 py-4">
+      </div> */}
+        <nav className="flex items-center justify-between  md:justify-center   w-full px-12">
           <div className="flex  basis items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                  }`}
+                className={`font-cinzel tracking-[0.15em] text-[22px] font-extrabold leading-[40px] text-white`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
           </div>
-          <div className="flex-grow basis-[90%]   hidden md:flex  justify-center">
-            <div className="flex items-center justify-center ">
-              <ul className="flex items-center space-x-3 justify-center text-sm font-medium">
+          <div className="flex-grow basis-[90%] hidden md:flex justify-center ">
+            <div className="flex items-center justify-center">
+              <ul className={`flex items-center space-x-3 text-white   justify-center text-[12px] font-medium`}>
                 <li
                   onMouseEnter={() => handleMouseEnter("exploreColleges")}
                   onMouseLeave={handleMouseLeave}
@@ -179,12 +189,8 @@ function Header({ isHeaderBgWhite = false }) {
                    ${activeDropdown === "exploreColleges" ? "" : ""}`}
                 >
                   <a
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-                     ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                      }
-                     after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
+                    className={`  px-1 relative transition-colors duration-300
+                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[3.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
                      ${activeDropdown === "exploreColleges"
                         ? "after:opacity-30"
@@ -193,7 +199,6 @@ function Header({ isHeaderBgWhite = false }) {
                   >
                     Explore Colleges
                   </a>
-
                   {activeDropdown === "exploreColleges" && (
                     <div className="relative">
                       <ExploreCollegesNavItemModal
@@ -210,213 +215,33 @@ function Header({ isHeaderBgWhite = false }) {
                     </div>
                   )}
                 </li>
-                <li
-                  onMouseEnter={() => handleMouseEnter("whyAbroad")}
-                  onMouseLeave={handleMouseLeave}
-                  className={`relative cursor-pointer group 
-    ${activeDropdown === "whyAbroad" ? "" : ""}`}
-                >
-                  <a
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-    ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
-    after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-    after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-    ${activeDropdown === "whyAbroad" ? "after:opacity-30" : ""}`}
+                {menuItems.map(({ key, label, link, component: Component, data }) => (
+                  <li
+                    key={key}
+                    onMouseEnter={() => handleMouseEnter(key)}
+                    onMouseLeave={handleMouseLeave}
+                    className="relative cursor-pointer group"
                   >
-                    Why ABROAED?
-                  </a>
-                  {activeDropdown === "whyAbroad" && (
-                    <div className="relative">
-                      <WhyAbroaedNavModal
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                      />
-                    </div>
-                  )}
-                </li>
-
-                <li
-                  onMouseEnter={() => handleMouseEnter("abroaedPlus")}
-                  onMouseLeave={handleMouseLeave}
-                  className={`relative cursor-pointer group `}
-                >
-                  <a
-                    href="/abroaedPlus"
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-    ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
-    after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-    after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-    ${activeDropdown === "abroaedPlus" ? "after:opacity-30" : ""}`}
-                  >
-                    ABROAED +
-                  </a>
-                </li>
-                <li
-                  onMouseEnter={() => handleMouseEnter("destinations")}
-                  onMouseLeave={handleMouseLeave}
-                  className="relative cursor-pointer"
-                >
-                  <a
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                      }
-                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "destinations"
-                        ? "after:opacity-30"
-                        : ""
-                      }`}
-                  >
-                    Destinations
-                  </a>
-                  {activeDropdown === "destinations" && (
-                    <div className="relative">
-                      <DestinationNavItemModal
-                        //  menuItems={destinationMenuItems}
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                      />
-                    </div>
-                  )}
-                </li>
-                <li
-                  onMouseEnter={() => handleMouseEnter("accomodation")}
-                  onMouseLeave={handleMouseLeave}
-                  className="relative cursor-pointer"
-                >
-                  <a
-                    href="/accomodation"
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                      }
-                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "accomodation"
-                        ? "after:opacity-30"
-                        : ""
-                      }`}
-                  >
-                    Accommodation
-                  </a>
-                </li>
-                <li
-                  onMouseEnter={() => handleMouseEnter("testPrep")}
-                  onMouseLeave={handleMouseLeave}
-                  className="relative cursor-pointer"
-                >
-                  <a
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                      }
-                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "testPrep" ? "after:opacity-30" : ""
-                      }`}
-                  >
-                    ELT Prep
-                  </a>
-                  {activeDropdown === "testPrep" && (
-                    <div className="relative">
-                      <TestPrepNavModal
-                        menuItems={allTestPreps.map((data) => ({
-                          title: data?.productName,
-                          _id: data._id,
-                        }))}
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                      />
-                    </div>
-                  )}
-                </li>
-                <li
-                  onMouseEnter={() => handleMouseEnter("languagePrep")}
-                  onMouseLeave={handleMouseLeave}
-                  className="relative cursor-pointer"
-                >
-                  <a
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                      }
-                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "languagePrep"
-                        ? "after:opacity-30"
-                        : ""
-                      }`}
-                  >
-                    Language Prep
-                  </a>
-                  {activeDropdown === "languagePrep" && (
-                    <div className="relative">
-                      <LanguageNavModal
-                        menuItems={allLanguagePreps.map((data) => ({
-                          title: data?.productName,
-                          _id: data._id,
-                        }))}
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                      />
-                    </div>
-                  )}
-                </li>
-
-                <li
-                  onMouseEnter={() => handleMouseEnter("finance")}
-                  onMouseLeave={handleMouseLeave}
-                  className={`relative cursor-pointer group `}
-                >
-                  <a
-                    href="/finance"
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-    ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
-    after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-    after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-    ${activeDropdown === "finance" ? "after:opacity-30" : ""}`}
-                  >
-                    Finance
-                  </a>
-                </li>
-                <li
-                  onMouseEnter={() => handleMouseEnter("pathways")}
-                  onMouseLeave={handleMouseLeave}
-                  className={`relative cursor-pointer group `}
-                >
-                  <a
-                    href="/pathways"
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-    ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
-    after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-    after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-    ${activeDropdown === "pathways" ? "after:opacity-30" : ""}`}
-                  >
-                    Pathways
-                  </a>
-                </li>
-
-                <li
-                  onMouseEnter={() => handleMouseEnter("leaguageOfExcellence")}
-                  onMouseLeave={handleMouseLeave}
-                  className={`relative cursor-pointer group `}
-                >
-                  <a
-                    href="/leaguageOfExcellence"
-                    className={`font-semibold  px-1 relative transition-colors duration-300
-    ${scrolling || isHeaderBgWhite ? "text-[#52525B]" : "text-white"}
-    after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
-    after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-    ${activeDropdown === "leaguageOfExcellence" ? "after:opacity-30" : ""}`}
-                  >
-                    League of Excellence
-                  </a>
-                </li>
+                    <a
+                      href={link || "#"}
+                      className={`px-1 relative transition-colors duration-300
+                after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
+                after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
+                ${activeDropdown === key ? "after:opacity-30" : ""}`}
+                    >
+                      {label}
+                    </a>
+                    {activeDropdown === key && Component && (
+                      <div className="relative">
+                        <Component
+                          menuItems={data?.map(({ productName, _id }) => ({ title: productName, _id }))}
+                          handleMouseEnter={handleMouseEnter}
+                          handleMouseLeave={handleMouseLeave}
+                        />
+                      </div>
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -430,7 +255,7 @@ function Header({ isHeaderBgWhite = false }) {
                 <>
                   <button
                     // onClick={() => navigate("/signin")}
-                    className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                    className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
                   >
                     Hello, User
                   </button>
@@ -447,7 +272,7 @@ function Header({ isHeaderBgWhite = false }) {
               ) : (
                 <button
                   onClick={() => navigate("/signin")}
-                  className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
                 >
                   Login
                 </button>
@@ -465,7 +290,7 @@ function Header({ isHeaderBgWhite = false }) {
           </button>
         </nav>
       </nav>
-    </header>
+    </header >
   );
 }
 

@@ -11,7 +11,7 @@ const LanguageNavModal = ({
 
   return (
     <div
-      className="absolute left-0 top-full w-max py-5  z-50"
+      className="absolute left-0 top-full w-max py-[5px]  z-50"
       onMouseEnter={() => handleMouseEnter("languagePrep")}
       onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
     >
@@ -31,9 +31,8 @@ const LanguageNavModal = ({
                 {data?.title}
               </a>
               <ChevronRightIcon
-                className={`w-5 h-5   ${
-                  hoveredIndex === index ? " opacity-100" : "opacity-0"
-                }`}
+                className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
+                  }`}
               />
             </div>
           </li>

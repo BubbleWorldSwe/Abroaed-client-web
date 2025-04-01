@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const TestimonialsCard = ({ data }) => {
   return (
     <div className="max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -23,7 +24,7 @@ const TestimonialsCard = ({ data }) => {
         <div className="font-medium dark:text-white">
           <div className="text-lg font-body">Jese Leos</div>
           <div className="text-sm font-semibold text-gray-500 dark:text-gray-400">
-            Student Subscription Name
+            Arbaz
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import { ChevronRight } from "lucide-react";
 import UniversityCard from "../components/universityCard";
 import Loader from "../components/loader";
+import Flag from "react-world-flags";
 
 const ExploreCollegesNavItemModal = ({
   allDestinations,
@@ -14,24 +15,23 @@ const ExploreCollegesNavItemModal = ({
   handleStateClick,
 }) => {
   return (
-    <div className="absolute left-0 transform top-full w-[60rem] min-w-max h-[60vh] py-5 z-50">
+    <div className="absolute left-0 transform top-full w-[60rem] min-w-max h-[60vh] py-[5px] z-50">
       <div className="bg-white border border-gray-100 shadow-lg rounded-b-lg flex mt-2  overflow-hidden">
         {/* Left Sidebar: Destination List */}
-        <div className="p-3 w-1/4 overflow-y-auto text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+        <div className="p-3 min-w-max w-1/4 overflow-y-auto text-gray-900 bg-gray-300 dark:text-white dark:bg-gray-800">
           <h3 className="mb-4 text-lg font-bold">Destinations</h3>
-          <ul>
+          <ul className="flex flex-col gap-[2px]">
             {allDestinations.map((destination) => (
-              <li key={destination._id}>
+              <li key={destination._id} >
                 <button
                   onClick={() => handleDestinationClick(destination)}
-                  className={`flex justify-between whitespace-nowrap p-3 w-full text-left rounded-lg ${
-                    selectedDestination?._id === destination._id
-                      ? "bg-gray-200 dark:bg-gray-600"
-                      : "hover:bg-gray-50 dark:hover:bg-gray-700"
-                  }`}
+                  className={`flex  justify-between whitespace-nowrap p-3 w-full text-left rounded-lg ${selectedDestination?._id === destination._id
+                    ? "bg-gray-100 dark:bg-gray-600"
+                    : "hover:bg-gray-50 dark:hover:bg-gray-700"
+                    }`}
                 >
                   <span className="font-semibold text-base">
-                    {`${destination.countryId.emoji} ${destination.countryId.name}`}
+                    <Flag width={20} code={destination?.countryId?.code} style={{ display: 'inline-block', marginRight: '10px' }} />{` ${destination.countryId.name}`}
                   </span>
                   <ChevronRight />
                 </button>
@@ -65,11 +65,10 @@ const ExploreCollegesNavItemModal = ({
                   <button
                     key={state._id}
                     onClick={() => handleStateClick(state)}
-                    className={`px-4 py-2 border rounded-full font-semibold ${
-                      selectedState?._id === state._id
-                        ? "bg-gray-800 text-white"
-                        : "bg-white text-gray-700"
-                    }`}
+                    className={`px-4 py-2 border rounded-full font-semibold ${selectedState?._id === state._id
+                      ? "bg-gray-800 text-white"
+                      : "bg-white text-gray-700"
+                      }`}
                   >
                     {state.name}
                   </button>

@@ -112,7 +112,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             </p>
             <div className="flex justify-center  lg:justify-start ">
               <img
-                className="rounded-lg w-full h-[45vh] object-cover"
+                className="rounded-lg w-full h-[35vh] object-cover"
                 src={homeQuery}
                 alt="Counselling session"
               />
@@ -130,7 +130,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
 
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start items-end">
-            <div className="flex flex-col items-start w-full rounded-lg  md:p-8 mt-16 ">
+            <div className="flex flex-col items-start w-full rounded-lg   ">
               {/* Tabs Row */}
               <div className="mb-3">
                 <h2

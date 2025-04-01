@@ -11,7 +11,7 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
 
   return (
     <div
-      className="absolute left-0 top-full w-max py-5  z-50"
+      className="absolute left-0 top-full w-max py-[5px]  z-50"
       onMouseEnter={() => handleMouseEnter("destinations")}
     >
       <ul className="space-2 grid grid-cols-2 shadow-lg w-[30vw] gap-3  rounded-b-lg mt-2 bg-white">
@@ -34,9 +34,8 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
               </a>
             </div>
             <ChevronRightIcon
-              className={`w-5 h-5   ${
-                hoveredIndex === index ? " opacity-100" : "opacity-0"
-              }`}
+              className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
+                }`}
             />
           </li>
         ))}

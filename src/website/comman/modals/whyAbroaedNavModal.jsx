@@ -14,7 +14,7 @@ const WhyAbroaedNavModal = ({ handleMouseEnter,
 
     return (
         <div
-            className="absolute left-0 top-full w-max py-5  z-50"
+            className="absolute left-0 top-full w-max py-[5px]  z-50"
             onMouseEnter={() => handleMouseEnter("whyAbroad")}
             onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
         >

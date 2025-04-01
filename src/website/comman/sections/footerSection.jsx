@@ -49,7 +49,8 @@ const offices = [
   {
     location: "Delhi Office",
     address: "B11, Block B, Qutab Institutional Area, New Delhi, Delhi 110016",
-    phone: " +91 73033 68820,+91 73033 68819",
+    phone1: " +91 73033 68820",
+    phone2: " +91 73033 68819",
     email: "info@abroaed.com ",
   },
 ];
@@ -60,7 +61,7 @@ function Footer() {
   // const { allLanguagePreps } = useSelector((state) => state.languagePreps);
   return (
     <div>
-      <footer className="bg-black text-white py-10">
+      <footer className="bg-gray-primary text-white py-10">
         <div className="container mx-auto px-10 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
@@ -145,7 +146,8 @@ function Footer() {
                   <div key={index}>
                     <h4 className="font-semibold text-lg">{office.location}</h4>
                     <p className="text-sm">{office.address}</p>
-                    <p>📞 {office.phone}</p>
+                    <p>📞 {office.phone1}</p>
+                    <p>📞 {office.phone2}</p>
                     {office.email && <p>📧 {office.email}</p>}
                   </div>
                 ))}

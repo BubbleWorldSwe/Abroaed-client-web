@@ -88,7 +88,7 @@ const ContactUsForm = ({
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
             <h1
-              className={`text-[24px] md:text-[45px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}
+              className={`text-[24px] md:text-[57px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}
             >
               {title || `Book Your Counselling Session Today!`}
             </h1>
