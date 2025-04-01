@@ -20,6 +20,14 @@ export const courseDomains = [
   "Science",
 ];
 
+export const paymentMode = [
+  "Credit Card",
+  "Debit Card",
+  "Cash",
+  "UPI",
+  "Bank Transfer",
+];
+
 export const languages = [
   "English",
   "Hindi",
@@ -64,7 +72,7 @@ export const servicerType = [
 
 export const planType = ["Basic", "Advance", "Elite"];
 
-export const razorpayKey = "rzp_test_wt3VZ7nDSv5COS";
+export const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
 
 export const source = {
   home: "Home",
@@ -114,4 +122,23 @@ export const destinationMenuItems = [
   { name: "Netherlands", flag: "🇳🇱", link: "/netherlands" },
   { name: "Spain", flag: "🇪🇸", link: "/spain" },
   { name: "New Zealand", flag: "🇳🇿", link: "/newzealand" },
+];
+
+export const destinationSequence = [
+  "United Kingdom",
+  "New Zealand",
+  "Spain",
+  "Australia",
+  "Netherlands",
+  "Poland",
+  "United Arab Emirates",
+  "Ireland",
+  "Germany",
+  "Italy",
+  "France",
+  "Canada",
+  "United States",
+  "Japan",
+  "South Korea",
+  "Czech Republic",
 ];

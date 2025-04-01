@@ -14,6 +14,18 @@ import {
   STUDENT_SIGNUP_REQUEST,
   ADMIN_LOGOUT,
   STUDENT_LOGOUT,
+  STUDENT_UPDATE_PROFILE_REQUEST,
+  STUDENT_UPDATE_PROFILE_SUCCESS,
+  STUDENT_UPDATE_PROFILE_FAILURE,
+  ADMIN_UPDATE_PROFILE_REQUEST,
+  ADMIN_UPDATE_PROFILE_SUCCESS,
+  ADMIN_UPDATE_PROFILE_FAILURE,
+  STUDENT_GET_PROFILE_REQUEST,
+  STUDENT_GET_PROFILE_SUCCESS,
+  STUDENT_GET_PROFILE_FAILURE,
+  ADMIN_GET_PROFILE_REQUEST,
+  ADMIN_GET_PROFILE_SUCCESS,
+  ADMIN_GET_PROFILE_FAILURE,
 } from "../actions/authActions";
 
 import storage from "redux-persist/lib/storage";
@@ -30,6 +42,8 @@ const initialState = {
   student: null,
   studentToken: null,
   isWriteAccess: null,
+  isLoggedInAdmin: null,
+  isLoggedInStudent: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -37,17 +51,20 @@ export const authReducer = (state = initialState, action) => {
     case STUDENT_LOGIN_REQUEST:
     case STUDENT_SIGNUP_REQUEST:
     case STUDENT_UPDATE_PASSWORD_REQUEST:
+    case STUDENT_UPDATE_PROFILE_REQUEST:
     case ADMIN_LOGIN_REQUEST:
+    case ADMIN_UPDATE_PROFILE_REQUEST:
+    case STUDENT_GET_PROFILE_REQUEST:
+    case ADMIN_GET_PROFILE_REQUEST:
       return { ...state, loading: true, error: null };
 
     case STUDENT_LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
-
         studentToken: action.payload.token,
         student: action.payload.user,
-        //role: "Student",
+        isLoggedInStudent: true,
       };
 
     case STUDENT_SIGNUP_SUCCESS:
@@ -60,6 +77,19 @@ export const authReducer = (state = initialState, action) => {
     case STUDENT_UPDATE_PASSWORD_SUCCESS:
       return { ...state, loading: false, message: action.payload };
 
+    case STUDENT_UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        student: action.payload,
+      };
+
+    case STUDENT_GET_PROFILE_SUCCESS:
+      return { ...state, loading: false, studentProfile: action.payload };
+
+    case ADMIN_GET_PROFILE_SUCCESS:
+      return { ...state, loading: false, adminProfile: action.payload };
+
     case ADMIN_LOGIN_SUCCESS:
       return {
         ...state,
@@ -68,12 +98,24 @@ export const authReducer = (state = initialState, action) => {
         role: action.payload?.user?.roleId?.roleName,
         admin: action.payload.user,
         isWriteAccess: action.payload?.user?.isWriteAccess,
+        isLoggedInAdmin: true,
+      };
+
+    case ADMIN_UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        admin: action.payload,
       };
 
     case STUDENT_LOGIN_FAILURE:
     case STUDENT_SIGNUP_FAILURE:
     case STUDENT_UPDATE_PASSWORD_FAILURE:
+    case STUDENT_UPDATE_PROFILE_FAILURE:
     case ADMIN_LOGIN_FAILURE:
+    case ADMIN_UPDATE_PROFILE_FAILURE:
+    case STUDENT_GET_PROFILE_FAILURE:
+    case ADMIN_GET_PROFILE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case LOGOUT:
@@ -81,7 +123,12 @@ export const authReducer = (state = initialState, action) => {
       return initialState;
 
     case STUDENT_LOGOUT:
-      return { ...state, student: null, studentToken: null };
+      return {
+        ...state,
+        student: null,
+        studentToken: null,
+        isLoggedInStudent: false,
+      };
 
     case ADMIN_LOGOUT:
       return {
@@ -90,6 +137,7 @@ export const authReducer = (state = initialState, action) => {
         adminToken: null,
         role: null,
         isWriteAccess: null,
+        isLoggedInAdmin: false,
       };
 
     default:

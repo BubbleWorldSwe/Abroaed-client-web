@@ -12,15 +12,13 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
           {/* Content */}
           <div className="relative">
             <div className="py-1">
-              <SectionMainHeader
-                className="mb-2"
-              >
+              <SectionMainHeader className="mb-2">
                 Work Opportunities in {destinationDetails?.countryId?.name}
               </SectionMainHeader>
 
               <PrimaryBodyText
-                className={'mb-8'}
-              // style={{ fontSize: '22px' }}
+                className={"mb-8"}
+                // style={{ fontSize: '22px' }}
               >
                 Studying in the {destinationDetails?.countryId?.name} offers a
                 variety of experiences. The cultural and traditional values of
@@ -30,12 +28,9 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
                 employment in {destinationDetails?.countryId?.name} are as
                 follows:
               </PrimaryBodyText>
-
             </div>
             <div className="py-1">
-              <SecondaryTitle
-                className="mb-2"
-              >
+              <SecondaryTitle className="mb-2">
                 Part-Time Work Opportunities
               </SecondaryTitle>
               <PrimaryBodyText
@@ -44,18 +39,15 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               >
                 {destinationDetails?.workOpportunities?.partTimeStudents}
               </PrimaryBodyText>
-
             </div>
             <div className="py-5">
-              <SecondaryTitle
-                className="mb-2"
-              >
+              <SecondaryTitle className="mb-2">
                 Post Study Work Opportunities
               </SecondaryTitle>
 
               <PrimaryBodyText
-                className={'mb-5'}
-              // style={{ fontSize: '22px' }}
+                className={"mb-5"}
+                // style={{ fontSize: '22px' }}
               >
                 {destinationDetails?.workOpportunities?.postDegreeOpportunity}
               </PrimaryBodyText>
@@ -69,7 +61,9 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
                   >
                     <div className="p-5">
                       <div className="flex justify-between">
-                        <h5 className={`mb-2 text-[28px] font-bold  text-[#e8e8eb]  dark:text-white`}>
+                        <h5
+                          className={`mb-2 text-[28px] font-bold  text-[#e8e8eb]  dark:text-white`}
+                        >
                           {data?.professionName}
                         </h5>
                       </div>
@@ -83,11 +77,12 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
             </div>
             {destinationDetails?.workOpportunities?.additionalInformation && (
               <PrimaryBodyText
-                className={'my-10'}
-              // style={{ fontSize: '1px' }}
-              > {destinationDetails?.workOpportunities?.additionalInformation}
+                className={"my-10"}
+                // style={{ fontSize: '1px' }}
+              >
+                {" "}
+                {destinationDetails?.workOpportunities?.additionalInformation}
               </PrimaryBodyText>
-
             )}
           </div>
         </div>

@@ -10,39 +10,35 @@ import {
   addTransactionRequest,
   deleteTransactionRequest,
   fetchTransactionsRequest,
-  editTransactionRequest,
 } from "../../../redux/actions/transactionActions";
-import { getAllStudents } from "../../../api/studentsApi";
 
 const Transaction = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const { isWriteAccess } = useSelector((state) => state.auth);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editData, setEditData] = useState(null);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
+  const [isDone, setIsDone] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const { transactions, totalPages } = useSelector(
     (state) => state.transactions
   );
 
-  const [students, setStudents] = useState([]);
-
-  const handleOpenModal = (transaction = null) => {
-    console.log(transaction?.user);
-    setEditData({
-      date: transaction?.date,
-      user: transaction?.user?._id,
-      amount: transaction?.amount,
-      mode: transaction?.mode,
-      description: transaction?.description,
-      _id: transaction?._id,
-    });
-    setIsModalOpen(true);
+  const handleOpenAddModal = () => {
+    setIsAddModalOpen(true);
+  };
+  const handleCloseAddModal = () => {
+    setIsAddModalOpen(false);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setEditData(null);
+  const handleAddTransaction = (data) => {
+    //  setIsAddModalOpen(false);
+    console.log("handleAddTransaction");
+    console.log(data);
+
+    dispatch(addTransactionRequest(data));
+    setCurrentPage(1);
+    dispatch(fetchTransactionsRequest(1));
+    handleCloseAddModal();
   };
 
   const handleNextPage = () => {
@@ -73,58 +69,33 @@ const Transaction = () => {
     }
   };
 
-  const handleTransaction = (data) => {
-    if (editData) {
-      const { _id, ...transactionData } = data;
-      dispatch(editTransactionRequest(editData?._id, transactionData));
-    } else {
-      dispatch(addTransactionRequest(data));
-    }
-    setCurrentPage(1);
-    dispatch(fetchTransactionsRequest(1));
-    handleCloseModal();
-  };
-
   const handleDelete = (id) => {
+    console.log("handleDelete " + id);
     dispatch(deleteTransactionRequest(id));
     setCurrentPage(1);
     dispatch(fetchTransactionsRequest(1));
   };
 
-  async function fetchData() {
-    try {
-      const list = await getAllStudents();
-
-      if (list.status === 200) {
-        setStudents(list?.data?.result);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
     if (transactions?.length === 0) {
+      console.log("fetchTransactionsRequest");
       dispatch(fetchTransactionsRequest(currentPage));
     }
-
-    fetchData();
   }, [dispatch, transactions, currentPage]);
 
   return (
     <>
       <AddTransactionModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onSave={handleTransaction}
-        initialData={editData}
-        studentsList={students}
+        isOpen={isAddModalOpen}
+        onClose={handleCloseAddModal}
+        setIsDone={setIsDone}
+        onAddTransaction={handleAddTransaction}
       />
       <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col ">
-        <section className="py-5 flex-grow">
-          <div className="flex flex-col h-screen py-2 mx-auto max-w-screen-2xl dark:bg-gray-800 relative ">
-            <div className="dark:border-gray-700 py-3 flex justify-between text-center mx-4">
-              <div className="w-full flex space-y-3 md:space-y-0 md:flex-row ">
+        <section className="py-5   flex-grow">
+          <div className="flex flex-col h-screen py-2 mx-auto max-w-screen-2xl  dark:bg-gray-800 relative ">
+            <div className=" dark:border-gray-700 py-3 flex justify-between text-center mx-4">
+              <div className="w-full  flex  space-y-3 md:space-y-0 md:flex-row ">
                 <form className="w-full md:max-w-sm flex-1 md:mr-4">
                   <label
                     htmlFor="default-search"
@@ -153,7 +124,7 @@ const Transaction = () => {
                     <input
                       type="search"
                       id="default-search"
-                      className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                      className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg  focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                       placeholder="Search Transactions"
                       required=""
                     />
@@ -165,7 +136,7 @@ const Transaction = () => {
               </div>
               {isWriteAccess && (
                 <AddButton
-                  onClick={() => handleOpenModal()}
+                  onClick={handleOpenAddModal}
                   label={"Add Transaction"}
                 />
               )}
@@ -176,13 +147,13 @@ const Transaction = () => {
             </div>
             <div className="flex-grow mt-2 overflow-auto bg-white dark:bg-gray-800 px-5">
               <TransactionTable
+                studentPayments={studentPayments}
                 dropdownVisible={dropdownVisible}
                 setDropdownVisible={setDropdownVisible}
                 currentPage={currentPage}
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
-                handleEdit={handleOpenModal}
               />
             </div>
           </div>

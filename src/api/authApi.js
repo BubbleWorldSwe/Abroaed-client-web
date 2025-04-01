@@ -1,5 +1,6 @@
 import { BASE_URL } from "../constants/baseUrl";
 import {
+  makeGetRequest,
   makePostRequest,
   makePostRequestWithToken,
   makePutRequestWithToken,
@@ -47,5 +48,16 @@ export const setUpdateStudent = async (credentials) => {
     }
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const getUserProfile = async (id) => {
+  try {
+    const data = await makeGetRequest(`${BASE_URL}/api/v1/auth/get-user/${id}`);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
   }
 };

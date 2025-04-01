@@ -101,7 +101,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             <h2
               className={`mb-2 text-[28px] md:text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
             >
-              Need Clarifications on Your Study ABROAED Plans?
+              Need Clarifications on Your Study Abroad Plans?
             </h2>
             <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
               Our study abroad consultants will reach out to you and guide you

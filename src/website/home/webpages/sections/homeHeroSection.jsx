@@ -36,7 +36,7 @@ function HomeHeroSection() {
         <div className="absolute bottom-10 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
           <div className="text-start lg:text-left text-white lg:w-2/3 px-1 lg:px-8">
             {textEffect}
-            <h1 className="mb-4 text-3xl max-w-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-5xl">
+            <h1 className="mb-4 text-4xl max-w-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-5xl">
               From Here to Anywhere-Dream Big, Study Global
             </h1>
           </div>

@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-import toast from "react-hot-toast";
+
+import { toast } from "react-toastify";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";

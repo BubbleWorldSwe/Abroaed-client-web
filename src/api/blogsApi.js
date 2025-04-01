@@ -3,7 +3,6 @@ import { pageDataLimit } from "../constants/values";
 import {
   makeDeleteRequest,
   makeGetRequest,
-  makePatchRequest,
   makePostRequest,
   makePutRequest,
 } from "../utils/apiUtils";

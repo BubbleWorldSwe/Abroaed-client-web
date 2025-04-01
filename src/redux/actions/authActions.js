@@ -13,15 +13,31 @@ export const STUDENT_UPDATE_PASSWORD_SUCCESS =
 export const STUDENT_UPDATE_PASSWORD_FAILURE =
   "STUDENT_UPDATE_PASSWORD_FAILURE";
 
+export const STUDENT_UPDATE_PROFILE_REQUEST = "STUDENT_UPDATE_PROFILE_REQUEST";
+export const STUDENT_UPDATE_PROFILE_SUCCESS = "STUDENT_UPDATE_PROFILE_SUCCESS";
+export const STUDENT_UPDATE_PROFILE_FAILURE = "STUDENT_UPDATE_PROFILE_FAILURE";
+
+export const STUDENT_GET_PROFILE_REQUEST = "STUDENT_GET_PROFILE_REQUEST";
+export const STUDENT_GET_PROFILE_SUCCESS = "STUDENT_GET_PROFILE_SUCCESS";
+export const STUDENT_GET_PROFILE_FAILURE = "STUDENT_GET_PROFILE_FAILURE";
+
 export const ADMIN_LOGIN_REQUEST = "ADMIN_LOGIN_REQUEST";
 export const ADMIN_LOGIN_SUCCESS = "ADMIN_LOGIN_SUCCESS";
 export const ADMIN_LOGIN_FAILURE = "ADMIN_LOGIN_FAILURE";
 
-export const LOGOUT = "LOGOUT";
+export const ADMIN_UPDATE_PROFILE_REQUEST = "ADMIN_UPDATE_PROFILE_REQUEST";
+export const ADMIN_UPDATE_PROFILE_SUCCESS = "ADMIN_UPDATE_PROFILE_SUCCESS";
+export const ADMIN_UPDATE_PROFILE_FAILURE = "ADMIN_UPDATE_PROFILE_FAILURE";
 
+export const ADMIN_GET_PROFILE_REQUEST = "ADMIN_GET_PROFILE_REQUEST";
+export const ADMIN_GET_PROFILE_SUCCESS = "ADMIN_GET_PROFILE_SUCCESS";
+export const ADMIN_GET_PROFILE_FAILURE = "ADMIN_GET_PROFILE_FAILURE";
+
+export const LOGOUT = "LOGOUT";
 export const STUDENT_LOGOUT = "STUDENT_LOGOUT";
 export const ADMIN_LOGOUT = "ADMIN_LOGOUT";
 
+// Student Login Actions
 export const studentLoginRequest = (credentials) => ({
   type: STUDENT_LOGIN_REQUEST,
   payload: credentials,
@@ -37,6 +53,7 @@ export const studentLoginFailure = (error) => ({
   payload: error,
 });
 
+// Student Signup Actions
 export const studentSignUpRequest = (credentials) => ({
   type: STUDENT_SIGNUP_REQUEST,
   payload: credentials,
@@ -52,6 +69,7 @@ export const studentSignUpFailure = (error) => ({
   payload: error,
 });
 
+// Student Update Password Actions
 export const studentUpdatePasswordRequest = (passwordData) => ({
   type: STUDENT_UPDATE_PASSWORD_REQUEST,
   payload: passwordData,
@@ -67,6 +85,38 @@ export const studentUpdatePasswordFailure = (error) => ({
   payload: error,
 });
 
+// Student Update Profile Actions
+export const studentUpdateProfileRequest = (profileData) => ({
+  type: STUDENT_UPDATE_PROFILE_REQUEST,
+  payload: profileData,
+});
+
+export const studentUpdateProfileSuccess = (user) => ({
+  type: STUDENT_UPDATE_PROFILE_SUCCESS,
+  payload: user,
+});
+
+export const studentUpdateProfileFailure = (error) => ({
+  type: STUDENT_UPDATE_PROFILE_FAILURE,
+  payload: error,
+});
+
+// Action creators
+export const studentGetProfileRequest = () => ({
+  type: STUDENT_GET_PROFILE_REQUEST,
+});
+
+export const studentGetProfileSuccess = (profile) => ({
+  type: STUDENT_GET_PROFILE_SUCCESS,
+  payload: profile,
+});
+
+export const studentGetProfileFailure = (error) => ({
+  type: STUDENT_GET_PROFILE_FAILURE,
+  payload: error,
+});
+
+// Admin Login Actions
 export const adminLoginRequest = (credentials) => ({
   type: ADMIN_LOGIN_REQUEST,
   payload: credentials,
@@ -82,6 +132,37 @@ export const adminLoginFailure = (error) => ({
   payload: error,
 });
 
+// Admin Update Profile Actions
+export const adminUpdateProfileRequest = (profileData) => ({
+  type: ADMIN_UPDATE_PROFILE_REQUEST,
+  payload: profileData,
+});
+
+export const adminUpdateProfileSuccess = (admin) => ({
+  type: ADMIN_UPDATE_PROFILE_SUCCESS,
+  payload: admin,
+});
+
+export const adminUpdateProfileFailure = (error) => ({
+  type: ADMIN_UPDATE_PROFILE_FAILURE,
+  payload: error,
+});
+
+export const adminGetProfileRequest = () => ({
+  type: ADMIN_GET_PROFILE_REQUEST,
+});
+
+export const adminGetProfileSuccess = (profile) => ({
+  type: ADMIN_GET_PROFILE_SUCCESS,
+  payload: profile,
+});
+
+export const adminGetProfileFailure = (error) => ({
+  type: ADMIN_GET_PROFILE_FAILURE,
+  payload: error,
+});
+
+// Logout Actions
 export const logout = () => ({
   type: LOGOUT,
 });

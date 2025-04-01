@@ -1,3 +1,4 @@
+import { destinationSequence } from "../../constants/values";
 import { LOGOUT } from "../actions/authActions";
 import {
   ADD_DESTINATION_FAILURE,
@@ -57,10 +58,22 @@ export const destnationReducer = (state = initialState, action) => {
       };
 
     case FETCH_ALL_DESTINATIONS_SUCCESS:
+      const destinations = action.payload.result;
+
+      // Create a lookup for quick access
+      const destinationMap = new Map(
+        destinations.map((dest) => [dest.countryId.name, dest])
+      );
+
+      // Arrange destinations based on predefined sequence
+      const sortedDestinations = destinationSequence
+        .map((name) => destinationMap.get(name))
+        .filter(Boolean); // Remove undefined values (if any country is missing)
+
       return {
         ...state,
         loading: false,
-        allDestinations: action.payload.result,
+        allDestinations: sortedDestinations,
       };
 
     case EDIT_DESTINATION_SUCCESS:

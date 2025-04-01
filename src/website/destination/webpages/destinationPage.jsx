@@ -149,7 +149,10 @@ function DestinationPage() {
         </div>
       </div>
 
-      <DestinationExpansesSection destinationDetails={destinationDetails} />
+      {destinationDetails?.expenses?.length > 0 && (
+        <DestinationExpansesSection destinationDetails={destinationDetails} />
+      )}
+
       {destinationDetails?.scholarships.length > 0 && (
         <DestinationScholarshipSection
           destinationDetails={destinationDetails}
@@ -171,18 +174,21 @@ function DestinationPage() {
           />
         </div>
       </div>
-      <div className="relative">
-        <DestinationWorkOpportunitiesSection
-          destinationDetails={destinationDetails}
-        />
-        <div className="absolute top-0 right-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorBelow}
-            alt="Counselling session"
+
+      {destinationDetails?.workOpportunities && (
+        <div className="relative">
+          <DestinationWorkOpportunitiesSection
+            destinationDetails={destinationDetails}
           />
+          <div className="absolute top-0 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorBelow}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {accList.length > 0 && (
         <DestinationStudentAccommodationsSection

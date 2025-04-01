@@ -21,6 +21,20 @@ export const getStudents = async (page) => {
   }
 };
 
+export const getAllStudents = async (page) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const setUpdateStudent = async (id, credentials) => {
   try {
     console.log(credentials, id);

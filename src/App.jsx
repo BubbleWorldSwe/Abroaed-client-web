@@ -1,36 +1,44 @@
-// import { useState } from 'react';
-// import { BrowserRouter } from 'react-router-dom';
-// import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
-// import Home from './Components/Home';
-// import BlogPage from './Components/BlogPage';
-// import LayoutPage from './pages/destinations/layout';
-// import TestPrepLayoutPage from './pages/TestPrep/Layout';
-// import FinanceLayout from './pages/Finance/FinanceLayout';
-
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/blog" element={<BlogPage />} />
-//         <Route path="/destinations" element={<LayoutPage />} />
-//         <Route path="/testprep" element={<TestPrepLayoutPage />} />
-//         <Route path="/finance" element={<FinanceLayout />} />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default App;
-
 import { BrowserRouter } from "react-router-dom";
 import AppRoutes from "./routes/routes";
 import "swiper/swiper-bundle.css"; // Swiper CSS
 import "react-quill/dist/quill.snow.css";
 
 import { ToastContainer } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  adminGetProfileRequest,
+  studentGetProfileRequest,
+} from "./redux/actions/authActions";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  const { adminToken, studentToken, isLoggedInAdmin, isLoggedInStudent } =
+    useSelector((state) => state.auth);
+
+  async function fetchData() {
+    try {
+      if (isLoggedInStudent) {
+        if (studentToken) {
+          //   dispatch(studentGetProfileRequest(studentToken));
+        }
+      }
+
+      if (isLoggedInAdmin) {
+        if (adminToken) {
+          // dispatch(adminGetProfileRequest(adminToken));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [dispatch, adminToken, studentToken]);
+
   return (
     <>
       <ToastContainer

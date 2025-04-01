@@ -13,7 +13,9 @@ const DestinationFaqSection = ({ destinationDetails }) => {
 
   return (
     <div className="h-auto py-12 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-      <h2 className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
+      <h2
+        className={`mb-10 text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+      >
         Frequently Asked Questions
       </h2>
       <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
@@ -24,16 +26,19 @@ const DestinationFaqSection = ({ destinationDetails }) => {
                 <button
                   type="button"
                   className={`flex justify-between items-center py-5 w-full font-medium text-left bg-white dark:bg-gray-900 dark:text-white 
-                    ${activeIndex === index ? '' : 'border-b-2  border-gray-200 dark:border-gray-700'}`}
+                    ${
+                      activeIndex === index
+                        ? ""
+                        : "border-b-2  border-gray-200 dark:border-gray-700"
+                    }`}
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={activeIndex === index}
                 >
-                  <FaqsQuestionText>
-                    {faq.question}
-                  </FaqsQuestionText>
+                  <FaqsQuestionText>{faq.question}</FaqsQuestionText>
                   <svg
-                    className={`w-6 h-6 transition-transform duration-300 ${activeIndex === index ? "rotate-180" : ""
-                      }`}
+                    className={`w-6 h-6 transition-transform duration-300 ${
+                      activeIndex === index ? "rotate-180" : ""
+                    }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -53,12 +58,11 @@ const DestinationFaqSection = ({ destinationDetails }) => {
                   height: activeIndex === index ? "auto" : 0,
                 }}
                 transition={{ duration: 0.3 }}
-                className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${activeIndex === index ? "block" : "hidden"
-                  }`}
+                className={`overflow-hidden border-b border-gray-200 dark:border-gray-700 ${
+                  activeIndex === index ? "block" : "hidden"
+                }`}
               >
-                <FaqsAnswerText >
-                  {faq.answer}
-                </FaqsAnswerText>
+                <FaqsAnswerText>{faq.answer}</FaqsAnswerText>
               </motion.div>
             </div>
           ))}
