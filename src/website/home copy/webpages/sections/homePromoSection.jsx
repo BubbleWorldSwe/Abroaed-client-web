@@ -101,7 +101,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             <h2
               className={`mb-2 text-[28px] md:text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
             >
-              Need Clarifications on Your Study Abroad Plans?
+              Need Clarifications on Your Study ABROAED Plans?
             </h2>
             <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
               Our study abroad consultants will reach out to you and guide you
@@ -112,7 +112,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             </p>
             <div className="flex justify-center  lg:justify-start ">
               <img
-                className="rounded-lg w-full h-[35vh] object-cover"
+                className="rounded-lg w-full h-[45vh] object-cover"
                 src={homeQuery}
                 alt="Counselling session"
               />
@@ -122,7 +122,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                 className={`py-2 px-5 border-2 rounded-lg font-semibold border-gray-primary text-[#71717A] hover:bg-gray-primary hover:text-white`}
                 onClick={() => navigate("/homeCounselling")}
               >
-                Learn More About Home Counselling
+                Learn About Home Counselling
               </button>
             </div>
             {/* </div> */}
@@ -130,7 +130,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
 
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start items-end">
-            <div className="flex flex-col items-start w-full rounded-lg   ">
+            <div className="flex flex-col items-start w-full rounded-lg  md:p-8 mt-16 ">
               {/* Tabs Row */}
               <div className="mb-3">
                 <h2
@@ -272,7 +272,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     <button
                       onSubmit={handleAddLead}
                       type="submit"
-                      className={`py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+                      className={`py-3  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
                     >
                       Book Now
                     </button>

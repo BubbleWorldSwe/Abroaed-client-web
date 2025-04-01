@@ -16,11 +16,11 @@ const TestPrepNavModal = ({
             onMouseEnter={() => handleMouseEnter("testPrep")}
             onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
         >
-            <ul className="space-2 grid grid-cols-1 w-[30vw]  shadow-lg  rounded-b-lg mt-2 bg-white" >
+            <ul className="space-1 grid grid-cols-1 w-[30vw]  shadow-lg  rounded-b-lg mt-2 bg-white" >
                 {menuItems?.map((data, index) => (
                     <li
                         key={index}
-                        className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-2 hover:bg-gray-100 rounded-lg transition-all"
+                        className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
                     >
@@ -28,7 +28,7 @@ const TestPrepNavModal = ({
                             <a
                                 // href={`/testprep/${data._id}`}
                                 href={`/testprep/${data._id}`}
-                                className="block px-4 py-2 "
+                                className="block px-4 py-1 "
                             >
                                 {data?.title}
                             </a>

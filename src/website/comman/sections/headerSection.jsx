@@ -136,8 +136,8 @@ function Header({ isHeaderBgWhite = false }) {
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-black  shadow-md"
-        : "bg-black text-white bg-opacity-10"
+        ? "bg-gray-primary  shadow-md"
+        : "bg-gray-primary text-white bg-opacity-10"
         }`}
     >
       <nav>
@@ -193,8 +193,7 @@ function Header({ isHeaderBgWhite = false }) {
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[3.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
                      ${activeDropdown === "exploreColleges"
-                        ? "after:opacity-30"
-                        : ""
+                        ? "after:opacity-100 after:-z-10 text-gray-primary font-bold" : ""
                       }`}
                   >
                     Explore Colleges
@@ -227,7 +226,7 @@ function Header({ isHeaderBgWhite = false }) {
                       className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${activeDropdown === key ? "after:opacity-30" : ""}`}
+                ${activeDropdown === key ? "after:opacity-100 after:-z-10 font-bold text-gray-primary" : ""}`}
                     >
                       {label}
                     </a>
@@ -272,7 +271,7 @@ function Header({ isHeaderBgWhite = false }) {
               ) : (
                 <button
                   onClick={() => navigate("/signin")}
-                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
                 >
                   Login
                 </button>

@@ -14,11 +14,11 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
       className="absolute left-0 top-full w-max py-[5px]  z-50"
       onMouseEnter={() => handleMouseEnter("destinations")}
     >
-      <ul className="space-2 grid grid-cols-2 shadow-lg w-[30vw] gap-3  rounded-b-lg mt-2 bg-white">
+      <ul className="space-1 grid grid-cols-2 shadow-lg max-h-[80vh] w-[30vw] gap-1 py-2  rounded-b-lg mt-2 bg-white overflow-y-auto">
         {allDestinations?.map((item, index) => (
           <li
             key={item._id}
-            className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-3 py-5 hover:bg-gray-100 rounded-lg transition-all"
+            className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -28,7 +28,7 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
               </span>
               <a
                 href={`/destinations/${item._id}`}
-                className="  cursor-pointer"
+                className="cursor-pointer"
               >
                 {item?.countryId?.name}
               </a>

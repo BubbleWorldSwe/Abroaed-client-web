@@ -1,4 +1,5 @@
-import  { useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import dark from "../../assets/dark.png";
 
 function HomeServiceModal({ modalOpen, onClose }) {
@@ -10,7 +11,7 @@ function HomeServiceModal({ modalOpen, onClose }) {
             // Re-enable scroll when modal is closed
             document.body.style.overflow = 'unset';
         }
- // Cleanup function to reset overflow when component unmounts
+        // Cleanup function to reset overflow when component unmounts
         return () => {
             document.body.style.overflow = 'unset';
         };

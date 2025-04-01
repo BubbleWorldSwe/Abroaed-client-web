@@ -15,8 +15,8 @@ const ExploreCollegesNavItemModal = ({
   handleStateClick,
 }) => {
   return (
-    <div className="absolute left-0 transform top-full w-[60rem] min-w-max h-[60vh] py-[5px] z-50">
-      <div className="bg-white border border-gray-100 shadow-lg rounded-b-lg flex mt-2  overflow-hidden">
+    <div className="absolute left-0 transform top-full w-[60rem] min-w-max  h-[60vh] py-[5px] z-50">
+      <div className="bg-white border border-gray-100 h-[80vh] shadow-lg rounded-b-lg flex mt-2  overflow-hidden">
         {/* Left Sidebar: Destination List */}
         <div className="p-3 min-w-max w-1/4 overflow-y-auto text-gray-900 bg-gray-300 dark:text-white dark:bg-gray-800">
           <h3 className="mb-4 text-lg font-bold">Destinations</h3>
@@ -41,7 +41,7 @@ const ExploreCollegesNavItemModal = ({
         </div>
 
         {/* Right Section: States and Colleges */}
-        <div className="py-5 w-3/4 px-5 bg-gray-50 dark:bg-gray-700 overflow-y-auto">
+        <div className="py-5 w-3/4 px-5  bg-gray-100 dark:bg-gray-700 overflow-y-auto">
           {isLoading ? (
             <Loader />
           ) : states.length <= 0 ? (
@@ -79,7 +79,7 @@ const ExploreCollegesNavItemModal = ({
               {/*  <h3 className="mb-4 text-lg font-bold text-gray-700 dark:text-white">
               Colleges
             </h3> */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-2 max-h-[40vh] overflow-y-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-2 max-h-[55vh] overflow-y-auto">
                 {isLoading ? (
                   <p>Loading...</p>
                 ) : filteredColleges.length > 0 ? (

@@ -47,7 +47,7 @@ const links = [
 
 const offices = [
   {
-    location: "Delhi Office",
+    location: "",
     address: "B11, Block B, Qutab Institutional Area, New Delhi, Delhi 110016",
     phone1: " +91 73033 68820",
     phone2: " +91 73033 68819",
@@ -124,7 +124,7 @@ function Footer() {
                 >
                   {section.title}
                 </h3>
-                <ul className="space-y-2 text-base font-semibold  ">
+                <ul className="space-y-2 text-base font-medium  ">
                   {section.items.map((item, idx) => (
                     <li key={idx}>
                       <a href={item?.link} className="hover:underline">
@@ -162,7 +162,7 @@ function Footer() {
                 {allDestinations.map((item, index) => (
                   <li
                     key={index}
-                    className="flex  items-center justify-between  font-semibold text-base    py-1 rounded-lg transition-all"
+                    className="flex  items-center justify-between  font-medium text-base    py-1 rounded-lg transition-all"
                   >
                     <a
                       href={`/destinations/${item._id}`}
@@ -193,7 +193,7 @@ function Footer() {
                 {allTestPreps?.map((data, index) => (
                   <li
                     key={index}
-                    className="flex text-white items-center justify-between  font-semibold text-base    py-1 rounded-lg transition-all"
+                    className="flex text-white items-center justify-between  font-medium text-base    py-1 rounded-lg transition-all"
                   >
                     <a
                       href={`/testprep/${data?._id}`}

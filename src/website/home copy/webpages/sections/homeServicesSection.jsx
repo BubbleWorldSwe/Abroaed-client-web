@@ -8,10 +8,6 @@ import homeService5 from "../../../../assets/homeService5.png";
 import homeService6 from "../../../../assets/homeService6.png";
 import homeService7 from "../../../../assets/homeService7.png";
 import homeService8 from "../../../../assets/homeService8.png";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 
 const serviceData = [
   {
@@ -51,11 +47,9 @@ const serviceData = [
     imgUrl: homeService6,
   },
   {
-    text1: <>ABROAED<sup>+</sup></>,
-    // text2:"The ABROAED Plus program is your all-inclusive study abroad companion, designed to simplify every step of your journey to global education. Recognizing that the study abroad process extends far beyond securing admission, this service offers comprehensive support—from researching the right country, university, and course to managing finances, securing loans, booking accommodation, and even arranging flight tickets and airport transfers. ABROAED Plus eliminates the stress of hidden costs, confusing paperwork, and overwhelming choices, saving you time, money, and effort. With features like personalized consultations, country-specific mentors, tailored SOPs/LORs, visa assistance, and priority offer letters, this program ensures a seamless transition to your dream university. ABROAED Plus is more than just a service; it’s a commitment to empowering you with the tools, guidance, and confidence needed to thrive in your academic and professional pursuits abroad.",
-    text2: <>ABROAED<sup>+</sup>  program is your all-inclusive study abroad companion, designed to simplify every step of your journey to global education. Recognizing that the study abroad process extends far beyond securing admission, this service offers comprehensive support—from researching the right country, university, and course to managing finances, securing loans, booking accommodation, and even arranging flight tickets and airport transfers. <>ABROAED<sup>+</sup></> eliminates the stress of hidden costs, confusing paperwork, and overwhelming choices, saving you time, money, and effort. With features like personalized consultations, country-specific mentors, tailored SOPs/LORs, visa assistance, and priority offer letters, this program ensures a seamless transition to your dream university. <>ABROAED<sup>+</sup></> is more than just a service; it’s a commitment to empowering you with the tools, guidance, and confidence needed to thrive in your academic and professional pursuits abroad.</>
-
-    ,
+    text1: "ABROAED Plus",
+    text2:
+      "The ABROAED Plus program is your all-inclusive study abroad companion, designed to simplify every step of your journey to global education. Recognizing that the study abroad process extends far beyond securing admission, this service offers comprehensive support—from researching the right country, university, and course to managing finances, securing loans, booking accommodation, and even arranging flight tickets and airport transfers. ABROAED Plus eliminates the stress of hidden costs, confusing paperwork, and overwhelming choices, saving you time, money, and effort. With features like personalized consultations, country-specific mentors, tailored SOPs/LORs, visa assistance, and priority offer letters, this program ensures a seamless transition to your dream university. ABROAED Plus is more than just a service; it’s a commitment to empowering you with the tools, guidance, and confidence needed to thrive in your academic and professional pursuits abroad.",
     imgUrl: homeService7,
   },
   {
@@ -68,19 +62,6 @@ const serviceData = [
 
 const HomeServicesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  let settings = {
-    infinite: true,
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    pauseOnHover: true,
-
-    centerMode: true,
-  };
-
-
   return (
     <div>
       {modalOpen && (
@@ -97,39 +78,39 @@ const HomeServicesSection = () => {
             Discover Our Unique Offerings
           </h2>
         </div>
-        <div className="overflow-x-auto pb-6">
-          <Slider {...settings}  >
+        <div className="overflow-x-auto">
+          <div className="flex space-x-5" style={{ minWidth: "max-content" }}>
             {serviceData?.map((service, index) => (
               <div
                 key={index}
-                className="w-full px-3 lg:w-96 md:w-80 sm:w-60 h-[28rem] relative rounded-lg   "
-
+                className="w-full lg:w-96 md:w-80 sm:w-60 h-[30rem] relative rounded-lg overflow-hidden ml-6 md:ml-12 "
               >
-                <div className="relative w-full h-full rounded-lg">
+                {/* Background Image with Overlay */}
+                <div className="relative w-full h-full">
                   <img
                     className="w-full h-full object-cover rounded-lg"
                     src={service.imgUrl}
                     alt={`Service ${index + 1}`}
                   />
-                  <div className="absolute inset-0 bg-black rounded-lg opacity-65"></div>{" "}
-
+                  <div className="absolute inset-0 bg-black opacity-65"></div>{" "}
+                  {/* Overlay */}
                 </div>
-                <div className="absolute inset-0 flex  flex-col justify-between p-6 z-10">
-                  <div className="overflow-y-auto flex flex-col gap-4 px-5">
-                    <h1 className=" text-[45px] text-[#FFDF00]   font-bold ">
+                <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                  <div className="overflow-y-auto">
+                    <h1 className="mb-1 text-2xl font-bold text-white">
                       {service.text1}
                     </h1>
-                    <p className="text-gray-200 text-justify lg:mb-2 text-[22px]">
+                    <p className="text-gray-200 lg:mb-2 text-[16px]">
                       {service.text2}
                     </p>
                   </div>
                 </div>
               </div>
             ))}
-          </Slider>
+          </div>
         </div>
-      </section >
-    </div >
+      </section>
+    </div>
   );
 };
 

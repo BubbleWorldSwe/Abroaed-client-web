@@ -33,10 +33,10 @@ function HomeHeroSection() {
         ></div>
         {/* Gradient Overlay (White to Black) */}
         <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
-        <div className="absolute bottom-24 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
-          <div className="text-start  text-white lg:w-2/3 px-1 lg:px-8">
+        <div className="absolute bottom-10 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
+          <div className="text-start lg:text-left text-white lg:w-2/3 px-1 lg:px-8">
             {textEffect}
-            <h1 className="mb-3 text-[57px]  font-extrabold tracking-tight leading-none text-white md:text-[57px]">
+            <h1 className="mb-4 text-3xl max-w-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl xl:text-5xl">
               From Here to Anywhere-Dream Big, Study Global
             </h1>
           </div>

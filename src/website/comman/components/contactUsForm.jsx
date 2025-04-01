@@ -80,10 +80,10 @@ const ContactUsForm = ({
   console.log(formData);
 
   return (
-    <section className="relative isolate overflow-hidden px-6 md:px-12 mx-auto">
-      <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 antialiased relative ">
+    <section className="relative isolate overflow-hidden px-6 pb-10 md:px-12  mx-auto">
+      <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 bg-gray-primary rounded-lg h-[93vh] antialiased relative ">
         <div
-          className={`flex flex-col lg:flex-row justify-between gap-5 lg:gap-12 px-10 bg-gray-primary rounded-lg `}
+          className={`flex flex-col lg:flex-row justify-between gap-5  lg:gap-12 px-10  rounded-lg `}
         >
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
@@ -101,8 +101,8 @@ const ContactUsForm = ({
           </div>
 
           {/* Right Section - 40% Width */}
-          <div className="lg:w-2/5   py-14 md:pt-5 md:pb-10 max-w-md">
-            <form className=" mx-auto" onSubmit={handleSubmit}>
+          <div className="lg:w-2/5   py-14 md:pt-5 md:pb-10 max-w-lg">
+            <form className=" mx-auto flex flex-col gap-2" onSubmit={handleSubmit}>
               <BorderTextInputField
                 label={"First Name"}
                 placeholder="Enter"
@@ -153,7 +153,8 @@ const ContactUsForm = ({
                   onChange={handleCheckboxChange}
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-[12px] text-white">
+                {/* <label className="ml-2 text-[12px] text-white"> */}
+                <label className="ml-2 text-[15px] text-white">
                   I agree to ABROAED{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
@@ -169,7 +170,8 @@ const ContactUsForm = ({
                   onChange={handleCheckboxChange}
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
-                <label className="ml-2 text-[12px] text-white">
+                {/* <label className="ml-2 text-[12px] text-white"> */}
+                <label className="ml-2 text-[15px] text-white">
                   Please contact me by phone, email, or SMS to assist with my
                   enquiry. I would like to receive updates and offers from
                   ABROAED.
