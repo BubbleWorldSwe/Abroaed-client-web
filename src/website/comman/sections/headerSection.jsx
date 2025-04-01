@@ -33,7 +33,7 @@ function Header({ isHeaderBgWhite = false }) {
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
 
-  const { } = useSelector((state) => state.auth);
+  const {} = useSelector((state) => state.auth);
 
   // State lifted up from ExploreCollegesNavItemModal
   const [selectedDestination, setSelectedDestination] = useState(null);
@@ -123,22 +123,49 @@ function Header({ isHeaderBgWhite = false }) {
   ];
   const menuItems = [
     { key: "whyAbroad", label: "Why ABROAED?", component: WhyAbroaedNavModal },
-    { key: "abroaedPlus", label: <>ABROAED<sup>+</sup></>, link: "/abroaedPlus" },
-    { key: "destinations", label: "Destinations", component: DestinationNavItemModal },
+    {
+      key: "abroaedPlus",
+      label: (
+        <>
+          ABROAED<sup>+</sup>
+        </>
+      ),
+      link: "/abroaedPlus",
+    },
+    {
+      key: "destinations",
+      label: "Destinations",
+      component: DestinationNavItemModal,
+    },
     { key: "accomodation", label: "Accommodation", link: "/accomodation" },
-    { key: "testPrep", label: "ELT Prep", component: TestPrepNavModal, data: allTestPreps },
-    { key: "languagePrep", label: "Language Prep", component: LanguageNavModal, data: allLanguagePreps },
+    {
+      key: "testPrep",
+      label: "ELT Prep",
+      component: TestPrepNavModal,
+      data: allTestPreps,
+    },
+    {
+      key: "languagePrep",
+      label: "Language Prep",
+      component: LanguageNavModal,
+      data: allLanguagePreps,
+    },
     { key: "finance", label: "Finance", link: "/finance" },
     { key: "pathways", label: "Pathways", link: "/pathways" },
-    { key: "leaguageOfExcellence", label: "League of Excellence", link: "/leaguageOfExcellence" },
+    {
+      key: "leaguageOfExcellence",
+      label: "League of Excellence",
+      link: "/leaguageOfExcellence",
+    },
   ];
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary  shadow-md"
-        : "bg-gray-primary text-white bg-opacity-10"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-gray-primary  shadow-md"
+          : "bg-gray-primary text-white bg-opacity-10"
+      }`}
     >
       <nav>
         {/* <div
@@ -181,7 +208,9 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <div className="flex-grow basis-[90%] hidden md:flex justify-center ">
             <div className="flex items-center justify-center">
-              <ul className={`flex items-center space-x-3 text-white   justify-center text-[12px] font-medium`}>
+              <ul
+                className={`flex items-center space-x-3 text-white   justify-center text-[12px] font-medium`}
+              >
                 <li
                   onMouseEnter={() => handleMouseEnter("exploreColleges")}
                   onMouseLeave={handleMouseLeave}
@@ -192,9 +221,11 @@ function Header({ isHeaderBgWhite = false }) {
                     className={`  px-1 relative transition-colors duration-300
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[3.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${activeDropdown === "exploreColleges"
-                        ? "after:opacity-100 after:-z-10 text-gray-primary font-bold" : ""
-                      }`}
+                     ${
+                       activeDropdown === "exploreColleges"
+                         ? "after:opacity-100 after:-z-10 text-gray-primary font-bold"
+                         : ""
+                     }`}
                   >
                     Explore Colleges
                   </a>
@@ -214,33 +245,42 @@ function Header({ isHeaderBgWhite = false }) {
                     </div>
                   )}
                 </li>
-                {menuItems.map(({ key, label, link, component: Component, data }) => (
-                  <li
-                    key={key}
-                    onMouseEnter={() => handleMouseEnter(key)}
-                    onMouseLeave={handleMouseLeave}
-                    className="relative cursor-pointer group"
-                  >
-                    <a
-                      href={link || "#"}
-                      className={`px-1 relative transition-colors duration-300
+                {menuItems.map(
+                  ({ key, label, link, component: Component, data }) => (
+                    <li
+                      key={key}
+                      onMouseEnter={() => handleMouseEnter(key)}
+                      onMouseLeave={handleMouseLeave}
+                      className="relative cursor-pointer group"
+                    >
+                      <a
+                        href={link || "#"}
+                        className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${activeDropdown === key ? "after:opacity-100 after:-z-10 font-bold text-gray-primary" : ""}`}
-                    >
-                      {label}
-                    </a>
-                    {activeDropdown === key && Component && (
-                      <div className="relative">
-                        <Component
-                          menuItems={data?.map(({ productName, _id }) => ({ title: productName, _id }))}
-                          handleMouseEnter={handleMouseEnter}
-                          handleMouseLeave={handleMouseLeave}
-                        />
-                      </div>
-                    )}
-                  </li>
-                ))}
+                ${
+                  activeDropdown === key
+                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                    : "font-semibold"
+                }`}
+                      >
+                        {label}
+                      </a>
+                      {activeDropdown === key && Component && (
+                        <div className="relative">
+                          <Component
+                            menuItems={data?.map(({ productName, _id }) => ({
+                              title: productName,
+                              _id,
+                            }))}
+                            handleMouseEnter={handleMouseEnter}
+                            handleMouseLeave={handleMouseLeave}
+                          />
+                        </div>
+                      )}
+                    </li>
+                  )
+                )}
               </ul>
             </div>
           </div>
@@ -248,7 +288,7 @@ function Header({ isHeaderBgWhite = false }) {
             <div
               onMouseEnter={() => handleMouseEnter("login")}
               onMouseLeave={handleMouseLeave}
-            // className={ }
+              // className={ }
             >
               {studentToken ? (
                 <>
@@ -271,7 +311,7 @@ function Header({ isHeaderBgWhite = false }) {
               ) : (
                 <button
                   onClick={() => navigate("/signin")}
-                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
                 >
                   Login
                 </button>
@@ -280,7 +320,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}
@@ -289,7 +329,7 @@ function Header({ isHeaderBgWhite = false }) {
           </button>
         </nav>
       </nav>
-    </header >
+    </header>
   );
 }
 

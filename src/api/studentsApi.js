@@ -97,3 +97,17 @@ export const setUpdateStudentApplication = async (credentials, appId) => {
     console.log(error);
   }
 };
+
+export const getStudentDetailsById = async (userId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/${userId}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

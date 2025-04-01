@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import pencil from "../../assets/pencil.png";
 import { additionalServiceDetails, additionalServiceTabColors } from "../data";
 import AdditionalServicesCard from "../components/additionalServicesCard";
 import StudentProfileEditModal from "../modals/studentProfileEditModal";
+import { getStudentDetailsById } from "../../api/studentsApi";
+import { useSelector } from "react-redux";
 
 const StudentProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -10,12 +12,34 @@ const StudentProfile = () => {
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
   };
+  const { _id } = useSelector((state) => state.auth.student);
+
+  const { student } = useSelector((state) => state.auth);
+
+  console.log(student);
+
+  console.log(_id);
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
+
+  async function fetchData() {
+    try {
+      const list = await getStudentDetailsById(_id);
+
+      console.log(list);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <StudentProfileEditModal
@@ -189,10 +213,11 @@ const StudentProfile = () => {
                   <div className="flex flex-col gap-4 w-full" key={index}>
                     <div>
                       <button
-                        className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${activeTab === index
-                          ? "text-black  border-b-4 border-blue-500"
-                          : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                          }`}
+                        className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${
+                          activeTab === index
+                            ? "text-black  border-b-4 border-blue-500"
+                            : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        }`}
                         onClick={() => handleTabClick(index)}
                         role="tab"
                         aria-controls={`styled-${tab?.tabName
@@ -201,9 +226,10 @@ const StudentProfile = () => {
                         aria-selected={activeTab === index}
                       >
                         <span
-                          className={`px-3 py-1 rounded-full ${additionalServiceTabColors[tab.tabName] ||
+                          className={`px-3 py-1 rounded-full ${
+                            additionalServiceTabColors[tab.tabName] ||
                             "bg-gray-300"
-                            } `}
+                          } `}
                         >
                           {tab.tabName}
                         </span>

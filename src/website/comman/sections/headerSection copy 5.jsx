@@ -397,7 +397,7 @@ function Header({ isHeaderBgWhite = false }) {
             >
               <button
                 onClick={() => navigate("/signin")}
-                className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-medium text-[#27272A] hover:border-none text-sm rounded-lg`}
               >
                 Login
               </button>
@@ -417,7 +417,7 @@ function Header({ isHeaderBgWhite = false }) {
               // Show "Login" button if user is a Student and has a token
               <button
                 onClick={() => navigate("/signin")}
-                className="px-4 py-2 bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg"
+                className="px-4 py-2 bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none text-sm rounded-lg"
               >
                 Login
               </button>
