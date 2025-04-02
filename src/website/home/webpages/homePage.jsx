@@ -89,7 +89,7 @@ function HomeLayout() {
         <HomeServicesSection />
         <div className="absolute -top-10 right-0 -z-20">
           <img
-            className="rounded-lg max-w-full "
+            className="rounded-lg max-w-full"
             src={vectorleftNose}
             alt="Counselling session"
           />
