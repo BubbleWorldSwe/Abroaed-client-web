@@ -13,7 +13,7 @@ const HomeSlidingImg = () => {
         autoplaySpeed: 2000,
         pauseOnHover: true,
 
-        centerMode: true,
+        // centerMode: true,
     };
 
     const homeImges = [
@@ -32,30 +32,24 @@ const HomeSlidingImg = () => {
     ]
 
     return (
-        <section className="dark:bg-gray-900 relative  py-1  ">
+        <section className="dark:bg-gray-900 relative ">
             <div className="overflow-x-auto pb-7">
-                <Slider {...settings}  >
-                    {homeImges?.map((service, index) => (
-                        <div
-                            key={index}
-                            className="w-full  "
-
-                        >
-                            <div className="relative w-full h-full rounded-lg">
+                <Slider {...settings}>
+                    {homeImges.map((image, index) => (
+                        <div key={index} className="w-full">
+                            <div className="relative w-full h-full">
                                 <img
-                                    className="w-full h-full object-cover rounded-lg"
-                                    src={service.imgUrl}
-                                    alt={`Service ${index + 1}`}
+                                    className="w-full h-full object-cover "
+                                    src={image.imgUrl}
+                                    alt={`Image ${index + 1}`}
+                                    style={{ width: "100vw" }}
                                 />
-                                {/* <div className="absolute inset-0 bg-black rounded-lg opacity-65"></div>{" "} */}
-
                             </div>
-
                         </div>
                     ))}
                 </Slider>
             </div>
-        </section >
+        </section>
     )
 }
 

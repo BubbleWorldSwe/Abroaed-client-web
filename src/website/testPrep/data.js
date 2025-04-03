@@ -1,25 +1,20 @@
 import image from "../../assets/dark.png";
 
-export const steps = [
+export const testPrepFeatures = [
   {
-    step: 1,
-    heading: "Lorem Ipsum Dolor",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
+    title: "Optimized Test-Taking Strategies",
+    text: "Proven techniques to help you score higher in every exam section and learn exactly what examiners look for in IELTS, TOEFL, PTE, and such tests."
   },
   {
-    step: 2,
-    heading: "Lorem Ipsum Dolor",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
+    title: "Precision Skill Diagnostics",
+    text: "Our AI-powered analysis identifies exact lexical/grammatical deficiencies. We offer personalized remediation plans targeting phonological and syntactic weak points."
   },
   {
-    step: 3,
-    heading: "Lorem Ipsum Dolor",
-    description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
-  },
+    title: "Benchmark Performance Tracking",
+    text: "We use longitudinal progress metrics aligned with CEFR/CLB standards and predictive scoring models with 95% accuracy for actual exam outcomes."
+  }
 ];
+
 export const articles = [
   {
     image, // Replace with the actual image URLs

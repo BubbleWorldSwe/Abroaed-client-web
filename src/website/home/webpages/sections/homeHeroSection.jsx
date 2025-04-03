@@ -1,6 +1,7 @@
 import { useMemo } from "react";
-import homeHeroImg from "../../../../assets/homeHeroImg.png";
+// import homeHeroImg from "../../../../assets/homeHeroImg.png";
 import { TextGenerateEffect } from "../../components/TextGenerateEffect";
+import homeVideoHero from "../../../../assets/homeVideoHero.mp4"
 
 function HomeHeroSection() {
   const textEffect = useMemo(
@@ -23,12 +24,20 @@ function HomeHeroSection() {
       <section
         className="relative h-[100vh]  bg-cover flex  bg-center"
         style={{
-          backgroundImage: `url(${homeHeroImg})`,
           opacity: "1",
         }}
       >
+        <video
+          autoPlay
+          loop
+          muted
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src={homeVideoHero} type="video/mp4" />
+        </video>
+
         <div
-          className="absolute inset-0 bg-black opacity-30"
+          className="absolute inset-0 bg-black opacity-60"
           style={{ mixBlendMode: "multiply" }}
         ></div>
         {/* Gradient Overlay (White to Black) */}
