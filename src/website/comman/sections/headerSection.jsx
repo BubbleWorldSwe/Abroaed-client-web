@@ -33,7 +33,7 @@ function Header({ isHeaderBgWhite = false }) {
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
 
-  const { } = useSelector((state) => state.auth);
+  const {} = useSelector((state) => state.auth);
 
   // State lifted up from ExploreCollegesNavItemModal
   const [selectedDestination, setSelectedDestination] = useState(null);
@@ -74,8 +74,8 @@ function Header({ isHeaderBgWhite = false }) {
         const uniqueStates = [
           ...new Map(
             response.data.result.map((college) => [
-              college.stateId._id,
-              college.stateId,
+              college?.stateId?._id,
+              college?.stateId,
             ])
           ).values(),
         ];
@@ -162,10 +162,11 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary  shadow-md"
-        : "bg-gray-primary text-white bg-opacity-10"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-gray-primary  shadow-md"
+          : "bg-gray-primary text-white bg-opacity-10"
+      }`}
     >
       <nav>
         {/* <div
@@ -221,10 +222,11 @@ function Header({ isHeaderBgWhite = false }) {
                     className={`  px-1 relative transition-colors duration-300
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[3.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${activeDropdown === "exploreColleges"
-                        ? "after:opacity-100 after:-z-10 text-gray-primary font-bold"
-                        : ""
-                      }`}
+                     ${
+                       activeDropdown === "exploreColleges"
+                         ? "after:opacity-100 after:-z-10 text-gray-primary font-bold"
+                         : ""
+                     }`}
                   >
                     Explore Colleges
                   </a>
@@ -257,10 +259,11 @@ function Header({ isHeaderBgWhite = false }) {
                         className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${activeDropdown === key
-                            ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                            : "font-semibold"
-                          }`}
+                ${
+                  activeDropdown === key
+                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                    : "font-semibold"
+                }`}
                       >
                         {label}
                       </a>
@@ -286,7 +289,7 @@ function Header({ isHeaderBgWhite = false }) {
             <div
               onMouseEnter={() => handleMouseEnter("login")}
               onMouseLeave={handleMouseLeave}
-            // className={ }
+              // className={ }
             >
               {studentToken ? (
                 <>
@@ -318,7 +321,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}

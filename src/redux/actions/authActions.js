@@ -102,8 +102,9 @@ export const studentUpdateProfileFailure = (error) => ({
 });
 
 // Action creators
-export const studentGetProfileRequest = () => ({
+export const studentGetProfileRequest = (id) => ({
   type: STUDENT_GET_PROFILE_REQUEST,
+  payload: id,
 });
 
 export const studentGetProfileSuccess = (profile) => ({
@@ -148,8 +149,9 @@ export const adminUpdateProfileFailure = (error) => ({
   payload: error,
 });
 
-export const adminGetProfileRequest = () => ({
+export const adminGetProfileRequest = (id) => ({
   type: ADMIN_GET_PROFILE_REQUEST,
+  payload: id,
 });
 
 export const adminGetProfileSuccess = (profile) => ({

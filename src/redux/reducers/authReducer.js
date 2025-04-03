@@ -89,10 +89,15 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case STUDENT_GET_PROFILE_SUCCESS:
-      return { ...state, loading: false, studentProfile: action.payload };
+      return { ...state, loading: false, student: action.payload };
 
     case ADMIN_GET_PROFILE_SUCCESS:
-      return { ...state, loading: false, adminProfile: action.payload };
+      return {
+        ...state,
+        loading: false,
+        admin: action.payload,
+        isWriteAccess: action.payload.isWriteAccess,
+      };
 
     case ADMIN_LOGIN_SUCCESS:
       return {

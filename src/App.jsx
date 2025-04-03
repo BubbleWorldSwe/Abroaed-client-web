@@ -10,7 +10,7 @@ import {
   adminGetProfileRequest,
   studentGetProfileRequest,
 } from "./redux/actions/authActions";
-import { getSavedPreferences } from "./api/savedPreferencesApi";
+
 import { fetchSavedPreferencesRequest } from "./redux/actions/savedPreferencesActions";
 import { fetchAllTestPrepsRequest } from "./redux/actions/testPrepsActions";
 import { fetchAllLanguagePrepsRequest } from "./redux/actions/languagePrepsActions";
@@ -27,13 +27,9 @@ const App = () => {
     isLoggedInStudent,
     studentId,
     adminId,
+    student,
+    admin,
   } = useSelector((state) => state.auth);
-
-  console.log(studentToken, " - ", studentId);
-
-  const { savedPreferences } = useSelector((state) => state.savedPreferences);
-
-  console.log(savedPreferences);
 
   async function fetchData() {
     try {
@@ -45,12 +41,13 @@ const App = () => {
       if (isLoggedInStudent) {
         if (studentToken && studentId) {
           dispatch(fetchSavedPreferencesRequest(studentId));
+          dispatch(studentGetProfileRequest(studentId));
         }
       }
 
       if (isLoggedInAdmin) {
         if (adminToken && adminId) {
-          // dispatch(adminGetProfileRequest(adminToken));
+          dispatch(adminGetProfileRequest(adminId));
         }
       }
     } catch (error) {

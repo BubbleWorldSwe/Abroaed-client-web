@@ -130,6 +130,7 @@ function* handleGetAdminProfile(action) {
   try {
     const response = yield call(getUserProfile, action.payload);
     if (response.status === 200) {
+      console.log(response.data);
       yield put(adminGetProfileSuccess(response.data));
     } else {
       yield put(adminGetProfileFailure(response.message));
