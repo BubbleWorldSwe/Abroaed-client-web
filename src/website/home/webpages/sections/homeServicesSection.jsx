@@ -92,7 +92,7 @@ const HomeServicesSection = () => {
       <section className="dark:bg-gray-900 relative  py-2  lg:py-1">
         <div className="px-5 md:px-12 mx-auto max-w-screen-2xl relative z-10">
           <h2
-            className={`my-10 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+            className={`mb-8 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
           >
             Discover Our Unique Offerings
           </h2>

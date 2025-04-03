@@ -36,6 +36,7 @@ import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import { fetchAllBlogsRequest } from "../../../redux/actions/blogActions";
+import HomeSlidingImg from "./sections/homeSlidingImg";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -77,6 +78,7 @@ function HomeLayout() {
     <div className="font-rethink">
       <Header />
       <HomeHeroSection />
+      <HomeSlidingImg />
       <HomeKpiMatrixSection
         title={"Why ABROAED?"}
         header={"What Sets Us Apart?"}
@@ -88,11 +90,11 @@ function HomeLayout() {
       <div className="relative ">
         <HomeServicesSection />
         <div className="absolute -top-10 right-0 -z-20">
-          <img
+          {/* <img
             className="rounded-lg max-w-full"
             src={vectorleftNose}
             alt="Counselling session"
-          />
+          /> */}
         </div>
       </div>
       <HomePromoSection
@@ -103,21 +105,21 @@ function HomeLayout() {
       <Testimonials />
       <div className="relative ">
         <div className="absolute -top-10 left-0 z-0">
-          <img
+          {/* <img
             className="rounded-lg max-w-full "
             src={vectorRightNoseCurve}
             alt="Counselling session"
-          />
+          /> */}
         </div>
         <HomeDownloadApp />
       </div>
       <div className="relative ">
         <div className="absolute top-28 right-0 z-0">
-          <img
+          {/* <img
             className="rounded-lg max-w-full "
             src={vectorBelow}
             alt="Counselling session"
-          />
+          /> */}
         </div>
         <Blogs />
       </div>

@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 
 function SigninPage() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();

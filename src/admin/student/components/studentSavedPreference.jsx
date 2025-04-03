@@ -1,11 +1,13 @@
 import { useState } from "react";
-import StudentPreferenceCard from "./studentPreferenceCard";
+import StudentPreferenceCollegeCard from "./studentPreferenceCollegeCard";
 import { useSelector } from "react-redux";
+import StudentPreferenceCourseCard from "./studentPreferenceCourseCard";
+import StudentPreferenceAccommodationCard from "./studentPreferenceAccommodationCard";
 
 function StudentSavedPreference() {
   const [activeTab, setActiveTab] = useState(0); // State to keep track of the active tab
   const tabs = ["Colleges", "Course", "Accommodations"];
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  // const { isWriteAccess } = useSelector((state) => state.auth);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -33,11 +35,10 @@ function StudentSavedPreference() {
             {tabs.map((tab, index) => (
               <li key={index} className="w-full" role="presentation">
                 <button
-                  className={`inline-block p-4 w-full text-lg font-semibold rounded-t-lg ${
-                    activeTab === index
-                      ? "text-black  border-b-2 border-blue-500"
-                      : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                  }`}
+                  className={`inline-block p-4 w-full text-lg font-semibold rounded-t-lg ${activeTab === index
+                    ? "text-black  border-b-2 border-blue-500"
+                    : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    }`}
                   onClick={() => handleTabClick(index)} // Update active tab
                   role="tab"
                   aria-controls={`styled-${tab
@@ -56,8 +57,10 @@ function StudentSavedPreference() {
         <div className="flex  gap-5 overflow-x-auto pb-6">
           {Array(6)
             .fill()
-            .map((tab, index) => (
-              <StudentPreferenceCard key={index} />
+            .map((_, index) => (
+              activeTab === 0 ? <StudentPreferenceCollegeCard key={index} /> :
+                activeTab === 1 ? <StudentPreferenceCourseCard key={index} /> :
+                  <StudentPreferenceAccommodationCard key={index} />
             ))}
         </div>
       </div>
