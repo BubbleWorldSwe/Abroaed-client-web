@@ -18,6 +18,7 @@ import {
   ADD_STUDENT_APPLICATION,
   ADD_STUDENT_TRANSACTIONS,
   ADD_STUDENT_SAVEDPREFRENCES,
+  ADD_STUDENT_PREPS_BATCHES,
 } from "../actions/studentsActions";
 
 const initialState = {
@@ -148,6 +149,31 @@ export const studentsReducer = (state = initialState, action) => {
         selectedStudent: {
           ...state.selectedStudent,
           savedPreferences: action.payload || [],
+        },
+      };
+
+    case ADD_STUDENT_PREPS_BATCHES:
+      console.log("ADD_STUDENT_PREPS_BATCHES");
+      console.log(action);
+
+      return {
+        ...state,
+        loading: false,
+        students: state.students.map((student) => ({
+          ...student,
+          data: student.data.map((item) =>
+            item?._id === action?.payload?.user?._id
+              ? {
+                  ...item,
+                  prepsBatches: action.payload || [],
+                }
+              : item
+          ),
+        })),
+
+        selectedStudent: {
+          ...state.selectedStudent,
+          prepsBatches: action.payload || [],
         },
       };
 

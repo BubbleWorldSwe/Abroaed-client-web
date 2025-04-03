@@ -34,18 +34,45 @@ import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
-
+import PageLoader from "../../../commons/components/loader/pageLoader";
+import { fetchAllBlogsRequest } from "../../../redux/actions/blogActions";
 import HomeSlidingImg from "./sections/homeSlidingImg";
 
 function HomeLayout() {
   const dispatch = useDispatch();
 
+  // const { loading } = useSelector((state) => state.destinations);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  async function fetchData() {
+    try {
+      dispatch(fetchAllTestPrepsRequest());
+      dispatch(fetchAllLanguagePrepsRequest());
+      dispatch(fetchAllDestinationsRequest());
+      dispatch(fetchAllBlogsRequest());
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleAddLead = (data) => {
+    // setIsLoading(true);
     console.log("handleAddLead");
     console.log(data);
 
     dispatch(addLeadRequest(data));
+    // setIsLoading(false);
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (isLoading) {
+    return <PageLoader />;
+  }
 
   return (
     <div className="font-rethink">
@@ -100,6 +127,7 @@ function HomeLayout() {
         onFormSubmit={handleAddLead}
         source={source.home}
         entity={entity.contactUs}
+        isLoading={isLoading}
       />
       <Footer />
     </div>

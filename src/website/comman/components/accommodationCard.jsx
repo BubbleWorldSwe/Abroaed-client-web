@@ -41,15 +41,14 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
         <div className="p-5 flex flex-col flex-grow">
           {/* Header */}
           <div className="flex justify-between">
-            <h5 className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}>
+            <h5
+              className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}
+            >
               {item.accomodationName}
             </h5>
             <div>
               <button>
-                <img
-                  src={bookmark}
-                  alt="bookmarkIcon"
-                />
+                <img src={bookmark} alt="bookmarkIcon" />
               </button>
             </div>
           </div>

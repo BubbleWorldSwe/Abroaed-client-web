@@ -12,6 +12,10 @@ import {
 } from "./redux/actions/authActions";
 import { getSavedPreferences } from "./api/savedPreferencesApi";
 import { fetchSavedPreferencesRequest } from "./redux/actions/savedPreferencesActions";
+import { fetchAllTestPrepsRequest } from "./redux/actions/testPrepsActions";
+import { fetchAllLanguagePrepsRequest } from "./redux/actions/languagePrepsActions";
+import { fetchAllDestinationsRequest } from "./redux/actions/destinationActions";
+import { fetchAllBlogsRequest } from "./redux/actions/blogActions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +37,11 @@ const App = () => {
 
   async function fetchData() {
     try {
+      dispatch(fetchAllTestPrepsRequest());
+      dispatch(fetchAllLanguagePrepsRequest());
+      dispatch(fetchAllDestinationsRequest());
+      dispatch(fetchAllBlogsRequest());
+
       if (isLoggedInStudent) {
         if (studentToken && studentId) {
           dispatch(fetchSavedPreferencesRequest(studentId));

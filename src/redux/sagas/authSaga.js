@@ -58,14 +58,19 @@ function* handleStudentSignUp(action) {
 
     console.log(response);
     if (response.status === 201) {
-      const resetPasswordLink = response.data?.resetPasswordLink || "";
+      let message =
+        "Link has been sent to your email ID. Please create a password and log in.";
+      toast.success(message);
+      yield put(studentSignUpSuccess(message));
+      //window.location.href = "/home";
+      /*  const resetPasswordLink = response.data?.resetPasswordLink || "";
       if (resetPasswordLink) {
         const extractedPath =
           resetPasswordLink.match(/\/update-password\/[^?]+/)?.[0] || "";
 
         window.location.href = extractedPath;
         yield put(studentSignUpSuccess({ user: response.data.user }));
-      }
+      } */
     } else {
       yield put(studentSignUpFailure(response.message));
       toast.error(response.message);

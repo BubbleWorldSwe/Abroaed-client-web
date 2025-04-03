@@ -17,6 +17,13 @@ function StudentSavedPreference() {
     (state) => state?.students?.selectedStudent
   );
 
+  const savedPreferences = studentProfile?.savedPreferences || [];
+  const colleges = savedPreferences.filter((pref) => pref.type === "colleges");
+  const courses = savedPreferences.filter((pref) => pref.type === "courses"); // Assuming "course" is the correct type
+  const accommodations = savedPreferences.filter(
+    (pref) => pref.type === "accommodation"
+  );
+
   console.log(studentProfile?.savedPreferences);
 
   return (
@@ -35,10 +42,11 @@ function StudentSavedPreference() {
             {tabs.map((tab, index) => (
               <li key={index} className="w-full" role="presentation">
                 <button
-                  className={`inline-block p-4 w-full text-lg font-semibold rounded-t-lg ${activeTab === index
-                    ? "text-black  border-b-2 border-blue-500"
-                    : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                    }`}
+                  className={`inline-block p-4 w-full text-lg font-semibold rounded-t-lg ${
+                    activeTab === index
+                      ? "text-black  border-b-2 border-blue-500"
+                      : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  }`}
                   onClick={() => handleTabClick(index)} // Update active tab
                   role="tab"
                   aria-controls={`styled-${tab
@@ -55,12 +63,20 @@ function StudentSavedPreference() {
 
         {/* Card Container with Horizontal Scroll */}
         <div className="flex  gap-5 overflow-x-auto pb-6">
-          {Array(6)
-            .fill()
-            .map((_, index) => (
-              activeTab === 0 ? <StudentPreferenceCollegeCard key={index} /> :
-                activeTab === 1 ? <StudentPreferenceCourseCard key={index} /> :
-                  <StudentPreferenceAccommodationCard key={index} />
+          {activeTab === 0 &&
+            colleges.map((college, index) => (
+              <StudentPreferenceCollegeCard key={index} college={college} />
+            ))}
+          {activeTab === 1 &&
+            courses.map((course, index) => (
+              <StudentPreferenceCourseCard key={index} course={course} />
+            ))}
+          {activeTab === 2 &&
+            accommodations.map((acc, index) => (
+              <StudentPreferenceAccommodationCard
+                key={index}
+                accommodation={acc}
+              />
             ))}
         </div>
       </div>

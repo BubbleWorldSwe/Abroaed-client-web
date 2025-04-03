@@ -4,15 +4,8 @@ import { BorderTextInputField } from "../../../commons/components/inputFields/bo
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
-const ContactUsForm = ({
-  onFormSubmit,
-  source,
-  entity,
-  isLoading,
-  title,
-  text,
-}) => {
-  const { error } = useSelector((state) => state.leads);
+const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
+  const { error, loading } = useSelector((state) => state.leads);
 
   console.log(error + " : Error");
 
@@ -75,7 +68,7 @@ const ContactUsForm = ({
         mobile: "",
       });
     }
-  }, [isLoading, error]);
+  }, [loading, error]);
 
   console.log(formData);
 
@@ -102,7 +95,10 @@ const ContactUsForm = ({
 
           {/* Right Section - 40% Width */}
           <div className="lg:w-2/5   py-14 md:pt-5 md:pb-10 max-w-lg">
-            <form className=" mx-auto flex flex-col gap-2" onSubmit={handleSubmit}>
+            <form
+              className=" mx-auto flex flex-col gap-2"
+              onSubmit={handleSubmit}
+            >
               <BorderTextInputField
                 label={"First Name"}
                 placeholder="Enter"
@@ -110,7 +106,7 @@ const ContactUsForm = ({
                 type={"text"}
                 value={formData.firstName}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: '16px' }}
+                sx={{ color: "white", fontSize: "16px" }}
                 required
               />
               <BorderTextInputField
@@ -120,7 +116,7 @@ const ContactUsForm = ({
                 type={"text"}
                 value={formData.lastName}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: '16px' }}
+                sx={{ color: "white", fontSize: "16px" }}
                 required
               />
               <BorderTextInputField
@@ -130,7 +126,7 @@ const ContactUsForm = ({
                 type={"email"}
                 value={formData.email}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: '16px' }}
+                sx={{ color: "white", fontSize: "16px" }}
                 required
               />
               <BorderTextInputField
@@ -140,7 +136,7 @@ const ContactUsForm = ({
                 type={"phone"}
                 value={formData.mobile}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: '16px' }}
+                sx={{ color: "white", fontSize: "16px" }}
                 required
               />
 
@@ -183,9 +179,9 @@ const ContactUsForm = ({
                 className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
                 style={{ color: "#000" }}
               >
-                {isLoading ? (
+                {loading ? (
                   <div className="flex justify-center items-center">
-                    <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-white rounded-full"></div>
+                    <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-black rounded-full"></div>
                   </div>
                 ) : (
                   "Get Help"

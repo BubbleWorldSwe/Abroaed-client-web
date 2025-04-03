@@ -148,9 +148,9 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                   <SelectField
                     label="Highest Education Qualification"
                     name="highestEducation"
-                    value={formData.userDetail.highestEducation}
+                    value={formData?.userDetail?.highestEducation}
                     onChange={handleChange}
-                    options={highestEducation.map((data) => ({
+                    options={highestEducation?.map((data) => ({
                       label: data,
                       value: data,
                     }))}
@@ -160,7 +160,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                   <SelectField
                     label="Preferred Study Destination"
                     name="preferredDestination"
-                    value={formData.userDetail.preferredDestination}
+                    value={formData?.userDetail?.preferredDestination}
                     onChange={handleChange}
                     options={allDestinations.map((data) => ({
                       label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
@@ -174,7 +174,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                   <SelectField
                     label="Applying For"
                     name="applyingFor"
-                    value={formData.userDetail.applyingFor}
+                    value={formData?.userDetail?.applyingFor}
                     onChange={handleChange}
                     required
                     options={applyingFor.map((data) => ({
@@ -187,7 +187,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                   <SelectField
                     label="Target Year"
                     name="targetYear"
-                    value={formData.userDetail.targetYear}
+                    value={formData?.userDetail?.targetYear}
                     onChange={handleChange}
                     options={targetYear.map((data) => ({
                       label: data,

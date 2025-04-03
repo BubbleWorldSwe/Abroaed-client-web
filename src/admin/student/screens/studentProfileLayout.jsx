@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   addStudentApplication,
+  addStudentPrepsBatches,
   addStudentSavedPrefrences,
   addStudentTransaction,
   editStudentLeadRequest,
@@ -27,6 +28,7 @@ import { getTeamsByMembers } from "../../../api/teamsApi";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import {
   getStudentApplications,
+  getStudentPrepsBatches,
   getStudentSavedPrefrences,
   getStudentTransactions,
   setCreateStudentApplication,
@@ -114,6 +116,7 @@ const StudentProfileLayout = () => {
       fetchStudentApplications();
       fetchStudentTransactions();
       fetchStudentSavedPefrences();
+      fetchStudentPrepsBatches();
 
       if (lead.status === 200) {
         dispatch(setSelectedStudent(lead.data));
@@ -163,6 +166,20 @@ const StudentProfileLayout = () => {
         dispatch(addStudentSavedPrefrences(list.data?.result));
       } else {
         dispatch(addStudentSavedPrefrences([]));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchStudentPrepsBatches() {
+    try {
+      const list = await getStudentPrepsBatches(id);
+
+      if (list.status === 200) {
+        dispatch(addStudentPrepsBatches(list.data?.result));
+      } else {
+        dispatch(addStudentPrepsBatches([]));
       }
     } catch (error) {
       console.log(error);

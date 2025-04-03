@@ -127,11 +127,26 @@ export const getStudentTransactions = async (leadId) => {
   }
 };
 
-//transactions
+//Saved Prefrences
 export const getStudentSavedPrefrences = async (leadId) => {
   try {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/save-preference/list?filter={"user":"${leadId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+//Test & Language Preps
+export const getStudentPrepsBatches = async (leadId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/subscribe-batches/list?filter={"lead":"${leadId}"}`
     );
     console.log(data);
     if (data.success) {

@@ -23,6 +23,8 @@ export const ADD_STUDENT_APPLICATION = "ADD_STUDENT_APPLICATION";
 export const ADD_STUDENT_TRANSACTIONS = "ADD_STUDENT_TRANSACTIONS";
 export const ADD_STUDENT_SAVEDPREFRENCES = "ADD_STUDENT_SAVEDPREFRENCES";
 
+export const ADD_STUDENT_PREPS_BATCHES = "ADD_STUDENT_PREPS_BATCHES";
+
 export const SET_SELECTED_STUDENT = "SET_SELECTED_STUDENT";
 
 export const fetchStudentsRequest = (page) => ({
@@ -74,6 +76,13 @@ export const addStudentTransaction = (student) => {
 export const addStudentSavedPrefrences = (student) => {
   return {
     type: ADD_STUDENT_SAVEDPREFRENCES,
+    payload: student,
+  };
+};
+
+export const addStudentPrepsBatches = (student) => {
+  return {
+    type: ADD_STUDENT_PREPS_BATCHES,
     payload: student,
   };
 };

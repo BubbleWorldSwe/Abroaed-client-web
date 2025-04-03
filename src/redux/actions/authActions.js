@@ -59,9 +59,9 @@ export const studentSignUpRequest = (credentials) => ({
   payload: credentials,
 });
 
-export const studentSignUpSuccess = ({ user }) => ({
+export const studentSignUpSuccess = (message) => ({
   type: STUDENT_SIGNUP_SUCCESS,
-  payload: user,
+  payload: message,
 });
 
 export const studentSignUpFailure = (error) => ({

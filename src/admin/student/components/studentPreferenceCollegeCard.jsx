@@ -4,9 +4,9 @@ import squareacademiccapbold from "../../../assets/squareacademiccapbold.png";
 import fluent_person from "../../../assets/fluent_person.png";
 import Book from "../../../assets/Book.png";
 
-const StudentPreferenceCollegeCard = () => {
+const StudentPreferenceCollegeCard = ({ college }) => {
   return (
-    <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="relative">
         <img
           className="rounded-t-lg max-w-xl h-40 object-cover"
