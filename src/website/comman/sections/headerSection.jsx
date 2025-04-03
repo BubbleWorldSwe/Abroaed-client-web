@@ -33,6 +33,8 @@ function Header({ isHeaderBgWhite = false }) {
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
 
+  console.log(allDestinations);
+
   const {} = useSelector((state) => state.auth);
 
   // State lifted up from ExploreCollegesNavItemModal

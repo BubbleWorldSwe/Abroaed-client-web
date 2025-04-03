@@ -37,7 +37,7 @@ const ExploreCollegesNavItemModal = ({
                       code={destination?.countryId?.code}
                       style={{ display: "inline-block", marginRight: "10px" }}
                     />
-                    {` ${destination.countryId.name}`}
+                    {` ${destination?.countryId?.name}`}
                   </span>
                   <ChevronRight />
                 </button>

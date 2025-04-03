@@ -153,7 +153,7 @@ function CollegDetails() {
       const list = await getAllDestinations();
 
       if (list.status === 200) {
-        setDestinationsList(list.data.result);
+        setDestinationsList(list?.data?.result);
 
         let cId = collegeDetails?.destinationId?.countryId?._id;
 

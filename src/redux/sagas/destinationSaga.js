@@ -38,7 +38,7 @@ function* fetchDestinations(action) {
   }
 }
 
-function* fetchAllDestinations(action) {
+function* fetchAllDestinations() {
   try {
     const data = yield call(getAllDestinations);
 

@@ -62,7 +62,7 @@ export const destnationReducer = (state = initialState, action) => {
 
       // Create a lookup for quick access
       const destinationMap = new Map(
-        destinations.map((dest) => [dest.countryId.name, dest])
+        destinations.map((dest) => [dest?.countryId?.name, dest])
       );
 
       // Arrange destinations based on predefined sequence
