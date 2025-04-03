@@ -35,7 +35,7 @@ import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { entity, source } from "../../../constants/values";
 
 function DestinationPage() {
@@ -71,7 +71,6 @@ function DestinationPage() {
       if (acc.status === 200) {
         setAccList(acc.data.result);
       }
-
       if (course.status === 200) {
         setCoursesList(course.data);
       }

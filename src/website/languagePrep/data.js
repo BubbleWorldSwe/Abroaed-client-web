@@ -20,6 +20,21 @@ export const steps = [
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus libero placerat ex volutpat posuere. Quisque non nisl ultricies, volutpat mauris sed, venenatis dui. Integer eget eleifend augue, ac consequat dui. Nam arcu libero, blandit vel ipsum sagittis, lacinia tincidunt quam. Donec volutpat sodales tincidunt. Praesent pharetra nisi placerat diam fringilla, ac fermentum erat commodo. Quisque semper arcu sit amet auctor consequat. Mauris diam urna, dignissim sed metus eu, congue porttitor nisi. Nulla facilisi.",
   },
 ];
+export const languagePrepSimplifyCards = [
+  {
+    title: "Personalized Language Coaching",
+    text: "Targeted exercises to improve lexical range, grammatical accuracy, and syntactical fluency based on your proficiency level."
+  },
+  {
+    title: "AI-Powered Pronunciation & Fluency Training",
+    text: "Real-time feedback on phonological errors, intonation, and speech clarity to help you sound natural."
+  },
+  {
+    title: "CEFR-Aligned Progress Tracking",
+    text: "Monitor improvement with structured benchmarks, ensuring steady advancement from A1 to C2 proficiency."
+  }
+];
+
 export const articles = [
   {
     image, // Replace with the actual image URLs
