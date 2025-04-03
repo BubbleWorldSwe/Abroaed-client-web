@@ -65,7 +65,7 @@ const ExploreCollegesNavItemModal = ({
                   <button
                     key={state._id}
                     onClick={() => handleStateClick(state)}
-                    className={`px-4 py-2 border rounded-full font-semibold ${selectedState?._id === state._id
+                    className={`px-4 py-2 border rounded-full hover:bg-gray-primary hover:text-white font-semibold ${selectedState?._id === state._id
                       ? "bg-gray-800 text-white"
                       : "bg-white text-gray-700"
                       }`}
