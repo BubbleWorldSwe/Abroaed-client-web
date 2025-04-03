@@ -11,6 +11,12 @@ function StudentSavedPreference() {
     setActiveTab(index);
   };
 
+  const studentProfile = useSelector(
+    (state) => state?.students?.selectedStudent
+  );
+
+  console.log(studentProfile?.savedPreferences);
+
   return (
     <div className="max-w-5.5xl  my-8 p-6 bg-white rounded-lg shadow-lg">
       {/* Header with title and pencil icon button */}

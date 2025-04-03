@@ -30,6 +30,7 @@ const TestPrepDetails = () => {
 
   async function onUpdate(data) {
     try {
+      console.log(data);
       dispatch(editTestPrepRequest(state?._id, data));
       //  fetchTestPrepsDetails();
       closeModal();

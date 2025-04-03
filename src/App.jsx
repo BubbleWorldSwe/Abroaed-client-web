@@ -10,23 +10,37 @@ import {
   adminGetProfileRequest,
   studentGetProfileRequest,
 } from "./redux/actions/authActions";
+import { getSavedPreferences } from "./api/savedPreferencesApi";
+import { fetchSavedPreferencesRequest } from "./redux/actions/savedPreferencesActions";
 
 const App = () => {
   const dispatch = useDispatch();
 
-  const { adminToken, studentToken, isLoggedInAdmin, isLoggedInStudent } =
-    useSelector((state) => state.auth);
+  const {
+    adminToken,
+    studentToken,
+    isLoggedInAdmin,
+    isLoggedInStudent,
+    studentId,
+    adminId,
+  } = useSelector((state) => state.auth);
+
+  console.log(studentToken, " - ", studentId);
+
+  const { savedPreferences } = useSelector((state) => state.savedPreferences);
+
+  console.log(savedPreferences);
 
   async function fetchData() {
     try {
       if (isLoggedInStudent) {
-        if (studentToken) {
-          //   dispatch(studentGetProfileRequest(studentToken));
+        if (studentToken && studentId) {
+          dispatch(fetchSavedPreferencesRequest(studentId));
         }
       }
 
       if (isLoggedInAdmin) {
-        if (adminToken) {
+        if (adminToken && adminId) {
           // dispatch(adminGetProfileRequest(adminToken));
         }
       }

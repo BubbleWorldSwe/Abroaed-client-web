@@ -12,6 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   addStudentApplication,
+  addStudentSavedPrefrences,
+  addStudentTransaction,
   editStudentLeadRequest,
   editStudentRequest,
   setSelectedStudent,
@@ -25,6 +27,8 @@ import { getTeamsByMembers } from "../../../api/teamsApi";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import {
   getStudentApplications,
+  getStudentSavedPrefrences,
+  getStudentTransactions,
   setCreateStudentApplication,
   setUpdateStudentApplication,
 } from "../../../api/studentsApi";
@@ -34,6 +38,11 @@ import UpdateApplicationModal from "../modals/updateApplicationModal";
 import UpdateDocApplicationModal from "../modals/uploadDocumentApplicationModal";
 import { statusSequence } from "../../../constants/values";
 import StatusConfirmationModal from "../modals/statusConfirmationModal";
+import {
+  addTransactionRequest,
+  fetchTransactionsRequest,
+} from "../../../redux/actions/transactionActions";
+import { setAddTransaction } from "../../../api/transactionApi";
 
 const StudentProfileLayout = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -55,6 +64,8 @@ const StudentProfileLayout = () => {
   const [selectedApplication, setSelectedApplication] = useState(null);
 
   const [changeStatusModal, setChangeStatusModal] = useState(null);
+
+  const [transactionModal, setTransactionModal] = useState(false);
 
   const handleModal = (modalType) => {
     setModal(modalType);
@@ -78,11 +89,31 @@ const StudentProfileLayout = () => {
     }
   }
 
+  async function createStudentTransaction(transData) {
+    try {
+      const data = await setAddTransaction(transData);
+
+      if (data.status === 200) {
+        // dispatch(addStudentTransaction(transData));
+        fetchStudentTransactions();
+        toast.success(data.message);
+        setTransactionModal(false);
+        dispatch(fetchTransactionsRequest(1));
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function fetchData() {
     try {
       const list = await getTeamsByMembers();
       const lead = await getLeadDetailsById(id);
       fetchStudentApplications();
+      fetchStudentTransactions();
+      fetchStudentSavedPefrences();
 
       if (lead.status === 200) {
         dispatch(setSelectedStudent(lead.data));
@@ -104,6 +135,34 @@ const StudentProfileLayout = () => {
         dispatch(addStudentApplication(data.data?.result));
       } else {
         dispatch(addStudentApplication([]));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchStudentTransactions() {
+    try {
+      const list = await getStudentTransactions(studentProfile?.user?._id);
+
+      if (list.status === 200) {
+        dispatch(addStudentTransaction(list.data?.result));
+      } else {
+        dispatch(addStudentTransaction([]));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchStudentSavedPefrences() {
+    try {
+      const list = await getStudentSavedPrefrences(id);
+
+      if (list.status === 200) {
+        dispatch(addStudentSavedPrefrences(list.data?.result));
+      } else {
+        dispatch(addStudentSavedPrefrences([]));
       }
     } catch (error) {
       console.log(error);
@@ -163,13 +222,6 @@ const StudentProfileLayout = () => {
     }
   }
 
-  const getNextStatus2 = (currentStatus) => {
-    const currentIndex = statusSequence.indexOf(currentStatus);
-    return currentIndex !== -1 && currentIndex < statusSequence.length - 1
-      ? statusSequence[currentIndex + 1]
-      : null; // Return null if the status is not found or is the last one
-  };
-
   const getNextStatus = (currentStatus) => {
     if (currentStatus === "awaiting_response") {
       return ["rejected", "offer_letter_received"];
@@ -180,10 +232,6 @@ const StudentProfileLayout = () => {
       ? [statusSequence[currentIndex + 1]]
       : [];
   };
-
-  console.log(getNextStatus(selectedApplication?.status));
-
-  console.log(selectedApplication?.status);
 
   useEffect(() => {
     fetchData();
@@ -319,7 +367,10 @@ const StudentProfileLayout = () => {
             onOpenStatusModal={() => setChangeStatusModal(true)}
           />
           <StudentLangPrep />
-          <StudentTransaction />
+          <StudentTransaction
+            studentId={studentProfile?.user?._id}
+            onSave={createStudentTransaction}
+          />
         </section>
       </div>
     </>

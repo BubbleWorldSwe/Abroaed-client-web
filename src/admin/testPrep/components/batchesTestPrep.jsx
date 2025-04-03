@@ -35,18 +35,25 @@ const Batches = ({ onEdit, onUpdate }) => {
           <thead className="text-sm text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th className="px-4 py-3">Batch Name</th>
-              <th className="px-4 py-3 whitespace-nowrap">Batch Brief</th>
+              <th className="px-4 py-3 whitespace-nowrap">Duration</th>
+              <th className="px-4 py-3 whitespace-nowrap">Fees</th>
+              <th className="px-4 py-3 whitespace-nowrap">Seats</th>
               {isWriteAccess && <th className="px-4 py-3"></th>}
             </tr>
           </thead>
           <tbody>
             {testPrepDetails?.batches?.length > 0 ? (
               testPrepDetails.batches.map((data, i) => (
-                <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <tr
+                  key={i}
+                  className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
                   <td className=" px-4 py-3 font-semibold">
                     {data?.batchName}
                   </td>
-                  <td className=" px-4 py-3">{data?.batchBrief}</td>
+                  <td className=" px-4 py-3">{data?.duration} Months</td>
+                  <td className=" px-4 py-3">{data?.fees}</td>
+                  <td className=" px-4 py-3">{data?.seats}</td>
 
                   {isWriteAccess && (
                     <td className="text-center w-[100px]">

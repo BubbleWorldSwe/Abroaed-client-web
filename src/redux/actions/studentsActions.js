@@ -20,6 +20,9 @@ export const EDIT_STUDENT_LEADS_FAILURE = "EDIT_STUDENT_LEADS_FAILURE";
 
 export const ADD_STUDENT_APPLICATION = "ADD_STUDENT_APPLICATION";
 
+export const ADD_STUDENT_TRANSACTIONS = "ADD_STUDENT_TRANSACTIONS";
+export const ADD_STUDENT_SAVEDPREFRENCES = "ADD_STUDENT_SAVEDPREFRENCES";
+
 export const SET_SELECTED_STUDENT = "SET_SELECTED_STUDENT";
 
 export const fetchStudentsRequest = (page) => ({
@@ -56,6 +59,21 @@ export const addStudentApplication = (student) => {
   console.log(student);
   return {
     type: ADD_STUDENT_APPLICATION,
+    payload: student,
+  };
+};
+
+export const addStudentTransaction = (student) => {
+  console.log(student);
+  return {
+    type: ADD_STUDENT_TRANSACTIONS,
+    payload: student,
+  };
+};
+
+export const addStudentSavedPrefrences = (student) => {
+  return {
+    type: ADD_STUDENT_SAVEDPREFRENCES,
     payload: student,
   };
 };

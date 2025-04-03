@@ -35,7 +35,7 @@ import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { entity, source } from "../../../constants/values";
 
 function DestinationPage() {
@@ -55,9 +55,11 @@ function DestinationPage() {
   async function fetchData() {
     try {
       const data = await getDestinationDetailsById(id);
+
       const college = await getCollegesByDestinationId(id);
       const acc = await getAccommodationsByDestinationId(id);
       const course = await getCoursesListByDestinationId(id);
+
       if (data.status === 200) {
         setDestinationDetails(data.data);
       }

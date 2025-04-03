@@ -111,3 +111,33 @@ export const getStudentDetailsById = async (userId) => {
     console.log(error);
   }
 };
+
+//transactions
+export const getStudentTransactions = async (leadId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/transaction/list?filter={"user":"${leadId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+//transactions
+export const getStudentSavedPrefrences = async (leadId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/save-preference/list?filter={"user":"${leadId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

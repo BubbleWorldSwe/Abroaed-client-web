@@ -16,6 +16,8 @@ import {
   EDIT_STUDENT_LEADS_REQUEST,
   EDIT_STUDENT_LEADS_FAILURE,
   ADD_STUDENT_APPLICATION,
+  ADD_STUDENT_TRANSACTIONS,
+  ADD_STUDENT_SAVEDPREFRENCES,
 } from "../actions/studentsActions";
 
 const initialState = {
@@ -96,6 +98,56 @@ export const studentsReducer = (state = initialState, action) => {
         selectedStudent: {
           ...state.selectedStudent,
           applications: action.payload || [],
+        },
+      };
+
+    case ADD_STUDENT_TRANSACTIONS:
+      console.log("ADD_STUDENT_TRANSACTIONS");
+      console.log(action);
+
+      return {
+        ...state,
+        loading: false,
+        students: state.students.map((student) => ({
+          ...student,
+          data: student.data.map((item) =>
+            item?._id === action?.payload?.user?._id
+              ? {
+                  ...item,
+                  transactions: action.payload || [],
+                }
+              : item
+          ),
+        })),
+
+        selectedStudent: {
+          ...state.selectedStudent,
+          transactions: action.payload || [],
+        },
+      };
+
+    case ADD_STUDENT_SAVEDPREFRENCES:
+      console.log("ADD_STUDENT_SAVEDPREFRENCES");
+      console.log(action);
+
+      return {
+        ...state,
+        loading: false,
+        students: state.students.map((student) => ({
+          ...student,
+          data: student.data.map((item) =>
+            item?._id === action?.payload?.user?._id
+              ? {
+                  ...item,
+                  savedPreferences: action.payload || [],
+                }
+              : item
+          ),
+        })),
+
+        selectedStudent: {
+          ...state.selectedStudent,
+          savedPreferences: action.payload || [],
         },
       };
 

@@ -15,6 +15,7 @@ import { accommodationsReducer } from "./reducers/accommodationReducer";
 import { studentsReducer } from "./reducers/studentsReducer";
 import { blogsReducer } from "./reducers/blogReducer";
 import { transactionReducer } from "./reducers/transactionReducer";
+import { savedPreferencesReducer } from "./reducers/savedPreferencesReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -30,6 +31,8 @@ const authPersistConfig = {
     "isWriteAccess",
     "isLoggedInAdmin",
     "isLoggedInStudent",
+    "adminId",
+    "studentId",
   ],
   //  blacklist: ["token", "user", "role"],
 };
@@ -109,6 +112,7 @@ const rootReducer = {
   ),
 
   blogs: persistReducer(blogsPersistConfig, blogsReducer),
+  savedPreferences: savedPreferencesReducer,
 };
 
 const store = configureStore({

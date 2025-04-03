@@ -44,6 +44,9 @@ const initialState = {
   isWriteAccess: null,
   isLoggedInAdmin: null,
   isLoggedInStudent: null,
+
+  adminId: null,
+  studentId: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -65,6 +68,7 @@ export const authReducer = (state = initialState, action) => {
         studentToken: action.payload.token,
         student: action.payload.user,
         isLoggedInStudent: true,
+        studentId: action.payload.user._id,
       };
 
     case STUDENT_SIGNUP_SUCCESS:
@@ -99,6 +103,7 @@ export const authReducer = (state = initialState, action) => {
         admin: action.payload.user,
         isWriteAccess: action.payload?.user?.isWriteAccess,
         isLoggedInAdmin: true,
+        adminId: action.payload.user._id,
       };
 
     case ADMIN_UPDATE_PROFILE_SUCCESS:
@@ -128,6 +133,7 @@ export const authReducer = (state = initialState, action) => {
         student: null,
         studentToken: null,
         isLoggedInStudent: false,
+        studentId: null,
       };
 
     case ADMIN_LOGOUT:
@@ -138,6 +144,7 @@ export const authReducer = (state = initialState, action) => {
         role: null,
         isWriteAccess: null,
         isLoggedInAdmin: false,
+        adminId: null,
       };
 
     default:
