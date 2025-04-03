@@ -95,7 +95,7 @@ function Header({ isHeaderBgWhite = false }) {
   function handleStateClick(state) {
     setSelectedState(state);
     const filtered = colleges.filter(
-      (college) => college.stateId._id === state._id
+      (college) => college?.stateId?._id === state?._id
     );
     setFilteredColleges(filtered);
   }

@@ -94,7 +94,7 @@ function Header({ isHeaderBgWhite = false }) {
   function handleStateClick(state) {
     setSelectedState(state);
     const filtered = colleges.filter(
-      (college) => college.stateId._id === state._id
+      (college) => college?.stateId?._id === state?._id
     );
     setFilteredColleges(filtered);
   }
@@ -124,10 +124,11 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-white text-[#52525B] shadow-md"
-        : "bg-black text-white bg-opacity-5"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-white text-[#52525B] shadow-md"
+          : "bg-black text-white bg-opacity-5"
+      }`}
     >
       <nav>
         <div
@@ -162,8 +163,9 @@ function Header({ isHeaderBgWhite = false }) {
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${scrolling || isHeaderBgWhite ? "text-black" : "text-white"
-                  }`}
+                className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] ${
+                  scrolling || isHeaderBgWhite ? "text-black" : "text-white"
+                }`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
@@ -180,16 +182,18 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold  px-1 relative transition-colors duration-300
-                     ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
-                      }
+                     ${
+                       scrolling || isHeaderBgWhite
+                         ? "text-[#52525B]"
+                         : "text-white"
+                     }
                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${activeDropdown === "exploreColleges"
-                        ? "after:opacity-30"
-                        : ""
-                      }`}
+                     ${
+                       activeDropdown === "exploreColleges"
+                         ? "after:opacity-30"
+                         : ""
+                     }`}
                   >
                     Explore Colleges
                   </a>
@@ -258,15 +262,17 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
                       }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "destinations"
-                        ? "after:opacity-30"
-                        : ""
+                      ${
+                        activeDropdown === "destinations"
+                          ? "after:opacity-30"
+                          : ""
                       }`}
                   >
                     Destinations
@@ -289,15 +295,17 @@ function Header({ isHeaderBgWhite = false }) {
                   <a
                     href="/accomodation"
                     className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
                       }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "accomodation"
-                        ? "after:opacity-30"
-                        : ""
+                      ${
+                        activeDropdown === "accomodation"
+                          ? "after:opacity-30"
+                          : ""
                       }`}
                   >
                     Accommodation
@@ -310,13 +318,15 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
                       }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "testPrep" ? "after:opacity-30" : ""
+                      ${
+                        activeDropdown === "testPrep" ? "after:opacity-30" : ""
                       }`}
                   >
                     ELT Prep
@@ -341,15 +351,17 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     className={`font-semibold  px-1 relative transition-colors duration-300
-                      ${scrolling || isHeaderBgWhite
-                        ? "text-[#52525B]"
-                        : "text-white"
+                      ${
+                        scrolling || isHeaderBgWhite
+                          ? "text-[#52525B]"
+                          : "text-white"
                       }
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[4.5rem] 
                       after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                      ${activeDropdown === "languagePrep"
-                        ? "after:opacity-30"
-                        : ""
+                      ${
+                        activeDropdown === "languagePrep"
+                          ? "after:opacity-30"
+                          : ""
                       }`}
                   >
                     Language Prep
@@ -424,7 +436,7 @@ function Header({ isHeaderBgWhite = false }) {
             <div
               onMouseEnter={() => handleMouseEnter("login")}
               onMouseLeave={handleMouseLeave}
-            // className={ }
+              // className={ }
             >
               {studentToken ? (
                 <>
@@ -456,7 +468,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}
