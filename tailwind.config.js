@@ -12,6 +12,7 @@ export default {
     require("flowbite/plugin")({
       charts: true,
     }),
+    require('tailwind-scrollbar'),
     addVariablesForColors,
     function ({ matchUtilities, theme }) {
       matchUtilities(

@@ -36,7 +36,7 @@ const links = [
   {
     title: "Services",
     items: [
-      { name: "ABROAED+", link: "/abroaedPlus" },
+      { name: (<>ABROAED<sup>+</sup></>), link: "/abroaedPlus" },
       { name: "Accommodation", link: "/accomodation" },
       { name: "League of Excellence", link: "/leaguageOfExcellence" },
       // { name: "Test Prep", link: "/test-prep" },
