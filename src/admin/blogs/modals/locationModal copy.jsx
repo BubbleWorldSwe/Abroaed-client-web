@@ -19,8 +19,6 @@ const LocationModal = ({
     (state) => state?.accommodations?.selectedAccommodation
   );
 
-  console.log(accommodationDetails.destinationId);
-
   const [formData, setFormData] = useState({
     countryId: accommodationDetails?.countryId?._id,
     stateId: accommodationDetails?.stateId?._id,

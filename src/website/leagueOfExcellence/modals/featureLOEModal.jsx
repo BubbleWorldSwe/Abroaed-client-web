@@ -64,8 +64,6 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
       return;
     }
 
-    console.log("Lead Data:", formData);
-
     onFormSubmit({ user: formData, source: source, entity: entity });
     onClose();
   };

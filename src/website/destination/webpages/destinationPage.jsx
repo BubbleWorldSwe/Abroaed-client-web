@@ -35,14 +35,19 @@ import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
 import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { entity, source } from "../../../constants/values";
+import {
+  addSavedPreferenceRequest,
+  deleteSavedPreferenceRequest,
+} from "../../../redux/actions/savedPreferencesActions";
 
 function DestinationPage() {
   const { id } = useParams();
-  const { state } = useLocation();
+
   const dispatch = useDispatch();
-  console.log(state);
+
+  const { studentId } = useSelector((state) => state.auth);
 
   const [destinationDetails, setDestinationDetails] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -81,14 +86,40 @@ function DestinationPage() {
     }
   }
 
-  console.log(coursesList);
-
   const handleAddLead = (data) => {
     try {
       console.log("handleAddLead");
       console.log(data);
 
       dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToSavedPreferences = (type, typeId) => {
+    try {
+      console.log("addToSavedPreferences");
+      console.log(type, typeId);
+
+      dispatch(
+        addSavedPreferenceRequest({
+          user: studentId,
+          type,
+          typeId,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFromSavedPreferences = (id) => {
+    try {
+      console.log("removeFromSavedPreferences");
+      console.log(id);
+
+      dispatch(deleteSavedPreferenceRequest(id));
     } catch (error) {
       console.log(error);
     }
@@ -132,6 +163,8 @@ function DestinationPage() {
           coursesList={coursesList}
           source={`${source.destination}_${source.courses}`}
           onAddLead={handleAddLead}
+          addToSavedPreferences={addToSavedPreferences}
+          removeFromSavedPreferences={removeFromSavedPreferences}
         />
       )}
 
@@ -197,6 +230,8 @@ function DestinationPage() {
           accommodationList={accList}
           source={`${source.destination}_${source.accommodation}`}
           onAddLead={handleAddLead}
+          addToSavedPreferences={addToSavedPreferences}
+          removeFromSavedPreferences={removeFromSavedPreferences}
         />
       )}
 

@@ -1,16 +1,31 @@
 /* eslint-disable react/prop-types */
 
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import { IMAGES } from "../../../constants/images";
 import locationIcon from "../../../assets/locationIcon.png";
 import wallet from "../../../assets/wallet.png";
-import bookmark from "../../../assets/bookmark.png";
-import { useState } from "react";
+import { Bookmark } from "lucide-react";
 import AccomodationEnquiryModal from "../modals/accomodationEnquiryModal";
 
-const AccommodationCard = ({ item, source, onAddLead }) => {
-  console.log(source);
+const AccommodationCard = ({
+  item,
+  source,
+  onAddLead,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
+}) => {
   const [openModal, setOpenModal] = useState(false);
+  const { savedPreferences } = useSelector((state) => state.savedPreferences);
+
+  // Find saved accommodation by typeId
+  const savedItem = [...savedPreferences].find(
+    (saved) => saved.typeId === item?._id
+  );
+
+  const isSaved = Boolean(savedItem);
+  const { isLoggedInStudent } = useSelector((state) => state.auth);
 
   const handleCloseAddModal = () => {
     setOpenModal(false);
@@ -41,27 +56,38 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
         <div className="p-5 flex flex-col flex-grow">
           {/* Header */}
           <div className="flex justify-between">
-            <h5
-              className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}
-            >
+            <h5 className="text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white">
               {item.accomodationName}
             </h5>
-            <div>
-              <button>
-                <img src={bookmark} alt="bookmarkIcon" />
+
+            {/* Bookmark Button */}
+            {isLoggedInStudent && (
+              <button
+                onClick={
+                  () =>
+                    isSaved
+                      ? removeFromSavedPreferences(savedItem._id) // Remove using saved _id
+                      : addToSavedPreferences("accommodation", item?._id) // Add using item._id
+                }
+              >
+                <Bookmark
+                  className={`w-6 h-6 text-black ${
+                    isSaved ? "fill-black" : "text-gray-500"
+                  }`}
+                />
               </button>
-            </div>
+            )}
           </div>
 
           {/* Location */}
-          <div className="mb-1 flex justify-between ">
+          <div className="mb-1 flex justify-between">
             <div className="flex gap-2 items-center">
               <img
-                className="w-[14px] h-[14px]  object-contain mx-1"
+                className="w-[14px] h-[14px] object-contain mx-1"
                 src={locationIcon}
-                alt={item.name}
+                alt="location"
               />
-              <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400">
+              <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400 line-clamp-1">
                 {item?.stateId?.name}, {item?.destinationId?.countryId?.name}
               </p>
             </div>
@@ -69,22 +95,25 @@ const AccommodationCard = ({ item, source, onAddLead }) => {
 
           {/* Price */}
           <div className="flex justify-between text-center mb-2">
-            <div className="flex gap-2 text-base text-[#52525B]  items-center">
+            <div className="flex gap-2 text-base text-[#52525B] items-center">
               <img
-                className="w-[14px] h-[14px]  object-contain mx-1"
+                className="w-[14px] h-[14px] object-contain mx-1"
                 src={wallet}
-                alt={item.name}
+                alt="wallet"
               />
-              <p className="font-normal  dark:text-gray-400">
+              <p className="font-normal dark:text-gray-400">
                 {item.price} per month
               </p>
             </div>
           </div>
+
           <div className="flex-grow">
-            <p className="mb-5 font-normal  text-gray-500 dark:text-gray-400 line-clamp-4">
+            <p className="mb-5 font-normal text-gray-500 dark:text-gray-400 line-clamp-4">
               {item.description}
             </p>
           </div>
+
+          {/* Button Always at Bottom */}
           <div className="mt-auto">
             <EnquireButton onClick={handleOpenAddModal} />
           </div>

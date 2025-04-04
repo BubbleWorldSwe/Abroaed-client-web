@@ -13,6 +13,8 @@ function DestinationUniCoursersSection({
   coursesList,
   source,
   onAddLead,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
 }) {
   return (
     <Element name="top-universities">
@@ -34,7 +36,12 @@ function DestinationUniCoursersSection({
               <div className=" border-t border-gray-300"></div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-10">
                 {collegesList.map((item, index) => (
-                  <UniversityDetailsCard item={item} key={index} />
+                  <UniversityDetailsCard
+                    addToSavedPreferences={addToSavedPreferences}
+                    removeFromSavedPreferences={removeFromSavedPreferences}
+                    item={item}
+                    key={index}
+                  />
                 ))}
               </div>
             </div>
@@ -62,6 +69,8 @@ function DestinationUniCoursersSection({
                       key={index}
                       source={source}
                       onAddLead={onAddLead}
+                      addToSavedPreferences={addToSavedPreferences}
+                      removeFromSavedPreferences={removeFromSavedPreferences}
                     />
                   ))}
                 </div>

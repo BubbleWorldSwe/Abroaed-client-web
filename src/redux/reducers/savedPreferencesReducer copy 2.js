@@ -12,7 +12,7 @@ import {
 
 const initialState = {
   loading: false,
-  savedPreferences: new Set(),
+  savedPreferences: [],
   error: null,
 };
 
@@ -27,7 +27,7 @@ export const savedPreferencesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        savedPreferences: new Set(action.payload.result), // Convert array to Set
+        savedPreferences: action.payload.result,
       };
 
     case FETCH_SAVEDPREFERENCES_FAILURE:
@@ -39,18 +39,16 @@ export const savedPreferencesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        savedPreferences: new Set([...state.savedPreferences, action.payload]), // Add new item immutably
+        savedPreferences: [...state.savedPreferences, action.payload],
       };
 
     case DELETE_SAVEDPREFERENCE_SUCCESS:
       return {
         ...state,
         loading: false,
-        savedPreferences: new Set(
-          [...state.savedPreferences].filter(
-            (preference) => preference._id !== action.payload
-          )
-        ), // Remove item immutably
+        savedPreferences: state.savedPreferences.filter(
+          (preference) => preference._id !== action.payload
+        ),
       };
 
     default:

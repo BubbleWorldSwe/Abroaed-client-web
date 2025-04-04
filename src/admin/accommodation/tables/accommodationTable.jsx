@@ -34,7 +34,6 @@ const AccommodationTable = ({
 
   const handleViewDetails = (accommodation) => {
     try {
-      console.log(accommodation);
       dispatch(setSelectedAccommodation(accommodation));
 
       navigate(

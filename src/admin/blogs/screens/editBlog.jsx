@@ -81,8 +81,6 @@ const EditBlog = () => {
     }
   };
 
-  console.log(blogDetails.status);
-
   return (
     <>
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">

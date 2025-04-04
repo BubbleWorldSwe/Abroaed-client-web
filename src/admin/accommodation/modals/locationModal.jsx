@@ -26,7 +26,7 @@ const LocationModal = ({
     streetName: accommodationDetails?.streetName,
   });
 
-  console.log(formData);
+ 
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));
@@ -57,12 +57,6 @@ const LocationModal = ({
 
               const selectedCountry = destinationsList.find(
                 (data) => data?._id === e.target.value
-              );
-
-              console.log(
-                "Selected Country Object:",
-                selectedCountry._id,
-                selectedCountry?.countryId?._id
               );
 
               getStatesList(selectedCountry?.countryId?._id);

@@ -8,6 +8,8 @@ const DestinationStudentAccommodationsSection = ({
   destinationDetails,
   onAddLead,
   source,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
 }) => {
   return (
     <Element name="accommodation">
@@ -15,9 +17,7 @@ const DestinationStudentAccommodationsSection = ({
         <section className=" dark:bg-gray-900 relative">
           <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <SectionMainHeader
-                className="mb-10"
-              >
+              <SectionMainHeader className="mb-10">
                 Popular Student Accommodations
               </SectionMainHeader>
               <div className="my-5 border-t-2 border-gray-300"></div>
@@ -30,6 +30,8 @@ const DestinationStudentAccommodationsSection = ({
                   key={index}
                   onAddLead={onAddLead}
                   source={source}
+                  addToSavedPreferences={addToSavedPreferences}
+                  removeFromSavedPreferences={removeFromSavedPreferences}
                 />
               ))}
             </div>

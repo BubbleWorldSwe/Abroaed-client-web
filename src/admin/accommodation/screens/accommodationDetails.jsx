@@ -107,8 +107,6 @@ const AccommodationDetails = () => {
     }
   }
 
-  console.log(statesList);
-
   async function fetchStatesList(countryId) {
     try {
       setStatesList([]);

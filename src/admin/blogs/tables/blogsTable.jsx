@@ -61,7 +61,6 @@ const BlogsTable = ({
 
   const handleViewBlogs = (blog) => {
     try {
-      console.log(blog);
       dispatch(setSelectedBlog(blog));
 
       navigate(`/admin/blogs/blogDetails/${encodeURIComponent(blog._id)}`, {

@@ -13,6 +13,7 @@ import LanguageNavModal from "../modals/languageNavModal";
 import { studentLogout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import ProfileModal from "../modals/profileModal";
+import LogoutModal from "../../../commons/modal/logoutModal";
 //import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
@@ -33,10 +34,6 @@ function Header({ isHeaderBgWhite = false }) {
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
 
-  console.log(allDestinations);
-
-  // const { } = useSelector((state) => state.auth);
-
   // State lifted up from ExploreCollegesNavItemModal
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [states, setStates] = useState([]);
@@ -45,15 +42,18 @@ function Header({ isHeaderBgWhite = false }) {
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { studentToken } = useSelector((state) => state.auth);
-
+  const { studentToken, student } = useSelector((state) => state.auth);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
     dispatch(studentLogout(null));
+    setIsModalOpen(false);
     navigate("/home");
   };
+
+  console.log(student?.firstName, student?.lastName);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -148,10 +148,11 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary  shadow-md"
-        : "bg-gray-primary text-white bg-opacity-10"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-gray-primary  shadow-md"
+          : "bg-gray-primary text-white bg-opacity-10"
+      }`}
     >
       <nav>
         {/* <div
@@ -207,10 +208,11 @@ function Header({ isHeaderBgWhite = false }) {
                     className={`  px-1 relative transition-colors duration-300
                       after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[3.5rem] 
                      after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${activeDropdown === "exploreColleges"
-                        ? "after:opacity-100 after:-z-10 text-gray-primary font-bold"
-                        : ""
-                      }`}
+                     ${
+                       activeDropdown === "exploreColleges"
+                         ? "after:opacity-100 after:-z-10 text-gray-primary font-bold"
+                         : ""
+                     }`}
                   >
                     Explore Colleges
                   </a>
@@ -243,10 +245,11 @@ function Header({ isHeaderBgWhite = false }) {
                         className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${activeDropdown === key
-                            ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                            : "font-semibold"
-                          }`}
+                ${
+                  activeDropdown === key
+                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                    : "font-semibold"
+                }`}
                       >
                         {label}
                       </a>
@@ -272,7 +275,7 @@ function Header({ isHeaderBgWhite = false }) {
             <div
               onMouseEnter={() => handleMouseEnter("login")}
               onMouseLeave={handleMouseLeave}
-            // className={ }
+              // className={ }
             >
               {studentToken ? (
                 <>
@@ -280,14 +283,15 @@ function Header({ isHeaderBgWhite = false }) {
                     // onClick={() => navigate("/signin")}
                     className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
                   >
-                    Hello, User
+                    {/* Hello, {`${student?.firstName} ${student?.lastName}`} */}
+                    Hello, {`${student?.firstName}`}
                   </button>
                   {activeDropdown === "login" && (
                     <div className="relative">
                       <ProfileModal
                         handleMouseEnter={handleMouseEnter}
                         handleMouseLeave={handleMouseLeave}
-                        logout={handleSignOut}
+                        logout={() => setIsModalOpen(true)}
                       />
                     </div>
                   )}
@@ -304,7 +308,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}
@@ -313,6 +317,13 @@ function Header({ isHeaderBgWhite = false }) {
           </button>
         </nav>
       </nav>
+
+      <LogoutModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        heading="Logout!"
+        onLogout={handleSignOut}
+      />
     </header>
   );
 }

@@ -39,7 +39,6 @@ function TestPrepHero({ testPrepsDetails }) {
     // Set the content for the active tab
     const content = getTabContent(activeTab);
     setActiveTabContent(content);
-    console.log("active tab", activeTab);
   }, [activeTab]);
 
   return (

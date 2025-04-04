@@ -1,11 +1,28 @@
 /* eslint-disable react/prop-types */
 
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal";
-import bookmark from "../../../assets/bookmark.png"
-const CourseCard = ({ course, source, onAddLead }) => {
+import { Bookmark } from "lucide-react";
+
+const CourseCard = ({
+  course,
+  source,
+  onAddLead,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
+}) => {
   const [openModal, setOpenModal] = useState(false);
+  const { savedPreferences } = useSelector((state) => state.savedPreferences);
+  const { isLoggedInStudent } = useSelector((state) => state.auth);
+
+  // Find saved course by typeId
+  const savedItem = [...savedPreferences].find(
+    (saved) => saved.typeId === course?._id
+  );
+
+  const isSaved = Boolean(savedItem);
 
   const handleCloseAddModal = () => {
     setOpenModal(false);
@@ -29,18 +46,29 @@ const CourseCard = ({ course, source, onAddLead }) => {
         <div className="flex flex-col flex-grow">
           <div>
             <div className="flex justify-between">
-              <h5 className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}>
+              <h5 className="mb-2 text-[22px] font-semibold text-gray-primary dark:text-white">
                 {course.name}
               </h5>
-              <div>
-                <button>
-                  <img
-                    src={bookmark}
-                    alt="bookmarkIcon"
+
+              {/* Bookmark Button */}
+              {isLoggedInStudent && (
+                <button
+                  onClick={
+                    () =>
+                      isSaved
+                        ? removeFromSavedPreferences(savedItem._id) // Remove using saved _id
+                        : addToSavedPreferences("courses", course?._id) // Add using course._id
+                  }
+                >
+                  <Bookmark
+                    className={`w-6 h-6 text-black ${
+                      isSaved ? "fill-black" : "text-gray-500"
+                    }`}
                   />
                 </button>
-              </div>
+              )}
             </div>
+
             <p className="mb-2 text-sm font-normal text-[#52525B] dark:text-gray-400">
               <span className="text-base font-semibold">College:</span>{" "}
               {course.collegeName}

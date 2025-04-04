@@ -31,8 +31,6 @@ const AddAccommodationModal = ({
   };
 
   const handleChange = (e) => {
-    console.log(e.target.name);
-    console.log("e.target.name");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -92,12 +90,6 @@ const AddAccommodationModal = ({
 
                   const selectedCountry = destinationsList.find(
                     (data) => data?._id === e.target.value
-                  );
-
-                  console.log(
-                    "Selected Country Object:",
-                    selectedCountry._id,
-                    selectedCountry?.countryId?._id
                   );
 
                   getStatesList(selectedCountry?.countryId?._id);

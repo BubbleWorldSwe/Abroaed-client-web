@@ -24,11 +24,15 @@ import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addSavedPreferenceRequest,
+  deleteSavedPreferenceRequest,
+} from "../../../redux/actions/savedPreferencesActions";
 
 function CollegePage() {
   const { id } = useParams();
-
+  const { studentId } = useSelector((state) => state.auth);
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
   const [collegeDetails, setCollegeDetails] = useState(null);
@@ -60,6 +64,34 @@ function CollegePage() {
       console.log(data);
 
       dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToSavedPreferences = (type, typeId) => {
+    try {
+      console.log("addToSavedPreferences");
+      console.log(type, typeId);
+
+      dispatch(
+        addSavedPreferenceRequest({
+          user: studentId,
+          type,
+          typeId,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFromSavedPreferences = (id) => {
+    try {
+      console.log("removeFromSavedPreferences");
+      console.log(id);
+
+      dispatch(deleteSavedPreferenceRequest(id));
     } catch (error) {
       console.log(error);
     }
@@ -98,6 +130,8 @@ function CollegePage() {
             collegeDetails={collegeDetails}
             source={`${source.college}_${source.courses}`}
             onAddLead={handleAddLead}
+            addToSavedPreferences={addToSavedPreferences}
+            removeFromSavedPreferences={removeFromSavedPreferences}
           />
         )}
 
@@ -129,6 +163,8 @@ function CollegePage() {
             accommodationList={accList}
             source={`${source.college}_${source.accommodation}`}
             onAddLead={handleAddLead}
+            addToSavedPreferences={addToSavedPreferences}
+            removeFromSavedPreferences={removeFromSavedPreferences}
           />
         )}
 

@@ -5,6 +5,8 @@ const CollegeStudentAccommodation = ({
   accommodationList,
   source,
   onAddLead,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
 }) => {
   return (
     <>
@@ -24,6 +26,8 @@ const CollegeStudentAccommodation = ({
                   key={index}
                   source={source}
                   onAddLead={onAddLead}
+                  addToSavedPreferences={addToSavedPreferences}
+                  removeFromSavedPreferences={removeFromSavedPreferences}
                 />
               ))}
             </div>

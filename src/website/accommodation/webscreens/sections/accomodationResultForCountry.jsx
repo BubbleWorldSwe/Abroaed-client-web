@@ -11,6 +11,8 @@ function AccommodationResultForCountry({
   destinationsList,
   source,
   onAddLead,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
 }) {
   return (
     <div className=" mx-auto px-10">
@@ -74,6 +76,8 @@ function AccommodationResultForCountry({
                       item={item}
                       source={source}
                       onAddLead={onAddLead}
+                      addToSavedPreferences={addToSavedPreferences}
+                      removeFromSavedPreferences={removeFromSavedPreferences}
                     />
                   ))
                 ) : (

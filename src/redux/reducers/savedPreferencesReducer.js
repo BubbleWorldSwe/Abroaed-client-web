@@ -2,40 +2,55 @@ import {
   FETCH_SAVEDPREFERENCES_REQUEST,
   FETCH_SAVEDPREFERENCES_SUCCESS,
   FETCH_SAVEDPREFERENCES_FAILURE,
-  EDIT_SAVEDPREFERENCE_REQUEST,
-  EDIT_SAVEDPREFERENCE_SUCCESS,
-  EDIT_SAVEDPREFERENCE_FAILURE,
+  ADD_SAVEDPREFERENCE_REQUEST,
+  ADD_SAVEDPREFERENCE_SUCCESS,
+  ADD_SAVEDPREFERENCE_FAILURE,
+  DELETE_SAVEDPREFERENCE_REQUEST,
+  DELETE_SAVEDPREFERENCE_SUCCESS,
+  DELETE_SAVEDPREFERENCE_FAILURE,
 } from "../actions/savedPreferencesActions";
 
 const initialState = {
   loading: false,
-  savedPreferences: [],
+  savedPreferences: new Set(),
   error: null,
-  selectedPreference: {},
 };
 
 export const savedPreferencesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SAVEDPREFERENCES_REQUEST:
-    case EDIT_SAVEDPREFERENCE_REQUEST:
+    case ADD_SAVEDPREFERENCE_REQUEST:
+    case DELETE_SAVEDPREFERENCE_REQUEST:
       return { ...state, loading: true, error: null };
 
     case FETCH_SAVEDPREFERENCES_SUCCESS:
       return {
         ...state,
         loading: false,
-        savedPreferences: action.payload.result,
+        savedPreferences: new Set(action.payload.result), // Convert array to Set
       };
 
     case FETCH_SAVEDPREFERENCES_FAILURE:
-    case EDIT_SAVEDPREFERENCE_FAILURE:
+    case ADD_SAVEDPREFERENCE_FAILURE:
+    case DELETE_SAVEDPREFERENCE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
-    case EDIT_SAVEDPREFERENCE_SUCCESS:
+    case ADD_SAVEDPREFERENCE_SUCCESS:
       return {
         ...state,
         loading: false,
-        savedPreferences: action.payload,
+        savedPreferences: new Set([...state.savedPreferences, action.payload]), // Add new item immutably
+      };
+
+    case DELETE_SAVEDPREFERENCE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        savedPreferences: new Set(
+          [...state.savedPreferences].filter(
+            (preference) => preference._id !== action.payload
+          )
+        ), // Remove item immutably
       };
 
     default:

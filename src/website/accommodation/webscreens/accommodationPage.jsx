@@ -19,6 +19,10 @@ import { entity, source } from "../../../constants/values";
 import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
 import Testimonials from "../../comman/components/testimonials";
 import OurPartners from "../../comman/sections/ourPartnersSection";
+import {
+  addSavedPreferenceRequest,
+  deleteSavedPreferenceRequest,
+} from "../../../redux/actions/savedPreferencesActions";
 
 function AccomodationPage() {
   const dispatch = useDispatch();
@@ -28,7 +32,7 @@ function AccomodationPage() {
   const [isDataLoading, setIsDataLoading] = useState(true);
   const { allDestinations } = useSelector((state) => state.destinations);
   const [selectedCountry, setSelectedCountry] = useState(null);
-
+  const { studentId } = useSelector((state) => state.auth);
   const destinationsList = [
     { _id: "all", countryId: { name: "All", emoji: "🌍" } },
     ...allDestinations,
@@ -63,6 +67,34 @@ function AccomodationPage() {
       console.log(data);
 
       dispatch(addLeadRequest(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToSavedPreferences = (type, typeId) => {
+    try {
+      console.log("addToSavedPreferences");
+      console.log(type, typeId);
+
+      dispatch(
+        addSavedPreferenceRequest({
+          user: studentId,
+          type,
+          typeId,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFromSavedPreferences = (id) => {
+    try {
+      console.log("removeFromSavedPreferences");
+      console.log(id);
+
+      dispatch(deleteSavedPreferenceRequest(id));
     } catch (error) {
       console.log(error);
     }
@@ -106,6 +138,8 @@ function AccomodationPage() {
         destinationsList={destinationsList}
         source={`${source.accommodation}`}
         onAddLead={handleAddLead}
+        addToSavedPreferences={addToSavedPreferences}
+        removeFromSavedPreferences={removeFromSavedPreferences}
       />
       <AccommodationHowItWorkSection />
       {/* <OurPartners /> */}

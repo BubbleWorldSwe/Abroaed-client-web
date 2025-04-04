@@ -26,8 +26,6 @@ const LocationModal = ({
     streetName: accommodationDetails?.streetName,
   });
 
-  console.log(formData);
-
   const handleInputChange = (fieldName, value) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));
   };

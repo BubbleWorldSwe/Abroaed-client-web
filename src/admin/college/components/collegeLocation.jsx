@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 const CollegeLocation = () => {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
 
-  console.log(collegeDetails.stateId);
   return (
     <div>
       <div className="flex gap-10">

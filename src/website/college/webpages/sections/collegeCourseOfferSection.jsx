@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 import CollegeCourseCard from "../../components/collegeCourseCard";
 
-const CollegeCourseOfferSection = ({ collegeDetails, source, onAddLead }) => {
+const CollegeCourseOfferSection = ({
+  collegeDetails,
+  source,
+  onAddLead,
+  addToSavedPreferences,
+  removeFromSavedPreferences,
+}) => {
   return (
     <div className="relative">
       {/* Blob Background */}
@@ -20,6 +26,8 @@ const CollegeCourseOfferSection = ({ collegeDetails, source, onAddLead }) => {
                   key={index}
                   source={source}
                   onAddLead={onAddLead}
+                  addToSavedPreferences={addToSavedPreferences}
+                  removeFromSavedPreferences={removeFromSavedPreferences}
                 />
               ))}
             </div>
