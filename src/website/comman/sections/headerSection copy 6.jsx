@@ -442,7 +442,7 @@ function Header({ isHeaderBgWhite = false }) {
                 <>
                   <button
                     // onClick={() => navigate("/signin")}
-                    className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                    className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
                   >
                     Hello, User
                   </button>
@@ -459,7 +459,7 @@ function Header({ isHeaderBgWhite = false }) {
               ) : (
                 <button
                   onClick={() => navigate("/signin")}
-                  className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                  className={`px-4 py-2  bg-[#FDDA24] hover:bg-[#508030] font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
                 >
                   Login
                 </button>

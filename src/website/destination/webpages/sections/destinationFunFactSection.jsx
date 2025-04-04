@@ -9,16 +9,15 @@ import callIconWhite from "../../../../assets/callIconWhite.png";
 import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const DestinationFunFactSection = ({ items, destinationDetails }) => {
-
   const list = [
     {
-      title: destinationDetails.title,
+      title: "Capital",
       value: destinationDetails?.capitalId?.name,
       icon: locationIconWhite,
     },
     {
       title: "Global Exposure",
-      value: destinationDetails?.internationalStudent,
+      value: destinationDetails?.intrStudents,
       icon: schoolIconWhite,
     },
     {
@@ -44,11 +43,7 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
       <section className=" py-8 antialiased dark:bg-gray-900 md:py-2">
         <div className="mx-auto max-w-screen-2xl px-4 2xl:px-0">
           <div className="flex items-center justify-center text-center">
-            <SectionMainHeader
-              className="mb-5"
-            >
-              Fun Facts
-            </SectionMainHeader>
+            <SectionMainHeader className="mb-5">Fun Facts</SectionMainHeader>
           </div>
           <div className="mt-10 space-y-6">
             <div className="flex flex-col md:flex-row  justify-center flex-wrap gap-5 ">
