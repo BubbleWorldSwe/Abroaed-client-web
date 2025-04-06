@@ -14,7 +14,7 @@ const TestPrepNavModal = ({
         <div
             className="absolute left-0 top-full w-max py-[5px]  z-50"
             onMouseEnter={() => handleMouseEnter("testPrep")}
-            onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
+            onMouseLeave={() => handleMouseLeave}
         >
             <ul className="space-1 grid grid-cols-1 w-[30vw]  shadow-lg  rounded-b-lg mt-2 bg-white" >
                 {menuItems?.map((data, index) => (

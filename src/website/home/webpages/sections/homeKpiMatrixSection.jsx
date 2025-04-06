@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png";
 import HomeKpiMatrixCard from "../../components/homeKpiMatrixCard";
 import { kpiCards } from "../../data";
 

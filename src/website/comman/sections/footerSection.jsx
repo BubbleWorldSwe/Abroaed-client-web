@@ -3,6 +3,7 @@ import AppStore from "../../../assets/AppStore.png";
 import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Flag from "react-world-flags";
+import AppStoreButton from "../components/appStoreButton";
 
 const socialLinks = [
   {
@@ -99,35 +100,22 @@ function Footer() {
               ))}
             </div>
             <div className="flex gap-5 p-2 mt-5">
-              <div>
-                <img
-                  src={playStore}
-                  alt="googlePlayStoreIcon"
-                  className="w-full"
-                />
-              </div>
-              <div>
-                <img
-                  src={AppStore}
-                  alt="googlePlayStoreIcon"
-                  className="w-full"
-                />
-              </div>
+              <AppStoreButton />
             </div>
           </div>
           {/* Important Links & Services */}
-          <div className="w-full md:w-[60%]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          <div className="w-full md:w-[60%]   grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {links.map((section, index) => (
               <div key={index}>
                 <h3
-                  className={`font-semibold text-2xl mb-3 text-[#fbba18]`}
+                  className={`font-semibold text-2xl mb-1 text-[#fbba18]`}
                 >
                   {section.title}
                 </h3>
-                <ul className="space-y-2 text-base font-medium  ">
+                <ul className=" text-base font-medium  ">
                   {section.items.map((item, idx) => (
                     <li key={idx}>
-                      <a href={item?.link} className="hover:underline">
+                      <a href={item?.link} className="hover:underline text-sm">
                         {item.name}
                       </a>
                     </li>
@@ -138,7 +126,7 @@ function Footer() {
 
             {/* Contact Information */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
+              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
                 Get in Touch
               </h3>
               <div className="text-sm space-y-3">
@@ -146,8 +134,8 @@ function Footer() {
                   <div key={index}>
                     <h4 className="font-semibold text-lg">{office.location}</h4>
                     <p className="text-sm">{office.address}</p>
-                    <p>📞 {office.phone1}</p>
-                    <p>📞 {office.phone2}</p>
+                    <p className="text-sm">📞 {office.phone1}</p>
+                    <p className="text-sm">📞 {office.phone2}</p>
                     {office.email && <p>📧 {office.email}</p>}
                   </div>
                 ))}
@@ -155,14 +143,41 @@ function Footer() {
             </div>
             {/* Destination */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
+              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
                 Destinations
               </h3>
               <ul>
-                {allDestinations.map((item, index) => (
+                {allDestinations?.slice(0, 10).map((item, index) => (
                   <li
                     key={index}
-                    className="flex  items-center justify-between  font-medium text-base    py-1 rounded-lg transition-all"
+                    className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
+                  >
+                    <a
+                      href={`/destinations/${item._id}`}
+                      className="cursor-pointer hover:underline"
+                    >
+                      <div className="flex items-center  gap-4">
+                        <span className="">
+                          <Flag
+                            width={30}
+                            code={item?.countryId?.code}
+                            style={{}}
+                          />
+                        </span>
+
+                        {item?.countryId?.name}
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="mt-12">
+              <ul >
+                {allDestinations?.slice(10).map((item, index) => (
+                  <li
+                    key={index}
+                    className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
                   >
                     <a
                       href={`/destinations/${item._id}`}
@@ -187,13 +202,13 @@ function Footer() {
             {/* testPrep */}
             <div>
               <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
-                ELT Prep
+                Test Prep
               </h3>
               <ul>
                 {allTestPreps?.map((data, index) => (
                   <li
                     key={index}
-                    className="flex text-white items-center justify-between  font-medium text-base    py-1 rounded-lg transition-all"
+                    className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
                   >
                     <a
                       href={`/testprep/${data?._id}`}

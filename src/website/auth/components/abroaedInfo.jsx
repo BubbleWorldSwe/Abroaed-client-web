@@ -1,8 +1,7 @@
-import React from "react";
 
 export default function AbroaedInfo() {
   return (
-    <div className="flex justify-center items-center py-6 px-4 bg-primary-600 lg:py-0 sm:px-0">
+    <div className="flex justify-center items-center py-6 px-4 bg-gray-primary lg:py-0 sm:px-0">
       <div className="max-w-md xl:max-w-xl">
         <a
           href="#"
@@ -157,11 +156,11 @@ export default function AbroaedInfo() {
         <h1 className="mb-4 text-3xl font-extrabold   tracking-tight leading-none text-white xl:text-5xl">
           Explore the world’s leading study ABROAED platform
         </h1>
-        <p className="mb-4 font-light   text-primary-200 lg:mb-8">
+        {/* <p className="mb-4 font-light   text-primary-200 lg:mb-8">
           Millions of designers and agencies around the world showcase their
           portfolio work on Flowbite - the home to the world’s best design and
           creative professionals.
-        </p>
+        </p> */}
         <div className="flex items-center divide-x divide-primary-500">
           <div className="flex pr-3 -space-x-4 sm:pr-5">
             <img

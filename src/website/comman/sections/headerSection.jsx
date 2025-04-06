@@ -14,6 +14,8 @@ import { studentLogout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import ProfileModal from "../modals/profileModal";
 import LogoutModal from "../../../commons/modal/logoutModal";
+import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import CombinedTestPrepModal from "../modals/combinedTestPrepModal";
 //import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
@@ -33,6 +35,10 @@ function Header({ isHeaderBgWhite = false }) {
   const { allDestinations } = useSelector((state) => state.destinations);
   const { allTestPreps } = useSelector((state) => state.testPreps);
   const { allLanguagePreps } = useSelector((state) => state.languagePreps);
+
+  // console.log(allDestinations);
+
+  // const { } = useSelector((state) => state.auth);
 
   // State lifted up from ExploreCollegesNavItemModal
   const [selectedDestination, setSelectedDestination] = useState(null);
@@ -127,15 +133,12 @@ function Header({ isHeaderBgWhite = false }) {
     { key: "accomodation", label: "Accommodation", link: "/accomodation" },
     {
       key: "testPrep",
-      label: "ELT Prep",
-      component: TestPrepNavModal,
-      data: allTestPreps,
-    },
-    {
-      key: "languagePrep",
-      label: "Language Prep",
-      component: LanguageNavModal,
-      data: allLanguagePreps,
+      label: "Test Prep",
+      component: CombinedTestPrepModal,
+      data: {
+        eltPreps: allTestPreps,
+        languagePreps: allLanguagePreps,
+      },
     },
     { key: "finance", label: "Finance", link: "/finance" },
     { key: "pathways", label: "Pathways", link: "/pathways" },
@@ -144,8 +147,25 @@ function Header({ isHeaderBgWhite = false }) {
       label: "League of Excellence",
       link: "/leaguageOfExcellence",
     },
+    { key: "contactUs", label: "Contact Us", link: "/contactUs" },
   ];
 
+  const socialLinks = [
+    {
+      icon: <FaInstagram size={20} />,
+      url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
+    },
+    // { icon: <FaFacebook size={20} />, url: "#" },
+    {
+      icon: <FaLinkedin size={20} />,
+      url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all",
+    },
+    {
+      icon: <FaXTwitter size={20} />,
+      url: "https://x.com/i/flow/login?redirect_after_login=%2Fabroaed",
+    }, // X (formerly Twitter)
+    // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
+  ];
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
@@ -256,10 +276,9 @@ function Header({ isHeaderBgWhite = false }) {
                       {activeDropdown === key && Component && (
                         <div className="relative">
                           <Component
-                            menuItems={data?.map(({ productName, _id }) => ({
-                              title: productName,
-                              _id,
-                            }))}
+                            {...(data && Array.isArray(data)
+                              ? { menuItems: data.map(({ productName, _id }) => ({ title: productName, _id })) }
+                              : { ...data })}
                             handleMouseEnter={handleMouseEnter}
                             handleMouseLeave={handleMouseLeave}
                           />
@@ -271,40 +290,55 @@ function Header({ isHeaderBgWhite = false }) {
               </ul>
             </div>
           </div>
-          <div className="flex flex-grow-0 basis-[10%] justify-end ">
-            <div
-              onMouseEnter={() => handleMouseEnter("login")}
-              onMouseLeave={handleMouseLeave}
+          <div className="flex items-center gap-5">
+            <div className="flex flex-grow-0 basis-[10%] justify-end ">
+              <div
+                onMouseEnter={() => handleMouseEnter("login")}
+                onMouseLeave={handleMouseLeave}
               // className={ }
-            >
-              {studentToken ? (
-                <>
+              >
+                {studentToken ? (
+                  <>
+                    <button
+                      // onClick={() => navigate("/signin")}
+                      className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                    >
+                      Hello, User
+                    </button>
+                    {activeDropdown === "login" && (
+                      <div className="relative">
+                        <ProfileModal
+                          handleMouseEnter={handleMouseEnter}
+                          handleMouseLeave={handleMouseLeave}
+                          logout={handleSignOut}
+                        />
+                      </div>
+                    )}
+                  </>
+                ) : (
                   <button
-                    // onClick={() => navigate("/signin")}
-                    className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                    onClick={() => navigate("/signin")}
+                    className={`px-4 py-1  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
                   >
-                    {/* Hello, {`${student?.firstName} ${student?.lastName}`} */}
-                    Hello, {`${student?.firstName}`}
+                    Login
                   </button>
-                  {activeDropdown === "login" && (
-                    <div className="relative">
-                      <ProfileModal
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                        logout={() => setIsModalOpen(true)}
-                      />
-                    </div>
-                  )}
-                </>
-              ) : (
-                <button
-                  onClick={() => navigate("/signin")}
-                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
-                >
-                  Login
-                </button>
-              )}
+                )}
+              </div>
             </div>
+            <div className="flex   md:justify-end  space-x-3">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  className=" text-white hover:text-gray-300 rounded-full"
+                  aria-label="Social Link"
+                  target="_blank"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
@@ -316,6 +350,7 @@ function Header({ isHeaderBgWhite = false }) {
             />
           </button>
         </nav>
+
       </nav>
 
       <LogoutModal
