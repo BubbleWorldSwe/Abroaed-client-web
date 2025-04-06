@@ -36,13 +36,11 @@ function HomeHeroSection() {
           <source src={homeVideoHero} type="video/mp4" />
         </video>
 
-        {/* <div
-          className="absolute inset-0 bg-black opacity-60"
+      <div
+          className="absolute inset-0 bg-black opacity-50"
           style={{ mixBlendMode: "multiply" }}
-        ></div> */}
-        {/* Gradient Overlay (White to Black) */}
-        <div
-          className="absolute inset-0 bg-gradient-to-r from-black to-white via-black  opacity-60 z-0"></div>
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
         <div className="absolute bottom-24 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
           <div className="text-start  text-white lg:w-2/3 px-1 lg:px-8">
             {textEffect}
