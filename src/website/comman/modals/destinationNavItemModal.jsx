@@ -22,7 +22,7 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-2">
               <span className="">
                 <Flag width={30} code={item?.countryId?.code} style={{}} />
               </span>
