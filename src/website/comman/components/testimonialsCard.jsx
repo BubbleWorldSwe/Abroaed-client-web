@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 const TestimonialsCard = ({ data }) => {
   return (
-    <div className="max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-full bg-white border transition-transform duration-300 hover:scale-105 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       {/* Video Wrapper */}
-      <div className="relative w-full h-0 pb-[56.25%] overflow-hidden rounded-t-lg border border-gray-300">
+      <div className="relative w-full h-[23rem] pb-[56.25%] overflow-hidden rounded-t-lg border border-gray-300">
         <iframe
           id="ytplayer"
           type="text/html"
@@ -12,7 +12,6 @@ const TestimonialsCard = ({ data }) => {
           allowFullScreen
         ></iframe>
       </div>
-
       {/* User Info */}
       <div className="flex p-3 items-center space-x-4">
         <img

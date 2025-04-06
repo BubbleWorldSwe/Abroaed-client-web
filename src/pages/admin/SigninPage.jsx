@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -157,7 +158,7 @@ function SigninPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium   rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
+                className="w-full text-white bg-primary-600 hover:bg-gray-primary  font-medium   rounded-lg text-sm px-5 py-2.5 text-center "
               >
                 {loading ? (
                   <div className="flex justify-center items-center">
@@ -324,11 +325,11 @@ function SigninPage() {
               <h1 className="mb-4 text-3xl font-extrabold   tracking-tight leading-none text-white xl:text-5xl">
                 Explore the world’s leading study ABROAED platform
               </h1>
-              <p className="mb-4 font-light   text-primary-200 lg:mb-8">
+              {/* <p className="mb-4 font-light   text-primary-200 lg:mb-8">
                 Millions of designers and agencies around the world showcase
                 their portfolio work on Flowbite - the home to the world’s best
                 design and creative professionals.
-              </p>
+              </p> */}
               <div className="flex items-center divide-x divide-primary-500">
                 <div className="flex pr-3 -space-x-4 sm:pr-5">
                   <img

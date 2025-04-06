@@ -70,11 +70,12 @@ const HomeServicesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
   let settings = {
     infinite: true,
-    dots: true,
+    // dots: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 0,
+    speed: 8000,
     pauseOnHover: true,
 
     centerMode: true,
@@ -89,15 +90,15 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className="dark:bg-gray-900 relative  py-2  lg:py-1">
-        <div className="px-5 md:px-12 mx-auto max-w-screen-2xl relative z-10">
+      <section className="dark:bg-gray-900 relative py-10">
+        <div className="px-5 md:px-10 mx-auto max-w-screen-2xl relative z-10">
           <h2
             className={`mb-8 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
           >
             Discover Our Unique Offerings
           </h2>
         </div>
-        <div className="overflow-x-auto pb-6">
+        <div className="overflow-x-auto py-8">
           <Slider {...settings}  >
             {serviceData?.map((service, index) => (
               <div
@@ -116,7 +117,7 @@ const HomeServicesSection = () => {
                 </div>
                 <div className="absolute inset-0 flex  flex-col justify-between p-6 z-10">
                   <div className="overflow-y-auto flex flex-col gap-4 px-5">
-                    <h1 className=" text-[45px] text-[#FFDF00]   font-bold ">
+                    <h1 className=" text-[57px] text-[#FFDF00]   font-bold ">
                       {service.text1}
                     </h1>
                     <p className="text-gray-200 text-justify lg:mb-2 text-[22px]">

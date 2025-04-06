@@ -1,15 +1,15 @@
 
 const ContactUs = () => {
     return (
-        <section className="px-10 pt-20 mt-10 mx-auto">
-            <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
+        <section className="px-10  mt-10 mx-auto">
+            <div className=" px-4 py-6  pb-10 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
                 {/* Content */}
                 <div className="relative z-10">
                     <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                         Contact Us
                     </h2>
                     <div className=" border-t border-gray-300"></div>
-                    <div className="grid grid-cols-1 md:justify-center md:grid-cols-2   gap-3  py-16">
+                    <div className="grid grid-cols-1 md:justify-center md:grid-cols-2   gap-3  pb-16 pt-10">
                         <div className="flex flex-col gap-5">
                             <h5 className={`text-[18px] text-gray-primary font-medium`}>
                                 Before contacting us, please check the Frequently Asked Questions.
@@ -22,7 +22,9 @@ const ContactUs = () => {
                                     Delhi Office
                                     B11, Block B, Qutab Institutional Area, New Delhi, Delhi 110016
                                     <br />
-                                    📞 +91 73033 68820, +91 73033 68819
+                                    📞 +91 73033 68820,
+                                    <br />
+                                    📞 +91 73033 68819
                                 </p>
                             </div>
                             <div>
@@ -50,7 +52,7 @@ const ContactUs = () => {
                             </div>
 
                         </div>
-                        <div >
+                        <div className="h-[25rem]" >
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.01986897468!2d77.18173!3d28.539122499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1de55d079a9b%3A0x98a4506124dd984a!2s3rd%20Floor%2C%20B-11%2C%20Block%20B%2C%20Qutab%20Institutional%20Area%2C%20New%20Delhi%2C%20Delhi%20110016!5e0!3m2!1sen!2sin!4v1743078232400!5m2!1sen!2sin"
                                 className="w-full h-full border-0 rounded-lg shadow-md"

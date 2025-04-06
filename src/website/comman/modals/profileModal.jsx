@@ -9,7 +9,7 @@ const ProfileModal = ({ handleMouseEnter, handleMouseLeave, logout }) => {
 
   return (
     <div
-      className="absolute right-0 top-full  py-5  z-50"
+      className="absolute right-0 top-full  py-[5px]  z-50"
       onMouseEnter={() => handleMouseEnter("login")}
       onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
     >

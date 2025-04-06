@@ -10,7 +10,8 @@ const HomeSlidingImg = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 0,
+        speed:8000,
         pauseOnHover: true,
 
         // centerMode: true,
@@ -32,17 +33,17 @@ const HomeSlidingImg = () => {
     ]
 
     return (
-        <section className="dark:bg-gray-900 relative ">
-            <div className="overflow-x-auto pb-7">
+        <section className="dark:bg-gray-900 relative py-4">
+            <div className="overflow-x-auto  pb-10">
                 <Slider {...settings}>
                     {homeImges.map((image, index) => (
-                        <div key={index} className="w-full">
+                        <div key={index} className="w-full px-5">
                             <div className="relative w-full h-full">
                                 <img
                                     className="w-full h-full object-cover "
                                     src={image.imgUrl}
                                     alt={`Image ${index + 1}`}
-                                    style={{ width: "100vw" }}
+                                    // style={{ width: "100vw" }}
                                 />
                             </div>
                         </div>

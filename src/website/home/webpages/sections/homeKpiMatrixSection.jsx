@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png";
 import HomeKpiMatrixCard from "../../components/homeKpiMatrixCard";
 import { kpiCards } from "../../data";
 
 const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
   return (
     <div className="my-10">
-      <section className="bg-white dark:bg-gray-900 relative px-3 md:px-10 mx-auto">
+      <section className=" dark:bg-gray-900 relative px-3 md:px-10 mx-auto">
         <div className="pb-8 pt-1  px-4 mx-auto w-full md:max-w-screen-2xl  lg:px-3 relative z-10">
           <div className=" text-left mb-8 lg:mb-16 ">
             <p className="font-semibold  text-[22px] text-[#52525B]  dark:text-gray-400">
@@ -49,14 +48,7 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
             </button> */}
           </div>
         </div>
-        <div className="absolute -bottom-28 left-0 z-0">
-          {/* <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorLeftFlat}
-            alt="Decorative vector"
-          /> */}
-        </div>
-      </section>
+       </section>
     </div>
   );
 };

@@ -1,13 +1,14 @@
 import iPhoneIcon from "../../../../assets/iPhoneIcon.png";
-import playStore from "../../../../assets/gPlayStore.png";
-import AppStore from "../../../../assets/AppStore.png";
+// import playStore from "../../../../assets/gPlayStore.png";
+// import AppStore from "../../../../assets/AppStore.png";
+import AppStoreButton from "../../../comman/components/appStoreButton";
 function HomeDownloadApp() {
   return (
     <div>
       <section className=" dark:bg-gray-900    items-end ">
-        <div className="  mx-auto  md:px-14 py-5 z-10 max-w-screen-2xl  px-10 flex flex-col justify-between   min-h-[80vh]">
+        <div className="  mx-auto  md:px-14 py-5 z-10 max-w-screen-2xl  px-10 flex flex-col justify-between">
           <h2
-            className={` text-[28px] md:text-[45px]   z-10 font-extrabold text-gray-primary dark:text-white`}
+            className={` text-[28px] mb-16 md:text-[45px]  max-w-screen-md leading-tight  z-10 font-extrabold text-gray-primary dark:text-white`}
           >
             For Convenient Access to Study Abroad Resources
           </h2>
@@ -25,7 +26,7 @@ function HomeDownloadApp() {
                 seamless study-abroad preparation.
               </p>
               <div className="flex flex-col md:flex-row gap-5 p-2 ">
-                <div>
+                {/* <div>
                   <img
                     src={playStore}
                     alt="googlePlayStoreIcon"
@@ -38,7 +39,8 @@ function HomeDownloadApp() {
                     alt="googlePlayStoreIcon"
                     className=""
                   />
-                </div>
+                </div> */}
+                < AppStoreButton />
               </div>
             </div>
             <div className="absolute bottom-0 right-32">
