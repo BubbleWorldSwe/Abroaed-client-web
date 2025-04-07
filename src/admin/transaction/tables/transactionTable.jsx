@@ -135,7 +135,7 @@ const TransactionTable = ({
                         }`}
                       >
                         <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                          <li>
+                          {/*  <li>
                             <button
                               type="button"
                               className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -143,7 +143,7 @@ const TransactionTable = ({
                               <Eye className="w-4 h-4" />
                               <span>View Details</span>
                             </button>
-                          </li>
+                          </li> */}
                           <li>
                             <button
                               type="button"

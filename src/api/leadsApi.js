@@ -138,3 +138,18 @@ export const setLeadSubscribeBatch = async (
     throw error;
   }
 };
+
+//Saved Prefrences
+export const getLeadSavedPrefrences = async (leadId) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/save-preference/list?filter={"user":"${leadId}"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};

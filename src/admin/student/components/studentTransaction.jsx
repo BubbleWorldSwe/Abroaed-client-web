@@ -64,7 +64,7 @@ const StudentTransaction = ({ studentId, onSave }) => {
                   <th className="px-4 py-3  font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {formatDateTime(data?.date)}
                   </th>
-                  <td className="px-4 py-3"> ${data?.amount}</td>
+                  <td className="px-4 py-3"> ₹{data?.amount}</td>
                   <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {data?.mode}
                   </td>

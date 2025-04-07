@@ -41,10 +41,6 @@ function Student() {
     setDropdownVisible(false);
   };
 
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
-  };
-
   async function fetchData() {
     try {
       dispatch(fetchAllDestinationsRequest());

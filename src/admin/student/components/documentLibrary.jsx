@@ -39,7 +39,7 @@ const DocumentLibrary = () => {
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
       />
-      <div className="flex p-5 flex-col shadow-lg  w-full bg-white dark:bg-gray-800 relative  sm:rounded-lg">
+      <div className="flex p-5 flex-col shadow-lg w-full bg-white dark:bg-gray-800 relative  sm:rounded-lg">
         <div className="flex justify-between">
           <h2 className="text-2xl py-2 font-semibold  mb-3">
             Document Library

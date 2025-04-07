@@ -22,68 +22,103 @@ function Teams() {
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [modalType, setModalType] = useState("");
   const [editData, setEditData] = useState(null);
-  const [isDone, setIsDone] = useState(false);
   const { isWriteAccess } = useSelector((state) => state.auth);
 
   const [roles, setRoles] = useState([]);
 
   const handleOpenAddModal = () => {
-    setModalType("add");
-    setIsModalOpen(true);
+    try {
+      setModalType("add");
+      setIsModalOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleOpenEditModal = () => {
-    setModalType("edit");
-    setIsModalOpen(true);
+    try {
+      setModalType("edit");
+      setIsModalOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
+    try {
+      setIsModalOpen(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleDelete = (teamId) => {
-    dispatch(deleteTeamRequest(teamId));
-    setCurrentPage(1);
-    dispatch(fetchTeamsRequest(1));
-    setDropdownVisible(null);
+    try {
+      dispatch(deleteTeamRequest(teamId));
+      setCurrentPage(1);
+      dispatch(fetchTeamsRequest(1));
+      setDropdownVisible(null);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      const pageExists = teams.some((item) => item.index === currentPage + 1);
+    try {
+      if (currentPage < totalPages) {
+        const pageExists = teams.some((item) => item.index === currentPage + 1);
 
-      if (!pageExists) {
-        dispatch(fetchTeamsRequest(currentPage + 1));
+        if (!pageExists) {
+          dispatch(fetchTeamsRequest(currentPage + 1));
+        }
+
+        setCurrentPage((prev) => prev + 1);
       }
-
-      setCurrentPage((prev) => prev + 1);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   const handlePrevPage = () => {
-    if (currentPage > 1) {
-      const pageExists = teams.some((item) => item.index === currentPage - 1);
+    try {
+      if (currentPage > 1) {
+        const pageExists = teams.some((item) => item.index === currentPage - 1);
 
-      if (!pageExists) {
-        dispatch(fetchTeamsRequest(currentPage - 1));
+        if (!pageExists) {
+          dispatch(fetchTeamsRequest(currentPage - 1));
+        }
+
+        setCurrentPage((prev) => prev - 1);
       }
-
-      setCurrentPage((prev) => prev - 1);
+    } catch (error) {
+      console.log(error);
     }
   };
   const handleAddTeam = (data) => {
-    dispatch(addTeamRequest(data));
-    // Reset currentPage to 1 and fetch the updated teams
-    setCurrentPage(1);
-    dispatch(fetchTeamsRequest(1));
+    try {
+      dispatch(addTeamRequest(data));
+      // Reset currentPage to 1 and fetch the updated teams
+      setCurrentPage(1);
+      dispatch(fetchTeamsRequest(1));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleUpdateTeam = (id, data) => {
-    dispatch(editTeamRequest(id, data));
+    try {
+      dispatch(editTeamRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSetEditData = (data) => {
-    setEditData(data);
+    try {
+      setEditData(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   async function fetchData() {
@@ -112,7 +147,6 @@ function Teams() {
       <AddTeamMember
         isOpen={isModalOpen && modalType === "add"}
         onClose={handleCloseModal}
-        setIsDone={setIsDone}
         onAddTeam={handleAddTeam}
         roles={roles}
       />

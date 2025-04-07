@@ -72,25 +72,25 @@ const LeadTable = ({
               htmlFor={`checkbox-college-all`}
             />
           </th>{" "}
-          <th scope="col" className="px-4 py-3 min-w-[14rem]">
+          <th scope="col" className="px-4 py-3">
             Student Name
           </th>
-          <th scope="col" className="px-4 py-3 min-w-[10rem]">
+          <th scope="col" className="px-4 py-3">
             Contact number
           </th>
-          <th scope="col" className="px-4 py-3 min-w-[7rem]">
+          <th scope="col" className="px-4 py-3">
             Lead Source
           </th>
-          <th scope="col" className="px-4 py-3 min-w-[6rem]">
+          <th scope="col" className="px-4 py-3">
             Entity
           </th>
-          <th scope="col" className="px-4 py-3 min-w-[7rem]">
+          <th scope="col" className="px-4 py-3">
             Lead Status
           </th>
-          <th scope="col" className="px-4 py-3 min-w-[12rem]">
+          <th scope="col" className="px-4 py-3">
             Appointment
           </th>
-          <th scope="col" className="px-4 py-3 min-w-[7rem]">
+          <th scope="col" className="px-4 py-3">
             Creation Date
           </th>
           <th scope="col" className="px-4 py-3"></th>
@@ -136,8 +136,8 @@ const LeadTable = ({
                     {lead?.status}
                   </span>
                 </td>
-                <td className="px-4 py-2 max-w-[12rem]">
-                  <span className="bg-[#FDE8E8] rounded-md p-2 block whitespace-normal break-words">
+                <td className="px-4 py-3">
+                  <span className="font-medium p-2 rounded bg-[#FDE8E8]">
                     {lead?.scheduleDetails
                       ? `${
                           lead?.scheduleDetails?.appointmentType

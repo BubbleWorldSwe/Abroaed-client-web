@@ -74,10 +74,12 @@ const Transaction = () => {
   };
 
   const handleTransaction = (data) => {
-    if (editData) {
+    if (editData && data?._id) {
+      console.log("Edit Data");
       const { _id, ...transactionData } = data;
       dispatch(editTransactionRequest(editData?._id, transactionData));
     } else {
+      console.log("Add Data");
       dispatch(addTransactionRequest(data));
     }
     setCurrentPage(1);

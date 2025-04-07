@@ -62,8 +62,8 @@ const UpdateLeadAdditionInfo = ({
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-1/2 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white w-2/5 font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -75,7 +75,7 @@ const UpdateLeadAdditionInfo = ({
             </h2>
             <div>
               <form className="space-y-6">
-                <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 mb-5">
+                <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
                   <SelectField
                     label="Highest Education Qualification"
                     name="highestEducation"

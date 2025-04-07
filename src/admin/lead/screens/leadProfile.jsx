@@ -12,11 +12,15 @@ import UpdateLeadPersonalInfo from "../modals/updateLeadPersonalInfoModal";
 import UpdateLeadAdditionInfo from "../modals/updateLeadAdditionInfoModal";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
 import {
+  addLeadSavedPrefrences,
   editLeadRequest,
   editLeadsStudentRequest,
 } from "../../../redux/actions/leadsActions";
 import AppointmentModal from "../modals/appointmentModal";
 import { getTeamsByMembers } from "../../../api/teamsApi";
+import LeadSavedPreference from "../components/leadSavedPreference";
+import { getStudentSavedPrefrences } from "../../../api/studentsApi";
+import { getLeadSavedPrefrences } from "../../../api/leadsApi";
 
 const LeadProfileLayout = () => {
   const { id } = useParams();
@@ -56,9 +60,24 @@ const LeadProfileLayout = () => {
   async function fetchData() {
     try {
       const list = await getTeamsByMembers();
+      fetchLaedSavedPefrences();
 
       if (list.status === 200) {
         setRolesList(list.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchLaedSavedPefrences() {
+    try {
+      const list = await getLeadSavedPrefrences(id);
+
+      if (list.status === 200) {
+        dispatch(addLeadSavedPrefrences(list.data?.result));
+      } else {
+        dispatch(addLeadSavedPrefrences([]));
       }
     } catch (error) {
       console.log(error);
@@ -143,7 +162,7 @@ const LeadProfileLayout = () => {
           />
 
           <LeadDocumentLibrary />
-          <LeadSavePreference />
+          <LeadSavedPreference />
         </section>
       </div>
     </>
