@@ -5,8 +5,7 @@ import { IMAGES } from "../../../constants/images";
 
 const UniversityCard = ({ item }) => {
   return (
-    <div className="max-w-[330px] bg-white  border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col">
-      {/* Row Layout: Image on Left, Name & Location on Right */}
+    <div className="max-w-[330px] bg-white   border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col justify-between">
       <div className="flex items-center">
         {/* Image */}
         <img
@@ -20,7 +19,7 @@ const UniversityCard = ({ item }) => {
           <h5 className="text-lg font-semibold text-gray-700 dark:text-white">
             {item?.name}
           </h5>
-          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mt-1">
+          <div className="flex items-center  gap-2 text-sm text-gray-600 dark:text-gray-400 mt-1">
             <img
               className="w-4 h-4 object-contain"
               src={locationIcon}
@@ -32,15 +31,16 @@ const UniversityCard = ({ item }) => {
           </div>
         </div>
       </div>
-
-      {/* Bottom Layout: Description & Button */}
       <div className="mt-3">
-        <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-4">
-          {item.description}
-        </p>
-        <div className="mt-3">
-          <EnquireButton href={`/college/${item._id}`} />
+        <div className="flex flex-col  h-full">
+          <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-4">
+            {item.description}
+          </p>
+
         </div>
+      </div>
+      <div className="mt-3">
+        <EnquireButton href={`/college/${item._id}`} />
       </div>
     </div>
   );

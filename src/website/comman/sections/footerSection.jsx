@@ -60,6 +60,7 @@ function Footer() {
   const { allDestinations } = useSelector((state) => state.destinations);
   const { allTestPreps } = useSelector((state) => state.testPreps);
   // const { allLanguagePreps } = useSelector((state) => state.languagePreps);
+  const halfDestination = Math.floor(allDestinations.length / 2)
   return (
     <div>
       <footer className="bg-gray-primary text-white py-10">
@@ -100,7 +101,20 @@ function Footer() {
               ))}
             </div>
             <div className="flex gap-5 p-2 mt-5">
-              <AppStoreButton />
+              <div>
+                <img
+                  src={playStore}
+                  alt="googlePlayStoreIcon"
+                  className="w-40 h-14"
+                />
+              </div>
+              <div>
+                <img
+                  src={AppStore}
+                  alt="googlePlayStoreIcon"
+                  className="w-40 h-14"
+                />
+              </div>
             </div>
           </div>
           {/* Important Links & Services */}
@@ -147,7 +161,7 @@ function Footer() {
                 Destinations
               </h3>
               <ul>
-                {allDestinations?.slice(0, 10).map((item, index) => (
+                {allDestinations?.slice(0, Math.min(halfDestination, 10)).map((item, index) => (
                   <li
                     key={index}
                     className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
@@ -172,9 +186,12 @@ function Footer() {
                 ))}
               </ul>
             </div>
-            <div className="mt-12">
+            <div className="">
+              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
+                Destinations
+              </h3>
               <ul >
-                {allDestinations?.slice(10).map((item, index) => (
+                {allDestinations?.slice(halfDestination, 20).map((item, index) => (
                   <li
                     key={index}
                     className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
@@ -201,7 +218,7 @@ function Footer() {
             </div>
             {/* testPrep */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-3 text-[#fbba18]`}>
+              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
                 Test Prep
               </h3>
               <ul>
