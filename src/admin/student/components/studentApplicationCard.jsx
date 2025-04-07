@@ -3,6 +3,7 @@ import { MoreVerticalIcon } from "lucide-react";
 import studentColImg from "../../../assets/studentColImg.png";
 import studentcolFrame from "../../../assets/studentcolFrame.png";
 import { useSelector } from "react-redux";
+import { statusSequence } from "../../../constants/values";
 
 const StudentApplicationCard = ({
   data,
@@ -49,7 +50,7 @@ const StudentApplicationCard = ({
       </div>
       <div className="p-5 mt-5">
         <div className="flex justify-between items-center">
-          <h5 className="text-xl font-semibold text-gray-900">
+          <h5 className="text-[19px] font-semibold text-gray-900 line-clamp-1">
             {data?.college?.name}
           </h5>
           {isWriteAccess && (
@@ -66,7 +67,9 @@ const StudentApplicationCard = ({
                     >
                       Modify
                     </li>
-                    {status !== "rejected" && (
+
+                    {statusSequence.indexOf(status) <=
+                      statusSequence.indexOf("verifying_documents") && (
                       <li
                         onClick={onOpenDocUpdate}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"

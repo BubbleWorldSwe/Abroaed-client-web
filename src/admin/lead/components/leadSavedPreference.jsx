@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import LeadPreferenceAccommodationCard from "./leadPreferenceAccommodationCard";
+import LeadPreferenceCollegeCard from "./leadPreferenceCollegeCard";
+import LeadPreferenceCourseCard from "./leadPreferenceCourseCard";
 
-import StudentPreferenceCollegeCard from "./studentPreferenceCollegeCard";
-import StudentPreferenceCourseCard from "./studentPreferenceCourseCard";
-import StudentPreferenceAccommodationCard from "./studentPreferenceAccommodationCard";
-
-function StudentSavedPreference() {
+function LeadSavedPreference() {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = ["Colleges", "Course", "Accommodations"];
 
   const handleTabClick = (index) => setActiveTab(index);
 
-  const studentProfile = useSelector(
-    (state) => state?.students?.selectedStudent
-  );
+  const leadProfile = useSelector((state) => state?.leads?.selectedLead);
 
-  const savedPreferences = studentProfile?.savedPreferences || [];
+  const savedPreferences = leadProfile?.savedPreferences || [];
+
+  console.log(savedPreferences);
 
   const colleges = savedPreferences.filter((pref) => pref.type === "colleges");
   const courses = savedPreferences.filter((pref) => pref.type === "courses");
@@ -67,15 +66,15 @@ function StudentSavedPreference() {
             <>
               {activeTab === 0 &&
                 colleges.map((college, index) => (
-                  <StudentPreferenceCollegeCard key={index} college={college} />
+                  <LeadPreferenceCollegeCard key={index} college={college} />
                 ))}
               {activeTab === 1 &&
                 courses.map((course, index) => (
-                  <StudentPreferenceCourseCard key={index} course={course} />
+                  <LeadPreferenceCourseCard key={index} course={course} />
                 ))}
               {activeTab === 2 &&
                 accommodations.map((acc, index) => (
-                  <StudentPreferenceAccommodationCard
+                  <LeadPreferenceAccommodationCard
                     key={index}
                     accommodation={acc}
                   />
@@ -92,4 +91,4 @@ function StudentSavedPreference() {
   );
 }
 
-export default StudentSavedPreference;
+export default LeadSavedPreference;

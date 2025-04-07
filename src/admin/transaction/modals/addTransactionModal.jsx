@@ -71,9 +71,6 @@ const AddTransactionModal = ({
       });
     }
   }, [initialData]);
-  console.log("initialData");
-  console.log(initialData);
-  console.log("initialData");
 
   return (
     isOpen && (

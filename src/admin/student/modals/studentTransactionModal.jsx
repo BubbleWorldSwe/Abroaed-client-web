@@ -58,7 +58,7 @@ const StudentTransactionModal = ({ isOpen, onClose, onSave, studentId }) => {
   return (
     isOpen && (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-        <div className="bg-white py-4 dark:bg-gray-800 p-6 rounded-lg min-w-max w-1/3 max-h-[600px] overflow-auto relative">
+        <div className="bg-white w-2/5 font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 relative">
           <button
             className="absolute w-10 h-10 top-5 right-2 text-gray-600 hover:text-gray-900 text-2xl"
             onClick={onClose}

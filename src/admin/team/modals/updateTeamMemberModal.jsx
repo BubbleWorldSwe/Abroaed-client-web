@@ -53,7 +53,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
     <>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg px-8 py-10 w-1/2 max-w-max relative">
+          <div className="bg-white w-2/5 font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 relative">
             <button
               className="absolute w-10 h-10 top-1 right-1 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -114,10 +114,14 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
-                    options={roles.map((data) => ({
-                      label: data.roleName,
-                      value: data._id,
-                    }))}
+                    options={roles
+                      ?.filter(
+                        (data) => !["Admin", "Student"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                      )
+                      .map((data) => ({
+                        label: data?.roleName,
+                        value: data?._id,
+                      }))}
                     required
                   />
 

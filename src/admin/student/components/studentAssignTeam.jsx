@@ -28,7 +28,7 @@ const StudentAssignTeam = ({ onOpenModal, onUpdate }) => {
   };
 
   return (
-    <div className="w-full mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+    <div className="w-full mx-auto mb-5 p-6 bg-white rounded-lg shadow-lg">
       {/* Header with title and pencil icon button */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Assigned Team</h2>

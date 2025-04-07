@@ -39,9 +39,6 @@ function Leads() {
 
   const [membersList, setMembersList] = useState([]);
 
-  console.log(" SelectedMember");
-  console.log(selectedMember);
-
   const handleScheduleAppointment = (member) => {
     try {
       setSelectedMember(member);
@@ -53,19 +50,31 @@ function Leads() {
   };
 
   const handleAssignTeamMember = (member) => {
-    setSelectedMember(member);
-    setshowTeamModal(true);
-    setDropdownVisible(false);
+    try {
+      setSelectedMember(member);
+      setshowTeamModal(true);
+      setDropdownVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleUpdateTeamMember = (member) => {
-    setSelectedMember(member);
-    setShowUpdateModal(true);
-    setDropdownVisible(false);
+    try {
+      setSelectedMember(member);
+      setShowUpdateModal(true);
+      setDropdownVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleOpenAddModal = () => {
-    setIsAddModalOpen(true);
-    // setModalType(modalType);
-    setDropdownVisible(false);
+    try {
+      setIsAddModalOpen(true);
+      // setModalType(modalType);
+      setDropdownVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
@@ -86,14 +95,18 @@ function Leads() {
   }
 
   const handleAddLead = (data) => {
-    //  setIsAddModalOpen(false);
-    console.log("handleAddLead");
-    console.log(data);
+    try {
+      //  setIsAddModalOpen(false);
+      console.log("handleAddLead");
+      console.log(data);
 
-    dispatch(addLeadRequest(data));
-    setCurrentPage(1);
-    dispatch(fetchLeadsRequest(1));
-    handleCloseAddModal();
+      dispatch(addLeadRequest(data));
+      setCurrentPage(1);
+      dispatch(fetchLeadsRequest(1));
+      handleCloseAddModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   async function onUpdate(data, id) {

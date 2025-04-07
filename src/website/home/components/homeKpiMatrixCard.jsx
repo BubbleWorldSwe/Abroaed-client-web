@@ -9,7 +9,7 @@ const HomeKpiMatrixCard = ({
   description,
   socialLinks,
 }) => (
-  <div className="w-full h-[12rem] font-cinzel relative bg-gray-primary rounded-lg overflow-hidden flex flex-col justify-center items-center p-6">
+  <div className="w-full h-[14rem] font-cinzel relative bg-gray-primary rounded-lg overflow-hidden flex flex-col justify-center items-center p-6">
     <img
       className="absolute right-0 top-0 h-full object-contain z-0"
       src={vector}

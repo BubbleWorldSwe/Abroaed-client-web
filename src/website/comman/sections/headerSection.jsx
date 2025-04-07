@@ -168,39 +168,12 @@ function Header({ isHeaderBgWhite = false }) {
   ];
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
-          ? "bg-gray-primary  shadow-md"
-          : "bg-gray-primary text-white bg-opacity-10"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
+        ? "bg-gray-primary  shadow-md"
+        : "bg-gray-primary text-white bg-opacity-10"
+        }`}
     >
       <nav>
-        {/* <div
-          className={`py-3 flex gap-5 relative  justify-center items-center font-inter text-sm bg-gray-primary text-white`}
-        >
-          <p className="">GET IN TOUCH WITH US TODAY !</p>
-          <div>
-            <button
-              onClick={() => navigate("/homeCounselling")}
-              className={`px-4 py-1 text-sm bg-transparent text-white border-2 border-white hover:border-yellow-primary hover:bg-yellow-primary hover:text-gray-primary font-normal rounded-lg`}
-            >
-              Book Counselling Now
-            </button>
-          </div>
-        <div className="flex absolute right-5  md:justify-end space-x-3 mt-2">
-          {socialLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.url}
-              className=" text-white hover:text-gray-300 rounded-full"
-              aria-label="Social Link"
-              target="_blank"
-            >
-              {link.icon}
-            </a>
-          ))}
-        </div>
-      </div> */}
         <nav className="flex items-center justify-between  md:justify-center   w-full px-12">
           <div className="flex  basis items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
@@ -225,14 +198,13 @@ function Header({ isHeaderBgWhite = false }) {
                    ${activeDropdown === "exploreColleges" ? "" : ""}`}
                 >
                   <a
-                    className={`  px-1 relative transition-colors duration-300
-                      after:content-[''] after:absolute after:-top-7  after:left-0 after:w-full  after:h-[3.5rem] 
-                     after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300 
-                     ${
-                       activeDropdown === "exploreColleges"
-                         ? "after:opacity-100 after:-z-10 text-gray-primary font-bold"
-                         : ""
-                     }`}
+                    className={`px-1 relative transition-colors duration-300
+                after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
+                after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
+                ${activeDropdown === "exploreColleges"
+                        ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                        : "font-semibold"
+                      }`}
                   >
                     Explore Colleges
                   </a>
@@ -265,11 +237,10 @@ function Header({ isHeaderBgWhite = false }) {
                         className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${
-                  activeDropdown === key
-                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                    : "font-semibold"
-                }`}
+                ${activeDropdown === key
+                            ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                            : "font-semibold"
+                          }`}
                       >
                         {label}
                       </a>
@@ -342,7 +313,7 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
-            // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <Menu
               size={24}

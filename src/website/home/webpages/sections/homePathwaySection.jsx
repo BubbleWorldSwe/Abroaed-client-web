@@ -25,9 +25,9 @@ const HomePathwaySection = () => {
 
   return (
     <div className="">
-      <section className="dark:bg-gray-900 relative px-3 md:px-10 mx-auto">
-        <div className="pb-8 pt-1  px-4 mx-auto w-full md:max-w-screen-2xl  lg:px-3 relative z-10">
-          <div className="flex flex-col md:flex-row gap-8 md:pt-10 md:h-[66vh] lg:h-[70vh]">
+      <section className="dark:bg-gray-900 relative ">
+        <div className="   relative z-10">
+          <div className="flex flex-col md:flex-row gap-9  md:h-[66vh] lg:h-[70vh]">
             {cardData?.map(({ title, href, img, content }) => (
               <div
                 key={title}
@@ -61,7 +61,6 @@ const HomePathwaySection = () => {
               </div>
             ))}
           </div>
-
         </div>
       </section>
     </div>

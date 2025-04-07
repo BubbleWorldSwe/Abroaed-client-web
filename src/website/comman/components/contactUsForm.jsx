@@ -73,10 +73,10 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
   console.log(formData);
 
   return (
-    <section className="relative isolate overflow-hidden px-6 pb-10 md:px-12  mx-auto">
-      <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 bg-gray-primary rounded-lg h-[93vh] antialiased relative ">
+    <section className="relative  overflow-auto">
+      <div className="  dark:bg-gray-800 bg-gray-primary rounded-lg h-[90vh] antialiased relative ">
         <div
-          className={`flex flex-col lg:flex-row justify-between gap-5  lg:gap-12 px-10  rounded-lg `}
+          className={`flex flex-col lg:flex-row justify-between gap-5  lg:gap-12 px-10  rounded-lg`}
         >
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">

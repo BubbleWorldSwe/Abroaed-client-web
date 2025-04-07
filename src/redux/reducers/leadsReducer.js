@@ -14,6 +14,7 @@ import {
   SET_SELECTED_LEAD,
   FETCH_LEADS_STUDENTS_REQUEST,
   EDIT_LEADS_STUDENT_SUCCESS,
+  ADD_LEAD_SAVEDPREFRENCES,
 } from "../actions/leadsActions";
 
 const initialState = {
@@ -93,6 +94,31 @@ export const leadsReducer = (state = initialState, action) => {
 
     case SET_SELECTED_LEAD:
       return { ...state, selectedLead: action.payload };
+
+    case ADD_LEAD_SAVEDPREFRENCES:
+      console.log("ADD_LEAD_SAVEDPREFRENCES");
+      console.log(action.payload);
+
+      return {
+        ...state,
+        loading: false,
+        leads: state.leads.map((lead) => ({
+          ...lead,
+          data: lead.data.map((item) =>
+            item?._id === action?.payload?.user?._id
+              ? {
+                  ...item,
+                  savedPreferences: action.payload || [],
+                }
+              : item
+          ),
+        })),
+
+        selectedLead: {
+          ...state.selectedLead,
+          savedPreferences: action.payload || [],
+        },
+      };
 
     default:
       return state;

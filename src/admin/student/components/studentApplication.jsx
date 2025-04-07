@@ -85,17 +85,9 @@ const StudentApplication = ({
               >
                 <div className="" role="">
                   <button
-                    className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${
-                      activeTab === index
-                        ? "text-black border-b-4 border-blue-500"
-                        : "text-gray-500 hover:text-gray-600 hover:border-gray-300"
-                    }`}
+                    className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg`}
                     onClick={() => handleTabClick(index)}
                     role="tab"
-                    aria-controls={`styled-${tab?.title
-                      .toLowerCase()
-                      .replace(" ", "-")}`}
-                    aria-selected={activeTab === index}
                   >
                     <span
                       className={`px-2 py-1 rounded-full ${

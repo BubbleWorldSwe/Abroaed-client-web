@@ -24,6 +24,8 @@ export const EDIT_LEADS_STUDENT_FAILURE = "EDIT_LEADS_STUDENT_FAILURE";
 
 export const SET_SELECTED_LEAD = "SET_SELECTED_LEAD";
 
+export const ADD_LEAD_SAVEDPREFRENCES = "ADD_LEAD_SAVEDPREFRENCES";
+
 // Fetch Leads
 export const fetchLeadsRequest = (page) => ({
   type: FETCH_LEADS_REQUEST,
@@ -125,3 +127,10 @@ export const setSelectedLead = (lead) => ({
   type: SET_SELECTED_LEAD,
   payload: lead,
 });
+
+export const addLeadSavedPrefrences = (lead) => {
+  return {
+    type: ADD_LEAD_SAVEDPREFRENCES,
+    payload: lead,
+  };
+};

@@ -4,17 +4,17 @@ import { kpiCards } from "../../data";
 
 const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
   return (
-    <div className="my-10">
-      <section className=" dark:bg-gray-900 relative px-3 md:px-10 mx-auto">
-        <div className="pb-8 pt-1  px-4 mx-auto w-full md:max-w-screen-2xl  lg:px-3 relative z-10">
-          <div className=" text-left mb-8 lg:mb-16 ">
-            <p className="font-semibold  text-[22px] text-[#52525B]  dark:text-gray-400">
+    <div className=" w-full">
+      <section className=" dark:bg-gray-900 relative ">
+        <div className=" mt-10 relative z-10">
+          <div className="  mb-8 lg:mb-16 ">
+            <p className="font-semibold mb-2 text-[22px] text-[#52525B]  dark:text-gray-400">
               {title}
             </p>
-            <h2 className={`mb-3  text-[32px] md:text-[45px] font-extrabold text-gray-primary dark:text-white`}>
+            <h2 className={`mb-4  text-[32px] md:text-[45px] font-extrabold text-gray-primary dark:text-white`}>
               {header}
             </h2>
-            <p className="font-semibold text-justify text-[16px] text-[#52525B]  dark:text-gray-400">
+            <p className="font-semibold  text-justify text-[16px] text-[#52525B]  dark:text-gray-400">
               {subtitle}
             </p>
           </div>
@@ -48,7 +48,7 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
             </button> */}
           </div>
         </div>
-       </section>
+      </section>
     </div>
   );
 };

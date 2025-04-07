@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 
@@ -8,7 +8,9 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
-function AddTeamMember({ isOpen, onClose, setIsDone, onAddTeam, roles }) {
+function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
+  const { error, loading } = useSelector((state) => state.teams);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,13 +51,25 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddTeam, roles }) {
     };
 
     onAddTeam(data);
-    setIsDone(true);
-    onClose();
   };
+
+  useEffect(() => {
+    if (!error) {
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        role: "",
+        permission: "",
+      });
+      onClose();
+    }
+  }, [error]);
 
   return isOpen ? (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
-      <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg relative">
+      <div className="bg-white w-2/5 font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 relative">
         <button
           className="absolute top-2 right-2 text-gray-600 text-2xl"
           onClick={onClose}
@@ -117,11 +131,11 @@ function AddTeamMember({ isOpen, onClose, setIsDone, onAddTeam, roles }) {
               }))} */
               options={roles
                 ?.filter(
-                  (data) => !["Admin", "Student"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
+                  (data) => !["Admin", "Student"].includes(data.roleName)
                 )
                 .map((data) => ({
                   label: data?.roleName,
-                  value: data?.roleId,
+                  value: data?._id,
                 }))}
               required
             />
