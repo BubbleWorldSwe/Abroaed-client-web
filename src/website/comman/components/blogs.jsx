@@ -1,24 +1,39 @@
 import { useSelector } from "react-redux";
 import BlogCard from "./blogCard";
 import Slider from "react-slick";
+import { useRef } from "react";
 
 const Blogs = () => {
   const { allBlogs } = useSelector((state) => state.blogs);
+  // const [isPaused, setIsPaused] = useState(false);
+  const sliderRef = useRef(null);
 
-  let settings = {
+  const settings = {
     infinite: true,
-    dots: true,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 0,
+    speed: 3000,
+    cssEase: "linear",
+    arrows: false,
+    dots: false,
     pauseOnHover: true,
     centerMode: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
+
 
   return (
     allBlogs.length > 0 && (
-      <section className=" dark:bg-gray-900 relative py-16 mx-auto">
+      <section className=" dark:bg-gray-900 relative ">
         <div className="px-5 md:px-12 mx-auto max-w-screen-2xl relative z-10">
           {/* <div className="flex flex-col items-start justify-center mb-5 md:mb-10"> */}
           <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
@@ -30,10 +45,15 @@ const Blogs = () => {
             ABROAED Updates
           </h2>
         </div>
-        <div className="overflow-x-auto py-6">
-          <Slider {...settings}  >
+        <div
+          className="overflow-x-auto py-10"
+        >
+          <Slider ref={sliderRef} {...settings}>
             {allBlogs.map((article, idx) => (
-              <div key={idx} className="px-3 py-1 ">
+              <div
+                key={idx}
+                className="px-3 py-1 pb-4 transition-transform duration-300 hover:scale-[1.05]"
+              >
                 <BlogCard article={article} />
               </div>
             ))}

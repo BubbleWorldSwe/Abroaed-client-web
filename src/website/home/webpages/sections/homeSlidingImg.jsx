@@ -6,14 +6,15 @@ import homeHero4 from "../../../../assets/homeHero4.png"
 const HomeSlidingImg = () => {
     let settings = {
         infinite: true,
-        dots: true,
+        dots: false,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 0,
+        speed: 10000,
         pauseOnHover: true,
 
-        // centerMode: true,
+        centerMode: false,
     };
 
     const homeImges = [
@@ -32,17 +33,17 @@ const HomeSlidingImg = () => {
     ]
 
     return (
-        <section className="dark:bg-gray-900 relative ">
-            <div className="overflow-x-auto pb-7">
+        <section className="dark:bg-gray-900 relative py-4">
+            <div className="overflow-x-auto">
                 <Slider {...settings}>
                     {homeImges.map((image, index) => (
-                        <div key={index} className="w-full">
-                            <div className="relative w-full h-full">
+                        <div key={index} className="w-full ">
+                            <div className="relative w-full h-[92vh]">
                                 <img
                                     className="w-full h-full object-cover "
                                     src={image.imgUrl}
                                     alt={`Image ${index + 1}`}
-                                    style={{ width: "100vw" }}
+                                // style={{ width: "100vw" }}
                                 />
                             </div>
                         </div>

@@ -73,19 +73,19 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
   console.log(formData);
 
   return (
-    <section className="relative isolate overflow-hidden px-6 pb-10 md:px-12  mx-auto">
-      <div className="py-8  mx-auto max-w-screen-2xl  dark:bg-gray-800 bg-gray-primary rounded-lg h-[93vh] antialiased relative ">
+    <section className="relative  overflow-auto">
+      <div className="  dark:bg-gray-800 bg-gray-primary rounded-lg h-[90vh] antialiased relative ">
         <div
-          className={`flex flex-col lg:flex-row justify-between gap-5  lg:gap-12 px-10  rounded-lg `}
+          className={`flex flex-col lg:flex-row justify-between gap-5  lg:gap-12 px-10  rounded-lg`}
         >
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
             <h1
-              className={`text-[24px] md:text-[57px] mb-5 font-extrabold  leading-tight  text-white  max-w-3xl  `}
+              className={`text-[24px] md:text-[65px] mb-10 font-extrabold  leading-tight  text-white  max-w-3xl  `}
             >
               {title || `Book Your Counselling Session Today!`}
             </h1>
-            <p className="text-[14px] md:text-[18px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
+            <p className="text-[14px] md:text-[23px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
               {text ||
                 `Our specialised home counselling session is available at your
               convenience. Don’t waste a minute—take a stride towards your
