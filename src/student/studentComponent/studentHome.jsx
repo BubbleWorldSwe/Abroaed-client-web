@@ -1,18 +1,31 @@
 import { SquareUserRound } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PreferenceCardDetails from "../components/preferenceCardDetails";
 import { myApplicationtabs, tabColors } from "../data";
 import ApplicationCardDetails from "../components/applicationCardDetails";
 import RecentlyViewCollegeCard from "../components/recentlyViewCollegeCard";
 import RecentlyViewCourseCard from "../components/recentlyViewCourseCard";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const StudentHome = () => {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = ["Colleges", "Course", "Accommodations"];
+  const { studentToken, studentId, student } = useSelector(
+    (state) => state.auth
+  );
 
   const handleTabClick = (index) => {
     setActiveTab(index);
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!studentToken && !studentId) {
+      navigate("/home");
+    }
+  }, [studentToken, studentId, navigate]);
 
   return (
     <div className="w-full bg-[#fff] min-h-[90vh] px-5 py-10 ">
@@ -26,8 +39,10 @@ const StudentHome = () => {
               alt="Rounded avatar"
             />
             <div className="ml-4">
-              <h2 className="text-lg font-semibold">Garvit Singh ✅</h2>
-              <p className="text-gray-600">+8801774286074</p>
+              <h2 className="text-lg font-semibold">
+                {`${student?.firstName} ${student?.lastName}`} ✅
+              </h2>
+              <p className="text-gray-600">+91 {`${student?.mobile}`}</p>
             </div>
           </div>
           <div className="flex flex-col  gap-3">
@@ -104,42 +119,38 @@ const StudentHome = () => {
           <div className="flex  gap-4 overflow-auto max-h-screen lg:max-w-[79vw] ">
             {myApplicationtabs.map((tab, index) => {
               return (
-                <>
-                  <div className="flex flex-col gap-4" key={index}>
-                    <div className="" role="">
-                      <button
-                        className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${
-                          activeTab === index
-                            ? "text-black  border-b-4 border-blue-500"
-                            : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                <div className="flex flex-col gap-4" key={index}>
+                  <div className="" role="">
+                    <button
+                      className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg ${
+                        activeTab === index
+                          ? "text-black  border-b-4 border-blue-500"
+                          : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                      }`}
+                      onClick={() => handleTabClick(index)}
+                      role="tab"
+                      aria-controls={`styled-${tab?.tabName
+                        .toLowerCase()
+                        .replace(" ", "-")}`}
+                      aria-selected={activeTab === index}
+                    >
+                      <span
+                        className={`px-2 py-1 rounded-full ${
+                          tabColors[tab.tabName] || "bg-gray-300"
+                        } text-${
+                          tab.tabName === "Rejected" ? "white" : "gray-primary"
                         }`}
-                        onClick={() => handleTabClick(index)}
-                        role="tab"
-                        aria-controls={`styled-${tab?.tabName
-                          .toLowerCase()
-                          .replace(" ", "-")}`}
-                        aria-selected={activeTab === index}
                       >
-                        <span
-                          className={`px-2 py-1 rounded-full ${
-                            tabColors[tab.tabName] || "bg-gray-300"
-                          } text-${
-                            tab.tabName === "Rejected"
-                              ? "white"
-                              : "gray-primary"
-                          }`}
-                        >
-                          {tab.tabName}
-                        </span>
-                      </button>
-                    </div>
-                    <div className="flex flex-col gap-5 ">
-                      {tab.cardDetails.map((card, idx) => (
-                        <ApplicationCardDetails key={idx} />
-                      ))}
-                    </div>
+                        {tab.tabName}
+                      </span>
+                    </button>
                   </div>
-                </>
+                  <div className="flex flex-col gap-5 ">
+                    {tab.cardDetails.map((card, idx) => (
+                      <ApplicationCardDetails key={idx} />
+                    ))}
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -210,7 +221,7 @@ const StudentHome = () => {
                         <input
                           id="checkbox-table-search-1"
                           type="checkbox"
-                          onClick="event.stopPropagation()"
+                          //   onClick="event.stopPropagation()"
                           className="w-4 h-4 text-primary-600 bg-gray-100 rounded border-gray-300 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                         />
                         <label

@@ -137,7 +137,7 @@ const LeadTable = ({
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="font-medium p-2 rounded bg-[#FDE8E8]">
+                  <span className="p-2 rounded bg-[#FDE8E8]">
                     {lead?.scheduleDetails
                       ? `${
                           lead?.scheduleDetails?.appointmentType
