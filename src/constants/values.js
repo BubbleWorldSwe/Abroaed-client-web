@@ -53,13 +53,12 @@ export const applyingFor = [
 ];
 
 export const highestEducation = [
-  "Engineering",
-  "Medical",
-  "Law",
-  "Management",
-  "Arts & Humanities",
-  "Science",
+  "12th",
+  "Diploma",
+  "Graduation",
+  "Post Graduation",
 ];
+
 
 export const appointmentType = ["Virtual Consellings", "Home", "In-Person"];
 
