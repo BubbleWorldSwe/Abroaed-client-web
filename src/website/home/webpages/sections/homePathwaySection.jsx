@@ -11,14 +11,15 @@ const HomePathwaySection = () => {
       href: "/abroaedPlus",
       img: directHomeImg,
       content:
-        "Our Direct Programs are designed to make your study abroad experience simple and stress-free. We guide you through each step of the application process to top universities, ensuring everything goes smoothly. With expert guidance, personalized assistance, and partnerships with prestigious international institutions, we ensure you land in the right program suited to your career goals. Experience the world-class education you deserve with ease and confidence, all under the professional guidance of ABROAED.",
+        (<>ABROAED<><sup>+</sup></> is your ultimate study abroad companion, offering end-to-end support to simplify your global education journey. From choosing the right country, university, and course to acing IELTS/PTE/TOEFL, securing loans, and managing finances, we’ve got you covered. Avoid hidden costs (up to ₹4 Lakh+), confusing paperwork, and stress. </>),
     },
     {
-      title: "Pathways",
-      href: "/pathways",
+      title: "League of Excellence",
+      href: "/leaguageOfExcellence",
       img: explorePathImg,
       content:
-        "Our Pathways Programs provide an opportunity to study a part of your degree in India and complete it overseas at top international universities. With the guidance of our visa overseas consultant, this flexible study approach makes your transition easy and cost-effective, allowing you to gain the benefits of both local and global education. It provides you with a strong foundation and enhances your career prospects on the global stage. With ABROAED, you’ll never lose sight of the right track.",
+        "We at ABROAED help aspiring students get into top-tier universities across the UK, US, Australia, New Zealand, Canada, Asia, and Europe. We have a dedicated team to help students seek entrance into the renowned Ivy League schools in the USA. From admission support and mock interviews to VISA support and accommodation services in the destination country, we offer them all.",
+
     },
   ]
 
@@ -45,7 +46,7 @@ const HomePathwaySection = () => {
                     className="absolute inset-0 bg-black opacity-50"
                     style={{ mixBlendMode: "multiply" }}
                   ></div>
-                  <div className="absolute bottom-3 left-5 px-5">
+                  <div className="absolute bottom-14 left-4 px-5">
                     <p className="text-gray-200 lg:mb-2 text-[12px] md:text-base">Explore</p>
                     <h1 className="mb-2 text-[24px] md:text-5xl tracking-tight font-extrabold text-white">
                       {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title}

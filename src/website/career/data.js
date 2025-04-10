@@ -5,7 +5,7 @@ export const careerData = [
     imgFirst: true,
     imgUrl: wwUsContent1,
     heading: "What Makes ABROAED Feel Like Home?",
-    text: `At ABROAED, we build a "home away from home" for our employees by infusing a strong culture of support, collaboration, and professional growth into our daily operations. This is achieved through heterogeneous team-building initiatives, regular check-ins, and clear communication channels that encourage open dialogue. Employees are paired with mentors to guide them through challenges and foster development in their roles. Cross-function collaboration and a team-centric way of solving issues that allow for joint knowledge sharing underlie our methods of problem-solving. We create continuous, solution-focused, constructive feedback that gives each employee lessons from every incident.`,
+    text: `At ABROAED, we build a "Home Away from Home" for our employees by infusing a strong culture of support, collaboration, and professional growth into our daily operations. This is achieved through heterogeneous team-building initiatives, regular check-ins, and clear communication channels that encourage open dialogue. Employees are paired with mentors to guide them through challenges and foster development in their roles. Cross-function collaboration and a team-centric way of solving issues that allow for joint knowledge sharing underlie our methods of problem-solving. We create continuous, solution-focused, constructive feedback that gives each employee lessons from every incident.`,
   },
   {
     imgFirst: false,

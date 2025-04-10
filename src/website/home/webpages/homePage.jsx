@@ -77,9 +77,9 @@ function HomeLayout() {
             entity={entity.bookCounselling}
           />
         </div>
-        <div className={containerClass.outerContainer}>
+        {/* <div className={containerClass.outerContainer}>
           <Testimonials />
-        </div>
+        </div> */}
         <div className="relative ">
           <div className={containerClass.outerContainer}>
             <HomeDownloadApp />
@@ -92,7 +92,7 @@ function HomeLayout() {
             />
           </div>
         </div>
-        {/* <div className="relative ">
+        <div className="relative ">
           <div className="absolute top-28 right-0 -z-20">
             <img
               className="rounded-lg max-w-full "
@@ -100,8 +100,8 @@ function HomeLayout() {
               alt="Counselling session"
             />
           </div>
-          <Blogs />
-        </div> */}
+          {/* <Blogs /> */}
+        </div>
         <div className={containerClass.outerContainer}>
           <ContactUsForm
             onFormSubmit={handleAddLead}

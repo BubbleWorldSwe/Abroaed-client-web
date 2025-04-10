@@ -13,11 +13,11 @@ const AbroaedPlusFaq = () => {
 
 
     return (
-        <div className="relative px-10 mx-auto">
-            <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
-                <div className="h-auto py-12 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
+        <div className="relative ">
+            <div className=" flex flex-col gap-6 ">
+                <div className="h-auto  w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
                     <SectionMainHeader
-                        className={"text-center mb-10"}
+                        className={"text-center mb-8"}
                     >
                         Frequently Asked Questions
                     </SectionMainHeader>

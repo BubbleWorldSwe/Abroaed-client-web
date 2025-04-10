@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { studentLoginRequest } from "../../redux/actions/authActions";
-
 import { toast } from "react-toastify";
 import AbroaedInfo from "./components/abroaedInfo";
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
+import { FaHome } from "react-icons/fa";
 
 function StudentSignIn() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -18,19 +17,15 @@ function StudentSignIn() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-
       const formData = new FormData(e.currentTarget);
-
       if (!formData.get("email")?.trim() || !formData.get("password")) {
         toast.error("Please enter Email ID and Password.");
         return;
       }
-
       if (!formData.get("terms")) {
         toast.error("You must accept the Terms and Conditions to proceed.");
         return;
       }
-
       dispatch(studentLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
@@ -53,7 +48,12 @@ function StudentSignIn() {
               // action="#"
               onSubmit={handleSubmit}
             >
-              <h2 className="text-xl font-bold   text-gray-900 dark:text-white">
+              <a
+                href="/home"
+              >
+                <FaHome fontSize={30} />
+              </a>
+              <h2 className="text-xl  font-bold   text-gray-900 dark:text-white">
                 Please Sign In to Continue
               </h2>
 

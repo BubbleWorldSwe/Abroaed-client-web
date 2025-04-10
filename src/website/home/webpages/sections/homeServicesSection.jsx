@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import HomeServiceModal from "../../../../Components/Modals/HomeServiceModal";
 import homeService1 from "../../../../assets/homeService1.png";
@@ -11,6 +12,7 @@ import homeService8 from "../../../../assets/homeService8.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 
 const serviceData = [
@@ -68,17 +70,36 @@ const serviceData = [
 
 const HomeServicesSection = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  let settings = {
+  const PrevArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute z-10 left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+    >
+      <FaArrowLeft />
+    </button>
+  );
+
+  const NextArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute z-10 right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+    >
+      <FaArrowRight />
+    </button>
+  );
+
+  const settings = {
+    dots: false,
     infinite: true,
-    // dots: true,
+    speed: 8000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 0,
-    speed: 8000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
-
-    // centerMode: true,
+    centerModa: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
 
@@ -103,7 +124,7 @@ const HomeServicesSection = () => {
             {serviceData?.map((service, index) => (
               <div
                 key={index}
-                className="w-full px-3 lg:w-96 md:w-80 sm:w-60 h-[32rem] relative rounded-lg   "
+                className="w-full px-4 lg:w-96 md:w-80 sm:w-60 h-[32rem] relative rounded-lg"
 
               >
                 <div className="relative w-full h-full rounded-lg">
@@ -112,12 +133,16 @@ const HomeServicesSection = () => {
                     src={service.imgUrl}
                     alt={`Service ${index + 1}`}
                   />
-                  <div className="absolute inset-0 bg-black rounded-lg opacity-65"></div>{" "}
+                  <div
+                    className="absolute inset-0 bg-black opacity-50 rounded-lg"
+                    style={{ mixBlendMode: "multiply" }}
+                  ></div>
+                  <div className="absolute inset-0 bg-gradient-to-l from-white to-black opacity-50 z-0 rounded-lg"></div>
 
                 </div>
                 <div className="absolute inset-0 flex  flex-col justify-between p-6 z-10">
                   <div className="overflow-y-auto flex  flex-col gap-4 px-5">
-                    <h1 className=" text-[57px] text-[#FFDF00]   font-bold ">
+                    <h1 className=" text-[57px] text-white   font-bold ">
                       {service.text1}
                     </h1>
                     <p className="text-gray-200 max-w-screen-lg text-justify lg:mb-2 text-[22px]">

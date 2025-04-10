@@ -133,7 +133,7 @@ const AccomodationEnquiryModal = ({
                     alt="Wallet Icon"
                   />
                   <p className="text-gray-900">
-                    Rs. {accommodationDetails?.price} per month
+                    ₹{accommodationDetails?.price} per month
                   </p>
                 </div>
 

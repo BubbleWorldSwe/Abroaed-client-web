@@ -18,15 +18,15 @@ const LeadPreferenceAccommodationCard = ({ accommodation }) => {
           <h5
             className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}
           >
-            {accommodation.accomodationName}
+            {accommodation?.typeId?.accomodationName}
           </h5>
           <div>
             {/* <button>
-                            <img
-                                src={bookmark}
-                                alt="bookmarkIcon"
-                            />
-                        </button> */}
+                               <img
+                                   src={bookmark}
+                                   alt="bookmarkIcon"
+                               />
+                           </button> */}
           </div>
         </div>
 
@@ -39,8 +39,8 @@ const LeadPreferenceAccommodationCard = ({ accommodation }) => {
               alt={accommodation.name}
             />
             <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400">
-              {accommodation?.stateId?.name},{" "}
-              {accommodation?.destinationId?.countryId?.name}
+              {accommodation?.typeId?.stateId?.name},{" "}
+              {accommodation?.typeId?.destinationId?.countryId?.name}
             </p>
           </div>
         </div>
@@ -54,18 +54,15 @@ const LeadPreferenceAccommodationCard = ({ accommodation }) => {
               alt={accommodation.name}
             />
             <p className="font-normal  dark:text-gray-400">
-              {accommodation.price} per month
+              ₹{accommodation?.typeId?.price} per month
             </p>
           </div>
         </div>
         <div className="flex-grow">
-          <p className="mb-5 font-normal  text-gray-500 dark:text-gray-400 line-clamp-4">
-            {accommodation.description}
+          <p className="mb-5 font-norma text-gray-500 dark:text-gray-400 line-clamp-4">
+            {accommodation?.typeId?.description}
           </p>
         </div>
-        {/* <div className="mt-auto">
-                    <EnquireButton onClick={handleOpenAddModal} />
-                </div> */}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const UniversityDetailsCard = ({
 
   // Find saved item by typeId
   const savedItem = [...savedPreferences].find(
-    (saved) => saved.typeId === item?._id
+    (saved) => (saved.typeId?._id || saved.typeId) === item?._id
   );
 
   const isSaved = Boolean(savedItem);

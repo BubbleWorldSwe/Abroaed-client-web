@@ -36,6 +36,7 @@ export const savedPreferencesReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case ADD_SAVEDPREFERENCE_SUCCESS:
+      console.log(action);
       return {
         ...state,
         loading: false,
@@ -43,6 +44,7 @@ export const savedPreferencesReducer = (state = initialState, action) => {
       };
 
     case DELETE_SAVEDPREFERENCE_SUCCESS:
+      console.log(action);
       return {
         ...state,
         loading: false,

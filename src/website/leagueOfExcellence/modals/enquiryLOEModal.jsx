@@ -101,7 +101,11 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                     src={locationIcon}
                     alt="Location Icon"
                   />
-                  <p className={`text-gray-700 font-semibold ${readMore ? "line-clamp-4" : "line-clamp-none"} `}>
+                  <p
+                    className={`text-gray-700 font-semibold ${
+                      readMore ? "line-clamp-4" : "line-clamp-none"
+                    } `}
+                  >
                     {item?.location}
                   </p>
                 </div>
@@ -113,7 +117,7 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                     src={wallet}
                     alt="Wallet Icon"
                   />
-                  <p className="text-gray-900">Rs. {item?.fees}</p>
+                  <p className="text-gray-900">₹{item?.fees}</p>
                 </div>
 
                 {/* Description */}

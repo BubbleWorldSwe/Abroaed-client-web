@@ -19,7 +19,7 @@ const CollegeCourseCard = ({
 
   // Find saved course by typeId
   const savedItem = [...savedPreferences].find(
-    (saved) => saved.typeId === course?._id
+    (saved) => (saved.typeId?._id || saved.typeId) === course?._id
   );
   const { isLoggedInStudent } = useSelector((state) => state.auth);
 

@@ -20,11 +20,16 @@ const AccommodationCard = ({
   const { savedPreferences } = useSelector((state) => state.savedPreferences);
 
   // Find saved accommodation by typeId
-  const savedItem = [...savedPreferences].find(
-    (saved) => saved.typeId === item?._id
-  );
+  const savedItem = [...savedPreferences].find((saved) => {
+    console.log(saved?.typeId?._id, item?._id);
+    return (saved?.typeId?._id || saved?.typeId) === item?._id;
+  });
+
+  console.log(savedItem);
 
   const isSaved = Boolean(savedItem);
+
+  console.log(isSaved, " : Is Saved");
   const { isLoggedInStudent } = useSelector((state) => state.auth);
 
   const handleCloseAddModal = () => {
@@ -63,11 +68,10 @@ const AccommodationCard = ({
             {/* Bookmark Button */}
             {isLoggedInStudent && (
               <button
-                onClick={
-                  () =>
-                    isSaved
-                      ? removeFromSavedPreferences(savedItem._id) // Remove using saved _id
-                      : addToSavedPreferences("accommodation", item?._id) // Add using item._id
+                onClick={() =>
+                  isSaved
+                    ? removeFromSavedPreferences(savedItem._id)
+                    : addToSavedPreferences("accommodation", item?._id)
                 }
               >
                 <Bookmark

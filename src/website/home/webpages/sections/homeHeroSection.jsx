@@ -36,20 +36,21 @@ function HomeHeroSection() {
           <source src={homeVideoHero} type="video/mp4" />
         </video>
 
-      <div
-          className="absolute inset-0 bg-black opacity-50"
+        <div
+          className="absolute inset-0 bg-black opacity-70"
           style={{ mixBlendMode: "multiply" }}
         ></div>
         <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
-        <div className="absolute bottom-24 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
-          <div className="text-start  text-white lg:w-2/3 px-1 lg:px-8">
-            {textEffect}
-            <h1 className="mb-3 text-[57px]  font-extrabold tracking-tight leading-none text-white md:text-[57px]">
+        <div className="absolute  top-1/2 md:top-1/3 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
+          <div className="text-start   text-white lg:w-2/3 px-1 lg:px-8">
+            <p className="">
+              {textEffect}
+            </p>
+            <h1 className="mb-3 text-[42px]  font-extrabold tracking-tight leading-none text-white md:text-[75px]">
               From Here to Anywhere-Dream Big, Study Global
             </h1>
           </div>
         </div>
-        {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-black opacity-80"></div> */}
       </section>
     </div>
   );

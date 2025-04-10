@@ -11,13 +11,15 @@ const AbroaedPlusHero = () => {
             }}
         >
             <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
-            <div className="absolute bottom-2  py-10  flex flex-col  justify-start  mx-auto px-12">
-                <h1 className="mb-2  text-[57px] font-extrabold  text-[#F4F4F5] md:text-5xl xl:text-6xl ">
-                    ABROAED <sup>+</sup>
-                </h1>
-                <p className="font-light mb-3 text-white md:text-lg opacity-90 xl:text-xl">
-                    From home counselling to post-arrival support – We’re with you, even on the other side!
-                </p>
+            <div className="absolute  top-1/3 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
+                <div className="text-start   text-white lg:w-2/3 px-1 lg:px-8">
+                    <h1 className="mb-3 text-[57px]  font-extrabold  leading-none text-white md:text-[75px]">
+                        ABROAED <sup>+</sup>
+                    </h1>
+                    <p className="text-[32px] font-semibold opacity-90    text-white">
+                        From home counselling to post-arrival support – We’re with you, even on the other side!
+                    </p>
+                </div>
             </div>
         </section>
     )

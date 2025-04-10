@@ -5,8 +5,8 @@ import { AbroaedServices } from "../../data";
 
 const AbroaedPlusHowItWork = () => {
   return (
-    <div className="relative px-10 mx-auto">
-      <div className=" px-4 py-10 flex flex-col gap-6 mx-auto max-w-screen-2xl  mt-5">
+    <div className="relative">
+      <div className="  flex flex-col gap-6 ">
         {/* Content */}
         <div className="relative z-10">
           <div className="pb-5">

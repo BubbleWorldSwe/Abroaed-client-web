@@ -59,58 +59,67 @@ export const articles = [
 ];
 export const cardDetails = [
   {
-    key: "Unlimited home or virtual counselling",
+    key: "Unlimited Home or Virtual Counselling",
     value: "India",
   },
   {
-    key: "Country-specific, dedicated coach",
+    key: "Country-specific, Dedicated Coach",
     value: "₹ 6,54,321",
   },
   {
-    key: "Competitive interest rates on loan",
+    key: "Competitive Interest Rates on Loan",
     value: "Online",
   },
   {
-    key: "Loan document collection right from your doorstep",
+    key: "Loan Document Collection Right from Your Doorstep",
     value: "Online",
   },
   {
-    key: "1:1 virtual/ home coaching",
+    key: "One on One Virtual/ Home Coaching",
     value: "Online",
   },
   {
-    key: "University application assistance with guaranteed offer letter",
+    key: "University Application Assistance",
     value: "Online",
   },
   {
-    key: "Comprehensive Visa interview preparation",
+    key: "Guaranteed Offer Letter",
     value: "Online",
   },
   {
-    key: "Forex at lowest rates",
+    key: "Comprehensive Visa Interview Preparation",
     value: "Online",
   },
   {
-    key: "International bank account opening",
+    key: "Forex at Lowest Rates",
     value: "Online",
   },
   {
-    key: "Easy and hassle-free accommodation",
+    key: "International Bank Account Opening",
     value: "Online",
   },
   {
-    key: "Flight ticket booking and cab services from the airport to your accommodation",
+    key: "Easy and Hassle-free Accommodation",
     value: "Online",
   },
   {
-    key: "City registration",
+    key: "Flight Ticket Booking",
     value: "Online",
   },
   {
-    key: "24/7 student support post arrival",
+    key: "City Registration",
+    value: "Online",
+  },
+  {
+    key: "24/7 Student Support Post Arrival",
+    value: "Online",
+  },
+  {
+    key: "Cab Services from the Airport to Your Accommodation",
     value: "Online",
   },
 ];
+
 
 export const teamMembers = [
   {

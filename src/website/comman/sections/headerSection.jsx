@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Menu } from "lucide-react";
+import { Globe, Grid, Menu, Phone, Users } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import DestinationNavItemModal from "../modals/destinationNavItemModal";
@@ -16,6 +15,9 @@ import ProfileModal from "../modals/profileModal";
 import LogoutModal from "../../../commons/modal/logoutModal";
 import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import CombinedTestPrepModal from "../modals/combinedTestPrepModal";
+import ServicesNavModal from "../modals/servicesNavModal";
+import { FaShareAlt } from "react-icons/fa";
+import SocialIconNavModal from "../modals/socialIconNavModal";
 //import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
@@ -130,7 +132,7 @@ function Header({ isHeaderBgWhite = false }) {
       label: "Destinations",
       component: DestinationNavItemModal,
     },
-    { key: "accomodation", label: "Accommodation", link: "/accomodation" },
+    // { key: "accomodation", label: "Accommodation", link: "/accomodation" },
     {
       key: "testPrep",
       label: "Test Prep",
@@ -140,7 +142,7 @@ function Header({ isHeaderBgWhite = false }) {
         languagePreps: allLanguagePreps,
       },
     },
-    { key: "finance", label: "Finance", link: "/finance" },
+    // { key: "finance", label: "Finance", link: "/finance" },
     { key: "pathways", label: "Pathways", link: "/pathways" },
     {
       key: "leaguageOfExcellence",
@@ -148,6 +150,7 @@ function Header({ isHeaderBgWhite = false }) {
       link: "/leaguageOfExcellence",
     },
     { key: "contactUs", label: "Contact Us", link: "/contactUs" },
+    { key: "services", label: "Services", component: ServicesNavModal },
   ];
 
   const socialLinks = [
@@ -169,7 +172,7 @@ function Header({ isHeaderBgWhite = false }) {
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary  shadow-md"
+        ? "bg-gray-primary text-white shadow-md"
         : "bg-gray-primary text-white bg-opacity-10"
         }`}
     >
@@ -198,6 +201,8 @@ function Header({ isHeaderBgWhite = false }) {
                    ${activeDropdown === "exploreColleges" ? "" : ""}`}
                 >
                   <a
+                    href={"#"}
+
                     className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
@@ -262,26 +267,25 @@ function Header({ isHeaderBgWhite = false }) {
             </div>
           </div>
           <div className="flex items-center gap-5">
-            <div className="flex flex-grow-0 basis-[10%] justify-end ">
+            {/* <div className="flex flex-grow-0 basis-[10%] justify-end ">
               <div
                 onMouseEnter={() => handleMouseEnter("login")}
                 onMouseLeave={handleMouseLeave}
-              // className={ }
               >
                 {studentToken ? (
                   <>
                     <button
                       // onClick={() => navigate("/signin")}
-                      className={`px-4 py-1  bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                      className={`px-4 py-1  whitespace-nowrap bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
                     >
-                      Hello, User
+                      Hello, {`${student?.firstName} ${student?.lastName}`}
                     </button>
                     {activeDropdown === "login" && (
                       <div className="relative">
                         <ProfileModal
                           handleMouseEnter={handleMouseEnter}
                           handleMouseLeave={handleMouseLeave}
-                          logout={handleSignOut}
+                          logout={() => setIsModalOpen(true)}
                         />
                       </div>
                     )}
@@ -295,8 +299,8 @@ function Header({ isHeaderBgWhite = false }) {
                   </button>
                 )}
               </div>
-            </div>
-            <div className="flex   md:justify-end  space-x-3">
+            </div> */}
+            {/* <div className="flex   md:justify-end  space-x-3">
               {socialLinks.map((link, index) => (
                 <a
                   key={index}
@@ -308,8 +312,49 @@ function Header({ isHeaderBgWhite = false }) {
                   {link.icon}
                 </a>
               ))}
+            </div> */}
+            <div
+              onMouseEnter={() => handleMouseEnter("login")}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button
+                // onClick={() => navigate("/signin")}
+                className={`px-4 py-1 whitespace-nowrap  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
+              >
+                Book Now
+              </button>
             </div>
+            <div className="">
+              <div
+                onMouseEnter={() => handleMouseEnter("socialIcon")}
+                onMouseLeave={handleMouseLeave}
+                className={`relative cursor-pointer group 
+                   ${activeDropdown === "socialIcon" ? "" : ""}`}
 
+              >
+                <p
+                  className={`px-1 relative transition-colors duration-300  
+                after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
+                after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
+                ${activeDropdown === "socialIcon"
+                      ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                      : ""
+                    }
+                    `}
+                >
+                  <Phone />
+                </p>
+              </div>
+              {activeDropdown === "socialIcon" && (
+                <div className="relative">
+                  <SocialIconNavModal
+                    handleMouseEnter={handleMouseEnter}
+                    handleMouseLeave={handleMouseLeave}
+                  />
+                </div>
+              )}
+
+            </div>
           </div>
           <button
             className="md:hidden p-2 basis-[0%]"
@@ -321,7 +366,6 @@ function Header({ isHeaderBgWhite = false }) {
             />
           </button>
         </nav>
-
       </nav>
 
       <LogoutModal

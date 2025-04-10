@@ -75,7 +75,7 @@ function AccomodationPage() {
   const addToSavedPreferences = (type, typeId) => {
     try {
       console.log("addToSavedPreferences");
-      console.log(type, typeId);
+      //  console.log(type, typeId);
 
       dispatch(
         addSavedPreferenceRequest({

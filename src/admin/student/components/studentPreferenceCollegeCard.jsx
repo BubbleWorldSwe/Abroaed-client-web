@@ -20,10 +20,13 @@ const StudentPreferenceCollegeCard = ({ college }) => {
       <div className="p-5 mt-5">
         <div className="flex justify-between">
           <h5 className=" text-xl whitespace-nowrap font-semibold tracking-tight text-gray-900 dark:text-white">
-            University of Glassgow
+            {college?.typeId?.name}
           </h5>
         </div>
-        <p className="text-gray-500 mb-2">United Kingdom</p>
+        <p className="text-gray-500 mb-2">
+          {" "}
+          {`${college?.typeId?.stateId?.name}, ${college?.typeId?.destinationId?.countryId?.name}`}
+        </p>
         <div className="mb-2  flex flex-col justify-between text-center ">
           <div className="flex gap-2 ">
             <img
@@ -33,7 +36,7 @@ const StudentPreferenceCollegeCard = ({ college }) => {
             />
 
             <p className="font-medium  text-gray-500 dark:text-gray-400 py-1">
-              World Ranking: 95
+              World Ranking: {`${college?.typeId?.ranking}`}
             </p>
           </div>
           <div className="flex gap-2 ">
@@ -44,7 +47,7 @@ const StudentPreferenceCollegeCard = ({ college }) => {
             />
 
             <p className="font-medium  text-gray-500 dark:text-gray-400 py-1">
-              Total Students: 6500{" "}
+              Total Students: {`${college?.typeId?.totalStudents}`}
             </p>
           </div>
           <div className="flex gap-2 ">
@@ -54,7 +57,7 @@ const StudentPreferenceCollegeCard = ({ college }) => {
               alt={"Book"}
             />
             <p className="font-medium  text-gray-500 dark:text-gray-400 py-1">
-              Courses Available: 40{" "}
+              Courses Available: {`${college?.typeId?.courses?.length}`}
             </p>
           </div>
         </div>
@@ -63,7 +66,7 @@ const StudentPreferenceCollegeCard = ({ college }) => {
             type="button"
             className="py-2.5 w-full px-5 me-2 mb-2 text font-medium text-gray-700 focus:outline-none bg-white rounded-lg border border-gray-700 hover:bg-gray-100 hover:text-green-900 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           >
-            View Detials
+            View Details
           </button>
         </div>
       </div>

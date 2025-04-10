@@ -28,7 +28,7 @@ function* fetchSavedPreferences(action) {
     yield put(fetchSavedPreferencesSuccess(data.data));
   } catch (error) {
     yield put(fetchSavedPreferencesFailure(error.message));
-    toast.error(error.message);
+    //  toast.error(error.message);
   }
 }
 

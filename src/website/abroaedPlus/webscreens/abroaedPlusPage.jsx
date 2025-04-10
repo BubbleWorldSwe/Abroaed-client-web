@@ -26,49 +26,69 @@ const AbroaedPlusPage = () => {
       console.log(error);
     }
   };
+  let containerClass = {
+    outerContainer: 'md:max-w-screen-2xl px-14 mx-auto w-full ',
+    internalContainer: ''
+  }
+
   return (
     <div className="font-rethink">
       <Header />
       <AbroaedPlusHero />
-      <AbroaedPlusContent />
-      <div className="relative">
-        <AbroaedPlusWhyChoose />
-        <div className="absolute top-0 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectoreLeftFlat}
-            alt="Counselling session"
+      <div className="grid grid-cols-1 gap-16  ">
+        <div className={containerClass.outerContainer}>
+          <AbroaedPlusContent />
+        </div>
+        <div className="relative">
+          <div className={containerClass.outerContainer}>
+            <AbroaedPlusWhyChoose />
+          </div>
+          <div className="absolute top-0 left-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectoreLeftFlat}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
+        <div className="relative">
+          <div className={containerClass.outerContainer}>
+            <AbroaedPlusHowItWork />
+          </div>
+          <div className="absolute -bottom-16 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorleftNose}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
+        <div className={containerClass.outerContainer}>
+          <Testimonials />
+        </div>
+        <div className="relative">]
+          <div className={containerClass.outerContainer}>
+            <AbroaedPlusFaq />
+          </div>
+          <div className="absolute top-32 left-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorDownNose}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
+        <div className={containerClass.outerContainer}>
+          <ContactUsForm
+            onFormSubmit={handleAddLead}
+            source={source.abroaedPlus}
+            entity={`${entity.contactUs}`}
           />
         </div>
-      </div>
-      <div className="relative">
-        <AbroaedPlusHowItWork />
-        <div className="absolute -bottom-16 right-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorleftNose}
-            alt="Counselling session"
-          />
+        <div>
+          <Footer />
         </div>
       </div>
-      <Testimonials />
-      <div className="relative">
-        <AbroaedPlusFaq />
-        <div className="absolute top-32 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorDownNose}
-            alt="Counselling session"
-          />
-        </div>
-      </div>
-
-      <ContactUsForm
-        onFormSubmit={handleAddLead}
-        source={source.abroaedPlus}
-        entity={`${entity.contactUs}`}
-      />
-      <Footer />
     </div>
   );
 };
