@@ -16,9 +16,9 @@ const HomeKpiMatrixCard = ({
       alt="Decorative vector"
     />
     <h1
-      className="text-[32px] max-w-sm leading-tight font-bold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
+      className="text-[32px] max-w-sm leading-tight font-bold text-white  bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
       style={{
-        backgroundImage: "linear-gradient(91.57deg, #FFDF00 0%, rgba(255, 223, 0, 0.5) 100%)",
+        // backgroundImage: "linear-gradient(91.57deg, #FFDF00 0%, rgba(255, 223, 0, 0.5) 100%)",
       }}
     >
       {cardName}

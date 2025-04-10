@@ -1,25 +1,40 @@
+/* eslint-disable react/prop-types */
 import { useSelector } from "react-redux";
 import BlogCard from "./blogCard";
 import Slider from "react-slick";
-import { useRef } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Blogs = () => {
   const { allBlogs } = useSelector((state) => state.blogs);
-  // const [isPaused, setIsPaused] = useState(false);
-  const sliderRef = useRef(null);
+  const PrevArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute z-10 left-1 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+    >
+      <FaArrowLeft />
+    </button>
+  );
+
+  const NextArrow = ({ onClick }) => (
+    <button
+      onClick={onClick}
+      className="absolute z-10 right-1 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+    >
+      <FaArrowRight />
+    </button>
+  );
 
   const settings = {
-    infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    speed: 3000,
-    cssEase: "linear",
-    arrows: false,
     dots: false,
+    infinite: true,
+    speed: 8000,
+    autoplay: true,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
-    centerMode: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 768,
@@ -46,9 +61,9 @@ const Blogs = () => {
           </h2>
         </div>
         <div
-          className="overflow-x-auto py-10"
+          className="overflow-x-auto pt-8"
         >
-          <Slider ref={sliderRef} {...settings}>
+          <Slider  {...settings}>
             {allBlogs.map((article, idx) => (
               <div
                 key={idx}

@@ -21,7 +21,7 @@ const DestinationFunFactCard = ({ icon, title, desc }) => {
             alt="icons"
           />
         </div>
-        <div className="flex flex-col gap-4  text-left">
+        <div className="flex flex-col   text-left">
           <p className="text-[32px] text-[#FFFFFF] font-bold">{title}</p>
           <p className="text-[22px] text-[#F4F4F5] font-semibold dark:text-gray-400">{desc}</p>
         </div>

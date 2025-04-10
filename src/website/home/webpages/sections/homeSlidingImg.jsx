@@ -1,20 +1,42 @@
+/* eslint-disable react/prop-types */
 import Slider from "react-slick";
 import homeHero1 from "../../../../assets/homeHero1.png"
 import homeHero2 from "../../../../assets/homeHero2.png"
 import homeHero3 from "../../../../assets/homeHero3.png"
 import homeHero4 from "../../../../assets/homeHero4.png"
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
 const HomeSlidingImg = () => {
-    let settings = {
-        infinite: true,
-        dots: false,
+
+    const PrevArrow = ({ onClick }) => (
+        <button
+            onClick={onClick}
+            className="absolute z-10 left-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+        >
+            <FaArrowLeft />
+        </button>
+    );
+
+    const NextArrow = ({ onClick }) => (
+        <button
+            onClick={onClick}
+            className="absolute z-10 right-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+        >
+            <FaArrowRight />
+        </button>
+    );
+
+    const settings = {
         slidesToShow: 1,
         slidesToScroll: 1,
+        dots: false,
+        infinite: true,
+        speed: 8000,
         autoplay: true,
-        autoplaySpeed: 0,
-        speed: 10000,
+        autoplaySpeed: 3000,
         pauseOnHover: true,
-
-        centerMode: false,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     };
 
     const homeImges = [
@@ -32,18 +54,20 @@ const HomeSlidingImg = () => {
         },
     ]
 
+
     return (
         <section className="dark:bg-gray-900 relative py-4">
+            {/* <div className="overflow-x-auto pb-8 max-w-screen-2xl px-10"> */}
             <div className="overflow-x-auto">
                 <Slider {...settings}>
                     {homeImges.map((image, index) => (
-                        <div key={index} className="w-full ">
+                        // <div key={index} className="w-full px-5 ">
+                        <div key={index} className="w-full px-5 ">
                             <div className="relative w-full h-[92vh]">
                                 <img
                                     className="w-full h-full object-cover "
                                     src={image.imgUrl}
                                     alt={`Image ${index + 1}`}
-                                // style={{ width: "100vw" }}
                                 />
                             </div>
                         </div>

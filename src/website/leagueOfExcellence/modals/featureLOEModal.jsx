@@ -234,7 +234,7 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
                   type="submit"
                   className={`py-3   px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
                 >
-                  Submit & Download
+                  Submit
                 </button>
               </div>
             </form>
