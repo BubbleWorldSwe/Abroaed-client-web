@@ -53,13 +53,12 @@ export const applyingFor = [
 ];
 
 export const highestEducation = [
-  "Engineering",
-  "Medical",
-  "Law",
-  "Management",
-  "Arts & Humanities",
-  "Science",
+  "12th",
+  "Diploma",
+  "Graduation",
+  "Post Graduation",
 ];
+
 
 export const appointmentType = ["Virtual Consellings", "Home", "In-Person"];
 
@@ -86,9 +85,9 @@ export const source = {
   abroaedPlus: "ABROAED Plus",
   homeCounselling: "Home Counselling",
   leaguageOfExcellence: "Leaguage Of Excellence",
-  leaguageOfExcellence: "Leaguage Of Excellence",
   pathways: "Pathways",
   pathwaysProgram: "Pathways Program",
+  menu: "Menu"
 };
 
 export const entity = {

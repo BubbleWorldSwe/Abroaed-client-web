@@ -4,22 +4,24 @@ import SectionMainHeader from "../../../typographies/sectionMainHeader"
 function AboutUsOurTeam() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900 antialiased px-6 mx-auto">
-        <div className="max-w-screen-2xl px-4 py-2 mx-auto lg:px-6 sm:py-16 lg:py-24">
-          <div className="max-w-3xl mx-auto text-center">
+      <section className="bg-white dark:bg-gray-900 antialiased ">
+        <div className="">
+          <div className=" flex flex-col gap-2 justify-center items-center  text-center">
             <SectionMainHeader
               className={"items-center"}
             >
               Our people make us great
             </SectionMainHeader>
             <PrimaryBodyText
-              className={""}
+              className={"text-center"}
+              style={{ text: 'text-center' }}
+
             >
               interact with talented professionals, will be challenged to solve difficult problems and think in new and
               creative ways.
             </PrimaryBodyText>
           </div>
-          <div className="grid grid-cols-1 gap-4 mt-8 lg:mt-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 mt-8 lg:mt-12 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <div className="relative overflow-hidden rounded-lg group">
               <img className="object-cover w-full h-[320px] lg:h-auto scale-100 ease-in duration-300 group-hover:scale-125" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/team/member-1.png" alt="" />
               <div className="absolute inset-0 grid items-end justify-center p-4 bg-gradient-to-b from-transparent to-black/60">

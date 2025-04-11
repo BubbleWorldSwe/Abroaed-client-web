@@ -5,9 +5,9 @@ import vectorRightFlat from "../../../assets/vectorRightFlat.png";
 const DestinationFunFactCard = ({ icon, title, desc }) => {
   return (
     <>
-      <div className="flex md:w-[427px] sm:min-w-max bg-black relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800">
+      <div className="flex md:w-[427px] sm:min-w-max bg-gray-primary relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800">
         <div
-          className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  rounded-lg pointer-events-none"
           style={{
             left: "auto", // Ensure it starts from the right edge
             right: 0, // Anchor the gradient to the right
@@ -21,7 +21,7 @@ const DestinationFunFactCard = ({ icon, title, desc }) => {
             alt="icons"
           />
         </div>
-        <div className="flex flex-col gap-4  text-left">
+        <div className="flex flex-col   text-left">
           <p className="text-[32px] text-[#FFFFFF] font-bold">{title}</p>
           <p className="text-[22px] text-[#F4F4F5] font-semibold dark:text-gray-400">{desc}</p>
         </div>

@@ -3,7 +3,7 @@ import AppStore from "../../../assets/AppStore.png";
 import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Flag from "react-world-flags";
-import AppStoreButton from "../components/appStoreButton";
+// import AppStoreButton from "../components/appStoreButton";
 
 const socialLinks = [
   {
@@ -143,7 +143,7 @@ function Footer() {
               <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
                 Get in Touch
               </h3>
-              <div className="text-sm space-y-3">
+              <div className="text-sm space-y-2">
                 {offices.map((office, index) => (
                   <div key={index}>
                     <h4 className="font-semibold text-lg">{office.location}</h4>
@@ -243,12 +243,16 @@ function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm">
+        <div className="mt-10 flex flex-col gap-1 border-t border-gray-700 pt-4 text-center text-sm">
           <p>
             {" "}
             © 2025-2026 <a className="hover:underline">ABROAED</a>. All Rights
           </p>
-          <div className="mt-2">
+          <p>
+            Edusphere Consulting Private Limited
+          </p>
+
+          <div className="">
             {["Privacy Policy", "Refund Policy", "Terms & Conditions"].map(
               (item, index) => (
                 <span key={index}>

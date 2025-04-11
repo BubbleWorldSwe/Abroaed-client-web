@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function HomePromoSection({ source, entity, onFormSubmit }) {
-  const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
   const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({
@@ -118,12 +117,18 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
               />
             </div>
             <div className="flex justify-center text-center mt-5">
-              <button
-                className={`py-2 px-5 border-2 rounded-lg font-semibold border-gray-primary text-[#71717A] hover:bg-gray-primary hover:text-white`}
-                onClick={() => navigate("/homeCounselling")}
-              >
-                Learn More About Home Counselling
-              </button>
+              <a href="/homeCounselling">
+                <button
+                  className={`py-2 px-5 border-2 rounded-lg font-semibold border-gray-primary text-[#71717A] hover:bg-gray-primary hover:text-white`}
+                // onClick={(e) => {
+                //   e.preventDefault()
+                //   navigate("/homeCounselling")
+                // }}
+                >
+                  Learn More About Home Counselling
+                </button>
+
+              </a>
             </div>
             {/* </div> */}
           </div>
@@ -283,7 +288,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }
 

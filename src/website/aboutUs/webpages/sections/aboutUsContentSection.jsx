@@ -8,9 +8,9 @@ function AboutUsContentSection() {
 
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900 relative px-3 md:px-10 mx-auto">
-        <div className="py-8 px-4 mx-auto max-w-screen-2xl  lg:px-3 relative z-10">
-          <div className="flex flex-col gap-5 py-4">
+      <section className="bg-white dark:bg-gray-900 relative ">
+        <div className=" relative z-10">
+          <div className="flex flex-col gap-4 pt-10">
             <SectionMainHeader>
               Our Story
             </SectionMainHeader>
@@ -21,7 +21,7 @@ function AboutUsContentSection() {
             </PrimaryBodyText>
 
           </div>
-          <div className="mt-2  md:px-10 mx-auto">
+          <div className="  ">
             {aboutUs.map((item, index) => (
               <CardComponent key={index} {...item} />
             ))}
