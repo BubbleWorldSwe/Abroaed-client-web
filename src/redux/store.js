@@ -16,6 +16,7 @@ import { studentsReducer } from "./reducers/studentsReducer";
 import { blogsReducer } from "./reducers/blogReducer";
 import { transactionReducer } from "./reducers/transactionReducer";
 import { savedPreferencesReducer } from "./reducers/savedPreferencesReducer";
+import studentProfileReducer from "./reducers/studentProfileReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -113,6 +114,7 @@ const rootReducer = {
 
   blogs: persistReducer(blogsPersistConfig, blogsReducer),
   savedPreferences: savedPreferencesReducer,
+  studentProfile: studentProfileReducer,
 };
 
 const store = configureStore({

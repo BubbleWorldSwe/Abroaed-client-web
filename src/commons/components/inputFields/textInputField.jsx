@@ -22,7 +22,8 @@ export function TextInputField({
         name={name}
         className="mt-1 block w-full text-black rounded-md bg-[#F4F4F5] border-none focus:ring-primary-600 focus:border-primary-600 sm:text-sm"
         placeholder={placeholder}
-        defaultValue={value}
+        // defaultValue={value}
+        value={value}
         onChange={onChange}
         required={required}
         disabled={disabled}

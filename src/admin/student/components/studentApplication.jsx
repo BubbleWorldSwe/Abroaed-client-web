@@ -4,8 +4,9 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import StudentApplicationCard from "./studentApplicationCard";
 // import StartApplicationModal from "../modals/startApplicationModal";
-import { tabColors } from "../data";
+
 import { useSelector } from "react-redux";
+import { tabColors } from "../../../constants/values";
 
 const StudentApplication = ({
   onOpen,

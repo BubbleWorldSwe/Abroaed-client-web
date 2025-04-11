@@ -145,24 +145,6 @@ function* handleGetAdminProfile(action) {
   }
 }
 
-function* handleStudentProfileUpdate(action) {
-  try {
-    const response = yield call(getUserProfile, action.payload);
-    if (response?.status === 200) {
-      yield put(studentUpdateProfileSuccess(response?.data));
-      toast.success("Student Profile Updated Successfully!");
-    } else {
-      yield put(studentUpdateProfileFailure(response?.message));
-      toast.error(response.message);
-    }
-  } catch (error) {
-    yield put(studentUpdateProfileFailure(error.response?.data?.message));
-    toast.error(
-      error.response?.data?.message || "Student Profile Update Failed"
-    );
-  }
-}
-
 function* handleAdminLogin(action) {
   try {
     const response = yield call(loginApi, action.payload);

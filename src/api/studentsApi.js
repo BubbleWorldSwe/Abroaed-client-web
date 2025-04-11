@@ -51,6 +51,22 @@ export const setUpdateStudent = async (id, credentials) => {
   }
 };
 
+export const setEditStudentProfile = async (id, credentials) => {
+  try {
+    console.log(credentials);
+
+    const data = await makePatchRequest(
+      `${BASE_URL}/api/v1/admin/leads/${id}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const setCreateStudentApplication = async (credentials) => {
   try {
     console.log(credentials);
@@ -112,6 +128,19 @@ export const getStudentDetailsById = async (userId) => {
   }
 };
 
+export const getStudentProfile = async (id) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"user":"${id}"}`
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 //transactions
 export const getStudentTransactions = async (leadId) => {
   try {
@@ -128,7 +157,7 @@ export const getStudentTransactions = async (leadId) => {
 };
 
 //Saved Prefrences
-export const getStudentSavedPrefrences = async (leadId) => {
+export const getStudentSavedPreferences = async (leadId) => {
   try {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/save-preference/list?filter={"user":"${leadId}"}`

@@ -19,7 +19,6 @@ import {
 import AppointmentModal from "../modals/appointmentModal";
 import { getTeamsByMembers } from "../../../api/teamsApi";
 import LeadSavedPreference from "../components/leadSavedPreference";
-import { getStudentSavedPrefrences } from "../../../api/studentsApi";
 import { getLeadSavedPrefrences } from "../../../api/leadsApi";
 
 const LeadProfileLayout = () => {
@@ -60,7 +59,7 @@ const LeadProfileLayout = () => {
   async function fetchData() {
     try {
       const list = await getTeamsByMembers();
-      fetchLaedSavedPefrences();
+      fetchLeadSavedPefrences();
 
       if (list.status === 200) {
         setRolesList(list.data);
@@ -70,7 +69,7 @@ const LeadProfileLayout = () => {
     }
   }
 
-  async function fetchLaedSavedPefrences() {
+  async function fetchLeadSavedPefrences() {
     try {
       const list = await getLeadSavedPrefrences(id);
 

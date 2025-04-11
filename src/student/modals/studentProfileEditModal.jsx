@@ -1,128 +1,158 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalSubmitButton } from "../../commons/components/buttons/modalSubmitButton";
 import { TextareaInputField } from "../../commons/components/inputFields/textareaInputField";
 import { TextInputField } from "../../commons/components/inputFields/textInputField";
 import SearchDropdownField from "../../commons/components/inputFields/searchDropdownFields";
+import { toast } from "react-toastify";
+import { ModalCloseButton } from "../../commons/components/buttons/modalCloseButton";
 
-const StudentProfileEditModal = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({});
+const StudentProfileEditModal = ({
+  isOpen,
+  onClose,
+  onUpdate,
+  filledData,
+  userId,
+}) => {
+  const [formData, setFormData] = useState(filledData);
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  // Validate Form
+  const validateForm = () => {
+    if (!formData.firstName.trim()) {
+      toast.error("First Name is required");
+      return false;
+    }
+    if (!formData.lastName.trim()) {
+      toast.error("Last Name is required");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      toast.error("Email is required");
+      return false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      toast.error("Enter a valid email address");
+      return false;
+    }
+    if (!formData.mobile.trim()) {
+      toast.error("Mobile Number is required");
+      return false;
+    } else if (!/^\d{10}$/.test(formData.mobile)) {
+      toast.error("Enter a valid 10-digit mobile number");
+      return false;
+    }
+    if (!formData.address.trim()) {
+      toast.error("Address is required");
+      return false;
+    }
+    return true;
+  };
+
+  // Handle form submission
+  const handleUpdateLeadProfileInfo = (e) => {
+    try {
+      e.preventDefault();
+      if (validateForm()) {
+        const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
+        // console.log(updatedFormData, userId);
+        onUpdate(updatedFormData, userId);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (filledData) {
+      setFormData(filledData);
+    }
+  }, [filledData]);
 
   return (
     <>
       {isOpen && (
-        <div className="fixed  font-rethink inset-0 bg-black bg-opacity-50 z-30 flex justify-center items-center">
-          <div className="bg-white relative p-5 rounded-lg shadow-lg w-full max-w-xl py-7">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white w-2/5 font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
             >
               &times;
             </button>
-            <div className="flex items-center gap-4">
-              <img
-                className="w-12 object-cover h-12 rounded-full"
-                src="https://media.istockphoto.com/id/1476170969/photo/portrait-of-young-man-ready-for-job-business-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=-F_sZl6saA5wNg2OTdO3zcHZ3aQ2ml9Ru-PXGcUDdHg="
-                alt=""
-              />
-              <div className=" dark:text-white">
-                <div className=" text-center px-2  max-w-min text-sm  bg-[#F3F4F6]">
-                  Premium{" "}
-                </div>
-                <div className="text-[#111928] text-xl font-bold">
-                  Jese Leos
-                </div>
-                <div className=" text-[#6B7280] text-base dark:text-gray-400 font-semibold">
-                  India
-                </div>
+            <h2 className="text-xl font-semibold mb-4">
+              Update Personal Information
+            </h2>
+
+            <form onSubmit={handleUpdateLeadProfileInfo} className="space-y-6">
+              <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 my-5">
+                {/* First Name */}
+                <TextInputField
+                  label="First Name"
+                  name="firstName"
+                  type="text"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="Enter first name"
+                  required
+                />
+
+                {/* Last Name */}
+                <TextInputField
+                  label="Last Name"
+                  name="lastName"
+                  type="text"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="Enter last name"
+                  required
+                />
+
+                {/* Email */}
+                <TextInputField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter email"
+                  required
+                  disabled={true}
+                />
+
+                {/* Mobile Number */}
+                <TextInputField
+                  label="Mobile Number"
+                  name="mobile"
+                  type="tel"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Enter mobile number"
+                  required
+                />
               </div>
-            </div>{" "}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 p-4">
-              <TextInputField
-                label="Full Name"
-                name="fullName"
+
+              {/* Address */}
+              <TextareaInputField
+                label="Address"
+                name="address"
                 type="text"
-                value={formData?.name}
-                // onChange={handleChange}
-                placeholder={"Enter Name"}
-              />
-              <TextInputField
-                label="Email Address"
-                name="email"
-                type="email"
-                value={formData?.email}
-                // onChange={handleChange}
-                placeholder={"Enter Email"}
-              />
-              <TextInputField
-                label="Phone Numbers"
-                name="number"
-                type="tel"
-                value={formData?.number}
-                // onChange={handleChange}
-                placeholder={"Enter Number"}
-              />
-              <TextInputField
-                label="Location"
-                name="location"
-                type="text"
-                value={formData?.location}
-                // onChange={handleChange}
-                placeholder={"Enter Location"}
-              />
-              {/* Country Selection */}
-              {/* <SearchDropdownField
-                                // label="Select Country"
-                            options={countries.map((data) => ({
-                                label: `${data.emoji} ${data.name}`,
-                                value: data._id,
-                                ...data,
-                            }))}
-                            value={selectedCountry}
-                            onSelect={handleCountrySelect}
-                            onSearch={fetchCountries}
-                            /> */}
-
-              {/* <SelectField
-                                label="State"
-                                name="stateId"
-                                value={formData.stateId}
-                                onChange={handleChange}
-                                options={statesList.map((data) => ({
-                                    label: data?.name,
-                                    value: data?._id,
-                                }))}
-                                required
-                            /> */}
-
-              {/*  <TextInputField
-                label="Currency"
-                name="currency"
-                value={formData?.currency}
-                disabled
-                placeholder={"Enter Currency"}
-              /> */}
-
-              <TextInputField
-                label="Language"
-                name="language"
-                value={formData?.language}
-                // onChange={handleChange}
-                placeholder={"Select Languages"}
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Enter Address"
+                required
               />
 
-              <TextInputField
-                label="Highest Educational Qualification"
-                name="qualification"
-                value={formData?.availablity}
-                // onChange={handleChange}
-                placeholder={"Enter Qualification"}
-              />
-            </div>
-            <div className="flex justify-end space-x-4 mt-10">
-              {/* <ModalCloseButton label="Cancel" onClick={onClose} /> */}
-              <ModalSubmitButton label="Save" onClick={""} />
-            </div>
+              {/* Action Buttons */}
+              <div className="flex justify-end space-x-4 mt-10">
+                <ModalCloseButton label="Cancel" onClick={onClose} />
+                <ModalSubmitButton label="Submit" type="submit" />
+              </div>
+            </form>
           </div>
         </div>
       )}

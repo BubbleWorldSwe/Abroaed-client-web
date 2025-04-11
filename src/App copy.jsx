@@ -23,6 +23,7 @@ import {
   fetchStudentSavedPreferencesRequest,
   fetchStudentTransactionsRequest,
 } from "./redux/actions/studentProfileActions";
+import { getStudentProfile } from "./api/studentsApi";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,9 +35,13 @@ const App = () => {
     isLoggedInStudent,
     studentId,
     adminId,
+    student,
+    admin,
   } = useSelector((state) => state.auth);
 
-  const { leadId } = useSelector((state) => state.studentProfile);
+  const { leadId, studentProfile } = useSelector(
+    (state) => state.studentProfile
+  );
 
   async function fetchData() {
     try {
@@ -55,6 +60,14 @@ const App = () => {
           dispatch(fetchStudentPrepsBatchesRequest(studentId));
           dispatch(fetchStudentTransactionsRequest(studentId));
           //   dispatch(fetchStudentApplicationRequest(leadId));
+          const profile = await getStudentProfile(studentId);
+          console.log(profile);
+
+          if (profile.status === 200) {
+            console.log("Data Fetched");
+            let lead_id = profile.data?.result[0]?._id;
+            dispatch(fetchStudentApplicationRequest(lead_id));
+          }
         }
       }
 
@@ -68,11 +81,10 @@ const App = () => {
     }
   }
 
+  console.log(studentId, " studentId");
+
   useEffect(() => {
     fetchData();
-    if (leadId) {
-      dispatch(fetchStudentApplicationRequest(leadId));
-    }
   }, [dispatch, adminToken, studentToken, leadId]);
 
   return (

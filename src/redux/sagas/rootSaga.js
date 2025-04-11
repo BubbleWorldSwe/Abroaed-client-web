@@ -12,6 +12,7 @@ import studentsSaga from "./studentsSaga";
 import blogsSaga from "./blogSaga";
 import transactionSaga from "./transactionSaga";
 import savedPreferencesSaga from "./savedPreferencesSaga";
+import studentProfileSaga from "./studentProfileSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -28,5 +29,6 @@ export default function* rootSaga() {
     blogsSaga(),
     transactionSaga(),
     savedPreferencesSaga(),
+    studentProfileSaga(),
   ]);
 }
