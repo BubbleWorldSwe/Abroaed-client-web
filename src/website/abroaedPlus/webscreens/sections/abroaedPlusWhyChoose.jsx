@@ -6,15 +6,15 @@ import SectionMainHeader from "../../../typographies/sectionMainHeader";
 
 const Cards = ({ header = "" }) => {
   return (
-    <div className="w-full  relative bg-gray-primary h-[22rem] flex justify-center items-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full  relative bg-gray-primary h-[12rem] flex justify-center items-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5">
         <div className="flex justify-between items-center">
           <h5
-            className="text-[28px] font-cinzel font-semibold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
-            style={{
-              backgroundImage:
-                "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
-            }}
+            className="text-[28px] font-cinzel text-white font-semibold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
+          // style={{
+          //   backgroundImage:
+          //     "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
+          // }}
           >
             {header}
           </h5>

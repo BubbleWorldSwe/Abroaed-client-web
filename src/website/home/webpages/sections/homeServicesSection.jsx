@@ -111,7 +111,7 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className=" dark:bg-gray-900.flex flex-col space-y-8 w-full md:max-w-screen-2xl mx-auto  relative">
+      <section className=" dark:bg-gray-900 flex flex-col space-y-8 w-full md:max-w-screen-2xl mx-auto  relative">
         {/* <div className=" relative z-10"> */}
         <h2
           className={` text-[28px] px-6 md:px-12  mx-auto md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
