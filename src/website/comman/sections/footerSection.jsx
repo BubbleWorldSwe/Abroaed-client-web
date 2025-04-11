@@ -143,7 +143,7 @@ function Footer() {
               <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
                 Get in Touch
               </h3>
-              <div className="text-sm space-y-3">
+              <div className="text-sm space-y-2">
                 {offices.map((office, index) => (
                   <div key={index}>
                     <h4 className="font-semibold text-lg">{office.location}</h4>

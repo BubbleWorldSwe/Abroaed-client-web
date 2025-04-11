@@ -27,10 +27,10 @@ const AccommodationHowItWorkSection = () => {
                             {steps.map((step) => (
                                 <div
                                     key={step.step}
-                                    className="flex relative flex-col gap-1 h-full w-200 p-6 bg-black border border-gray-200 rounded-lg shadow"
+                                    className="flex relative flex-col gap-1 h-full w-200 p-6 bg-gray-primary border border-gray-200 rounded-lg shadow"
                                 >
                                     <div
-                                        className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  pointer-events-none"
+                                        className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50 rounded-lg pointer-events-none"
                                         style={{
                                             left: "auto",
                                             right: 0,
@@ -39,9 +39,9 @@ const AccommodationHowItWorkSection = () => {
                                         }}
                                     ></div>
                                     <div>
-                                        <span className="block text-[57px] font-extrabold text-[#FFFFFF] ">
+                                        {/* <span className="block text-[57px] font-extrabold text-[#FFFFFF] ">
                                             {step.step}
-                                        </span>
+                                        </span> */}
                                     </div>
                                     <h5 className="mb-2 text-[32px] font-bold tracking-tight text-[#FFFFFF]">
                                         {step.heading}

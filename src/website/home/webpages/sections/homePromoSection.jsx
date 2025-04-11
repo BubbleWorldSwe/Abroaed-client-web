@@ -14,7 +14,6 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function HomePromoSection({ source, entity, onFormSubmit }) {
-  const navigate = useNavigate();
   const { allDestinations } = useSelector((state) => state.destinations);
   const { error } = useSelector((state) => state.leads);
   const [formData, setFormData] = useState({

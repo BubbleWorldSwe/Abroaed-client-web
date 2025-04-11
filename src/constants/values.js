@@ -85,9 +85,9 @@ export const source = {
   abroaedPlus: "ABROAED Plus",
   homeCounselling: "Home Counselling",
   leaguageOfExcellence: "Leaguage Of Excellence",
-  leaguageOfExcellence: "Leaguage Of Excellence",
   pathways: "Pathways",
   pathwaysProgram: "Pathways Program",
+  menu: "Menu"
 };
 
 export const entity = {

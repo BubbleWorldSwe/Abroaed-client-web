@@ -18,7 +18,7 @@ export const careerData = [
 
 export const benefits = [
   {
-    heading: "Flexible Work",
+    heading: "Flexible Work Environment",
     text: "We understand that everyone has their rhythm. Some of you perform your best in your house’s environment, hence you get an opportunity to work remotely as well at your ease and comfort but we expect a dedicated work approach nonetheless.",
   },
   {

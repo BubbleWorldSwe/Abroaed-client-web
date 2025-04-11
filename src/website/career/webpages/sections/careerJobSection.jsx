@@ -13,15 +13,15 @@ function CareerJobSection() {
                     >
                         We'd Love to work with someone like you!
                     </SectionMainHeader>
-                    <SecondaryTitle
+                    {/* <SecondaryTitle
                         style={{ color: "#52525B" }}
                     >
                         Category Name
-                    </SecondaryTitle>
+                    </SecondaryTitle> */}
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {Array(6).fill().map((_, index) => (
-                        <div key={index} className="w-full h-[12rem] relative bg-black rounded-lg overflow-hidden flex flex-col justify-center items-center p-6">
+                    {Array(3).fill().map((_, index) => (
+                        <div key={index} className="w-full h-[12rem] relative bg-gray-primary rounded-lg overflow-hidden flex flex-col justify-center items-center p-6">
                             <img
                                 className="absolute right-0 top-0 h-full object-contain z-0"
                                 src={vector}

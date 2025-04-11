@@ -18,6 +18,7 @@ import CombinedTestPrepModal from "../modals/combinedTestPrepModal";
 import ServicesNavModal from "../modals/servicesNavModal";
 import { FaShareAlt } from "react-icons/fa";
 import SocialIconNavModal from "../modals/socialIconNavModal";
+import BookCounsellingModal from "../modals/bookCounsellingModal";
 //import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
@@ -149,8 +150,8 @@ function Header({ isHeaderBgWhite = false }) {
       label: "League of Excellence",
       link: "/leaguageOfExcellence",
     },
-    { key: "contactUs", label: "Contact Us", link: "/contactUs" },
     { key: "services", label: "Services", component: ServicesNavModal },
+    { key: "contactUs", label: "Contact Us", link: "/contactUs" },
   ];
 
   const socialLinks = [
@@ -314,15 +315,25 @@ function Header({ isHeaderBgWhite = false }) {
               ))}
             </div> */}
             <div
-              onMouseEnter={() => handleMouseEnter("login")}
-              onMouseLeave={handleMouseLeave}
+              // onMouseEnter={() => handleMouseEnter("login")}
+              // onMouseLeave={handleMouseLeave}
+              className="relative"
             >
               <button
-                // onClick={() => navigate("/signin")}
+                onClick={() => handleMouseEnter("bookMenu")}
+
                 className={`px-4 py-1 whitespace-nowrap  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
               >
                 Book Now
               </button>
+              {activeDropdown === "bookMenu" && (
+                <div className="relative">
+                  <BookCounsellingModal
+                    onClose={handleMouseLeave}
+
+                  />
+                </div>
+              )}
             </div>
             <div className="">
               <div
