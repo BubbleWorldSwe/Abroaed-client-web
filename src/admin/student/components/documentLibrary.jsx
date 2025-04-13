@@ -1,4 +1,11 @@
-import { Edit, EllipsisVertical, Eye, Trash2, Upload } from "lucide-react";
+import {
+  Edit,
+  EllipsisVertical,
+  Eye,
+  Plus,
+  Trash2,
+  Upload,
+} from "lucide-react";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { useEffect, useRef, useState } from "react";
@@ -45,13 +52,22 @@ const DocumentLibrary = () => {
             Document Library
           </h2>
           {isWriteAccess && (
-            <div>
+            <div className="flex gap-4 items-center">
               <button
-                className="black flex text-center gap-2 px-2 cursor-pointer"
+                //   className="flex items-center gap-2 px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:bg-gray-200 rounded"
+                className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
                 onClick={handleOpenUploadModal}
               >
                 <Upload className="w-4 h-4" />
-                <p className="text-sm font-semibold">Upload Document </p>
+                <p>Upload Document</p>
+              </button>
+
+              <button
+                className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
+                onClick={handleOpenUploadModal}
+              >
+                <Plus className="w-4 h-4" />
+                <p>Request Documents</p>
               </button>
             </div>
           )}
@@ -82,7 +98,7 @@ const DocumentLibrary = () => {
             ))}
           </ul>
         </div>
-        <div className=" lg:max-w-[79vw]  mt-1 overflow-auto bg-white dark:bg-gray-800  shadow rounded">
+        <div className=" lg:max-w-[82vw]  mt-1 overflow-auto bg-white dark:bg-gray-800  shadow rounded">
           <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
               <tr>

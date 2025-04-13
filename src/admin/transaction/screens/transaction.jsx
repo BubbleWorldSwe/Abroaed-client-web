@@ -127,7 +127,7 @@ const Transaction = () => {
           <div className="flex flex-col h-screen py-2 mx-auto max-w-screen-2xl dark:bg-gray-800 relative ">
             <div className="dark:border-gray-700 py-3 flex justify-between text-center mx-4">
               <div className="w-full flex space-y-3 md:space-y-0 md:flex-row ">
-                <form className="w-full md:max-w-sm flex-1 md:mr-4">
+                {/*  <form className="w-full md:max-w-sm flex-1 md:mr-4">
                   <label
                     htmlFor="default-search"
                     className="text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -163,7 +163,7 @@ const Transaction = () => {
                 </form>
                 <div className="flex items-center space-x-4">
                   <img src={filter_list} alt="filterIcon" />
-                </div>
+                </div> */}
               </div>
               {isWriteAccess && (
                 <AddButton
@@ -171,10 +171,6 @@ const Transaction = () => {
                   label={"Add Transaction"}
                 />
               )}
-              <button className="ml-5 w-full md:w-auto flex items-center justify-center gap-2 py-2 px-4 text-sm font-semibold text-black bg-white border border-gray-300 rounded-lg shadow-md hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200">
-                <Download className="w-4 h-4" />
-                <span>Download</span>
-              </button>
             </div>
             <div className="flex-grow mt-2 overflow-auto bg-white dark:bg-gray-800 px-5">
               <TransactionTable

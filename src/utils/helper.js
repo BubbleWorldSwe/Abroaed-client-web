@@ -1,11 +1,12 @@
 import moment from "moment";
 
 export const formatDate = (date) => {
-  return moment(date).format("DD MMM, YYYY");
+  const d = moment(date);
+  return d.isValid() ? d.format("DD MMM, YYYY") : null;
 };
-
 export const formatDateTime = (date) => {
-  return moment(date).format("DD MMM, YYYY hh:mm A");
+  const d = moment(date);
+  return d.isValid() ? d.format("DD MMM, YYYY hh:mm A") : null;
 };
 
 export const formatStudentApplications = (applications = []) => {
@@ -13,9 +14,9 @@ export const formatStudentApplications = (applications = []) => {
     { key: "to_start", title: "To Start" },
     { key: "verifying_documents", title: "Verifying Documents" },
     { key: "application_filled", title: "Application Filled" },
-    { key: "awaiting_response", title: "Awaiting Response" },
-    { key: "rejected", title: "Rejected" },
+    /*  { key: "awaiting_response", title: "Awaiting Response" }, */
     { key: "offer_letter_received", title: "Offer Letter Received" },
+    { key: "rejected", title: "Rejected" },
   ];
 
   const groupedData = statusOrder.reduce((acc, { key }) => {

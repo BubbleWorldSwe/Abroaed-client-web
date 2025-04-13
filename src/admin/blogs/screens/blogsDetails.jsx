@@ -15,9 +15,11 @@ const BlogsDetails = () => {
               Category: {blogDetails.category?.name}
             </p>
             <hr className="mb-4" />
-            <div className="text-gray-800 dark:text-gray-300 text-lg leading-relaxed">
-              {blogDetails.content}
-            </div>
+
+            <div
+              className="text-gray-800 dark:text-gray-300 text-lg leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: blogDetails.content }}
+            />
           </div>
         </div>
       </section>

@@ -14,7 +14,7 @@ const StudentTransactions = () => {
   return (
     <div className="w-full bg-[#fff] font-rethink min-h-[90vh] px-5 py-10 ">
       <h2 className="text-2xl font-semibold mb-5">My Transactions</h2>
-      <div className="bg-white p-6 mb-5 shadow rounded-lg">
+      {/*   <div className="bg-white p-6 mb-5 shadow rounded-lg">
         <h3 className="font-semibold text-lg mb-3">Billing Information</h3>
         <div className="bg-[#FAFAFA] px-10 py-5">
           <div className="flex justify-between">
@@ -44,7 +44,7 @@ const StudentTransactions = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="bg-white p-6 shadow rounded-lg">
         <h3 className="font-semibold text-lg">Transactions</h3>
         <div className="overflow-x-auto mt-4">

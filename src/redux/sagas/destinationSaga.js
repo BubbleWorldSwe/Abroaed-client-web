@@ -4,6 +4,7 @@ import {
   getDestinations,
   setAddDestination,
   setDeleteDestination,
+  setDestinationUploadFile,
   setUpdateDestination,
 } from "../../api/destinationApi";
 import {
@@ -22,6 +23,9 @@ import {
   fetchAllDestinationsSuccess,
   fetchDestinationsFailure,
   fetchDestinationsSuccess,
+  UPLOAD_DESTINATION_IMAGE_REQUEST,
+  uploadDestinationImageFailure,
+  uploadDestinationImageSuccess,
 } from "../actions/destinationActions";
 import { toast } from "react-toastify";
 
@@ -107,10 +111,33 @@ function* handleEditDestination(action) {
   }
 }
 
+// Upload a Destination Image
+function* handleUploadDestinationImage(action) {
+  try {
+    const { id, imageData } = action.payload;
+    const response = yield call(setDestinationUploadFile, id, imageData);
+
+    if (response.status === 200) {
+      yield put(uploadDestinationImageSuccess(response.data));
+      toast.success(response.message);
+    } else {
+      yield put(uploadDestinationImageFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(uploadDestinationImageFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 export default function* destinationSaga() {
   yield takeLatest(FETCH_DESTINATIONS_REQUEST, fetchDestinations);
   yield takeLatest(FETCH_ALL_DESTINATIONS_REQUEST, fetchAllDestinations);
   yield takeLatest(ADD_DESTINATION_REQUEST, addNewDestination);
   yield takeLatest(DELETE_DESTINATION_REQUEST, deleteDestination);
   yield takeLatest(EDIT_DESTINATION_REQUEST, handleEditDestination);
+  yield takeLatest(
+    UPLOAD_DESTINATION_IMAGE_REQUEST,
+    handleUploadDestinationImage
+  );
 }

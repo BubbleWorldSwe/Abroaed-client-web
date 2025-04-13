@@ -21,6 +21,13 @@ export const EDIT_LANGUAGEPREP_REQUEST = "EDIT_LANGUAGEPREP_REQUEST";
 export const EDIT_LANGUAGEPREP_SUCCESS = "EDIT_LANGUAGEPREP_SUCCESS";
 export const EDIT_LANGUAGEPREP_FAILURE = "EDIT_LANGUAGEPREP_FAILURE";
 
+export const UPLOAD_LANGUAGEPREP_IMAGE_REQUEST =
+  "UPLOAD_LANGUAGEPREP_IMAGE_REQUEST";
+export const UPLOAD_LANGUAGEPREP_IMAGE_SUCCESS =
+  "UPLOAD_LANGUAGEPREP_IMAGE_SUCCESS";
+export const UPLOAD_LANGUAGEPREP_IMAGE_FAILURE =
+  "UPLOAD_LANGUAGEPREP_IMAGE_FAILURE";
+
 export const SET_SELECTED_LANGUAGEPREP = "SET_SELECTED_LANGUAGEPREP";
 
 export const fetchLanguagePrepsRequest = (page) => ({
@@ -100,4 +107,19 @@ export const editLanguagePrepFailure = (error) => ({
 export const setSelectedLanguagePrep = (languagePrep) => ({
   type: SET_SELECTED_LANGUAGEPREP,
   payload: languagePrep,
+});
+
+export const uploadLanguagePrepImageRequest = (id, imageData) => ({
+  type: UPLOAD_LANGUAGEPREP_IMAGE_REQUEST,
+  payload: { id, imageData },
+});
+
+export const uploadLanguagePrepImageSuccess = (editedLanguagePrep) => ({
+  type: UPLOAD_LANGUAGEPREP_IMAGE_SUCCESS,
+  payload: editedLanguagePrep,
+});
+
+export const uploadLanguagePrepImageFailure = (error) => ({
+  type: UPLOAD_LANGUAGEPREP_IMAGE_FAILURE,
+  payload: error,
 });

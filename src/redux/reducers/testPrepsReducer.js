@@ -15,6 +15,9 @@ import {
   FETCH_ALL_TESTPREPS_SUCCESS,
   FETCH_ALL_TESTPREPS_FAILURE,
   FETCH_ALL_TESTPREPS_REQUEST,
+  UPLOAD_TESTPREP_IMAGE_REQUEST,
+  UPLOAD_TESTPREP_IMAGE_FAILURE,
+  UPLOAD_TESTPREP_IMAGE_SUCCESS,
 } from "../actions/testPrepsActions";
 
 // ✅ **Persisted Initial State**
@@ -66,6 +69,7 @@ export const testPrepsReducer = (state = initialState, action) => {
     case ADD_TESTPREP_REQUEST:
     case DELETE_TESTPREP_REQUEST:
     case EDIT_TESTPREP_REQUEST:
+    case UPLOAD_TESTPREP_IMAGE_REQUEST:
       return { ...state, loading: true };
 
     case ADD_TESTPREP_SUCCESS:
@@ -75,9 +79,11 @@ export const testPrepsReducer = (state = initialState, action) => {
     case ADD_TESTPREP_FAILURE:
     case DELETE_TESTPREP_FAILURE:
     case EDIT_TESTPREP_FAILURE:
+    case UPLOAD_TESTPREP_IMAGE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case EDIT_TESTPREP_SUCCESS:
+    case UPLOAD_TESTPREP_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,

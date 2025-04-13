@@ -1,5 +1,5 @@
 import { BASE_URL } from "../constants/baseUrl";
-import { makeGetRequest } from "../utils/apiUtils";
+import { makeGetRequest, makePutRequest } from "../utils/apiUtils";
 
 export const getAdmissionDocuments = async () => {
   try {

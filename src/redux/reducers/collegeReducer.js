@@ -12,6 +12,8 @@ import {
   EDIT_COLLEGE_SUCCESS,
   EDIT_COLLEGE_FAILURE,
   SET_SELECTED_COLLEGE,
+  UPLOAD_COLLEGE_IMAGE_REQUEST,
+  UPLOAD_COLLEGE_IMAGE_SUCCESS,
 } from "../actions/collegeActions";
 
 const initialState = {
@@ -28,6 +30,10 @@ const initialState = {
 export const collegesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COLLEGES_REQUEST:
+    case ADD_COLLEGE_REQUEST:
+    case DELETE_COLLEGE_REQUEST:
+    case EDIT_COLLEGE_REQUEST:
+    case UPLOAD_COLLEGE_IMAGE_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_COLLEGES_SUCCESS:
@@ -45,29 +51,11 @@ export const collegesReducer = (state = initialState, action) => {
         page: action.payload.page,
       };
 
-    case FETCH_COLLEGES_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case ADD_COLLEGE_REQUEST:
-      return { ...state, loading: true };
-
     case ADD_COLLEGE_SUCCESS:
       return initialState;
 
-    case ADD_COLLEGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case DELETE_COLLEGE_REQUEST:
-      return { ...state, loading: true };
-
     case DELETE_COLLEGE_SUCCESS:
       return initialState;
-
-    case DELETE_COLLEGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case EDIT_COLLEGE_REQUEST:
-      return { ...state, loading: true };
 
     case EDIT_COLLEGE_SUCCESS:
       return {
@@ -84,6 +72,15 @@ export const collegesReducer = (state = initialState, action) => {
         selectedCollege: action.payload,
       };
 
+    case UPLOAD_COLLEGE_IMAGE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case FETCH_COLLEGES_FAILURE:
+    case ADD_COLLEGE_FAILURE:
+    case DELETE_COLLEGE_FAILURE:
     case EDIT_COLLEGE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 

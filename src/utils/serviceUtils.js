@@ -15,6 +15,12 @@ const REQUEST_METHOD_DELETE = "DELETE";
 const REQUEST_HEADER_JSON = "application/json";
 const REQUEST_HEADER_CONTENT_KEY = "Content-Type";
 
+function getFormData(object) {
+  const formData = new FormData();
+  Object.keys(object).forEach((key) => formData.append(key, object[key]));
+  return formData;
+}
+
 export const constructGetRequestOptions = () => {
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
@@ -124,5 +130,17 @@ export const constructNetworkErrorResponse = () => {
     status: RESPONSE_NETWORK_ERROR,
     success: RESPONSE_FAILURE,
     message: NETWORK_REQUEST_FAILED,
+  };
+};
+
+export const constructPutRequestOptionsWithFormData = (payload) => {
+  var requestHeaders = new Headers();
+
+  const formdata = getFormData(payload);
+
+  return {
+    method: REQUEST_METHOD_PUT,
+    headers: requestHeaders,
+    body: formdata,
   };
 };

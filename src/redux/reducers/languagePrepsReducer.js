@@ -15,6 +15,9 @@ import {
   FETCH_ALL_LANGUAGEPREPS_REQUEST,
   FETCH_ALL_LANGUAGEPREPS_FAILURE,
   FETCH_ALL_LANGUAGEPREPS_SUCCESS,
+  UPLOAD_LANGUAGEPREP_IMAGE_REQUEST,
+  UPLOAD_LANGUAGEPREP_IMAGE_FAILURE,
+  UPLOAD_LANGUAGEPREP_IMAGE_SUCCESS,
 } from "../actions/languagePrepsActions";
 
 const initialState = {
@@ -38,6 +41,7 @@ export const languagePrepsReducer = (state = initialState, action) => {
     case ADD_LANGUAGEPREP_REQUEST:
     case DELETE_LANGUAGEPREP_REQUEST:
     case EDIT_LANGUAGEPREP_REQUEST:
+    case UPLOAD_LANGUAGEPREP_IMAGE_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_LANGUAGEPREPS_SUCCESS:
@@ -63,6 +67,7 @@ export const languagePrepsReducer = (state = initialState, action) => {
       };
 
     case EDIT_LANGUAGEPREP_SUCCESS:
+    case UPLOAD_LANGUAGEPREP_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -86,6 +91,7 @@ export const languagePrepsReducer = (state = initialState, action) => {
     case ADD_LANGUAGEPREP_FAILURE:
     case DELETE_LANGUAGEPREP_FAILURE:
     case EDIT_LANGUAGEPREP_FAILURE:
+    case UPLOAD_LANGUAGEPREP_IMAGE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_LANGUAGEPREP:

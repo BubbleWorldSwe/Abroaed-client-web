@@ -204,7 +204,7 @@ const StudentProfile = () => {
           </div>
         </div>
         {/* Additional service */}
-        <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg ">
+        {/*   <div className="w-full mx-auto mb-8   p-5 bg-white rounded-lg shadow-lg ">
           <div className="flex justify-between items-center mb-4">
             <h2 className={`text-2xl font-bold  text-gray-primary`}>
               Additional Services
@@ -247,7 +247,7 @@ const StudentProfile = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

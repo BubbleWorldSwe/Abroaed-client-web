@@ -237,7 +237,7 @@ const StudentProfileLayout = () => {
   }
 
   const getNextStatus = (currentStatus) => {
-    if (currentStatus === "awaiting_response") {
+    if (currentStatus === "application_filled") {
       return ["rejected", "offer_letter_received"];
     }
 
@@ -246,6 +246,8 @@ const StudentProfileLayout = () => {
       ? [statusSequence[currentIndex + 1]]
       : [];
   };
+
+  console.log(selectedApplication);
 
   useEffect(() => {
     fetchData();

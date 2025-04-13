@@ -122,13 +122,13 @@ const AddAccommodationModal = ({
                 placeholder={"Enter Currency"}
               /> */}
 
-              {/* <TextInputField
+              <TextInputField
                 label="City"
                 name="city"
                 value={formData?.city}
                 onChange={handleChange}
                 placeholder={"Enter City"}
-              /> */}
+              />
 
               <CurrencyInputField
                 label="Price"

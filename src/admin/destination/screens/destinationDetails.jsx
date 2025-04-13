@@ -16,12 +16,14 @@ import ScholarshipModal from "../modals/scholarshipModal";
 import ImmigrationDetailsModal from "../modals/immigrationDetailsModal";
 import WorkOpportunitiesModal from "../modals/workOpportunitiesModal";
 import FaqModal from "../modals/faqModal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getAdmissionDocuments, getVisaTypesList } from "../../../api/api";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import {
+  deleteDestinationRequest,
   editDestinationRequest,
   setSelectedDestination,
+  uploadDestinationImageRequest,
 } from "../../../redux/actions/destinationActions";
 import { useDispatch, useSelector } from "react-redux";
 import { getStatesByCountryId } from "../../../api/countriesApi";
@@ -34,6 +36,7 @@ function DestinationDetails() {
   const destinationDetails = useSelector(
     (state) => state.destinations.selectedDestination
   );
+  const navigate = useNavigate();
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [visaTypes, setVisaTypes] = useState([]);
   const [selectedSection, setSelectedSection] = useState(null);
@@ -211,6 +214,27 @@ function DestinationDetails() {
     }
   }
 
+  async function onUploadImage(data) {
+    try {
+      console.log(data);
+      dispatch(
+        uploadDestinationImageRequest(state?._id, {
+          files: data,
+          type: "cover",
+        })
+      );
+      //  fetchTestPrepsDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleDelete = () => {
+    dispatch(deleteDestinationRequest(state?._id));
+    navigate("/admin/destinations");
+  };
+
   useEffect(() => {
     fetchData();
   }, [dispatch]);
@@ -219,7 +243,10 @@ function DestinationDetails() {
     <div>
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
-          <DestinationImage />
+          <DestinationImage
+            onUploadImage={onUploadImage}
+            handleDelete={handleDelete}
+          />
           {sections.map((sectionItem, index) => (
             <div
               key={index}

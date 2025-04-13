@@ -4,6 +4,7 @@ import {
   getLanguagePreps,
   setAddLanguagePrep,
   setDeleteLanguagePrep,
+  setLanguagePrepUploadFile,
   setUpdateLanguagePrep,
 } from "../../api/languagePrepsApi"; // API functions
 import {
@@ -22,6 +23,9 @@ import {
   fetchAllLanguagePrepsSuccess,
   fetchLanguagePrepsFailure,
   fetchLanguagePrepsSuccess,
+  UPLOAD_LANGUAGEPREP_IMAGE_REQUEST,
+  uploadLanguagePrepImageFailure,
+  uploadLanguagePrepImageSuccess,
 } from "../actions/languagePrepsActions";
 import { toast } from "react-toastify";
 
@@ -103,6 +107,25 @@ function* handleEditLanguagePrep(action) {
   }
 }
 
+// Upload a language prep Image
+function* handleUploadLanguagePrepImage(action) {
+  try {
+    const { id, imageData } = action.payload;
+    const response = yield call(setLanguagePrepUploadFile, id, imageData);
+
+    if (response.status === 200) {
+      yield put(uploadLanguagePrepImageSuccess(response.data));
+      toast.success(response.message);
+    } else {
+      yield put(uploadLanguagePrepImageFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(uploadLanguagePrepImageFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 // Root saga for language preps
 export default function* languagePrepsSaga() {
   yield takeLatest(FETCH_LANGUAGEPREPS_REQUEST, fetchLanguagePreps);
@@ -110,4 +133,8 @@ export default function* languagePrepsSaga() {
   yield takeLatest(ADD_LANGUAGEPREP_REQUEST, addNewLanguagePrep);
   yield takeLatest(DELETE_LANGUAGEPREP_REQUEST, deleteLanguagePrep);
   yield takeLatest(EDIT_LANGUAGEPREP_REQUEST, handleEditLanguagePrep);
+  yield takeLatest(
+    UPLOAD_LANGUAGEPREP_IMAGE_REQUEST,
+    handleUploadLanguagePrepImage
+  );
 }

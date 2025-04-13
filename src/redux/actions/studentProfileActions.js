@@ -30,6 +30,22 @@ export const STUDENT_PREPS_BATCHES_REQUEST = "STUDENT_PREPS_BATCHES_REQUEST";
 export const STUDENT_PREPS_BATCHES_SUCCESS = "STUDENT_PREPS_BATCHES_SUCCESS";
 export const STUDENT_PREPS_BATCHES_FAILURE = "STUDENT_PREPS_BATCHES_FAILURE";
 
+// Student Uploaded Documents
+export const STUDENT_UPLOADED_DOCUMENTS_REQUEST =
+  "STUDENT_UPLOADED_DOCUMENTS_REQUEST";
+export const STUDENT_UPLOADED_DOCUMENTS_SUCCESS =
+  "STUDENT_UPLOADED_DOCUMENTS_SUCCESS";
+export const STUDENT_UPLOADED_DOCUMENTS_FAILURE =
+  "STUDENT_UPLOADED_DOCUMENTS_FAILURE";
+
+// Student Requested Documents
+export const STUDENT_REQUESTED_DOCUMENTS_REQUEST =
+  "STUDENT_REQUESTED_DOCUMENTS_REQUEST";
+export const STUDENT_REQUESTED_DOCUMENTS_SUCCESS =
+  "STUDENT_REQUESTED_DOCUMENTS_SUCCESS";
+export const STUDENT_REQUESTED_DOCUMENTS_FAILURE =
+  "STUDENT_REQUESTED_DOCUMENTS_FAILURE";
+
 // Action Creators
 
 // Fetch Student Profile
@@ -125,5 +141,37 @@ export const fetchStudentPrepsBatchesSuccess = (data) => ({
 
 export const fetchStudentPrepsBatchesFailure = (error) => ({
   type: STUDENT_PREPS_BATCHES_FAILURE,
+  payload: error,
+});
+
+// Fetch Uploaded Documents
+export const fetchStudentUploadedDocumentsRequest = (id) => ({
+  type: STUDENT_UPLOADED_DOCUMENTS_REQUEST,
+  payload: id,
+});
+
+export const fetchStudentUploadedDocumentsSuccess = (data) => ({
+  type: STUDENT_UPLOADED_DOCUMENTS_SUCCESS,
+  payload: data,
+});
+
+export const fetchStudentUploadedDocumentsFailure = (error) => ({
+  type: STUDENT_UPLOADED_DOCUMENTS_FAILURE,
+  payload: error,
+});
+
+// Fetch Requested Documents
+export const fetchStudentRequestedDocumentsRequest = (id) => ({
+  type: STUDENT_REQUESTED_DOCUMENTS_REQUEST,
+  payload: id,
+});
+
+export const fetchStudentRequestedDocumentsSuccess = (data) => ({
+  type: STUDENT_REQUESTED_DOCUMENTS_SUCCESS,
+  payload: data,
+});
+
+export const fetchStudentRequestedDocumentsFailure = (error) => ({
+  type: STUDENT_REQUESTED_DOCUMENTS_FAILURE,
   payload: error,
 });

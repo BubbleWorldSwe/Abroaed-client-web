@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
   getAccommodations,
+  setAccommodationUploadFile,
   setAddAccommodation,
   setDeleteAccommodation,
   setUpdateAccommodation,
@@ -18,6 +19,9 @@ import {
   FETCH_ACCOMMODATIONS_REQUEST,
   fetchAccommodationsFailure,
   fetchAccommodationsSuccess,
+  UPLOAD_ACCOMMODATION_IMAGE_REQUEST,
+  uploadAccommodationImageFailure,
+  uploadAccommodationImageSuccess,
 } from "../actions/accommodationActions";
 import { toast } from "react-toastify";
 
@@ -88,10 +92,33 @@ function* handleEditAccommodation(action) {
   }
 }
 
+// Upload a Accommodation Image
+function* handleUploadAccommodationImage(action) {
+  try {
+    const { id, imageData } = action.payload;
+    const response = yield call(setAccommodationUploadFile, id, imageData);
+
+    if (response.status === 200) {
+      yield put(uploadAccommodationImageSuccess(response.data));
+      toast.success(response.message);
+    } else {
+      yield put(uploadAccommodationImageFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(uploadAccommodationImageFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 // Root saga for accommodations
 export default function* accommodationsSaga() {
   yield takeLatest(FETCH_ACCOMMODATIONS_REQUEST, fetchAccommodations);
   yield takeLatest(ADD_ACCOMMODATION_REQUEST, addNewAccommodation);
   yield takeLatest(DELETE_ACCOMMODATION_REQUEST, deleteAccommodation);
   yield takeLatest(EDIT_ACCOMMODATION_REQUEST, handleEditAccommodation);
+  yield takeLatest(
+    UPLOAD_ACCOMMODATION_IMAGE_REQUEST,
+    handleUploadAccommodationImage
+  );
 }

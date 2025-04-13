@@ -16,16 +16,12 @@ import StudentApplicationsList from "../components/studentApplicationsList";
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);
 
-  const {
-    savedPreferences,
-    applications,
-    studentProfile,
-    transactions,
-    prepsBatches,
-  } = useSelector((state) => state.studentProfile);
+  const { applications, studentProfile, prepsBatches } = useSelector(
+    (state) => state.studentProfile
+  );
 
   const studentApplications = formatStudentApplications(applications || []);
-  console.log(studentApplications);
+
   function getCounsellor() {
     const counsellor = studentProfile?.assignTeamMembers.find(
       (member) => member?.roleId?.roleName === "Counsellor"
@@ -121,7 +117,7 @@ const StudentHome = () => {
         </div>
       }
       {/* recent view college */}
-      <div className="bg-white p-4 rounded-lg border mb-6">
+      {/*  <div className="bg-white p-4 rounded-lg border mb-6">
         <h2 className="text-2xl py-2 font-semibold border-b-2 border-gray-200  mb-3">
           Recently Viewed Colleges
         </h2>
@@ -130,9 +126,9 @@ const StudentHome = () => {
             <RecentlyViewCollegeCard key={index} />
           ))}
         </div>
-      </div>
+      </div> */}
       {/* Recently Viewed Courses */}
-      <div className=" p-4 rounded-lg border mb-6">
+      {/*   <div className=" p-4 rounded-lg border mb-6">
         <h2 className="text-2xl py-2 font-semibold border-b-2 border-gray-200  mb-3">
           Recently Viewed Courses
         </h2>
@@ -141,7 +137,7 @@ const StudentHome = () => {
             <RecentlyViewCourseCard key={index} />
           ))}
         </div>
-      </div>
+      </div> */}
       {/* Language/Test Preps */}
       {prepsBatches?.length > 0 && (
         <div className=" font-rethink bg-white dark:bg-gray-900 flex flex-col ">

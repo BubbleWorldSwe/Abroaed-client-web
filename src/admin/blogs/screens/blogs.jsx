@@ -73,7 +73,7 @@ const Blogs = () => {
             <div className=" dark:border-gray-700 mx-4">
               <div className="flex justify-between  py-3">
                 <div className="w-full  flex  space-y-3 md:space-y-0  ">
-                  <form className="w-full md:max-w-sm flex-1 md:mr-4">
+                  {/*    <form className="w-full md:max-w-sm flex-1 md:mr-4">
                     <label
                       htmlFor="default-search"
                       className="text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -109,7 +109,7 @@ const Blogs = () => {
                   </form>
                   <div className="flex items-center space-x-4">
                     <img src={filter_list} alt="filterIcon" />
-                  </div>
+                  </div> */}
                 </div>
                 {isWriteAccess && (
                   <AddButton
