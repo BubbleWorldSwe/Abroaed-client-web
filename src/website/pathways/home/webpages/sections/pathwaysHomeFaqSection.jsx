@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionMainHeader from "../../../../typographies/sectionMainHeader";
-import FaqsQuestionText from "../../../../typographies/faqsQuestionText";
-import FaqsAnswerText from "../../../../typographies/faqsAnswerText";
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader";
+import FaqsQuestionText from "../../../../styleComponents/faqsQuestionText";
+import FaqsAnswerText from "../../../../styleComponents/faqsAnswerText";
+import { faqPathways } from "../../data";
 
 const PathwaysHomeFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -12,38 +13,13 @@ const PathwaysHomeFaqSection = () => {
     };
 
     return (
-        <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
+        <div className="h-auto  w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
             <SectionMainHeader className={`mb-1`}>
                 Frequently Asked Questions
             </SectionMainHeader>
-            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
+            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] px-1 md:px-6 overflow-auto rounded-md shadow-md flex flex-col">
                 <div className="flex-1 overflow-auto">
-                    {[
-                        {
-                            question:
-                                "Can I work while completing a Pathways program?",
-                            answer:
-                                "Work options vary by country and program. Some Pathways programs allow part-time work, while others may restrict it. It’s best to check the specific regulations for your chosen destination and program to understand your work options while studying.",
-                        },
-                        {
-                            question:
-                                "How long is a Pathways program?",
-                            answer:
-                                "The length of a Pathways program varies anywhere from a few months to up to a year, depending upon the academic demands and the English proficiency required. Most programs have been designed such that students should be ready to join the universities within a pretty short period of time.",
-                        },
-                        {
-                            question: "Do I need to meet certain academic requirements to join a Pathways program?",
-                            answer:
-                                "Pathways programs are available to students who qualify based on basic entry requirements into the chosen course of study. Some academic qualifications might differ with specific programs and destinations, but generally, these programs support students who need further preparation.",
-                        },
-                        {
-                            question:
-                                "What is a Pathways program?",
-                            answer:
-                                "A Pathways program is designed to help students transition smoothly into studying abroad. It provides academic support, language training, cultural orientation, and personal development to ensure you are prepared for university life in a foreign country.",
-                        },
-
-                    ].map((faq, index) => (
+                    {faqPathways.map((faq, index) => (
                         <div key={index}>
                             <h2 id={`accordion-flush-heading-${index}`}>
                                 <button

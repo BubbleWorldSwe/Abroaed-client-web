@@ -1,6 +1,6 @@
 
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import CardComponent from "../../components/cardComponent";
 import { aboutUs } from "../../data";
 

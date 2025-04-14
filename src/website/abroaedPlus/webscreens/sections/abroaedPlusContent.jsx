@@ -1,4 +1,4 @@
-import PrimaryBodyText from "../../../typographies/primaryBodyText"
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText"
 
 const AbroaedPlusContent = () => {
     return (

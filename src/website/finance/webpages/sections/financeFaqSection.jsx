@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import FaqsAnswerText from "../../../typographies/faqsAnswerText";
-import FaqsQuestionText from "../../../typographies/faqsQuestionText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
+import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
+import { faqFinance } from "../../data";
 
 const FinanceFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -11,37 +12,13 @@ const FinanceFaqSection = () => {
         setActiveIndex(activeIndex === index ? null : index);
     };
     return (
-        <div className="h-auto py-16 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-            <SectionMainHeader className={`mb-1`}>
+        <div className="h-auto  w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
+            <SectionMainHeader className={``}>
                 Frequently Asked Questions
             </SectionMainHeader>
-            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
+            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] px-2 md:px-6 overflow-auto rounded-md shadow-md flex flex-col">
                 <div className="flex-1 overflow-auto">
-                    {[
-                        {
-                            question:
-                                "What should I do if I face a financial emergency while abroad?",
-                            answer:
-                                "We provide ongoing support and guidance on handling unexpected financial situations. Our team can help you find emergency financial solutions, such as loans or alternative funding options.",
-                        },
-                        {
-                            question:
-                                "How do I manage my living expenses while abroad?",
-                            answer:
-                                "We offer budgeting tips and recommend strategies to help you manage your finances effectively. We also suggest ways to save on daily expenses and ensure you stay within your budget.",
-                        },
-                        {
-                            question: "Can I work part-time while studying abroad?",
-                            answer:
-                                "Many countries allow students to work part-time. We provide guidance on finding legal part-time work opportunities and how to balance work with your studies effectively.",
-                        },
-                        {
-                            question:
-                                "How do I pay my money internationally?",
-                            answer:
-                                "We help you pick the most reliable payment methods with minimal possible service charges, be it international bank transfers, digital wallets, or money transfer services.",
-                        },
-                    ].map((faq, index) => (
+                    {faqFinance.map((faq, index) => (
                         <div key={index}>
                             <h2 id={`accordion-flush-heading-${index}`}>
                                 <button

@@ -6,7 +6,7 @@ import schoolIconWhite from "../../../../assets/schoolIconWhite.png";
 import languageIconWhite from "../../../../assets/languageIconWhite.png";
 import currencyIconWhite from "../../../../assets/currencyIconWhite.png";
 import callIconWhite from "../../../../assets/callIconWhite.png";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const DestinationFunFactSection = ({ items, destinationDetails }) => {
   const list = [
@@ -39,13 +39,13 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
   ];
 
   return (
-    <div className="relative z-10">
-      <section className=" py-8 antialiased dark:bg-gray-900 md:py-2">
-        <div className="mx-auto max-w-screen-2xl px-4 2xl:px-0">
+    <div className="relative  z-10">
+      <section className="antialiased ">
+        <div className=" ">
           <div className="flex items-center justify-center text-center">
-            <SectionMainHeader className="mb-5">Fun Facts</SectionMainHeader>
+            <SectionMainHeader className="mb-1 md:mb-5">Fun Facts</SectionMainHeader>
           </div>
-          <div className="mt-10 space-y-6">
+          <div className="mt-5 md:mt-10 space-y-6">
             <div className="flex flex-col md:flex-row  justify-center flex-wrap gap-5 ">
               {list?.map((item, idx) => (
                 <DestinationFunFactCard

@@ -13,26 +13,26 @@ import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
 import destinationHeroImg from "../../../assets/destinationHeroImg.png";
-import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
+// import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
 import DestinationStudentAccommodationsSection from "./sections/destinationStudentAccommodationSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
 import DestinationFaqSection from "./sections/destinationFaqSection";
 import DestinationFunFactSection from "./sections/destinationFunFactSection";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDestinationDetailsById } from "../../../api/destinationApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import Blogs from "../../comman/components/blogs";
-
+// import Blogs from "../../comman/components/blogs";
+import vectorleftNose from "../../../assets/vectorleftNose.png"
 import {
   getCollegesByDestinationId,
   getCoursesListByDestinationId,
 } from "../../../api/collegesApi";
 
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
-import Testimonials from "../../comman/components/testimonials";
+// import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +41,7 @@ import {
   addSavedPreferenceRequest,
   deleteSavedPreferenceRequest,
 } from "../../../redux/actions/savedPreferencesActions";
+import SectionComponent from "../../styleComponents/sectionComponent";
 
 function DestinationPage() {
   const { id } = useParams();
@@ -140,122 +141,161 @@ function DestinationPage() {
         destinationDetails={destinationDetails}
         img={destinationHeroImg}
       />
-      <DestinationRoutingSection />
-      <DestinationInfoSection destinationDetails={destinationDetails} />
-      <div className="relative ">
-        <DestinationFunFactSection
-          destinationDetails={destinationDetails}
-          items={items}
-        />
-        <div className="absolute -bottom-28 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorLeftFlat}
-            alt="Counselling session"
-          />
-        </div>
+      <div className="hidden md:block">
+        <DestinationRoutingSection />
       </div>
-
-      {collegesList.length > 0 && (
-        <DestinationUniCoursersSection
-          destinationDetails={destinationDetails}
-          collegesList={collegesList}
-          coursesList={coursesList}
-          source={`${source.destination}_${source.courses}`}
-          onAddLead={handleAddLead}
-          addToSavedPreferences={addToSavedPreferences}
-          removeFromSavedPreferences={removeFromSavedPreferences}
-        />
-      )}
-
-      <div className="relative">
-        {destinationDetails?.admissionRequirements.length > 0 && (
-          <DestinationAdmissionRequirementSection
-            destinationDetails={destinationDetails}
-          />
-        )}
-        <div className="absolute -bottom-44 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorDownNose}
-            alt="Counselling session"
-          />
-        </div>
-      </div>
-
-      {destinationDetails?.expenses?.length > 0 && (
-        <DestinationExpansesSection destinationDetails={destinationDetails} />
-      )}
-
-      {destinationDetails?.scholarships.length > 0 && (
-        <DestinationScholarshipSection
-          destinationDetails={destinationDetails}
-        />
-      )}
-
-      <div className="relative">
-        {destinationDetails?.immigrations.length > 0 && (
-          <DestinationImmigrationDetailsSection
-            destinationDetails={destinationDetails}
-          />
-        )}
-
-        <div className="absolute bottom-0 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorRightNoseCurve}
-            alt="Counselling session"
-          />
-        </div>
-      </div>
-
-      {destinationDetails?.workOpportunities && (
-        <div className="relative">
-          <DestinationWorkOpportunitiesSection
-            destinationDetails={destinationDetails}
-          />
-          <div className="absolute top-0 right-0 -z-10">
+      <div className="grid grid-cols-1 gap-10 md:gap-16">
+        <SectionComponent >
+          <DestinationInfoSection destinationDetails={destinationDetails} />
+        </SectionComponent>
+        <div className="relative ">
+          <SectionComponent>
+            <DestinationFunFactSection
+              destinationDetails={destinationDetails}
+              items={items}
+            />
+          </SectionComponent>
+          <div className="absolute -bottom-28 left-0 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"
-              src={vectorBelow}
+              src={vectorLeftFlat}
               alt="Counselling session"
             />
           </div>
         </div>
-      )}
 
-      {accList.length > 0 && (
-        <DestinationStudentAccommodationsSection
-          destinationDetails={destinationDetails}
-          accommodationList={accList}
-          source={`${source.destination}_${source.accommodation}`}
-          onAddLead={handleAddLead}
-          addToSavedPreferences={addToSavedPreferences}
-          removeFromSavedPreferences={removeFromSavedPreferences}
-        />
-      )}
+        {collegesList.length > 0 && (
+          <div className="relative">
+            <SectionComponent>
+              <DestinationUniCoursersSection
+                destinationDetails={destinationDetails}
+                collegesList={collegesList}
+                coursesList={coursesList}
+                source={`${source.destination}_${source.courses}`}
+                onAddLead={handleAddLead}
+                addToSavedPreferences={addToSavedPreferences}
+                removeFromSavedPreferences={removeFromSavedPreferences}
+              />
+            </SectionComponent>
+            <div
+              className="absolute right-0 top-20 -z-10"
+            >
+              <img
+                className="rounded-lg w-full h-full object-cover"
+                src={vectorleftNose}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
+        )}
 
-      {destinationDetails?.faqs.length > 0 && (
-        <DestinationFaqSection destinationDetails={destinationDetails} />
-      )}
+        {destinationDetails?.admissionRequirements.length > 0 && (
+          <div className="relative">
+            <SectionComponent>
+              <DestinationAdmissionRequirementSection
+                destinationDetails={destinationDetails}
+              />
+            </SectionComponent>
+            <div className="absolute -bottom-44 left-0 -z-10">
+              <img
+                className="rounded-lg w-full h-full object-cover"
+                src={vectorDownNose}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
+        )}
 
-      <div className="relative">
-        <Testimonials />
-        <div className="absolute top-64 left-48 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorNoseRightToLeft}
-            alt="Counselling session"
+        {destinationDetails?.expenses?.length > 0 && (
+          <SectionComponent>
+            <DestinationExpansesSection destinationDetails={destinationDetails} />
+          </SectionComponent>
+        )}
+
+        {destinationDetails?.scholarships.length > 0 && (
+          <SectionComponent>
+            <DestinationScholarshipSection
+              destinationDetails={destinationDetails}
+            />
+          </SectionComponent>
+        )}
+
+        {destinationDetails?.immigrations.length > 0 && (
+          <div className="relative">
+            <SectionComponent>
+              <DestinationImmigrationDetailsSection
+                destinationDetails={destinationDetails}
+              />
+            </SectionComponent>
+            <div className="absolute bottom-0 left-0 -z-10">
+              <img
+                className="rounded-lg w-full h-full object-cover"
+                src={vectorRightNoseCurve}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
+        )}
+        {destinationDetails?.workOpportunities && (
+          <div className="relative">
+            <SectionComponent>
+              <DestinationWorkOpportunitiesSection
+                destinationDetails={destinationDetails}
+              />
+            </SectionComponent>
+            <div className="absolute top-0 right-0 -z-10">
+              <img
+                className="rounded-lg w-full h-full object-cover"
+                src={vectorBelow}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
+        )}
+
+        {accList.length > 0 && (
+          <SectionComponent>
+            <DestinationStudentAccommodationsSection
+              destinationDetails={destinationDetails}
+              accommodationList={accList}
+              source={`${source.destination}_${source.accommodation}`}
+              onAddLead={handleAddLead}
+              addToSavedPreferences={addToSavedPreferences}
+              removeFromSavedPreferences={removeFromSavedPreferences}
+            />
+          </SectionComponent>
+        )}
+
+        {destinationDetails?.faqs.length > 0 && (
+          <SectionComponent>
+            <DestinationFaqSection destinationDetails={destinationDetails} />
+          </SectionComponent>
+        )}
+
+        {/* <div className="relative">
+          <SectionComponent>
+            <Testimonials />
+          </SectionComponent>
+          <div className="absolute top-64 left-48 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorNoseRightToLeft}
+              alt="Counselling session"
+            />
+          </div>
+        </div> */}
+        {/* <SectionComponent>
+          <Blogs />
+        </SectionComponent> */}
+        <SectionComponent>
+          <ContactUsForm
+            onFormSubmit={handleAddLead}
+            source={source.destination}
+            entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
           />
-        </div>
+        </SectionComponent>
+        <Footer />
       </div>
-      <Blogs />
-      <ContactUsForm
-        onFormSubmit={handleAddLead}
-        source={source.destination}
-        entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
-      />
-      <Footer />
     </div>
   );
 }

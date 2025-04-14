@@ -1,4 +1,4 @@
-import SectionMainHeader from "../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../styleComponents/sectionMainHeader";
 import TestimonialsCard from "./testimonialsCard";
 
 const Testimonials = () => {

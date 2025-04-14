@@ -41,3 +41,30 @@ export const articles = [
       "We have successfully launched several new projects, aiming to improve our services and reach more clients around the globe.",
   },
 ];
+
+export const faqPathways = [
+  {
+    question:
+      "Can I work while completing a Pathways program?",
+    answer:
+      "Work options vary by country and program. Some Pathways programs allow part-time work, while others may restrict it. It’s best to check the specific regulations for your chosen destination and program to understand your work options while studying.",
+  },
+  {
+    question:
+      "How long is a Pathways program?",
+    answer:
+      "The length of a Pathways program varies anywhere from a few months to up to a year, depending upon the academic demands and the English proficiency required. Most programs have been designed such that students should be ready to join the universities within a pretty short period of time.",
+  },
+  {
+    question: "Do I need to meet certain academic requirements to join a Pathways program?",
+    answer:
+      "Pathways programs are available to students who qualify based on basic entry requirements into the chosen course of study. Some academic qualifications might differ with specific programs and destinations, but generally, these programs support students who need further preparation.",
+  },
+  {
+    question:
+      "What is a Pathways program?",
+    answer:
+      "A Pathways program is designed to help students transition smoothly into studying abroad. It provides academic support, language training, cultural orientation, and personal development to ensure you are prepared for university life in a foreign country.",
+  },
+
+]

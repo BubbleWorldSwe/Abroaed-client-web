@@ -1,36 +1,27 @@
 
-import blobImage from "../../../../assets/Vector.png";
 import workWithUs1 from "../../../../assets/workWithUs1.png";
 import workWithUs2 from "../../../../assets/workWithUs2.png";
 import workWithUs3 from "../../../../assets/workWithUs3.png";
 import workWithUs4 from "../../../../assets/workWithUs4.png";
 import workWithUs5 from "../../../../assets/workWithUs5.png";
 import workWithUs6 from "../../../../assets/workWithUs6.png";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 function CareerHeroSections() {
   return (
-    <div className="pt-20 mt-10">
+    <div className="pt-14 mt-6 ">
       <section className="relative bg-white  dark:bg-gray-900 ">
-        {/* Background Image */}
-        <div className="absolute top-0 left-[-100px] z-0">
-          <img
-            src={blobImage}
-            alt="Background blog image"
-            className="w-full opacity-100"
-          />
-        </div>
-        <div className="relative z-10 py-8 px-4 mx-auto max-w-screen-2xl lg:px-12 sm:text-center lg:py-16 ">
+        <div className="relative z-10  mx-auto  text-center pt-16 ">
           <SectionMainHeader
             className={'mb-1'}
           >
             Work At ABROAED
           </SectionMainHeader>
 
-          <p className="font-bold text-2xl text-[#52525B]  md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
+          <p className="font-bold text-2xl text-[#52525B]   mx-auto md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
             Connecting You to a World of Possibilities
           </p>
-          <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:grid-rows-[auto] sm:mt-12">
+          <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:grid-rows-[auto] sm:mt-10">
             <img
               className="col-span-2 mb-4 sm:mb-0 rounded-lg h-full object-cover"
               src={workWithUs1}
@@ -62,7 +53,6 @@ function CareerHeroSections() {
               alt="content gallery 6"
             />
           </div>
-
         </div>
       </section>
     </div>

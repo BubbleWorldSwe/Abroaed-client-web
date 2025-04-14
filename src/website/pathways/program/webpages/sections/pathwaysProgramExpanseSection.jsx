@@ -1,6 +1,6 @@
-import PrimaryBodyText from "../../../../typographies/primaryBodyText"
-import SecondaryTitle from "../../../../typographies/secondaryTitle"
-import SectionMainHeader from "../../../../typographies/sectionMainHeader"
+import PrimaryBodyText from "../../../../styleComponents/primaryBodyText"
+import SecondaryTitle from "../../../../styleComponents/secondaryTitle"
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader"
 
 const PathwaysProgramExpanseSection = () => {
     return (

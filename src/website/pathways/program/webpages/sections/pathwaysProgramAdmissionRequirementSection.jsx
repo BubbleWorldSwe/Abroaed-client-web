@@ -1,6 +1,6 @@
 import check_circle from '../../../../../assets/check_circle.png'
-import PrimaryBodyText from '../../../../typographies/primaryBodyText'
-import SectionMainHeader from '../../../../typographies/sectionMainHeader'
+import PrimaryBodyText from '../../../../styleComponents/primaryBodyText'
+import SectionMainHeader from '../../../../styleComponents/sectionMainHeader'
 
 const PathwaysProgramAdmissionRequirementSection = () => {
     return (

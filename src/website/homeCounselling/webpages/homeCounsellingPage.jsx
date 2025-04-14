@@ -2,7 +2,7 @@ import homeCounsellingHero from "../../../assets/homeCounsellingHero.png";
 // import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
-import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
+// import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import Footer from "../../comman/sections/footerSection";
 import Header from "../../comman/sections/headerSection";
 import HomeCounsellingHeroSection from "./sections/homeCounsellingHeroSection";
@@ -15,13 +15,14 @@ import HomeCounsellingFaqSection from "./sections/homeCounsellingFaqSection";
 // import HomeCounsellingLeadFormSection from './sections/homeCounsellingLeadFormSection';
 import WhyChooseOurHomeCounselling from "./sections/whyChooseOurHomeCounselling";
 import BookCounsellingNow from "./sections/bookCounsellingNow";
-import Testimonials from "../../comman/components/testimonials";
+// import Testimonials from "../../comman/components/testimonials";
 import ExploreOurServicesHomeCounselling from "./sections/exploreOurServicesHomeCounselling";
-import Blogs from "../../comman/components/blogs";
+// import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
+import SectionComponent from "../../styleComponents/sectionComponent";
 
 const NavigationItems = () => {
   return (
@@ -62,52 +63,69 @@ const HomeCounsellingPage = () => {
         text={<NavigationItems />}
         img={homeCounsellingHero}
       />
-      <div className="relative">
-        <HomeCounsellingHowItWork />
-        <div className="absolute -bottom-28 left-0 z-0">
-          <img
-            className="rounded-lg max-w-full "
-            src={vectoreLeftFlat}
-            alt="Counselling session"
-          />
+      <div className="grid grid-cols-1 gap-10 md:gap-16">
+        <div className="relative">
+          <SectionComponent>
+            <HomeCounsellingHowItWork />
+          </SectionComponent>
+          <div className="absolute -bottom-28 left-0 z-0">
+            <img
+              className="rounded-lg max-w-full "
+              src={vectoreLeftFlat}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
-      <WhyChooseOurHomeCounselling />
-      <div className="relative">
-        <BookCounsellingNow
-          onFormSubmit={handleAddLead}
-          source={source.homeCounselling}
-          entity={entity.bookCounselling}
-          loading={loading}
-        />
-        <div className="absolute top-48 right-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorleftNose}
-            alt="Counselling session"
-          />
+        <SectionComponent>
+          <WhyChooseOurHomeCounselling />
+        </SectionComponent>
+        <div className="relative">
+          <SectionComponent>
+            <BookCounsellingNow
+              onFormSubmit={handleAddLead}
+              source={source.homeCounselling}
+              entity={entity.bookCounselling}
+              loading={loading}
+            />
+          </SectionComponent>
+          <div className="absolute top-48 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorleftNose}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
-      <Testimonials />
-
-      <ExploreOurServicesHomeCounselling />
-      <HomeCounsellingFaqSection />
-      <div className="relative">
-        <Blogs />
-        <div className="absolute -top-10 right-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorLeftNoseSmall}
-            alt="Counselling session"
-          />
+        {/* <SectionComponent>
+          <Testimonials />
+        </SectionComponent> */}
+        <div>
+          <ExploreOurServicesHomeCounselling />
         </div>
+        <SectionComponent>
+          <HomeCounsellingFaqSection />
+        </SectionComponent>
+        {/* <div className="relative">
+          <div>
+            <Blogs />
+          </div>
+          <div className="absolute -top-10 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorLeftNoseSmall}
+              alt="Counselling session"
+            />
+          </div>
+        </div> */}
+        <SectionComponent>
+          <ContactUsForm
+            onFormSubmit={handleAddLead}
+            source={source.homeCounselling}
+            entity={entity.contactUs}
+          />
+        </SectionComponent>
+        <Footer />
       </div>
-      <ContactUsForm
-        onFormSubmit={handleAddLead}
-        source={source.homeCounselling}
-        entity={entity.contactUs}
-      />
-      <Footer />
     </div>
   );
 };

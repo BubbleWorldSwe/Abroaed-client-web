@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const LeaguageOfExcellenceServicesOverviews = ({
   setCountry,
@@ -17,8 +17,8 @@ const LeaguageOfExcellenceServicesOverviews = ({
   };
   return (
     <div className="relative z-10">
-      <section className="dark:bg-gray-900 relative px-7 md:px-12 mx-auto">
-        <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 py-10 lg:py-20">
+      <section className="dark:bg-gray-900 relative">
+        <div className="pt-16">
           <PrimaryBodyText className=" mb-1 md:mb-4">
             We at ABROAED help aspiring students get into top-tier universities
             across the UK, US, Australia, New Zealand, Canada, Asia, and Europe.
@@ -51,7 +51,7 @@ const LeaguageOfExcellenceServicesOverviews = ({
               internships, research, or studying abroad. To top it all, there is
               a powerful alumni network.
             </PrimaryBodyText>
-            <div className="py-5 md:py-10  font-medium flex gap-2 text-center md:justify-between flex-wrap">
+            <div className="py-5 md:py-10  font-medium flex gap-2 text-center justify-between flex-wrap">
               {countriesName.map((country, index) => (
                 <div key={index}>
                   <button

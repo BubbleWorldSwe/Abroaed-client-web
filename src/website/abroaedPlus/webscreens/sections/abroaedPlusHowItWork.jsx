@@ -1,6 +1,6 @@
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SecondaryTitle from "../../../typographies/secondaryTitle";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SecondaryTitle from "../../../styleComponents/secondaryTitle";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { AbroaedServices } from "../../data";
 
 const AbroaedPlusHowItWork = () => {
@@ -18,7 +18,7 @@ const AbroaedPlusHowItWork = () => {
             />
 
           </div>
-          <div className="py-5">
+          <div className="">
             <SecondaryTitle
               className={'mb-2'}
               text={`Step 1: Dream & Discover`}
@@ -35,7 +35,7 @@ const AbroaedPlusHowItWork = () => {
             />
 
           </div>
-          <div className="py-5">
+          <div className="py-4">
             <SecondaryTitle
               className={'mb-2'}
             >
@@ -57,20 +57,20 @@ const AbroaedPlusHowItWork = () => {
             {AbroaedServices.map((service, index) => (
               <div
                 key={index}
-                className="w-full bg-black min-h-44 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                className="w-full hover:scale-[1.01] transition-all duration-300 ease-in-out bg-gray-primary text-white min-h-44 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
               >
-                <div className="p-5 bg-clip-text text-transparent"
+                <div className="p-5"
                   style={{
-                    backgroundImage:
-                      "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
+                    // backgroundImage:
+                    //   "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
                   }}
                 >
                   <div className="flex justify-between">
-                    <h5 className={`mb-2 text-[28px] font-bold tracking-tight  dark:text-white`}>
+                    <h5 className={`mb-2 text-[24px] md:text-[28px] font-bold tracking-tight  dark:text-white`}>
                       {service.title}
                     </h5>
                   </div>
-                  <p className="mb-3 font-semibold  text-[20px] dark:text-gray-400">
+                  <p className="mb-3 font-semibold text-[16px] md:text-[20px] dark:text-gray-400">
                     {service.description}
                   </p>
                 </div>

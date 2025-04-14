@@ -1,12 +1,12 @@
 import essentialDeveloper from "../../../../assets/essentialDeveloper.png";
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SecondaryTitle from "../../../typographies/secondaryTitle";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 function AboutUsCtaSection() {
   return (
     <div>
       <section className="bg-white">
         <div className=" rounded-lg bg-yellow-50 ">
-          <div className="mx-auto flex justify-between px-6 items-center">
+          <div className="mx-auto flex flex-col md:flex-row justify-between px-6 items-center">
             <div className="max-w-2xl flex flex-col gap-3 py-14">
               <SecondaryTitle>
                 Did Our story strike a chord?
@@ -20,12 +20,12 @@ function AboutUsCtaSection() {
 
               <a
                 href="/careers"
-                className="inline-flex mt-4 w-1/3 items-center justify-center rounded-lg bg-primary-300 px-5 py-3 text-center text-base font-semibold text-black hover:bg-primary-500 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                className="inline-flex mt-4 w-full md:w-1/3 items-center justify-center rounded-lg bg-primary-300 px-5 py-3 text-center text-base font-semibold text-black hover:bg-primary-500 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
               >
                 Explore Oppurtunities
               </a>
             </div>
-            <div>
+            <div className="">
               <img
                 src={essentialDeveloper}
                 alt="developer-pic"

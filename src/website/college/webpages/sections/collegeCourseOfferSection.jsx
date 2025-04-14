@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import CollegeCourseCard from "../../components/collegeCourseCard";
 
 const CollegeCourseOfferSection = ({
@@ -11,30 +12,27 @@ const CollegeCourseOfferSection = ({
   return (
     <div className="relative">
       {/* Blob Background */}
-      <section className="px-10 mx-auto">
-        <div className=" px-4  flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
-          {/* Content */}
-          <div className=" mt-10">
-            <h2 className="mb-2 text-[45px]  font-extrabold text-gray-900 dark:text-white">
-              Course Offerings
-            </h2>
-            <div className="my-1 border-t border-gray-300"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-10">
-              {collegeDetails?.courses?.map((course, index) => (
-                <CollegeCourseCard
-                  course={course}
-                  key={index}
-                  source={source}
-                  onAddLead={onAddLead}
-                  addToSavedPreferences={addToSavedPreferences}
-                  removeFromSavedPreferences={removeFromSavedPreferences}
-                />
-              ))}
-            </div>
+      <section className="">
+        <div className="">
+          <SectionMainHeader>
+            Course Offerings
+          </SectionMainHeader>
+          <div className="my-1 border-t border-gray-300"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:pt-10 pt-6">
+            {collegeDetails?.courses?.map((course, index) => (
+              <CollegeCourseCard
+                course={course}
+                key={index}
+                source={source}
+                onAddLead={onAddLead}
+                addToSavedPreferences={addToSavedPreferences}
+                removeFromSavedPreferences={removeFromSavedPreferences}
+              />
+            ))}
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 

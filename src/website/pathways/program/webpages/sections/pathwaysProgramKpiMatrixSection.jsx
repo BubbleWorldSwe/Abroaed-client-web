@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import vectorLeftFlat from "../../../../../assets/vectoreLeftFlat.png";
-import PrimaryBodyText from "../../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader";
 import PathwaysProgramKpiMatrixCard from "../../components/pathwaysProgramKpiMatrixCard";
 import { teamMembers } from "../../data";
 

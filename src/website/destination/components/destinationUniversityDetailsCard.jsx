@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import locationIcon from "../../../assets/locationIcon.png";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import { IMAGES } from "../../../constants/images";
@@ -20,7 +21,7 @@ const UniversityDetailsCard = ({
   const isSaved = Boolean(savedItem);
 
   return (
-    <div className="max-w-sm h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full md:max-w-sm h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <img
           className="rounded-t-lg w-full h-48 object-cover"
@@ -46,9 +47,8 @@ const UniversityDetailsCard = ({
               }
             >
               <Bookmark
-                className={`w-6 h-6 text-black ${
-                  isSaved ? "fill-black" : "text-gray-500"
-                }`}
+                className={`w-6 h-6 text-black ${isSaved ? "fill-black" : "text-gray-500"
+                  }`}
               />
             </button>
           )}
