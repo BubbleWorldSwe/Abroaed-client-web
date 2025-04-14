@@ -2,7 +2,7 @@ import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { AbroaedServices } from "../../data";
-
+import blackYellowAngle from "../../../../assets/blackYellowAngle.png"
 const AbroaedPlusHowItWork = () => {
   return (
     <div className="relative">
@@ -11,11 +11,11 @@ const AbroaedPlusHowItWork = () => {
         <div className="relative z-10">
           <div className="pb-5">
             <SectionMainHeader className={'mb-2'} text="How It Works?" />
-            <PrimaryBodyText
-              text={`At ABROAED+, we simplify your study abroad journey into clear,
+            <PrimaryBodyText>
+              At ABROAED<sup>+</sup>, we simplify your study abroad journey into clear,
               actionable steps, ensuring you’re supported every step of the way,
-              from planning to settling in your dream destination.`}
-            />
+              from planning to settling in your dream destination.
+            </PrimaryBodyText>
 
           </div>
           <div className="">
@@ -57,29 +57,25 @@ const AbroaedPlusHowItWork = () => {
             {AbroaedServices.map((service, index) => (
               <div
                 key={index}
-                className="w-full hover:scale-[1.01] transition-all duration-300 ease-in-out bg-gray-primary text-white min-h-44 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                className="w-full relative hover:scale-[1.01] transition-all duration-300 ease-in-out bg-gray-primary text-white min-h-56 flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
               >
-                <div className="p-5"
-                  style={{
-                    // backgroundImage:
-                    //   "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
-                  }}
-                >
+                <div className="p-5">
                   <div className="flex justify-between">
                     <h5 className={`mb-2 text-[24px] md:text-[28px] font-bold tracking-tight  dark:text-white`}>
                       {service.title}
                     </h5>
                   </div>
-                  <p className="mb-3 font-semibold text-[16px] md:text-[20px] dark:text-gray-400">
+                  <p className="mb-3  text-[16px] md:text-[20px] dark:text-gray-400">
                     {service.description}
                   </p>
                 </div>
+
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

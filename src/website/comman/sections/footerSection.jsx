@@ -265,9 +265,7 @@ function Footer() {
               <p>
                 <strong>Crafted By </strong>
               </p>
-              <p >Bubble World</p>
-              <a href="https://bubbleworld.in/" target="_blank" className="text-blue-300 underline">https://bubbleworld.in/</a>
-
+              <a href="https://bubbleworld.in/" target="_blank" className="">BubbleWorld </a>
             </div>
           </div>
         </div>
