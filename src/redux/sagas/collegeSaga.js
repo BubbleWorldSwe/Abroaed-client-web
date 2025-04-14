@@ -2,6 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import {
   getColleges,
   setAddCollege,
+  setCollegeUploadFile,
   setDeleteCollege,
   setUpdateCollege,
 } from "../../api/collegesApi"; // API functions
@@ -18,8 +19,12 @@ import {
   FETCH_COLLEGES_REQUEST,
   fetchCollegesFailure,
   fetchCollegesSuccess,
+  UPLOAD_COLLEGE_IMAGE_REQUEST,
+  uploadCollegeImageFailure,
+  uploadCollegeImageSuccess,
 } from "../actions/collegeActions";
 import { toast } from "react-toastify";
+import { UPLOAD_ACCOMMODATION_IMAGE_REQUEST } from "../actions/accommodationActions";
 
 // Fetch colleges
 function* fetchColleges(action) {
@@ -88,10 +93,30 @@ function* handleEditCollege(action) {
   }
 }
 
+// Upload a College Image
+function* handleUploadCollegeImage(action) {
+  try {
+    const { id, imageData } = action.payload;
+    const response = yield call(setCollegeUploadFile, id, imageData);
+
+    if (response.status === 200) {
+      yield put(uploadCollegeImageSuccess(response.data));
+      toast.success(response.message);
+    } else {
+      yield put(uploadCollegeImageFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(uploadCollegeImageFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 // Root saga for colleges
 export default function* collegesSaga() {
   yield takeLatest(FETCH_COLLEGES_REQUEST, fetchColleges);
   yield takeLatest(ADD_COLLEGE_REQUEST, addNewCollege);
   yield takeLatest(DELETE_COLLEGE_REQUEST, deleteCollege);
   yield takeLatest(EDIT_COLLEGE_REQUEST, handleEditCollege);
+  yield takeLatest(UPLOAD_COLLEGE_IMAGE_REQUEST, handleUploadCollegeImage);
 }

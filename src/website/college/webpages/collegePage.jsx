@@ -20,8 +20,8 @@ import PageLoader from "../../../commons/components/loader/pageLoader";
 import { getCollegeDetailsById } from "../../../api/collegesApi";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { getAccommodationsByStateId } from "../../../api/accomodationApi";
-import Blogs from "../../comman/components/blogs";
-import Testimonials from "../../comman/components/testimonials";
+// import Blogs from "../../comman/components/blogs";
+// import Testimonials from "../../comman/components/testimonials";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,6 +29,7 @@ import {
   addSavedPreferenceRequest,
   deleteSavedPreferenceRequest,
 } from "../../../redux/actions/savedPreferencesActions";
+import SectionComponent from "../../styleComponents/sectionComponent";
 
 function CollegePage() {
   const { id } = useParams();
@@ -109,85 +110,100 @@ function CollegePage() {
     <div className="font-rethink">
       <Header />
       <CollegeHeroSection collegeDetails={collegeDetails} img={collegeHero} />
-      <CollegeInfoSection
-        collegeDetails={collegeDetails}
-        header={"Why Study in United Kingdom?"}
-      />
-      <div className="relative ">
-        <CollegeFunFactSection collegeDetails={collegeDetails} />
-        <div className="absolute bottom-16 left-0 z-0">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorLeftFlat}
-            alt="Counselling session"
-          />
-        </div>
-      </div>
-      <CollegeUniversitySection collegeDetails={collegeDetails} />
-      <div className="relative">
-        {collegeDetails?.courses.length > 0 && (
-          <CollegeCourseOfferSection
+      <div className="grid grid-cols-1 gap-10 md:gap-16  ">
+        <SectionComponent>
+          <CollegeInfoSection
             collegeDetails={collegeDetails}
-            source={`${source.college}_${source.courses}`}
-            onAddLead={handleAddLead}
-            addToSavedPreferences={addToSavedPreferences}
-            removeFromSavedPreferences={removeFromSavedPreferences}
+            header={"Why Study in United Kingdom?"}
           />
-        )}
-
-        <div className="absolute top-0 right-0  -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorleftNose}
-            alt="Counselling session"
-          />
+        </SectionComponent>
+        <div className="relative ">
+          <SectionComponent>
+            <CollegeFunFactSection collegeDetails={collegeDetails} />
+          </SectionComponent>
+          <div className="absolute bottom-16 left-0 z-0">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorLeftFlat}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
-      <div className="relative">
+        <div>
+          <CollegeUniversitySection collegeDetails={collegeDetails} />
+        </div>
+        <div className="relative">
+          {collegeDetails?.courses.length > 0 && (
+            <SectionComponent>
+              <CollegeCourseOfferSection
+                collegeDetails={collegeDetails}
+                source={`${source.college}_${source.courses}`}
+                onAddLead={handleAddLead}
+                addToSavedPreferences={addToSavedPreferences}
+                removeFromSavedPreferences={removeFromSavedPreferences}
+              />
+            </SectionComponent>
+          )}
+          <div className="absolute top-0 right-0  -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorleftNose}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
         {collegeDetails?.scholarships.length > 0 && (
-          <CollegeScholarshipSection collegeDetails={collegeDetails} />
+          <div className="relative">
+            <SectionComponent>
+              <CollegeScholarshipSection collegeDetails={collegeDetails} />
+            </SectionComponent>
+            <div className="absolute top-16 left-0 -z-10">
+              <img
+                className="rounded-lg w-full h-full object-cover"
+                src={vectorDownNose}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
         )}
 
-        <div className="absolute top-16 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorDownNose}
-            alt="Counselling session"
-          />
+        <div className="relative">
+          {accList.length > 0 && (
+            <SectionComponent>
+              <CollegeStudentAccommodation
+                collegeDetails={collegeDetails}
+                accommodationList={accList}
+                source={`${source.college}_${source.accommodation}`}
+                onAddLead={handleAddLead}
+                addToSavedPreferences={addToSavedPreferences}
+                removeFromSavedPreferences={removeFromSavedPreferences}
+              />
+            </SectionComponent>
+          )}
+          <div className="absolute top-0 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorLeftNoseSmall}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
-      <div className="relative">
-        {accList.length > 0 && (
-          <CollegeStudentAccommodation
-            collegeDetails={collegeDetails}
-            accommodationList={accList}
-            source={`${source.college}_${source.accommodation}`}
-            onAddLead={handleAddLead}
-            addToSavedPreferences={addToSavedPreferences}
-            removeFromSavedPreferences={removeFromSavedPreferences}
-          />
+        {collegeDetails?.faqSchema.length > 0 && (
+          <SectionComponent>
+            <CollegeFaqSection collegeDetails={collegeDetails} />
+          </SectionComponent>
         )}
-
-        <div className="absolute top-0 right-0 z-0">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorLeftNoseSmall}
-            alt="Counselling session"
+        {/* <Testimonials />
+        <Blogs /> */}
+        <SectionComponent>
+          <ContactUsForm
+            onFormSubmit={handleAddLead}
+            source={source.college}
+            entity={`${collegeDetails?.name}_${entity.contactUs}`}
           />
-        </div>
+        </SectionComponent>
+        <Footer />
       </div>
-      {collegeDetails?.faqSchema.length > 0 && (
-        <CollegeFaqSection collegeDetails={collegeDetails} />
-      )}
-      <Testimonials />
-      <Blogs />
-
-      <ContactUsForm
-        onFormSubmit={handleAddLead}
-        source={source.college}
-        entity={`${collegeDetails?.name}_${entity.contactUs}`}
-      />
-      <Footer />
     </div>
   );
 }

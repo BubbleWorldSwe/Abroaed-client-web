@@ -156,3 +156,35 @@ export const cardDetails = [
 
     },
 ];
+
+export const faqHomecounselling = [
+    {
+        question:
+            "Do UK universities and courses have quality assurance?",
+        answer:
+            "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+    },
+    {
+        question:
+            "Do UK universities and courses have quality assurance?",
+        answer:
+            "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
+    },
+    {
+        question: "Does Abroed take fees?",
+        answer:
+            "Leverage Edu offers all its counselling, admissions and visa services completely free of cost. Its premium Leverage One services are tiered plans that include several value-added services to students including scholarship assistance, test preparation, priority visa assistance, accommodation assistance and more.",
+    },
+    {
+        question:
+            "Where can I find scholarships and financial support for studying in the UK?",
+        answer:
+            "A wide range of scholarships and financial support options are available for international students who dream of studying in the UK. The SI-UK scholarship search leads you to hundreds of scholarships provided by universities and government organisations.",
+    },
+    {
+        question: "How can ABROAED help my study ABROAED journey?",
+        answer:
+            "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
+    },
+    // Add more FAQs here
+]

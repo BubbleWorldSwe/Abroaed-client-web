@@ -18,6 +18,10 @@ export const EDIT_TESTPREP_REQUEST = "EDIT_TESTPREP_REQUEST";
 export const EDIT_TESTPREP_SUCCESS = "EDIT_TESTPREP_SUCCESS";
 export const EDIT_TESTPREP_FAILURE = "EDIT_TESTPREP_FAILURE";
 
+export const UPLOAD_TESTPREP_IMAGE_REQUEST = "UPLOAD_TESTPREP_IMAGE_REQUEST";
+export const UPLOAD_TESTPREP_IMAGE_SUCCESS = "UPLOAD_TESTPREP_IMAGE_SUCCESS";
+export const UPLOAD_TESTPREP_IMAGE_FAILURE = "UPLOAD_TESTPREP_IMAGE_FAILURE";
+
 export const SET_SELECTED_TESTPREP = "SET_SELECTED_TESTPREP";
 
 export const fetchTestPrepsRequest = (page) => ({
@@ -91,6 +95,21 @@ export const editTestPrepSuccess = (editedTestPrep) => ({
 
 export const editTestPrepFailure = (error) => ({
   type: EDIT_TESTPREP_FAILURE,
+  payload: error,
+});
+
+export const uploadTestPrepImageRequest = (id, imageData) => ({
+  type: UPLOAD_TESTPREP_IMAGE_REQUEST,
+  payload: { id, imageData },
+});
+
+export const uploadTestPrepImageSuccess = (editedTestPrep) => ({
+  type: UPLOAD_TESTPREP_IMAGE_SUCCESS,
+  payload: editedTestPrep,
+});
+
+export const uploadTestPrepImageFailure = (error) => ({
+  type: UPLOAD_TESTPREP_IMAGE_FAILURE,
   payload: error,
 });
 

@@ -35,7 +35,7 @@ const StatusConfirmationModal = ({
 
             {options && options.length > 1 ? (
               <div className="flex justify-end mt-6 space-x-2">
-                <ModalCloseButton label="Close" onClick={onClose} />
+                {/*  <ModalCloseButton label="Close" onClick={onClose} /> */}
                 {options.map((option) => {
                   const isRejected = option === "rejected";
                   return isRejected ? (
@@ -49,6 +49,7 @@ const StatusConfirmationModal = ({
                       label="Offer Letter Received"
                       type="submit"
                       onClick={() => onSubmit(option)}
+                      className="bg-green-500 text-white px-6 py-2 rounded"
                     />
                   );
                 })}

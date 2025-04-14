@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 
 const CollegeScholarshipSection = ({ collegeDetails }) => {
   return (
-    <div className="relative py-14">
-      <section className=" dark:bg-gray-900 relative px-7 mx-auto">
-        <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
+    <div className="relative ">
+      <section className=" dark:bg-gray-900 relative ">
+        <div className="">
           <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-            <SectionMainHeader className={`mb-10`}>
+            <SectionMainHeader className={`mb-2 md:mb-10`}>
               Scholarships & Financial Aid
             </SectionMainHeader>
             <PrimaryBodyText className={`mb-4`}>
@@ -64,7 +64,7 @@ const CollegeScholarshipSection = ({ collegeDetails }) => {
             </div>
           </section>
           <div>
-            <PrimaryBodyText className="mb-4">
+            <PrimaryBodyText className="pt-4">
               If you want to bring down your educational expenses, it is best to
               apply to various scholarships available for Indian students.
             </PrimaryBodyText>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
 import AccommodationCard from "../../../comman/components/accommodationCard";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const DestinationStudentAccommodationsSection = ({
   accommodationList,
@@ -13,11 +13,11 @@ const DestinationStudentAccommodationsSection = ({
 }) => {
   return (
     <Element name="accommodation">
-      <div className="relative  px-10 mx-auto">
+      <div className="relative ">
         <section className=" dark:bg-gray-900 relative">
-          <div className="gap-8 items-center py-2 px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
-            <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <SectionMainHeader className="mb-10">
+          <div className="">
+            <div className="font  text-gray-500  dark:text-gray-400">
+              <SectionMainHeader className="mb-6 md:mb-10">
                 Popular Student Accommodations
               </SectionMainHeader>
               <div className="my-5 border-t-2 border-gray-300"></div>
@@ -35,7 +35,7 @@ const DestinationStudentAccommodationsSection = ({
                 />
               ))}
             </div>
-            <div className="text-center ">
+            <div className="text-center mt-4">
               <a
                 href={`/accomodation/${destinationDetails._id}`}
                 className="w-full"

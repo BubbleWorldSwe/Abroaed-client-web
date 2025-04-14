@@ -8,7 +8,7 @@ import CoursesCard from "../components/coursesCard";
 import FinancialAidCard from "../components/financialAidCard";
 import FAQsCard from "../components/faqsCard";
 import { useEffect, useState } from "react";
-import CollegeImageSection from "../components/collegeImageSection";
+
 import OverviewModal from "../modals/overviewModal";
 import MediaGallery from "../modals/mediaGalleryModal";
 import CoursesModal from "../modals/coursesModal";
@@ -16,12 +16,17 @@ import FinancialAidScholarshipsModal from "../modals/financialAidScholarshipsMod
 import FaqModalCollege from "../modals/faqModalCollege";
 import { sections } from "../data";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
-import { editCollegeRequest } from "../../../redux/actions/collegeActions";
+import { useLocation, useNavigate } from "react-router-dom";
+import {
+  deleteCollegeRequest,
+  editCollegeRequest,
+  uploadCollegeImageRequest,
+} from "../../../redux/actions/collegeActions";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { getAllDestinations } from "../../../api/destinationApi";
 import LocationModal from "../modals/locationModal";
 import CollegeLocation from "../components/collegeLocation";
+import CollegeImageSection from "../components/collegeImageSection";
 
 function CollegDetails() {
   const dispatch = useDispatch();
@@ -34,7 +39,7 @@ function CollegDetails() {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [destinationsList, setDestinationsList] = useState([]);
   const [statesList, setStatesList] = useState([]);
-
+  const navigate = useNavigate();
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
   const { state } = useLocation();
 
@@ -83,6 +88,11 @@ function CollegDetails() {
 
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteCollegeRequest(state?._id));
+    navigate("/admin/colleges");
   };
 
   const openModal = (section, type, index) => {
@@ -181,6 +191,23 @@ function CollegDetails() {
     }
   }
 
+  async function onUploadImage(data, type) {
+    console.log(data, type);
+    try {
+      console.log(data);
+      dispatch(
+        uploadCollegeImageRequest(state?._id, {
+          files: data,
+          type,
+        })
+      );
+      //  fetchTestPrepsDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -200,7 +227,10 @@ function CollegDetails() {
       />
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
-          <CollegeImageSection />
+          <CollegeImageSection
+            onUploadImage={onUploadImage}
+            handleDelete={handleDelete}
+          />
           {sectionConfig.map((sectionItem, index) => (
             <div
               key={index}

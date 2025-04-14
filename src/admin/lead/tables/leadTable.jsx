@@ -133,11 +133,16 @@ const LeadTable = ({
                         : "bg-gray-200"
                     }`}
                   >
-                    {lead?.status}
+                    {lead?.status
+                      ? lead.status.charAt(0).toUpperCase() +
+                        lead.status.slice(1).toLowerCase()
+                      : ""}
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <span className="p-2 rounded bg-[#FDE8E8]">
+                  <span
+                  // className="p-2 rounded bg-[#FDE8E8]"
+                  >
                     {lead?.scheduleDetails
                       ? `${
                           lead?.scheduleDetails?.appointmentType
@@ -149,7 +154,9 @@ const LeadTable = ({
                 </td>
 
                 <td className="px-4 py-3 whitespace-nowrap">
-                  <span className="text-[#111928] bg-gray-100 p-2 rounded-md">
+                  <span
+                  //className="text-[#111928] bg-gray-100 p-2 rounded-md"
+                  >
                     {formatDateTime(lead?.createdAt)}
                   </span>
                 </td>

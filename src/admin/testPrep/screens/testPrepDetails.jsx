@@ -9,12 +9,14 @@ import TestPrepImageUpdate from "../components/imageUploadTestPrep";
 
 import BatchesTestPrepModal from "../modals/batchesTestPrepModal";
 import FaqTestPrepModal from "../modals/faqTestPrepModal";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AboutExamTestPrep from "../components/aboutExamTestPrep";
 import {
+  deleteTestPrepRequest,
   editTestPrepRequest,
   setSelectedTestPrep,
+  uploadTestPrepImageRequest,
 } from "../../../redux/actions/testPrepsActions";
 import { getTestPrepDetailsById } from "../../../api/testPrepsApi";
 
@@ -26,12 +28,26 @@ const TestPrepDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const { state } = useLocation();
 
+  const navigate = useNavigate();
   const [formdata, setFormdata] = useState(null);
 
   async function onUpdate(data) {
     try {
       console.log(data);
       dispatch(editTestPrepRequest(state?._id, data));
+      //  fetchTestPrepsDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function onUploadImage(data) {
+    try {
+      console.log(data);
+      dispatch(
+        uploadTestPrepImageRequest(state?._id, { files: data, type: "logo" })
+      );
       //  fetchTestPrepsDetails();
       closeModal();
     } catch (error) {
@@ -112,6 +128,11 @@ const TestPrepDetails = () => {
     openModal("Batches", "edit", 1);
   }
 
+  const handleDelete = () => {
+    dispatch(deleteTestPrepRequest(state?._id));
+    navigate("/admin/testPrep");
+  };
+
   useEffect(() => {
     fetchTestPrepsDetails();
   }, [dispatch]);
@@ -119,7 +140,10 @@ const TestPrepDetails = () => {
   return (
     <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
       <div className="accordion space-y-4">
-        <TestPrepImageUpdate />
+        <TestPrepImageUpdate
+          onUploadImage={onUploadImage}
+          handleDelete={handleDelete}
+        />
         {sectionConfig.map((sectionItem, index) => (
           <div
             key={index}

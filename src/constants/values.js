@@ -39,7 +39,7 @@ export const languages = [
 ];
 export const testMode = ["Online", "Offline"];
 
-export const pageDataLimit = 10;
+export const pageDataLimit = 20;
 
 export const targetYear = ["2025", "2026", "2027", "2028", "2029", "2030"];
 
@@ -58,7 +58,6 @@ export const highestEducation = [
   "Graduation",
   "Post Graduation",
 ];
-
 
 export const appointmentType = ["Virtual Consellings", "Home", "In-Person"];
 
@@ -87,7 +86,7 @@ export const source = {
   leaguageOfExcellence: "Leaguage Of Excellence",
   pathways: "Pathways",
   pathwaysProgram: "Pathways Program",
-  menu: "Menu"
+  menu: "Menu",
 };
 
 export const entity = {
@@ -141,3 +140,13 @@ export const destinationSequence = [
   "Poland",
   "Spain",
 ];
+
+export const tabColors = {
+  "To Start": "bg-[#FECCE1]",
+  "Verifying Documents": "bg-[#FFFCC2]",
+  "Application Filed": "bg-[#BAE6FF]",
+  "Application Filled": "bg-[#BAE6FF]",
+  "Awaiting Response": "bg-[#D4D4D8]",
+  Rejected: "bg-[#DB4437]",
+  "Offer Letter Received": "bg-[#DBFDEC]",
+};

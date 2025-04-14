@@ -17,12 +17,13 @@ import { useParams } from "react-router-dom";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
-import Testimonials from "../../comman/components/testimonials";
-import OurPartners from "../../comman/sections/ourPartnersSection";
+// import Testimonials from "../../comman/components/testimonials";
+// import OurPartners from "../../comman/sections/ourPartnersSection";
 import {
   addSavedPreferenceRequest,
   deleteSavedPreferenceRequest,
 } from "../../../redux/actions/savedPreferencesActions";
+import SectionComponent from "../../styleComponents/sectionComponent";
 
 function AccomodationPage() {
   const dispatch = useDispatch();
@@ -123,34 +124,48 @@ function AccomodationPage() {
     <div className="font-rethink">
       <Header />
       <AccommodationHeroSection selectedCountry={selectedCountry} />
-      <AccommodationHeaderTextSection />
-      <AccommodationResultForCountry
-        onSelectCountry={(destinationId) => {
-          const newSelectedCountry = destinationsList.find(
-            (country) => country._id === destinationId
-          );
-          setSelectedCountry(newSelectedCountry);
-          fetchAccommodations(destinationId);
-        }}
-        accList={accList}
-        isLoading={isDataLoading}
-        selectedCountry={selectedCountry}
-        destinationsList={destinationsList}
-        source={`${source.accommodation}`}
-        onAddLead={handleAddLead}
-        addToSavedPreferences={addToSavedPreferences}
-        removeFromSavedPreferences={removeFromSavedPreferences}
-      />
-      <AccommodationHowItWorkSection />
-      {/* <OurPartners /> */}
-      <AccommodationFaqSection />
-      <Testimonials />
-      <ContactUsForm
-        onFormSubmit={handleAddLead}
-        source={source.accommodation}
-        entity={`${entity.contactUs}`}
-      />
-      <Footer />
+      <div className="grid grid-cols-1 gap-10 md:gap-16">
+        <SectionComponent>
+          <AccommodationHeaderTextSection />
+        </SectionComponent>
+        <SectionComponent>
+          <AccommodationResultForCountry
+            onSelectCountry={(destinationId) => {
+              const newSelectedCountry = destinationsList.find(
+                (country) => country._id === destinationId
+              );
+              setSelectedCountry(newSelectedCountry);
+              fetchAccommodations(destinationId);
+            }}
+            accList={accList}
+            isLoading={isDataLoading}
+            selectedCountry={selectedCountry}
+            destinationsList={destinationsList}
+            source={`${source.accommodation}`}
+            onAddLead={handleAddLead}
+            addToSavedPreferences={addToSavedPreferences}
+            removeFromSavedPreferences={removeFromSavedPreferences}
+          />
+        </SectionComponent>
+        <SectionComponent>
+          <AccommodationHowItWorkSection />
+        </SectionComponent>
+        {/* <OurPartners /> */}
+        <SectionComponent>
+          <AccommodationFaqSection />
+        </SectionComponent>
+        {/* <SectionComponent>
+          <Testimonials />
+        </SectionComponent> */}
+        <SectionComponent>
+          <ContactUsForm
+            onFormSubmit={handleAddLead}
+            source={source.accommodation}
+            entity={`${entity.contactUs}`}
+          />
+        </SectionComponent>
+        <Footer />
+      </div>
     </div>
   );
 }

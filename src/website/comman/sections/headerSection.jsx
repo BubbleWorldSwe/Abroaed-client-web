@@ -1,24 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Globe, Grid, Menu, Phone, Users } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import DestinationNavItemModal from "../modals/destinationNavItemModal";
 import WhyAbroaedNavModal from "../modals/whyAbroaedNavModal";
-import TestPrepNavModal from "../modals/testPrepNavModal";
-import LanguageNavModal from "../modals/languageNavModal";
+import LanguageNavModalMobile from "../modals/languageNavModalMobile";
 import { studentLogout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
-import ProfileModal from "../modals/profileModal";
 import LogoutModal from "../../../commons/modal/logoutModal";
 import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import CombinedTestPrepModal from "../modals/combinedTestPrepModal";
 import ServicesNavModal from "../modals/servicesNavModal";
-import { FaShareAlt } from "react-icons/fa";
-import SocialIconNavModal from "../modals/socialIconNavModal";
+// import SocialIconNavModal from "../modals/socialIconNavModal";
 import BookCounsellingModal from "../modals/bookCounsellingModal";
+import TestPrepNavMobileModal from "../modals/testPrepNavModalMobile";
+import { useMediaQuery } from "react-responsive";
 //import { destinationMenuItems } from "../../../constants/values";
 
 function Header({ isHeaderBgWhite = false }) {
@@ -50,7 +49,8 @@ function Header({ isHeaderBgWhite = false }) {
   const [filteredColleges, setFilteredColleges] = useState([]);
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [expanded, setExpanded] = useState(null);
   const { studentToken, student } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -117,6 +117,17 @@ function Header({ isHeaderBgWhite = false }) {
     }
   }, [allDestinations]);
 
+
+  const toggleSubMenu = (label) => {
+    setExpanded((prev) => (prev === label ? null : label));
+  };
+  const isNotMobile = useMediaQuery({ minWidth: 768 });
+  useEffect(() => {
+    if (isNotMobile) {
+      setIsOpen(false);
+    }
+  }, [isNotMobile]);
+
   const menuItems = [
     { key: "whyAbroad", label: "Why ABROAED?", component: WhyAbroaedNavModal },
     {
@@ -153,6 +164,75 @@ function Header({ isHeaderBgWhite = false }) {
     { key: "services", label: "Services", component: ServicesNavModal },
     { key: "contactUs", label: "Contact Us", link: "/contactUs" },
   ];
+  const mobileMenuItem = [
+    {
+      key: "why-abroaed",
+      label: "Why ABROAED?",
+      subItems: [
+        { title: "About Us", link: "/aboutus" },
+        { title: "Career", link: "/careers" },
+      ]
+    },
+    {
+      key: "abroaed-plus",
+      label: (<span>ABROAED<sup>+</sup></span>),
+      link: '/abroaedPlus'
+    },
+    {
+      key: "destinations",
+      label: "Destinations",
+      // component: () => (
+      //   <ul className="space-y-1 p-2">
+      //     {allDestinations?.map((item, index) => (
+      //       <li key={index} className="text-sm hover:bg-gray-100 p-2 rounded">
+      //         <a href={`/destinations/${item._id}`} className="flex items-center gap-2">
+      //           <Flag width={5} code={item?.countryId?.code} />
+      //           {item?.countryId?.name}
+      //         </a>
+      //       </li>
+      //     ))}
+      //   </ul>
+      // )
+      component: DestinationNavItemModal
+    },
+    {
+      key: "test-prep",
+      label: "Test Prep",
+      component: TestPrepNavMobileModal,
+      data: allTestPreps
+    },
+    {
+      key: "language-prep",
+      label: "Language Prep",
+      component: LanguageNavModalMobile,
+      data: allLanguagePreps
+    },
+    {
+      key: "pathways",
+      label: "Pathways",
+      link: "/pathways"
+    },
+    {
+      key: "league-excellence",
+      label: "League of Excellence",
+      link: "/leaguageOfExcellence"
+    },
+    {
+      key: "services",
+      label: "Services",
+      subItems: [
+        { title: 'Finance', link: '/finance' },
+        { title: 'Accomodation', link: '/accomodation' },
+        { title: 'Home Counselling', link: '/homeCounselling' },
+      ]
+    },
+    {
+      key: "contact-us",
+      label: "Contact Us",
+      link: "/contactUs"
+    },
+  ];
+
 
   const socialLinks = [
     {
@@ -178,8 +258,8 @@ function Header({ isHeaderBgWhite = false }) {
         }`}
     >
       <nav>
-        <nav className="flex items-center justify-between  md:justify-center   w-full px-12">
-          <div className="flex  basis items-center">
+        <nav className="flex items-center justify-between  md:justify-center   w-full px-7 md:px-12">
+          <div className="flex  basis  items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
                 // target="_blank"
@@ -190,6 +270,7 @@ function Header({ isHeaderBgWhite = false }) {
               </a>
             </h3>
           </div>
+
           <div className="flex-grow basis-[90%] hidden md:flex justify-center ">
             <div className="flex items-center justify-center">
               <ul
@@ -321,7 +402,6 @@ function Header({ isHeaderBgWhite = false }) {
             >
               <button
                 onClick={() => handleMouseEnter("bookMenu")}
-
                 className={`px-4 py-1 whitespace-nowrap  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
               >
                 Book Now
@@ -335,7 +415,7 @@ function Header({ isHeaderBgWhite = false }) {
                 </div>
               )}
             </div>
-            <div className="">
+            {/* <div className="hidden md:block">
               <div
                 onMouseEnter={() => handleMouseEnter("socialIcon")}
                 onMouseLeave={handleMouseLeave}
@@ -365,17 +445,66 @@ function Header({ isHeaderBgWhite = false }) {
                 </div>
               )}
 
-            </div>
+            </div> */}
           </div>
-          <button
-            className="md:hidden p-2 basis-[0%]"
-          // onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <Menu
-              size={24}
-              className={`${scrolling ? "text-black" : "text-white"}`}
-            />
-          </button>
+          {/* mobile menu */}
+          <div>
+            <button
+              className="md:hidden p-2 basis-[0%]"
+              onClick={() => setIsOpen(true)}
+            >
+              <Menu
+                size={24}
+              />
+            </button>
+            {isOpen && (
+              <div className="fixed inset-0 z-50 bg-white text-gray-primary overflow-y-auto shadow-xl">
+                {/* Header */}
+                <div className="flex justify-between items-center p-4 border-b">
+                  <h2 className="text-lg font-semibold">Menu</h2>
+                  <button onClick={() => setIsOpen(false)}>
+                    <X size={24} />
+                  </button>
+                </div>
+
+                {/* Menu Items */}
+                <ul className="space-y-1 px-4 py-2">
+                  {mobileMenuItem.map(({ label, link, subItems, component: Component, data }, index) => (
+                    <li key={index}>
+                      <a href={link}>
+                        <button
+                          className="w-full text-gray-primary flex justify-between  py-2 text-[18px] font-semibold opacity-70 transition-all ease-in-out delay-150 "
+                          onClick={() => toggleSubMenu(label)}
+                        >
+                          {label}
+                          {subItems || Component ? (expanded === label ? <ChevronUp size={18} /> : <ChevronDown size={18} />) : ''}
+                        </button>
+                      </a>
+                      {expanded === label && subItems?.length > 0 && (
+                        <div className="">
+                          {subItems?.map(({ title, link }, index) => (
+                            <a key={index} href={link} >
+                              <div className="hover:bg-blue-50 py-1">
+                                {title}
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      {expanded === label && Component && (
+                        < Component
+                          handleMouseEnter={handleMouseEnter}
+                          {...(data && Array.isArray(data)
+                            ? { menuItems: data.map(({ productName, _id }) => ({ title: productName, _id })) }
+                            : { ...data })}
+                        />
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </nav>
       </nav>
 

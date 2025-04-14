@@ -17,6 +17,9 @@ import {
   FETCH_DESTINATIONS_REQUEST,
   FETCH_DESTINATIONS_SUCCESS,
   SET_SELECTED_DESTINATION,
+  UPLOAD_DESTINATION_IMAGE_FAILURE,
+  UPLOAD_DESTINATION_IMAGE_REQUEST,
+  UPLOAD_DESTINATION_IMAGE_SUCCESS,
 } from "../actions/destinationActions";
 
 const initialState = {
@@ -38,6 +41,7 @@ export const destnationReducer = (state = initialState, action) => {
     case ADD_DESTINATION_REQUEST:
     case DELETE_DESTINATION_REQUEST:
     case EDIT_DESTINATION_REQUEST:
+    case UPLOAD_DESTINATION_IMAGE_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_DESTINATIONS_SUCCESS:
@@ -77,6 +81,7 @@ export const destnationReducer = (state = initialState, action) => {
       };
 
     case EDIT_DESTINATION_SUCCESS:
+    case UPLOAD_DESTINATION_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -92,12 +97,6 @@ export const destnationReducer = (state = initialState, action) => {
         selectedDestination: action.payload,
       };
 
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
-
     case ADD_DESTINATION_SUCCESS:
     case DELETE_DESTINATION_SUCCESS:
       return initialState;
@@ -107,6 +106,7 @@ export const destnationReducer = (state = initialState, action) => {
     case DELETE_DESTINATION_FAILURE:
     case ADD_DESTINATION_FAILURE:
     case EDIT_DESTINATION_FAILURE:
+    case UPLOAD_DESTINATION_IMAGE_FAILURE:
       return {
         ...state,
         loading: false,

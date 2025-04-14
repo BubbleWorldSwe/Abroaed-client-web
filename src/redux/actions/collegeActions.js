@@ -14,6 +14,10 @@ export const EDIT_COLLEGE_REQUEST = "EDIT_COLLEGE_REQUEST";
 export const EDIT_COLLEGE_SUCCESS = "EDIT_COLLEGE_SUCCESS";
 export const EDIT_COLLEGE_FAILURE = "EDIT_COLLEGE_FAILURE";
 
+export const UPLOAD_COLLEGE_IMAGE_REQUEST = "UPLOAD_COLLEGE_IMAGE_REQUEST";
+export const UPLOAD_COLLEGE_IMAGE_SUCCESS = "UPLOAD_COLLEGE_IMAGE_SUCCESS";
+export const UPLOAD_COLLEGE_IMAGE_FAILURE = "UPLOAD_COLLEGE_IMAGE_FAILURE";
+
 export const SET_SELECTED_COLLEGE = "SET_SELECTED_COLLEGE";
 
 export const fetchCollegesRequest = (page) => ({
@@ -79,4 +83,19 @@ export const editCollegeFailure = (error) => ({
 export const setSelectedCollege = (college) => ({
   type: SET_SELECTED_COLLEGE,
   payload: college,
+});
+
+export const uploadCollegeImageRequest = (id, imageData) => ({
+  type: UPLOAD_COLLEGE_IMAGE_REQUEST,
+  payload: { id, imageData },
+});
+
+export const uploadCollegeImageSuccess = (data) => ({
+  type: UPLOAD_COLLEGE_IMAGE_SUCCESS,
+  payload: data,
+});
+
+export const uploadCollegeImageFailure = (error) => ({
+  type: UPLOAD_COLLEGE_IMAGE_FAILURE,
+  payload: error,
 });

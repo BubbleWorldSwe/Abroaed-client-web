@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionMainHeader from "../../../../typographies/sectionMainHeader";
-import FaqsQuestionText from "../../../../typographies/faqsQuestionText";
-import FaqsAnswerText from "../../../../typographies/faqsAnswerText";
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader";
+import FaqsQuestionText from "../../../../styleComponents/faqsQuestionText";
+import FaqsAnswerText from "../../../../styleComponents/faqsAnswerText";
 
 const PathwaysProgramFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);

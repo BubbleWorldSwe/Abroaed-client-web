@@ -1,21 +1,20 @@
 /* eslint-disable react/prop-types */
 import languageHero from "../../../../assets/languageHero.png";
+import { heroStyle } from "../../../comman/contexts/heroStyle";
+import HeroTextComponent from "../../../styleComponents/heroText";
 
 function LanguagePrepHero({ languagePrepsDetails }) {
   return (
     <div className="">
-      <section
-        className="relative h-[100vh] bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${languageHero})`,
-        }}
-      >
-        <div className="absolute bottom-3 py-6  max-w-4xl  flex flex-col  justify-start  mx-auto px-12">
-          <h1 className="text-[57px]  font-extrabold leading-tight  text-[#F4F4F5] ">
-            {languagePrepsDetails?.productName}
-          </h1>
-        </div>
-      </section>
+      <HeroTextComponent img={languageHero}>
+        <h1 className={heroStyle.header}>
+          {languagePrepsDetails?.productName}
+        </h1>
+        {/* <p className={heroStyle.text}>
+          Experience Academic Excellence in the Land of Opportunities
+        </p> */}
+      </HeroTextComponent>
+
     </div>
   );
 }

@@ -10,9 +10,12 @@ import AboutLanguagePrepModal from "../modals/aboutLanguagePrepModal";
 
 import BatchesLanguagePrepModal from "../modals/batchesLanguagePrepModal";
 import FaqLanguagePrepModal from "../modals/faqLanguagePrepModal";
-import { useLocation, useParams } from "react-router-dom";
-import { editLanguagePrepRequest } from "../../../redux/actions/languagePrepsActions";
-import { getLanguagePrepDetailsById } from "../../../api/languagePrepsApi";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  deleteLanguagePrepRequest,
+  editLanguagePrepRequest,
+  uploadLanguagePrepImageRequest,
+} from "../../../redux/actions/languagePrepsActions";
 import { useDispatch, useSelector } from "react-redux";
 
 const LanguagePrepDetails = () => {
@@ -21,6 +24,7 @@ const LanguagePrepDetails = () => {
   const [selectedSection, setSelectedSection] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
   const [activeModalIndex, setActiveModalIndex] = useState(null);
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -55,6 +59,27 @@ const LanguagePrepDetails = () => {
     setFormdata(params);
     openModal("Batches", "edit", 1);
   }
+
+  async function onUploadImage(data) {
+    try {
+      console.log(data);
+      dispatch(
+        uploadLanguagePrepImageRequest(id, {
+          files: data,
+          type: "logo",
+        })
+      );
+      //  fetchTestPrepsDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleDelete = () => {
+    dispatch(deleteLanguagePrepRequest(id));
+    navigate("/admin/langPrep");
+  };
 
   const sectionConfig = [
     {
@@ -100,7 +125,10 @@ const LanguagePrepDetails = () => {
   return (
     <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
       <div className="accordion space-y-4">
-        <LanguageImageSection />
+        <LanguageImageSection
+          onUploadImage={onUploadImage}
+          handleDelete={handleDelete}
+        />
         {sectionConfig.map((sectionItem, index) => (
           <div
             key={index}

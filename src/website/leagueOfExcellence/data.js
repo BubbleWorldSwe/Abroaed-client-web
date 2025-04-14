@@ -501,7 +501,7 @@ export const plans = [
     {
         name: "Elite",
         title: "Includes all the ADVANCE features plus",
-        price: "₹ 3,99,999 (Inc. of GST)",
+        price: "₹ 3,49,999 (Inc. of GST)",
         buttonText: "Continue with Elite",
         recommended: false,
         features: [

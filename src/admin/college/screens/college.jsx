@@ -128,7 +128,7 @@ function College() {
             <div className="dark:border-gray-700 mx-4">
               <div className="flex justify-between py-3">
                 <div className="w-full flex space-y-3 md:space-y-0">
-                  <form className="w-full md:max-w-sm flex-1 md:mr-4">
+                  {/*   <form className="w-full md:max-w-sm flex-1 md:mr-4">
                     <label
                       htmlFor="default-search"
                       className="text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -164,7 +164,7 @@ function College() {
                   </form>
                   <div className="flex items-center space-x-4">
                     <img src={filter_list} alt="filterIcon" />
-                  </div>
+                  </div> */}
                 </div>
                 {isWriteAccess && (
                   <div className="flex gap-4">
@@ -172,14 +172,14 @@ function College() {
                       onClick={() => setIsAddModalOpen(true)}
                       label={"New College"}
                     />
-                    <button
+                    {/*  <button
                       onClick={() => {}}
                       type="button"
                       className="w-full whitespace-nowrap md:w-auto flex items-center gap-2  py-1 px-4 text-sm font-semibold  text-gray-700 focus:outline-none bg-[#EDBD05] rounded-lg border border-gray-200 hover:bg-yellow-300   focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
                       <Upload className="w-4 h-4" />
                       Upload CSV
-                    </button>
+                    </button> */}
                   </div>
                 )}
               </div>

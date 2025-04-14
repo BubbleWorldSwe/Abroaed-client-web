@@ -54,6 +54,14 @@ const StudentTable = ({
     );
   };
 
+  function getCounsellor(studentProfile) {
+    console.log(studentProfile);
+    const counsellor = studentProfile?.find(
+      (member) => member?.roleId?.roleName === "Counsellor"
+    );
+    return counsellor || null;
+  }
+
   const handleViewDetails = (student) => {
     dispatch(setSelectedStudent(student));
     navigate(`/admin/students/${encodeURIComponent(student?._id)}`, {
@@ -76,7 +84,7 @@ const StudentTable = ({
             Student Name
           </th>
           <th scope="col" className="px-4 py-3 min-w-[10rem]">
-            Level
+            Phone Number
           </th>
           <th scope="col" className="px-4 py-3 min-w-[7rem]">
             Service
@@ -96,88 +104,95 @@ const StudentTable = ({
         {students.map(
           (item) =>
             item.index === currentPage &&
-            item.data.map((member, index) => (
-              <tr
-                key={index}
-                className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <td className="px-4 py-3 w-4">
-                  <CheckboxField
-                    onClick={(e) => e.stopPropagation()}
-                    id={`checkbox-college-${index}`}
-                    htmlFor={`checkbox-college-${index}`}
-                  />
-                </td>
-                <td
-                  scope="row"
-                  className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
+            item.data.map((member, index) => {
+              let counsellor = getCounsellor(member?.assignTeamMembers);
+              return (
+                <tr
+                  key={index}
+                  className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
-                  {`${member?.user?.firstName} ${member?.user?.lastName}`}
-                </td>
-                <td className="px-4 py-3"> {member.level}</td>
-                <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {member?.servicerType || "--"}
-                </td>
-                <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  {member.counsellor}
-                </td>
-                <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  <Tooltip
-                    content={<TooltipContent />}
-                    placement="bottom"
-                    className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
+                  <td className="px-4 py-3 w-4">
+                    <CheckboxField
+                      onClick={(e) => e.stopPropagation()}
+                      id={`checkbox-college-${index}`}
+                      htmlFor={`checkbox-college-${index}`}
+                    />
+                  </td>
+                  <td
+                    scope="row"
+                    className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
                   >
-                    <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
-                      {member.appCount}
-                    </span>
-                  </Tooltip>
-                </td>
-                <td className="px-4 py-3">
-                  <button
-                    className="focus:outline-none"
-                    onClick={(e) => handleDropdownToggle(e, index)}
-                  >
-                    <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                  </button>
-                  {dropdownVisible === index && (
-                    <div
-                      ref={dropdownRef}
-                      className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                        dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
-                      }`}
+                    {`${member?.user?.firstName} ${member?.user?.lastName}`}
+                  </td>
+                  <td className="px-4 py-3">+91 {member?.user?.mobile}</td>
+                  <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {member?.servicerType || "--"}
+                  </td>
+                  <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {counsellor?.firstName || counsellor?.lastName
+                      ? `${counsellor?.firstName} ${counsellor?.lastName}`
+                      : null}
+                  </td>
+                  <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <Tooltip
+                      content={<TooltipContent />}
+                      placement="bottom"
+                      className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
                     >
-                      <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                        {isWriteAccess && (
+                      <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
+                        {member.appCount}
+                      </span>
+                    </Tooltip>
+                  </td>
+                  <td className="px-4 py-3">
+                    <button
+                      className="focus:outline-none"
+                      onClick={(e) => handleDropdownToggle(e, index)}
+                    >
+                      <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                    </button>
+                    {dropdownVisible === index && (
+                      <div
+                        ref={dropdownRef}
+                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                          dropdownDirection === "up"
+                            ? "bottom-full mb-2"
+                            : "mt-2"
+                        }`}
+                      >
+                        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                          {isWriteAccess && (
+                            <li>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  handleOpenAddModal("assign");
+                                  handleAssignTeamMember(member);
+                                }}
+                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                <Plus className="w-4 h-4" />
+                                <span>Assign Member</span>
+                              </button>
+                            </li>
+                          )}
                           <li>
                             <button
                               type="button"
-                              onClick={() => {
-                                handleOpenAddModal("assign");
-                                handleAssignTeamMember(member);
-                              }}
+                              onClick={() => handleViewDetails(member)}
                               className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
-                              <Plus className="w-4 h-4" />
-                              <span>Assign Member</span>
+                              <Eye className="w-4 h-4" />
+                              <span>View Profile</span>
                             </button>
                           </li>
-                        )}
-                        <li>
-                          <button
-                            type="button"
-                            onClick={() => handleViewDetails(member)}
-                            className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Eye className="w-4 h-4" />
-                            <span>View Profile</span>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))
+                        </ul>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              );
+            })
         )}
       </tbody>
       <TableFooter

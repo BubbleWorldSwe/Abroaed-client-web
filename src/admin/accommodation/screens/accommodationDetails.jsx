@@ -14,9 +14,14 @@ import AvailabilityModal from "../modals/availabilityModal";
 import { sectionsData } from "../data";
 import AccommodationAvailability from "../components/accommodationAvailability";
 import { useDispatch, useSelector } from "react-redux";
-import { editAccommodationRequest } from "../../../redux/actions/accommodationActions";
+import {
+  deleteAccommodationRequest,
+  editAccommodationRequest,
+  uploadAccommodationImageRequest,
+} from "../../../redux/actions/accommodationActions";
 import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
+import { useNavigate } from "react-router-dom";
 
 const AccommodationDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -31,7 +36,7 @@ const AccommodationDetails = () => {
   const accommodationDetails = useSelector(
     (state) => state?.accommodations?.selectedAccommodation
   );
-
+  const navigate = useNavigate();
   const [destinationsList, setDestinationsList] = useState([]);
   const [statesList, setStatesList] = useState([]);
 
@@ -120,6 +125,27 @@ const AccommodationDetails = () => {
     }
   }
 
+  const handleDelete = () => {
+    dispatch(deleteAccommodationRequest(accommodationDetails?._id));
+    navigate("/admin/accommodation");
+  };
+
+  async function onUploadImage(data) {
+    try {
+      console.log(data);
+      dispatch(
+        uploadAccommodationImageRequest(accommodationDetails._id, {
+          files: data,
+          type: "cover",
+        })
+      );
+      //  fetchTestPrepsDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -137,7 +163,10 @@ const AccommodationDetails = () => {
         onClose={handleCloseAddModal}
       />
       <div className="accordion space-y-4 ">
-        <AccommodationImageSection />
+        <AccommodationImageSection
+          onUploadImage={onUploadImage}
+          handleDelete={handleDelete}
+        />
         {sectionComponents.map((sectionItem, index) => (
           <div
             key={index}

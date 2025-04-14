@@ -5,10 +5,10 @@ const CollegeFunFactCard = ({ icon, title, desc }) => {
     return (
         <>
             <div
-                className="flex w-full  bg-black  relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800"
+                className="flex w-full  hover:scale-[1.01] transition-all ease-in-out delay-100 bg-gray-primary  relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800"
             >
                 <div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  pointer-events-none"
+                    className="absolute inset-0   pointer-events-none"
                     style={{
                         left: "auto", // Ensure it starts from the right edge
                         right: 0, // Anchor the gradient to the right
@@ -18,8 +18,8 @@ const CollegeFunFactCard = ({ icon, title, desc }) => {
                 ></div>
                 <div className="text-yellow-500 text-4xl">{icon}</div>
                 <div className="flex flex-col gap-4 text-white text-left">
-                    <p className="text-[32px] font-bold text-[#FFFFFF]">{title}</p>
-                    <p className="text-[22px] font-semibold text-[#F4F4F5] ">
+                    <p className="text-[24px] md:text-[32px] font-bold text-[#FFFFFF]">{title}</p>
+                    <p className="text-[16px] md:text-[22px] font-semibold text-[#F4F4F5] ">
                         {desc}
                     </p>
                 </div>

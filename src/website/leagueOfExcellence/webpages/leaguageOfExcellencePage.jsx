@@ -1,6 +1,6 @@
-import Blogs from "../../comman/components/blogs";
+// import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import Testimonials from "../../comman/components/testimonials";
+// import Testimonials from "../../comman/components/testimonials";
 import Footer from "../../comman/sections/footerSection";
 import Header from "../../comman/sections/headerSection";
 import LeaguageOfExcellenceExplorePlan from "./sections/leaguageOfExcellenceExplorePlan";
@@ -10,13 +10,14 @@ import LeaguageOfExcellenceServicesOverviews from "./sections/leaguageOfExcellen
 import LeaguageOfExcellenceUniversity from "./sections/leaguageOfExcellenceUniversity";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
-import vectorDownNose from "../../../assets/vectorDownNose.png";
+// import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { countriesName } from "../data";
+import SectionComponent from "../../styleComponents/sectionComponent";
 
 const LeaguageOfExcellencePage = () => {
   const [selectCountry, setSelectCountry] = useState(
@@ -42,64 +43,80 @@ const LeaguageOfExcellencePage = () => {
     <div className="font-rethink">
       <Header />
       <LeaguageOfExcellenceHero />
-      <LeaguageOfExcellenceServicesOverviews
-        setCountry={setSelectCountry}
-        countriesName={countriesName}
-      />
-      <div className="relative">
-        <LeaguageOfExcellenceUniversity
-          selectCountry={selectCountry}
-          onFormSubmit={handleAddLead}
-        />
-        <div className="absolute bottom-72 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectoreLeftFlat}
-            alt="Counselling session"
+      <div className="grid grid-cols-1 gap-10 md:gap-16">
+        <SectionComponent>
+          <LeaguageOfExcellenceServicesOverviews
+            setCountry={setSelectCountry}
+            countriesName={countriesName}
           />
+        </SectionComponent>
+        <div className="relative">
+          <div>
+            <LeaguageOfExcellenceUniversity
+              selectCountry={selectCountry}
+              onFormSubmit={handleAddLead}
+            />
+          </div>
+          <div className="absolute bottom-72 left-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectoreLeftFlat}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
-      <div className="relative">
-        <LeaguageOfExcellenceExplorePlan
-          onFormSubmit={handleAddLead}
-          source={source.leaguageOfExcellence}
-          entity={entity.explorePlans}
-        />
-        <div className="absolute top-20 right-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorleftNose}
-            alt="Counselling session"
-          />
+        <div className="relative">
+          <SectionComponent>
+            <LeaguageOfExcellenceExplorePlan
+              onFormSubmit={handleAddLead}
+              source={source.leaguageOfExcellence}
+              entity={entity.explorePlans}
+            />
+          </SectionComponent>
+          <div className="absolute top-20 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorleftNose}
+              alt="Counselling session"
+            />
+          </div>
         </div>
-      </div>
-      <LeaguageOfExcellenceFaq />
-      <div className="relative">
-        <Testimonials />
-        <div className="absolute top-32 left-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorDownNose}
-            alt="Counselling session"
-          />
+        <SectionComponent>
+          <LeaguageOfExcellenceFaq />
+        </SectionComponent>
+        {/* <div className="relative">
+          <SectionComponent>
+            <Testimonials />
+          </SectionComponent>
+          <div className="absolute top-32 left-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorDownNose}
+              alt="Counselling session"
+            />
+          </div>
+        </div> */}
+        {/* <SectionComponent>
+          <Blogs />
+        </SectionComponent> */}
+        <div className="relative">
+          <SectionComponent>
+            <ContactUsForm
+              onFormSubmit={handleAddLead}
+              source={source.leaguageOfExcellence}
+              entity={entity.contactUs}
+            />
+          </SectionComponent>
+          <div className="absolute -top-16 right-0 -z-10">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorLeftNoseSmall}
+              alt="Counselling session"
+            />
+          </div>
         </div>
+        <Footer />
       </div>
-      <Blogs />
-      <div className="relative">
-        <ContactUsForm
-          onFormSubmit={handleAddLead}
-          source={source.leaguageOfExcellence}
-          entity={entity.contactUs}
-        />
-        <div className="absolute -top-16 right-0 -z-10">
-          <img
-            className="rounded-lg w-full h-full object-cover"
-            src={vectorLeftNoseSmall}
-            alt="Counselling session"
-          />
-        </div>
-      </div>
-      <Footer />
     </div>
   );
 };

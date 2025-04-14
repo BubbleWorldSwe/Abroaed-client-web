@@ -2,7 +2,7 @@
 import { plans } from "../../data";
 import { useState } from "react";
 import FeatureLOEModal from "../../modals/featureLOEModal";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
   const [openModal, setOpenModal] = useState(false);
@@ -22,17 +22,17 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
         isOpen={openModal}
         onClose={handleCloseAddModal}
       />
-      <div className="relative z-10 py-5">
-        <section className="dark:bg-gray-900 relative px-6 md:px-12 mx-auto">
-          <div className=" mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1 py-6 md:py-14">
+      <div className="relative z-10">
+        <section >
+          <div className="">
             <SectionMainHeader className="">Explore Plans</SectionMainHeader>
             <hr className="" />
           </div>
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
+          <div className="flex flex-col md:flex-row gap-6 justify-center pt-10">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative p-6 hover:scale-[1.02] py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
+                className={`relative p-6 hover:scale-[1.01] transition-all ease-in-out delay-100 py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
                                 }`}
               >
                 {plan.recommended && (
@@ -81,7 +81,7 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
 
           <div className="flex justify-center mt-10">
             <button
-              className={`bg-yellow-primary hover:bg-yellow-300 text-[16px] md:text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
+              className={`bg-yellow-primary hover:bg-gray-primary hover:text-white text-[16px] md:text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
               onClick={handleOpenAddModal}
             >
               See full feature comparison

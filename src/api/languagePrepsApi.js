@@ -5,6 +5,7 @@ import {
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
 export const getLanguagePreps = async (page) => {
@@ -98,5 +99,26 @@ export const getLanguagePrepDetailsById = async (id) => {
     }
   } catch (error) {
     throw error;
+  }
+};
+
+export const setLanguagePrepUploadFile = async (id, imageData) => {
+  try {
+    const { files, type } = imageData;
+
+    console.log(id, imageData);
+    const data = await makePutRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/language-preps/upload/file/${id}`,
+      {
+        files,
+        type,
+      }
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

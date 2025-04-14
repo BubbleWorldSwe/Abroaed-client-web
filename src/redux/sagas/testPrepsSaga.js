@@ -3,6 +3,7 @@ import {
   getTestPreps,
   setAddTestPrep,
   setDeleteTestPrep,
+  setTestPrepUploadFile,
   setUpdateTestPrep,
 } from "../../api/testPrepsApi"; // API functions
 import {
@@ -21,6 +22,9 @@ import {
   fetchAllTestPrepsSuccess,
   fetchTestPrepsFailure,
   fetchTestPrepsSuccess,
+  UPLOAD_TESTPREP_IMAGE_REQUEST,
+  uploadTestPrepImageFailure,
+  uploadTestPrepImageSuccess,
 } from "../actions/testPrepsActions";
 import { toast } from "react-toastify";
 
@@ -104,6 +108,25 @@ function* handleEditTestPrep(action) {
   }
 }
 
+// Upload a test prep Image
+function* handleUploadTestPrepImage(action) {
+  try {
+    const { id, imageData } = action.payload;
+    const response = yield call(setTestPrepUploadFile, id, imageData);
+
+    if (response.status === 200) {
+      yield put(uploadTestPrepImageSuccess(response.data));
+      toast.success(response.message);
+    } else {
+      yield put(uploadTestPrepImageFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(uploadTestPrepImageFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 // Root saga for test preps
 export default function* testPrepsSaga() {
   yield takeLatest(FETCH_TESTPREPS_REQUEST, fetchTestPreps);
@@ -111,4 +134,5 @@ export default function* testPrepsSaga() {
   yield takeLatest(ADD_TESTPREP_REQUEST, addNewTestPrep);
   yield takeLatest(DELETE_TESTPREP_REQUEST, deleteTestPrep);
   yield takeLatest(EDIT_TESTPREP_REQUEST, handleEditTestPrep);
+  yield takeLatest(UPLOAD_TESTPREP_IMAGE_REQUEST, handleUploadTestPrepImage);
 }

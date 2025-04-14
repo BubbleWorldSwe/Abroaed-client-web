@@ -6,6 +6,7 @@ import {
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
 export const getAccommodations = async (page) => {
@@ -126,5 +127,24 @@ export const getAccommodationDetailsById = async (id) => {
     }
   } catch (error) {
     throw error;
+  }
+};
+
+export const setAccommodationUploadFile = async (id, imageData) => {
+  try {
+    const { files, type } = imageData;
+    const data = await makePutRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/accomodation/upload/file/${id}`,
+      {
+        files,
+        type,
+      }
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

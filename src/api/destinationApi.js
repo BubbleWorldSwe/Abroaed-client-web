@@ -5,6 +5,7 @@ import {
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
 export const getDestinations = async (page) => {
@@ -99,5 +100,24 @@ export const getDestinationDetailsById = async (id) => {
     }
   } catch (error) {
     throw error;
+  }
+};
+
+export const setDestinationUploadFile = async (id, imageData) => {
+  try {
+    const { files, type } = imageData;
+    const data = await makePutRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/destination/upload/file/${id}`,
+      {
+        files,
+        type,
+      }
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

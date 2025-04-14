@@ -1,33 +1,22 @@
 /* eslint-disable react/prop-types */
 import locationIcon from "../../../../assets/locationIcon.png";
 import worldIcon from "../../../../assets/worldIcon.png";
+import { heroStyle } from "../../../comman/contexts/heroStyle";
+import HeroTextComponent from "../../../styleComponents/heroText";
 
 const CollegeHeroSection = ({ img, collegeDetails }) => {
   return (
     <div className="">
-      <section
-        className="relative h-[100vh] bg-cover bg-center "
-        style={{
-          backgroundImage: `url(${img})`,
-          opacity: "1",
-        }}
-      >
-        <div
-          className="absolute inset-0 bg-black opacity-30"
-          style={{ mixBlendMode: "multiply" }}
-        ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
-
-        {/* Text Content */}
-        <div className="absolute bottom-3    flex flex-col  justify-start  mx-auto px-12">
-          <h1 className="text-[57px]  font-extrabold  text-[#F4F4F5] ">
-            {collegeDetails?.name}
-          </h1>
-          <div className=" font-medium text-[#F4F4F5] text-sm mt-3   flex gap-5">
+      <HeroTextComponent img={img}>
+        <h1 className={heroStyle.header}>
+          Your trusted compass to opportunities abroad
+        </h1>
+        <div >
+          <div className="  text-sm mt-3   grid grid-cols-1 md:flex gap-1 md:gap-5">
             <p>
               {collegeDetails?.entityType}
             </p>
-            <div className="flex gap-2 whitespace-nowrap items-center ">
+            <div className="flex gap-2 whitespace-nowrap  items-center ">
               <img
                 src={locationIcon}
                 className="w-[14px] h-[14px] object-contain"
@@ -48,9 +37,10 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
               <div></div>
             </div>
           </div>
-          <br />
         </div>
-      </section>
+      </HeroTextComponent>
+
+
     </div>
   );
 };

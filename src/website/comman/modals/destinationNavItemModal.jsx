@@ -10,34 +10,55 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div
-      className="absolute left-0 top-full w-max py-[5px]  z-50"
-      onMouseEnter={() => handleMouseEnter("destinations")}
-    >
-      <ul className="space-1 grid grid-cols-2 shadow-lg max-h-[80vh] w-[35vw] gap-1 py-2  rounded-b-lg mt-2 bg-white overflow-y-auto">
+    <>
+      <div
+        className="absolute left-0 top-full w-max py-[5px]  z-50"
+        onMouseEnter={() => handleMouseEnter("destinations")}
+      >
+        <ul className="hidden  space-1 md:grid grid-cols-2 shadow-lg max-h-[80vh] w-[35vw] gap-1 py-2  rounded-b-lg mt-2 bg-white overflow-y-auto">
+          {allDestinations?.map((item, index) => (
+            <li
+              key={item._id}
+              className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-5 py-3 hover:bg-gray-100 rounded-lg transition-all"
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="flex items-center gap-2">
+                <span className="">
+                  <Flag width={30} code={item?.countryId?.code} style={{}} />
+                </span>
+                <a href={`/destinations/${item._id}`} className="cursor-pointer">
+                  {item?.countryId?.name}
+                </a>
+              </div>
+              <ChevronRightIcon
+                className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
+                  }`}
+              />
+            </li>
+          ))}
+        </ul>
+
+      </div>
+      <ul className="flex px-2  items-center gap-3 py-1 bg-blue-100 overflow-x-auto sm:hidden">
         {allDestinations?.map((item, index) => (
           <li
-            key={item._id}
-            className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-5 py-3 hover:bg-gray-100 rounded-lg transition-all"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            key={index}
+            className=""
           >
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col  justify-center items-center gap-1">
               <span className="">
-                <Flag width={30} code={item?.countryId?.code} style={{}} />
+                <Flag width={50} code={item?.countryId?.code} style={{}} />
               </span>
-              <a href={`/destinations/${item._id}`} className="cursor-pointer">
+              <a href={`/destinations/${item._id}`} className="cursor-pointer whitespace-nowrap">
                 {item?.countryId?.name}
               </a>
             </div>
-            <ChevronRightIcon
-              className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
-                }`}
-            />
+
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

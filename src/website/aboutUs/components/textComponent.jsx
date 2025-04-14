@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
-import PrimaryBodyText from "../../typographies/primaryBodyText";
-import SecondaryTitle from "../../typographies/secondaryTitle";
+import PrimaryBodyText from "../../styleComponents/primaryBodyText";
+import SecondaryTitle from "../../styleComponents/secondaryTitle";
 
 const TextComponent = ({ text, heading }) => (
   <div>

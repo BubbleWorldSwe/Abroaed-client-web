@@ -1,4 +1,4 @@
-import SectionMainHeader from "../../../../typographies/sectionMainHeader"
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader"
 import PathwaysProgramImmigrationCard from "../../components/pathwaysProgramImmigrationCard"
 
 const PathwaysProgramImmigrationDetailsSection = () => {

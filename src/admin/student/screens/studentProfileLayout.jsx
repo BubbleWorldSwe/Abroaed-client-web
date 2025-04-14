@@ -29,7 +29,7 @@ import { getCollegesByDestinationId } from "../../../api/collegesApi";
 import {
   getStudentApplications,
   getStudentPrepsBatches,
-  getStudentSavedPrefrences,
+  getStudentSavedPreferences,
   getStudentTransactions,
   setCreateStudentApplication,
   setUpdateStudentApplication,
@@ -40,10 +40,7 @@ import UpdateApplicationModal from "../modals/updateApplicationModal";
 import UpdateDocApplicationModal from "../modals/uploadDocumentApplicationModal";
 import { statusSequence } from "../../../constants/values";
 import StatusConfirmationModal from "../modals/statusConfirmationModal";
-import {
-  addTransactionRequest,
-  fetchTransactionsRequest,
-} from "../../../redux/actions/transactionActions";
+import { fetchTransactionsRequest } from "../../../redux/actions/transactionActions";
 import { setAddTransaction } from "../../../api/transactionApi";
 
 const StudentProfileLayout = () => {
@@ -160,7 +157,7 @@ const StudentProfileLayout = () => {
 
   async function fetchStudentSavedPefrences() {
     try {
-      const list = await getStudentSavedPrefrences(id);
+      const list = await getStudentSavedPreferences(id);
 
       if (list.status === 200) {
         dispatch(addStudentSavedPrefrences(list.data?.result));
@@ -240,7 +237,7 @@ const StudentProfileLayout = () => {
   }
 
   const getNextStatus = (currentStatus) => {
-    if (currentStatus === "awaiting_response") {
+    if (currentStatus === "application_filled") {
       return ["rejected", "offer_letter_received"];
     }
 
@@ -249,6 +246,8 @@ const StudentProfileLayout = () => {
       ? [statusSequence[currentIndex + 1]]
       : [];
   };
+
+  console.log(selectedApplication);
 
   useEffect(() => {
     fetchData();
@@ -373,6 +372,7 @@ const StudentProfileLayout = () => {
             onOpenModal={() => handleModal("assignTeam")}
             onUpdate={onUpdateLead}
           />
+
           <DocumentLibrary />
           <StudentSavedPreference />
           <StudentApplication

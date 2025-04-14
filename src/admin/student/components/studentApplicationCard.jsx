@@ -16,6 +16,7 @@ const StudentApplicationCard = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
   const { isWriteAccess } = useSelector((state) => state.auth);
+
   const toggleMenu = (data) => {
     setIsMenuOpen((prev) => !prev);
     setSelectedApplication(data);
@@ -53,45 +54,47 @@ const StudentApplicationCard = ({
           <h5 className="text-[19px] font-semibold text-gray-900 line-clamp-1">
             {data?.college?.name}
           </h5>
-          {isWriteAccess && (
-            <div className="relative" ref={menuRef}>
-              <button onClick={() => toggleMenu(data)} className="p-2">
-                <MoreVerticalIcon size={20} color="#71717A" />
-              </button>
-              {isMenuOpen && (
-                <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
-                  <ul className="text-gray-700">
-                    <li
-                      onClick={onOpen}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                    >
-                      Modify
-                    </li>
-
-                    {statusSequence.indexOf(status) <=
-                      statusSequence.indexOf("verifying_documents") && (
+          {isWriteAccess &&
+            status !== "rejected" &&
+            status !== "offer_letter_received" && (
+              <div className="relative" ref={menuRef}>
+                <button onClick={() => toggleMenu(data)} className="p-2">
+                  <MoreVerticalIcon size={20} color="#71717A" />
+                </button>
+                {isMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                    <ul className="text-gray-700">
                       <li
-                        onClick={onOpenDocUpdate}
+                        onClick={onOpen}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                       >
-                        Request Documents
+                        Modify
                       </li>
-                    )}
 
-                    {status !== "rejected" &&
-                      status !== "offer_letter_received" && (
+                      {statusSequence.indexOf(status) <=
+                        statusSequence.indexOf("verifying_documents") && (
                         <li
-                          onClick={onOpenStatusModal}
+                          onClick={onOpenDocUpdate}
                           className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                         >
-                          Move Forward
+                          Request Documents
                         </li>
                       )}
-                  </ul>
-                </div>
-              )}
-            </div>
-          )}
+
+                      {status !== "rejected" &&
+                        status !== "offer_letter_received" && (
+                          <li
+                            onClick={onOpenStatusModal}
+                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                          >
+                            Move Forward
+                          </li>
+                        )}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
         </div>
 
         <p className="text-gray-500 mt-2">{data?.intake}</p>

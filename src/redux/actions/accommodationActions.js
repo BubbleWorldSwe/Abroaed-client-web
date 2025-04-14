@@ -15,6 +15,13 @@ export const EDIT_ACCOMMODATION_REQUEST = "EDIT_ACCOMMODATION_REQUEST";
 export const EDIT_ACCOMMODATION_SUCCESS = "EDIT_ACCOMMODATION_SUCCESS";
 export const EDIT_ACCOMMODATION_FAILURE = "EDIT_ACCOMMODATION_FAILURE";
 
+export const UPLOAD_ACCOMMODATION_IMAGE_REQUEST =
+  "UPLOAD_ACCOMMODATION_IMAGE_REQUEST";
+export const UPLOAD_ACCOMMODATION_IMAGE_SUCCESS =
+  "UPLOAD_ACCOMMODATION_IMAGE_SUCCESS";
+export const UPLOAD_ACCOMMODATION_IMAGE_FAILURE =
+  "UPLOAD_ACCOMMODATION_IMAGE_FAILURE";
+
 export const SET_SELECTED_ACCOMMODATION = "SET_SELECTED_ACCOMMODATION";
 
 // Fetch Accommodations Actions
@@ -85,4 +92,19 @@ export const editAccommodationFailure = (error) => ({
 export const setSelectedAccommodation = (accommodation) => ({
   type: SET_SELECTED_ACCOMMODATION,
   payload: accommodation,
+});
+
+export const uploadAccommodationImageRequest = (id, imageData) => ({
+  type: UPLOAD_ACCOMMODATION_IMAGE_REQUEST,
+  payload: { id, imageData },
+});
+
+export const uploadAccommodationImageSuccess = (data) => ({
+  type: UPLOAD_ACCOMMODATION_IMAGE_SUCCESS,
+  payload: data,
+});
+
+export const uploadAccommodationImageFailure = (error) => ({
+  type: UPLOAD_ACCOMMODATION_IMAGE_FAILURE,
+  payload: error,
 });

@@ -56,20 +56,20 @@ const AddProductTestPrepModal = ({
                 onChange={handleChange}
                 placeholder={"Enter Product Name"}
               />
-              <SelectField
+              <TextInputField
                 label="Exam"
                 name="exam"
                 type="text"
-                // value={formData?.exam}
-                // onChange={handleChange}
+                value={formData?.exam}
+                onChange={handleChange}
                 placeholder={"Enter Exam"}
               />
-              <SelectField
+              <TextInputField
                 label="Language"
                 name="language"
                 type="text"
-                // value={formData?.language}
-                // onChange={handleChange}
+                value={formData?.language}
+                onChange={handleChange}
                 placeholder={"Enter Language"}
               />
 

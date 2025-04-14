@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 
 function LanguagePrepAbout({ languagePrepsDetails }) {
   return (
-    <div className="relative z-10 mx-auto px-12">
-      <div className="mx-auto  max-w-screen-2xl mt-8 flex flex-col py-2 gap-6">
+    <div className="relative  z-10 ">
+      <div className=" mt-8 flex flex-col  gap-6">
         <header className=" not-format">
           <SectionMainHeader
             className="mb-2"

@@ -5,7 +5,7 @@ import vectorRightFlat from "../../../assets/vectorRightFlat.png";
 const DestinationFunFactCard = ({ icon, title, desc }) => {
   return (
     <>
-      <div className="flex md:w-[427px] sm:min-w-max bg-gray-primary relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800">
+      <div className="flex md:w-[427px] hover:scale-[1.01] transition-all ease-in-out delay-100 sm:min-w-max bg-gray-primary relative z-10 items-center space-x-4 overflow-hidden rounded-lg p-4 dark:border-gray-700 py-8 dark:bg-gray-800">
         <div
           className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50  rounded-lg pointer-events-none"
           style={{
@@ -22,8 +22,8 @@ const DestinationFunFactCard = ({ icon, title, desc }) => {
           />
         </div>
         <div className="flex flex-col   text-left">
-          <p className="text-[32px] text-[#FFFFFF] font-bold">{title}</p>
-          <p className="text-[22px] text-[#F4F4F5] font-semibold dark:text-gray-400">{desc}</p>
+          <p className="text-[24px] md:text-[32px] text-[#FFFFFF] font-bold">{title}</p>
+          <p className="text-[18px] md:text-[22px] text-[#F4F4F5] font-semibold dark:text-gray-400">{desc}</p>
         </div>
         <div className="absolute right-0">
           <img src={vectorRightFlat} />

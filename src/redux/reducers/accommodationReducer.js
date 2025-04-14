@@ -12,6 +12,9 @@ import {
   EDIT_ACCOMMODATION_SUCCESS,
   EDIT_ACCOMMODATION_FAILURE,
   SET_SELECTED_ACCOMMODATION,
+  UPLOAD_ACCOMMODATION_IMAGE_REQUEST,
+  UPLOAD_ACCOMMODATION_IMAGE_FAILURE,
+  UPLOAD_ACCOMMODATION_IMAGE_SUCCESS,
 } from "../actions/accommodationActions";
 
 const initialState = {
@@ -30,6 +33,10 @@ const initialState = {
 export const accommodationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ACCOMMODATIONS_REQUEST:
+    case ADD_ACCOMMODATION_REQUEST:
+    case DELETE_ACCOMMODATION_REQUEST:
+    case EDIT_ACCOMMODATION_REQUEST:
+    case UPLOAD_ACCOMMODATION_IMAGE_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_ACCOMMODATIONS_SUCCESS:
@@ -47,31 +54,14 @@ export const accommodationsReducer = (state = initialState, action) => {
         page: action.payload.page,
       };
 
-    case FETCH_ACCOMMODATIONS_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case ADD_ACCOMMODATION_REQUEST:
-      return { ...state, loading: true };
-
     case ADD_ACCOMMODATION_SUCCESS:
       return initialState;
-
-    case ADD_ACCOMMODATION_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case DELETE_ACCOMMODATION_REQUEST:
-      return { ...state, loading: true };
 
     case DELETE_ACCOMMODATION_SUCCESS:
       return initialState;
 
-    case DELETE_ACCOMMODATION_FAILURE:
-      return { ...state, loading: false, error: action.payload };
-
-    case EDIT_ACCOMMODATION_REQUEST:
-      return { ...state, loading: true };
-
     case EDIT_ACCOMMODATION_SUCCESS:
+    case UPLOAD_ACCOMMODATION_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -86,7 +76,11 @@ export const accommodationsReducer = (state = initialState, action) => {
         selectedAccommodation: action.payload,
       };
 
+    case FETCH_ACCOMMODATIONS_FAILURE:
+    case ADD_ACCOMMODATION_FAILURE:
+    case DELETE_ACCOMMODATION_FAILURE:
     case EDIT_ACCOMMODATION_FAILURE:
+    case UPLOAD_ACCOMMODATION_IMAGE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_ACCOMMODATION:

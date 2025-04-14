@@ -16,6 +16,13 @@ import { fetchAllTestPrepsRequest } from "./redux/actions/testPrepsActions";
 import { fetchAllLanguagePrepsRequest } from "./redux/actions/languagePrepsActions";
 import { fetchAllDestinationsRequest } from "./redux/actions/destinationActions";
 import { fetchAllBlogsRequest } from "./redux/actions/blogActions";
+import {
+  fetchStudentApplicationRequest,
+  fetchStudentPrepsBatchesRequest,
+  fetchStudentProfileRequest,
+  fetchStudentSavedPreferencesRequest,
+  fetchStudentTransactionsRequest,
+} from "./redux/actions/studentProfileActions";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -27,9 +34,9 @@ const App = () => {
     isLoggedInStudent,
     studentId,
     adminId,
-    student,
-    admin,
   } = useSelector((state) => state.auth);
+
+  const { leadId } = useSelector((state) => state.studentProfile);
 
   async function fetchData() {
     try {
@@ -42,6 +49,12 @@ const App = () => {
         if (studentToken && studentId) {
           dispatch(fetchSavedPreferencesRequest(studentId));
           dispatch(studentGetProfileRequest(studentId));
+
+          dispatch(fetchStudentProfileRequest(studentId));
+          dispatch(fetchStudentSavedPreferencesRequest(studentId));
+          dispatch(fetchStudentPrepsBatchesRequest(studentId));
+          dispatch(fetchStudentTransactionsRequest(studentId));
+          //   dispatch(fetchStudentApplicationRequest(leadId));
         }
       }
 
@@ -57,7 +70,10 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [dispatch, adminToken, studentToken]);
+    if (leadId) {
+      dispatch(fetchStudentApplicationRequest(leadId));
+    }
+  }, [dispatch, adminToken, studentToken, leadId]);
 
   return (
     <>

@@ -1,15 +1,15 @@
 
 import vectorRightRing from "../../../../assets/vectorRightRing.png"
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { steps } from "../../data";
 
 function FinanceHowItWorks() {
   return (
-    <div className="relative mx-auto px-10">
-      <div className="mx-auto w-full px-3 max-w-screen-2xl relative z-10">
+    <div className="relative">
+      <div className=" relative z-10">
         <section className="dark:bg-gray-900">
-          <div className="py-8 ">
+          <div className="pt-10 ">
             <div className="">
               <SectionMainHeader className={`mb-5`}>
                 How It Works?
@@ -22,10 +22,10 @@ function FinanceHowItWorks() {
               {steps.map((step) => (
                 <div
                   key={step.step}
-                  className="flex relative flex-col gap-1 h-full w-200 p-6 bg-gray-primary border border-gray-200 rounded-lg shadow"
+                  className="flex relative hover:scale-[1.01] transition-all ease-in-out delay-100 flex-col gap-1 h-full w-200 p-6 bg-gray-primary border border-gray-200 rounded-lg shadow"
                 >
                   <div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent to-black/50 rounded-lg  pointer-events-none"
+                    className="absolute  inset-0 bg-gradient-to-r from-transparent to-black/50 rounded-lg  pointer-events-none"
                     style={{
                       left: "auto",
                       right: 0,
@@ -38,7 +38,7 @@ function FinanceHowItWorks() {
                       {step.step}
                     </span> */}
                   </div>
-                  <h5 className="mb-2 text-[32px] font-bold tracking-tight text-[#FFFFFF]">
+                  <h5 className="mb-2 text-[24px] md:text-[32px] font-bold tracking-tight text-[#FFFFFF]">
                     {step.heading}
                   </h5>
                   <p className="font-normal text-white text-base dark:text-gray-400">

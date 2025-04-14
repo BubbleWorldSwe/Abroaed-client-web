@@ -2,9 +2,9 @@
 
 import dark from '../../../../../assets/dark.png'
 import vectorOutlinedRightFlat from "../../../../../assets/vectorOutlinedRightFlat.png"
-import PrimaryBodyText from '../../../../typographies/primaryBodyText';
-import SecondaryTitle from '../../../../typographies/secondaryTitle';
-import SectionMainHeader from '../../../../typographies/sectionMainHeader';
+import PrimaryBodyText from '../../../../styleComponents/primaryBodyText';
+import SecondaryTitle from '../../../../styleComponents/secondaryTitle';
+import SectionMainHeader from '../../../../styleComponents/sectionMainHeader';
 import { cardDetails } from '../../data';
 
 const Cards = ({ header = "", text = "" }) => {

@@ -4,8 +4,10 @@ import { Plus } from "lucide-react";
 import { useState } from "react";
 import StudentApplicationCard from "./studentApplicationCard";
 // import StartApplicationModal from "../modals/startApplicationModal";
-import { tabColors } from "../data";
+
 import { useSelector } from "react-redux";
+import { tabColors } from "../../../constants/values";
+import { formatStudentApplications } from "../../../utils/helper";
 
 const StudentApplication = ({
   onOpen,
@@ -25,40 +27,9 @@ const StudentApplication = ({
     setActiveTab(index);
   };
 
-  const formatStudentApplications = (applications = []) => {
-    const statusOrder = [
-      { key: "to_start", title: "To Start" },
-      { key: "verifying_documents", title: "Verifying Documents" },
-      { key: "application_filled", title: "Application Filled" },
-      { key: "awaiting_response", title: "Awaiting Response" },
-      { key: "rejected", title: "Rejected" },
-      { key: "offer_letter_received", title: "Offer Letter Received" },
-    ];
-
-    const groupedData = statusOrder.reduce((acc, { key }) => {
-      acc[key] = [];
-      return acc;
-    }, {});
-
-    const safeApplications = Array.isArray(applications) ? applications : [];
-    safeApplications.forEach((item) => {
-      if (groupedData.hasOwnProperty(item.status)) {
-        groupedData[item.status].push(item);
-      }
-    });
-
-    return statusOrder.map(({ key, title }) => ({
-      status: key,
-      title,
-      data: groupedData[key] || [],
-    }));
-  };
-
   const studentApplication = formatStudentApplications(
     studentProfile?.applications || []
   );
-
-  console.log(studentApplication);
 
   return (
     <>

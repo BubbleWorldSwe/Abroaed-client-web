@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import FaqsQuestionText from "../../../typographies/faqsQuestionText";
-import FaqsAnswerText from "../../../typographies/faqsAnswerText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
+import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import { faqAccommodation } from "../../data";
 
 const AccommodationFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -12,41 +13,15 @@ const AccommodationFaqSection = () => {
     };
 
     return (
-        <div className="h-auto py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
+        <div className="h-auto w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
             <SectionMainHeader
                 className="mb-1"
             >
                 Frequently Asked Questions
             </SectionMainHeader>
-            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">
+            <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] px-2 md:px-6 overflow-auto rounded-md shadow-md flex flex-col">
                 <div className="flex-1 overflow-auto">
-                    {[
-                        {
-                            question:
-                                "What types of accommodation are available? ",
-                            answer:
-                                "We offer various accommodation types including shared apartments, private rooms, and university housing. The options depend on your budget and preferences, and we ensure the accommodation is safe and close to your school or work.",
-                        },
-                        {
-                            question:
-                                "Is it safe to live in these accommodations? ",
-                            answer:
-                                "Yes, safety is our top priority. We ensure that all options we provide meet safety standards, and we verify the reviews and conditions before recommending them to you. You can always contact us for further information about the safety of a location.",
-                        },
-                        {
-                            question: "Can I cancel my accommodation booking?",
-                            answer:
-                                "Cancellation policies vary by property. We work with landlords and agencies to ensure you understand the cancellation terms before booking. In case of changes, we offer support to manage any necessary adjustments.",
-                        },
-                        {
-                            question:
-                                "How do I handle utilities like electricity and water?",
-                            answer:
-                                "We take you through a thorough process on how to set up these utilities, mainly electricity, and water, if they're not included in the rent. We ensure that you will be prepared with how to take care of these utilities and other round expenses.",
-                        },
-
-                        // Add more FAQs here
-                    ].map((faq, index) => (
+                    {faqAccommodation.map((faq, index) => (
                         <div key={index}>
                             <h2 id={`accordion-flush-heading-${index}`}>
                                 <button
