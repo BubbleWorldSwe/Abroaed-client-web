@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { deleteTestPrepRequest } from "../../../redux/actions/testPrepsActions";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import add_a_photo from "../../../assets/add_a_photo.png";
 
 const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
   const testPrepDetails = useSelector(
@@ -26,6 +28,8 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
     setImagePreview(null);
     setFileImage(null);
   };
+
+  console.log(testPrepDetails);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -64,14 +68,17 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
 
   return (
     <div className="flex flex-col">
-      <div
-        className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer"
-        onClick={(e) => {
-          e.preventDefault();
-          setOpenModal(true);
-          setModalType("add");
-        }}
-      ></div>
+      <div className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer flex items-end">
+        {testPrepDetails?.imageUrl && (
+          <div className="w-50 h-32 p-4 cursor-pointer rounded-sm">
+            <img
+              src={`${IMAGE_BASE_URL}/${testPrepDetails?.imageUrl}`}
+              alt="Logo Upload"
+              className="w-full h-full object-contain rounded-md"
+            />
+          </div>
+        )}
+      </div>
 
       <div className="rounded-b-xl px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white dark:bg-gray-800">
         <p className="text-2xl font-semibold">{testPrepDetails?.productName}</p>

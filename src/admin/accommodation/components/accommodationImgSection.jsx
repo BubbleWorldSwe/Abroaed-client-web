@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
   const accommodationDetails = useSelector(
@@ -72,7 +73,14 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
           setOpenModal(true);
           setModalType("add");
         }}
-      ></div>
+      >
+        {accommodationDetails?.imageUrl && (
+          <img
+            src={`${IMAGE_BASE_URL}/${accommodationDetails?.imageUrl}`}
+            className="w-full h-full object-cover rounded-md"
+          />
+        )}
+      </div>
 
       <div className="rounded-b-xl px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white dark:bg-gray-800">
         <p className="text-2xl font-semibold">

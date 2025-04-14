@@ -134,7 +134,8 @@ const StudentTable = ({
                       : null}
                   </td>
                   <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    <Tooltip
+                    {index + 1}
+                    {/*  <Tooltip
                       content={<TooltipContent />}
                       placement="bottom"
                       className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
@@ -142,7 +143,7 @@ const StudentTable = ({
                       <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
                         {member.appCount}
                       </span>
-                    </Tooltip>
+                    </Tooltip> */}
                   </td>
                   <td className="px-4 py-3">
                     <button

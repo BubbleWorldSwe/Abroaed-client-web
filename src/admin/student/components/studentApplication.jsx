@@ -17,15 +17,10 @@ const StudentApplication = ({
   onOpenDocUpdate,
   onOpenStatusModal,
 }) => {
-  const [activeTab, setActiveTab] = useState(0);
   const { isWriteAccess } = useSelector((state) => state.auth);
   const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
-
-  const handleTabClick = (index) => {
-    setActiveTab(index);
-  };
 
   const studentApplication = formatStudentApplications(
     studentProfile?.applications || []
@@ -47,7 +42,7 @@ const StudentApplication = ({
             </button>
           )}
         </div>
-        <div className="flex gap-4 overflow-auto max-h-screen">
+        <div className="flex gap-4">
           {studentApplication.map((tab, index) => {
             return (
               <div
@@ -57,7 +52,6 @@ const StudentApplication = ({
                 <div className="" role="">
                   <button
                     className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg`}
-                    onClick={() => handleTabClick(index)}
                     role="tab"
                   >
                     <span

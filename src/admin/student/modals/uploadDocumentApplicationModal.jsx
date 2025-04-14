@@ -8,14 +8,16 @@ import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubm
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { docCategory, intake } from "../../../constants/values";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { useSelector } from "react-redux";
 
 const UpdateDocApplicationModal = ({
   isOpen,
   onClose,
   leadId,
-
   filledData,
   updateApplication,
+  selectedApplication,
+  setSelectedApplication,
 }) => {
   const defaultDocument = {
     category: "",
@@ -30,6 +32,16 @@ const UpdateDocApplicationModal = ({
   const [formData, setFormData] = useState({
     additionalDocuments: [defaultDocument],
   });
+
+  const { applications } = useSelector(
+    (state) => state?.students?.selectedStudent
+  );
+
+  const { error } = useSelector((state) => state?.students);
+
+  console.log(selectedApplication);
+
+  const [appId, setAppId] = useState(null);
 
   useEffect(() => {
     if (!filledData || !filledData.additionalDocuments?.length) {
@@ -99,7 +111,16 @@ const UpdateDocApplicationModal = ({
     };
 
     console.log("formattedData Form Data:", formattedData);
+
     updateApplication(formattedData);
+
+    // ✅ If no error occurred, reset the fields
+    if (!error) {
+      setFormData({ additionalDocuments: [defaultDocument] });
+      setAppId(null);
+      setSelectedApplication(null);
+      //  toast.success("Application updated successfully!");
+    }
   };
 
   return (
@@ -119,6 +140,24 @@ const UpdateDocApplicationModal = ({
 
             {/* Additional Documents Section */}
             <div className="mt-5">
+              <SelectField
+                label="Select College"
+                name="college"
+                value={appId}
+                onChange={(e) => {
+                  setAppId(e.target.value);
+                  const selectedApp = applications.find(
+                    (app) => app?.college?._id === e.target.value
+                  );
+                  setSelectedApplication(selectedApp);
+                }}
+                options={applications.map((data) => ({
+                  label: data?.college?.name,
+                  value: data?.college?._id,
+                }))}
+                required
+              />
+
               {formData.additionalDocuments.map((doc, index) => (
                 <div key={index} className="flex gap-3 my-5 items-center">
                   <div className="flex-1">
