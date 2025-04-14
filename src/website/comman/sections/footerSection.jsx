@@ -37,7 +37,14 @@ const links = [
   {
     title: "Services",
     items: [
-      { name: (<>ABROAED<sup>+</sup></>), link: "/abroaedPlus" },
+      {
+        name: (
+          <>
+            ABROAED<sup>+</sup>
+          </>
+        ),
+        link: "/abroaedPlus",
+      },
       { name: "Accommodation", link: "/accomodation" },
       { name: "League of Excellence", link: "/leaguageOfExcellence" },
       // { name: "Test Prep", link: "/test-prep" },
@@ -60,7 +67,7 @@ function Footer() {
   const { allDestinations } = useSelector((state) => state.destinations);
   const { allTestPreps } = useSelector((state) => state.testPreps);
   // const { allLanguagePreps } = useSelector((state) => state.languagePreps);
-  const halfDestination = Math.floor(allDestinations.length / 2)
+  const halfDestination = Math.floor(allDestinations.length / 2);
   return (
     <div>
       <footer className="bg-gray-primary text-white pt-10 pb-4">
@@ -121,9 +128,7 @@ function Footer() {
           <div className="w-full md:w-[60%]   grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {links.map((section, index) => (
               <div key={index}>
-                <h3
-                  className={`font-semibold text-2xl mb-1 text-[#fbba18]`}
-                >
+                <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
                   {section.title}
                 </h3>
                 <ul className=" text-base font-medium  ">
@@ -161,59 +166,65 @@ function Footer() {
                 Destinations
               </h3>
               <ul>
-                {allDestinations?.slice(0, Math.min(halfDestination, 10)).map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
-                  >
-                    <a
-                      href={`/destinations/${item._id}`}
-                      className="cursor-pointer hover:underline"
+                {allDestinations
+                  ?.slice(0, Math.min(halfDestination, 10))
+                  .map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
                     >
-                      <div className="flex items-center  gap-4">
-                        <span className="">
-                          <Flag
-                            width={30}
-                            code={item?.countryId?.code}
-                            style={{}}
-                          />
-                        </span>
+                      <a
+                        href={`/destinations/${item._id}`}
+                        className="cursor-pointer hover:underline"
+                      >
+                        <div className="flex items-center  gap-4">
+                          <span className="">
+                            <Flag
+                              width={30}
+                              code={item?.countryId?.code}
+                              style={{}}
+                            />
+                          </span>
 
-                        {item?.countryId?.name}
-                      </div>
-                    </a>
-                  </li>
-                ))}
+                          {item?.countryId?.name}
+                        </div>
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
             <div className="-mt-[12px] md:mt-0">
-              <h3 className={`hidden md:block font-semibold text-2xl mb-1 text-[#fbba18]`}>
+              <h3
+                className={`hidden md:block font-semibold text-2xl mb-1 text-[#fbba18]`}
+              >
                 Destinations
               </h3>
-              <ul >
-                {allDestinations?.slice(halfDestination, 20).map((item, index) => (
-                  <li
-                    key={index}
-                    className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
-                  >
-                    <a
-                      href={`/destinations/${item._id}`}
-                      className="cursor-pointer hover:underline"
+              <ul>
+                {allDestinations
+                  ?.slice(halfDestination, 20)
+                  .map((item, index) => (
+                    <li
+                      key={index}
+                      className="flex text-sm items-center justify-between  font-normal    py-1 rounded-lg transition-all"
                     >
-                      <div className="flex items-center  gap-4">
-                        <span className="">
-                          <Flag
-                            width={30}
-                            code={item?.countryId?.code}
-                            style={{}}
-                          />
-                        </span>
+                      <a
+                        href={`/destinations/${item._id}`}
+                        className="cursor-pointer hover:underline"
+                      >
+                        <div className="flex items-center  gap-4">
+                          <span className="">
+                            <Flag
+                              width={30}
+                              code={item?.countryId?.code}
+                              style={{}}
+                            />
+                          </span>
 
-                        {item?.countryId?.name}
-                      </div>
-                    </a>
-                  </li>
-                ))}
+                          {item?.countryId?.name}
+                        </div>
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
             {/* testPrep */}
@@ -246,18 +257,24 @@ function Footer() {
         <div className="mt-10  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
           <div className=" flex flex-col  gap-1">
             <p>
-              © 2025-2026 <a href="#" className="hover:underline">ABROAED</a>. All Rights Reserved.
+              © 2025-2026{" "}
+              <a href="#" className="hover:underline">
+                ABROAED
+              </a>
+              . All Rights Reserved.
             </p>
             <p>Edusphere Consulting Private Limited</p>
             <div>
-              {["Privacy Policy", "Refund Policy", "Terms & Conditions"].map((item, index) => (
-                <span key={index}>
-                  <a href="#" className="hover:underline">
-                    {item}
-                  </a>
-                  {index < 2 && <span className="mx-1">|</span>}
-                </span>
-              ))}
+              {["Privacy Policy", "Refund Policy", "Terms & Conditions"].map(
+                (item, index) => (
+                  <span key={index}>
+                    <a href="#" className="hover:underline">
+                      {item}
+                    </a>
+                    {index < 2 && <span className="mx-1">|</span>}
+                  </span>
+                )
+              )}
             </div>
           </div>
           <div>
@@ -265,13 +282,16 @@ function Footer() {
               <p>
                 <strong>Crafted By </strong>
               </p>
-              <p >Bubble World</p>
-              <a href="https://bubbleworld.in/" target="_blank" className="text-blue-300 underline">https://bubbleworld.in/</a>
-
+              <a
+                href="https://bubbleworld.in"
+                target="_blank"
+                className="hover:underline"
+              >
+                BubbleWorld
+              </a>
             </div>
           </div>
         </div>
-
       </footer>
     </div>
   );
