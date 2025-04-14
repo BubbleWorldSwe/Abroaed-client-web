@@ -1,32 +1,37 @@
 /* eslint-disable react/prop-types */
 import { cardDetails } from "../../../pathways/program/data";
-import vectorOutlinedRightFlat from "../../../../assets/vectorOutlinedRightFlat.png";
 import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
-const Cards = ({ header = "" }) => {
+const Cards = ({ header = "", img }) => {
   return (
-    <div className="w-full relative hover:scale-[1.01] transition-all duration-300 ease-in-out bg-gray-primary h-[12rem] flex justify-center items-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full  relative hover:scale-[1.01] transition-all duration-300 ease-in-out  h-[14rem] flex justify-center items-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+
+    >
+      <div
+        className="absolute inset-0 bg-black  opacity-40 rounded-lg"
+        style={{
+          mixBlendMode: "multiply",
+          // backgroundColor: 
+        }}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-l from-gray-600 to-black opacity-60 z-0 rounded-lg"></div>
+
       <div className="p-5">
         <div className="flex justify-between items-center">
           <h5
             className="text-[24px] md:text-[28px] font-cinzel text-white font-semibold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
-          // style={{
-          //   backgroundImage:
-          //     "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
-          // }}
           >
             {header}
           </h5>
         </div>
       </div>
-      <div className="absolute right-0 top-0 bottom-0 overflow-hidden z-0">
-        <img
-          className="rounded-lg w-full h-full object-contain"
-          src={vectorOutlinedRightFlat}
-          alt="Counselling session"
-        />
-      </div>
+
     </div>
   );
 };
@@ -54,7 +59,7 @@ const AbroaedPlusWhyChoose = () => {
           />
           <div className="grid  grid-cols-1 lg:grid-cols-3 gap-5 mb-5 mt-10">
             {cardDetails.map((item, index) => (
-              <Cards header={item.key} text={item.value} key={index} />
+              <Cards header={item.key} text={item.value} img={item.img} key={index} />
             ))}
           </div>
         </div>
