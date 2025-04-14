@@ -57,13 +57,14 @@ function OurPartners() {
             {financeImages.map((img, index) => (
               <div
                 key={index}
-                className="bg-white w-[20rem] h-[8rem] flex items-center justify-center rounded-lg overflow-hidden"
+                className="h-[6rem]   flex items-center justify-center rounded-lg overflow-hidden"
               >
                 <img
                   className="w-full h-full object-contain"
                   src={typeof img === 'string' ? img : img.src}
                   alt={typeof img === 'string' ? `finance-img-${index + 1}` : img.alt}
                 />
+
               </div>
             ))}
 
