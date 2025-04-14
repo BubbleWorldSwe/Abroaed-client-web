@@ -1,5 +1,5 @@
-import PrimaryBodyText from "../../../../typographies/primaryBodyText"
-import SectionMainHeader from "../../../../typographies/sectionMainHeader"
+import PrimaryBodyText from "../../../../styleComponents/primaryBodyText"
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader"
 import { scholarships } from "../../data"
 
 const PathwaysProgramScholarshipSection = () => {

@@ -74,18 +74,18 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
 
   return (
     <section className="relative  overflow-auto">
-      <div className="  dark:bg-gray-800 bg-gray-primary rounded-lg h-[90vh] antialiased relative ">
+      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:h-[90vh] antialiased relative ">
         <div
-          className={`flex flex-col lg:flex-row justify-between gap-5  lg:gap-12 px-10  rounded-lg`}
+          className={`flex flex-col lg:flex-row justify-between   lg:gap-12 px-6 md:px-10  rounded-lg`}
         >
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
             <h1
-              className={`text-[24px] md:text-[65px] mb-10 font-extrabold  leading-tight  text-white  max-w-3xl  `}
+              className={`text-[28px] md:text-[65px] mb-4 md:mb-10 font-extrabold  leading-tight  text-white  max-w-3xl  `}
             >
               {title || `Book Your Counselling Session Today!`}
             </h1>
-            <p className="text-[14px] md:text-[23px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
+            <p className="text-[18px] md:text-[23px] max-w-3xl tracking-tight text-[#e7e7ef]  font-normal">
               {text ||
                 `Our specialised home counselling session is available at your
               convenience. Don’t waste a minute—take a stride towards your
@@ -94,7 +94,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
           </div>
 
           {/* Right Section - 40% Width */}
-          <div className="lg:w-2/5   py-14 md:pt-5 md:pb-10 max-w-lg">
+          <div className="lg:w-2/5   py-2 md:py-14 md:pt-5 md:pb-10 max-w-lg">
             <form
               className=" mx-auto flex flex-col gap-2"
               onSubmit={handleSubmit}
@@ -150,7 +150,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 {/* <label className="ml-2 text-[12px] text-white"> */}
-                <label className="ml-2 text-[15px] text-white">
+                <label className="ml-2 text-[16px] text-white">
                   I agree to ABROAED{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
@@ -167,7 +167,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 {/* <label className="ml-2 text-[12px] text-white"> */}
-                <label className="ml-2 text-[15px] text-white">
+                <label className="ml-2 text-[16px] text-white">
                   Please contact me by phone, email, or SMS to assist with my
                   enquiry. I would like to receive updates and offers from
                   ABROAED.
@@ -176,7 +176,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
 
               <button
                 type="submit"
-                className={`w-full font-medium rounded-lg text-sm px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
+                className={`w-full font-medium rounded-lg text-base px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
                 style={{ color: "#000" }}
               >
                 {loading ? (

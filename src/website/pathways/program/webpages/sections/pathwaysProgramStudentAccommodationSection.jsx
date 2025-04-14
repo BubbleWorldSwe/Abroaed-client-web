@@ -1,6 +1,6 @@
 import { accommodations } from "../../data";
 import PathwaysAccommodationCard from "../../components/pathwaysAccommodationCard"
-import SectionMainHeader from "../../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../../styleComponents/sectionMainHeader";
 
 const PathwaysProgramStudentAccommodationSection = () => {
   return (

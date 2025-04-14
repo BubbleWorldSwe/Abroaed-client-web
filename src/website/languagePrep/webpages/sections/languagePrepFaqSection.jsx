@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import FaqsQuestionText from "../../../typographies/faqsQuestionText";
-import FaqsAnswerText from "../../../typographies/faqsAnswerText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
+import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
 
 const LanguagePrepFaqSection = ({ languagePrepsDetails }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -13,8 +13,8 @@ const LanguagePrepFaqSection = ({ languagePrepsDetails }) => {
   };
 
   return (
-    <div className="h-auto py-12 w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
-      <SectionMainHeader className={`mb-10`}>
+    <div className="h-auto  w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
+      <SectionMainHeader className={`mb-2 md:mb-10`}>
         Frequently Asked Questions
       </SectionMainHeader>
       <section className=" bg-white dark:bg-gray-900 max-w-[80rem] max-h-[40rem]  lg:w-[80rem] md:w-[40rem] p-6 overflow-auto rounded-md shadow-md flex flex-col">

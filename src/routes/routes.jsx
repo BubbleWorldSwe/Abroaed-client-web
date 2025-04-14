@@ -64,14 +64,14 @@ import EditBlog from "../admin/blogs/screens/editBlog";
 
 const AppRoutes = () => {
   const allRoutes = [
-    { path: "/home", element: <HomeLayout />, isPrivate: false },
+    { path: "/", element: <HomeLayout />, isPrivate: false },
     {
       path: "/destinations/:id",
       element: <DestinationPage />,
       isPrivate: false,
     },
     {
-      path: "/",
+      path: "/coming-soon",
       element: <ComingSoonPage />,
       isPrivate: false,
     },

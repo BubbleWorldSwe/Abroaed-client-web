@@ -5,12 +5,12 @@ import { CheckIcon } from "lucide-react";
 import { useState } from "react";
 import LoginModal from "../../../comman/modals/loginModal";
 import { useSelector } from "react-redux";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 function TestPrepBatchDetaileSection({
   testPrepsDetails,
   onClickPayment,
-  disabledPayment,
+  disabledPayment
 }) {
   const [openModal, setOpenModal] = useState(false);
   const { studentToken } = useSelector((state) => state.auth);
@@ -22,8 +22,8 @@ function TestPrepBatchDetaileSection({
   return (
     <>
       <LoginModal isOpen={openModal} onClose={handleClose} />
-      <div className="relative mx-auto px-10">
-        <div className=" px-4 py-3 flex flex-col gap-6 mx-auto max-w-screen-2xl ">
+      <div className="relative">
+        <div className="   flex flex-col gap-6">
           {/* Content */}
           <div className="relative z-10">
             <SectionMainHeader
@@ -32,11 +32,11 @@ function TestPrepBatchDetaileSection({
               Batches
             </SectionMainHeader>
             <div className=" border-t border-gray-300"></div>
-            <div className="grid grid-cols-1 md:grid-cols-3  gap-3 py-10 ">
+            <div className="grid grid-cols-1 md:grid-cols-3  gap-3 pt-10 ">
               {testPrepsDetails?.batches?.map((data, index) => (
                 <div
                   key={index}
-                  className="flex flex-col px-8 mx-auto w-full text-start text-gray-900 bg-white rounded-lg border border-gray-200 shadow-xl dark:border-gray-700 py-4  "
+                  className="flex hover:scale-[1.01] transition-all ease-in-out delay-100 flex-col px-8 mx-auto w-full text-start text-gray-900 bg-white rounded-lg border border-gray-200 shadow-xl dark:border-gray-700 py-4  "
                 >
                   <h3 className="mb-2 text-[32px] font-bold">
                     {data.batchName}

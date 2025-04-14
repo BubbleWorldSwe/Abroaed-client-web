@@ -1,14 +1,14 @@
 import { steps } from "../../data"
 import vectorRightRing from "../../../../assets/vectorRightRing.png"
-import SectionMainHeader from "../../../typographies/sectionMainHeader"
-import PrimaryBodyText from "../../../typographies/primaryBodyText"
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText"
 
 const HomeCounsellingHowItWork = () => {
     return (
-        <div className="relative mx-auto px-5 md:px-12 bg-white">
-            <div className="mx-auto w-full px-2 max-w-screen-2xl relative z-10">
+        <div className="relative">
+            <div className=" relative  z-10">
                 <section className="dark:bg-gray-900">
-                    <div className="py-8 lg:py-16">
+                    <div className="pt-16">
                         <div className="text-gray-500 sm:text-lg dark:text-gray-400">
                             <SectionMainHeader className={`mb-3 md:mb-7 `}>
                                 How It Works?
@@ -29,7 +29,7 @@ const HomeCounsellingHowItWork = () => {
                                 eliminate toil, and deploy changes with ease.
                             </PrimaryBodyText>
                         </div>
-                        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 py-5">
+                        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 ">
                             {steps.map((step) => (
                                 <div
                                     key={step.step}

@@ -1,17 +1,16 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
 import check_circle from "../../../../assets/check_circle.png";
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
   return (
     <Element name="admission-requirements">
-      <div className="relative ">
-        <section className=" dark:bg-gray-900 relative px-8 mx-auto">
-          <div className="gap-8 items-center px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols lg:py-5 lg:px-6">
+      <div className="relative">
+        <section className=" dark:bg-gray-900 relative ">
+          <div className="gap-8 items-center">
             <div className=" dark:text-gray-400">
-
               <SectionMainHeader
                 className="mb-2"
               >
@@ -20,7 +19,7 @@ const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
 
               <PrimaryBodyText
                 className={'font-semibold'}
-                style={{ fontSize: '22px' }}
+                style={{ fontSize: '18px' }}
               >
                 Here are the major requirements to study in the{" "}
                 {destinationDetails?.countryId?.name}, which you need to ensure
@@ -29,10 +28,10 @@ const DestinationAdmissionRequirementSection = ({ destinationDetails }) => {
               </PrimaryBodyText>
 
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2  ">
+            <div className="grid grid-cols-1 md:grid-cols-2  mt-4">
               {/* Top Row: 3 Cards */}
               {destinationDetails?.admissionRequirements?.map((data, index) => (
-                <div key={index} className="flex items-center space-x-4 p-1">
+                <div key={index} className="flex items-center space-x-4 ">
                   <div className="flex space-x-8 justify-between">
                     <img
                       className=" object-contain"

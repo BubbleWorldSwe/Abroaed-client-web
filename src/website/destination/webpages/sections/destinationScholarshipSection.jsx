@@ -1,23 +1,23 @@
 /* eslint-disable react/prop-types */
 import { Element } from "react-scroll";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 
 const DestinationScholarshipSection = ({ destinationDetails }) => {
   return (
     <Element name="scholarships">
-      <div className="relative ">
-        <section className=" dark:bg-gray-900 relative px-7 mx-auto">
-          <div className="gap-8 items-center  px-4 mx-auto max-w-screen-2xl lg:grid lg:grid-cols  lg:px-6">
-            <div className="flex flex-col gap-6  text-gray-500 sm:text-lg dark:text-gray-400">
+      <div className="relative">
+        <section className=" dark:bg-gray-900 relative ">
+          <div className="">
+            <div className="flex flex-col gap-2 md:gap-6  text-gray-500 sm:text-lg dark:text-gray-400">
               <SectionMainHeader
-                className="mb-2"
+                className=""
               >
                 Scholarships & Financial Aid
               </SectionMainHeader>
               <PrimaryBodyText
                 className={'font-semibold'}
-                style={{ fontSize: '22px' }}
+                style={{ fontSize: '18px' }}
               >
                 For Study in {destinationDetails?.countryId?.name}, the amount
                 of money available and the type of award varies between
@@ -76,7 +76,7 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                 </div>
               </div>
             </section>
-            <div className="pb-10">
+            <div className="pt-4">
               <PrimaryBodyText>
                 If you want to bring down your educational expenses, it is best
                 to apply to various scholarships available for Indian students.

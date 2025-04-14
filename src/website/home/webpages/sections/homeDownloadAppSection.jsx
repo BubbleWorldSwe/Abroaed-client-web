@@ -15,10 +15,10 @@ function HomeDownloadApp() {
 
           <div className=" shadow-lg rounded-xl  relative bg-[#26262A]  items-center max-w-screen-2xl     md:grid md:grid-cols-2  lg:px-5">
             <div className="px-8 py-16 pb-32">
-              <h2 className="mb-4 text-[20px] md:text-[56px] tracking-tight font-extrabold text-white dark:text-white">
+              <h2 className="mb-4 text-[24px] md:text-[56px] tracking-tight font-extrabold text-white dark:text-white">
                 Download Our App
               </h2>
-              <p className="mb-6 font-normal max-w-lg text-white text-[20px] dark:text-gray-400">
+              <p className="mb-6 font-normal max-w-lg text-white text-[18px] dark:text-gray-400">
                 Download now for personalized coaching, exclusive services, and
                 seamless study-abroad preparation.
               </p>

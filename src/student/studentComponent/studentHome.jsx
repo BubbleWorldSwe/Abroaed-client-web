@@ -1,14 +1,9 @@
 import { SquareUserRound } from "lucide-react";
-import { useEffect, useState } from "react";
-import PreferenceCardDetails from "../components/preferenceCardDetails";
-import { myApplicationtabs, tabColors } from "../data";
-import ApplicationCardDetails from "../components/applicationCardDetails";
-import RecentlyViewCollegeCard from "../components/recentlyViewCollegeCard";
-import RecentlyViewCourseCard from "../components/recentlyViewCourseCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import StudentPreferenceDetails from "../components/StudentpreferenceDetails";
+import StudentPreferenceDetails from "../components/studentPreferenceDetails";
 import { CheckboxField } from "../../commons/components/inputFields/checkboxField";
 import { formatDate, formatStudentApplications } from "../../utils/helper";
 import StudentApplicationsList from "../components/studentApplicationsList";

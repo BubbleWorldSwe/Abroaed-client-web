@@ -63,7 +63,7 @@ function Footer() {
   const halfDestination = Math.floor(allDestinations.length / 2)
   return (
     <div>
-      <footer className="bg-gray-primary text-white py-10">
+      <footer className="bg-gray-primary text-white pt-10 pb-4">
         <div className="container mx-auto px-10 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
@@ -186,8 +186,8 @@ function Footer() {
                 ))}
               </ul>
             </div>
-            <div className="">
-              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
+            <div className="-mt-[12px] md:mt-0">
+              <h3 className={`hidden md:block font-semibold text-2xl mb-1 text-[#fbba18]`}>
                 Destinations
               </h3>
               <ul >
@@ -243,28 +243,35 @@ function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-10 flex flex-col gap-1 border-t border-gray-700 pt-4 text-center text-sm">
-          <p>
-            {" "}
-            © 2025-2026 <a className="hover:underline">ABROAED</a>. All Rights
-          </p>
-          <p>
-            Edusphere Consulting Private Limited
-          </p>
-
-          <div className="">
-            {["Privacy Policy", "Refund Policy", "Terms & Conditions"].map(
-              (item, index) => (
+        <div className="mt-10  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
+          <div className=" flex flex-col  gap-1">
+            <p>
+              © 2025-2026 <a href="#" className="hover:underline">ABROAED</a>. All Rights Reserved.
+            </p>
+            <p>Edusphere Consulting Private Limited</p>
+            <div>
+              {["Privacy Policy", "Refund Policy", "Terms & Conditions"].map((item, index) => (
                 <span key={index}>
                   <a href="#" className="hover:underline">
                     {item}
                   </a>
-                  {index < 2 && " | "}
+                  {index < 2 && <span className="mx-1">|</span>}
                 </span>
-              )
-            )}
+              ))}
+            </div>
+          </div>
+          <div>
+            <div className="md:absolute top-1/3 right-6">
+              <p>
+                <strong>Crafted By </strong>
+              </p>
+              <p >Bubble World</p>
+              <a href="https://bubbleworld.in/" target="_blank" className="text-blue-300 underline">https://bubbleworld.in/</a>
+
+            </div>
           </div>
         </div>
+
       </footer>
     </div>
   );

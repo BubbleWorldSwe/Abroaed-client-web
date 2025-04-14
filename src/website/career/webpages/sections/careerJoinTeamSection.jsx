@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { benefits } from "../../data";
 import vectorRightFlat from "../../../../assets/vectorRightFlat.png"
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import SecondaryTitle from "../../../typographies/secondaryTitle";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 import Slider from "react-slick";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
@@ -36,30 +37,42 @@ function CareerJoinTeam() {
     pauseOnHover: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
     <div>
-      <div className="mt-2 py-8 flex flex-col gap-2 mx-auto max-w-screen-2xl px-14  bg-white dark:bg-gray-900">
-        <header className="mb-4 flex flex-col gap-1 lg:mb-6 not-format">
-          <SectionMainHeader
-            className=''
-          >
-            Why you should join our awesome team ?
-          </SectionMainHeader>
-          <SecondaryTitle
-            style={{ color: "#52525B", fontSize: "24px" }}
-          >
-            We want to feel like home when you are working at ABROAED & for that
-            we have curated a great set of benefits for you.{" "}
-          </SecondaryTitle>
-        </header>
+      <section className=" dark:bg-gray-900 relative ">
+        <div className="px-8 md:px-12 mx-auto max-w-screen-2xl relative z-10">
+
+          <div className="mb-4 flex flex-col gap-1 lg:mb-6 not-format">
+            <SectionMainHeader
+            // className='text-justify'
+            >
+              Why you should join our awesome team ?
+            </SectionMainHeader>
+            <SecondaryTitle
+              style={{ color: "#52525B", }}
+              className="md:text-[26px]"
+            >
+              We want to feel like home when you are working at ABROAED & for that
+              we have curated a great set of benefits for you.
+            </SecondaryTitle>
+          </div>
+        </div>
         <div className="overflow-x-auto">
           <Slider {...settings}>
             {benefits.map((benefit, index) => (
               <div key={index} className="px-4">
                 <div
-                  className=" relative w-full h-[20rem] bg-black bg-opacity-80 overflow-y-auto flex flex-col flex-grow-0 p-6  text-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+                  className=" relative hover:scale-[1.01] transition-all ease-in-out delay-100 w-full h-[25rem] md:h-[20rem] bg-black bg-opacity-80 overflow-y-auto flex flex-col flex-grow-0 p-6  text-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
                 >
                   <div
                     // style={{
@@ -68,11 +81,11 @@ function CareerJoinTeam() {
                     // }}
                     className="text-white">
                     {/* <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img> */}
-                    <h5 className="mt-2   leading-tight text-[36px] font-bold   dark:text-white"
+                    <h5 className="mt-2  text-[26px] leading-tight md:text-[36px] font-bold   dark:text-white"
                     >
                       {benefit.heading}
                     </h5>
-                    <p className="font-semibold text-justify  text-[16px]   mt-6  dark:text-gray-400">
+                    <p className="font-semibold text-justify text-[18px]  md:text-[16px]   mt-6  dark:text-gray-400">
                       {benefit.text}
                     </p>
                     {/* <p className="text-sm">Location, India</p> */}
@@ -91,7 +104,8 @@ function CareerJoinTeam() {
             ))}
           </Slider>
         </div>
-      </div>
+
+      </section>
     </div>
   );
 }

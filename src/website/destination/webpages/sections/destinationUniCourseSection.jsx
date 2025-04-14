@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import vectorleftNose from "../../../../assets/vectorleftNose.png"; // Add your blob image here.
 // import { courses, universities } from "../../data";
 import UniversityDetailsCard from "../../components/destinationUniversityDetailsCard";
 import CourseCard from "../../components/destinationCourseCard";
 import { Element } from "react-scroll";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import PrimaryBodyText from "../../../typographies/primaryBodyText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 
 function DestinationUniCoursersSection({
   destinationDetails,
@@ -19,15 +18,8 @@ function DestinationUniCoursersSection({
   return (
     <Element name="top-universities">
       <div className="relative">
-        {/* Blob Background */}
-        <section className="px-10 pt-12 mx-auto">
-          <div
-            className="absolute right-0 top-20 h-full w-1/2 bg-cover bg-no-repeat -z-10"
-            style={{
-              backgroundImage: `url(${vectorleftNose})`,
-            }}
-          ></div>
-          <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
+        <section className=" ">
+          <div className="  flex flex-col gap-2 mt-5">
             {/* Content */}
             <div className="relative z-10">
               <SectionMainHeader className="mb-2">
@@ -47,7 +39,7 @@ function DestinationUniCoursersSection({
             </div>
 
             <Element name="popular-course">
-              <div className=" pt-5 ">
+              <div className="">
                 <SectionMainHeader className="mb-2">
                   Popular Courses in {destinationDetails?.countryId?.name}
                 </SectionMainHeader>
@@ -62,7 +54,7 @@ function DestinationUniCoursersSection({
                 </PrimaryBodyText>
 
                 <p className="font-semibold  text-[#52525B] text-[22px] mt-4"></p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
                   {coursesList.map((course, index) => (
                     <CourseCard
                       course={course}

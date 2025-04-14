@@ -15,3 +15,29 @@ export const steps = [
         description: "Right after putting your financial plan in place, we continue to support you all along your stay abroad. Through our team, any questions you may have regarding the management of your finances, tracking your spending, or altering your budget will be answered. We keep you always appraised and confident while handling your finances while abroad.",
     },
 ];
+
+export const faqFinance = [
+    {
+        question:
+            "What should I do if I face a financial emergency while abroad?",
+        answer:
+            "We provide ongoing support and guidance on handling unexpected financial situations. Our team can help you find emergency financial solutions, such as loans or alternative funding options.",
+    },
+    {
+        question:
+            "How do I manage my living expenses while abroad?",
+        answer:
+            "We offer budgeting tips and recommend strategies to help you manage your finances effectively. We also suggest ways to save on daily expenses and ensure you stay within your budget.",
+    },
+    {
+        question: "Can I work part-time while studying abroad?",
+        answer:
+            "Many countries allow students to work part-time. We provide guidance on finding legal part-time work opportunities and how to balance work with your studies effectively.",
+    },
+    {
+        question:
+            "How do I pay my money internationally?",
+        answer:
+            "We help you pick the most reliable payment methods with minimal possible service charges, be it international bank transfers, digital wallets, or money transfer services.",
+    },
+]

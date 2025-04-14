@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import dark from "../../../../assets/dark.png";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const CollegeUniversitySection = ({ collegeDetails }) => {
   return (
     <div>
       <section className="dark:bg-gray-900 relative">
-        <div className=" mx-auto py-14  px-2 relative z-10">
-          <div className="py-8 text-center">
+        <div className=" relative z-10">
+          <div className=" text-center">
             <SectionMainHeader className={`mb-4`}>
               {collegeDetails?.name} at a Glance
             </SectionMainHeader>
@@ -19,8 +19,8 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
                 .map((_, index) => (
                   <div
                     key={index}
-                    className="w-full lg:w-[30vw]
-                                        md:w-80 sm:w-72 h-[25rem] relative rounded-2xl overflow-hidden"
+                    className="hover:scale-[1.01] transition-all ease-in-out delay-100 md:w-[30vw]
+                                         h-[25rem] relative rounded-2xl overflow-hidden"
                   >
                     {/* Background Image with Overlay */}
                     <div className="relative w-full h-full">

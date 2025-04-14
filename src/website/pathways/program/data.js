@@ -1,4 +1,20 @@
 import image from "../../../assets/dark.png";
+import wcacard1 from "../../../assets/abroaedPlus/wcacard1.png";
+import wcacard2 from "../../../assets/abroaedPlus/wcacard2.png";
+import wcacard3 from "../../../assets/abroaedPlus/wcacard3.png";
+import wcacard4 from "../../../assets/abroaedPlus/wcacard4.png";
+import wcacard5 from "../../../assets/abroaedPlus/wcacard5.png";
+import wcacard6 from "../../../assets/abroaedPlus/wcacard6.png";
+import wcacard7 from "../../../assets/abroaedPlus/wcacard7.png";
+import wcacard8 from "../../../assets/abroaedPlus/wcacard8.png";
+import wcacard9 from "../../../assets/abroaedPlus/wcacard9.png";
+import wcacard10 from "../../../assets/abroaedPlus/wcacard10.png";
+import wcacard11 from "../../../assets/abroaedPlus/wcacard11.png";
+import wcacard12 from "../../../assets/abroaedPlus/wcacard12.png";
+import wcacard13 from "../../../assets/abroaedPlus/wcacard13.png";
+import wcacard14 from "../../../assets/abroaedPlus/wcacard14.png";
+import wcacard15 from "../../../assets/abroaedPlus/wcacard15.png";
+
 export const accommodations = [
   {
     name: "Luxury Apartment",
@@ -60,62 +76,77 @@ export const articles = [
 export const cardDetails = [
   {
     key: "Unlimited Home or Virtual Counselling",
+    img: wcacard1,
     value: "India",
   },
   {
     key: "Country-specific, Dedicated Coach",
+    img: wcacard2,
     value: "₹ 6,54,321",
   },
   {
     key: "Competitive Interest Rates on Loan",
+    img: wcacard3,
     value: "Online",
   },
   {
     key: "Loan Document Collection Right from Your Doorstep",
+    img: wcacard4,
     value: "Online",
   },
   {
     key: "One on One Virtual/ Home Coaching",
+    img: wcacard5,
     value: "Online",
   },
   {
     key: "University Application Assistance",
+    img: wcacard6,
     value: "Online",
   },
   {
     key: "Guaranteed Offer Letter",
+    img: wcacard7,
     value: "Online",
   },
   {
     key: "Comprehensive Visa Interview Preparation",
+    img: wcacard8,
     value: "Online",
   },
   {
     key: "Forex at Lowest Rates",
+    img: wcacard9,
     value: "Online",
   },
   {
     key: "International Bank Account Opening",
+    img: wcacard10,
     value: "Online",
   },
   {
     key: "Easy and Hassle-free Accommodation",
+    img: wcacard11,
     value: "Online",
   },
   {
     key: "Flight Ticket Booking",
+    img: wcacard12,
     value: "Online",
   },
   {
     key: "City Registration",
+    img: wcacard13,
     value: "Online",
   },
   {
     key: "24/7 Student Support Post Arrival",
+    img: wcacard14,
     value: "Online",
   },
   {
     key: "Cab Services from the Airport to Your Accommodation",
+    img: wcacard15,
     value: "Online",
   },
 ];

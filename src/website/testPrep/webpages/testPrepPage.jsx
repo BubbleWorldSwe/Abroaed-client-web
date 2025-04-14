@@ -23,6 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useRazorpay } from "react-razorpay";
 import { setLeadSubscribeBatch } from "../../../api/leadsApi";
+import SectionComponent from "../../styleComponents/sectionComponent";
 
 function TestPrepLayout() {
   const { id } = useParams();
@@ -121,57 +122,71 @@ function TestPrepLayout() {
   return (
     <div className="font-rethink">
       <Header testPrepsDetails={testPrepsDetails} isHeaderBgWhite={true} />
-      <TestPrepHero testPrepsDetails={testPrepsDetails} />
-      <TextPrepAbout testPrepsDetails={testPrepsDetails} />
-      <div className="relative ">
-        <TestPrepSimplifyThings testPrepsDetails={testPrepsDetails} />
-        <div className="absolute bottom-20 left-0 z-0">
-          <img
-            className="rounded-lg max-w-full "
-            src={vectorLeftFlat}
-            alt="Counselling session"
-          />
+      <div className="grid grid-cols-1 gap-10 md:gap-16">
+        <SectionComponent>
+          <TestPrepHero testPrepsDetails={testPrepsDetails} />
+        </SectionComponent>
+        <SectionComponent>
+          <TextPrepAbout testPrepsDetails={testPrepsDetails} />
+        </SectionComponent>
+        <div className="relative ">
+          <SectionComponent>
+            <TestPrepSimplifyThings testPrepsDetails={testPrepsDetails} />
+          </SectionComponent>
+          <div className="absolute bottom-20 left-0 -z-10">
+            <img
+              className="rounded-lg max-w-full "
+              src={vectorLeftFlat}
+              alt="Counselling session"
+            />
+          </div>
         </div>
+
+        {testPrepsDetails?.batches.length > 0 && (
+          <div className="relative ">
+            <SectionComponent>
+              <TestPrepBatchDetaileSection
+                onClickPayment={handlePayment}
+                disabledPayment={loading}
+                testPrepsDetails={testPrepsDetails}
+              />
+            </SectionComponent>
+            <div className="absolute bottom-0 right-0 -z-10">
+              <img
+                className="rounded-lg max-w-full "
+                src={vectorleftNose}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
+        )}
+
+        {testPrepsDetails?.faqs.length > 0 && (
+          <div className="relative ">
+            <SectionComponent>
+              <TextPrepFaqSection testPrepsDetails={testPrepsDetails} />
+            </SectionComponent>
+            <div className="absolute -top-10 left-0 -z-10">
+              <img
+                className="rounded-lg max-w-full "
+                src={vectorDownNose}
+                alt="Counselling session"
+              />
+            </div>
+          </div>
+        )}
+        {/* <SectionComponent>
+          <Blogs />
+        </SectionComponent> */}
+        <SectionComponent>
+          <ContactUsForm
+            onFormSubmit={handleAddLead}
+            source={source.testPrep}
+            entity={`${testPrepsDetails?.productName}_${entity.contactUs}`}
+          />
+        </SectionComponent>
+        <Footer />
       </div>
-
-      {testPrepsDetails?.batches.length > 0 && (
-        <div className="relative ">
-          <TestPrepBatchDetaileSection
-            onClickPayment={handlePayment}
-            disabledPayment={loading}
-            testPrepsDetails={testPrepsDetails}
-          />
-          <div className="absolute bottom-0 right-0 z-0">
-            <img
-              className="rounded-lg max-w-full "
-              src={vectorleftNose}
-              alt="Counselling session"
-            />
-          </div>
-        </div>
-      )}
-
-      {testPrepsDetails?.faqs.length > 0 && (
-        <div className="relative ">
-          <TextPrepFaqSection testPrepsDetails={testPrepsDetails} />
-          <div className="absolute -top-10 left-0 -z-10">
-            <img
-              className="rounded-lg max-w-full "
-              src={vectorDownNose}
-              alt="Counselling session"
-            />
-          </div>
-        </div>
-      )}
-
-      {/* <Blogs /> */}
-
-      <ContactUsForm
-        onFormSubmit={handleAddLead}
-        source={source.testPrep}
-        entity={`${testPrepsDetails?.productName}_${entity.contactUs}`}
-      />
-      <Footer />
     </div>
   );
 }

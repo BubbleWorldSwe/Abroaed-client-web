@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import FaqsQuestionText from "../../../typographies/faqsQuestionText";
-import FaqsAnswerText from "../../../typographies/faqsAnswerText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
+import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
 
 const LeaguageOfExcellenceFaq = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -170,7 +170,7 @@ const LeaguageOfExcellenceFaq = () => {
       >
         Frequently Asked Questions
       </SectionMainHeader>
-      <section className=" bg-white w-80  dark:bg-gray-900 md:max-w-[80rem] min-h-max  lg:w-[80rem] md:w-[40rem] p-6  rounded-md shadow-md flex flex-col">
+      <section className=" bg-white w-80  dark:bg-gray-900 md:max-w-[80rem] min-h-max  lg:w-[80rem] md:w-[40rem] px-2 md:px-6  rounded-md shadow-md flex flex-col">
         <div className="flex-1">
           {faqs?.map((faq, index) => (
             <div key={index} className="">

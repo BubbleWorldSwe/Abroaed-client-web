@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import FaqsQuestionText from "../../../typographies/faqsQuestionText";
-import FaqsAnswerText from "../../../typographies/faqsAnswerText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
+import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
+import { faqHomecounselling } from "../../data";
 
 const HomeCounsellingFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -10,46 +11,16 @@ const HomeCounsellingFaqSection = () => {
     const toggleFAQ = (index) => {
         setActiveIndex(activeIndex === index ? null : index);
     };
-    const faqs = [
-        {
-            question:
-                "Do UK universities and courses have quality assurance?",
-            answer:
-                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
-        },
-        {
-            question:
-                "Do UK universities and courses have quality assurance?",
-            answer:
-                "Yes, the universities in the UK are expected to meet the standards set by the quality assurance system in the UK. Their universities are globally recognised for the strong academic and research departments that offer a diverse range of courses and for the friendly, multicultural communities in the campuses that offer a space where everyone can belong.",
-        },
-        {
-            question: "Does Abroed take fees?",
-            answer:
-                "Leverage Edu offers all its counselling, admissions and visa services completely free of cost. Its premium Leverage One services are tiered plans that include several value-added services to students including scholarship assistance, test preparation, priority visa assistance, accommodation assistance and more.",
-        },
-        {
-            question:
-                "Where can I find scholarships and financial support for studying in the UK?",
-            answer:
-                "A wide range of scholarships and financial support options are available for international students who dream of studying in the UK. The SI-UK scholarship search leads you to hundreds of scholarships provided by universities and government organisations.",
-        },
-        {
-            question: "How can ABROAED help my study ABROAED journey?",
-            answer:
-                "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
-        },
-        // Add more FAQs here
-    ]
+
     return (
-        <div className="py-5 md:py-14 w-full dark:bg-black relative flex  flex-col gap-2 items-center px-7 mx-auto justify-center">
+        <div className=" w-full dark:bg-black relative flex  flex-col gap-2 items-center justify-center">
             <SectionMainHeader
                 className={`md:mb-1`}
             >                Frequently Asked Questions
             </SectionMainHeader>
-            <section className=" bg-white w-80  dark:bg-gray-900 md:max-w-[80rem] min-h-max  lg:w-[80rem] md:w-[40rem]  p-6  rounded-md shadow-md flex flex-col">
+            <section className=" bg-white w-80  dark:bg-gray-900 md:max-w-[80rem] min-h-max  lg:w-[80rem] md:w-[40rem] px-2 md:px-6  rounded-md shadow-md flex flex-col">
                 <div className="flex-1">
-                    {faqs.map((faq, index) => (
+                    {faqHomecounselling.map((faq, index) => (
                         <div key={index}>
                             <h2 id={`accordion-flush-heading-${index}`}>
                                 <button

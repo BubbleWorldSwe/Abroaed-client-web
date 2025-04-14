@@ -37,10 +37,10 @@ function HomeHeroSection() {
         </video>
 
         <div
-          className="absolute inset-0 bg-black opacity-70"
+          className="absolute inset-0 bg-black opacity-60"
           style={{ mixBlendMode: "multiply" }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div> */}
         <div className="absolute  top-1/2 md:top-1/3 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
           <div className="text-start   text-white lg:w-2/3 px-1 lg:px-8">
             <p className="">

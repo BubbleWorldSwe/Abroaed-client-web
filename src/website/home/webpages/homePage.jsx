@@ -9,15 +9,16 @@ import HomePromoSection from "./sections/homePromoSection";
 import HomeDownloadApp from "./sections/homeDownloadAppSection";
 import { useDispatch } from "react-redux";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import Blogs from "../../comman/components/blogs";
-import Testimonials from "../../comman/components/testimonials";
+// import Blogs from "../../comman/components/blogs";
+// import Testimonials from "../../comman/components/testimonials";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
-import vectorBelow from "../../../assets/vectorBelow.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import HomeSlidingImg from "./sections/homeSlidingImg";
+import SectionComponent from "../../styleComponents/sectionComponent";
+// import vectorBelow from "../../../assets/vectorBelow.png";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -30,14 +31,15 @@ function HomeLayout() {
     internalContainer: ''
   }
 
+
   return (
     <div className="font-rethink relative">
       <Header />
       <HomeHeroSection />
       <HomeSlidingImg />
-      <div className="grid grid-cols-1 gap-16  ">
+      <div className="grid grid-cols-1 gap-10 md:gap-16  ">
         <div className=" relative">
-          <div className={containerClass.outerContainer}>
+          <SectionComponent >
             <HomeKpiMatrixSection
               title={"Why ABROAED?"}
               header={"What Sets Us Apart?"}
@@ -46,7 +48,7 @@ function HomeLayout() {
               }
             />
 
-          </div>
+          </SectionComponent>
           <div className="absolute top-0 left-0 -z-20">
             <img
               className="rounded-lg max-w-full"
@@ -55,9 +57,9 @@ function HomeLayout() {
             />
           </div>
         </div>
-        <div className={containerClass.outerContainer}>
+        <SectionComponent >
           <HomePathwaySection />
-        </div>
+        </SectionComponent>
         <div className="relative">
           <div >
             <HomeServicesSection />
@@ -70,20 +72,20 @@ function HomeLayout() {
             />
           </div>
         </div>
-        <div className={containerClass.outerContainer}>
+        <SectionComponent >
           <HomePromoSection
             onFormSubmit={handleAddLead}
             source={source.home}
             entity={entity.bookCounselling}
           />
-        </div>
-        {/* <div className={containerClass.outerContainer}>
+        </SectionComponent>
+        {/* <SectionComponent>
           <Testimonials />
-        </div> */}
+        </SectionComponent> */}
         <div className="relative ">
-          <div className={containerClass.outerContainer}>
+          <SectionComponent >
             <HomeDownloadApp />
-          </div>
+          </SectionComponent>
           <div className="absolute -top-10 left-0 -z-10">
             <img
               className="rounded-lg max-w-full "
@@ -92,7 +94,10 @@ function HomeLayout() {
             />
           </div>
         </div>
-        <div className="relative ">
+        {/* <div className="relative ">
+          <div>
+            <Blogs />
+          </div>
           <div className="absolute top-28 right-0 -z-20">
             <img
               className="rounded-lg max-w-full "
@@ -100,15 +105,15 @@ function HomeLayout() {
               alt="Counselling session"
             />
           </div>
-          {/* <Blogs /> */}
-        </div>
-        <div className={containerClass.outerContainer}>
+
+        </div> */}
+        <SectionComponent className={containerClass.outerContainer}>
           <ContactUsForm
             onFormSubmit={handleAddLead}
             source={source.home}
             entity={entity.contactUs}
           />
-        </div>
+        </SectionComponent>
         <Footer />
       </div>
     </div>

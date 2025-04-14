@@ -1,5 +1,5 @@
 import ContactUsForm from "../../comman/components/contactUsForm";
-import Testimonials from "../../comman/components/testimonials";
+// import Testimonials from "../../comman/components/testimonials";
 import Footer from "../../comman/sections/footerSection";
 import Header from "../../comman/sections/headerSection";
 import AbroaedPlusContent from "./sections/abroaedPlusContent";
@@ -13,6 +13,8 @@ import AbroaedPlusFaq from "./sections/abroaedPlusFaq";
 import { useDispatch } from "react-redux";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
+import SectionComponent from "../../styleComponents/sectionComponent";
+import AbroaedPlusExplorePlan from "./sections/abroaedPlusExplorePlan";
 
 const AbroaedPlusPage = () => {
   const dispatch = useDispatch();
@@ -26,23 +28,19 @@ const AbroaedPlusPage = () => {
       console.log(error);
     }
   };
-  let containerClass = {
-    outerContainer: 'md:max-w-screen-2xl px-14 mx-auto w-full ',
-    internalContainer: ''
-  }
 
   return (
     <div className="font-rethink">
       <Header />
       <AbroaedPlusHero />
-      <div className="grid grid-cols-1 gap-16  ">
-        <div className={containerClass.outerContainer}>
+      <div className="grid grid-cols-1 gap-10 md:gap-16  ">
+        <SectionComponent >
           <AbroaedPlusContent />
-        </div>
+        </SectionComponent>
         <div className="relative">
-          <div className={containerClass.outerContainer}>
+          <SectionComponent >
             <AbroaedPlusWhyChoose />
-          </div>
+          </SectionComponent>
           <div className="absolute top-0 left-0 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"
@@ -52,9 +50,9 @@ const AbroaedPlusPage = () => {
           </div>
         </div>
         <div className="relative">
-          <div className={containerClass.outerContainer}>
+          <SectionComponent >
             <AbroaedPlusHowItWork />
-          </div>
+          </SectionComponent>
           <div className="absolute -bottom-16 right-0 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"
@@ -63,13 +61,16 @@ const AbroaedPlusPage = () => {
             />
           </div>
         </div>
-        <div className={containerClass.outerContainer}>
+        <SectionComponent >
+          <AbroaedPlusExplorePlan />
+        </SectionComponent>
+        {/* <SectionComponent >
           <Testimonials />
-        </div>
-        <div className="relative">]
-          <div className={containerClass.outerContainer}>
+        </SectionComponent> */}
+        <div className="relative">
+          <SectionComponent >
             <AbroaedPlusFaq />
-          </div>
+          </SectionComponent>
           <div className="absolute top-32 left-0 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"
@@ -78,13 +79,13 @@ const AbroaedPlusPage = () => {
             />
           </div>
         </div>
-        <div className={containerClass.outerContainer}>
+        <SectionComponent >
           <ContactUsForm
             onFormSubmit={handleAddLead}
             source={source.abroaedPlus}
             entity={`${entity.contactUs}`}
           />
-        </div>
+        </SectionComponent>
         <div>
           <Footer />
         </div>

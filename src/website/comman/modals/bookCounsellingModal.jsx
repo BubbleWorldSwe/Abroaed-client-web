@@ -45,12 +45,10 @@ const BookCounsellingModal = ({ onClose }) => {
         });
     };
 
-    const handleAddLead = (e) => {
+    const handleAddLead = async (e) => {
         e.preventDefault();
         const { email, firstName, lastName, mobile, userDetail } = formData;
-        const { highestEducation, preferredDestination, applyingFor, targetYear } =
-            userDetail;
-
+        const { highestEducation, preferredDestination, applyingFor, targetYear } = userDetail;
         if (
             !firstName ||
             !lastName ||
@@ -64,9 +62,23 @@ const BookCounsellingModal = ({ onClose }) => {
             toast.error("Please fill out all fields.");
             return;
         }
-        dispatch(addLeadRequest({ user: formData, source: source.menu, entity: entity.bookCounselling }));
-    }
-        ;
+
+        try {
+            await dispatch(
+                addLeadRequest({
+                    user: formData,
+                    source: source.menu,
+                    entity: entity.bookCounselling,
+                })
+            );
+            onClose();
+        } catch (err) {
+            console.error("Error adding lead:", err);
+            toast.error("Something went wrong while submitting the form.");
+        }
+    };
+
+    ;
 
     useEffect(() => {
         if (!error) {
@@ -87,7 +99,7 @@ const BookCounsellingModal = ({ onClose }) => {
 
     return (
         <>
-            <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+            <div className="fixed px-6 inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
                 <div className="bg-white max-h-[80vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
                     <button
                         className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
@@ -95,141 +107,95 @@ const BookCounsellingModal = ({ onClose }) => {
                     >
                         &times;
                     </button>
-                    <h2 className="text-[32px] text-gray-primary font-semibold mb-4">Book Counselling Now</h2>
-                    <form className="space-y-2" onSubmit={handleAddLead}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <BorderTextInputField
-                                    label="First Name"
-                                    name="firstName"
-                                    type="text"
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                    placeholder="Enter"
-                                    required
-                                />
-                                <BorderTextInputField
-                                    label="Email"
-                                    name="email"
-                                    type="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="Enter"
-                                    required
-                                />
-                                <BorderSelectField
-                                    label="Highest Education Qualification"
-                                    name="highestEducation"
-                                    value={formData.userDetail.highestEducation}
-                                    onChange={handleChange}
-                                    options={highestEducation.map((data) => ({
-                                        label: data,
-                                        value: data,
-                                    }))}
-                                    required
-                                />
-
-                                <BorderSelectField
-                                    label="When Do You Plan to Study?"
-                                    name="targetYear"
-                                    value={formData.userDetail.targetYear}
-                                    onChange={handleChange}
-                                    options={targetYear.map((data) => ({
-                                        label: data,
-                                        value: data,
-                                    }))}
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <BorderTextInputField
-                                    label="Last Name"
-                                    name="lastName"
-                                    type="text"
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                    placeholder="Enter"
-                                    required
-                                />
-                                <BorderTextInputField
-                                    label="Mobile Number"
-                                    name="mobile"
-                                    type="tel"
-                                    value={formData.mobile}
-                                    onChange={handleChange}
-                                    placeholder="Enter"
-                                    required
-                                />
-                                <BorderSelectField
-                                    label="Preferred Study Level"
-                                    name="applyingFor"
-                                    value={formData.userDetail.applyingFor}
-                                    onChange={handleChange}
-                                    required
-                                    options={applyingFor.map((data) => ({
-                                        label: data,
-                                        value: data,
-                                    }))}
-                                />
-
-                                <BorderSelectField
-                                    label="Preferred Study Destination"
-                                    name="preferredDestination"
-                                    value={formData.userDetail.preferredDestination}
-                                    onChange={handleChange}
-                                    options={allDestinations.map((data) => ({
-                                        label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                                        value: data?._id,
-                                        ...data,
-                                    }))}
-                                    required
-                                />
-
-                                {/*   <BorderSelectField
-                        label={"Mode of Counselling"}
-                        options={[
-                          { value: "1", label: "Home Counselling" },
-                          { value: "2", label: "Virtual Counselling" },
-                          { value: "3", label: "Visit Us" },
-                          { value: "4", label: "Others" },
-                        ]}
-                        required
-                      /> */}
-                            </div>
+                    <h2 className="text-[26px] md:text-[32px] text-gray-primary font-semibold ">Book Counselling Now</h2>
+                    <form className="space-y-5" onSubmit={handleAddLead}>
+                        <div className="grid grid-cols-1 md:grid-cols-2  md:gap-y-0   md:gap-4">
+                            <BorderTextInputField
+                                label="First Name"
+                                name="firstName"
+                                type="text"
+                                value={formData.firstName}
+                                onChange={handleChange}
+                                placeholder="Enter"
+                                required
+                            />
+                            <BorderTextInputField
+                                label="Last Name"
+                                name="lastName"
+                                type="text"
+                                value={formData.lastName}
+                                onChange={handleChange}
+                                placeholder="Enter"
+                                required
+                            />
+                            <BorderTextInputField
+                                label="Email"
+                                name="email"
+                                type="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Enter"
+                                required
+                            />
+                            <BorderTextInputField
+                                label="Mobile Number"
+                                name="mobile"
+                                type="tel"
+                                value={formData.mobile}
+                                onChange={handleChange}
+                                placeholder="Enter"
+                                required
+                            />
+                            <BorderSelectField
+                                label="Highest Education Qualification"
+                                name="highestEducation"
+                                value={formData.userDetail.highestEducation}
+                                onChange={handleChange}
+                                options={highestEducation.map((data) => ({
+                                    label: data,
+                                    value: data,
+                                }))}
+                                required
+                            />
+                            <BorderSelectField
+                                label="Preferred Study Level"
+                                name="applyingFor"
+                                value={formData.userDetail.applyingFor}
+                                onChange={handleChange}
+                                required
+                                options={applyingFor.map((data) => ({
+                                    label: data,
+                                    value: data,
+                                }))}
+                            />
+                            <BorderSelectField
+                                label="When Do You Plan to Study?"
+                                name="targetYear"
+                                value={formData.userDetail.targetYear}
+                                onChange={handleChange}
+                                options={targetYear.map((data) => ({
+                                    label: data,
+                                    value: data,
+                                }))}
+                                required
+                            />
+                            <BorderSelectField
+                                label="Preferred Study Destination"
+                                name="preferredDestination"
+                                value={formData.userDetail.preferredDestination}
+                                onChange={handleChange}
+                                options={allDestinations.map((data) => ({
+                                    label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                                    value: data?._id,
+                                    ...data,
+                                }))}
+                                required
+                            />
                         </div>
-
-                        <>
-                            <div className="flex items-start">
-                                <input
-                                    type="checkbox"
-                                    className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    required
-                                />
-                                <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                                    I agree to ABROAED{" "}
-                                    <span className="font-bold">Terms of Service</span> and{" "}
-                                    <span className="font-bold">Privacy Policy</span>.
-                                </label>
-                            </div>
-                            <div className="flex items-start ">
-                                <input
-                                    type="checkbox"
-                                    className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                    required
-                                />
-                                <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                                    I agree to ABROAED Terms and privacy policy. Please
-                                    contact me by phone, email, or SMS to assist with my
-                                    enquiry. I would like to receive updates and offers from
-                                    ABROAED.
-                                </label>
-                            </div>
-                        </>
                         <div>
                             <button
-                                onSubmit={handleAddLead}
                                 type="submit"
-                                className={`py-2  w-full px-10 text-base font-semibold  text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+                                className="py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
                             >
                                 Book Now
                             </button>

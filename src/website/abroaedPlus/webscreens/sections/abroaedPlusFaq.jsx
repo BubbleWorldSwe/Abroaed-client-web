@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AbroaedPlusfaqs } from "../../data";
-import SectionMainHeader from "../../../typographies/sectionMainHeader";
-import FaqsAnswerText from "../../../typographies/faqsAnswerText";
-import FaqsQuestionText from "../../../typographies/faqsQuestionText";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
+import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
 
 const AbroaedPlusFaq = () => {
     const [activeIndex, setActiveIndex] = useState(null);
@@ -33,7 +33,8 @@ const AbroaedPlusFaq = () => {
                                             onClick={() => toggleFAQ(index)}
                                             aria-expanded={activeIndex === index}
                                         >
-                                            <FaqsQuestionText>
+                                            <FaqsQuestionText
+                                            >
                                                 {faq.question}
                                             </FaqsQuestionText>
                                             <svg
