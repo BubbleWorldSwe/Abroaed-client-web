@@ -21,6 +21,7 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
         entity={entity}
         isOpen={openModal}
         onClose={handleCloseAddModal}
+        title="League of Excellence"
       />
       <div className="relative z-10">
         <section >
@@ -41,11 +42,11 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                   </div>
                 )}
                 {/* <div className="w-full  px-2 mx-auto bg-yellow-primary"> */}
-                <div className="text-[32px] bg-[#323238] mb-4   rounded-xl   md:text-[57px]  font-extrabold    text-center ">
+                <div className="text-[32px] bg-[#4a4a52] bg-opacity-80 mb-4   rounded-xl   md:text-[57px]  font-medium   text-center ">
                   {plan.name}
                 </div>
                 {/* </div> */}
-                <p className="text-[18px]  md:text-[32px] text-center font-bold mb-1 " >
+                <p className="text-[18px]  md:text-[32px] text-center font-normal mb-1 " >
                   {plan.price}
                 </p>
                 <p className=" text-lg mb-3 text-center ">{plan.title}</p>
@@ -59,21 +60,24 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                                     {plan.buttonText}
                                 </button> */}
 
-                <div className="mt-6 bg-[#323238] rounded-xl p-2">
-                  <h4 className="text-[18px]  md:text-[25px] font-semibold">
+                <div className="mt-6 bg-[#4a4a52] bg-opacity-80 rounded-xl p-2">
+                  <h4 className="text-[18px]  md:text-[25px] font-normal">
                     Features you’ll love
                   </h4>
                   <ul className="mt-1 space-y-1 list-disc px-5 ">
                     {plan.features?.map((feature, i) => (
                       <li
                         key={i}
-                        className="text-[12px] md:text-base list-item items-center gap-1 text-white"
+                        className="text-[12px] md:text-base list-item items-center font-normal gap-1 text-white"
                       >
                         {/* <Check size={16} /> */}
                         {feature}
                       </li>
                     ))}
                   </ul>
+                </div>
+                <div className="absolute bottom-2 left-6">
+                  <p>* T&C apply </p>
                 </div>
               </div>
             ))}

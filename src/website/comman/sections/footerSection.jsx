@@ -70,7 +70,7 @@ function Footer() {
   const halfDestination = Math.floor(allDestinations.length / 2);
   return (
     <div>
-      <footer className="bg-gray-primary text-white pt-10 pb-4">
+      <footer className="bg-gray-primary h-[90vh] text-white pt-10 pb-4">
         <div className="container mx-auto px-10 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
@@ -254,8 +254,8 @@ function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-10  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
-          <div className=" flex flex-col  gap-1">
+        <div className="mt-16  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
+          <div className="flex flex-col  gap-1">
             <p>
               © 2025-2026{" "}
               <a href="#" className="hover:underline">
@@ -277,14 +277,14 @@ function Footer() {
               )}
             </div>
           </div>
-          <div>
+          {/* <div>
             <div className="md:absolute top-1/3 right-6">
               <p>
                 <strong>Crafted By </strong>
               </p>
               <a href="https://bubbleworld.in/" target="_blank" className="">BubbleWorld </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </footer>
     </div>

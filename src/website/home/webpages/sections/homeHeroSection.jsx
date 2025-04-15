@@ -49,6 +49,14 @@ function HomeHeroSection() {
             <h1 className="mb-3 text-[42px]  font-extrabold tracking-tight leading-none text-white md:text-[75px]">
               From Here to Anywhere-Dream Big, Study Global
             </h1>
+            <div className="w-52">
+              <button
+                type="submit"
+                className="py-4 rounded-full w-full whitespace-nowrap px-10 mx-auto text-[20px] font-semibold text-center text-[#432205]  bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+              >
+                Book Now
+              </button>
+            </div>
           </div>
         </div>
       </section>

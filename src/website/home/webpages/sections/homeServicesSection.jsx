@@ -89,9 +89,9 @@ const HomeServicesSection = () => {
   );
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
-    speed: 8000,
+    speed: 6000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -114,12 +114,12 @@ const HomeServicesSection = () => {
       <section className=" dark:bg-gray-900 flex flex-col space-y-8 w-full md:max-w-screen-2xl mx-auto  relative">
         {/* <div className=" relative z-10"> */}
         <h2
-          className={` text-[28px] px-8 md:px-12   md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+          className={` text-[28px] px-6   md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
         >
           Discover Our Unique Offerings
         </h2>
         {/* </div> */}
-        <div className="overflow-x-auto ">
+        <div className="overflow-x-auto pb-10">
           <Slider {...settings}  >
             {serviceData?.map((service, index) => (
               <div
@@ -145,10 +145,10 @@ const HomeServicesSection = () => {
                 </div>
                 <div className="absolute top-0 md:top-[10%] inset-0 flex  flex-col justify-between p-6 z-10">
                   <div className="overflow-y-auto flex  flex-col gap-4 md:gap-10 px-5">
-                    <h1 className="text-[32px] leading-tight  md:text-[57px] text-white   font-bold ">
+                    <h1 className="text-[32px] leading-tight  md:text-[57px] text-white   font-medium ">
                       {service.text1}
                     </h1>
-                    <p className="text-gray-200 max-w-screen-lg text-justify lg:mb-2 text-base md:text-[22px]">
+                    <p className="text-gray-200 leading-8  text-justify font-normal lg:mb-2 text-base md:text-[22px]">
                       {service.text2}
                     </p>
                   </div>

@@ -6,7 +6,7 @@ import { BorderSelectField } from "../../../commons/components/inputFields/borde
 import { applyingFor, highestEducation, targetYear } from "../data";
 import { useSelector } from "react-redux";
 
-const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
+const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity, title }) => {
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -97,7 +97,7 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
               &times;
             </button>
             <h2 className="text-xl font-semibold mb-4">
-              Explore more about LOE-USA
+              Explore more about {title === "ABROAED" ? `ABROAED+` : title}
             </h2>
 
             <form className="space-y-6" onSubmit={handleAddLead}>
@@ -239,7 +239,7 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity }) => {
               </div>
             </form>
           </div>
-        </div>
+        </div >
       )}
     </>
   );
