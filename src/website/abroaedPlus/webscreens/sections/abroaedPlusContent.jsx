@@ -9,7 +9,7 @@ const AbroaedPlusContent = () => {
                     <SectionMainHeader
                         className={'mb-4'}
                     >
-                        About Abroaed<sup>+</sup>
+                        About ABROAED<sup>+</sup>
                     </SectionMainHeader>
                     <PrimaryBodyText
                         text=""

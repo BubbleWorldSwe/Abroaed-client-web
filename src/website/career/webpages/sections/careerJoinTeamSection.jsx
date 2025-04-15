@@ -4,25 +4,25 @@ import vectorRightFlat from "../../../../assets/vectorRightFlat.png"
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 import Slider from "react-slick";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa6";
+
+import { ChevronLeft, ChevronRight } from "lucide-react";
 function CareerJoinTeam() {
 
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute z-10 left-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+      className="absolute z-10 left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
     >
-      <FaArrowLeft />
+      <ChevronLeft />
     </button>
   );
 
   const NextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute z-10 right-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+      className="absolute z-10 right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
     >
-      <FaArrowRight />
+      <ChevronRight />
     </button>
   );
 

@@ -21,9 +21,9 @@ function AboutUsContentSection() {
             </PrimaryBodyText>
 
           </div>
-          <div className="  ">
+          <div className=" pt-10 ">
             {aboutUs.map((item, index) => (
-              <CardComponent key={index} {...item} />
+              <CardComponent key={index} {...item} idx={index} />
             ))}
           </div>
         </div>

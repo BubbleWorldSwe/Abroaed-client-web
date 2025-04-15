@@ -3,14 +3,16 @@
 import { heroStyle } from "../../../comman/contexts/heroStyle"
 import HeroTextComponent from "../../../styleComponents/heroText"
 
-const HomeCounsellingHeroSection = ({ img, header, text }) => {
+const HomeCounsellingHeroSection = ({ img }) => {
     return (
         <HeroTextComponent img={img}>
             <h1 className={heroStyle.header}>
-                {header}
+                Start Your Journey From the Comfort of Home!
             </h1>
             <p className={heroStyle.text}>
-                {text}
+                Get personalized, one-on-one counselling with experienced consultants to
+                help you navigate your study ABROAED plans for free.
+
             </p>
         </HeroTextComponent>
     )

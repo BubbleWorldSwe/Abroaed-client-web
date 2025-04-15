@@ -140,7 +140,7 @@ const TestPrep = () => {
                 {isWriteAccess && (
                   <AddButton
                     onClick={handleOpenAddModal}
-                    label={"New Product"}
+                    label={"Add Test Prep"}
                   />
                 )}
               </div>

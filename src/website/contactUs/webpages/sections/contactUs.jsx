@@ -50,6 +50,15 @@ const ContactUs = () => {
                                     career@abroaed.com
                                 </p>
                             </div>
+                            <div>
+                                <h5 className="text-[16px] text-[#52525B] font-semibold">
+                                    Collaborate With Us
+                                </h5>
+                                <p className="text-[#71717A] text-base font-normal ">
+                                    partnership@abroaed.com
+
+                                </p>
+                            </div>
 
                         </div>
                         <div className="h-[25rem]">

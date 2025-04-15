@@ -46,9 +46,9 @@ const LocationModal = ({
   };
 
   return (
-    <div>
+    <div className="w-[100vh] max-w-full mx-auto">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 gap-5 w-[400px]">
+        <div className="grid grid-cols-3 gap-4 mb-5">
           <SelectField
             label="Country"
             name="destinationId"
@@ -96,15 +96,14 @@ const LocationModal = ({
             onChange={(e) => handleInputChange("city", e.target.value)}
             placeholder={"Enter City"}
           />
-
-          <TextareaInputField
-            label="Address"
-            name="address"
-            value={formData?.address}
-            onChange={(e) => handleInputChange("address", e.target.value)}
-            placeholder={"Enter Address"}
-          />
         </div>
+        <TextareaInputField
+          label="Address"
+          name="address"
+          value={formData?.address}
+          onChange={(e) => handleInputChange("address", e.target.value)}
+          placeholder={"Enter Address"}
+        />
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />

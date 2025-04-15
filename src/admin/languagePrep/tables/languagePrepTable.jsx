@@ -72,9 +72,9 @@ const LanguagePrepTable = ({
             <th scope="col" className="px-4 py-3 min-w-[14rem]">
               Product Name
             </th>
-            <th scope="col" className="px-4 py-3 min-w-[10rem]">
+            {/*   <th scope="col" className="px-4 py-3 min-w-[10rem]">
               Language
-            </th>
+            </th> */}
             <th scope="col" className="px-4 py-3 min-w-[10rem]">
               Created By
             </th>
@@ -112,7 +112,7 @@ const LanguagePrepTable = ({
                     {language.productName}
                   </th>
 
-                  <td className="px-4 py-3">{language.language}</td>
+                  {/* <td className="px-4 py-3">{language.language}</td> */}
                   <td className="px-4 py-3">
                     <span className="p-1 bg-[#eaeaef]">
                       {formatDate(language.createdAt)}
@@ -120,8 +120,6 @@ const LanguagePrepTable = ({
                   </td>
                   <td className="px-4 py-3">
                     <a
-                      href={language.website}
-                      target="_blank"
                       rel="noopener noreferrer"
                       className="p-1 bg-[#eaeaef] hover:underline rounded"
                     >

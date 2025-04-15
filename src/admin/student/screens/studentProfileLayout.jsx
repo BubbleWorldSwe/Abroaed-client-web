@@ -398,7 +398,6 @@ const StudentProfileLayout = () => {
               setOpenModal(true);
             }}
             requestedDocument={() => setUpdateDocModal(true)}
-            collegesList={collegesList}
           />
           <StudentSavedPreference />
           <StudentApplication

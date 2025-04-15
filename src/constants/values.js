@@ -141,6 +141,16 @@ export const destinationSequence = [
   "Spain",
 ];
 
+export const testPrepsSequence = [
+  "IELTS",
+  "TOEFL",
+  "Duolingo",
+  "PTE",
+  "SAT",
+  "GRE",
+  "GMAT",
+];
+
 export const tabColors = {
   "To Start": "bg-[#FECCE1]",
   "Verifying Documents": "bg-[#FFFCC2]",

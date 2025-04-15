@@ -198,9 +198,7 @@ const LanguagePrepDetails = () => {
               &times;
             </button>
 
-            <h2 className="text-2xl font-semibold mb-4">
-              {selectedSection} Modal
-            </h2>
+            <h2 className="text-2xl font-semibold mb-4">{selectedSection}</h2>
             <div className="mt-4">{modals[`section${activeModalIndex}`]}</div>
           </div>
         </div>

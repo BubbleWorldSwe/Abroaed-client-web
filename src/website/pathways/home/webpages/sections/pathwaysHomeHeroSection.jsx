@@ -7,7 +7,8 @@ function PathwaysHomeHero() {
     return (
         <HeroTextComponent img={pathwaysHome}>
             <h1 className={heroStyle.header}>
-                Pathways Program                </h1>
+                Pathways Program
+            </h1>
             <p className={heroStyle.text}>
                 Your Pathway to Academic Success and Global Opportunities
             </p>

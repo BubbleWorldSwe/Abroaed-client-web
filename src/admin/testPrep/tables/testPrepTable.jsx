@@ -7,6 +7,7 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { setSelectedTestPrep } from "../../../redux/actions/testPrepsActions";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { formatDateTime } from "../../../utils/helper";
 
 const TestPrepTable = ({
   currentPage,
@@ -64,14 +65,17 @@ const TestPrepTable = ({
               />
             </th>
             <th scope="col" className="px-4 py-1 min-w-[14rem]">
-              Product Name
+              Name
             </th>
             <th scope="col" className="px-4 py-1 min-w-[10rem]">
-              Exam
+              Acronym
             </th>
-            <th scope="col" className="px-4 py-1 min-w-[10rem]">
+            <th scope="col" className="px-4 py-3 min-w-[10rem]">
+              Created At
+            </th>
+            {/*   <th scope="col" className="px-4 py-1 min-w-[10rem]">
               Language
-            </th>
+            </th> */}
             <th scope="col" className="px-4 py-3">
               <span className="sr-only">Actions</span>
             </th>
@@ -103,7 +107,15 @@ const TestPrepTable = ({
                   </th>
 
                   <td className="px-4 py-3">{test.exam}</td>
-                  <td className="px-4 py-3">{test.language}</td>
+                  {/*   <td className="px-4 py-3">{test.language}</td> */}
+                  <td className="px-4 py-3">
+                    <a
+                      rel="noopener noreferrer"
+                      className="p-1 bg-[#eaeaef] hover:underline rounded"
+                    >
+                      {formatDateTime(test.createdAt)}
+                    </a>
+                  </td>
 
                   <td className="px-4 py-3">
                     <button

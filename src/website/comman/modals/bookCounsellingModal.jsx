@@ -2,12 +2,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { BorderSelectField } from "../../../commons/components/inputFields/borderSelectField";
 import { BorderTextInputField } from "../../../commons/components/inputFields/borderTextInputField";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { applyingFor, entity, highestEducation, source, targetYear } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
+import { useClickOutside } from "../customHooks/useOutSideModalClose";
 
-const BookCounsellingModal = ({ onClose }) => {
+const BookCounsellingModal = ({ isOpen, onClose }) => {
+    const modalRef = useRef();
     const dispatch = useDispatch();
     const { allDestinations } = useSelector((state) => state.destinations);
     const { error } = useSelector((state) => state.leads);
@@ -23,8 +25,6 @@ const BookCounsellingModal = ({ onClose }) => {
             targetYear: "",
         },
     });
-    console.log('i am working');
-
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -79,6 +79,8 @@ const BookCounsellingModal = ({ onClose }) => {
     };
 
     ;
+    // when click on the outside the modal then modal will close
+    useClickOutside(modalRef, onClose, isOpen)
 
     useEffect(() => {
         if (!error) {
@@ -97,10 +99,12 @@ const BookCounsellingModal = ({ onClose }) => {
         }
     }, [error]);
 
+
+
     return (
         <>
             <div className="fixed px-6 inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
-                <div className="bg-white max-h-[80vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
+                <div ref={modalRef} className="bg-white max-h-[80vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
                     <button
                         className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
                         onClick={onClose}
@@ -203,7 +207,6 @@ const BookCounsellingModal = ({ onClose }) => {
                     </form>
                 </div>
             </div>
-
         </>
     );
 };

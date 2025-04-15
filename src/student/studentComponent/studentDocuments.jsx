@@ -3,8 +3,12 @@ import { Edit, EllipsisVertical, Eye, Trash2, Upload } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { CheckboxField } from "../../commons/components/inputFields/checkboxField";
 import { TableFooter } from "../../commons/components/table/tableFooter";
+import { useSelector } from "react-redux";
+import { formatDate } from "../../utils/helper";
 
 const StudentDocuments = () => {
+  const { applications } = useSelector((state) => state?.studentProfile);
+
   const [activeTab, setActiveTab] = useState(0);
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
   const dropdownRef = useRef(null);
@@ -53,30 +57,33 @@ const StudentDocuments = () => {
                 </tr>
               </thead>
               <tbody>
-                {[1, 2].map((member, index) => (
-                  <tr
-                    key={index}
-                    className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      AADHAAR
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Government
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      College Name
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      DD/MM/YYYY
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      <button className="p-2 bg-[#EDBD05] rounded hover:bg-yellow-300">
-                        Upload Now
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {(Array.isArray(applications) ? applications : []).map(
+                  (application, _) =>
+                    application?.additionalDocuments?.map((data, i) => (
+                      <tr
+                        key={i}
+                        className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {data?.title}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {data?.category}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {application?.college?.name}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {formatDate(data?.deadline)}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          <button className="p-2 bg-[#EDBD05] rounded hover:bg-yellow-300">
+                            Upload Now
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                )}
               </tbody>
             </table>
             <p className="text-gray-500 bg-[#E4E4E7] text-sm p-5 text-center"></p>

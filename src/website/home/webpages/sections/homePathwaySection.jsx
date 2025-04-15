@@ -50,7 +50,7 @@ const HomePathwaySection = () => {
                   ></div>
                   <div className="absolute bottom-2 overflow-auto md:bottom-14 left-4 px-5">
                     <p className="text-gray-200 lg:mb-2 text-[12px] md:text-base">Explore</p>
-                    <h1 className="mb-2 text-[24px] md:text-5xl tracking-tight font-extrabold text-white">
+                    <h1 className="mb-2 text-[24px] md:text-5xl tracking-tight font-medium text-white">
                       {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title}
                       {/* {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title} */}
                     </h1>

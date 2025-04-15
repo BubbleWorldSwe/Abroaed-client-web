@@ -131,13 +131,26 @@ export const getCoursesListByDestinationId = async (id) => {
 export const setCollegeUploadFile = async (id, imageData) => {
   try {
     const { files, type } = imageData;
+
+    // Build FormData
+    const formData = new FormData();
+
+    if (Array.isArray(files)) {
+      files.forEach((file) => {
+        formData.append("files", file);
+      });
+    } else {
+      formData.append("files", files);
+    }
+
+    formData.append("type", type);
+
+    // Make request
     const data = await makePutRequestWithFormData(
       `${BASE_URL}/api/v1/admin/colleges/upload/file/${id}`,
-      {
-        files,
-        type,
-      }
+      formData
     );
+
     console.log(data);
     if (data.success) {
       return data.data;

@@ -61,11 +61,11 @@ const AbroaedPlusHowItWork = () => {
               >
                 <div className="p-5">
                   <div className="flex justify-between">
-                    <h5 className={`mb-2 text-[24px] md:text-[28px] font-bold tracking-tight  dark:text-white`}>
+                    <h5 className={`mb-2 text-[24px] md:text-[28px] font-medium tracking-tight  dark:text-white`}>
                       {service.title}
                     </h5>
                   </div>
-                  <p className="mb-3  text-[16px] md:text-[20px] dark:text-gray-400">
+                  <p className="mb-3  text-[16px] md:text-[20px] font-normal dark:text-gray-400">
                     {service.description}
                   </p>
                 </div>

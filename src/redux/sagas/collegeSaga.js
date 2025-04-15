@@ -24,7 +24,6 @@ import {
   uploadCollegeImageSuccess,
 } from "../actions/collegeActions";
 import { toast } from "react-toastify";
-import { UPLOAD_ACCOMMODATION_IMAGE_REQUEST } from "../actions/accommodationActions";
 
 // Fetch colleges
 function* fetchColleges(action) {

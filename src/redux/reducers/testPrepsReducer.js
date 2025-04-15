@@ -1,3 +1,4 @@
+import { testPrepsSequence } from "../../constants/values";
 import {
   FETCH_TESTPREPS_REQUEST,
   FETCH_TESTPREPS_SUCCESS,
@@ -56,10 +57,21 @@ export const testPrepsReducer = (state = initialState, action) => {
       };
 
     case FETCH_ALL_TESTPREPS_SUCCESS:
+      const testPreps = action.payload.result;
+
+      // Create a lookup for quick access
+      const testPrepMap = new Map(testPreps.map((test) => [test?.exam, test]));
+
+      // Arrange destinations based on predefined sequence
+      const sortedTestPrep = testPrepsSequence
+        .map((name) => testPrepMap.get(name))
+        .filter(Boolean); // Remove undefined values (if any country is missing)
+      console.log(sortedTestPrep);
+
       return {
         ...state,
         loading: false,
-        allTestPreps: action.payload.result,
+        allTestPreps: sortedTestPrep,
       };
 
     case FETCH_TESTPREPS_FAILURE:
