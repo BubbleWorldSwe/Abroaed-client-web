@@ -9,7 +9,13 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
-const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
+const StudentUploadDocument = ({
+  isOpen,
+  onClose,
+  collegesList,
+  getCollegesList,
+  leadId,
+}) => {
   const [formData, setFormData] = useState({
     college: "",
     lead: leadId,
@@ -17,6 +23,9 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
     title: "",
     file: null,
   });
+
+  const [destinationId, setDestinationId] = useState(null);
+  const { allDestinations } = useSelector((state) => state.destinations);
 
   const { applications } = useSelector(
     (state) => state?.students?.selectedStudent
@@ -64,7 +73,7 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
             </button>
             <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
+              <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
                 <SelectField
                   label="Document Category"
                   name="category"
@@ -85,21 +94,38 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
                   onChange={handleChange}
                   placeholder="Enter Document Title"
                 />
+
+                {formData?.category === "Applications" && (
+                  <>
+                    <SelectField
+                      label="Destination"
+                      name="destinationId"
+                      value={destinationId}
+                      onChange={(e) => {
+                        setDestinationId(e.target.value);
+                        getCollegesList(e.target.value);
+                      }}
+                      options={allDestinations.map((data) => ({
+                        label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                        value: data?._id,
+                      }))}
+                      required
+                    />
+                    <SelectField
+                      label="Select College"
+                      name="college"
+                      value={formData.college}
+                      onChange={handleChange}
+                      options={collegesList.map((data) => ({
+                        label: data?.name,
+                        value: data?._id,
+                      }))}
+                      required
+                    />
+                  </>
+                )}
               </div>
 
-              {formData?.category === "Applications" && (
-                <SelectField
-                  label="Select College"
-                  name="college"
-                  value={formData.college}
-                  onChange={handleChange}
-                  options={applications.map((data) => ({
-                    label: data?.college?.name,
-                    value: data?.college?._id,
-                  }))}
-                  required
-                />
-              )}
               <div className="text-base font-semibold">
                 Upload Documents for the student{" "}
                 <span className="text-gray-500 text-sm">

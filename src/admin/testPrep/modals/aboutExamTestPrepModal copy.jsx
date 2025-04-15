@@ -15,9 +15,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
   const [formData, setFormData] = useState({
     about: testPrepDetails?.about || "",
     productName: testPrepDetails?.productName || "",
-    exam: testPrepDetails?.exam || "",
-    language: testPrepDetails?.language || "",
-
     aboutExam: {
       examDate: testPrepDetails?.aboutExam?.examDate || "",
       examCenter: testPrepDetails?.aboutExam?.examCenter || "",
@@ -37,24 +34,20 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
       return;
     }
 
-    // Filter out empty, null, or undefined fields in aboutExam
-    const cleanedAboutExam = Object.fromEntries(
-      Object.entries(formData.aboutExam).filter(
-        ([_, value]) =>
-          value !== undefined &&
-          value !== null &&
-          value.toString().trim() !== ""
-      )
-    );
+    const { aboutExam } = formData;
+    if (
+      !aboutExam.examDate.trim() ||
+      !aboutExam.examCenter.trim() ||
+      !aboutExam.registration.trim() ||
+      !aboutExam.fees.trim() ||
+      !aboutExam.syllabus.trim() ||
+      !aboutExam.scoring_and_results.trim()
+    ) {
+      toast.error("Please fill in all About Exam fields before submitting.");
+      return;
+    }
 
-    const cleanedFormData = {
-      ...formData,
-      aboutExam: cleanedAboutExam, // always include it (may be empty {})
-    };
-
-    console.log(cleanedFormData);
-
-    onUpdate(cleanedFormData);
+    onUpdate(formData);
   };
 
   const handleInputChange = (e, fieldName) => {
@@ -80,24 +73,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
           required
           placeholder="Enter Exam Types"
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
-          <TextInputField
-            label="Exam"
-            name="exam"
-            type="text"
-            value={formData?.exam}
-            onChange={(e) => handleInputChange(e, "exam")}
-            placeholder={"Enter Exam"}
-          />
-          <TextInputField
-            label="Language"
-            name="language"
-            type="text"
-            value={formData?.language}
-            onChange={(e) => handleInputChange(e, "language")}
-            placeholder={"Enter Language"}
-          />
-        </div>
         <div className="my-5">
           <TextareaInputField
             label="About"

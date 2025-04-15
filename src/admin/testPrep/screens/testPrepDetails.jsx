@@ -37,6 +37,7 @@ const TestPrepDetails = () => {
       dispatch(editTestPrepRequest(state?._id, data));
       //  fetchTestPrepsDetails();
       closeModal();
+      setFormdata(null);
     } catch (error) {
       console.log(error);
     }

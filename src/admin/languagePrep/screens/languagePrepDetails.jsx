@@ -35,6 +35,7 @@ const LanguagePrepDetails = () => {
       dispatch(editLanguagePrepRequest(id, data));
 
       closeModal();
+      setFormdata(null);
     } catch (error) {
       console.log(error);
     }

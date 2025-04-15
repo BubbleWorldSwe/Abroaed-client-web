@@ -12,7 +12,11 @@ import { useEffect, useRef, useState } from "react";
 import StudentUploadDocument from "../modals/studentUploadDocumentModal";
 import { useSelector } from "react-redux";
 
-const DocumentLibrary = () => {
+const DocumentLibrary = ({
+  requestedDocument,
+  handleOpenUploadModal,
+  collegesList,
+}) => {
   const dropdownRef = useRef(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
@@ -28,10 +32,6 @@ const DocumentLibrary = () => {
   };
   const handleTabClick = (index) => {
     setActiveTab(index);
-  };
-
-  const handleOpenUploadModal = () => {
-    setOpenModal(true);
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const DocumentLibrary = () => {
 
               <button
                 className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
-                onClick={handleOpenUploadModal}
+                onClick={requestedDocument}
               >
                 <Plus className="w-4 h-4" />
                 <p>Request Documents</p>
