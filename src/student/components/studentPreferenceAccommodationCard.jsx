@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import accommodations from "../../assets/accommodations.webp";
 import locationIcon from "../../assets/locationIcon.png";
 import wallet from "../../assets/wallet.png";

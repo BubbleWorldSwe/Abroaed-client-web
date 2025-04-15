@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { CheckboxField } from "../../commons/components/inputFields/checkboxField";
 import { formatDate, formatStudentApplications } from "../../utils/helper";
 import StudentApplicationsList from "../components/studentApplicationsList";
-import StudentPreferenceDetails from "../components/studentpreferenceDetails";
+import StudentPreferenceDetails from "../components/studentPreferencesDetails";
 
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);
