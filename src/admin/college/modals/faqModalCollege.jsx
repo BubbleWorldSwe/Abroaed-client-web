@@ -49,7 +49,7 @@ const FaqModalCollege = ({ closeModal, filledData, onUpdate }) => {
   };
 
   return (
-    <div className="w-[700px] max-w-full mx-auto">
+    <div className="w-[100vh] max-w-full mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="mb-5">
           <TextInputField

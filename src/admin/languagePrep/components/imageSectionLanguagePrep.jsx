@@ -91,7 +91,7 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
               }}
             >
               <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
-              Edit Image
+              {languagePrepDetails.imageUrl ? `Edit Image` : "Add Image"}
             </button>
             <button
               onClick={() => {
@@ -124,7 +124,14 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
               <div className="w-full relative mb-4">
                 <img
                   className="w-full h-60 object-cover rounded-lg"
-                  src={imagePreview || dark}
+                  // src={imagePreview || dark}
+                  src={
+                    imagePreview
+                      ? imagePreview
+                      : languagePrepDetails?.imageUrl
+                      ? `${IMAGE_BASE_URL}/${languagePrepDetails.imageUrl}`
+                      : dark
+                  }
                   alt="Current"
                 />
               </div>

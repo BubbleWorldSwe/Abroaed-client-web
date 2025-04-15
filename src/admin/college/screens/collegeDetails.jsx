@@ -125,7 +125,17 @@ function CollegDetails() {
 
   const modals = {
     section0: <OverviewModal closeModal={closeModal} onUpdate={onUpdate} />,
-    section1: <MediaGallery closeModal={closeModal} onUpdate={onUpdate} />,
+    section1: (
+      <MediaGallery
+        closeModal={closeModal}
+        onUpdate={onUpdate}
+        onUploadImage={onUploadImage}
+        /*  onUploadImage={(files) => {
+          console.log("Uploaded Files:", files);
+          // You can send to server here using FormData
+        }} */
+      />
+    ),
     section2: (
       <LocationModal
         closeModal={closeModal}
@@ -192,6 +202,23 @@ function CollegDetails() {
   }
 
   async function onUploadImage(data, type) {
+    console.log(data, type);
+    try {
+      console.log(data);
+      dispatch(
+        uploadCollegeImageRequest(state?._id, {
+          files: data,
+          type,
+        })
+      );
+      //  fetchTestPrepsDetails();
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function onUploadMultiImage(data, type) {
     console.log(data, type);
     try {
       console.log(data);

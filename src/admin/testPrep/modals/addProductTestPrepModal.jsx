@@ -13,6 +13,7 @@ const AddProductTestPrepModal = ({
   onAddTestPreps,
 }) => {
   const [formData, setFormData] = useState({ language: "English" });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsDone(true);
@@ -30,6 +31,13 @@ const AddProductTestPrepModal = ({
       return;
     }
     onAddTestPreps(formData);
+  };
+
+  const onReset = () => {
+    try {
+      setFormData({ language: "English" });
+      onClose();
+    } catch (error) {}
   };
 
   return (
@@ -74,7 +82,7 @@ const AddProductTestPrepModal = ({
               /> */}
 
               <div className="flex justify-end space-x-4 mt-5">
-                <ModalCloseButton label="Reset" onClick={onClose} />
+                <ModalCloseButton label="Reset" onClick={onReset} />
                 <ModalSubmitButton label="Add" onClick={handleAddTestPreps} />
               </div>
             </form>

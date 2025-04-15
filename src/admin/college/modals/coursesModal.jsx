@@ -68,7 +68,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
   console.log(formData);
 
   return (
-    <div>
+    <div className="w-[100vh] max-w-full mx-auto">
       <form onSubmit={handleSubmit}>
         <TextInputField
           label="Course Name"

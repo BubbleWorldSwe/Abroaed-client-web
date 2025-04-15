@@ -98,7 +98,7 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
               }}
             >
               <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
-              Edit Image
+              {accommodationDetails.imageUrl ? `Edit Image` : "Add Image"}
             </button>
             <button
               onClick={() => {
@@ -131,7 +131,14 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
               <div className="w-full relative mb-4">
                 <img
                   className="w-full h-60 object-cover rounded-lg"
-                  src={imagePreview || dark}
+                  //src={imagePreview || dark}
+                  src={
+                    imagePreview
+                      ? imagePreview
+                      : accommodationDetails?.imageUrl
+                      ? `${IMAGE_BASE_URL}/${accommodationDetails.imageUrl}`
+                      : dark
+                  }
                   alt="Current"
                 />
               </div>

@@ -94,7 +94,7 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
               }}
             >
               <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
-              Edit Image
+              {testPrepDetails.imageUrl ? `Edit Image` : "Add Image"}
             </button>
             <button
               onClick={() => {
