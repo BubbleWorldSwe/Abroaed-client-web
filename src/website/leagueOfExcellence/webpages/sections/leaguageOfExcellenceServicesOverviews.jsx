@@ -2,6 +2,7 @@
 import { useState } from "react";
 import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 
 const LeaguageOfExcellenceServicesOverviews = ({
   setCountry,
@@ -19,6 +20,12 @@ const LeaguageOfExcellenceServicesOverviews = ({
     <div className="relative z-10">
       <section className="dark:bg-gray-900 relative">
         <div className="pt-16">
+          <SectionMainHeader
+            className={'mb-4'}
+          >
+            What is the League of Excellence?
+          </SectionMainHeader>
+
           <PrimaryBodyText className=" mb-1 md:mb-4">
             We at ABROAED help aspiring students get into top-tier universities
             across the UK, US, Australia, New Zealand, Canada, Asia, and Europe.
@@ -51,6 +58,12 @@ const LeaguageOfExcellenceServicesOverviews = ({
               internships, research, or studying abroad. To top it all, there is
               a powerful alumni network.
             </PrimaryBodyText>
+            <SecondaryTitle
+              className="mt-6"
+            >
+              Countries in the Bundle of League of Excellence
+            </SecondaryTitle>
+
             <div className="py-5 md:py-10  font-medium flex gap-2 text-center justify-between flex-wrap">
               {countriesName.map((country, index) => (
                 <div key={index}>

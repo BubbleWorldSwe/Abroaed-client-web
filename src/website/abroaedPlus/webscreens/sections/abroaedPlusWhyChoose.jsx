@@ -44,8 +44,7 @@ const AbroaedPlusWhyChoose = () => {
           <SectionMainHeader
             className={'mb-4'}
           >
-            Why Choose ABROAED
-            <sup>+</sup> ?
+            Why Choose ABROAED<sup>+</sup>?
           </SectionMainHeader>
           <PrimaryBodyText
             text={` We’re your study abroad wingman, making sure you nail every step—no

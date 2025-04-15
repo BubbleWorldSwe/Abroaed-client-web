@@ -25,7 +25,11 @@ import UpdateStudentAdditionInfo from "../modals/updateStudentAdditionInfoModal"
 import StudentAssignTeamModal from "../modals/studentAssignTeamModal";
 import StartApplicationModal from "../modals/startApplicationModal";
 import { getTeamsByMembers } from "../../../api/teamsApi";
-import { getCollegesByDestinationId } from "../../../api/collegesApi";
+import {
+  getAllColleges,
+  getColleges,
+  getCollegesByDestinationId,
+} from "../../../api/collegesApi";
 import {
   getStudentApplications,
   getStudentPrepsBatches,
@@ -42,6 +46,7 @@ import { statusSequence } from "../../../constants/values";
 import StatusConfirmationModal from "../modals/statusConfirmationModal";
 import { fetchTransactionsRequest } from "../../../redux/actions/transactionActions";
 import { setAddTransaction } from "../../../api/transactionApi";
+import StudentUploadDocument from "../modals/studentUploadDocumentModal";
 
 const StudentProfileLayout = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -51,7 +56,7 @@ const StudentProfileLayout = () => {
   const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
-
+  const [openModal, setOpenModal] = useState(false);
   const [modal, setModal] = useState(null);
   const [collegesList, setCollegesList] = useState([]);
   const [membersList, setMembersList] = useState([]);
@@ -65,6 +70,8 @@ const StudentProfileLayout = () => {
   const [changeStatusModal, setChangeStatusModal] = useState(null);
 
   const [transactionModal, setTransactionModal] = useState(false);
+
+  const [allCollegesList, setAllCollegesList] = useState([]);
 
   const handleModal = (modalType) => {
     setModal(modalType);
@@ -110,10 +117,18 @@ const StudentProfileLayout = () => {
     try {
       const list = await getTeamsByMembers();
       const lead = await getLeadDetailsById(id);
+      const college = await getAllColleges();
+
+      console.log(college);
+
       fetchStudentApplications();
       fetchStudentTransactions();
       fetchStudentSavedPefrences();
       fetchStudentPrepsBatches();
+
+      if (college.status === 200) {
+        setAllCollegesList(college?.data?.result);
+      }
 
       if (lead.status === 200) {
         dispatch(setSelectedStudent(lead.data));
@@ -247,8 +262,6 @@ const StudentProfileLayout = () => {
       : [];
   };
 
-  console.log(selectedApplication);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -359,6 +372,13 @@ const StudentProfileLayout = () => {
         }
         options={getNextStatus(selectedApplication?.status)}
       />
+
+      <StudentUploadDocument
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        collegesList={collegesList}
+        getCollegesList={fetchCollegesList}
+      />
       {/* Page Content */}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="max-w-7xl p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
@@ -373,7 +393,13 @@ const StudentProfileLayout = () => {
             onUpdate={onUpdateLead}
           />
 
-          <DocumentLibrary />
+          <DocumentLibrary
+            handleOpenUploadModal={() => {
+              setOpenModal(true);
+            }}
+            requestedDocument={() => setUpdateDocModal(true)}
+            collegesList={collegesList}
+          />
           <StudentSavedPreference />
           <StudentApplication
             onOpen={() => setOpenApplicationModal(true)}

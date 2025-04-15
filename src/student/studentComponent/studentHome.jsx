@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import StudentPreferenceDetails from "../components/studentPreferenceDetails";
 import { CheckboxField } from "../../commons/components/inputFields/checkboxField";
 import { formatDate, formatStudentApplications } from "../../utils/helper";
 import StudentApplicationsList from "../components/studentApplicationsList";
+import StudentPreferenceDetails from "../components/studentPreferencesDetails";
 
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);

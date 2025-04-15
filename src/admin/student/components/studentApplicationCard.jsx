@@ -71,7 +71,7 @@ const StudentApplicationCard = ({
                         Modify
                       </li>
 
-                      {statusSequence.indexOf(status) <=
+                      {/*  {statusSequence.indexOf(status) <=
                         statusSequence.indexOf("verifying_documents") && (
                         <li
                           onClick={onOpenDocUpdate}
@@ -79,7 +79,7 @@ const StudentApplicationCard = ({
                         >
                           Request Documents
                         </li>
-                      )}
+                      )} */}
 
                       {status !== "rejected" &&
                         status !== "offer_letter_received" && (

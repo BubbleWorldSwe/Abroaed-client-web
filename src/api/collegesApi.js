@@ -22,6 +22,18 @@ export const getColleges = async (page) => {
   }
 };
 
+export const getAllColleges = async (page) => {
+  try {
+    const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/colleges/list`);
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const getCollegesByDestinationId = async (destId) => {
   try {
     const data = await makeGetRequest(

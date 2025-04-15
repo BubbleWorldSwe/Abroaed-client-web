@@ -15,6 +15,7 @@ const UpdateApplicationModal = ({
 
   filledData,
   updateApplication,
+  setSelectedApplication,
 }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
 
