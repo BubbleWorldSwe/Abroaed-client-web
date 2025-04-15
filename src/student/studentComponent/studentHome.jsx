@@ -2,11 +2,10 @@ import { SquareUserRound } from "lucide-react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { CheckboxField } from "../../commons/components/inputFields/checkboxField";
 import { formatDate, formatStudentApplications } from "../../utils/helper";
 import StudentApplicationsList from "../components/studentApplicationsList";
-import StudentPreferenceDetails from "../components/StudentpreferenceDetails";
+import StudentPreferenceDetails from "../components/studentPreferencesDetails";
 
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);
