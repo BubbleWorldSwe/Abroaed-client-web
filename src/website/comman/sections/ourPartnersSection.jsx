@@ -23,7 +23,7 @@ const financeImages = [
   { src: avanseBank, alt: "Avanse Bank" },
   { src: axisBank, alt: "Axis Bank" },
   { src: bankofBaroda, alt: "Bank of Baroda" },
-  { src: bankofMaharashtra, alt: "Bank of Maharashtra" },
+  // { src: bankofMaharashtra, alt: "Bank of Maharashtra" },
   { src: boi, alt: "Bank of India" },
   { src: credilaBank, alt: "Credila Bank" },
   { src: iciciBank, alt: "ICICI Bank" },
@@ -31,7 +31,7 @@ const financeImages = [
   { src: incred, alt: "InCred" },
   { src: mpower, alt: "Mpower" },
   { src: pnb, alt: "PNB" },
-  { src: prodigy, alt: "Prodigy Finance" },
+  // { src: prodigy, alt: "Prodigy Finance" },
   { src: sarswatiBank, alt: "Sarswati Bank" },
   { src: sbi, alt: "SBI" },
   { src: tataCapital, alt: "Tata Capital" },
@@ -46,7 +46,7 @@ function OurPartners() {
       <section className="bg-white relative ">
         <div className=" relative z-10">
           <SectionMainHeader className={`mb-1 text-center`}>
-            Our Partner
+            Our Partners
           </SectionMainHeader>
           <div className="flex mb-10 justify-center items-center ">
             <p className="text-center  text-[#52525B] text-[18px] font-semibold">

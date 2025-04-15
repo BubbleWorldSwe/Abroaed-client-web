@@ -409,6 +409,7 @@ function Header({ isHeaderBgWhite = false }) {
               {activeDropdown === "bookMenu" && (
                 <div className="relative">
                   <BookCounsellingModal
+                    isOpen={activeDropdown === "bookMenu"}
                     onClose={handleMouseLeave}
 
                   />

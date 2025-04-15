@@ -3,6 +3,23 @@
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 import vector from ".././../../../assets/kpiVector.png"
 function CareerJobSection() {
+
+    const jobOpenings = [
+        {
+            jobTitle: "Counsellor",
+            location: "New Delhi, India",
+        },
+        {
+            jobTitle: "Operations Manager",
+            location: "New Delhi, India",
+        },
+        {
+            jobTitle: "Marketing Trainee",
+            location: "New Delhi, India",
+        },
+    ];
+
+
     return (
         <div>
             <section className="bg-white dark:bg-gray-900 relative  ">
@@ -19,23 +36,23 @@ function CareerJobSection() {
                     </SecondaryTitle> */}
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
-                    {Array(3).fill().map((_, index) => (
-                        <div key={index} className="w-full hover:scale-[1.01] transition-all ease-in-out delay-100 h-[10rem] md:h-[12rem] relative bg-gray-primary rounded-lg overflow-hidden flex flex-col justify-center items-center p-6">
+                    {jobOpenings?.map((job, index) => (
+                        <div key={index} className="w-full hover:scale-[1.01] transition-all flex justify-center items-center ease-in-out delay-100 h-[10rem] md:h-[12rem] relative bg-gray-primary rounded-lg overflow-hidden  p-6">
                             <img
                                 className="absolute right-0 top-0 h-full object-contain z-0"
                                 src={vector}
                                 alt="Decorative vector"
                             />
-                            <div>
-                                <h5 className="text-[28px] md:text-[32px] font-bold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
+                            <div className="flex flex-col font-cinzel justify-center items-center">
+                                <h5 className="text-[28px] md:text-[32px] font-medium bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
                                     style={{
                                         backgroundImage:
                                             "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
                                     }}>
-                                    Job Title
+                                    {job.jobTitle}
                                 </h5>
 
-                                <p className="text-white sm:text-[18px]">Location, India</p>
+                                <p className="text-white sm:text-[18px]">{job.location}</p>
                             </div>
                         </div>
                     ))}

@@ -12,7 +12,7 @@ const CombinedTestPrepModal = ({
 
   return (
     <div
-      className="absolute text-gray-primary left-0 top-full w-[15rem] py-[5px] z-50"
+      className="absolute text-gray-primary left-0 top-full w-[23rem] py-[5px] z-50"
       onMouseEnter={() => handleMouseEnter("testPrep")}
       onMouseLeave={handleMouseLeave}
     >

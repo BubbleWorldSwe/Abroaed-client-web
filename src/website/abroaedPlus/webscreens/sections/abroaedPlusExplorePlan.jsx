@@ -35,7 +35,9 @@ const AbroaedPlusExplorePlan = () => {
                 entity={entity.explorePlans}
                 isOpen={openModal}
                 onClose={handleCloseAddModal}
-                title="ABROAED"
+                title={
+                    <span>ABROAED<sup>+</sup></span>
+                }
             />
             < div className="relative z-10" >
                 <section className="dark:bg-gray-900 relative ">
