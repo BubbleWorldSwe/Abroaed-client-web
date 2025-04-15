@@ -277,14 +277,14 @@ function Footer() {
               )}
             </div>
           </div>
-          {/* <div>
-            <div className="md:absolute top-1/3 right-6">
-              <p>
-                <strong>Crafted By </strong>
+          <div>
+            <div className="md:absolute text-[10px] top-1/4 right-6 flex gap-2">
+              <p className="">
+                Crafted By:
               </p>
               <a href="https://bubbleworld.in/" target="_blank" className="">BubbleWorld </a>
             </div>
-          </div> */}
+          </div>
         </div>
       </footer>
     </div>

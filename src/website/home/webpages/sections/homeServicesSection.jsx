@@ -12,7 +12,7 @@ import homeService8 from "../../../../assets/homeService8.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 
 const serviceData = [
@@ -73,18 +73,18 @@ const HomeServicesSection = () => {
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute z-10 left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+      className="absolute z-10 left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
     >
-      <FaArrowLeft />
+      <ChevronLeft />
     </button>
   );
 
   const NextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute z-10 right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+      className="absolute z-10 right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
     >
-      <FaArrowRight />
+      <ChevronRight />
     </button>
   );
 

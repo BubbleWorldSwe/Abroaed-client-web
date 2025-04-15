@@ -8,8 +8,8 @@ import homeHero1Mobile from "../../../../assets/homeHero1Mobile.png";
 import homeHero2Mobile from "../../../../assets/homeHero2Mobile.png";
 import homeHero3Mobile from "../../../../assets/homeHero3Mobile.png";
 import homeHero4Mobile from "../../../../assets/homeHero4Mobile.png";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useMediaQuery } from 'react-responsive';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HomeSlidingImg = () => {
     const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -17,18 +17,18 @@ const HomeSlidingImg = () => {
     const PrevArrow = ({ onClick }) => (
         <button
             onClick={onClick}
-            className="absolute z-10 left-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+            className="absolute z-10 left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
         >
-            <FaArrowLeft />
+            <ChevronLeft />
         </button>
     );
 
     const NextArrow = ({ onClick }) => (
         <button
             onClick={onClick}
-            className="absolute z-10 right-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+            className="absolute z-10 right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
         >
-            <FaArrowRight />
+            <ChevronRight />
         </button>
     );
     const settings = {
