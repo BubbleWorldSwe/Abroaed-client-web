@@ -127,7 +127,15 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
               <div className="w-full relative mb-4">
                 <img
                   className="w-full h-60 object-cover rounded-lg"
-                  src={imagePreview || dark}
+                  // src={imagePreview || dark}
+
+                  src={
+                    imagePreview
+                      ? imagePreview
+                      : testPrepDetails?.imageUrl
+                      ? `${IMAGE_BASE_URL}/${testPrepDetails.imageUrl}`
+                      : dark
+                  }
                   alt="Current"
                 />
               </div>

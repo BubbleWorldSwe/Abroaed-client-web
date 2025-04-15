@@ -12,7 +12,7 @@ const AddProductTestPrepModal = ({
   setIsDone,
   onAddTestPreps,
 }) => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({ language: "English" });
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsDone(true);
@@ -49,29 +49,29 @@ const AddProductTestPrepModal = ({
               className="flex flex-col gap-5 mx-auto py-5 rounded-lg"
             >
               <TextInputField
-                label="Product Name"
+                label="Name"
                 name="productName"
                 type="text"
                 value={formData?.productName}
                 onChange={handleChange}
-                placeholder={"Enter Product Name"}
+                placeholder={"Enter Name"}
               />
               <TextInputField
-                label="Exam"
+                label="Acronym"
                 name="exam"
                 type="text"
                 value={formData?.exam}
                 onChange={handleChange}
-                placeholder={"Enter Exam"}
+                placeholder={"Enter Acronym"}
               />
-              <TextInputField
+              {/*  <TextInputField
                 label="Language"
                 name="language"
                 type="text"
                 value={formData?.language}
                 onChange={handleChange}
                 placeholder={"Enter Language"}
-              />
+              /> */}
 
               <div className="flex justify-end space-x-4 mt-5">
                 <ModalCloseButton label="Reset" onClick={onClose} />

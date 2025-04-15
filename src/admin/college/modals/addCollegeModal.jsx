@@ -92,81 +92,85 @@ function AddCollegeModal({
                 required
               />
 
-              {/* Entity Type */}
-              <TextInputField
-                label="Entity Type"
-                name="entityType"
-                type="text"
-                value={formData.entityType}
-                onChange={(e) => handleInputChange(e, "entityType")}
-                placeholder="Enter Entity Type"
-                required
-              />
+              <div className="grid grid-cols-2 gap-4">
+                {/* Entity Type */}
+                <TextInputField
+                  label="Entity Type"
+                  name="entityType"
+                  type="text"
+                  value={formData.entityType}
+                  onChange={(e) => handleInputChange(e, "entityType")}
+                  placeholder="Enter Entity Type"
+                  required
+                />
 
-              {/* Website */}
-              <TextInputField
-                label="Website"
-                name="website"
-                type="text"
-                value={formData.website}
-                onChange={(e) => handleInputChange(e, "website")}
-                placeholder="Enter Website URL"
-                required
-              />
+                {/* Website */}
+                <TextInputField
+                  label="Website"
+                  name="website"
+                  type="text"
+                  value={formData.website}
+                  onChange={(e) => handleInputChange(e, "website")}
+                  placeholder="Enter Website URL"
+                  required
+                />
+              </div>
 
               {/* Country */}
 
-              <SelectField
-                label="Country"
-                name="destinationId"
-                value={formData.destinationId}
-                onChange={(e) => {
-                  handleInputChange(e, "destinationId");
+              <div className="grid grid-cols-3 gap-4">
+                <SelectField
+                  label="Country"
+                  name="destinationId"
+                  value={formData.destinationId}
+                  onChange={(e) => {
+                    handleInputChange(e, "destinationId");
 
-                  const selectedCountry = destinationsList.find(
-                    (data) => data?._id === e.target.value
-                  );
+                    const selectedCountry = destinationsList.find(
+                      (data) => data?._id === e.target.value
+                    );
 
-                  console.log(
-                    "Selected Country Object:",
-                    selectedCountry._id,
-                    selectedCountry?.countryId?._id
-                  );
+                    console.log(
+                      "Selected Country Object:",
+                      selectedCountry._id,
+                      selectedCountry?.countryId?._id
+                    );
 
-                  getStatesList(selectedCountry?.countryId?._id);
-                }}
-                options={destinationsList.map((data) => ({
-                  label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                  value: data?._id,
-                  ...data,
-                }))}
-                required
-              />
+                    getStatesList(selectedCountry?.countryId?._id);
+                  }}
+                  options={destinationsList.map((data) => ({
+                    label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                    value: data?._id,
+                    ...data,
+                  }))}
+                  required
+                />
 
-              {/* State */}
+                {/* State */}
 
-              <SelectField
-                label="State"
-                name="stateId"
-                value={formData.stateId}
-                onChange={(e) => handleInputChange(e, "stateId")}
-                options={statesList.map((data) => ({
-                  label: data?.name,
-                  value: data?._id,
-                }))}
-                required
-              />
+                <SelectField
+                  label="State"
+                  name="stateId"
+                  value={formData.stateId}
+                  onChange={(e) => handleInputChange(e, "stateId")}
+                  options={statesList.map((data) => ({
+                    label: data?.name,
+                    value: data?._id,
+                  }))}
+                  required
+                />
 
-              {/* City */}
-              <TextInputField
-                label="City"
-                name="city"
-                type="text"
-                value={formData.city}
-                onChange={(e) => handleInputChange(e, "city")}
-                placeholder="Enter State"
-                required
-              />
+                {/* City */}
+                <TextInputField
+                  label="City"
+                  name="city"
+                  type="text"
+                  value={formData.city}
+                  onChange={(e) => handleInputChange(e, "city")}
+                  placeholder="Enter State"
+                  required
+                />
+              </div>
 
               {/* Address */}
 

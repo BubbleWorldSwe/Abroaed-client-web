@@ -142,7 +142,7 @@ const LanguagePrep = () => {
                 {isWriteAccess && (
                   <AddButton
                     onClick={handleOpenAddModal}
-                    label={"New Product"}
+                    label={"Add Language Prep"}
                   />
                 )}
               </div>

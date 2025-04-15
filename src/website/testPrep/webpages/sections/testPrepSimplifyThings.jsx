@@ -4,21 +4,26 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { testPrepFeatures } from "../../data";
 
 const TestPrepSimplifyThings = () => {
-
   return (
     <div className="">
       <div className="relativ z-10">
         <section className="dark:bg-gray-900">
           <div className="">
             <div className="">
-              <SectionMainHeader
-                className="mb-5"
-              >
+              <SectionMainHeader className="mb-5">
                 How We Simplify Things?
               </SectionMainHeader>
-              <PrimaryBodyText
-              >
-                We transform language test preparation from stressful to strategic. Our expert coaches and smart technology help you conquer IELTS, TOEFL, PTE, TestDaf, and TEF with confidence. Through personalized study plans, AI-powered mock tests with instant feedback, and proven test-taking strategies, we target your weak areas to maximize scores. With flexible online classes and visa-focused coaching, we prepare you for both the exam and your study abroad journey. Join thousands who've boosted their scores by 20%+ within a month with our ith our results-driven system.
+              <PrimaryBodyText>
+                We transform language test preparation from stressful to
+                strategic. Our expert coaches and smart technology help you
+                conquer IELTS, TOEFL, PTE, TestDaf, and TEF with confidence.
+                Through personalized study plans, AI-powered mock tests with
+                instant feedback, and proven test-taking strategies, we target
+                your weak areas to maximize scores. With flexible online classes
+                and visa-focused coaching, we prepare you for both the exam and
+                your study abroad journey. Join thousands who've boosted their
+                scores by 20%+ within a month with our ith our results-driven
+                system.
               </PrimaryBodyText>
             </div>
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -55,8 +60,8 @@ const TestPrepSimplifyThings = () => {
             </div>
           </div>
         </section>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

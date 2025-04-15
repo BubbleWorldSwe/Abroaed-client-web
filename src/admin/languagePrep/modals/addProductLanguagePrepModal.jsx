@@ -12,7 +12,9 @@ const AddProductLanguagePrepModal = ({
   setIsDone,
   onAddLanguagePreps,
 }) => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    language: "English",
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsDone(true);
@@ -43,28 +45,28 @@ const AddProductLanguagePrepModal = ({
             >
               &times;
             </button>
-            <h2 className="text-xl font-bold ">Add Product</h2>
+            <h2 className="text-xl font-bold ">Add Language Prep</h2>
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-5 mx-auto py-5 rounded-lg"
             >
               <TextInputField
-                label="Product Name"
+                label="Name"
                 name="productName"
                 type="text"
                 value={formData?.productName}
                 onChange={handleChange}
-                placeholder={"Enter Product Name"}
+                placeholder={"Enter Name"}
               />
 
-              <TextInputField
+              {/*   <TextInputField
                 label="Language"
                 name="language"
                 type="text"
                 value={formData?.language}
                 onChange={handleChange}
                 placeholder={"Enter Language"}
-              />
+              /> */}
 
               <div className="flex justify-end space-x-4 mt-5">
                 <ModalCloseButton label="Cancel" onClick={onClose} />
