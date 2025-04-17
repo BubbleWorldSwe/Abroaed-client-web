@@ -1,16 +1,16 @@
 import playStore from "../../../assets/gPlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
-import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Flag from "react-world-flags";
 // import AppStoreButton from "../components/appStoreButton";
 
 const socialLinks = [
+  { icon: <FaFacebook size={20} />, url: "https://www.facebook.com/profile.php?id=61575250589330" },
   {
     icon: <FaInstagram size={20} />,
     url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
   },
-  // { icon: <FaFacebook size={20} />, url: "#" },
   {
     icon: <FaLinkedin size={20} />,
     url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all",
@@ -70,13 +70,13 @@ function Footer() {
   const halfDestination = Math.floor(allDestinations.length / 2);
   return (
     <div>
-      <footer className="bg-gray-primary h-[90vh] text-white pt-10 pb-4">
-        <div className="container mx-auto px-10 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
+      <footer className="bg-gray-primary md:min-h-[90vh] lg:max-h-min text-white pt-10 pb-4">
+        <div className="container mx-auto px-6 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
-                href="/home"
+                href="/"
                 className={`font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] text-white`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
@@ -93,7 +93,7 @@ function Footer() {
               financial assistance, fostering access to elite academic and
               leadership networks.
             </p>
-            <h3 className="mt-4 font-semibold text-xl mb-5">Follow Us On</h3>
+            <h3 className="mt-4 font-medium text-xl mb-5">Follow Us On</h3>
             <div className="flex justify-center md:justify-start space-x-3 mt-2">
               {socialLinks.map((link, index) => (
                 <a
@@ -112,14 +112,14 @@ function Footer() {
                 <img
                   src={playStore}
                   alt="googlePlayStoreIcon"
-                  className="w-40 h-14"
+                  className="w-36 h-12"
                 />
               </div>
               <div>
                 <img
                   src={AppStore}
                   alt="googlePlayStoreIcon"
-                  className="w-40 h-14"
+                  className="w-36 h-12"
                 />
               </div>
             </div>
@@ -128,10 +128,10 @@ function Footer() {
           <div className="w-full md:w-[60%]   grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {links.map((section, index) => (
               <div key={index}>
-                <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
+                <h3 className={`font-medium text-2xl mb-1 text-[#fbba18]`}>
                   {section.title}
                 </h3>
-                <ul className=" text-base font-medium  ">
+                <ul className=" text-base font-normal  ">
                   {section.items.map((item, idx) => (
                     <li key={idx}>
                       <a href={item?.link} className="hover:underline text-sm">
@@ -145,13 +145,13 @@ function Footer() {
 
             {/* Contact Information */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
+              <h3 className={`font-medium text-2xl mb-1 text-[#fbba18]`}>
                 Get in Touch
               </h3>
               <div className="text-sm space-y-2">
                 {offices.map((office, index) => (
                   <div key={index}>
-                    <h4 className="font-semibold text-lg">{office.location}</h4>
+                    <h4 className="font-normal text-lg">{office.location}</h4>
                     <p className="text-sm">{office.address}</p>
                     <p className="text-sm">📞 {office.phone1}</p>
                     <p className="text-sm">📞 {office.phone2}</p>
@@ -162,7 +162,7 @@ function Footer() {
             </div>
             {/* Destination */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
+              <h3 className={`font-medium text-2xl mb-1 text-[#fbba18]`}>
                 Destinations
               </h3>
               <ul>
@@ -195,7 +195,7 @@ function Footer() {
             </div>
             <div className="-mt-[12px] md:mt-0">
               <h3
-                className={`hidden md:block font-semibold text-2xl mb-1 text-[#fbba18]`}
+                className={`hidden md:block font-medium text-2xl mb-1 text-[#fbba18]`}
               >
                 Destinations
               </h3>
@@ -229,7 +229,7 @@ function Footer() {
             </div>
             {/* testPrep */}
             <div>
-              <h3 className={`font-semibold text-2xl mb-1 text-[#fbba18]`}>
+              <h3 className={`font-medium text-2xl mb-1 text-[#fbba18]`}>
                 Test Prep
               </h3>
               <ul>
@@ -243,7 +243,7 @@ function Footer() {
                       className="cursor-pointer hover:underline"
                     >
                       <div className="flex  text-white w-full justify-between items-center ">
-                        {data?.productName}
+                        {data.exam}
                       </div>
                     </a>
                   </li>
@@ -254,7 +254,7 @@ function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-16  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
+        <div className="mt-8 md:mt-24  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
           <div className="flex flex-col  gap-1">
             <p>
               © 2025-2026{" "}
@@ -277,14 +277,14 @@ function Footer() {
               )}
             </div>
           </div>
-          <div>
-            <div className="md:absolute text-[10px] top-1/4 right-6 flex gap-2">
-              <p className="">
-                Crafted By:
-              </p>
-              <a href="https://bubbleworld.in/" target="_blank" className="">BubbleWorld </a>
-            </div>
+
+          <div className="px-28 md:px-0 mx-auto md:absolute text-[10px] bottom-0 right-4 flex gap-2">
+            <p>
+              Crafted By:
+            </p>
+            <a href="https://bubbleworld.in/" target="_blank" className="">BubbleWorld </a>
           </div>
+
         </div>
       </footer>
     </div>

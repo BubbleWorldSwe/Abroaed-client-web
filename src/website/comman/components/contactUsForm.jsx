@@ -73,7 +73,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
   console.log(formData);
 
   return (
-    <section className="relative  overflow-auto">
+    <section className="relative ">
       <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:h-[90vh] antialiased relative ">
         <div
           className={`flex flex-col lg:flex-row justify-between   lg:gap-12 px-6 md:px-10  rounded-lg`}
@@ -176,7 +176,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
 
               <button
                 type="submit"
-                className={`w-full font-medium rounded-lg text-base px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
+                className={`w-full font-semibold rounded-lg text-base px-5 text-[#432205] py-2.5 text-center bg-yellow-primary hover:bg-yellow-300`}
                 style={{ color: "#000" }}
               >
                 {loading ? (
@@ -184,7 +184,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
                     <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-black rounded-full"></div>
                   </div>
                 ) : (
-                  "Get Help"
+                  "Book Now"
                 )}
               </button>
             </form>

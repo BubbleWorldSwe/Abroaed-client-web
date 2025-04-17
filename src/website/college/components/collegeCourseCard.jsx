@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal";
-import bookmark from "../../../assets/bookmark.png";
 import { Bookmark } from "lucide-react";
 import { useSelector } from "react-redux";
 
@@ -62,9 +61,8 @@ const CollegeCourseCard = ({
                   }
                 >
                   <Bookmark
-                    className={`w-6 h-6 text-black ${
-                      isSaved ? "fill-black" : "text-gray-500"
-                    }`}
+                    className={`w-6 h-6 text-black ${isSaved ? "fill-black" : "text-gray-500"
+                      }`}
                   />
                 </button>
               )}

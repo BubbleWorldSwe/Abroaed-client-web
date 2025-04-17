@@ -258,13 +258,13 @@ function Header({ isHeaderBgWhite = false }) {
         }`}
     >
       <nav>
-        <nav className="flex items-center justify-between  md:justify-center   w-full px-7 md:px-12">
+        <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
           <div className="flex  basis  items-center">
             <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
                 // target="_blank"
                 href="/home"
-                className={`font-cinzel tracking-[0.15em] text-[22px] font-extrabold leading-[40px] text-white`}
+                className={`font-cinzel tracking-[0.25em] text-[22px] font-extrabold leading-[40px] text-white`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
@@ -402,7 +402,7 @@ function Header({ isHeaderBgWhite = false }) {
             >
               <button
                 onClick={() => handleMouseEnter("bookMenu")}
-                className={`px-4 py-1 whitespace-nowrap  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
+                className={`px-4 py-1 whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
               >
                 Book Now
               </button>

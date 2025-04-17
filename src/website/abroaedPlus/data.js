@@ -76,7 +76,7 @@ export const plans = [
     {
         name: "Basic",
         title: "Perfect for essential support",
-        price: "₹ 99,999 (Inc. of GST)",
+        price: "₹ 99,999",
         buttonText: "Continue with Basic",
         recommended: false,
         features: [
@@ -97,7 +97,7 @@ export const plans = [
     {
         name: "Advance",
         title: "Includes all the BASIC features plus",
-        price: "₹ 1,99,999 (Inc. of GST)",
+        price: "₹ 1,99,999",
         buttonText: "Continue with Advance",
         recommended: true,
         features: [
@@ -115,7 +115,7 @@ export const plans = [
     {
         name: "Elite",
         title: "Includes all the ADVANCE features plus",
-        price: "₹ 3,49,999 (Inc. of GST)",
+        price: "₹ 3,49,999",
         buttonText: "Continue with Elite",
         recommended: false,
         features: [
