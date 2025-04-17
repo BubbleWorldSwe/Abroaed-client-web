@@ -13,13 +13,13 @@ const Cards = ({ header = "", img }) => {
       }}
 
     >
-      <div
+      {/* <div
         className="absolute inset-0 bg-black  opacity-40 rounded-lg"
         style={{
           mixBlendMode: "multiply",
           // backgroundColor: 
         }}
-      ></div>
+      ></div> */}
       <div className="absolute inset-0 bg-gradient-to-l from-gray-600 to-black opacity-60 z-0 rounded-lg"></div>
 
       <div className="p-5">

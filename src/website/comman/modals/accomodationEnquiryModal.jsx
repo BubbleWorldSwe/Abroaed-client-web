@@ -213,8 +213,8 @@ const AccomodationEnquiryModal = ({
               {/* Action Buttons */}
               <div className="flex justify-center text-center">
                 <button
-                  type="submit" // ✅ Ensure button is of type submit
-                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
+                  type="submit"
+                  className={`mt-4 w-72 bg-yellow-primary text-gray-primary py-2 rounded-md font-semibold text-base  hover:bg-gray-primary hover:text-white`}
                 >
                   Submit
                 </button>

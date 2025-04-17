@@ -34,7 +34,7 @@ const CollegeStudentAccommodation = ({
             <div className="text-center mt-2">
               <button
                 type="submit"
-                className={`py-3 px-10 text-base font-semibold mt-4 text-center text-gray-primary rounded-lg bg-yellow-200 hover:bg-gray-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+                className={`py-3 px-10 text-base font-semibold mt-4 text-center text-gray-primary rounded-lg bg-yellow-primary hover:bg-gray-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
               >
                 View All
               </button>

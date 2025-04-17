@@ -11,14 +11,14 @@ function CareerHeroSections() {
   return (
     <div className="pt-14 mt-6 ">
       <section className="relative bg-white  dark:bg-gray-900 ">
-        <div className="relative z-10  mx-auto  text-center pt-16 ">
+        <div className="relative z-10  mx-auto   pt-16 ">
           <SectionMainHeader
             className={'mb-1'}
           >
             Work At ABROAED
           </SectionMainHeader>
 
-          <p className="font-bold text-2xl text-[#52525B]   mx-auto md:px-20 lg:px-38 xl:px-48 dark:text-gray-400">
+          <p className="font-bold text-2xl text-[#52525B] dark:text-gray-400">
             Connecting You to a World of Possibilities
           </p>
           <div className="gap-4 mt-8 sm:grid sm:grid-cols-4 sm:grid-rows-[auto] sm:mt-10">

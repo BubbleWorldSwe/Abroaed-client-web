@@ -157,7 +157,7 @@ const CourseEnquiryModal = ({
                   required
                 />
               </div>
-              <div className="mt-4 flex items-center justify-center gap-2">
+              {/* <div className="mt-4 flex items-center justify-center gap-2">
                 <CheckboxField
                   onClick={(e) => e.stopPropagation()}
                   id={`enquiryModal`}
@@ -176,12 +176,12 @@ const CourseEnquiryModal = ({
                   </span>
                   .
                 </label>
-              </div>
+              </div> */}
               {/* Action Buttons */}
               <div className="flex justify-center text-center">
                 <button
                   onClick={handleSubmit}
-                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
+                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-gray-primary hover:text-white`}
                 >
                   Submit
                 </button>

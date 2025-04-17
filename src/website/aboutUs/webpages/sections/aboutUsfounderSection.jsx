@@ -52,7 +52,7 @@ const AboutUsFounderSection = () => {
     return (
         <section className="bg-white dark:bg-gray-900 relative ">
             <div className=" relative z-10">
-                <div className="flex flex-col justify-center items-center gap-4">
+                <div className="flex flex-col  gap-4">
                     <SectionMainHeader>
                         Our Founders
                     </SectionMainHeader>

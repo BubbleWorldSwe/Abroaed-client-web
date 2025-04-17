@@ -102,9 +102,8 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                     alt="Location Icon"
                   />
                   <p
-                    className={`text-gray-700 font-semibold ${
-                      readMore ? "line-clamp-4" : "line-clamp-none"
-                    } `}
+                    className={`text-gray-700 font-semibold ${readMore ? "line-clamp-4" : "line-clamp-none"
+                      } `}
                   >
                     {item?.location}
                   </p>
@@ -179,7 +178,7 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                   required
                 />
               </div>
-              <div className="mt-4 flex items-center justify-center gap-2">
+              {/* <div className="mt-4 flex items-center justify-center gap-2">
                 <CheckboxField
                   onClick={(e) => e.stopPropagation()}
                   id={`enquiryModal`}
@@ -198,12 +197,12 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                   </span>
                   .
                 </label>
-              </div>
+              </div> */}
               {/* Action Buttons */}
-              <div className="flex justify-center text-center">
+              <div className="flex justify-center py-4 text-center">
                 <button
                   type="submit" // ✅ Ensure button is of type submit
-                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
+                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-gray-primary hover:text-white`}
                 >
                   Submit
                 </button>
