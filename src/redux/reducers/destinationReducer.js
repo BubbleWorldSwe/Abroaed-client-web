@@ -86,15 +86,23 @@ export const destnationReducer = (state = initialState, action) => {
         ...state,
         loading: false,
 
-        destinations: state.destinations.map((destination) => ({
+        /*  destinations: state.destinations.map((destination) => ({
           ...destination,
           data: destination.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedDestination: action.payload,
+
+        destinations: [],
+        error: null,
+        totalPages: null,
+        allDestinations: [],
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case ADD_DESTINATION_SUCCESS:

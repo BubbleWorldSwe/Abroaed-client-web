@@ -44,8 +44,8 @@ const StudentAssignTeam = ({ onOpenModal, onUpdate }) => {
         )}
       </div>
       {/* Grid container for team details */}
-      <table className="w-full px-5 text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-sm text-gray-500  bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+      <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th className="px-4 py-3">Name</th>
             <th className="px-4 py-3">Email</th>

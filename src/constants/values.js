@@ -9,7 +9,12 @@ export const courseLevels = [
 
 export const intake = ["Spring", "Summer", "Fall", "Winter"];
 
-export const docCategory = ["Goverment", "Academic", "Finance", "Applications"];
+export const docCategory = [
+  "Government",
+  "Academic",
+  "Finance",
+  "Applications",
+];
 
 export const courseDomains = [
   "Engineering",

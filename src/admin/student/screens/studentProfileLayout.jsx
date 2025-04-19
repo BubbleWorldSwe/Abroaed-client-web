@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   addStudentApplication,
+  addStudentDocuments,
   addStudentPrepsBatches,
   addStudentSavedPrefrences,
   addStudentTransaction,
@@ -32,11 +33,15 @@ import {
 } from "../../../api/collegesApi";
 import {
   getStudentApplications,
+  getStudentDocuments,
   getStudentPrepsBatches,
   getStudentSavedPreferences,
   getStudentTransactions,
   setCreateStudentApplication,
+  setDeleteStudentDocument,
   setUpdateStudentApplication,
+  setUpdateStudentDocuments,
+  setUploadStudentDocuments,
 } from "../../../api/studentsApi";
 import { toast } from "react-toastify";
 import { getLeadDetailsById } from "../../../api/leadsApi";
@@ -47,6 +52,8 @@ import StatusConfirmationModal from "../modals/statusConfirmationModal";
 import { fetchTransactionsRequest } from "../../../redux/actions/transactionActions";
 import { setAddTransaction } from "../../../api/transactionApi";
 import StudentUploadDocument from "../modals/studentUploadDocumentModal";
+import RequestDocumentModal from "../modals/requestDocumentModal";
+import DocStatusConfirmationModal from "../modals/docStatusConfirmationModal";
 
 const StudentProfileLayout = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -56,6 +63,9 @@ const StudentProfileLayout = () => {
   const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
+
+  console.log(studentProfile?.documents);
+
   const [openModal, setOpenModal] = useState(false);
   const [modal, setModal] = useState(null);
   const [collegesList, setCollegesList] = useState([]);
@@ -68,10 +78,9 @@ const StudentProfileLayout = () => {
   const [selectedApplication, setSelectedApplication] = useState(null);
 
   const [changeStatusModal, setChangeStatusModal] = useState(null);
+  const [docChangeStatusModal, setDocChangeStatusModal] = useState(null);
 
-  const [transactionModal, setTransactionModal] = useState(false);
-
-  const [allCollegesList, setAllCollegesList] = useState([]);
+  const [selectedDoc, setSelectedDoc] = useState(null);
 
   const handleModal = (modalType) => {
     setModal(modalType);
@@ -103,39 +112,10 @@ const StudentProfileLayout = () => {
         // dispatch(addStudentTransaction(transData));
         fetchStudentTransactions();
         toast.success(data.message);
-        setTransactionModal(false);
+
         dispatch(fetchTransactionsRequest(1));
       } else {
         toast.error(data.message);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  async function fetchData() {
-    try {
-      const list = await getTeamsByMembers();
-      const lead = await getLeadDetailsById(id);
-      const college = await getAllColleges();
-
-      console.log(college);
-
-      fetchStudentApplications();
-      fetchStudentTransactions();
-      fetchStudentSavedPefrences();
-      fetchStudentPrepsBatches();
-
-      if (college.status === 200) {
-        setAllCollegesList(college?.data?.result);
-      }
-
-      if (lead.status === 200) {
-        dispatch(setSelectedStudent(lead.data));
-      }
-
-      if (list.status === 200) {
-        setRolesList(list.data);
       }
     } catch (error) {
       console.log(error);
@@ -150,6 +130,20 @@ const StudentProfileLayout = () => {
         dispatch(addStudentApplication(data.data?.result));
       } else {
         dispatch(addStudentApplication([]));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchStudentDocuments() {
+    try {
+      const data = await getStudentDocuments(id);
+
+      if (data.status === 200) {
+        dispatch(addStudentDocuments(data.data?.result));
+      } else {
+        dispatch(addStudentDocuments([]));
       }
     } catch (error) {
       console.log(error);
@@ -228,6 +222,55 @@ const StudentProfileLayout = () => {
     }
   }
 
+  async function uploadStudentDocument(fileData) {
+    try {
+      const data = await setUploadStudentDocuments(id, fileData);
+
+      if (data.status === 200) {
+        dispatch(addStudentApplication(data.data));
+        fetchStudentDocuments();
+        toast.success(data.message);
+        setUpdateDocModal(false);
+        setOpenModal(false);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateUploadStudentDocument(docId, fileData) {
+    try {
+      const data = await setUpdateStudentDocuments(docId, fileData);
+
+      if (data.status === 200) {
+        fetchStudentDocuments();
+        toast.success(data.message);
+        setUpdateDocModal(false);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteStudentDocument(id) {
+    try {
+      const data = await setDeleteStudentDocument(id);
+
+      if (data.status === 200) {
+        fetchStudentDocuments();
+        toast.success(data.message);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function updateStudentApplication(appData) {
     try {
       const data = await setUpdateStudentApplication(
@@ -261,6 +304,30 @@ const StudentProfileLayout = () => {
       ? [statusSequence[currentIndex + 1]]
       : [];
   };
+
+  async function fetchData() {
+    try {
+      const list = await getTeamsByMembers();
+      const lead = await getLeadDetailsById(id);
+
+      fetchStudentApplications();
+      fetchStudentTransactions();
+      fetchStudentSavedPefrences();
+      fetchStudentPrepsBatches();
+      fetchStudentDocuments();
+
+      if (lead.status === 200) {
+        dispatch(setSelectedStudent(lead.data));
+      }
+
+      if (list.status === 200) {
+        setRolesList(list.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  console.log(selectedDoc);
 
   useEffect(() => {
     fetchData();
@@ -344,20 +411,6 @@ const StudentProfileLayout = () => {
         }}
       />
 
-      <UpdateDocApplicationModal
-        isOpen={updateDocModal}
-        onClose={() => setUpdateDocModal(false)}
-        collegesList={collegesList}
-        getCollegesList={fetchCollegesList}
-        leadId={id}
-        updateApplication={updateStudentApplication}
-        selectedApplication={selectedApplication}
-        setSelectedApplication={setSelectedApplication}
-        filledData={{
-          additionalDocuments: selectedApplication?.additionalDocuments,
-        }}
-      />
-
       <StatusConfirmationModal
         isOpen={changeStatusModal}
         onClose={() => setChangeStatusModal(false)}
@@ -373,11 +426,47 @@ const StudentProfileLayout = () => {
         options={getNextStatus(selectedApplication?.status)}
       />
 
+      <RequestDocumentModal
+        isOpen={updateDocModal}
+        onClose={() => {
+          setUpdateDocModal(false);
+          setSelectedDoc(null);
+        }}
+        leadId={id}
+        requestDocument={uploadStudentDocument}
+        filledData={{
+          applicationId: selectedDoc?.applicationId?._id,
+          lead: id,
+          type: selectedDoc?.type,
+          title: selectedDoc?.title,
+          status: selectedDoc?.status,
+          deadline: selectedDoc?.deadline,
+          _id: selectedDoc?._id,
+        }}
+        updateDocument={(data) => {
+          updateUploadStudentDocument(selectedDoc?._id, data);
+        }}
+      />
+
+      <DocStatusConfirmationModal
+        selectedDoc={selectedDoc}
+        isOpen={docChangeStatusModal}
+        onClose={() => setDocChangeStatusModal(false)}
+        heading="Change Status!"
+        onSubmit={(data) => {
+          updateUploadStudentDocument(selectedDoc?._id, data);
+        }}
+        title={
+          "Select 'Approve' if the document is valid, or 'Reject' with a reason if it's not."
+        }
+      />
+
       <StudentUploadDocument
         isOpen={openModal}
         onClose={() => setOpenModal(false)}
         collegesList={collegesList}
         getCollegesList={fetchCollegesList}
+        uploadDocument={uploadStudentDocument}
       />
       {/* Page Content */}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
@@ -397,7 +486,19 @@ const StudentProfileLayout = () => {
             handleOpenUploadModal={() => {
               setOpenModal(true);
             }}
-            requestedDocument={() => setUpdateDocModal(true)}
+            requestedDocument={() => {
+              setSelectedDoc(null);
+              setUpdateDocModal(true);
+            }}
+            deleteDocument={deleteStudentDocument}
+            setSelectedDoc={(data) => {
+              setUpdateDocModal(!updateDocModal);
+              setSelectedDoc(data);
+            }}
+            openStatusModal={(data) => {
+              setSelectedDoc(data);
+              setDocChangeStatusModal(!docChangeStatusModal);
+            }}
           />
           <StudentSavedPreference />
           <StudentApplication

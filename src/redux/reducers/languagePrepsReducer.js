@@ -71,15 +71,24 @@ export const languagePrepsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        languagePreps: state.languagePreps.map((languagePrep) => ({
+        /*   languagePreps: state.languagePreps.map((languagePrep) => ({
           ...languagePrep,
           data: languagePrep.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedLanguagePrep: action.payload,
+
+        languagePreps: [],
+        allLanguagePreps: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case DELETE_LANGUAGEPREP_SUCCESS:

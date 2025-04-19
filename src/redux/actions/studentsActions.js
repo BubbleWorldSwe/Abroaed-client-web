@@ -19,11 +19,10 @@ export const EDIT_STUDENT_LEADS_SUCCESS = "EDIT_STUDENT_LEADS_SUCCESS";
 export const EDIT_STUDENT_LEADS_FAILURE = "EDIT_STUDENT_LEADS_FAILURE";
 
 export const ADD_STUDENT_APPLICATION = "ADD_STUDENT_APPLICATION";
-
 export const ADD_STUDENT_TRANSACTIONS = "ADD_STUDENT_TRANSACTIONS";
 export const ADD_STUDENT_SAVEDPREFRENCES = "ADD_STUDENT_SAVEDPREFRENCES";
-
 export const ADD_STUDENT_PREPS_BATCHES = "ADD_STUDENT_PREPS_BATCHES";
+export const ADD_STUDENT_DOCUMENTS = "ADD_STUDENT_DOCUMENTS";
 
 export const SET_SELECTED_STUDENT = "SET_SELECTED_STUDENT";
 
@@ -84,6 +83,13 @@ export const addStudentPrepsBatches = (student) => {
   return {
     type: ADD_STUDENT_PREPS_BATCHES,
     payload: student,
+  };
+};
+
+export const addStudentDocuments = (docs) => {
+  return {
+    type: ADD_STUDENT_DOCUMENTS,
+    payload: docs,
   };
 };
 

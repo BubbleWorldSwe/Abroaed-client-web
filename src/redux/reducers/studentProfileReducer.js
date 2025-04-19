@@ -17,10 +17,11 @@ import {
   EDIT_STUDENT_PROFILE_REQUEST,
   EDIT_STUDENT_PROFILE_SUCCESS,
   EDIT_STUDENT_PROFILE_FAILURE,
-  STUDENT_REQUESTED_DOCUMENTS_REQUEST,
-  STUDENT_UPLOADED_DOCUMENTS_REQUEST,
-  STUDENT_REQUESTED_DOCUMENTS_FAILURE,
-  STUDENT_UPLOADED_DOCUMENTS_FAILURE,
+  STUDENT_DOCUMENTS_REQUEST,
+  STUDENT_DOCUMENTS_FAILURE,
+  STUDENT_DOCUMENTS_SUCCESS,
+  UPLOAD_STUDENT_DOCUMENT_REQUEST,
+  UPLOAD_STUDENT_DOCUMENT_FAILURE,
 } from "../actions/studentProfileActions";
 
 const initialState = {
@@ -43,8 +44,11 @@ export default function studentProfileReducer(state = initialState, action) {
     case EDIT_STUDENT_PROFILE_REQUEST:
     case STUDENT_APPLICATION_REQUEST:
     case STUDENT_TRANSACTIONS_REQUEST:
-    case STUDENT_REQUESTED_DOCUMENTS_REQUEST:
-    case STUDENT_UPLOADED_DOCUMENTS_REQUEST:
+
+    case STUDENT_PREPS_BATCHES_REQUEST:
+    case STUDENT_SAVEDPREFERENCES_REQUEST:
+    case STUDENT_DOCUMENTS_REQUEST:
+    case UPLOAD_STUDENT_DOCUMENT_REQUEST:
       return { ...state, loading: true, error: null };
 
     case FETCH_STUDENT_PROFILE_SUCCESS:
@@ -74,15 +78,15 @@ export default function studentProfileReducer(state = initialState, action) {
       return { ...state, loading: false, transactions: action.payload };
 
     // Saved Preferences
-    case STUDENT_SAVEDPREFERENCES_REQUEST:
-      return { ...state, loading: true, error: null };
+
     case STUDENT_SAVEDPREFERENCES_SUCCESS:
       return { ...state, loading: false, savedPreferences: action.payload };
 
-    case STUDENT_PREPS_BATCHES_REQUEST:
-      return { ...state, loading: true, error: null };
     case STUDENT_PREPS_BATCHES_SUCCESS:
       return { ...state, loading: false, prepsBatches: action.payload };
+
+    case STUDENT_DOCUMENTS_SUCCESS:
+      return { ...state, loading: false, documents: action.payload };
 
     case FETCH_STUDENT_PROFILE_FAILURE:
     case STUDENT_APPLICATION_FAILURE:
@@ -90,8 +94,8 @@ export default function studentProfileReducer(state = initialState, action) {
     case STUDENT_TRANSACTIONS_FAILURE:
     case STUDENT_SAVEDPREFERENCES_FAILURE:
     case STUDENT_PREPS_BATCHES_FAILURE:
-    case STUDENT_REQUESTED_DOCUMENTS_FAILURE:
-    case STUDENT_UPLOADED_DOCUMENTS_FAILURE:
+    case STUDENT_DOCUMENTS_FAILURE:
+    case UPLOAD_STUDENT_DOCUMENT_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     default:

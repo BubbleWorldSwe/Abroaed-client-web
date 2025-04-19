@@ -61,15 +61,21 @@ export const collegesReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        colleges: state.colleges.map((college) => ({
+        /*    colleges: state.colleges.map((college) => ({
           ...college,
           data: college.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedCollege: action.payload,
+        colleges: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case UPLOAD_COLLEGE_IMAGE_SUCCESS:

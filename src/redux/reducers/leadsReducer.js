@@ -56,30 +56,42 @@ export const leadsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        leads: state.leads.map((lead) => ({
+        /*  leads: state.leads.map((lead) => ({
           ...lead,
           data: lead.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedLead: action.payload,
+        leads: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case EDIT_LEADS_STUDENT_SUCCESS:
       return {
         ...state,
         loading: false,
-        leads: state.leads.map((lead) => ({
+        /*  leads: state.leads.map((lead) => ({
           ...lead,
           data: lead.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedLead: action.payload,
+        leads: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case DELETE_LEAD_SUCCESS:
@@ -102,7 +114,7 @@ export const leadsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        leads: state.leads.map((lead) => ({
+        /*  leads: state.leads.map((lead) => ({
           ...lead,
           data: lead.data.map((item) =>
             item?._id === action?.payload?.user?._id
@@ -113,11 +125,18 @@ export const leadsReducer = (state = initialState, action) => {
               : item
           ),
         })),
-
+ */
         selectedLead: {
           ...state.selectedLead,
           savedPreferences: action.payload || [],
         },
+
+        leads: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     default:

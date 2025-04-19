@@ -1,5 +1,6 @@
 export const GET_REQUEST_TIMEOUT = 20000;
 export const POST_REQUEST_TIMEOUT = 20000;
+export const PUT_REQUEST_TIMEOUT = 20000;
 export const DELETE_REQUEST_TIMEOUT = 20000;
 export const RESPONSE_SUCCESS = true;
 export const RESPONSE_FAILURE = false;
@@ -140,6 +141,18 @@ export const constructPutRequestOptionsWithFormData = (payload) => {
 
   return {
     method: REQUEST_METHOD_PUT,
+    headers: requestHeaders,
+    body: formdata,
+  };
+};
+
+export const constructPostRequestOptionsWithFormData = (payload) => {
+  var requestHeaders = new Headers();
+
+  const formdata = getFormData(payload);
+
+  return {
+    method: REQUEST_METHOD_POST,
     headers: requestHeaders,
     body: formdata,
   };

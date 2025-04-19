@@ -65,15 +65,23 @@ export const accommodationsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        accommodations: state.accommodations.map((accommodation) => ({
+        /*   accommodations: state.accommodations.map((accommodation) => ({
           ...accommodation,
           data: accommodation.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
+
         selectedAccommodation: action.payload,
+        accommodations: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case FETCH_ACCOMMODATIONS_FAILURE:

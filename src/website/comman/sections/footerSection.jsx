@@ -243,7 +243,7 @@ function Footer() {
                       className="cursor-pointer hover:underline"
                     >
                       <div className="flex  text-white w-full justify-between items-center ">
-                        {data?.productName}
+                        {data?.exam}
                       </div>
                     </a>
                   </li>
