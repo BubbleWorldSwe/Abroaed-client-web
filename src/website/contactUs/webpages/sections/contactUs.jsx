@@ -2,16 +2,16 @@ import vectorLeftFlat from "../../../../assets/vectoreLeftFlat.png"
 import vectorRightFlat from "../../../../assets/vectorRightFlat.png"
 const ContactUs = () => {
     return (
-        <section className="px-10  mt-10 mx-auto">
-            <div className=" px-4 py-6  pb-10 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
+        <section className="">
+            <div className="  py-6  pb-10 flex flex-col gap-6 mt-10 md:mt-5">
                 {/* Content */}
-                <div className="relative z-10">
+                <div className="relative  z-10">
                     <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>
                         Contact Us
                     </h2>
                     <div className=" border-t border-gray-300"></div>
-                    <div className="grid grid-cols-1 md:justify-center md:grid-cols-2   gap-10  pb-16 pt-10">
-                        <div className="flex relative flex-col gap-4 text-white bg-gray-primary py-8 hover:scale-[1.01] rounded-xl shadow-lg  px-10">
+                    <div className="grid grid-cols-1  md:justify-center md:grid-cols-2 gap-6  md:gap-10 pb-8 md:pb-16 pt-6 md:pt-10">
+                        <div className="flex relative flex-col gap-4 text-white bg-gray-primary py-8 hover:scale-[1.01] rounded-xl shadow-lg px-4 md:px-10">
                             <div >
                                 <h5 className="text-[16px]  font-medium">
                                     Corporate Office
