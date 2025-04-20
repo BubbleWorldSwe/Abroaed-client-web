@@ -49,11 +49,9 @@ function CareerJoinTeam() {
   return (
     <div>
       <section className=" dark:bg-gray-900 relative ">
-        <div className="px-8 md:px-12 mx-auto max-w-screen-2xl relative z-10">
-
+        <div className="px-6 md:px-12 mx-auto max-w-screen-2xl relative z-10">
           <div className="mb-4 flex flex-col gap-1 lg:mb-6 not-format">
             <SectionMainHeader
-            // className='text-justify'
             >
               Why you should join our awesome team ?
             </SectionMainHeader>

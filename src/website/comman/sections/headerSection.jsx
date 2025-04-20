@@ -270,17 +270,19 @@ function Header({ isHeaderBgWhite = false }) {
           <div className="flex  basis  items-center">
             <h3 className="text-lg hidden md:block font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
-                href="/home"
+                href="/"
                 className={`font-cinzel tracking-[0.25em] text-[22px] font-extrabold leading-[40px] text-white`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
             <div className="md:hidden block">
-              <img
-                src={favicon}
-                alt="logo"
-              />
+              <a href="/">
+                <img
+                  src={favicon}
+                  alt="logo"
+                />
+              </a>
             </div>
           </div>
 
