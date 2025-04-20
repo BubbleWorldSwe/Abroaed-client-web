@@ -55,6 +55,7 @@ function FinancePage() {
             onFormSubmit={handleAddLead}
             source={source.finance}
             entity={`${entity.contactUs}`}
+            buttonText="Register Now To Know More"
             title={"Keen to know more?"}
             text="Schedule your counselling session today Our specialized home counselling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today."
           />

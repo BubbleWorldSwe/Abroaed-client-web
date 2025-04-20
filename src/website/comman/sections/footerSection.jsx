@@ -57,8 +57,9 @@ const offices = [
   {
     location: "",
     address: "B11, Block B, Qutab Institutional Area, New Delhi, Delhi 110016",
-    phone1: " +91 73033 68820",
-    phone2: " +91 73033 68819",
+    phone1: " +91 73033 68821",
+    phone2: " +91 73033 68820",
+    phone3: " +91 73033 68819",
     email: "info@abroaed.com ",
   },
 ];
@@ -155,6 +156,7 @@ function Footer() {
                     <p className="text-sm">{office.address}</p>
                     <p className="text-sm">📞 {office.phone1}</p>
                     <p className="text-sm">📞 {office.phone2}</p>
+                    <p className="text-sm">📞 {office.phone3}</p>
                     {office.email && <p>📧 {office.email}</p>}
                   </div>
                 ))}
@@ -254,7 +256,7 @@ function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="mt-8 md:mt-24  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
+        <div className="mt-8 md:mt-16  relative border-t border-gray-700 pt-4 text-sm text-center text-white">
           <div className="flex flex-col  gap-1">
             <p>
               © 2025-2026{" "}
@@ -278,7 +280,7 @@ function Footer() {
             </div>
           </div>
 
-          <div className="px-28 md:px-0 mx-auto md:absolute text-[10px] bottom-0 right-4 flex gap-2">
+          <div className="px-28 hidden md:px-0 mx-auto md:absolute text-[10px] bottom-0 right-4  gap-2">
             <p>
               Crafted By:
             </p>

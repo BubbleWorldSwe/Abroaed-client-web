@@ -7,6 +7,7 @@ import Footer from "../../comman/sections/footerSection";
 import AboutUsContentSection from "./sections/aboutUsContentSection";
 import SectionComponent from "../../styleComponents/sectionComponent";
 import AboutUsFounderSection from "./sections/aboutUsfounderSection";
+import AboutUsOurMentors from "./sections/aboutUsOurMentors";
 
 function AboutUsPage() {
   return (
@@ -19,6 +20,9 @@ function AboutUsPage() {
         </SectionComponent>
         <SectionComponent >
           <AboutUsFounderSection />
+        </SectionComponent>
+        <SectionComponent >
+          <AboutUsOurMentors />
         </SectionComponent>
         <SectionComponent >
           <AboutUsOurTeam />

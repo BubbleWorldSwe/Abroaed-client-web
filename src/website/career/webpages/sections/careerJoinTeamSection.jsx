@@ -64,7 +64,7 @@ function CareerJoinTeam() {
             </h3>
           </div>
         </div>
-        <div className="overflow-x-auto">
+        <div className="md:block  hidden overflow-x-auto">
           <Slider {...settings}>
             {benefits.map((benefit, index) => (
               <div key={index} className="px-4">
@@ -100,6 +100,42 @@ function CareerJoinTeam() {
               </div>
             ))}
           </Slider>
+        </div>
+
+        <div className="md:hidden flex  gap-4 px-4 overflow-x-auto">
+          {benefits.map((benefit, index) => (
+            <div key={index} className="">
+              <div
+                className=" relative hover:scale-[1.01] transition-all ease-in-out delay-100 w-[23rem]  md:w-full h-[25rem] md:h-[20rem] bg-black bg-opacity-80 overflow-y-auto flex flex-col flex-grow-0 p-6  text-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+              >
+                <div
+                  // style={{
+                  //   backgroundImage:
+                  //     "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
+                  // }}
+                  className="text-white">
+                  {/* <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img> */}
+                  <h5 className="mt-2  text-[26px] leading-tight md:text-[36px] font-medium   dark:text-white"
+                  >
+                    {benefit.heading}
+                  </h5>
+                  <p className="font-normal text-justify text-[18px]  md:text-[16px]   mt-6  dark:text-gray-400">
+                    {benefit.text}
+                  </p>
+                  {/* <p className="text-sm">Location, India</p> */}
+
+                </div>
+                <div className="absolute right-0 w-32 top-20 bottom-0 overflow-hidden z-0">
+                  <img
+                    className="rounded-lg w-full h-full object-contain"
+                    src={vectorRightFlat}
+                    alt="Counselling session"
+                  />
+                </div>
+              </div>
+
+            </div>
+          ))}
         </div>
 
       </section>

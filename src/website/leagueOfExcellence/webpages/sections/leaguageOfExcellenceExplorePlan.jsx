@@ -33,7 +33,7 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative px-6  hover:scale-[1.01] transition-all duration-300 ease-in-out py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
+                className={`relative px-6  hover:scale-[1.01] transition-all duration-300 ease-in-out py-10 border  bg-[#3a3a3f] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
                                 }`}
               >
                 {plan.recommended && (
@@ -42,11 +42,11 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                   </div>
                 )}
                 {/* <div className="w-full  px-2 mx-auto bg-yellow-primary"> */}
-                <div className="text-[32px] bg-[#4a4a52] bg-opacity-80 mb-2   rounded-xl   md:text-[42px]  font-medium    text-center ">
+                <div className="text-[32px]  bg-[#26262A] bg-opacity-80 mb-2   rounded-xl   md:text-[42px]  font-medium    text-center ">
                   {plan.name}
                 </div>
                 {/* </div> */}
-                <p className="text-[18px]  md:text-[32px] text-center font-normal  " >
+                <p className="text-[18px]  md:text-[28px] text-center font-normal  " >
                   {plan.price} <spna className="text-lg">(Inc. of GST)</spna>
                 </p>
                 <p className=" text-lg  text-center font-normal ">{plan.title}</p>
@@ -60,7 +60,7 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                                     {plan.buttonText}
                                 </button> */}
 
-                <div className="mt-4 bg-[#4a4a52] bg-opacity-80 rounded-xl p-2">
+                <div className="mt-4  bg-[#26262A] bg-opacity-80 rounded-xl p-2">
                   <h4 className="text-[18px]  md:text-[25px] font-medium">
                     Features you’ll love
                   </h4>

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight, ChevronUp, Menu, Turtle, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -18,8 +18,10 @@ import ServicesNavModal from "../modals/servicesNavModal";
 import BookCounsellingModal from "../modals/bookCounsellingModal";
 import TestPrepNavMobileModal from "../modals/testPrepNavModalMobile";
 import { useMediaQuery } from "react-responsive";
+import ExploreCollegeModalPhone from "../modals/exploreCollegeModalPhone";
+import CollegeListPhone from "../modals/collegeListPhone";
 //import { destinationMenuItems } from "../../../constants/values";
-
+import favicon from "../../../assets/favicon.ico"
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -53,6 +55,7 @@ function Header({ isHeaderBgWhite = false }) {
   const [expanded, setExpanded] = useState(null);
   const { studentToken, student } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpenExploreCollegePhone, setIsOpenExploreCollegePhone] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -61,7 +64,9 @@ function Header({ isHeaderBgWhite = false }) {
     setIsModalOpen(false);
     navigate("/home");
   };
-
+  const handleExploreCollegeModal = () => {
+    setIsOpenExploreCollegePhone(true)
+  }
   console.log(student?.firstName, student?.lastName);
 
   useEffect(() => {
@@ -250,6 +255,9 @@ function Header({ isHeaderBgWhite = false }) {
     }, // X (formerly Twitter)
     // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
   ];
+
+  const [selectedDestModalPhone, setSelectedDestModalPhone] = useState(false);
+
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
@@ -260,15 +268,20 @@ function Header({ isHeaderBgWhite = false }) {
       <nav>
         <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
           <div className="flex  basis  items-center">
-            <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
+            <h3 className="text-lg hidden md:block font-semibold sm:text-3xl md:text-4xl lg:text-lg">
               <a
-                // target="_blank"
                 href="/home"
                 className={`font-cinzel tracking-[0.25em] text-[22px] font-extrabold leading-[40px] text-white`}
               >
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
+            <div className="md:hidden block">
+              <img
+                src={favicon}
+                alt="logo"
+              />
+            </div>
           </div>
 
           <div className="flex-grow basis-[90%] hidden md:flex justify-center ">
@@ -398,11 +411,11 @@ function Header({ isHeaderBgWhite = false }) {
             <div
               // onMouseEnter={() => handleMouseEnter("login")}
               // onMouseLeave={handleMouseLeave}
-              className="relative"
+              className="relative hidden md:block"
             >
               <button
                 onClick={() => handleMouseEnter("bookMenu")}
-                className={`px-4 py-1 whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
+                className={`px-4 py-1  whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
               >
                 Book Now
               </button>
@@ -416,6 +429,8 @@ function Header({ isHeaderBgWhite = false }) {
                 </div>
               )}
             </div>
+
+
             {/* <div className="hidden md:block">
               <div
                 onMouseEnter={() => handleMouseEnter("socialIcon")}
@@ -448,6 +463,37 @@ function Header({ isHeaderBgWhite = false }) {
 
             </div> */}
           </div>
+          {/* explore colleges mobile view  */}
+          <div>
+            <button
+              className="block md:hidden p-2 basis-[0%]"
+              onClick={() => setIsOpenExploreCollegePhone(true)}
+            >
+              Explore Colleges
+            </button>
+            {/* destination list */}
+            <ExploreCollegeModalPhone
+              isOpenExploreCollegePhone={isOpenExploreCollegePhone}
+              setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
+              allDestinations={allDestinations}
+              handleDestinationClick={handleDestinationClick}
+              setSelectedDestModalPhone={setSelectedDestModalPhone}
+              selectedDestModalPhone={selectedDestModalPhone}
+            />
+            {/* college list  */}
+            <CollegeListPhone
+              selectedDestModalPhone={selectedDestModalPhone}
+              setSelectedDestModalPhone={setSelectedDestModalPhone}
+              setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
+              selectedDestination={selectedDestination}
+              filteredColleges={filteredColleges}
+              handleStateClick={handleStateClick}
+              isLoading={isLoading}
+              states={states}
+              selectedState={selectedState}
+            />
+          </div>
+
           {/* mobile menu */}
           <div>
             <button
@@ -461,7 +507,7 @@ function Header({ isHeaderBgWhite = false }) {
             {isOpen && (
               <div className="fixed inset-0 z-50 bg-white text-gray-primary overflow-y-auto shadow-xl">
                 {/* Header */}
-                <div className="flex justify-between items-center p-4 border-b">
+                <div className="flex justify-between items-center p-4 border-b shadow-lg">
                   <h2 className="text-lg font-semibold">Menu</h2>
                   <button onClick={() => setIsOpen(false)}>
                     <X size={24} />
@@ -498,14 +544,37 @@ function Header({ isHeaderBgWhite = false }) {
                           {...(data && Array.isArray(data)
                             ? { menuItems: data.map(({ productName, _id }) => ({ title: productName, _id })) }
                             : { ...data })}
+                          onClose={handleMouseLeave}
                         />
                       )}
                     </li>
                   ))}
+                  <li>
+                    <div
+                      className="relative "
+                    >
+                      <button
+                        onClick={() => handleMouseEnter("bookMenu")}
+                        className={`px-4 py-1  whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
+                      >
+                        Book Now
+                      </button>
+                      {activeDropdown === "bookMenu" && (
+                        <div className="relative">
+                          <BookCounsellingModal
+                            isOpen={activeDropdown === "bookMenu"}
+                            onClose={handleMouseLeave}
+
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </li>
                 </ul>
               </div>
             )}
           </div>
+
         </nav>
       </nav>
 

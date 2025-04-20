@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 const ImageComponent = ({ imgFirst, imgUrl }) => (
-    <div className={`flex ${imgFirst ? "justify-start" : "justify-end"}  w-full h-[90%] `}>
+    <div className={`flex ${imgFirst ? "justify-start" : "justify-end"}  w-full h-full`}>
         <img
             src={imgUrl}
             alt="Night Scene"
