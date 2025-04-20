@@ -18,23 +18,19 @@ const HomeSlidingImg = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             handleNextImage();
-        }, 2000);
+        }, 4000);
 
         return () => clearInterval(interval);
     }, [countImg]);
 
     const handleNextImage = () => {
-        setTimeout(() => {
-            setCountImg((prev) => (prev + 1) % homeImages.length);
+        setCountImg((prev) => (prev + 1) % homeImages.length);
 
-        }, 2000);
     };
 
     const handleDotClick = (index) => {
         if (index !== countImg) {
-            setTimeout(() => {
-                setCountImg(index);
-            }, 2000);
+            setCountImg(index);
         }
     };
 
@@ -58,7 +54,7 @@ const HomeSlidingImg = () => {
     return (
         <section className="dark:bg-gray-900 relative py-4">
             <div className="overflow-x-auto">
-                <div className="relative w-full h-[92vh] overflow-hidden">
+                <div className="hidden sm:block relative w-full h-[92vh]">
                     <img
                         key={countImg} // helps trigger fade animation
                         className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out`}
@@ -67,7 +63,7 @@ const HomeSlidingImg = () => {
                     />
 
                     {/* Dots */}
-                    <div className="absolute right-5 bottom-5 flex  gap-2">
+                    <div className="absolute right-5 bottom-5 flex   gap-2">
                         {homeImages.map((_, index) => (
                             <button
                                 key={index}
@@ -78,8 +74,29 @@ const HomeSlidingImg = () => {
                         ))}
                     </div>
                 </div>
+                {/* mobile view */}
+                <div className="md:hidden  flex gap-6 relative w-full h-[92vh]">
+                    {homeImages.map((item, index) => (
+                        <img
+                            key={index}
+                            className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out`}
+                            src={item.imgUrl}
+                            alt={`Image ${index + 1}`}
+                        />
+                    ))}
+                    {/* <div className="absolute right-5 bottom-5 flex   gap-2">
+                        {homeImages.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleDotClick(index)}
+                                className={`h-3 w-3 rounded-full ${index === countImg ? 'bg-yellow-primary w-4 ' : 'bg-gray-500'
+                                    }`}
+                            />
+                        ))}
+                    </div> */}
+                </div>
             </div>
-        </section>
+        </section >
     )
 }
 

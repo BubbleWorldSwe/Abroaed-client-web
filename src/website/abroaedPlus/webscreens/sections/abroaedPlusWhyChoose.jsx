@@ -5,7 +5,7 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const Cards = ({ header = "", img }) => {
   return (
-    <div className="w-full  relative hover:scale-[1.01] transition-all duration-300 ease-in-out  h-[14rem] flex justify-center items-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+    <div className="w-full  relative hover:scale-[1.01] transition-all  duration-300 ease-in-out  h-[14rem] flex items-end justify-center text-center min-h-36  border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
       style={{
         backgroundImage: `url(${img})`,
         backgroundSize: 'cover',
@@ -22,10 +22,10 @@ const Cards = ({ header = "", img }) => {
       ></div> */}
       <div className="absolute inset-0 bg-gradient-to-l from-gray-600 to-black opacity-60 z-0 rounded-lg"></div>
 
-      <div className="p-5">
-        <div className="flex justify-between items-center">
+      <div className="py-2 px-2">
+        <div className="flex">
           <h5
-            className="text-[24px] md:text-[28px] font-cinzel text-white font-semibold bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
+            className="text-[24px] md:text-[24px] font-cinzel text-white font-semibold bg-clip-text text-transparent z-10 flex  w-full "
           >
             {header}
           </h5>

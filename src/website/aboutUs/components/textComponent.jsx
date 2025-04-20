@@ -4,7 +4,7 @@ import PrimaryBodyText from "../../styleComponents/primaryBodyText";
 import SecondaryTitle from "../../styleComponents/secondaryTitle";
 
 const TextComponent = ({ text, heading }) => (
-  <div>
+  <div >
     <SecondaryTitle
       className="mb-4"
     >
