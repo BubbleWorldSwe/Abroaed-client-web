@@ -11,10 +11,16 @@ const PathwaysHomeHowItWorkSection = () => {
                     <div className="pt-10">
                         <div >
                             <SectionMainHeader className={`mb-2 md:mb-6`}>
-                                How It Works?
+                                What is Pathways Program?
                             </SectionMainHeader>
                             <PrimaryBodyText>
-                                Pathways programs offer students a seamless route to studying abroad by providing the academic, language, and cultural support needed for success. These programs help you build a strong foundation in core subjects, improve language proficiency, and gain cultural understanding to thrive in a foreign academic environment. With guaranteed progression to a degree program at a partner university, pathways programs not only prepare you academically but also guide you through personal and professional development, ensuring a smooth transition to university life abroad.
+                                At ABROAED, we offer specialized pathway programs that begin in India and seamlessly transition to partner universities abroad. These structured programs are designed to provide students with a smooth and strategic route to international education. By starting their academic journey in India, students can build a strong foundation while gradually adapting to global academic standards, language proficiency, and cultural nuances.
+                            </PrimaryBodyText>
+                            <PrimaryBodyText className="mt-2">
+                                Our pathway solutions also offer a cost-effective approach, significantly reducing the financial burden of studying abroad. With personalized guidance and partnerships with top institutions worldwide, ABROAED ensures that each student is fully prepared—academically and emotionally—for their international transition.
+                            </PrimaryBodyText>
+                            <PrimaryBodyText className="mt-2">
+                                Stay Tuned, Coming Soon!
                             </PrimaryBodyText>
                         </div>
                         <div className="mt-4 md:mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 ">

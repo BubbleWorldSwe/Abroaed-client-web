@@ -74,7 +74,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
 
   return (
     <section className="relative ">
-      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:h-[90vh] antialiased relative ">
+      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:min-h-[90vh] antialiased relative ">
         <div
           className={`flex flex-col lg:flex-row justify-between   lg:gap-12 px-6 md:px-10  rounded-lg`}
         >

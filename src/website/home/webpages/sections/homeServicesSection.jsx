@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import HomeServiceModal from "../../../../Components/Modals/HomeServiceModal";
+import { useState } from "react";
 import homeService1 from "../../../../assets/homeService1.png";
 import homeService2 from "../../../../assets/homeService2.png";
 import homeService3 from "../../../../assets/homeService3.png";
@@ -16,6 +15,8 @@ import { useMediaQuery } from "react-responsive";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import ServiceContent from "../../components/serviceContent";
 import BackgroundLayer from "../../components/backgroundLayer";
+import NextArrow from "../../../comman/components/nextArrow";
+import PrevArrow from "../../../comman/components/prevArrow";
 
 
 const serviceDataWeb = [
@@ -131,72 +132,23 @@ const serviceDataPhone = [
 
 const HomeServicesSection = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  const [modalOpen, setModalOpen] = useState(false);
   const [countImg, setCountImg] = useState(0);
-
-
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNextImage();
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [countImg]);
-
+  const serviceData = isMobile ? serviceDataPhone : serviceDataWeb;
   const handleNextImage = () => {
     setCountImg((prev) => (prev + 1) % serviceData.length);
   };
-
   const handleDotClick = (index) => {
     if (index !== countImg) {
       setCountImg(index);
     }
   };
+  const handlePrevImage = () => {
+    setCountImg((prev) => (prev - 1 + serviceData.length) % serviceData.length);
+  };
 
-  const serviceData = isMobile ? serviceDataPhone : serviceDataWeb;
-
-  // const PrevArrow = ({onClick}) => (
-  //   <button
-  //     onClick={onClick}
-  //     className="absolute z-10 left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
-  //   >
-  //     <ChevronLeft />
-  //   </button>
-  // );
-
-  // const NextArrow = ({ onClick }) => (
-  //   <button
-  //     onClick={onClick}
-  //     className="absolute z-10 right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
-  //   >
-  //     <ChevronRight />
-  //   </button>
-  // );
-
-  // const settings = {
-  //   dots: true,
-  //   infinite: true,
-  //   speed: 6000,
-  //   slidesToShow: 1,
-  //   slidesToScroll: 1,
-  //   autoplay: true,
-  //   autoplaySpeed: 3000,
-  //   pauseOnHover: true,
-  //   centerModa: true,
-  //   nextArrow: <NextArrow />,
-  //   prevArrow: <PrevArrow />,
-  // };
-
-  // console.log(serviceData[countImg]?.imgUrl);
 
   return (
     <div>
-      {modalOpen && (
-        <HomeServiceModal
-          modalOpen={modalOpen}
-          onClose={() => setModalOpen(false)}
-        />
-      )}
       <section className=" dark:bg-gray-900 flex flex-col space-y-4 w-full md:max-w-screen-2xl mx-auto  relative">
         <div className="px-4 md:px-12  max-w-screen-2xl relative z-10">
           <SectionMainHeader>
@@ -204,50 +156,25 @@ const HomeServicesSection = () => {
           </SectionMainHeader>
         </div>
         <div className="overflow-x-auto ">
-          {/* Mobile View */}
-          <div className="w-full  block md:hidden h-[32rem] relative">
-            <div className="flex gap-6 h-full w-max ">
-              {serviceDataPhone.map((item, index) => (
-                <div
-                  key={index}
-                  className="w-[22rem]  md:min-w-[90vw] h-full relative rounded-lg overflow-hidden"
-                >
-                  <BackgroundLayer />
-                  <img
-                    className="w-full h-full object-cover rounded-lg"
-                    src={item.imgUrl}
-                    alt={`Service ${index + 1}`}
-                  />
-                  <ServiceContent data={item} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* <Slider {...settings}  >
-            {serviceData?.map((service, index) => ( */}
-          {/* Desktop View */}
-          <div className="w-full px-4 hidden md:block h-[32rem] relative rounded-lg">
+          <div className="w-full px-4  h-[32rem] relative rounded-lg">
             <div className="relative w-full h-full rounded-lg overflow-hidden">
               <BackgroundLayer />
+
               <img
                 className="w-full h-full object-cover rounded-lg"
                 src={serviceData[countImg]?.imgUrl}
                 alt={`Service ${countImg + 1}`}
               />
+
               <ServiceContent data={serviceData[countImg]} />
             </div>
+            <NextArrow right="right-4" onClick={handleNextImage} />
+            <PrevArrow left="left-4" onClick={handlePrevImage} />
           </div>
-
-
-
-
-          {/* //   ))} */}
-          {/* // </Slider> */}
         </div>
 
-
-        <div className="md:flex hidden justify-center items-center gap-2">
+        {/* dots */}
+        <div className="flex  justify-center items-center gap-2">
           {serviceData.map((_, index) => (
             <button
               key={index}

@@ -45,7 +45,7 @@ const HomePathwaySection = () => {
                 >
                   <img src={img} alt={title} className="w-full h-full object-cover" />
                   <div
-                    className="absolute inset-0 bg-black opacity-60"
+                    className="absolute inset-0 bg-black opacity-30"
                     style={{ mixBlendMode: "multiply" }}
                   ></div>
                   <div className="absolute bottom-2 overflow-auto md:bottom-14 md:left-4 px-4 mx-auto md:px-5">

@@ -62,7 +62,7 @@ export const aboutUs = [
 function AboutUsContentSection() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900 relative ">
+      <section className=" dark:bg-gray-900 relative ">
         <div className=" relative z-10">
           <div className="flex flex-col gap-4 pt-10">
             <SectionMainHeader>

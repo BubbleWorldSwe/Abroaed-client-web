@@ -6,6 +6,7 @@ import CareerHeroSections from "./sections/careerHeroSection";
 import CareerContentSection from "./sections/careerContentSection";
 import SectionComponent from "../../styleComponents/sectionComponent";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png"
+
 function CareerPage() {
   return (
     <div className="font-rethink">

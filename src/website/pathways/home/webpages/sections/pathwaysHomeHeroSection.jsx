@@ -10,7 +10,7 @@ function PathwaysHomeHero() {
                 Pathways Program
             </h1>
             <p className={heroStyle.text}>
-                Your Pathway to Academic Success and Global Opportunities
+                Start Locally, Graduate Globally
             </p>
         </HeroTextComponent>
     )

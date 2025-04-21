@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import Slider from "react-slick";
+/* eslint-disable react-hooks/exhaustive-deps */
 import homeHero1 from "../../../../assets/homeHero1.png";
 import homeHero2 from "../../../../assets/homeHero2.png";
 import homeHero3 from "../../../../assets/homeHero3.png";
@@ -10,6 +9,8 @@ import homeHero3Mobile from "../../../../assets/homeHero3Mobile.png";
 import homeHero4Mobile from "../../../../assets/homeHero4Mobile.png";
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from "react";
+import PrevArrow from "../../../comman/components/prevArrow";
+import NextArrow from "../../../comman/components/nextArrow";
 
 const HomeSlidingImg = () => {
     const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -25,7 +26,10 @@ const HomeSlidingImg = () => {
 
     const handleNextImage = () => {
         setCountImg((prev) => (prev + 1) % homeImages.length);
+    };
 
+    const handlePrevImage = () => {
+        setCountImg((prev) => (prev - 1 + homeImages.length) % homeImages.length);
     };
 
     const handleDotClick = (index) => {
@@ -54,14 +58,16 @@ const HomeSlidingImg = () => {
     return (
         <section className="dark:bg-gray-900 relative py-4">
             <div className="overflow-x-auto">
-                <div className="hidden sm:block relative w-full h-[92vh]">
+                <div className="relative w-full h-[92vh]">
                     <img
-                        key={countImg} // helps trigger fade animation
+                        key={countImg}
                         className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out`}
                         src={homeImages[countImg].imgUrl}
                         alt={`Image ${countImg + 1}`}
                     />
 
+                    <NextArrow right="right-0" onClick={handleNextImage} />
+                    <PrevArrow left="left-0" onClick={handlePrevImage} />
                     {/* Dots */}
                     <div className="absolute right-5 bottom-5 flex   gap-2">
                         {homeImages.map((_, index) => (
@@ -74,27 +80,7 @@ const HomeSlidingImg = () => {
                         ))}
                     </div>
                 </div>
-                {/* mobile view */}
-                <div className="md:hidden  flex gap-6 relative w-full h-[92vh]">
-                    {homeImages.map((item, index) => (
-                        <img
-                            key={index}
-                            className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out`}
-                            src={item.imgUrl}
-                            alt={`Image ${index + 1}`}
-                        />
-                    ))}
-                    {/* <div className="absolute right-5 bottom-5 flex   gap-2">
-                        {homeImages.map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => handleDotClick(index)}
-                                className={`h-3 w-3 rounded-full ${index === countImg ? 'bg-yellow-primary w-4 ' : 'bg-gray-500'
-                                    }`}
-                            />
-                        ))}
-                    </div> */}
-                </div>
+
             </div>
         </section >
     )
