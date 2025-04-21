@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
+import { useRef } from "react";
 import PrimaryBodyText from "../../styleComponents/primaryBodyText";
 import SecondaryTitle from "../../styleComponents/secondaryTitle";
+import { useClickOutside } from "../customHooks/useOutSideModalClose";
 const TestimonialModal = ({ isOpen, item, onClose }) => {
+    const modalRef = useRef();
 
+    useClickOutside(modalRef, onClose, isOpen)
 
     return (
         <>
             {isOpen && (
-                <div className="fixed inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
-                    <div className="bg-white max-h-[70vh]  overflow-y-auto  rounded-lg shadow-lg p-4 px-6 w-72 md:w-full max-w-3xl z-50 relative">
+                <div className="fixed px-6 inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+                    <div ref={modalRef} className="bg-white max-h-[80vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
                         <button
                             className="absolute  w-12 h-12 top-2 right-2 text-gray-600  text-3xl"
                             onClick={onClose}
