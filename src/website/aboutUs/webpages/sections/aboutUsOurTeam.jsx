@@ -4,7 +4,7 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 function AboutUsOurTeam() {
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900 antialiased ">
+      <section className=" dark:bg-gray-900 antialiased ">
         <div className="">
           <div className=" flex flex-col gap-2">
             <SectionMainHeader

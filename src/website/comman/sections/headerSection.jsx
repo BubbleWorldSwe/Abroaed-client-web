@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronRight, ChevronUp, Menu, Turtle, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -21,7 +21,7 @@ import { useMediaQuery } from "react-responsive";
 import ExploreCollegeModalPhone from "../modals/exploreCollegeModalPhone";
 import CollegeListPhone from "../modals/collegeListPhone";
 //import { destinationMenuItems } from "../../../constants/values";
-import favicon from "../../../assets/favicon.ico"
+import logoYellowWhite from "../../../assets/logoYellowWhite.png"
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -276,10 +276,10 @@ function Header({ isHeaderBgWhite = false }) {
                 ABROA<span style={{ color: "#fbba18" }}>ED</span>
               </a>
             </h3>
-            <div className="md:hidden block">
+            <div className="md:hidden block w-6">
               <a href="/">
                 <img
-                  src={favicon}
+                  src={logoYellowWhite}
                   alt="logo"
                 />
               </a>
@@ -410,10 +410,42 @@ function Header({ isHeaderBgWhite = false }) {
                 </a>
               ))}
             </div> */}
+            {/* explore colleges mobile view  */}
+            <div>
+              <button
+                className="block md:hidden p-2 basis-[0%]"
+                onClick={() => setIsOpenExploreCollegePhone(true)}
+              >
+                Explore Colleges
+              </button>
+              {/* destination list */}
+              <ExploreCollegeModalPhone
+                isOpenExploreCollegePhone={isOpenExploreCollegePhone}
+                setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
+                allDestinations={allDestinations}
+                handleDestinationClick={handleDestinationClick}
+                setSelectedDestModalPhone={setSelectedDestModalPhone}
+                selectedDestModalPhone={selectedDestModalPhone}
+              />
+              {/* college list  */}
+              <CollegeListPhone
+                selectedDestModalPhone={selectedDestModalPhone}
+                setSelectedDestModalPhone={setSelectedDestModalPhone}
+                setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
+                selectedDestination={selectedDestination}
+                filteredColleges={filteredColleges}
+                handleStateClick={handleStateClick}
+                isLoading={isLoading}
+                states={states}
+                selectedState={selectedState}
+              />
+            </div>
+
             <div
               // onMouseEnter={() => handleMouseEnter("login")}
               // onMouseLeave={handleMouseLeave}
-              className="relative hidden md:block"
+              className="relative "
+            // className="relative hidden md:block"
             >
               <button
                 onClick={() => handleMouseEnter("bookMenu")}
@@ -464,36 +496,6 @@ function Header({ isHeaderBgWhite = false }) {
               )}
 
             </div> */}
-          </div>
-          {/* explore colleges mobile view  */}
-          <div>
-            <button
-              className="block md:hidden p-2 basis-[0%]"
-              onClick={() => setIsOpenExploreCollegePhone(true)}
-            >
-              Explore Colleges
-            </button>
-            {/* destination list */}
-            <ExploreCollegeModalPhone
-              isOpenExploreCollegePhone={isOpenExploreCollegePhone}
-              setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
-              allDestinations={allDestinations}
-              handleDestinationClick={handleDestinationClick}
-              setSelectedDestModalPhone={setSelectedDestModalPhone}
-              selectedDestModalPhone={selectedDestModalPhone}
-            />
-            {/* college list  */}
-            <CollegeListPhone
-              selectedDestModalPhone={selectedDestModalPhone}
-              setSelectedDestModalPhone={setSelectedDestModalPhone}
-              setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
-              selectedDestination={selectedDestination}
-              filteredColleges={filteredColleges}
-              handleStateClick={handleStateClick}
-              isLoading={isLoading}
-              states={states}
-              selectedState={selectedState}
-            />
           </div>
 
           {/* mobile menu */}
@@ -551,7 +553,7 @@ function Header({ isHeaderBgWhite = false }) {
                       )}
                     </li>
                   ))}
-                  <li>
+                  {/* <li>
                     <div
                       className="relative "
                     >
@@ -571,7 +573,7 @@ function Header({ isHeaderBgWhite = false }) {
                         </div>
                       )}
                     </div>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             )}

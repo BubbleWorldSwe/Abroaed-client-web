@@ -1,11 +1,11 @@
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
-import aboutUs1 from "../../../../assets/aboutUs1.png";
-import aboutUs2 from "../../../../assets/aboutUs2.png";
 import FounderContentComponent from "../../components/founderContentComponent";
+import farhanImg from "../../../../assets/farhanImg.png"
+import tannayImg from "../../../../assets/tannayImg.png"
 
 export const founderDetails = [
     {
-        imgUrl: aboutUs1,
+        imgUrl: tannayImg,
         name: "Tannay Jit Singh",
         role: 'Co-Founder | ABROAED | Founder | Kladio | Director | JJF Education  Pvt Ltd',
         text: (
@@ -33,26 +33,24 @@ export const founderDetails = [
     },
     {
         imgFirst: false,
-        imgUrl: aboutUs2,
+        imgUrl: farhanImg,
         name: "Farhan Farooqui",
-        role: '',
+        role: 'Co-Founder & CEO | ABROAED |',
         text: (
             <div >
                 <p className="mb-2">
                     Farhan Farooqui is the dynamic Co-Founder & CEO of ABROAED, where he redefines the study abroad sector by bringing luxury-level personalization and precision to student guidance services. With over 14 years of leadership in the High-end retail and luxury segment—spanning renowned companies like Reliance Brands and Adidas—Farhan brings a unique perspective rooted in Hype culture, Elite customer service experience, and Operational Excellence.
                 </p>
                 <p className="mb-2">
-                    My previous experience as an entrepreneur has shaped my approach to business—one that is driven by innovation, adaptability, and a deep understanding of client needs. I’ve built and scaled businesses from the ground up, developing a strong foundation in leadership, operations, and service excellence. This entrepreneurial journey now fuels ABROAED’s commitment to delivering luxury-level service in the study abroad space.
+                    His previous experience as an entrepreneur has shaped his approach to business—one that is driven by innovation, adaptability, and a deep understanding of client needs. He has built and scaled businesses from the ground up, developing a strong foundation in leadership, operations, and service excellence. This entrepreneurial journey now fuels ABROAED’s commitment to delivering luxury-level service in the study abroad space.
                 </p>
                 <p className="mb-2">
-                    He holds a Bachelor's degree in French, German, and Linguistics, along with an MBA in Marketing and Retail — a powerful blend of Cultural Fluency and Business Strategy that has profoundly shaped his global perspective and leadership approach.
-                </p>
+                    He holds a Bachelor's degree in French, German, and Linguistics, along with an MBA in Marketing and Retail —a powerful blend of Cultural Fluency and Business Strategy that has profoundly shaped his global perspective and leadership approach.                </p>
                 <p className="mb-2">
                     At ABROAED, Farhan pioneers a unique model of at-home counselling and end-to-end dedicated services, providing students and families with deeply personalized support that mirrors the exclusivity of the luxury retail segment. His vision is rooted in care, trust, and clarity—values he brought from the Luxury Retail world into a space where they were long overdue.
                 </p>
                 <p className="mb-2">
-                    By blending the aspirational appeal of the Hype culture segment with luxury-level service standards and a relentless focus on student-first outcomes, Farhan sets a new benchmark, reshaping the very fabric of how study abroad should be delivered. His mission goes beyond securing admissions; it is about elevating aspirations, transforming journeys, and delivering a level of excellence that the industry has never seen before.
-                </p>
+                    By blending the aspirational appeal of the Hype culture segment with luxury-level service standards and a relentless focus on student-first outcomes, Farhan sets a new benchmark, reshaping the very fabric of how study abroad should be delivered. His mission goes beyond securing admissions; it is about elevating aspirations, transforming journeys, and delivering a level of excellence that the industry has never seen before.                </p>
             </div>
         ),
     },
@@ -66,14 +64,14 @@ export const founderDetails = [
 
 const AboutUsFounderSection = () => {
     return (
-        <section className="bg-white dark:bg-gray-900 relative ">
+        <section className=" dark:bg-gray-900 relative ">
             <div className=" relative z-10">
                 <div className="flex flex-col  gap-4">
                     <SectionMainHeader>
                         Our Founders
                     </SectionMainHeader>
                 </div>
-                <div className="pt-10 flex flex-col gap-6">
+                <div className="pt-8 md:pt-10 flex flex-col gap-10 md:gap-16">
                     {founderDetails.map((item, index) => (
                         <FounderContentComponent key={index} {...item} idx={index} />
                     ))}

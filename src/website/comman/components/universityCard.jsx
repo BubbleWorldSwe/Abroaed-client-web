@@ -8,7 +8,8 @@ const UniversityCard = ({ item }) => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="max-w-[330px] hidden bg-white   border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 md:flex flex-col justify-between">
+      <div className="max-w-[330px] hidden bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 md:flex flex-col justify-between h-full">
+        {/* Flex wrapper to ensure all cards align */}
         <div className="flex items-center">
           {/* Image */}
           <img
@@ -22,7 +23,7 @@ const UniversityCard = ({ item }) => {
             <h5 className="text-lg font-semibold text-gray-700 dark:text-white">
               {item?.name}
             </h5>
-            <div className="flex items-center  gap-2 text-sm text-gray-600 dark:text-gray-400 mt-1">
+            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400 mt-1">
               <img
                 className="w-4 h-4 object-contain"
                 src={locationIcon}
@@ -34,18 +35,20 @@ const UniversityCard = ({ item }) => {
             </div>
           </div>
         </div>
-        <div className="mt-3">
-          <div className="flex flex-col  h-full">
-            <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-4">
-              {item.description}
-            </p>
 
-          </div>
+        {/* Description */}
+        <div className="mt-3 flex-1">
+          <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-4">
+            {item.description}
+          </p>
         </div>
+
+        {/* Button */}
         <div className="mt-3">
           <EnquireButton href={`/college/${item._id}`} />
         </div>
       </div>
+
 
       {/* mobile view */}
       <button className="w-full md:hidden bg-white   border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col justify-between"

@@ -18,7 +18,7 @@ const HomeKpiMatrixSection = ({ title, header, subtitle }) => {
               {subtitle}
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 overflow-hidden">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 overflow-hidden">
             {kpiCards.map((member, index) => (
               <HomeKpiMatrixCard key={index} {...member} />
             ))}

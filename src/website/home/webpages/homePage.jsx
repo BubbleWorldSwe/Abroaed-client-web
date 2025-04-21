@@ -9,8 +9,8 @@ import HomePromoSection from "./sections/homePromoSection";
 import HomeDownloadApp from "./sections/homeDownloadAppSection";
 import { useDispatch } from "react-redux";
 import ContactUsForm from "../../comman/components/contactUsForm";
-// import Blogs from "../../comman/components/blogs";
-// import Testimonials from "../../comman/components/testimonials";
+import Blogs from "../../comman/components/blogs";
+import Testimonials from "../../comman/components/testimonials";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
@@ -18,7 +18,7 @@ import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import HomeSlidingImg from "./sections/homeSlidingImg";
 import SectionComponent from "../../styleComponents/sectionComponent";
-// import vectorBelow from "../../../assets/vectorBelow.png";
+import vectorBelow from "../../../assets/vectorBelow.png";
 
 function HomeLayout() {
   const dispatch = useDispatch();
@@ -79,9 +79,9 @@ function HomeLayout() {
             entity={entity.bookCounselling}
           />
         </SectionComponent>
-        {/* <SectionComponent>
+        <SectionComponent>
           <Testimonials />
-        </SectionComponent> */}
+        </SectionComponent>
         <div className="relative ">
           <SectionComponent >
             <HomeDownloadApp />

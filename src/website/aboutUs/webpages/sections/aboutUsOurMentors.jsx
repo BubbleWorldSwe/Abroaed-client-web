@@ -1,7 +1,7 @@
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 import FounderContentComponent from "../../components/founderContentComponent"
-import gaganSirImg from "../../../../assets/gaganSirImg.jpg"
-import molimaam from "../../../../assets/molimaam.jpg"
+import gaganSirImg from "../../../../assets/gaganSirImg.png"
+import molimaam from "../../../../assets/molimaam.png"
 
 
 export const mentorsDetails = [
@@ -42,14 +42,14 @@ export const mentorsDetails = [
 
 const AboutUsOurMentors = () => {
     return (
-        <section className="bg-white dark:bg-gray-900 relative ">
+        <section className=" dark:bg-gray-900 relative ">
             <div className=" relative z-10">
                 <div className="flex flex-col  gap-4">
                     <SectionMainHeader>
                         Our Mentors at ABROAED
                     </SectionMainHeader>
                 </div>
-                <div className="pt-10 flex flex-col gap-6">
+                <div className="pt-8 md:pt-10 flex flex-col gap-10 md:gap-24">
                     {mentorsDetails.map((item, index) => (
                         <FounderContentComponent key={index} {...item} idx={index} />
                     ))}
