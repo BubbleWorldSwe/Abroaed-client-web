@@ -8,40 +8,34 @@ import homeHero1Mobile from "../../../../assets/homeHero1Mobile.png";
 import homeHero2Mobile from "../../../../assets/homeHero2Mobile.png";
 import homeHero3Mobile from "../../../../assets/homeHero3Mobile.png";
 import homeHero4Mobile from "../../../../assets/homeHero4Mobile.png";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useMediaQuery } from 'react-responsive';
+import { useEffect, useState } from "react";
 
 const HomeSlidingImg = () => {
     const isMobile = useMediaQuery({ maxWidth: 768 });
+    const [countImg, setCountImg] = useState(0);
 
-    const PrevArrow = ({ onClick }) => (
-        <button
-            onClick={onClick}
-            className="absolute z-10 left-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
-        >
-            <FaArrowLeft />
-        </button>
-    );
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleNextImage();
+        }, 2000);
 
-    const NextArrow = ({ onClick }) => (
-        <button
-            onClick={onClick}
-            className="absolute z-10 right-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
-        >
-            <FaArrowRight />
-        </button>
-    );
-    const settings = {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        dots: false,
-        infinite: true,
-        speed: 8000,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        pauseOnHover: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+        return () => clearInterval(interval);
+    }, [countImg]);
+
+    const handleNextImage = () => {
+        setTimeout(() => {
+            setCountImg((prev) => (prev + 1) % homeImages.length);
+
+        }, 2000);
+    };
+
+    const handleDotClick = (index) => {
+        if (index !== countImg) {
+            setTimeout(() => {
+                setCountImg(index);
+            }, 2000);
+        }
     };
 
     const homeImagesLarge = [
@@ -61,25 +55,29 @@ const HomeSlidingImg = () => {
 
     const homeImages = isMobile ? homeImagesMobile : homeImagesLarge;
 
-
     return (
         <section className="dark:bg-gray-900 relative py-4">
-            {/* <div className="overflow-x-auto pb-8 max-w-screen-2xl px-10"> */}
             <div className="overflow-x-auto">
-                <Slider {...settings}>
-                    {homeImages.map((image, index) => (
-                        // <div key={index} className="w-full px-5 ">
-                        <div key={index} className="w-full px-5 ">
-                            <div className="relative w-full h-[92vh]">
-                                <img
-                                    className="w-full h-full sm:object-cover md:object-cover "
-                                    src={image.imgUrl}
-                                    alt={`Image ${index + 1}`}
-                                />
-                            </div>
-                        </div>
-                    ))}
-                </Slider>
+                <div className="relative w-full h-[92vh] overflow-hidden">
+                    <img
+                        key={countImg} // helps trigger fade animation
+                        className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out`}
+                        src={homeImages[countImg].imgUrl}
+                        alt={`Image ${countImg + 1}`}
+                    />
+
+                    {/* Dots */}
+                    <div className="absolute right-5 bottom-5 flex  gap-2">
+                        {homeImages.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleDotClick(index)}
+                                className={`h-3 w-3 rounded-full ${index === countImg ? 'bg-yellow-primary w-4 ' : 'bg-gray-500'
+                                    }`}
+                            />
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     )

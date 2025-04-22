@@ -2,6 +2,10 @@ export const FETCH_LEADS_REQUEST = "FETCH_LEADS_REQUEST";
 export const FETCH_LEADS_SUCCESS = "FETCH_LEADS_SUCCESS";
 export const FETCH_LEADS_FAILURE = "FETCH_LEADS_FAILURE";
 
+export const SEARCH_LEADS_REQUEST = "SEARCH_LEADS_REQUEST";
+export const SEARCH_LEADS_SUCCESS = "SEARCH_LEADS_SUCCESS";
+export const SEARCH_LEADS_FAILURE = "SEARCH_LEADS_FAILURE";
+
 export const ADD_LEAD_REQUEST = "ADD_LEAD_REQUEST";
 export const ADD_LEAD_SUCCESS = "ADD_LEAD_SUCCESS";
 export const ADD_LEAD_FAILURE = "ADD_LEAD_FAILURE";
@@ -134,3 +138,18 @@ export const addLeadSavedPrefrences = (lead) => {
     payload: lead,
   };
 };
+
+export const searchLeadsRequest = (query) => ({
+  type: SEARCH_LEADS_REQUEST,
+  payload: query,
+});
+
+export const searchLeadsSuccess = (results) => ({
+  type: SEARCH_LEADS_SUCCESS,
+  payload: results,
+});
+
+export const searchLeadsFailure = (error) => ({
+  type: SEARCH_LEADS_FAILURE,
+  payload: error,
+});

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import {
   addLanguagePrepRequest,
   deleteLanguagePrepRequest,
+  editLanguagePrepRequest,
   fetchLanguagePrepsRequest,
 } from "../../../redux/actions/languagePrepsActions";
 import AddProductLanguagePrepModal from "../modals/addProductLanguagePrepModal";
@@ -38,6 +39,15 @@ const LanguagePrep = () => {
     dispatch(fetchLanguagePrepsRequest(1));
     handleCloseAddModal();
   };
+
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editLanguagePrepRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -153,6 +163,7 @@ const LanguagePrep = () => {
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
+                onUpdate={onUpdate}
               />
             </div>
           </div>

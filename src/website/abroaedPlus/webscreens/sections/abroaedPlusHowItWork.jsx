@@ -2,7 +2,8 @@ import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { AbroaedServices } from "../../data";
-import blackYellowAngle from "../../../../assets/blackYellowAngle.png"
+import vectorRightFlat from "../../../../assets/vectorRightFlat.png"
+
 const AbroaedPlusHowItWork = () => {
   return (
     <div className="relative">
@@ -68,6 +69,13 @@ const AbroaedPlusHowItWork = () => {
                   <p className="mb-3  text-[16px] md:text-[20px] font-normal dark:text-gray-400">
                     {service.description}
                   </p>
+                  <div className="absolute right-0 w-32 top-20 bottom-0 overflow-hidden z-0">
+                    <img
+                      className="rounded-lg w-full h-full object-contain"
+                      src={vectorRightFlat}
+                      alt="Counselling session"
+                    />
+                  </div>
                 </div>
 
               </div>

@@ -25,15 +25,15 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
       />
       <div className="relative z-10">
         <section >
-          <div className="">
+          <div className="  lg:grid lg:grid-cols-1 pb-10 ">
             <SectionMainHeader className="">Explore Plans</SectionMainHeader>
             <hr className="" />
           </div>
-          <div className="flex flex-col md:flex-row gap-6 justify-center pt-10">
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative p-6 hover:scale-[1.01] transition-all ease-in-out delay-100 py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
+                className={`relative px-6  hover:scale-[1.01] transition-all duration-300 ease-in-out py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
                                 }`}
               >
                 {plan.recommended && (
@@ -42,14 +42,14 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                   </div>
                 )}
                 {/* <div className="w-full  px-2 mx-auto bg-yellow-primary"> */}
-                <div className="text-[32px] bg-[#4a4a52] bg-opacity-80 mb-4   rounded-xl   md:text-[57px]  font-medium   text-center ">
+                <div className="text-[32px] bg-[#4a4a52] bg-opacity-80 mb-2   rounded-xl   md:text-[42px]  font-medium    text-center ">
                   {plan.name}
                 </div>
                 {/* </div> */}
-                <p className="text-[18px]  md:text-[32px] text-center font-normal mb-1 " >
-                  {plan.price}
+                <p className="text-[18px]  md:text-[32px] text-center font-normal  " >
+                  {plan.price} <spna className="text-lg">(Inc. of GST)</spna>
                 </p>
-                <p className=" text-lg mb-3 text-center ">{plan.title}</p>
+                <p className=" text-lg  text-center font-normal ">{plan.title}</p>
 
                 {/* <button
                                     className={`w-full mt-4 py-4 rounded-full text-[18px] font-semibold 
@@ -60,15 +60,15 @@ const LeaguageOfExcellenceExplorePlan = ({ onFormSubmit, source, entity }) => {
                                     {plan.buttonText}
                                 </button> */}
 
-                <div className="mt-6 bg-[#4a4a52] bg-opacity-80 rounded-xl p-2">
-                  <h4 className="text-[18px]  md:text-[25px] font-normal">
+                <div className="mt-4 bg-[#4a4a52] bg-opacity-80 rounded-xl p-2">
+                  <h4 className="text-[18px]  md:text-[25px] font-medium">
                     Features you’ll love
                   </h4>
                   <ul className="mt-1 space-y-1 list-disc px-5 ">
                     {plan.features?.map((feature, i) => (
                       <li
                         key={i}
-                        className="text-[12px] md:text-base list-item items-center font-normal gap-1 text-white"
+                        className="text-[12px] md:text-sm list-item items-center font-normal gap-1 text-white"
                       >
                         {/* <Check size={16} /> */}
                         {feature}

@@ -9,7 +9,7 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
-  const { error, loading } = useSelector((state) => state.teams);
+  const { error } = useSelector((state) => state.teams);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -51,7 +51,9 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
     };
 
     onAddTeam(data);
+    onClose();
   };
+  console.log(error);
 
   useEffect(() => {
     if (!error) {

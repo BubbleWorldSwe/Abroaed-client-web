@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
+import { Edit, EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ const TestPrepTable = ({
   handleNextPage,
   handlePrevPage,
   handleDelete,
+  onUpdate,
 }) => {
   const { testPreps, totalPages } = useSelector((state) => state.testPreps);
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -52,6 +53,15 @@ const TestPrepTable = ({
     setDropdownDirection("down");
   };
 
+  const handleSubmit = (status, id) => {
+    try {
+      onUpdate({ status: status }, id);
+      setDropdownVisible(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
@@ -69,6 +79,9 @@ const TestPrepTable = ({
             </th>
             <th scope="col" className="px-4 py-1 min-w-[10rem]">
               Acronym
+            </th>
+            <th scope="col" className="px-4 py-1 min-w-[10rem]">
+              Status
             </th>
             <th scope="col" className="px-4 py-3 min-w-[10rem]">
               Created At
@@ -107,6 +120,9 @@ const TestPrepTable = ({
                   </th>
 
                   <td className="px-4 py-3">{test.exam}</td>
+                  <td className="px-4 py-3">
+                    {test?.status === "draft" ? "Draft" : "Published"}
+                  </td>
                   {/*   <td className="px-4 py-3">{test.language}</td> */}
                   <td className="px-4 py-3">
                     <a
@@ -145,24 +161,46 @@ const TestPrepTable = ({
                             </button>
                           </li>
                           {isWriteAccess && (
-                            <li>
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setDeleteId(test._id);
-                                  setIsModalOpen(!isModalOpen);
-                                  //setDropdownVisible(null);
-                                }}
-                                /* onClick={() => {
+                            <>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleSubmit(
+                                      test?.status === "draft"
+                                        ? "publish"
+                                        : "draft",
+                                      test._id
+                                    )
+                                  }
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                  <span>
+                                    {test?.status === "draft"
+                                      ? "Publish Page"
+                                      : "Withdraw Page"}
+                                  </span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setDeleteId(test._id);
+                                    setIsModalOpen(!isModalOpen);
+                                    //setDropdownVisible(null);
+                                  }}
+                                  /* onClick={() => {
                                 handleDelete(test._id);
                                 setDropdownVisible(null);
                               }} */
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                                <span>Delete</span>
-                              </button>
-                            </li>
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                  <span>Delete</span>
+                                </button>
+                              </li>
+                            </>
                           )}
                         </ul>
                       </div>

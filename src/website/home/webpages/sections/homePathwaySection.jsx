@@ -28,7 +28,7 @@ const HomePathwaySection = () => {
     <div className="">
       <section className="dark:bg-gray-900 relative ">
         <div className="   relative z-10">
-          <div className="flex flex-col md:flex-row gap-9 h-[60rem]  md:h-[66vh] lg:h-[70vh]">
+          <div className="flex flex-col md:flex-row gap-9 h-[60rem]  md:h-[66vh] lg:h-[80vh]">
             {cardData?.map(({ title, href, img, content }) => (
               <div
                 key={title}
@@ -45,20 +45,27 @@ const HomePathwaySection = () => {
                 >
                   <img src={img} alt={title} className="w-full h-full object-cover" />
                   <div
-                    className="absolute inset-0 bg-black opacity-50"
+                    className="absolute inset-0 bg-black opacity-60"
                     style={{ mixBlendMode: "multiply" }}
                   ></div>
-                  <div className="absolute bottom-2 overflow-auto md:bottom-14 left-4 px-5">
+                  <div className="absolute bottom-2 overflow-auto md:bottom-14 md:left-4 px-4 mx-auto md:px-5">
                     <p className="text-gray-200 lg:mb-2 text-[12px] md:text-base">Explore</p>
-                    <h1 className="mb-2 text-[24px] md:text-5xl tracking-tight font-extrabold text-white">
+                    <h1 className="mb-2 text-[24px] md:text-5xl tracking-tight font-medium text-white">
                       {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title}
                       {/* {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title} */}
                     </h1>
-                    {hoverOn === title.toLowerCase() && isHovered && (
-                      <div className="text-white text-justify pb-6 text-[16px] md:text-base transition-opacity duration-300">
+                    <div className="hidden md:block">
+                      {hoverOn === title.toLowerCase() && isHovered && (
+                        <div className="text-white  text-justify pb-6 text-[16px] md:text-base transition-opacity duration-300">
+                          {content}
+                        </div>
+                      )}
+                    </div>
+                    <div className="block md:hidden">
+                      <div className="text-white  text-justify pb-6 text-[16px] md:text-base transition-opacity duration-300">
                         {content}
                       </div>
-                    )}
+                    </div>
                   </div>
                 </a>
               </div>

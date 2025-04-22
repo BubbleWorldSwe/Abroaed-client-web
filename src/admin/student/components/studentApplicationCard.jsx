@@ -12,6 +12,7 @@ const StudentApplicationCard = ({
   onOpenDocUpdate,
   onOpenStatusModal,
   status,
+  onOpenCommentModal,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -90,6 +91,13 @@ const StudentApplicationCard = ({
                             Move Forward
                           </li>
                         )}
+                      <li
+                        // onClick={onOpen}
+                        onClick={onOpenCommentModal}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      >
+                        Add Comment
+                      </li>
                     </ul>
                   </div>
                 )}

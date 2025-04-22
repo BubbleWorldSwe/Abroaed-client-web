@@ -2,6 +2,7 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import {
   getLeadDetailsById,
   getLeads,
+  getSearchLeads,
   setAddLead,
   setDeleteLead,
   setUpdateLead,
@@ -23,6 +24,9 @@ import {
   FETCH_LEADS_REQUEST,
   fetchLeadsFailure,
   fetchLeadsSuccess,
+  SEARCH_LEADS_REQUEST,
+  searchLeadsFailure,
+  searchLeadsSuccess,
 } from "../actions/leadsActions";
 import { toast } from "react-toastify";
 
@@ -34,6 +38,22 @@ function* fetchLeads(action) {
     yield put(fetchLeadsSuccess(data.data));
   } catch (error) {
     yield put(fetchLeadsFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
+// search lead
+function* searchLeads(action) {
+  try {
+    const data = yield call(getSearchLeads, action.payload);
+
+    if (data.status === 200) {
+      yield put(searchLeadsSuccess(data.data));
+    } else {
+      yield put(searchLeadsFailure(data.message));
+    }
+  } catch (error) {
+    yield put(searchLeadsFailure(error.message));
     toast.error(error.message);
   }
 }
@@ -129,4 +149,6 @@ export default function* leadsSaga() {
   yield takeLatest(DELETE_LEAD_REQUEST, deleteLead);
   yield takeLatest(EDIT_LEAD_REQUEST, handleEditLead);
   yield takeLatest(EDIT_LEADS_STUDENT_REQUEST, handleEditLeadStudent);
+
+  yield takeLatest(SEARCH_LEADS_REQUEST, searchLeads);
 }

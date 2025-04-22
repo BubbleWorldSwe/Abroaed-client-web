@@ -1,9 +1,11 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePostRequest,
+  makePostRequestWithToken,
   makePutRequest,
 } from "../utils/apiUtils";
 
@@ -51,10 +53,11 @@ export const getAllTeams = async () => {
 export const setAddTeam = async (credentials) => {
   try {
     console.log(credentials);
-
-    const data = await makePostRequest(
+    const { adminToken } = store.getState().auth;
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/auth/signup`,
-      credentials
+      credentials,
+      adminToken
     );
     // console.log(data);
     if (data.success) {

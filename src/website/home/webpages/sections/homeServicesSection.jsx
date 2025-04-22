@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeServiceModal from "../../../../Components/Modals/HomeServiceModal";
 import homeService1 from "../../../../assets/homeService1.png";
 import homeService2 from "../../../../assets/homeService2.png";
@@ -12,10 +12,12 @@ import homeService8 from "../../../../assets/homeService8.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useMediaQuery } from "react-responsive";
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 
-const serviceData = [
+const serviceDataWeb = [
   {
     text1: "Home Consultation",
     text2:
@@ -67,41 +69,128 @@ const serviceData = [
     imgUrl: homeService7,
   },
 ];
+const serviceDataPhone = [
+  {
+    text1: "Home Consultation",
+    text2:
+      "Experience personalized study abroad guidance from the comfort of your home. Our expert counselors visit you to understand your educational background, preferences, and long-term career vision. We explain study destinations, university options, course selection, application timelines, visa processes, and financial planning. This service is ideal for families who want clarity and expert advice without the hassle of traveling to an office. Available across Delhi and on-request in NCR and other states, our home consultations make the study abroad journey more accessible, informed, and comfortable for every student.",
+    imgUrl: homeService8,
+  },
+  {
+    text1: "Comprehensive Research & Shortlisting",
+    text2:
+      "We take the stress out of university and course selection by providing tailored recommendations based on your goals, qualifications, and preferences. Our experts evaluate institutions across countries based on rankings, faculty, program quality, entry requirements, fees, and post-study opportunities. We present a curated list that suits your academic interests and budget. This approach brings confidence, saves time, and ensures you make smart, goal-aligned decisions that set the foundation for a successful international education experience.",
+    imgUrl: homeService1,
+  }
+  ,
+  {
+    text1: "Customized Personal Guidance",
+    text2:
+      "Receive individual attention and expert guidance through every step of your study abroad journey. We begin by understanding your strengths and aspirations, helping you pick the right course and university. Our counselors assist with SOP writing, LORs, application review, and timely submission. We also support you with scholarship applications, interview readiness, and visa document preparation. This holistic, hands-on approach ensures your application is polished, competitive, and tailored to each institution. With us, you stay on track, informed, and fully equipped to achieve your global education goals.",
+    imgUrl: homeService2,
+  },
+  {
+    text1: "Accommodation Support Services",
+    text2:
+      "Finding housing in a new country can be daunting, but we make it easy. Our team guides you through various accommodation options—university dorms, student hostels, shared flats, or private rentals—based on your budget, preferences, and lifestyle. We assist with location research, application procedures, booking, contracts, and move-in logistics. Our goal is to ensure your new living space is safe, comfortable, and convenient. With our support, you avoid common pitfalls and secure a reliable home, allowing you to focus on settling in and succeeding academically.",
+    imgUrl: homeService3,
+  },
+  {
+    text1: "Exclusive Scholarship Guidance",
+    text2:
+      "We maximize your chances of receiving financial aid by identifying scholarships that match your academic merit, financial situation, and course of interest. Our team researches national and international opportunities—merit-based, need-based, and university-specific. We help you prepare compelling statements, gather documents, and submit strong applications. Our guidance ensures you meet deadlines, follow eligibility, and present yourself as a strong candidate. With our support, you reduce financial burden and gain more freedom to pursue global academic ambitions.",
+    imgUrl: homeService4,
+  }
+  ,
+  {
+    text1: "Global Pathway Course Options",
+    text2:
+      "If you don’t meet direct university entry requirements, we help you find the right global pathway course. These programs strengthen your academic knowledge, language proficiency, and study skills—preparing you to transition smoothly into your chosen degree. Our experts analyze your background and goals, then suggest pathway options tailored to your needs. We also help you understand course structure, duration, and progression routes. With our support, you bridge academic gaps, meet university standards, and begin your international education journey with greater confidence and preparedness.",
+    imgUrl: homeService5,
+  },
+  {
+    text1: <>ABROAED<sup>+</sup></>,
+    text2: (
+      <>
+        <strong>ABROAED<sup>+</sup></strong> is an all-inclusive companion designed to simplify and support your entire study abroad experience. It covers every step—from researching countries, courses, and universities to managing finances, securing loans, booking accommodation, and organizing travel. With this service, you avoid unnecessary stress, hidden costs, and confusing paperwork. It includes tailored SOPs, expert guidance for LORs, visa assistance, and fast-track university offers. <strong>ABROAED<sup>+</sup></strong> is more than a service—it’s your strategic partner, helping you stay organized, informed, and confident throughout your journey toward global academic success.
+      </>
+    ),
+    imgUrl: homeService6,
+  },
+  {
+    text1: "League of Excellence",
+    text2:
+      "This elite program is tailored for ambitious students targeting Ivy League and other top global universities. We provide expert mentorship on how to build a competitive application, including customized strategies, profile building, and interview preparation. Our team helps you create standout SOPs and essays that reflect your unique voice, achievements, and aspirations. We also provide insights into what top institutions look for in candidates. The League of Excellence ensures you’re not just applying—you’re positioning yourself as a top contender for admission into world-renowned institutions.",
+    imgUrl: homeService7,
+  },
+];
+
+
+
 
 const HomeServicesSection = () => {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   const [modalOpen, setModalOpen] = useState(false);
-  const PrevArrow = ({ onClick }) => (
-    <button
-      onClick={onClick}
-      className="absolute z-10 left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
-    >
-      <FaArrowLeft />
-    </button>
-  );
+  const [countImg, setCountImg] = useState(0);
 
-  const NextArrow = ({ onClick }) => (
-    <button
-      onClick={onClick}
-      className="absolute z-10 right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
-    >
-      <FaArrowRight />
-    </button>
-  );
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNextImage();
+    }, 3000);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 6000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    centerModa: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    return () => clearInterval(interval);
+  }, [countImg]);
+
+  const handleNextImage = () => {
+    setTimeout(() => {
+      setCountImg((prev) => (prev + 1) % serviceData.length);
+
+    }, 3000);
   };
 
+  const handleDotClick = (index) => {
+    if (index !== countImg) {
+      setTimeout(() => {
+        setCountImg(index);
+      }, 3000);
+    }
+  };
+
+  const serviceData = isMobile ? serviceDataPhone : serviceDataWeb;
+
+  // const PrevArrow = ({onClick}) => (
+  //   <button
+  //     onClick={onClick}
+  //     className="absolute z-10 left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
+  //   >
+  //     <ChevronLeft />
+  //   </button>
+  // );
+
+  // const NextArrow = ({ onClick }) => (
+  //   <button
+  //     onClick={onClick}
+  //     className="absolute z-10 right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
+  //   >
+  //     <ChevronRight />
+  //   </button>
+  // );
+
+  // const settings = {
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 6000,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  //   autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   pauseOnHover: true,
+  //   centerModa: true,
+  //   nextArrow: <NextArrow />,
+  //   prevArrow: <PrevArrow />,
+  // };
+
+  // console.log(serviceData[countImg]?.imgUrl);
 
   return (
     <div>
@@ -111,51 +200,57 @@ const HomeServicesSection = () => {
           onClose={() => setModalOpen(false)}
         />
       )}
-      <section className=" dark:bg-gray-900 flex flex-col space-y-8 w-full md:max-w-screen-2xl mx-auto  relative">
-        {/* <div className=" relative z-10"> */}
-        <h2
-          className={` text-[28px] px-6   md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
-        >
-          Discover Our Unique Offerings
-        </h2>
-        {/* </div> */}
-        <div className="overflow-x-auto pb-10">
-          <Slider {...settings}  >
-            {serviceData?.map((service, index) => (
+      <section className=" dark:bg-gray-900 flex flex-col space-y-4 w-full md:max-w-screen-2xl mx-auto  relative">
+        <div className="px-4 md:px-12  max-w-screen-2xl relative z-10">
+
+          <SectionMainHeader
+          >
+            Discover Our Unique Offerings
+          </SectionMainHeader>
+        </div>
+        <div className="overflow-x-auto ">
+          {/* <Slider {...settings}  >
+            {serviceData?.map((service, index) => ( */}
+          <div
+            className="w-full px-4   h-[32rem] relative rounded-lg"
+          >
+            <div className="relative w-full h-full rounded-lg">
               <div
-                key={index}
-                className="w-full px-4  lg:w-96 md:w-80 sm:w-60 h-[32rem] relative rounded-lg"
+                className="absolute inset-0 bg-black  opacity-40 rounded-lg"
 
-              >
-                <div className="relative w-full h-full rounded-lg">
-                  <img
-                    className="w-full h-full object-cover rounded-lg"
-                    src={service.imgUrl}
-                    alt={`Service ${index + 1}`}
-                  />
-                  <div
-                    className="absolute inset-0 bg-black  opacity-40 rounded-lg"
-                    style={{
-                      mixBlendMode: "multiply",
-                      // backgroundColor: 
-                    }}
-                  ></div>
-                  <div className="absolute inset-0 bg-gradient-to-l from-gray-600 to-black opacity-60 z-0 rounded-lg"></div>
+              ></div>
+              <div className="absolute inset-0 bg-gradient-to-l from-gray-600 to-black opacity-60 z-0 rounded-lg"></div>
+              <img
+                className="w-full h-full object-cover rounded-lg"
+                src={serviceData[countImg]?.imgUrl}
+                alt={`Service ${countImg + 1}`}
+              />
+            </div>
+            <div className="absolute top-0 md:top-[10%] inset-0 flex  flex-col justify-between p-6 z-10">
 
-                </div>
-                <div className="absolute top-0 md:top-[10%] inset-0 flex  flex-col justify-between p-6 z-10">
-                  <div className="overflow-y-auto flex  flex-col gap-4 md:gap-10 px-5">
-                    <h1 className="text-[32px] leading-tight  md:text-[57px] text-white   font-medium ">
-                      {service.text1}
-                    </h1>
-                    <p className="text-gray-200 leading-8  text-justify font-normal lg:mb-2 text-base md:text-[22px]">
-                      {service.text2}
-                    </p>
-                  </div>
-                </div>
+              <div className="overflow-y-auto flex  flex-col gap-4 md:gap-10 px-2 md:px-5">
+                <h1 className="text-[24px] leading-tight  md:text-[57px] text-white   font-medium ">
+                  {serviceData[countImg].text1}
+                </h1>
+                <p className="text-gray-200 leading-6 md:leading-8  text-justify font-normal lg:mb-2 text-base md:text-[22px]">
+                  {serviceData[countImg].text2}
+                </p>
               </div>
-            ))}
-          </Slider>
+            </div>
+          </div>
+
+          {/* //   ))} */}
+          {/* // </Slider> */}
+        </div>
+        <div className="flex justify-center items-center gap-2">
+          {serviceData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`h-3 w-3 rounded-full ${index === countImg ? 'bg-yellow-primary w-4 ' : 'bg-gray-500'
+                }`}
+            />
+          ))}
         </div>
       </section >
     </div >

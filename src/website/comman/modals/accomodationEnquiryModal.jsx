@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import dark from "../../../assets/dark.png";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
@@ -7,6 +7,7 @@ import locationIcon from "../../../assets/locationIcon.png";
 import wallet from "../../../assets/wallet.png";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useClickOutside } from "../customHooks/useOutSideModalClose";
 
 const AccomodationEnquiryModal = ({
   isOpen,
@@ -25,7 +26,7 @@ const AccomodationEnquiryModal = ({
   });
 
   const [termsAgreed, setTermsAgreed] = useState(false);
-
+  const modalRef = useRef();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -84,12 +85,13 @@ const AccomodationEnquiryModal = ({
       });
     }
   }, [error]);
-
+  // when click on the outside the modal then modal will close
+  useClickOutside(modalRef, onClose, isOpen)
   return (
     <>
       {isOpen && (
         <div className="fixed px-6 mx-auto inset-0 flex items-center  justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div className="bg-white max-h-min md:max-h-[73vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
+          <div ref={modalRef} className="bg-white max-h-min md:max-h-[73vh] overflow-y-auto  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-3xl z-50 relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -211,8 +213,8 @@ const AccomodationEnquiryModal = ({
               {/* Action Buttons */}
               <div className="flex justify-center text-center">
                 <button
-                  type="submit" // ✅ Ensure button is of type submit
-                  className={`mt-4 w-72 bg-yellow-primary text-gray-700 py-2 rounded-md font-semibold text-base hover:bg-yellow-300`}
+                  type="submit"
+                  className={`mt-4 w-72 bg-yellow-primary text-gray-primary py-2 rounded-md font-semibold text-base  hover:bg-gray-primary hover:text-white`}
                 >
                   Submit
                 </button>

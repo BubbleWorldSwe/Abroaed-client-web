@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
+import { Edit, EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ const LanguagePrepTable = ({
   handleNextPage,
   handlePrevPage,
   handleDelete,
+  onUpdate,
 }) => {
   const { loading, languagePreps, totalPages, total } = useSelector(
     (state) => state.languagePreps
@@ -34,6 +35,15 @@ const LanguagePrepTable = ({
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setDropdownVisible(null);
+    }
+  };
+
+  const handleSubmit = (status, id) => {
+    try {
+      onUpdate({ status: status }, id);
+      setDropdownVisible(null);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -72,9 +82,9 @@ const LanguagePrepTable = ({
             <th scope="col" className="px-4 py-3 min-w-[14rem]">
               Product Name
             </th>
-            {/*   <th scope="col" className="px-4 py-3 min-w-[10rem]">
-              Language
-            </th> */}
+            <th scope="col" className="px-4 py-3 min-w-[10rem]">
+              Status
+            </th>
             <th scope="col" className="px-4 py-3 min-w-[10rem]">
               Created By
             </th>
@@ -110,6 +120,13 @@ const LanguagePrepTable = ({
                     className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
                     {language.productName}
+                  </th>
+
+                  <th
+                    scope="row"
+                    className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {language?.status === "draft" ? "Draft" : "Published"}
                   </th>
 
                   {/* <td className="px-4 py-3">{language.language}</td> */}
@@ -154,25 +171,47 @@ const LanguagePrepTable = ({
                             </button>
                           </li>
                           {isWriteAccess && (
-                            <li>
-                              <button
-                                type="button"
-                                /*  onClick={() => {
+                            <>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleSubmit(
+                                      language?.status === "draft"
+                                        ? "publish"
+                                        : "draft",
+                                      language._id
+                                    )
+                                  }
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                  <span>
+                                    {language?.status === "draft"
+                                      ? "Publish Page"
+                                      : "Withdraw Page"}
+                                  </span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  /*  onClick={() => {
                               handleDelete(language._id);
                               setDropdownVisible(null);
                             }} */
 
-                                onClick={() => {
-                                  setDeleteId(language._id);
-                                  setIsModalOpen(!isModalOpen);
-                                  //setDropdownVisible(null);
-                                }}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                                <span>Delete</span>
-                              </button>
-                            </li>
+                                  onClick={() => {
+                                    setDeleteId(language._id);
+                                    setIsModalOpen(!isModalOpen);
+                                    //setDropdownVisible(null);
+                                  }}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                  <span>Delete</span>
+                                </button>
+                              </li>
+                            </>
                           )}
                         </ul>
                       </div>

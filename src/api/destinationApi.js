@@ -1,10 +1,12 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithToken,
   makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
@@ -41,10 +43,11 @@ export const getAllDestinations = async () => {
 export const setAddDestination = async (credentials) => {
   try {
     console.log(credentials);
-
-    const data = await makePostRequest(
+    const { adminToken } = store.getState().auth;
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/destination/create`,
-      credentials
+      credentials,
+      adminToken
     );
     // console.log(data);
     if (data.success) {
@@ -106,12 +109,14 @@ export const getDestinationDetailsById = async (id) => {
 export const setDestinationUploadFile = async (id, imageData) => {
   try {
     const { files, type } = imageData;
+    const { adminToken } = store.getState().auth;
     const data = await makePutRequestWithFormData(
       `${BASE_URL}/api/v1/admin/destination/upload/file/${id}`,
       {
         files,
         type,
-      }
+      },
+      adminToken
     );
     console.log(data);
     if (data.success) {

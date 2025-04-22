@@ -2,6 +2,10 @@ export const FETCH_STUDENTS_REQUEST = "FETCH_STUDENTS_REQUEST";
 export const FETCH_STUDENTS_SUCCESS = "FETCH_STUDENTS_SUCCESS";
 export const FETCH_STUDENTS_FAILURE = "FETCH_STUDENTS_FAILURE";
 
+export const SEARCH_STUDENTS_REQUEST = "SEARCH_STUDENTS_REQUEST";
+export const SEARCH_STUDENTS_SUCCESS = "SEARCH_STUDENTS_SUCCESS";
+export const SEARCH_STUDENTS_FAILURE = "SEARCH_STUDENTS_FAILURE";
+
 export const ADD_STUDENT_REQUEST = "ADD_STUDENT_REQUEST";
 export const ADD_STUDENT_SUCCESS = "ADD_STUDENT_SUCCESS";
 export const ADD_STUDENT_FAILURE = "ADD_STUDENT_FAILURE";
@@ -142,6 +146,23 @@ export const editStudentFailure = (error) => ({
   payload: error,
 });
 
+//Search
+export const searchStudentsRequest = (query) => ({
+  type: SEARCH_STUDENTS_REQUEST,
+  payload: query,
+});
+
+export const searchStudentsSuccess = (results) => ({
+  type: SEARCH_STUDENTS_SUCCESS,
+  payload: results,
+});
+
+export const searchStudentsFailure = (error) => ({
+  type: SEARCH_STUDENTS_FAILURE,
+  payload: error,
+});
+
+//selected student
 export const setSelectedStudent = (student) => ({
   type: SET_SELECTED_STUDENT,
   payload: student,

@@ -35,7 +35,9 @@ const AbroaedPlusExplorePlan = () => {
                 entity={entity.explorePlans}
                 isOpen={openModal}
                 onClose={handleCloseAddModal}
-                title="ABROAED"
+                title={
+                    <span>ABROAED<sup>+</sup></span>
+                }
             />
             < div className="relative z-10" >
                 <section className="dark:bg-gray-900 relative ">
@@ -47,7 +49,7 @@ const AbroaedPlusExplorePlan = () => {
                         {plans.map((plan, index) => (
                             <div
                                 key={index}
-                                className={`relative p-6  hover:scale-[1.01] transition-all duration-300 ease-in-out py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
+                                className={`relative px-6  hover:scale-[1.01] transition-all duration-300 ease-in-out py-10 border  bg-[#26262A] text-white  rounded-[12px] shadow-md w-full md:w-1/3 border-[#D4D4D8] "
                                 }`}
                             >
                                 {plan.recommended && (
@@ -56,14 +58,14 @@ const AbroaedPlusExplorePlan = () => {
                                     </div>
                                 )}
                                 {/* <div className="w-full  px-2 mx-auto bg-yellow-primary"> */}
-                                <div className="text-[32px] bg-[#4a4a52] bg-opacity-80 mb-4   rounded-xl   md:text-[57px]  font-medium    text-center ">
+                                <div className="text-[32px] bg-[#4a4a52] bg-opacity-80 mb-2   rounded-xl   md:text-[42px]  font-medium    text-center ">
                                     {plan.name}
                                 </div>
                                 {/* </div> */}
-                                <p className="text-[18px]  md:text-[32px] text-center font-normal mb-1 " >
-                                    {plan.price}
+                                <p className="text-[18px]  md:text-[32px] text-center font-normal  " >
+                                    {plan.price} <spna className="text-lg">(Inc. of GST)</spna>
                                 </p>
-                                <p className=" text-lg mb-3 text-center font-normal ">{plan.title}</p>
+                                <p className=" text-lg  text-center font-normal ">{plan.title}</p>
 
                                 {/* <button
                                     className={`w-full mt-4 py-4 rounded-full text-[18px] font-semibold 
@@ -74,7 +76,7 @@ const AbroaedPlusExplorePlan = () => {
                                     {plan.buttonText}
                                 </button> */}
 
-                                <div className="mt-6 bg-[#4a4a52] bg-opacity-80 rounded-xl p-2">
+                                <div className="mt-4 bg-[#4a4a52] bg-opacity-80 rounded-xl p-2">
                                     <h4 className="text-[18px]  md:text-[25px] font-medium">
                                         Features you’ll love
                                     </h4>
@@ -82,7 +84,7 @@ const AbroaedPlusExplorePlan = () => {
                                         {plan.features?.map((feature, i) => (
                                             <li
                                                 key={i}
-                                                className="text-[12px] md:text-base list-item items-center font-normal gap-1 text-white"
+                                                className="text-[12px] md:text-sm list-item items-center font-normal gap-1 text-white"
                                             >
                                                 {/* <Check size={16} /> */}
                                                 {feature}
@@ -99,7 +101,7 @@ const AbroaedPlusExplorePlan = () => {
 
                     <div className="flex justify-center mt-10">
                         <button
-                            className={`bg-yellow-primary hover:bg-yellow-300 text-[16px] md:text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
+                            className={`bg-yellow-primary hover:bg-gray-primary hover:text-white text-[16px] md:text-xl text-[#432205] px-6 py-3  font-semibold rounded-lg`}
                             onClick={handleOpenAddModal}
                         >
                             See full feature comparison

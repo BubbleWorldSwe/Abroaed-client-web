@@ -54,6 +54,7 @@ import { setAddTransaction } from "../../../api/transactionApi";
 import StudentUploadDocument from "../modals/studentUploadDocumentModal";
 import RequestDocumentModal from "../modals/requestDocumentModal";
 import DocStatusConfirmationModal from "../modals/docStatusConfirmationModal";
+import AddCommentModal from "../modals/addCommentsModal";
 
 const StudentProfileLayout = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -79,6 +80,8 @@ const StudentProfileLayout = () => {
 
   const [changeStatusModal, setChangeStatusModal] = useState(null);
   const [docChangeStatusModal, setDocChangeStatusModal] = useState(null);
+
+  const [docCommentModal, setDocCommentModal] = useState(false);
 
   const [selectedDoc, setSelectedDoc] = useState(null);
 
@@ -108,14 +111,14 @@ const StudentProfileLayout = () => {
     try {
       const data = await setAddTransaction(transData);
 
-      if (data.status === 200) {
+      if (data?.status === 200) {
         // dispatch(addStudentTransaction(transData));
         fetchStudentTransactions();
-        toast.success(data.message);
+        toast.success(data?.message);
 
         dispatch(fetchTransactionsRequest(1));
       } else {
-        toast.error(data.message);
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -126,8 +129,8 @@ const StudentProfileLayout = () => {
     try {
       const data = await getStudentApplications(id);
 
-      if (data.status === 200) {
-        dispatch(addStudentApplication(data.data?.result));
+      if (data?.status === 200) {
+        dispatch(addStudentApplication(data?.data?.result));
       } else {
         dispatch(addStudentApplication([]));
       }
@@ -140,8 +143,8 @@ const StudentProfileLayout = () => {
     try {
       const data = await getStudentDocuments(id);
 
-      if (data.status === 200) {
-        dispatch(addStudentDocuments(data.data?.result));
+      if (data?.status === 200) {
+        dispatch(addStudentDocuments(data?.data?.result));
       } else {
         dispatch(addStudentDocuments([]));
       }
@@ -198,7 +201,7 @@ const StudentProfileLayout = () => {
       const college = await getCollegesByDestinationId(destId);
 
       if (college.status === 200) {
-        setCollegesList(college.data.result);
+        setCollegesList(college.data?.result);
       }
     } catch (error) {
       console.log(error);
@@ -209,13 +212,13 @@ const StudentProfileLayout = () => {
     try {
       const data = await setCreateStudentApplication(appData);
 
-      if (data.status === 200) {
-        dispatch(addStudentApplication(data.data));
+      if (data?.status === 200) {
+        dispatch(addStudentApplication(data?.data));
         fetchStudentApplications();
-        toast.success(data.message);
+        toast.success(data?.message);
         setOpenApplicationModal(false);
       } else {
-        toast.error(data.message);
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -225,15 +228,16 @@ const StudentProfileLayout = () => {
   async function uploadStudentDocument(fileData) {
     try {
       const data = await setUploadStudentDocuments(id, fileData);
+      console.log(data);
 
-      if (data.status === 200) {
-        dispatch(addStudentApplication(data.data));
+      if (data?.status === 200) {
+        dispatch(addStudentApplication(data?.data));
         fetchStudentDocuments();
-        toast.success(data.message);
+        toast.success(data?.message);
         setUpdateDocModal(false);
         setOpenModal(false);
       } else {
-        toast.error(data.message);
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -244,12 +248,12 @@ const StudentProfileLayout = () => {
     try {
       const data = await setUpdateStudentDocuments(docId, fileData);
 
-      if (data.status === 200) {
+      if (data?.status === 200) {
         fetchStudentDocuments();
-        toast.success(data.message);
+        toast.success(data?.message);
         setUpdateDocModal(false);
       } else {
-        toast.error(data.message);
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -260,11 +264,11 @@ const StudentProfileLayout = () => {
     try {
       const data = await setDeleteStudentDocument(id);
 
-      if (data.status === 200) {
+      if (data?.status === 200) {
         fetchStudentDocuments();
-        toast.success(data.message);
+        toast.success(data?.message);
       } else {
-        toast.error(data.message);
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -280,14 +284,14 @@ const StudentProfileLayout = () => {
 
       console.log(data);
 
-      if (data.status === 200) {
+      if (data?.status === 200) {
         fetchStudentApplications();
-        toast.success(data.message);
+        toast.success(data?.message);
         setUpdateApplicationModal(false);
         setUpdateDocModal(false);
         setChangeStatusModal(false);
       } else {
-        toast.error(data.message);
+        toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -468,6 +472,15 @@ const StudentProfileLayout = () => {
         getCollegesList={fetchCollegesList}
         uploadDocument={uploadStudentDocument}
       />
+
+      <AddCommentModal
+        isOpen={docCommentModal}
+        onClose={() => setDocCommentModal(false)}
+        collegesList={collegesList}
+        leadId={id}
+        filledData={{}}
+        updateApplication={() => {}}
+      />
       {/* Page Content */}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="max-w-7xl p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
@@ -497,6 +510,7 @@ const StudentProfileLayout = () => {
             }}
             openStatusModal={(data) => {
               setSelectedDoc(data);
+
               setDocChangeStatusModal(!docChangeStatusModal);
             }}
           />
@@ -508,6 +522,7 @@ const StudentProfileLayout = () => {
             onOpenUpdate={() => setUpdateApplicationModal(true)}
             onOpenDocUpdate={() => setUpdateDocModal(true)}
             onOpenStatusModal={() => setChangeStatusModal(true)}
+            onOpenCommentModal={() => setDocCommentModal(true)}
           />
           <StudentLangPrep />
           <StudentTransaction

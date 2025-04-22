@@ -1,8 +1,8 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { store } from "../redux/store";
 import {
   makeGetRequest,
   makePostRequest,
-  makePostRequestWithToken,
   makePutRequestWithToken,
 } from "../utils/apiUtils";
 
@@ -38,9 +38,12 @@ export const setStudentSignUp = async (credentials) => {
 
 export const setUpdateStudent = async (credentials) => {
   try {
+    const { studentToken } = store.getState().auth;
+
     const data = await makePutRequestWithToken(
       `${BASE_URL}/api/v1/auth/update-user`,
-      credentials
+      credentials,
+      studentToken
     );
     //console.log(data);
     if (data.success) {

@@ -2,27 +2,26 @@
 import { benefits } from "../../data";
 import vectorRightFlat from "../../../../assets/vectorRightFlat.png"
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
-import SecondaryTitle from "../../../styleComponents/secondaryTitle";
 import Slider from "react-slick";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa6";
+
+import { ChevronLeft, ChevronRight } from "lucide-react";
 function CareerJoinTeam() {
 
   const PrevArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute z-10 left-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+      className="absolute z-10 left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
     >
-      <FaArrowLeft />
+      <ChevronLeft />
     </button>
   );
 
   const NextArrow = ({ onClick }) => (
     <button
       onClick={onClick}
-      className="absolute z-10 right-8 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
+      className="absolute z-10 right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white py-2  hover:bg-opacity-80"
     >
-      <FaArrowRight />
+      <ChevronRight />
     </button>
   );
 
@@ -58,13 +57,11 @@ function CareerJoinTeam() {
             >
               Why you should join our awesome team ?
             </SectionMainHeader>
-            <SecondaryTitle
-              style={{ color: "#52525B", }}
-              className="md:text-[26px]"
-            >
+            <h3 className={`text-[20px] md:text-[22px] font-medium text-gray-primary dark:text-white`}>
+
               We want to feel like home when you are working at ABROAED & for that
               we have curated a great set of benefits for you.
-            </SecondaryTitle>
+            </h3>
           </div>
         </div>
         <div className="overflow-x-auto">
@@ -81,11 +78,11 @@ function CareerJoinTeam() {
                     // }}
                     className="text-white">
                     {/* <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img> */}
-                    <h5 className="mt-2  text-[26px] leading-tight md:text-[36px] font-bold   dark:text-white"
+                    <h5 className="mt-2  text-[26px] leading-tight md:text-[36px] font-medium   dark:text-white"
                     >
                       {benefit.heading}
                     </h5>
-                    <p className="font-semibold text-justify text-[18px]  md:text-[16px]   mt-6  dark:text-gray-400">
+                    <p className="font-normal text-justify text-[18px]  md:text-[16px]   mt-6  dark:text-gray-400">
                       {benefit.text}
                     </p>
                     {/* <p className="text-sm">Location, India</p> */}

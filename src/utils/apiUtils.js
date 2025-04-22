@@ -24,7 +24,7 @@ export const makeGetRequest = async (url) => {
     if (!url) {
       throw new Error("No URL");
     }
-    console.log("make GET Final request = " + url);
+    console.log("make GET request = " + url);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), GET_REQUEST_TIMEOUT);
     const response = await fetch(
@@ -54,7 +54,7 @@ export const makeGetRequest = async (url) => {
 
 export const makePostRequest = async (url, payload) => {
   try {
-    console.log("make POST request FINAL= " + url);
+    console.log("make POST request = " + url);
 
     console.log(payload);
     let controller = new AbortController();
@@ -79,16 +79,16 @@ export const makePostRequest = async (url, payload) => {
   }
 };
 
-export const makePostRequestWithToken = async (url, payload) => {
+export const makePostRequestWithToken = async (url, payload, token) => {
   try {
-    console.log("make POST request FINAL= " + url);
+    console.log("make POST request with TOKEN= " + url, token);
 
     console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(
       url,
-      constructPostRequestWithTokenOptions(payload),
+      constructPostRequestWithTokenOptions(payload, token),
       {
         signal: controller.signal,
       }
@@ -109,16 +109,17 @@ export const makePostRequestWithToken = async (url, payload) => {
     return constructFailureResponse(error.message);
   }
 };
-export const makePutRequestWithToken = async (url, payload) => {
+
+export const makePutRequestWithToken = async (url, payload, token) => {
   try {
-    console.log("make PUT request FINAL= " + url);
+    console.log("make PUT request = " + url);
 
     console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(
       url,
-      constructPutRequestWithTokenOptions(payload),
+      constructPutRequestWithTokenOptions(payload, token),
       {
         signal: controller.signal,
       }
@@ -142,7 +143,7 @@ export const makePutRequestWithToken = async (url, payload) => {
 
 export const makePatchRequest = async (url, payload) => {
   try {
-    console.log("make PATCH request FINAL= " + url);
+    console.log("make PATCH request = " + url);
 
     console.log(payload);
     let controller = new AbortController();
@@ -168,7 +169,7 @@ export const makePatchRequest = async (url, payload) => {
 
 export const makeDeleteRequest = async (url) => {
   try {
-    console.log("make Delete request FINAL= " + url);
+    console.log("make Delete request = " + url);
 
     let controller = new AbortController();
     setTimeout(() => controller.abort(), DELETE_REQUEST_TIMEOUT);
@@ -194,7 +195,7 @@ export const makeDeleteRequest = async (url) => {
 
 export const makePutRequest = async (url, payload) => {
   try {
-    console.log("make PUT request FINAL= " + url);
+    console.log("make PUT request = " + url);
 
     console.log(payload);
     let controller = new AbortController();
@@ -219,15 +220,17 @@ export const makePutRequest = async (url, payload) => {
   }
 };
 
-export const makePutRequestWithFormData = async (url, payload) => {
+export const makePutRequestWithFormData = async (url, payload, token) => {
   try {
-    console.log("make PUT request FINAL= " + url);
+    console.log("make PUT request = " + url);
+
+    console.log(payload);
 
     let controller = new AbortController();
     setTimeout(() => controller.abort(), PUT_REQUEST_TIMEOUT);
     const response = await fetch(
       url,
-      constructPutRequestOptionsWithFormData(payload),
+      constructPutRequestOptionsWithFormData(payload, token),
       {
         signal: controller.signal,
       }

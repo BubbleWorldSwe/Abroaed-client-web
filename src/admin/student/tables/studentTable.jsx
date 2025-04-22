@@ -31,27 +31,10 @@ const StudentTable = ({
     }
   };
 
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
-
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
     setDropdownDirection("down");
-  };
-  const TooltipContent = () => {
-    return (
-      <div className="flex justify-between w-96 py-3">
-        <div>College Name</div>
-        <div>
-          <span className="px-3 py-2 bg-[#FFFCC2]">Verifying Documents</span>
-        </div>
-      </div>
-    );
   };
 
   function getCounsellor(studentProfile) {
@@ -68,6 +51,13 @@ const StudentTable = ({
       state: student,
     });
   };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">

@@ -160,7 +160,7 @@ const LeadProfileLayout = () => {
             onOpenModal={() => handleModal("appointment")}
           />
 
-          <LeadDocumentLibrary />
+          {/*    <LeadDocumentLibrary /> */}
           <LeadSavedPreference />
         </section>
       </div>

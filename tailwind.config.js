@@ -59,7 +59,7 @@ export default {
           950: "#2a2200",
         },
         "primary-dark": "#e2a303",
-        "yellow-primary": "#FDDA24",
+        "yellow-primary": "#fbba18",
         "gray-primary": "#27272A",
       },
       animation: {

@@ -24,21 +24,7 @@ import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
 import SectionComponent from "../../styleComponents/sectionComponent";
 
-const NavigationItems = () => {
-  return (
-    <div className="text-white  bg-opacity-70 text-xl ">
-      <p className="font-light text-white  text-base md:text-lg xl:text-xl">
-        Get personalized, one-on-one counselling with experienced consultants to
-        help you navigate your study ABROAED plans for free.
-      </p>
-      {/* <div className="flex gap-2 mt-5 whitespace-nowrap">
-        <button className={`px-4 py-3  text-base mb-2 font-semibold rounded-lg text-[#432205] hover:bg-[#EDFA29]  bg-yellow-primary `}>
-          Book Counselling Now
-        </button>
-      </div> */}
-    </div>
-  );
-};
+
 
 const HomeCounsellingPage = () => {
   const dispatch = useDispatch();
@@ -59,8 +45,6 @@ const HomeCounsellingPage = () => {
     <div className="font-rethink">
       <Header />
       <HomeCounsellingHeroSection
-        header="Start Your Journey From the Comfort of Home!"
-        text={<NavigationItems />}
         img={homeCounsellingHero}
       />
       <div className="grid grid-cols-1 gap-10 md:gap-16">

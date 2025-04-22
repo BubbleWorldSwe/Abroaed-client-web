@@ -7,6 +7,7 @@ import ConfirmModal from "../../../commons/modal/confirmModal";
 import {
   addAccommodationRequest,
   deleteAccommodationRequest,
+  editAccommodationRequest,
   fetchAccommodationsRequest,
 } from "../../../redux/actions/accommodationActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -110,6 +111,15 @@ const Accommodations = () => {
     }
   }
 
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editAccommodationRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     if (accommodations?.length === 0) {
       console.log("fetchAccommodationsRequest");
@@ -195,6 +205,7 @@ const Accommodations = () => {
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
+                onUpdate={onUpdate}
               />
             </div>
           </div>

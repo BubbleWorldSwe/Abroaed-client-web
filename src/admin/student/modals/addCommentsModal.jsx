@@ -8,21 +8,20 @@ import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubm
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { docCategory, intake } from "../../../constants/values";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
-import { useSelector } from "react-redux";
+import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 
-const UpdateDocApplicationModal = ({
+const AddCommentModal = ({
   isOpen,
   onClose,
   leadId,
+
   filledData,
   updateApplication,
-  selectedApplication,
-  setSelectedApplication,
 }) => {
   const defaultDocument = {
-    category: "",
     title: "",
     deadline: "",
+    comment: "",
   };
 
   const formatDateTime = (date) => {
@@ -32,16 +31,6 @@ const UpdateDocApplicationModal = ({
   const [formData, setFormData] = useState({
     additionalDocuments: [defaultDocument],
   });
-
-  const { applications } = useSelector(
-    (state) => state?.students?.selectedStudent
-  );
-
-  const { error } = useSelector((state) => state?.students);
-
-  console.log(selectedApplication);
-
-  const [appId, setAppId] = useState(null);
 
   useEffect(() => {
     if (!filledData || !filledData.additionalDocuments?.length) {
@@ -94,7 +83,7 @@ const UpdateDocApplicationModal = ({
     e.preventDefault();
 
     const hasEmptyDocuments = formData.additionalDocuments.some(
-      (doc) => !doc.category.trim() || !doc.title.trim() || !doc.deadline.trim()
+      (doc) => !doc.comment.trim() || !doc.title.trim() || !doc.deadline.trim()
     );
 
     if (hasEmptyDocuments) {
@@ -111,16 +100,7 @@ const UpdateDocApplicationModal = ({
     };
 
     console.log("formattedData Form Data:", formattedData);
-
     updateApplication(formattedData);
-
-    // ✅ If no error occurred, reset the fields
-    if (!error) {
-      setFormData({ additionalDocuments: [defaultDocument] });
-      setAppId(null);
-      setSelectedApplication(null);
-      //  toast.success("Application updated successfully!");
-    }
   };
 
   return (
@@ -134,67 +114,19 @@ const UpdateDocApplicationModal = ({
             >
               &times;
             </button>
-            <h2 className="text-lg font-semibold">Request Documents</h2>
+            <h2 className="text-lg font-semibold">Add Comment</h2>
 
             {/* Additional Documents Section */}
             <div className="mt-5">
-              <SelectField
-                label="Select College"
-                name="college"
-                value={appId}
-                onChange={(e) => {
-                  setAppId(e.target.value);
-                  const selectedApp = applications.find(
-                    (app) => app?.college?._id === e.target.value
-                  );
-                  setSelectedApplication(selectedApp);
-                }}
-                options={applications.map((data) => ({
-                  label: data?.college?.name,
-                  value: data?.college?._id,
-                }))}
-                required
-              />
-
               {formData.additionalDocuments.map((doc, index) => (
                 <div key={index} className="flex gap-3 my-5 items-center">
                   <div className="flex-1">
-                    <SelectField
-                      label="Document Category"
-                      name={`category-${index}`}
-                      value={doc.category}
+                    <TextareaInputField
+                      label="Commemt"
+                      name={`comment-${index}`}
+                      value={doc.comment}
                       onChange={(e) =>
-                        handleDocumentChange(index, "category", e.target.value)
-                      }
-                      options={docCategory.map((data) => ({
-                        label: data,
-                        value: data,
-                      }))}
-                      required
-                    />
-                  </div>
-
-                  <div className="flex-1">
-                    <TextInputField
-                      label="Title"
-                      name={`title-${index}`}
-                      type="text"
-                      value={doc.title}
-                      onChange={(e) =>
-                        handleDocumentChange(index, "title", e.target.value)
-                      }
-                      placeholder="Enter"
-                    />
-                  </div>
-
-                  <div className="flex-1">
-                    <TextInputField
-                      label="Deadline"
-                      name={`deadline-${index}`}
-                      type="datetime-local"
-                      value={doc.deadline || ""}
-                      onChange={(e) =>
-                        handleDocumentChange(index, "deadline", e.target.value)
+                        handleDocumentChange(index, "comment", e.target.value)
                       }
                       placeholder="Enter"
                     />
@@ -216,7 +148,7 @@ const UpdateDocApplicationModal = ({
                 className="mt-5 font-bold text-blue-500 py-1 rounded transition flex items-center gap-2"
                 onClick={addDocument}
               >
-                + Add Document
+                + Add New Comment
               </button>
             </div>
 
@@ -231,4 +163,4 @@ const UpdateDocApplicationModal = ({
   );
 };
 
-export default UpdateDocApplicationModal;
+export default AddCommentModal;

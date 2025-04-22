@@ -110,7 +110,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             </p>
             <div className="flex justify-center  lg:justify-start ">
               <img
-                className="rounded-lg w-full h-[35vh] object-cover"
+                className="rounded-lg w-full h-[40vh] object-cover"
                 src={homeQuery}
                 alt="Counselling session"
               />

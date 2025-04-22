@@ -4,13 +4,17 @@
 import Flag from "react-world-flags";
 import { heroStyle } from "../../../comman/contexts/heroStyle";
 import HeroTextComponent from "../../../styleComponents/heroText";
-
+import { BASE_URL, IMAGE_BASE_URL } from "../../../../constants/baseUrl";
 
 function DestinationHeroSection({ destinationDetails, img }) {
   return (
-    <HeroTextComponent img={img}>
+    <HeroTextComponent
+      img={`${IMAGE_BASE_URL}/${destinationDetails?.imageUrl}` || img}
+    >
       <h1 className={heroStyle.header}>
-        <Flag code={destinationDetails?.countryId?.code} style={{ display: 'inline-block', marginRight: '15px' }}
+        <Flag
+          code={destinationDetails?.countryId?.code}
+          style={{ display: "inline-block", marginRight: "15px" }}
           className="w-16 md:w-24"
         />
         Study in {destinationDetails?.countryId?.name}
