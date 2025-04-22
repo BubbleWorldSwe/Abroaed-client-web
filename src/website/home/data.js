@@ -88,12 +88,15 @@ export const teamMembers = [
 
 export const kpiCards = [
   {
-    cardName: "5+ Years of Mentorship Expertise",
+    cardName: "Powered by Study Abroad Specialists",
   },
   {
     cardName: "Home and Virtual Consultation",
   },
   {
     cardName: "50+ Study Abroad Destinations",
+  },
+  {
+    cardName: "1200+ Partnered Universities",
   },
 ];

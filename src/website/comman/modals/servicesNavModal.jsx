@@ -2,18 +2,22 @@
 
 import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
+const items =
+    [
+        { title: "Finance", href: "/finance" },
+        { title: "Accommodation", href: "/accomodation" },
+        { title: "Home Counselling", href: "/homeCounselling" },
+    ]
 const ServicesNavModal = ({ handleMouseEnter,
     handleMouseLeave, }) => {
-    const items =
-        [
-            { title: "Finance", href: "/finance" },
-            { title: "Accommodation", href: "/accomodation" },
-            { title: "Home Counselling", href: "/homeCounselling" },
-        ]
     const [hoveredIndex, setHoveredIndex] = useState(null);
-
+    const navigate = useNavigate();
+    const handleNavigate = (href) => {
+        navigate(`${href}`)
+    }
     return (
         <div
             className="absolute left-0 top-full w-max py-[5px]  z-50"
@@ -27,10 +31,11 @@ const ServicesNavModal = ({ handleMouseEnter,
                         className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
+                        onClick={() => handleNavigate(data.href)}
                     >
                         <div className="flex  w-full justify-between items-center ">
                             <a
-                                href={data.href}
+
                                 className="block px-4 py-1 "
                             >
                                 {data?.title}

@@ -2,13 +2,16 @@
 import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Flag from "react-world-flags";
 
 const DestinationNavItemModal = ({ handleMouseEnter }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
-
+  const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
+  const handleNavigate = (id) => {
+    navigate(`/destinations/${id}`)
+  }
   return (
     <>
       <div
@@ -22,12 +25,14 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
               className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-5 py-3 hover:bg-gray-100 rounded-lg transition-all"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
+              onClick={() => handleNavigate(item._id)}
             >
-              <div className="flex items-center gap-2">
+
+              <div className="flex items-center gap-2 ">
                 <span className="">
                   <Flag width={30} code={item?.countryId?.code} style={{}} />
                 </span>
-                <a href={`/destinations/${item._id}`} className="cursor-pointer">
+                <a className="cursor-pointer">
                   {item?.countryId?.name}
                 </a>
               </div>

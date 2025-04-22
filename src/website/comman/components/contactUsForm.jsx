@@ -4,7 +4,7 @@ import { BorderTextInputField } from "../../../commons/components/inputFields/bo
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
-const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
+const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }) => {
   const { error, loading } = useSelector((state) => state.leads);
 
   console.log(error + " : Error");
@@ -74,7 +74,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
 
   return (
     <section className="relative ">
-      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:h-[90vh] antialiased relative ">
+      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:min-h-[90vh] antialiased relative ">
         <div
           className={`flex flex-col lg:flex-row justify-between   lg:gap-12 px-6 md:px-10  rounded-lg`}
         >
@@ -184,7 +184,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text }) => {
                     <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-black rounded-full"></div>
                   </div>
                 ) : (
-                  "Book Now"
+                  buttonText || "Book Now"
                 )}
               </button>
             </form>
