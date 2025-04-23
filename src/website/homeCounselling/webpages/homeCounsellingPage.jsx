@@ -23,6 +23,7 @@ import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
 import SectionComponent from "../../styleComponents/sectionComponent";
+import Testimonials from "../../comman/components/testimonials";
 
 
 
@@ -80,9 +81,9 @@ const HomeCounsellingPage = () => {
             />
           </div>
         </div>
-        {/* <SectionComponent>
+        <SectionComponent>
           <Testimonials />
-        </SectionComponent> */}
+        </SectionComponent>
         <div>
           <ExploreOurServicesHomeCounselling />
         </div>

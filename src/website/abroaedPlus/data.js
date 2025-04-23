@@ -80,7 +80,7 @@ export const plans = [
         buttonText: "Continue with Basic",
         recommended: false,
         features: [
-            "Home Counseling - 3",
+            "Home Counseling - 3 Sessions",
             "Research & Shortlisting",
             "Designated Coach",
             "Documentation Assistance",
@@ -101,7 +101,7 @@ export const plans = [
         buttonText: "Continue with Advance",
         recommended: true,
         features: [
-            "Home Counseling - 5",
+            "Home Counseling - 5 Sessions",
             "Online One-on-One classes for English Language Test",
             "Application Submission",
             "Foreign Exchange Services (FOREX)",
@@ -119,7 +119,7 @@ export const plans = [
         buttonText: "Continue with Elite",
         recommended: false,
         features: [
-            "Home Counseling - Unlimited",
+            "Home Counseling - Unlimited Sessions",
             "Offline One-on-One classes for English Language Test (Home Tuition)",
             "Dedicated LOAN POC",
             "Alumni Mentor meet with various Universities",

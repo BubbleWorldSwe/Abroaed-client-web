@@ -14,12 +14,12 @@ const PathwaysHomeHowItWorkSection = () => {
                                 What is Pathways Program?
                             </SectionMainHeader>
                             <PrimaryBodyText>
-                                At ABROAED, we offer specialized pathway programs that begin in India and seamlessly transition to partner universities abroad. These structured programs are designed to provide students with a smooth and strategic route to international education. By starting their academic journey in India, students can build a strong foundation while gradually adapting to global academic standards, language proficiency, and cultural nuances.
+                                At ABROAED, we offer specialized pathway programs that begin in India (both online and onsite) and seamlessly transition to partner universities abroad. These structured programs are designed to provide students with a smooth and strategic route to international education. By starting their academic journey in India, students can build a strong foundation while gradually adapting to global academic standards, language proficiency, and cultural nuances.
                             </PrimaryBodyText>
                             <PrimaryBodyText className="mt-2">
                                 Our pathway solutions also offer a cost-effective approach, significantly reducing the financial burden of studying abroad. With personalized guidance and partnerships with top institutions worldwide, ABROAED ensures that each student is fully prepared—academically and emotionally—for their international transition.
                             </PrimaryBodyText>
-                            <PrimaryBodyText className="mt-2">
+                            <PrimaryBodyText className="mt-2 font-semibold text-[20px]">
                                 Stay Tuned, Coming Soon!
                             </PrimaryBodyText>
                         </div>

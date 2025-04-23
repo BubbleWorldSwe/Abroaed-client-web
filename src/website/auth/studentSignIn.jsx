@@ -34,7 +34,7 @@ function StudentSignIn() {
 
   useEffect(() => {
     if (studentToken) {
-      navigate("/home");
+      navigate("/");
     }
   }, [studentToken, navigate]);
 
@@ -49,7 +49,7 @@ function StudentSignIn() {
               onSubmit={handleSubmit}
             >
               <a
-                href="/home"
+                href="/"
               >
                 <FaHome fontSize={30} />
               </a>

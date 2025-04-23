@@ -24,7 +24,6 @@ const LeaguageOfExcellencePage = () => {
     {
       code: countriesName[0].code,
       name: countriesName[0].name
-
     }
   );
 

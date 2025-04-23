@@ -60,11 +60,11 @@ export const faqPathways = [
     answer:
       "Pathways programs are available to students who qualify based on basic entry requirements into the chosen course of study. Some academic qualifications might differ with specific programs and destinations, but generally, these programs support students who need further preparation.",
   },
-  {
-    question:
-      "What is a Pathways program?",
-    answer:
-      "A Pathways program is designed to help students transition smoothly into studying abroad. It provides academic support, language training, cultural orientation, and personal development to ensure you are prepared for university life in a foreign country.",
-  },
+  // {
+  //   question:
+  //     "What is a Pathways program?",
+  //   answer:
+  //     "A Pathways program is designed to help students transition smoothly into studying abroad. It provides academic support, language training, cultural orientation, and personal development to ensure you are prepared for university life in a foreign country.",
+  // },
 
 ]
