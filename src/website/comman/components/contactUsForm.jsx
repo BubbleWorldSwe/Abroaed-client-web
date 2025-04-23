@@ -74,9 +74,9 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
 
   return (
     <section className="relative ">
-      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-2 rounded-lg max-h-min md:min-h-[90vh] antialiased relative ">
-        <div
-          className={`flex flex-col lg:flex-row justify-between   lg:gap-12 px-6 md:px-10  rounded-lg`}
+      <div className="  dark:bg-gray-800  bg-gray-primary py-6 md:py-1 rounded-lg max-h-min  antialiased relative ">
+        <di
+          className={`flex flex-col lg:flex-row justify-between   lg:gap-10 px-6 md:px-10  rounded-lg`}
         >
           {/* Left Section - 60% Width */}
           <div className="md:w-3/5   py-4 flex flex-col justify-center ">
@@ -94,7 +94,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
           </div>
 
           {/* Right Section - 40% Width */}
-          <div className="lg:w-2/5   py-2 md:py-14 md:pt-5 md:pb-10 max-w-lg">
+          <div className="lg:w-2/5   py-2 md:py-14 md:pt-5 md:pb-8 max-w-lg">
             <form
               className=" mx-auto flex flex-col gap-2"
               onSubmit={handleSubmit}
@@ -189,7 +189,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
               </button>
             </form>
           </div>
-        </div>
+        </di>
       </div>
     </section>
   );
