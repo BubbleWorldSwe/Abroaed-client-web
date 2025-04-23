@@ -19,6 +19,10 @@ import {
   ADD_STUDENT_TRANSACTIONS,
   ADD_STUDENT_SAVEDPREFRENCES,
   ADD_STUDENT_PREPS_BATCHES,
+  ADD_STUDENT_DOCUMENTS,
+  SEARCH_STUDENTS_REQUEST,
+  SEARCH_STUDENTS_FAILURE,
+  SEARCH_STUDENTS_SUCCESS,
 } from "../actions/studentsActions";
 
 const initialState = {
@@ -38,15 +42,15 @@ const initialState = {
 export const studentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STUDENTS_REQUEST:
-
     case ADD_STUDENT_REQUEST:
-
     case DELETE_STUDENT_REQUEST:
     case EDIT_STUDENT_REQUEST:
     case EDIT_STUDENT_LEADS_REQUEST:
+    case SEARCH_STUDENTS_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_STUDENTS_SUCCESS:
+    case SEARCH_STUDENTS_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -66,15 +70,17 @@ export const studentsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        students: state.students.map((student) => ({
-          ...student,
-          data: student.data.map((item) =>
-            item?._id === action?.payload?._id
-              ? { ...item, ...action.payload }
-              : item
-          ),
-        })),
+
         selectedStudent: action.payload,
+
+        students: [],
+        allStudents: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case ADD_STUDENT_APPLICATION:
@@ -84,22 +90,20 @@ export const studentsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        students: state.students.map((student) => ({
-          ...student,
-          data: student.data.map((item) =>
-            item?._id === action?.payload?.lead?._id
-              ? {
-                  ...item,
-                  applications: action.payload || [],
-                }
-              : item
-          ),
-        })),
 
         selectedStudent: {
           ...state.selectedStudent,
           applications: action.payload || [],
         },
+
+        students: [],
+        allStudents: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case ADD_STUDENT_TRANSACTIONS:
@@ -109,22 +113,20 @@ export const studentsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        students: state.students.map((student) => ({
-          ...student,
-          data: student.data.map((item) =>
-            item?._id === action?.payload?.user?._id
-              ? {
-                  ...item,
-                  transactions: action.payload || [],
-                }
-              : item
-          ),
-        })),
 
         selectedStudent: {
           ...state.selectedStudent,
           transactions: action.payload || [],
         },
+
+        students: [],
+        allStudents: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case ADD_STUDENT_SAVEDPREFRENCES:
@@ -134,22 +136,19 @@ export const studentsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        students: state.students.map((student) => ({
-          ...student,
-          data: student.data.map((item) =>
-            item?._id === action?.payload?.user?._id
-              ? {
-                  ...item,
-                  savedPreferences: action.payload || [],
-                }
-              : item
-          ),
-        })),
 
         selectedStudent: {
           ...state.selectedStudent,
           savedPreferences: action.payload || [],
         },
+        students: [],
+        allStudents: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case ADD_STUDENT_PREPS_BATCHES:
@@ -159,22 +158,43 @@ export const studentsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        students: state.students.map((student) => ({
-          ...student,
-          data: student.data.map((item) =>
-            item?._id === action?.payload?.user?._id
-              ? {
-                  ...item,
-                  prepsBatches: action.payload || [],
-                }
-              : item
-          ),
-        })),
 
         selectedStudent: {
           ...state.selectedStudent,
           prepsBatches: action.payload || [],
         },
+
+        students: [],
+        allStudents: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
+      };
+
+    case ADD_STUDENT_DOCUMENTS:
+      console.log("ADD_STUDENT_DOCUMENTS");
+      console.log(action);
+
+      return {
+        ...state,
+        loading: false,
+
+        selectedStudent: {
+          ...state.selectedStudent,
+          documents: action.payload || [],
+        },
+
+        students: [],
+        allStudents: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case DELETE_STUDENT_SUCCESS:
@@ -188,6 +208,9 @@ export const studentsReducer = (state = initialState, action) => {
     case EDIT_STUDENT_FAILURE:
     case EDIT_STUDENT_LEADS_FAILURE:
       return { ...state, loading: false, error: action.payload };
+
+    case SEARCH_STUDENTS_FAILURE:
+      return { ...state, loading: false, error: action.payload, students: [] };
 
     case SET_SELECTED_STUDENT:
       return { ...state, selectedStudent: action.payload };

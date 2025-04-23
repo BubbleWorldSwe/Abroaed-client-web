@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { adminLogout } from "../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 
@@ -13,8 +13,13 @@ function Dashboard() {
     navigate("/admin/signin");
   };
 
+  const { adminToken } = useSelector((state) => state.auth);
+
+  console.log(adminToken);
+
   let currentLocation = window.location;
   console.log(currentLocation.origin);
+
   return (
     <div className="h-screen flex flex-col p-2">
       {/* Adjust padding and spacing */}

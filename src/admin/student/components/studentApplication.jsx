@@ -16,6 +16,7 @@ const StudentApplication = ({
   onOpenUpdate,
   onOpenDocUpdate,
   onOpenStatusModal,
+  onOpenCommentModal,
 }) => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const studentProfile = useSelector(
@@ -76,6 +77,7 @@ const StudentApplication = ({
                         onOpenDocUpdate={onOpenDocUpdate}
                         onOpenStatusModal={onOpenStatusModal}
                         status={tab?.status}
+                        onOpenCommentModal={onOpenCommentModal}
                       />
                     </div>
                   ))}

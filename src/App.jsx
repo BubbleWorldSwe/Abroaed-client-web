@@ -18,6 +18,7 @@ import { fetchAllDestinationsRequest } from "./redux/actions/destinationActions"
 import { fetchAllBlogsRequest } from "./redux/actions/blogActions";
 import {
   fetchStudentApplicationRequest,
+  fetchStudentDocumentsRequest,
   fetchStudentPrepsBatchesRequest,
   fetchStudentProfileRequest,
   fetchStudentSavedPreferencesRequest,
@@ -54,6 +55,7 @@ const App = () => {
           dispatch(fetchStudentSavedPreferencesRequest(studentId));
           dispatch(fetchStudentPrepsBatchesRequest(studentId));
           dispatch(fetchStudentTransactionsRequest(studentId));
+
           //   dispatch(fetchStudentApplicationRequest(leadId));
         }
       }
@@ -72,6 +74,7 @@ const App = () => {
     fetchData();
     if (leadId) {
       dispatch(fetchStudentApplicationRequest(leadId));
+      dispatch(fetchStudentDocumentsRequest(leadId));
     }
   }, [dispatch, adminToken, studentToken, leadId]);
 

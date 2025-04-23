@@ -86,15 +86,23 @@ export const blogsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        blogs: state.blogs.map((blog) => ({
+        /*   blogs: state.blogs.map((blog) => ({
           ...blog,
           data: blog.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedBlog: action.payload,
+
+        blogs: [],
+        allBlogs: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case EDIT_BLOG_FAILURE:

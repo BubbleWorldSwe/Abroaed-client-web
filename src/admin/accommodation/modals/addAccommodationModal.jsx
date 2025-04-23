@@ -72,7 +72,7 @@ const AddAccommodationModal = ({
               &times;
             </button>
             <h2 className="text-xl font-bold px-4 mb-3">Add Accommodation</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 p-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
               <TextInputField
                 label="Accommodation Name"
                 name="accomodationName"
@@ -148,7 +148,7 @@ const AddAccommodationModal = ({
                 placeholder={"Enter Availability"}
               />
 
-              <div className="lg:col-span-2 mt-3">
+              <div className="lg:col-span-2 mt-1">
                 <TextareaInputField
                   label="Description"
                   name="description"

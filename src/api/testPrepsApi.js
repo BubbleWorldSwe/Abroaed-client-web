@@ -1,10 +1,12 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithToken,
   makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
@@ -28,10 +30,12 @@ export const getTestPreps = async (page) => {
 export const setAddTestPrep = async (credentials) => {
   try {
     console.log(credentials);
+    const { adminToken } = store.getState().auth;
 
-    const data = await makePostRequest(
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/test-preps/create`,
-      credentials
+      credentials,
+      adminToken
     );
     // console.log(data);
     if (data.success) {
@@ -93,12 +97,14 @@ export const getTestPrepDetailsById = async (id) => {
 export const setTestPrepUploadFile = async (id, imageData) => {
   try {
     const { files, type } = imageData;
+    const { adminToken } = store.getState().auth;
     const data = await makePutRequestWithFormData(
       `${BASE_URL}/api/v1/admin/test-preps/upload/file/${id}`,
       {
         files,
         type,
-      }
+      },
+      adminToken
     );
     console.log(data);
     if (data.success) {

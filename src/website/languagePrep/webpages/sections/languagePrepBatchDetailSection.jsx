@@ -27,11 +27,7 @@ function LanguagePrepBatchDetaileSection({
       <LoginModal isOpen={openModal} onClose={handleClose} />
       <div className="relative">
         <div className="relative z-10">
-          <SectionMainHeader
-            className={`mb-5`}
-          >
-            Batches
-          </SectionMainHeader>
+          <SectionMainHeader className={`mb-5`}>Batches</SectionMainHeader>
           <div className="my-4 border-t border-gray-300"></div>
           <div
             className={`grid grid-cols-1 text-gray-primary md:grid-cols-3  gap-3 py-4 md:py-10 `}
@@ -41,9 +37,7 @@ function LanguagePrepBatchDetaileSection({
                 key={index}
                 className="flex hover:scale-[1.01] transition-all ease-in-out delay-100 flex-col px-8 mx-auto w-full text-start text-gray-900 bg-white rounded-lg border border-gray-200 shadow-xl dark:border-gray-700 py-4  "
               >
-                <h3 className="mb-2 text-[32px] font-bold">
-                  {data.batchName}
-                </h3>
+                <h3 className="mb-2 text-[32px] font-bold">{data.batchName}</h3>
                 <div className="flex justify-center items-baseline my-4">
                   <span className="mr-2 text-[32px] font-bold">
                     ₹ {data.fees}

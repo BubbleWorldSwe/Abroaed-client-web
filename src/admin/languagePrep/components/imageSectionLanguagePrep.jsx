@@ -64,7 +64,7 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
   return (
     <div className="flex flex-col">
       <div className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer flex items-end">
-        {languagePrepDetails?.imageUrl && (
+        {/*  {languagePrepDetails?.imageUrl && (
           <div className="w-50 h-32 p-4 cursor-pointer rounded-sm">
             <img
               src={`${IMAGE_BASE_URL}/${languagePrepDetails?.imageUrl}`}
@@ -72,6 +72,13 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
               className="w-full h-full object-contain rounded-md"
             />
           </div>
+        )} */}
+
+        {languagePrepDetails?.imageUrl && (
+          <img
+            src={`${IMAGE_BASE_URL}/${languagePrepDetails?.imageUrl}`}
+            className="w-full h-full object-cover rounded-md"
+          />
         )}
       </div>
 
@@ -167,7 +174,7 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
                     drag and drop
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    JPG, PNG or GIF (max 800x400px)
+                    JPG, PNG or JPEG (Max. File Size: 1MB)
                   </p>
                 </div>
                 <input

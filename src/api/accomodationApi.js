@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-catch */
+import { useSelector } from "react-redux";
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
 import {
@@ -6,8 +7,10 @@ import {
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithToken,
   makePutRequestWithFormData,
 } from "../utils/apiUtils";
+import { store } from "../redux/store";
 
 export const getAccommodations = async (page) => {
   try {
@@ -69,9 +72,12 @@ export const setAddAccommodation = async (credentials) => {
   try {
     console.log(credentials);
 
-    const data = await makePostRequest(
+    const { adminToken } = store.getState().auth;
+
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/accomodation/create`,
-      credentials
+      credentials,
+      adminToken
     );
     // console.log(data);
     if (data.success) {
@@ -133,12 +139,14 @@ export const getAccommodationDetailsById = async (id) => {
 export const setAccommodationUploadFile = async (id, imageData) => {
   try {
     const { files, type } = imageData;
+    const { adminToken } = store.getState().auth;
     const data = await makePutRequestWithFormData(
       `${BASE_URL}/api/v1/admin/accomodation/upload/file/${id}`,
       {
         files,
         type,
-      }
+      },
+      adminToken
     );
     console.log(data);
     if (data.success) {

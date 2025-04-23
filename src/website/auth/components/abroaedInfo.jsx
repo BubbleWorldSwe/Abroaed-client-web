@@ -1,7 +1,7 @@
 
 export default function AbroaedInfo() {
   return (
-    <div className="flex justify-center items-center py-6 px-4 bg-gray-primary lg:py-0 sm:px-0">
+    <div className="md:flex justify-center hidden   items-center py-6 px-4 bg-gray-primary lg:py-0 sm:px-0">
       <div className="max-w-md xl:max-w-xl">
         <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
           <a

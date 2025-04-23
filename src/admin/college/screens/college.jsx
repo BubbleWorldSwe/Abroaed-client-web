@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addCollegeRequest,
   deleteCollegeRequest,
+  editCollegeRequest,
   fetchCollegesRequest,
 } from "../../../redux/actions/collegeActions";
 import {
@@ -104,6 +105,15 @@ function College() {
     }
   }
 
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editCollegeRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     if (colleges?.length === 0) {
       console.log("fetchCollegesRequest");
@@ -190,6 +200,7 @@ function College() {
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
+                onUpdate={onUpdate}
               />
             </div>
           </div>

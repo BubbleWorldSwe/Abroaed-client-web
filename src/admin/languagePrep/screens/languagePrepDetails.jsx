@@ -67,7 +67,7 @@ const LanguagePrepDetails = () => {
       dispatch(
         uploadLanguagePrepImageRequest(id, {
           files: data,
-          type: "logo",
+          type: "cover",
         })
       );
       //  fetchTestPrepsDetails();

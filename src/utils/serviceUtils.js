@@ -1,5 +1,8 @@
+import { store } from "../redux/store";
+
 export const GET_REQUEST_TIMEOUT = 20000;
 export const POST_REQUEST_TIMEOUT = 20000;
+export const PUT_REQUEST_TIMEOUT = 20000;
 export const DELETE_REQUEST_TIMEOUT = 20000;
 export const RESPONSE_SUCCESS = true;
 export const RESPONSE_FAILURE = false;
@@ -43,11 +46,11 @@ export const constructPostRequestOptions = (payload) => {
   };
 };
 
-export const constructPostRequestWithTokenOptions = (payload) => {
-  const token = localStorage.getItem("token");
+export const constructPostRequestWithTokenOptions = (payload, token) => {
+  console.log(token + " : Token");
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
-  requestHeaders.append("Authorization", token);
+  requestHeaders.append("Authorization", `Bearer ${token}`);
 
   var raw = JSON.stringify(payload);
 
@@ -58,9 +61,7 @@ export const constructPostRequestWithTokenOptions = (payload) => {
   };
 };
 
-export const constructPutRequestWithTokenOptions = (payload) => {
-  console.log(payload);
-  const token = localStorage.getItem("token");
+export const constructPutRequestWithTokenOptions = (payload, token) => {
   console.log(token);
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
@@ -133,13 +134,30 @@ export const constructNetworkErrorResponse = () => {
   };
 };
 
-export const constructPutRequestOptionsWithFormData = (payload) => {
+export const constructPutRequestOptionsWithFormData = (payload, token) => {
   var requestHeaders = new Headers();
+  // requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+  requestHeaders.append("Authorization", `Bearer ${token}`);
 
   const formdata = getFormData(payload);
 
   return {
     method: REQUEST_METHOD_PUT,
+    headers: requestHeaders,
+    body: formdata,
+  };
+};
+
+export const constructPostRequestOptionsWithFormData = (payload) => {
+  const { adminToken } = store.getState().auth;
+  var requestHeaders = new Headers();
+  //requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+  /*  requestHeaders.append("Authorization", `Bearer ${adminToken}`);
+   */
+  const formdata = getFormData(payload);
+
+  return {
+    method: REQUEST_METHOD_POST,
     headers: requestHeaders,
     body: formdata,
   };

@@ -1,5 +1,9 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { getStudents, setUpdateStudent } from "../../api/studentsApi"; // API functions
+import {
+  getSearchStudents,
+  getStudents,
+  setUpdateStudent,
+} from "../../api/studentsApi"; // API functions
 import {
   EDIT_STUDENT_LEADS_REQUEST,
   EDIT_STUDENT_REQUEST,
@@ -10,6 +14,9 @@ import {
   FETCH_STUDENTS_REQUEST,
   fetchStudentsFailure,
   fetchStudentsSuccess,
+  SEARCH_STUDENTS_REQUEST,
+  searchStudentsFailure,
+  searchStudentsSuccess,
 } from "../actions/studentsActions";
 import { toast } from "react-toastify";
 import { getLeadDetailsById, setUpdateLead } from "../../api/leadsApi";
@@ -19,9 +26,26 @@ import { editLeadsStudentFailure } from "../actions/leadsActions";
 function* fetchStudents(action) {
   try {
     const data = yield call(getStudents, action.payload);
+
     yield put(fetchStudentsSuccess(data.data));
   } catch (error) {
     yield put(fetchStudentsFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
+// search students
+function* searchStudents(action) {
+  try {
+    const data = yield call(getSearchStudents, action.payload);
+
+    if (data.status === 200) {
+      yield put(searchStudentsSuccess(data.data));
+    } else {
+      yield put(searchStudentsFailure(data.message));
+    }
+  } catch (error) {
+    yield put(searchStudentsFailure(error.message));
     toast.error(error.message);
   }
 }
@@ -80,6 +104,7 @@ function* handleEditStudent(action) {
 // Root saga for students
 export default function* studentsSaga() {
   yield takeLatest(FETCH_STUDENTS_REQUEST, fetchStudents);
+  yield takeLatest(SEARCH_STUDENTS_REQUEST, searchStudents);
   yield takeLatest(EDIT_STUDENT_LEADS_REQUEST, handleEditStudentLead);
   yield takeLatest(EDIT_STUDENT_REQUEST, handleEditStudent);
 }

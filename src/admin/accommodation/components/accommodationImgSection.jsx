@@ -174,7 +174,7 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
                     drag and drop
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    JPG, PNG or GIF (max 800x400px)
+                    JPG, PNG or JPEG (Max. File Size: 1MB)
                   </p>
                 </div>
                 <input

@@ -1,10 +1,12 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithToken,
   makePutRequest,
 } from "../utils/apiUtils";
 
@@ -14,6 +16,20 @@ export const getLeads = async (page) => {
 
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/leads/list?${path}filter={"type":"lead"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSearchLeads = async (query) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"lead"}&search=${query}`
     );
     console.log(data);
     if (data.success) {
@@ -39,10 +55,11 @@ export const getAllLeads = async () => {
 export const setAddLead = async (credentials) => {
   try {
     console.log(credentials);
-
-    const data = await makePostRequest(
+    const { adminToken } = store.getState().auth;
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/leads/create`,
-      credentials
+      credentials,
+      adminToken
     );
     if (data.success) {
       return data.data;

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteAccommodationRequest,
   editAccommodationRequest,
+  fetchAccommodationsRequest,
   uploadAccommodationImageRequest,
 } from "../../../redux/actions/accommodationActions";
 import { getAllDestinations } from "../../../api/destinationApi";
@@ -72,7 +73,7 @@ const AccommodationDetails = () => {
   async function onUpdate(data) {
     try {
       dispatch(editAccommodationRequest(accommodationDetails._id, data));
-
+      // dispatch(fetchAccommodationsRequest(1));
       closeModal();
     } catch (error) {
       console.log(error);

@@ -15,6 +15,9 @@ import {
   FETCH_LEADS_STUDENTS_REQUEST,
   EDIT_LEADS_STUDENT_SUCCESS,
   ADD_LEAD_SAVEDPREFRENCES,
+  SEARCH_LEADS_REQUEST,
+  SEARCH_LEADS_SUCCESS,
+  SEARCH_LEADS_FAILURE,
 } from "../actions/leadsActions";
 
 const initialState = {
@@ -35,9 +38,11 @@ export const leadsReducer = (state = initialState, action) => {
     case DELETE_LEAD_REQUEST:
     case EDIT_LEAD_REQUEST:
     case FETCH_LEADS_STUDENTS_REQUEST:
+    case SEARCH_LEADS_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_LEADS_SUCCESS:
+    case SEARCH_LEADS_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -56,30 +61,42 @@ export const leadsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        leads: state.leads.map((lead) => ({
+        /*  leads: state.leads.map((lead) => ({
           ...lead,
           data: lead.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedLead: action.payload,
+        leads: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case EDIT_LEADS_STUDENT_SUCCESS:
       return {
         ...state,
         loading: false,
-        leads: state.leads.map((lead) => ({
+        /*  leads: state.leads.map((lead) => ({
           ...lead,
           data: lead.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedLead: action.payload,
+        leads: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case DELETE_LEAD_SUCCESS:
@@ -90,6 +107,9 @@ export const leadsReducer = (state = initialState, action) => {
     case ADD_LEAD_FAILURE:
     case DELETE_LEAD_FAILURE:
     case EDIT_LEAD_FAILURE:
+      return { ...state, loading: false, error: action.payload, leads: [] };
+
+    case SEARCH_LEADS_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_LEAD:
@@ -102,7 +122,7 @@ export const leadsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        leads: state.leads.map((lead) => ({
+        /*  leads: state.leads.map((lead) => ({
           ...lead,
           data: lead.data.map((item) =>
             item?._id === action?.payload?.user?._id
@@ -113,11 +133,18 @@ export const leadsReducer = (state = initialState, action) => {
               : item
           ),
         })),
-
+ */
         selectedLead: {
           ...state.selectedLead,
           savedPreferences: action.payload || [],
         },
+
+        leads: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     default:

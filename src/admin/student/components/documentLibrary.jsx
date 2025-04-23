@@ -6,34 +6,68 @@ import {
   Trash2,
   Upload,
 } from "lucide-react";
-import { TableFooter } from "../../../commons/components/table/tableFooter";
+
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { useEffect, useRef, useState } from "react";
 import StudentUploadDocument from "../modals/studentUploadDocumentModal";
 import { useSelector } from "react-redux";
-import { formatDate, formatDateTime } from "../../../utils/helper";
+import { formatDate } from "../../../utils/helper";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import { Tooltip } from "flowbite-react";
 
-const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
+const DocumentLibrary = ({
+  requestedDocument,
+  handleOpenUploadModal,
+  deleteDocument,
+  setSelectedDoc,
+  openStatusModal,
+}) => {
   const dropdownRef = useRef(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
+
+  const [reqDropdownVisible, setReqDropdownVisible] = useState(null);
+
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTab, setActiveTab] = useState("All");
   const [openModal, setOpenModal] = useState(false);
   const { isWriteAccess } = useSelector((state) => state.auth);
 
-  const { applications } = useSelector(
+  const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
 
+  const getStatusBgColor = (status) => {
+    switch (status?.toLowerCase()) {
+      case "approved":
+        return "#66ff99"; // Light green
+      case "rejected":
+        return "#ffb3b3"; // Light red
+      default:
+        return "#FFFCC2"; // Light yellow
+    }
+  };
+
+  const handleDropdownToggle = (e, index) => {
+    e.stopPropagation();
+    setDropdownVisible(dropdownVisible === index ? null : index);
+  };
+
+  const handleReqDropdownToggle = (e, index) => {
+    e.stopPropagation();
+    setReqDropdownVisible(reqDropdownVisible === index ? null : index);
+  };
+
   const handleClickOutside = (e) => {
-    // Close dropdown if the click is outside of the dropdown area
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setDropdownVisible(null);
     }
   };
-  const handleTabClick = (index) => {
-    setActiveTab(index);
-  };
+
+  const approvedDocuments = studentProfile?.documents?.filter(
+    (doc) =>
+      doc.status?.toLowerCase() === "approved" &&
+      (activeTab === "All" || doc.type === activeTab)
+  );
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -77,28 +111,26 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
                       htmlFor={`checkbox-college-all`}
                     />
                   </th>
-                  <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                    Document Name
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                    College
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                    Category
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                    Status{" "}
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                    Deadline
-                  </th>
+                  <th className="px-4 py-3">Document Name</th>
+                  <th className="px-4 py-3">Category</th>
+                  <th className="px-4 py-3">College</th>
+
+                  <th className="px-4 py-3">Status </th>
+                  <th className="px-4 py-3">Deadline</th>
                   <th scope="col" className="p-4"></th>
                 </tr>
               </thead>
               <tbody>
-                {(Array.isArray(applications) ? applications : []).map(
-                  (application, index) =>
-                    application?.additionalDocuments?.map((data, i) => (
+                {studentProfile?.documents &&
+                studentProfile?.documents.length > 0 ? (
+                  studentProfile?.documents
+                    ?.filter(
+                      (data) =>
+                        data?.status === "pending" ||
+                        data?.status === "rejected" ||
+                        data?.status === "requested"
+                    )
+                    ?.map((data, i) => (
                       <tr
                         key={i}
                         className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
@@ -106,33 +138,48 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
                         <td className="px-4 py-3 w-4">
                           <CheckboxField
                             onClick={(e) => e.stopPropagation()}
-                            id={`checkbox-college-${index}`}
-                            htmlFor={`checkbox-college-${index}`}
+                            id={`checkbox-college-${i}`}
+                            htmlFor={`checkbox-college-${i}`}
                           />
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {data?.title}
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {application?.college?.name}
+                          {data?.type}
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {data?.category}
+                          {data?.applicationId?.college?.name || "---"}
                         </td>
+
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          <span
-                            className={`p-2 px-5 rounded-full text-gray-900 font-medium`}
-                            style={{
-                              backgroundColor: "In-Review "
-                                ? "#FFFCC2"
-                                : "Rejected"
-                                ? "#DB4437"
-                                : "#0F9D58",
-                              text: "",
-                            }}
-                          >
-                            In-Review
-                          </span>
+                          {data?.status === "rejected" ? (
+                            <Tooltip
+                              content={<div>{data.remarks}</div>}
+                              placement="bottom"
+                              className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
+                            >
+                              <span
+                                className="p-2 px-5 rounded-full text-gray-900 font-semibold capitalize"
+                                style={{
+                                  backgroundColor: getStatusBgColor(
+                                    data?.status
+                                  ),
+                                }}
+                              >
+                                {data?.status}
+                              </span>
+                            </Tooltip>
+                          ) : (
+                            <span
+                              className="p-2 px-5 rounded-full text-gray-900 font-semibold capitalize"
+                              style={{
+                                backgroundColor: getStatusBgColor(data?.status),
+                              }}
+                            >
+                              {data?.status}
+                            </span>
+                          )}
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {formatDate(data?.deadline)}
@@ -140,33 +187,50 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
                         <td className="px-4 py-3">
                           <button
                             className="focus:outline-none"
-                            // onClick={(e) => handleDropdownToggle(e, index)}
+                            onClick={(e) => handleReqDropdownToggle(e, i)}
                           >
                             <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
                           </button>
-                          {dropdownVisible === index && (
+                          {reqDropdownVisible === i && (
                             <div
                               ref={dropdownRef}
                               className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] `}
                             >
                               <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                {data.status !== "requested" ? (
+                                  <>
+                                    <li>
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          openStatusModal(data);
+                                          setReqDropdownVisible(false);
+                                        }}
+                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      >
+                                        <Edit className="w-4 h-4" />
+                                        <span>Change Status</span>
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <a
+                                        href={`${IMAGE_BASE_URL}/${data?.file}`}
+                                        target="_blank"
+                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      >
+                                        <Eye className="w-4 h-4" />
+                                        <span>View File</span>
+                                      </a>
+                                    </li>
+                                  </>
+                                ) : null}
+
                                 <li>
                                   <button
-                                    type="button"
-                                    // onClick={() => handleViewDetails(destination)}
-                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                  >
-                                    <Eye className="w-4 h-4" />
-                                    <span>View Details</span>
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    // onClick={() => {
-                                    //     setDeleteId(destination._id);
-                                    //     setIsModalOpen(!isModalOpen);
-                                    // }}
-                                    // onClick={() => handleDelete(destination._id)}
+                                    onClick={() => {
+                                      deleteDocument(data?._id);
+                                      setReqDropdownVisible(false);
+                                    }}
                                     className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
                                   >
                                     <Trash2 className="w-4 h-4" />
@@ -175,7 +239,10 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
                                 </li>
                                 <li>
                                   <button
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                      setSelectedDoc(data);
+                                      setReqDropdownVisible(false);
+                                    }}
                                     className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
                                   >
                                     <Edit className="w-4 h-4" />
@@ -188,6 +255,15 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
                         </td>
                       </tr>
                     ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="6"
+                      className="px-4 py-3 text-center text-gray-500"
+                    >
+                      No data exists
+                    </td>
+                  </tr>
                 )}
               </tbody>
             </table>
@@ -217,20 +293,17 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
               className="flex w-full -mb-px text-sm font-medium text-center"
               role="tablist"
             >
-              {tabs.map((tab, index) => (
-                <li key={index} className="w-full" role="presentation">
+              {tabs.map((tab) => (
+                <li key={tab} className="w-full" role="presentation">
                   <button
                     className={`inline-block p-4 w-full text-base font-semibold rounded-t-lg ${
-                      activeTab === index
-                        ? "text-black  border-b-2 border-blue-500"
+                      activeTab === tab
+                        ? "text-black border-b-2 border-blue-500"
                         : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
                     }`}
-                    onClick={() => handleTabClick(index)} // Update active tab
+                    onClick={() => setActiveTab(tab)}
                     role="tab"
-                    aria-controls={`styled-${tab
-                      .toLowerCase()
-                      .replace(" ", "-")}`}
-                    aria-selected={activeTab === index}
+                    aria-selected={activeTab === tab}
                   >
                     {tab}
                   </button>
@@ -238,6 +311,7 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
               ))}
             </ul>
           </div>
+
           <div className=" lg:max-w-[82vw]  mt-1 overflow-auto bg-white dark:bg-gray-800  shadow rounded">
             <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
@@ -249,110 +323,111 @@ const DocumentLibrary = ({ requestedDocument, handleOpenUploadModal }) => {
                       htmlFor={`checkbox-college-all`}
                     />
                   </th>
-                  <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                    Document Name
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[10rem]">
-                    Category
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                    Status{" "}
-                  </th>
-                  <th scope="col" className="px-4 py-3 min-w-[7rem]">
-                    Comments
-                  </th>
-                  <th scope="col" className="p-4"></th>
+                  <th className="px-4 py-3">Document Name</th>
+                  <th className="px-4 py-3">Category</th>
+                  <th className="px-4 py-3">College</th>
+
+                  <th className="px-4 py-3"></th>
                 </tr>
               </thead>
+
               <tbody>
-                {[1, 2].map((member, index) => (
-                  <tr
-                    key={index}
-                    className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <td className="px-4 py-3 w-4">
-                      <CheckboxField
-                        onClick={(e) => e.stopPropagation()}
-                        id={`checkbox-college-${index}`}
-                        htmlFor={`checkbox-college-${index}`}
-                      />
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      AADHAAR
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      Government
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      <span
-                        className={`p-2 px-5 rounded-full text-gray-900 font-medium`}
-                        style={{
-                          backgroundColor: "In-Review "
-                            ? "#FFFCC2"
-                            : "Rejected"
-                            ? "#DB4437"
-                            : "#0F9D58",
-                          text: "",
-                        }}
-                      >
-                        In-Review
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem
-                      ipsum dolor sit ametlorem ipsum dolor sit amet
-                    </td>
-                    <td className="px-4 py-3">
-                      <button
-                        className="focus:outline-none"
-                        // onClick={(e) => handleDropdownToggle(e, index)}
-                      >
-                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                      </button>
-                      {dropdownVisible === index && (
-                        <div
-                          ref={dropdownRef}
-                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] `}
+                {approvedDocuments && approvedDocuments.length > 0 ? (
+                  approvedDocuments.map((data, i) => (
+                    <tr
+                      key={i}
+                      className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <td className="px-4 py-3 w-4">
+                        <CheckboxField
+                          onClick={(e) => e.stopPropagation()}
+                          id={`checkbox-college-${i}`}
+                          htmlFor={`checkbox-college-${i}`}
+                        />
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {data?.title}
+                      </td>
+
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {data?.type}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {data?.applicationId?.college?.name || "---"}
+                      </td>
+                      {/* <td className="px-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <a
+                          href={`${IMAGE_BASE_URL}/${data?.file}`}
+                          target="_blank"
+                          className="text-blue-900 hover:underline font-bold hover:decoration-blue-800"
                         >
-                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                            <li>
-                              <button
-                                type="button"
-                                // onClick={() => handleViewDetails(destination)}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Eye className="w-4 h-4" />
-                                <span>View Details</span>
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                // onClick={() => {
-                                //     setDeleteId(destination._id);
-                                //     setIsModalOpen(!isModalOpen);
-                                // }}
-                                // onClick={() => handleDelete(destination._id)}
-                                className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                                <span>Delete</span>
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                onClick={() => {}}
-                                className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                              >
-                                <Edit className="w-4 h-4" />
-                                <span>Edit</span>
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      )}
+                          View File
+                        </a>
+                      </td> */}
+                      <td className="px-4 py-3">
+                        <button
+                          className="focus:outline-none"
+                          onClick={(e) => handleDropdownToggle(e, i)}
+                        >
+                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                        </button>
+                        {dropdownVisible === i && (
+                          <div
+                            ref={dropdownRef}
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] `}
+                          >
+                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                              <li>
+                                <a
+                                  href={`${IMAGE_BASE_URL}/${data?.file}`}
+                                  target="_blank"
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                  <span>View File</span>
+                                </a>
+                              </li>
+
+                              <li>
+                                <button
+                                  onClick={() => {
+                                    deleteDocument(data?._id);
+                                    setDropdownVisible(false);
+                                  }}
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                  <span>Delete</span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() => {
+                                    setSelectedDoc(data);
+                                    setDropdownVisible(false);
+                                  }}
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                  <span>Edit</span>
+                                </button>
+                              </li>
+                            </ul>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="6"
+                      className="px-4 py-3 text-center text-gray-500"
+                    >
+                      No documents found
                     </td>
                   </tr>
-                ))}
+                )}
               </tbody>
             </table>
           </div>

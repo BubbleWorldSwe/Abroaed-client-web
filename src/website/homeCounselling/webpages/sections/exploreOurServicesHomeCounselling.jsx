@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-
-import { FaArrowLeft } from "react-icons/fa"
 import homeService1 from "../../../../assets/homeService1.png"
 import homeService2 from "../../../../assets/homeService2.png"
 import homeService3 from "../../../../assets/homeService3.png"
@@ -10,8 +7,9 @@ import homeService6 from "../../../../assets/homeService6.png"
 import homeService7 from "../../../../assets/homeService7.png"
 import homeService8 from "../../../../assets/homeService8.png"
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
-import { FaArrowRight } from "react-icons/fa6"
-import Slider from "react-slick"
+import ServiceCardComponents from "../../../comman/components/serviceCardComponents"
+import DotsComponent from "../../../comman/components/dotsComponent"
+import { useState } from "react"
 
 const serviceData = [
     {
@@ -67,84 +65,43 @@ const serviceData = [
 ];
 
 const ExploreOurServicesHomeCounselling = () => {
-    const PrevArrow = ({ onClick }) => (
-        <button
-            onClick={onClick}
-            className="absolute z-10 left-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
-        >
-            <FaArrowLeft />
-        </button>
-    );
+    const [countImg, setCountImg] = useState(0);
 
-    const NextArrow = ({ onClick }) => (
-        <button
-            onClick={onClick}
-            className="absolute z-10 right-6 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80"
-        >
-            <FaArrowRight />
-        </button>
-    );
-
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 8000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        pauseOnHover: true,
-        centerModa: true,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
+    const handleNextImage = () => {
+        setCountImg((prev) => (prev + 1) % serviceData.length);
+    };
+    const handleDotClick = (index) => {
+        if (index !== countImg) {
+            setCountImg(index);
+        }
+    };
+    const handlePrevImage = () => {
+        setCountImg((prev) => (prev - 1 + serviceData.length) % serviceData.length);
     };
 
 
+
     return (
-        <section className="relative">
-            <div className=" px-6 md:px-12  mx-auto max-w-screen-2xl relative z-10">
-                <SectionMainHeader className="mb-8">
+        <section className=" dark:bg-gray-900 flex flex-col space-y-4 w-full md:max-w-screen-2xl mx-auto  relative">
+            <div className="px-4 md:px-12  max-w-screen-2xl relative z-10">
+                <SectionMainHeader className="mb-6">
                     Explore Our Other Services
                 </SectionMainHeader>
             </div>
-            <div className="overflow-x-auto">
-                <div className="overflow-x-auto ">
-                    <Slider {...settings}  >
-                        {serviceData?.map((service, index) => (
-                            <div
-                                key={index}
-                                className="w-full px-4 lg:w-96 md:w-80 sm:w-60 h-[32rem] relative rounded-lg"
 
-                            >
-                                <div className="relative w-full h-full rounded-lg">
-                                    <img
-                                        className="w-full h-full object-cover rounded-lg"
-                                        src={service.imgUrl}
-                                        alt={`Service ${index + 1}`}
-                                    />
-                                    <div
-                                        className="absolute inset-0 bg-black opacity-50 rounded-lg"
-                                        style={{ mixBlendMode: "multiply" }}
-                                    ></div>
-                                    <div className="absolute inset-0 bg-gradient-to-l from-white to-black opacity-50 z-0 rounded-lg"></div>
-
-                                </div>
-                                <div className="absolute inset-0 flex  flex-col justify-between p-6 z-10">
-                                    <div className="overflow-y-auto flex  flex-col gap-4 px-5">
-                                        <h1 className="text-[32px] leading-tight  md:text-[57px] text-white   font-bold ">
-                                            {service.text1}
-                                        </h1>
-                                        <p className="text-gray-200 max-w-screen-lg text-justify lg:mb-2 text-base md:text-[22px]">
-                                            {service.text2}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            </div>
-
+            {/* service cards */}
+            <ServiceCardComponents
+                serviceData={serviceData}
+                countImg={countImg}
+                handleNextImage={handleNextImage}
+                handlePrevImage={handlePrevImage}
+            />
+            {/* dots */}
+            <DotsComponent
+                serviceData={serviceData}
+                handleDotClick={handleDotClick}
+                countImg={countImg}
+            />
         </section>
     )
 }

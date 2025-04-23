@@ -16,6 +16,7 @@ import {
   deleteLeadRequest,
   editLeadRequest,
   fetchLeadsRequest,
+  searchLeadsRequest,
 } from "../../../redux/actions/leadsActions";
 import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
 import { getRoles } from "../../../api/api";
@@ -39,11 +40,28 @@ function Leads() {
 
   const [membersList, setMembersList] = useState([]);
 
+  const [query, setQuery] = useState("");
+
   const handleScheduleAppointment = (member) => {
     try {
       setSelectedMember(member);
       setshowAppointmentModal(true);
       setDropdownVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSearch = async (e) => {
+    try {
+      const value = e.target.value;
+      setQuery(value);
+      if (value.trim() === "") {
+        dispatch(fetchLeadsRequest(currentPage));
+        setCurrentPage(1);
+      } else {
+        dispatch(searchLeadsRequest(value));
+      }
     } catch (error) {
       console.log(error);
     }
@@ -152,7 +170,7 @@ function Leads() {
     }
   };
 
-  console.log(showAppointmentModal);
+  console.log(leads?.length, " Lead Length", leads);
 
   useEffect(() => {
     if (leads?.length === 0) {
@@ -250,8 +268,10 @@ function Leads() {
                         type="search"
                         id="default-search"
                         className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg  focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search Teams"
+                        placeholder="Search Leads"
                         required=""
+                        value={query}
+                        onChange={handleSearch}
                       />
                     </div>
                   </form>

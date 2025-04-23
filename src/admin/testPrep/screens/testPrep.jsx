@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addTestPrepRequest,
   deleteTestPrepRequest,
+  editTestPrepRequest,
   fetchTestPrepsRequest,
 } from "../../../redux/actions/testPrepsActions";
 import { AddButton } from "../../../commons/components/buttons/addButton";
@@ -72,6 +73,15 @@ const TestPrep = () => {
     setCurrentPage(1);
     dispatch(fetchTestPrepsRequest(1));
   };
+
+  async function onUpdate(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editTestPrepRequest(id, data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     if (testPreps?.length === 0) {
@@ -152,6 +162,7 @@ const TestPrep = () => {
                 handleNextPage={handleNextPage}
                 handlePrevPage={handlePrevPage}
                 handleDelete={handleDelete}
+                onUpdate={onUpdate}
               />
             </div>
           </div>

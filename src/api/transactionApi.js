@@ -1,10 +1,12 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithToken,
 } from "../utils/apiUtils";
 
 // Fetch paginated transactions
@@ -41,9 +43,11 @@ export const getAllTransactions = async () => {
 export const setAddTransaction = async (credentials) => {
   try {
     console.log(credentials);
-    const data = await makePostRequest(
+    const { adminToken } = store.getState().auth;
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/transaction/create`,
-      credentials
+      credentials,
+      adminToken
     );
     if (data.success) {
       return data.data;

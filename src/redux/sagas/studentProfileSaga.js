@@ -19,6 +19,9 @@ import {
   editStudentProfileFailure,
   EDIT_STUDENT_PROFILE_REQUEST,
   editStudentProfileSuccess,
+  STUDENT_DOCUMENTS_REQUEST,
+  fetchStudentDocumentsSuccess,
+  fetchStudentDocumentsFailure,
 } from "../actions/studentProfileActions";
 
 import {
@@ -30,6 +33,7 @@ import {
   getStudentProfile,
   setEditStudentProfile,
   setUpdateStudent,
+  getStudentDocuments,
 } from "../../api/studentsApi";
 
 import { toast } from "react-toastify";
@@ -98,6 +102,25 @@ function* handleFetchStudentApplications(action) {
   } catch (error) {
     yield put(fetchStudentApplicationFailure(error.message));
     toast.error("Failed to fetch applications");
+  }
+}
+
+// Fetch applications
+function* handleFetchStudentDocuments(action) {
+  try {
+    const response = yield call(getStudentDocuments, action.payload);
+
+    if (response.status === 200) {
+      console.log(response.data);
+      yield put(fetchStudentDocumentsSuccess(response.data.result));
+      // toast.success("Student Application fetched successfully!");
+    } else {
+      yield put(fetchStudentDocumentsFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(fetchStudentDocumentsFailure(error.message));
+    toast.error("Failed to fetch documents");
   }
 }
 
@@ -170,4 +193,6 @@ export default function* studentProfileSaga() {
   );
   yield takeLatest(STUDENT_PREPS_BATCHES_REQUEST, handleFetchPrepsBatches);
   yield takeLatest(EDIT_STUDENT_PROFILE_REQUEST, handleEditStudentProfile);
+
+  yield takeLatest(STUDENT_DOCUMENTS_REQUEST, handleFetchStudentDocuments);
 }

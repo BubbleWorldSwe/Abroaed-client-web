@@ -45,7 +45,9 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
         </ul>
 
       </div>
-      <ul className="flex px-2  items-center gap-3 py-1 bg-blue-100 overflow-x-auto sm:hidden">
+
+      {/* mobile view */}
+      <ul className="flex px-2  items-center gap-3 py-1 bg overflow-x-auto sm:hidden">
         {allDestinations?.map((item, index) => (
           <li
             key={index}

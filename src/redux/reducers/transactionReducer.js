@@ -66,15 +66,24 @@ export const transactionReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        transactions: state.transactions.map((transaction) => ({
+        /*  transactions: state.transactions.map((transaction) => ({
           ...transaction,
           data: transaction.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedTransaction: action.payload,
+
+        transactions: [],
+        allTransactions: [],
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case DELETE_TRANSACTION_SUCCESS:

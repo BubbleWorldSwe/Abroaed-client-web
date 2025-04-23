@@ -30,21 +30,17 @@ export const STUDENT_PREPS_BATCHES_REQUEST = "STUDENT_PREPS_BATCHES_REQUEST";
 export const STUDENT_PREPS_BATCHES_SUCCESS = "STUDENT_PREPS_BATCHES_SUCCESS";
 export const STUDENT_PREPS_BATCHES_FAILURE = "STUDENT_PREPS_BATCHES_FAILURE";
 
-// Student Uploaded Documents
-export const STUDENT_UPLOADED_DOCUMENTS_REQUEST =
-  "STUDENT_UPLOADED_DOCUMENTS_REQUEST";
-export const STUDENT_UPLOADED_DOCUMENTS_SUCCESS =
-  "STUDENT_UPLOADED_DOCUMENTS_SUCCESS";
-export const STUDENT_UPLOADED_DOCUMENTS_FAILURE =
-  "STUDENT_UPLOADED_DOCUMENTS_FAILURE";
+// Student Documents
+export const STUDENT_DOCUMENTS_REQUEST = "STUDENT_DOCUMENTS_REQUEST";
+export const STUDENT_DOCUMENTS_SUCCESS = "STUDENT_DOCUMENTS_SUCCESS";
+export const STUDENT_DOCUMENTS_FAILURE = "STUDENT_DOCUMENTS_FAILURE";
 
-// Student Requested Documents
-export const STUDENT_REQUESTED_DOCUMENTS_REQUEST =
-  "STUDENT_REQUESTED_DOCUMENTS_REQUEST";
-export const STUDENT_REQUESTED_DOCUMENTS_SUCCESS =
-  "STUDENT_REQUESTED_DOCUMENTS_SUCCESS";
-export const STUDENT_REQUESTED_DOCUMENTS_FAILURE =
-  "STUDENT_REQUESTED_DOCUMENTS_FAILURE";
+export const UPLOAD_STUDENT_DOCUMENT_REQUEST =
+  "UPLOAD_STUDENT_DOCUMENT_REQUEST";
+export const UPLOAD_STUDENT_DOCUMENT_SUCCESS =
+  "UPLOAD_STUDENT_DOCUMENT_SUCCESS";
+export const UPLOAD_STUDENT_DOCUMENT_FAILURE =
+  "UPLOAD_STUDENT_DOCUMENT_FAILURE";
 
 // Action Creators
 
@@ -144,34 +140,35 @@ export const fetchStudentPrepsBatchesFailure = (error) => ({
   payload: error,
 });
 
-// Fetch Uploaded Documents
-export const fetchStudentUploadedDocumentsRequest = (id) => ({
-  type: STUDENT_UPLOADED_DOCUMENTS_REQUEST,
+// Fetch Documents
+export const fetchStudentDocumentsRequest = (id) => ({
+  type: STUDENT_DOCUMENTS_REQUEST,
   payload: id,
 });
 
-export const fetchStudentUploadedDocumentsSuccess = (data) => ({
-  type: STUDENT_UPLOADED_DOCUMENTS_SUCCESS,
+export const fetchStudentDocumentsSuccess = (data) => ({
+  type: STUDENT_DOCUMENTS_SUCCESS,
   payload: data,
 });
 
-export const fetchStudentUploadedDocumentsFailure = (error) => ({
-  type: STUDENT_UPLOADED_DOCUMENTS_FAILURE,
+export const fetchStudentDocumentsFailure = (error) => ({
+  type: STUDENT_DOCUMENTS_FAILURE,
   payload: error,
 });
 
-// Fetch Requested Documents
-export const fetchStudentRequestedDocumentsRequest = (id) => ({
-  type: STUDENT_REQUESTED_DOCUMENTS_REQUEST,
-  payload: id,
+// upload doc
+
+export const uploadStudentDocumentRequest = (id, documentData) => ({
+  type: UPLOAD_STUDENT_DOCUMENT_REQUEST,
+  payload: { id, documentData },
 });
 
-export const fetchStudentRequestedDocumentsSuccess = (data) => ({
-  type: STUDENT_REQUESTED_DOCUMENTS_SUCCESS,
+export const uploadStudentDocumentSuccess = (data) => ({
+  type: UPLOAD_STUDENT_DOCUMENT_SUCCESS,
   payload: data,
 });
 
-export const fetchStudentRequestedDocumentsFailure = (error) => ({
-  type: STUDENT_REQUESTED_DOCUMENTS_FAILURE,
+export const uploadStudentDocumentFailure = (error) => ({
+  type: UPLOAD_STUDENT_DOCUMENT_FAILURE,
   payload: error,
 });

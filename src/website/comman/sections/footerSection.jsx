@@ -1,12 +1,20 @@
 import playStore from "../../../assets/gPlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
-import { FaFacebook, FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Flag from "react-world-flags";
 // import AppStoreButton from "../components/appStoreButton";
 
 const socialLinks = [
-  { icon: <FaFacebook size={20} />, url: "https://www.facebook.com/profile.php?id=61575250589330" },
+  {
+    icon: <FaFacebook size={20} />,
+    url: "https://www.facebook.com/profile.php?id=61575250589330",
+  },
   {
     icon: <FaInstagram size={20} />,
     url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
@@ -71,7 +79,7 @@ function Footer() {
   const halfDestination = Math.floor(allDestinations.length / 2);
   return (
     <div>
-      <footer className="bg-gray-primary md:min-h-[90vh] lg:max-h-min text-white pt-10 pb-4">
+      <footer className="bg-gray-primary   text-white pt-10 pb-4">
         <div className="container mx-auto px-6 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
@@ -281,12 +289,11 @@ function Footer() {
           </div>
 
           <div className="px-28 hidden md:px-0 mx-auto md:absolute text-[10px] bottom-0 right-4  gap-2">
-            <p>
-              Crafted By:
-            </p>
-            <a href="https://bubbleworld.in/" target="_blank" className="">BubbleWorld </a>
+            <p>Crafted By:</p>
+            <a href="https://bubbleworld.in/" target="_blank" className="">
+              BubbleWorld{" "}
+            </a>
           </div>
-
         </div>
       </footer>
     </div>

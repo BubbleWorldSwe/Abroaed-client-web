@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EllipsisVertical, Eye, Trash2 } from "lucide-react";
+import { Edit, EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ const CollegeTable = ({
   handleNextPage,
   handlePrevPage,
   handleDelete,
+  onUpdate,
 }) => {
   const dispatch = useDispatch();
   const { colleges, totalPages } = useSelector((state) => state.colleges);
@@ -28,6 +29,15 @@ const CollegeTable = ({
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setDropdownVisible(null);
+    }
+  };
+
+  const handleSubmit = (status, id) => {
+    try {
+      onUpdate({ status: status }, id);
+      setDropdownVisible(null);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -71,13 +81,14 @@ const CollegeTable = ({
               College Name
             </th>
             <th scope="col" className="px-4 py-3">
-              City
+              Location
             </th>
-            <th scope="col" className="px-4 py-3">
-              Country
-            </th>
+
             <th scope="col" className="px-4 py-3">
               Website
+            </th>
+            <th scope="col" className="px-4 py-3">
+              Status
             </th>
             <th scope="col" className="px-4 py-3">
               Entity Type
@@ -111,10 +122,10 @@ const CollegeTable = ({
                     {college.name}
                   </th>
 
-                  <td className="px-4 py-3">{college.city}</td>
                   <td className="px-4 py-3">
-                    {college?.destinationId?.countryId?.name}
+                    {college.city}, {college?.destinationId?.countryId?.name}
                   </td>
+
                   <td className="px-4 py-3">
                     <a
                       href={college.website}
@@ -126,7 +137,9 @@ const CollegeTable = ({
                     </a>
                   </td>
                   <td className="px-4 py-3">{college?.entityType}</td>
-
+                  <td className="px-4 py-3">
+                    {college?.status === "draft" ? "Draft" : "Published"}
+                  </td>
                   <td className="px-4 py-3">
                     <button
                       className="focus:outline-none"
@@ -155,24 +168,46 @@ const CollegeTable = ({
                             </button>
                           </li>
                           {isWriteAccess && (
-                            <li>
-                              <button
-                                type="button"
-                                /*  onClick={() => {
+                            <>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleSubmit(
+                                      college?.status === "draft"
+                                        ? "publish"
+                                        : "draft",
+                                      college._id
+                                    )
+                                  }
+                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                  <span>
+                                    {college?.status === "draft"
+                                      ? "Publish Page"
+                                      : "Withdraw Page"}
+                                  </span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  type="button"
+                                  /*  onClick={() => {
                                 handleDelete(college._id);
                                 setDropdownVisible(null);
                               }} */
-                                onClick={() => {
-                                  setDeleteId(college._id);
-                                  setIsModalOpen(!isModalOpen);
-                                  //setDropdownVisible(null);
-                                }}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Trash2 className="w-4 h-4" />
-                                <span>Delete</span>
-                              </button>
-                            </li>
+                                  onClick={() => {
+                                    setDeleteId(college._id);
+                                    setIsModalOpen(!isModalOpen);
+                                    //setDropdownVisible(null);
+                                  }}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                  <span>Delete</span>
+                                </button>
+                              </li>
+                            </>
                           )}
                         </ul>
                       </div>

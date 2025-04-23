@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const DestinationTable = ({
   currentPage,
@@ -123,6 +124,11 @@ const DestinationTable = ({
                       id={`checkbox-college-${index}`}
                       htmlFor={`checkbox-college-${index}`}
                     />
+                    {/*  <img
+                      src={`${IMAGE_BASE_URL}/${destination?.imageUrl}`}
+                      alt="pic"
+                      className="w-4 h-4 mr-2"
+                    /> */}
                   </td>
 
                   <th

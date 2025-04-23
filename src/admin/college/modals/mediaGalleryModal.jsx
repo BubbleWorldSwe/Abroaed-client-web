@@ -73,9 +73,7 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
       </div>
 
       <div className="text-end mt-5">({files.length}/10)</div>
-      <p className="mb-2">
-        Add up to 10 images or videos. Supported files: JPG, PNG, MP4.
-      </p>
+      <p className="mb-2">Add up to 10 images</p>
 
       {/* Upload Box */}
       <div
@@ -105,7 +103,7 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
               drop
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              JPG, PNG, MP4 (max 10 files)
+              JPG, PNG or JPEG (Max. File Size: 1MB)
             </p>
           </div>
           <input

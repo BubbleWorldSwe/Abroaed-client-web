@@ -9,13 +9,14 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 
-const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
+const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
   const [formData, setFormData] = useState({
-    college: "",
+    applicationId: "",
     lead: leadId,
-    category: "",
+    type: "",
     title: "",
-    file: null,
+    files: null,
+    status: "approved",
   });
 
   const { applications } = useSelector(
@@ -34,21 +35,42 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
     e.preventDefault();
     const droppedFile = e.dataTransfer.files[0];
     if (droppedFile) {
-      setFormData({ ...formData, file: droppedFile });
+      setFormData({ ...formData, files: droppedFile });
     }
   };
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData({ ...formData, file });
+    const files = e.target.files[0];
+    if (files) {
+      setFormData({ ...formData, files });
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-    console.log("Form ready to submit", formData);
+      const filteredData = Object.fromEntries(
+        Object.entries(formData).filter(
+          ([_, value]) => value !== null && value !== undefined && value !== ""
+        )
+      );
+
+      // console.log("Form ready to submit", filteredData);
+
+      await uploadDocument(filteredData);
+
+      setFormData({
+        applicationId: "",
+        lead: leadId,
+        type: "",
+        title: "",
+        files: null,
+        status: "approved",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -67,8 +89,8 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
               <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
                 <SelectField
                   label="Document Category"
-                  name="category"
-                  value={formData.category}
+                  name="type"
+                  value={formData.type}
                   onChange={handleChange}
                   options={docCategory.map((data) => ({
                     label: data,
@@ -87,15 +109,15 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
                 />
               </div>
 
-              {formData?.category === "Applications" && (
+              {formData?.type === "Applications" && (
                 <SelectField
                   label="Select College"
-                  name="college"
-                  value={formData.college}
+                  name="applicationId"
+                  value={formData.applicationId}
                   onChange={handleChange}
                   options={applications.map((data) => ({
                     label: data?.college?.name,
-                    value: data?.college?._id,
+                    value: data?._id,
                   }))}
                   required
                 />
@@ -141,9 +163,9 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId }) => {
                     />
                   </label>
                 </div>
-                {formData.file && (
+                {formData.files && (
                   <p className="mt-2 text-sm text-black-600 font-bold">
-                    Selected File: {formData.file.name}
+                    Selected File: {formData.files.name}
                   </p>
                 )}
               </div>

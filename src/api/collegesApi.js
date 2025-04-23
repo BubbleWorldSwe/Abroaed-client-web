@@ -1,10 +1,12 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithToken,
   makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
@@ -51,10 +53,11 @@ export const getCollegesByDestinationId = async (destId) => {
 export const setAddCollege = async (credentials) => {
   try {
     console.log(credentials);
-
-    const data = await makePostRequest(
+    const { adminToken } = store.getState().auth;
+    const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/colleges/create`,
-      credentials
+      credentials,
+      adminToken
     );
     // console.log(data);
     if (data.success) {
@@ -145,10 +148,13 @@ export const setCollegeUploadFile = async (id, imageData) => {
 
     formData.append("type", type);
 
+    const { adminToken } = store.getState().auth;
+
     // Make request
     const data = await makePutRequestWithFormData(
       `${BASE_URL}/api/v1/admin/colleges/upload/file/${id}`,
-      formData
+      formData,
+      adminToken
     );
 
     console.log(data);

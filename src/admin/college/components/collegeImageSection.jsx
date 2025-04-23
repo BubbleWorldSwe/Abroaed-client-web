@@ -170,9 +170,9 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
             </div>
             <p className="text-gray-600 text-sm mb-4">
               {modalType === "logo"
-                ? "Logo size: 200x200 px"
-                : "Cover size: 1000x1500 px"}
-              . Supported files: JPG, PNG
+                ? "Max. File Size: 500KB"
+                : "Max. File Size: 1MB"}
+              {/*  . Supported files: JPG, PNG or JPEG */}
             </p>
 
             <div
@@ -200,7 +200,7 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
                     drag and drop
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    JPG, PNG or GIF (max 800x400px)
+                    JPG, PNG or JPEG
                   </p>
                 </div>
                 <input

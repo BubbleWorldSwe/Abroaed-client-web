@@ -99,15 +99,23 @@ export const testPrepsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        testPreps: state.testPreps.map((testPrep) => ({
+        /* testPreps: state.testPreps.map((testPrep) => ({
           ...testPrep,
           data: testPrep.data.map((item) =>
             item._id === action.payload._id
               ? { ...item, ...action.payload }
               : item
           ),
-        })),
+        })), */
         selectedTestPrep: action.payload,
+
+        testPreps: [],
+        allTestPreps: [],
+        error: null,
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
       };
 
     case SET_SELECTED_TESTPREP:

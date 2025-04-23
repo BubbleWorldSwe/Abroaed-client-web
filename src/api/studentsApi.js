@@ -1,9 +1,11 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
 import {
+  makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithFormData,
   makePutRequest,
 } from "../utils/apiUtils";
 
@@ -11,6 +13,20 @@ export const getStudents = async (page) => {
   try {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/leads/list?page=${page}&limit=${pageDataLimit}&filter={"type":"student"}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getSearchStudents = async (query) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}&search=${query}`
     );
     console.log(data);
     if (data.success) {
@@ -74,6 +90,62 @@ export const setCreateStudentApplication = async (credentials) => {
     const data = await makePostRequest(
       `${BASE_URL}/api/v1/admin/applications/create`,
       credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getStudentDocuments = async (id) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/document-upload/list/?filter={"userId":"${id}"}`
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUploadStudentDocuments = async (id, fileData) => {
+  console.log(fileData);
+  try {
+    const data = await makePostRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/document-upload/file/${id}`,
+      fileData
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUpdateStudentDocuments = async (docId, fileData) => {
+  console.log(fileData);
+  try {
+    const data = await makePostRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/document-upload/update/${docId}`,
+      fileData
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setDeleteStudentDocument = async (id) => {
+  try {
+    const data = await makeDeleteRequest(
+      `${BASE_URL}/api/v1/admin/document-upload/${id}`
     );
     if (data.success) {
       return data.data;
