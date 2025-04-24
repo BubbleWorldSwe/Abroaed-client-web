@@ -3,10 +3,12 @@ import { useMemo, useState } from "react";
 import { TextGenerateEffect } from "../../components/TextGenerateEffect";
 import homeVideoHero from "../../../../assets/homeVideoHero.mp4"
 import BookCounsellingModal from "../../../comman/modals/bookCounsellingModal";
+import { useNavigate } from "react-router-dom";
+import { Play } from "lucide-react";
 
 function HomeHeroSection() {
   const [isOpenModal, setIsOpenModal] = useState(false);
-
+  const navigate = useNavigate()
   const textEffect = useMemo(
     () => (
       <TextGenerateEffect
@@ -76,6 +78,12 @@ function HomeHeroSection() {
               </div>
             </div>
           </div>
+          <button
+            onClick={() => navigate('/aboutUs')}
+            className="absolute right-0 md:right-20 bottom-2 md:bottom-10 hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-full transition-opacity flex justify-center items-center gap-2">
+            <Play className="text-white" size={15} />
+            <p className="text-white">Why we build ABROAED ? </p>
+          </button>
         </section>
       </div>
     </>

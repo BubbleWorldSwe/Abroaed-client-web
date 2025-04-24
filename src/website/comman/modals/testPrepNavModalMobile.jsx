@@ -9,7 +9,7 @@ const TestPrepNavMobileModal = ({
             {menuItems?.map((data, index) => (
                 <li
                     key={index}
-                    className="hover:bg-blue-50 py-1"
+                    className="hover:bg-white hover:bg-opacity-10 py-1"
                 >
                     <div className="">
                         <a

@@ -9,6 +9,8 @@ import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useClickOutside } from "../customHooks/useOutSideModalClose";
 
 const BookCounsellingModal = ({ isOpen, onClose }) => {
+
+
     const modalRef = useRef();
     const dispatch = useDispatch();
     const { allDestinations } = useSelector((state) => state.destinations);

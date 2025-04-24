@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronUp, Home, Menu, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -22,6 +22,9 @@ import ExploreCollegeModalPhone from "../modals/exploreCollegeModalPhone";
 import CollegeListPhone from "../modals/collegeListPhone";
 //import { destinationMenuItems } from "../../../constants/values";
 import logoYellowWhite from "../../../assets/logoYellowWhite.png"
+import MobileMenuComponent from "../components/mobileMenuComponent";
+
+
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -51,11 +54,13 @@ function Header({ isHeaderBgWhite = false }) {
   const [filteredColleges, setFilteredColleges] = useState([]);
   const [selectedState, setSelectedState] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenHambarger, setIsOpenHambarger] = useState(false);
   const [expanded, setExpanded] = useState(null);
   const { studentToken, student } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpenExploreCollegePhone, setIsOpenExploreCollegePhone] = useState(false);
+  const [selectedDestModalPhone, setSelectedDestModalPhone] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -67,6 +72,7 @@ function Header({ isHeaderBgWhite = false }) {
   const handleExploreCollegeModal = () => {
     setIsOpenExploreCollegePhone(true)
   }
+
   console.log(student?.firstName, student?.lastName);
 
   useEffect(() => {
@@ -129,7 +135,7 @@ function Header({ isHeaderBgWhite = false }) {
   const isNotMobile = useMediaQuery({ minWidth: 768 });
   useEffect(() => {
     if (isNotMobile) {
-      setIsOpen(false);
+      setIsOpenHambarger(false);
     }
   }, [isNotMobile]);
 
@@ -170,6 +176,15 @@ function Header({ isHeaderBgWhite = false }) {
     { key: "contactUs", label: "Contact Us", link: "/contactUs" },
   ];
   const mobileMenuItem = [
+    {
+      key: "home",
+      label: (
+        <div className="flex gap-2 justify-center items-center">
+          <Home size={20} /> Home
+        </div>
+      ),
+      link: "/",
+    },
     {
       key: "why-abroaed",
       label: "Why ABROAED?",
@@ -256,7 +271,6 @@ function Header({ isHeaderBgWhite = false }) {
     // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
   ];
 
-  const [selectedDestModalPhone, setSelectedDestModalPhone] = useState(false);
 
   return (
     <header
@@ -418,7 +432,7 @@ function Header({ isHeaderBgWhite = false }) {
               >
                 Explore Colleges
               </button>
-              {/* destination list */}
+              {/* destination list for mobile*/}
               <ExploreCollegeModalPhone
                 isOpenExploreCollegePhone={isOpenExploreCollegePhone}
                 setIsOpenExploreCollegePhone={setIsOpenExploreCollegePhone}
@@ -490,7 +504,7 @@ function Header({ isHeaderBgWhite = false }) {
                 <div className="relative">
                   <SocialIconNavModal
                     handleMouseEnter={handleMouseEnter}
-                    handleMouseLeave={handleMouseLeave}
+                   handleMouseLeave={handleMouseLeave}
                   />
                 </div>
               )}
@@ -499,89 +513,18 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
 
           {/* mobile menu */}
-          <div>
-            <button
-              className="md:hidden p-2 basis-[0%]"
-              onClick={() => setIsOpen(true)}
-            >
-              <Menu
-                size={24}
-              />
-            </button>
-            {isOpen && (
-              <div className="fixed inset-0 z-50 bg-white text-gray-primary overflow-y-auto shadow-xl">
-                {/* Header */}
-                <div className="flex justify-between items-center p-4 border-b shadow-lg">
-                  <h2 className="text-lg font-semibold">Menu</h2>
-                  <button onClick={() => setIsOpen(false)}>
-                    <X size={24} />
-                  </button>
-                </div>
-
-                {/* Menu Items */}
-                <ul className="space-y-1 px-4 py-2">
-                  {mobileMenuItem.map(({ label, link, subItems, component: Component, data }, index) => (
-                    <li key={index}>
-                      <a href={link}>
-                        <button
-                          className="w-full text-gray-primary flex justify-between  py-2 text-[18px] font-semibold opacity-70 transition-all ease-in-out delay-150 "
-                          onClick={() => toggleSubMenu(label)}
-                        >
-                          {label}
-                          {subItems || Component ? (expanded === label ? <ChevronUp size={18} /> : <ChevronDown size={18} />) : ''}
-                        </button>
-                      </a>
-                      {expanded === label && subItems?.length > 0 && (
-                        <div className="">
-                          {subItems?.map(({ title, link }, index) => (
-                            <a key={index} href={link} >
-                              <div className="hover:bg-blue-50 py-1">
-                                {title}
-                              </div>
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                      {expanded === label && Component && (
-                        < Component
-                          handleMouseEnter={handleMouseEnter}
-                          {...(data && Array.isArray(data)
-                            ? { menuItems: data.map(({ productName, _id }) => ({ title: productName, _id })) }
-                            : { ...data })}
-                          onClose={handleMouseLeave}
-                        />
-                      )}
-                    </li>
-                  ))}
-                  {/* <li>
-                    <div
-                      className="relative "
-                    >
-                      <button
-                        onClick={() => handleMouseEnter("bookMenu")}
-                        className={`px-4 py-1  whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
-                      >
-                        Book Now
-                      </button>
-                      {activeDropdown === "bookMenu" && (
-                        <div className="relative">
-                          <BookCounsellingModal
-                            isOpen={activeDropdown === "bookMenu"}
-                            onClose={handleMouseLeave}
-
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </li> */}
-                </ul>
-              </div>
-            )}
-          </div>
-
+          <MobileMenuComponent
+            setIsOpenHambarger={setIsOpenHambarger}
+            handleMouseEnter={handleMouseEnter}
+            handleMouseLeave={handleMouseLeave}
+            toggleSubMenu={toggleSubMenu}
+            mobileMenuItem={mobileMenuItem}
+            expanded={expanded}
+            isOpenHambarger={isOpenHambarger}
+            activeDropdown={activeDropdown}
+          />
         </nav>
       </nav>
-
       <LogoutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

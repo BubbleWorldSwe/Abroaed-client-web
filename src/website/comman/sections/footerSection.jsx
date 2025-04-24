@@ -78,8 +78,8 @@ function Footer() {
   // const { allLanguagePreps } = useSelector((state) => state.languagePreps);
   const halfDestination = Math.floor(allDestinations.length / 2);
   return (
-    <div>
-      <footer className="bg-gray-primary md:min-h-[90vh] lg:max-h-min text-white pt-10 pb-4">
+    <>
+      <footer className="bg-gray-primary  text-white pt-10 pb-4">
         <div className="container mx-auto px-6 md:px-14 flex flex-col sm:flex-row gap-8 md:text-left">
           {/* Logo & Description */}
           <div className="w-full md:w-[40%] ">
@@ -296,7 +296,7 @@ function Footer() {
           </div>
         </div>
       </footer>
-    </div>
+    </>
   );
 }
 
