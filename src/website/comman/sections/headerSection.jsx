@@ -21,9 +21,8 @@ import { useMediaQuery } from "react-responsive";
 import ExploreCollegeModalPhone from "../modals/exploreCollegeModalPhone";
 import CollegeListPhone from "../modals/collegeListPhone";
 //import { destinationMenuItems } from "../../../constants/values";
-import logoYellowWhite from "../../../assets/logoYellowWhite.png"
+import logoYellowWhite from "../../../assets/logoYellowWhite.png";
 import MobileMenuComponent from "../components/mobileMenuComponent";
-
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -58,7 +57,8 @@ function Header({ isHeaderBgWhite = false }) {
   const [expanded, setExpanded] = useState(null);
   const { studentToken, student } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isOpenExploreCollegePhone, setIsOpenExploreCollegePhone] = useState(false);
+  const [isOpenExploreCollegePhone, setIsOpenExploreCollegePhone] =
+    useState(false);
   const [selectedDestModalPhone, setSelectedDestModalPhone] = useState(false);
 
   const navigate = useNavigate();
@@ -70,8 +70,8 @@ function Header({ isHeaderBgWhite = false }) {
     navigate("/home");
   };
   const handleExploreCollegeModal = () => {
-    setIsOpenExploreCollegePhone(true)
-  }
+    setIsOpenExploreCollegePhone(true);
+  };
 
   console.log(student?.firstName, student?.lastName);
 
@@ -90,11 +90,15 @@ function Header({ isHeaderBgWhite = false }) {
     try {
       const response = await getCollegesByDestinationId(destination._id);
       if (response?.status === 200) {
-        setColleges(response.data.result);
-        setFilteredColleges(response.data.result); // Show all initially
+        const publishedColleges = response.data.result.filter(
+          (item) => item.status === "publish"
+        );
+
+        setColleges(publishedColleges);
+        setFilteredColleges(publishedColleges); // Show all initially
         const uniqueStates = [
           ...new Map(
-            response.data.result.map((college) => [
+            publishedColleges.map((college) => [
               college?.stateId?._id,
               college?.stateId,
             ])
@@ -127,7 +131,6 @@ function Header({ isHeaderBgWhite = false }) {
       handleDestinationClick(allDestinations[0]);
     }
   }, [allDestinations]);
-
 
   const toggleSubMenu = (label) => {
     setExpanded((prev) => (prev === label ? null : label));
@@ -191,12 +194,16 @@ function Header({ isHeaderBgWhite = false }) {
       subItems: [
         { title: "About Us", link: "/aboutus" },
         { title: "Career", link: "/careers" },
-      ]
+      ],
     },
     {
       key: "abroaed-plus",
-      label: (<span>ABROAED<sup>+</sup></span>),
-      link: '/abroaedPlus'
+      label: (
+        <span>
+          ABROAED<sup>+</sup>
+        </span>
+      ),
+      link: "/abroaedPlus",
     },
     {
       key: "destinations",
@@ -213,46 +220,45 @@ function Header({ isHeaderBgWhite = false }) {
       //     ))}
       //   </ul>
       // )
-      component: DestinationNavItemModal
+      component: DestinationNavItemModal,
     },
     {
       key: "test-prep",
       label: "Test Prep",
       component: TestPrepNavMobileModal,
-      data: allTestPreps
+      data: allTestPreps,
     },
     {
       key: "language-prep",
       label: "Language Prep",
       component: LanguageNavModalMobile,
-      data: allLanguagePreps
+      data: allLanguagePreps,
     },
     {
       key: "pathways",
       label: "Pathways",
-      link: "/pathways"
+      link: "/pathways",
     },
     {
       key: "league-excellence",
       label: "League of Excellence",
-      link: "/leaguageOfExcellence"
+      link: "/leaguageOfExcellence",
     },
     {
       key: "services",
       label: "Services",
       subItems: [
-        { title: 'Finance', link: '/finance' },
-        { title: 'Accomodation', link: '/accomodation' },
-        { title: 'Home Counselling', link: '/homeCounselling' },
-      ]
+        { title: "Finance", link: "/finance" },
+        { title: "Accomodation", link: "/accomodation" },
+        { title: "Home Counselling", link: "/homeCounselling" },
+      ],
     },
     {
       key: "contact-us",
       label: "Contact Us",
-      link: "/contactUs"
+      link: "/contactUs",
     },
   ];
-
 
   const socialLinks = [
     {
@@ -271,13 +277,13 @@ function Header({ isHeaderBgWhite = false }) {
     // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
   ];
 
-
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary text-white shadow-md"
-        : "bg-gray-primary text-white bg-opacity-10"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-gray-primary text-white shadow-md"
+          : "bg-gray-primary text-white bg-opacity-10"
+      }`}
     >
       <nav>
         <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
@@ -292,10 +298,7 @@ function Header({ isHeaderBgWhite = false }) {
             </h3>
             <div className="md:hidden block w-6">
               <a href="/">
-                <img
-                  src={logoYellowWhite}
-                  alt="logo"
-                />
+                <img src={logoYellowWhite} alt="logo" />
               </a>
             </div>
           </div>
@@ -313,14 +316,14 @@ function Header({ isHeaderBgWhite = false }) {
                 >
                   <a
                     href={"#"}
-
                     className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${activeDropdown === "exploreColleges"
-                        ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                        : "font-semibold"
-                      }`}
+                ${
+                  activeDropdown === "exploreColleges"
+                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                    : "font-semibold"
+                }`}
                   >
                     Explore Colleges
                   </a>
@@ -353,10 +356,11 @@ function Header({ isHeaderBgWhite = false }) {
                         className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${activeDropdown === key
-                            ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                            : "font-semibold"
-                          }`}
+                ${
+                  activeDropdown === key
+                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                    : "font-semibold"
+                }`}
                       >
                         {label}
                       </a>
@@ -364,7 +368,14 @@ function Header({ isHeaderBgWhite = false }) {
                         <div className="relative">
                           <Component
                             {...(data && Array.isArray(data)
-                              ? { menuItems: data.map(({ productName, _id }) => ({ title: productName, _id })) }
+                              ? {
+                                  menuItems: data.map(
+                                    ({ productName, _id }) => ({
+                                      title: productName,
+                                      _id,
+                                    })
+                                  ),
+                                }
                               : { ...data })}
                             handleMouseEnter={handleMouseEnter}
                             handleMouseLeave={handleMouseLeave}
@@ -459,7 +470,7 @@ function Header({ isHeaderBgWhite = false }) {
               // onMouseEnter={() => handleMouseEnter("login")}
               // onMouseLeave={handleMouseLeave}
               className="relative "
-            // className="relative hidden md:block"
+              // className="relative hidden md:block"
             >
               <button
                 onClick={() => handleMouseEnter("bookMenu")}
@@ -472,12 +483,10 @@ function Header({ isHeaderBgWhite = false }) {
                   <BookCounsellingModal
                     isOpen={activeDropdown === "bookMenu"}
                     onClose={handleMouseLeave}
-
                   />
                 </div>
               )}
             </div>
-
 
             {/* <div className="hidden md:block">
               <div
