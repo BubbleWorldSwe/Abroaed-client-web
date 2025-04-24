@@ -162,3 +162,20 @@ export const constructPostRequestOptionsWithFormData = (payload) => {
     body: formdata,
   };
 };
+
+export const constructPatchRequestOptionsWithToken = (payload, token) => {
+  console.log(payload);
+  var requestHeaders = new Headers();
+  requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+  requestHeaders.append("Authorization", `Bearer ${token}`);
+
+  var raw = JSON.stringify(payload);
+
+  console.log(raw);
+
+  return {
+    method: REQUEST_METHOD_PATCH,
+    headers: requestHeaders,
+    body: raw,
+  };
+};

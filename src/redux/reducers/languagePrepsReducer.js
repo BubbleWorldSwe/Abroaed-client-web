@@ -60,6 +60,12 @@ export const languagePrepsReducer = (state = initialState, action) => {
       };
 
     case FETCH_ALL_LANGUAGEPREPS_SUCCESS:
+      const preps = action.payload.result;
+
+      const publishedItems = preps.filter((item) => {
+        console.log(item?.status);
+        return item.status === "publish";
+      });
       return {
         ...state,
         loading: false,

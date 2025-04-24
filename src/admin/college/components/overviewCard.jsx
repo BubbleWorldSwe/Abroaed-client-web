@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from "react";
-import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
+import AddOverviewContentModal from "../../../components/Modals/AddOverviewContentModal";
 import { overview } from "../data";
 import { useSelector } from "react-redux";
 

@@ -49,7 +49,10 @@ function CollegePage() {
         const acc = await getAccommodationsByStateId(data?.data?.stateId?._id);
 
         if (acc.status === 200) {
-          setAccList(acc.data.result);
+          const publishedAccs = acc.data.result.filter(
+            (item) => item.status === "publish"
+          );
+          setAccList(publishedAccs);
         }
       }
 

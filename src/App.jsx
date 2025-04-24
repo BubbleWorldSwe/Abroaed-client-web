@@ -86,7 +86,12 @@ const App = () => {
         pauseOnHover
         position="top-right"
       />
-      <BrowserRouter>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
         <AppRoutes />
       </BrowserRouter>
     </>

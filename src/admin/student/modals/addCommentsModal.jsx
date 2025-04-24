@@ -5,101 +5,84 @@ import { Plus } from "lucide-react";
 import trash from "../../../assets/delete.png";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
-import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import { docCategory, intake } from "../../../constants/values";
-import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
 
 const AddCommentModal = ({
   isOpen,
   onClose,
   leadId,
-
   filledData,
   updateApplication,
 }) => {
-  const defaultDocument = {
-    title: "",
-    deadline: "",
-    comment: "",
-  };
-
-  const formatDateTime = (date) => {
-    return date ? moment(date).format("YYYY-MM-DDTHH:mm") : "";
+  console.log("Data -----");
+  const defaultComment = {
+    message: "",
   };
 
   const [formData, setFormData] = useState({
-    additionalDocuments: [defaultDocument],
+    comments: [defaultComment],
   });
 
   useEffect(() => {
-    if (!filledData || !filledData.additionalDocuments?.length) {
-      setFormData({ additionalDocuments: [defaultDocument] });
+    if (!filledData || !filledData.comments?.length) {
+      setFormData({ comments: [defaultComment] });
     } else {
       setFormData({
-        additionalDocuments: filledData.additionalDocuments.map((doc) => ({
-          ...doc,
-          deadline: formatDateTime(doc.deadline),
+        comments: filledData.comments.map((comment) => ({
+          message: comment.message || "",
         })),
       });
     }
   }, [filledData, leadId]);
 
-  const addDocument = () => {
+  const addComment = () => {
     setFormData((prev) => ({
       ...prev,
-      additionalDocuments: [
-        ...prev.additionalDocuments,
-        { ...defaultDocument },
-      ],
+      comments: [...prev.comments, { ...defaultComment }],
     }));
   };
 
-  const removeDocument = (index) => {
-    console.log(index);
+  const removeComment = (index) => {
     setFormData((prev) => ({
       ...prev,
-      additionalDocuments: prev.additionalDocuments.filter(
-        (_, i) => i !== index
-      ),
+      comments: prev.comments.filter((_, i) => i !== index),
     }));
   };
 
-  const handleDocumentChange = (index, field, value) => {
+  const handleCommentChange = (index, field, value) => {
     setFormData((prev) => ({
       ...prev,
-      additionalDocuments: prev.additionalDocuments.map((doc, i) =>
+      comments: prev.comments.map((comment, i) =>
         i === index
           ? {
-              ...doc,
-              [field]: field === "deadline" ? formatDateTime(value) : value,
+              ...comment,
+              [field]: value,
             }
-          : doc
+          : comment
       ),
     }));
   };
 
   const handleSubmit = (e) => {
+    console.log("Hello");
     e.preventDefault();
 
-    const hasEmptyDocuments = formData.additionalDocuments.some(
-      (doc) => !doc.comment.trim() || !doc.title.trim() || !doc.deadline.trim()
+    const hasEmptyMessages = formData.comments.some(
+      (comment) => !comment.message.trim()
     );
 
-    if (hasEmptyDocuments) {
-      toast.error("Please fill in all additional document fields.");
+    if (hasEmptyMessages) {
+      toast.error("Please fill in all additional comment fields.");
       return;
     }
 
-    // Remove `_id` from each document
     const formattedData = {
       ...formData,
-      additionalDocuments: formData.additionalDocuments.map(
-        ({ _id, ...rest }) => rest
-      ),
+      comments: formData.comments.map(({ _id, ...rest }) => rest),
     };
 
-    console.log("formattedData Form Data:", formattedData);
+    // console.log(formattedData);
+
     updateApplication(formattedData);
   };
 
@@ -116,17 +99,16 @@ const AddCommentModal = ({
             </button>
             <h2 className="text-lg font-semibold">Add Comment</h2>
 
-            {/* Additional Documents Section */}
             <div className="mt-5">
-              {formData.additionalDocuments.map((doc, index) => (
+              {formData.comments.map((comment, index) => (
                 <div key={index} className="flex gap-3 my-5 items-center">
                   <div className="flex-1">
                     <TextareaInputField
-                      label="Commemt"
-                      name={`comment-${index}`}
-                      value={doc.comment}
+                      label="Message"
+                      name={`message-${index}`}
+                      value={comment.message}
                       onChange={(e) =>
-                        handleDocumentChange(index, "comment", e.target.value)
+                        handleCommentChange(index, "message", e.target.value)
                       }
                       placeholder="Enter"
                     />
@@ -135,8 +117,8 @@ const AddCommentModal = ({
                   <button
                     type="button"
                     className="text-red-500 mt-5"
-                    onClick={() => removeDocument(index)}
-                    disabled={formData.additionalDocuments.length === 1}
+                    onClick={() => removeComment(index)}
+                    disabled={formData.comments.length === 1}
                   >
                     <img src={trash} alt="delete Icon" className="w-5 h-5" />
                   </button>
@@ -146,9 +128,9 @@ const AddCommentModal = ({
               <button
                 type="button"
                 className="mt-5 font-bold text-blue-500 py-1 rounded transition flex items-center gap-2"
-                onClick={addDocument}
+                onClick={addComment}
               >
-                + Add New Comment
+                <Plus className="w-4 h-4" /> Add New Comment
               </button>
             </div>
 

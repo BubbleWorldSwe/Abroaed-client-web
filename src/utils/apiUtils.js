@@ -17,6 +17,7 @@ import {
   constructPutRequestOptionsWithFormData,
   PUT_REQUEST_TIMEOUT,
   constructPostRequestOptionsWithFormData,
+  constructPatchRequestOptionsWithToken,
 } from "./serviceUtils";
 
 export const makeGetRequest = async (url) => {
@@ -151,6 +152,36 @@ export const makePatchRequest = async (url, payload) => {
     const response = await fetch(url, constructPatchRequestOptions(payload), {
       signal: controller.signal,
     });
+
+    const json = await response.json();
+
+    if (json.status) return constructSuccessResponse(json);
+    else return constructFailureResponse(json.message);
+  } catch (error) {
+    if (
+      error.message === ABORT_ERROR_MESSAGE ||
+      error.message === NETWORK_REQUEST_FAILED
+    ) {
+      return constructNetworkErrorResponse();
+    }
+    return constructFailureResponse(error.message);
+  }
+};
+
+export const makePatchRequestWithToken = async (url, payload, token) => {
+  try {
+    console.log("make PATCH TOKEN request = " + url);
+
+    console.log(payload);
+    let controller = new AbortController();
+    setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
+    const response = await fetch(
+      url,
+      constructPatchRequestOptionsWithToken(payload, token),
+      {
+        signal: controller.signal,
+      }
+    );
 
     const json = await response.json();
 

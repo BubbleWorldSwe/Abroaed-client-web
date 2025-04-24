@@ -51,7 +51,7 @@ import BlogsDetails from "../admin/blogs/screens/blogsDetails";
 import StudentSignIn from "../website/auth/studentSignIn";
 import StudentSignUp from "../website/auth/studentSignUp";
 import StudentResetPassword from "../website/auth/studentResetPassword";
-import ComingSoonPage from "../Layouts/comingSoonPage";
+import ComingSoonPage from "../layouts/comingSoonPage";
 import BatchLoginPage from "../website/authentication/batchLoginPage";
 import BatchSignupPage from "../website/authentication/batchSignupPage";
 import ForgetPasswordEmail from "../website/authentication/forgetPassword/forgetPasswordEmail";

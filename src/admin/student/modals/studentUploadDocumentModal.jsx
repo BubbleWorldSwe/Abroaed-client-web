@@ -8,6 +8,7 @@ import { docCategory } from "../../../constants/values";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { toast } from "react-toastify";
 
 const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
   const [formData, setFormData] = useState({
@@ -47,16 +48,39 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
   };
 
   const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
+    e.preventDefault();
 
+    const { files } = formData;
+
+    if (!files) {
+      toast.error("Please select a file to upload");
+      return;
+    }
+
+    const allowedTypes = [
+      "application/pdf",
+      "image/jpeg",
+      "image/png",
+      "image/jpeg",
+    ];
+    const maxSize = 2 * 1024 * 1024; // 2MB
+
+    if (!allowedTypes.includes(files.type)) {
+      toast.error("Only PDF, JPG, and PNG files are allowed");
+      return;
+    }
+
+    if (files.size > maxSize) {
+      toast.error("File size must be less than 2MB");
+      return;
+    }
+
+    try {
       const filteredData = Object.fromEntries(
         Object.entries(formData).filter(
           ([_, value]) => value !== null && value !== undefined && value !== ""
         )
       );
-
-      // console.log("Form ready to submit", filteredData);
 
       await uploadDocument(filteredData);
 
@@ -68,8 +92,11 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
         files: null,
         status: "approved",
       });
+
+      onClose();
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      toast.error("An error occurred while uploading the document");
     }
   };
 

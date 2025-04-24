@@ -290,6 +290,7 @@ const StudentProfileLayout = () => {
         setUpdateApplicationModal(false);
         setUpdateDocModal(false);
         setChangeStatusModal(false);
+        setDocCommentModal(false);
       } else {
         toast.error(data?.message);
       }
@@ -476,10 +477,12 @@ const StudentProfileLayout = () => {
       <AddCommentModal
         isOpen={docCommentModal}
         onClose={() => setDocCommentModal(false)}
-        collegesList={collegesList}
         leadId={id}
-        filledData={{}}
-        updateApplication={() => {}}
+        updateApplication={updateStudentApplication}
+        filledData={{
+          comments: selectedApplication?.comments,
+          _id: selectedApplication?._id,
+        }}
       />
       {/* Page Content */}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">

@@ -25,7 +25,7 @@ import { getDestinationDetailsById } from "../../../api/destinationApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 // import Blogs from "../../comman/components/blogs";
-import vectorleftNose from "../../../assets/vectorleftNose.png"
+import vectorleftNose from "../../../assets/vectorleftNose.png";
 import {
   getCollegesByDestinationId,
   getCoursesListByDestinationId,
@@ -71,12 +71,19 @@ function DestinationPage() {
       }
 
       if (college.status === 200) {
-        setCollegesList(college.data.result);
+        const publishedColleges = college.data.result.filter(
+          (item) => item.status === "publish"
+        );
+        setCollegesList(publishedColleges);
       }
 
       if (acc.status === 200) {
-        setAccList(acc.data.result);
+        const publishedAccs = acc.data.result.filter(
+          (item) => item.status === "publish"
+        );
+        setAccList(publishedAccs);
       }
+
       if (course.status === 200) {
         setCoursesList(course.data);
       }
@@ -145,7 +152,7 @@ function DestinationPage() {
         <DestinationRoutingSection />
       </div>
       <div className="grid grid-cols-1 gap-10 md:gap-16">
-        <SectionComponent >
+        <SectionComponent>
           <DestinationInfoSection destinationDetails={destinationDetails} />
         </SectionComponent>
         <div className="relative ">
@@ -177,9 +184,7 @@ function DestinationPage() {
                 removeFromSavedPreferences={removeFromSavedPreferences}
               />
             </SectionComponent>
-            <div
-              className="absolute right-0 top-20 -z-10"
-            >
+            <div className="absolute right-0 top-20 -z-10">
               <img
                 className="rounded-lg w-full h-full object-cover"
                 src={vectorleftNose}
@@ -208,7 +213,9 @@ function DestinationPage() {
 
         {destinationDetails?.expenses?.length > 0 && (
           <SectionComponent>
-            <DestinationExpansesSection destinationDetails={destinationDetails} />
+            <DestinationExpansesSection
+              destinationDetails={destinationDetails}
+            />
           </SectionComponent>
         )}
 

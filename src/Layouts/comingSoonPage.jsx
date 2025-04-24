@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AppStore from "../assets/AppStore.png";
 import playStore from "../assets/gPlayStore.png";
-import InfiniteMovingCards from "../Components/InfiniteMovingCards";
+import InfiniteMovingCards from "../components/InfiniteMovingCards";
 import documentAdd from "../assets/documentAdd.png";
 import handMoney from "../assets/handMoney.png";
 // import homeSmileAngle from "../assets/homeSmileAngle.png";
@@ -16,7 +16,7 @@ import squareAcademicCap from "../assets/squareAcademicCap.png";
 import diversity from "../assets/diversity.png";
 import iPhoneIcon from "../assets/iPhoneIcon.png";
 import homeIcon from "../assets/homeIcon.png";
-import ModalLayout from "../Components/Modals/ModalLayout";
+import ModalLayout from "../components/Modals/ModalLayout";
 const carouselItems = [
   {
     title: "Home Counselling",
@@ -357,7 +357,7 @@ function ComingSoonPage() {
   return (
     <div
       className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
-    // style={{ backgroundImage: `url(${comingSoon})` }}
+      // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards
@@ -463,7 +463,9 @@ function ComingSoonPage() {
               </div>
               {/* <div className=""> */}
               <div className=" hidden lg:flex flex-col justify-end  ">
-                <div className={`relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl `}>
+                <div
+                  className={`relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl `}
+                >
                   <div className="lg:max-w-xs  ">
                     <h2 className="mb-4 text-lg md:text-center  font-rethink md:px-6 lg:px-1 lg:text-start   lg:text-3xl  font-extrabold text-gray-300 dark:text-white">
                       Join Waitlist for ABROAED mobile app.

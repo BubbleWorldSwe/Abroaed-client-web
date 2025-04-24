@@ -58,24 +58,35 @@ const StudentTransactions = () => {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((tx, index) => (
-                <tr key={index} className="text-gray-700 border-b">
-                  <td className="p-3">{formatDateTime(tx.date)}</td>
-                  <td className="p-3 flex items-center gap-2">
-                    {tx.amount}{" "}
-                    {index === 0 && <span className="text-red-500">•</span>}
-                  </td>
-                  <td className="p-3">{tx.description}</td>
-                  <td className="p-3 flex justify-between items-center ">
-                    {tx.mode}
-                    {tx.invoice && (
-                      <button className="px-3 py-1 text-sm border bg-[#F4F4F5] rounded-lg text-gray-700 hover:bg-gray-200">
-                        View Invoice
-                      </button>
-                    )}
+              {transactions?.length > 0 ? (
+                transactions.map((tx, index) => (
+                  <tr key={index} className="text-gray-700 border-b">
+                    <td className="p-3">{formatDateTime(tx.date)}</td>
+                    <td className="p-3 flex items-center gap-2">
+                      {tx.amount}{" "}
+                      {index === 0 && <span className="text-red-500">•</span>}
+                    </td>
+                    <td className="p-3">{tx.description}</td>
+                    <td className="p-3 flex justify-between items-center ">
+                      {tx.mode}
+                      {tx.invoice && (
+                        <button className="px-3 py-1 text-sm border bg-[#F4F4F5] rounded-lg text-gray-700 hover:bg-gray-200">
+                          View Invoice
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td
+                    colSpan="4"
+                    className="px-4 py-3 text-center text-gray-500"
+                  >
+                    No data exists
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

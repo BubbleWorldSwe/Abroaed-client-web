@@ -7,12 +7,11 @@ import { toast } from "react-toastify";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
-const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
-  const languagePrepDetails = useSelector(
-    (state) => state.languagePreps.selectedLanguagePrep
-  );
+const BlogImageSection = ({ onUploadImage }) => {
+  const blogDetails = useSelector((state) => state?.blogs?.selectedBlog);
+
   const { isWriteAccess } = useSelector((state) => state.auth);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [openMadal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState(null);
 
@@ -52,78 +51,64 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
   };
 
   const handleSubmit = () => {
-    if (!fileImage) {
-      toast.error("Please select an image to upload");
-      return;
+    try {
+      console.log("handleSubmit");
+      if (!fileImage) {
+        toast.error("Please select an image to upload");
+        return;
+      }
+
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      const maxSize = 1000 * 1024; // 500 KB
+
+      if (!allowedTypes.includes(fileImage.type)) {
+        toast.error("Only JPG and PNG images are allowed");
+        return;
+      }
+
+      if (fileImage.size > maxSize) {
+        toast.error("Image size must be less than 1MB");
+        return;
+      }
+
+      onUploadImage(fileImage); // send file to parent
+      closeModal();
+    } catch (error) {
+      console.log(error);
     }
-
-    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-    const maxSize = 1000 * 1024;
-
-    if (!allowedTypes.includes(fileImage.type)) {
-      toast.error("Only JPG and PNG images are allowed");
-      return;
-    }
-
-    if (fileImage.size > maxSize) {
-      toast.error("Image size must be less than 1MB");
-      return;
-    }
-
-    onUploadImage(fileImage);
-    closeModal();
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer flex items-end">
-        {/*  {languagePrepDetails?.imageUrl && (
-          <div className="w-50 h-32 p-4 cursor-pointer rounded-sm">
-            <img
-              src={`${IMAGE_BASE_URL}/${languagePrepDetails?.imageUrl}`}
-              alt="Logo Upload"
-              className="w-full h-full object-contain rounded-md"
-            />
-          </div>
-        )} */}
-
-        {languagePrepDetails?.imageUrl && (
+    <div className="flex flex-col overflow-hidden">
+      <div
+        className="relative w-full h-48 bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer overflow-hidden"
+        onClick={(e) => {
+          e.preventDefault();
+          setOpenModal(true);
+          setModalType("add");
+        }}
+      >
+        {blogDetails?.image && (
           <img
-            src={`${IMAGE_BASE_URL}/${languagePrepDetails?.imageUrl}`}
-            className="w-full h-full object-cover rounded-md"
+            src={`${IMAGE_BASE_URL}/${blogDetails?.image}`}
+            alt="Blog"
+            className="w-full h-full object-cover"
           />
         )}
-      </div>
 
-      <div className="rounded-b-xl px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white dark:bg-gray-800">
-        <p className="text-2xl font-semibold">
-          {languagePrepDetails?.productName}
-        </p>
         {isWriteAccess && (
-          <div className="flex align-center">
-            <button
-              type="button"
-              className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2"
-              onClick={(e) => {
-                e.preventDefault();
-                setModalType("edit");
-                setOpenModal(true);
-              }}
-            >
-              <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
-              {languagePrepDetails.imageUrl ? `Edit Image` : "Add Image"}
-            </button>
-            <button
-              onClick={() => {
-                setIsModalOpen(!isModalOpen);
-              }}
-              type="button"
-              className="text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 text-center inline-flex items-center me-2 bg-red-600 border-2 hover:bg-red-700"
-            >
-              <Trash2 size={20} style={{ marginRight: 10 }} />
-              <span>Delete</span>
-            </button>
-          </div>
+          <button
+            type="button"
+            className="absolute bottom-5 right-5 text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg px-4 py-2 text-center inline-flex items-center bg-white border-2"
+            onClick={(e) => {
+              e.preventDefault();
+              setModalType("edit");
+              setOpenModal(true);
+            }}
+          >
+            <img src={pencil} alt="Edit" className="w-4 h-4 mr-2" />
+            {blogDetails.image ? "Edit Image" : "Add Image"}
+          </button>
         )}
       </div>
 
@@ -140,26 +125,20 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
               {modalType === "add" ? "Upload Image" : "Update Image"}
             </h2>
 
-            {modalType === "edit" && (
-              <div className="w-full relative mb-4">
-                <img
-                  className="w-full h-60 object-cover rounded-lg"
-                  // src={imagePreview || dark}
-                  src={
-                    imagePreview
-                      ? imagePreview
-                      : languagePrepDetails?.imageUrl
-                      ? `${IMAGE_BASE_URL}/${languagePrepDetails.imageUrl}`
-                      : dark
-                  }
-                  alt="Current"
-                />
-              </div>
-            )}
-
-            {/*  <p className="text-gray-600 text-sm mb-4">
-              Size should be 1000 x 1500 px. Supported files: JPG, PNG
-            </p> */}
+            <div className="w-full relative mb-4">
+              <img
+                className="w-full h-60 object-cover"
+                //src={imagePreview || dark}
+                src={
+                  imagePreview
+                    ? imagePreview
+                    : blogDetails?.image
+                    ? `${IMAGE_BASE_URL}/${blogDetails.image}`
+                    : dark
+                }
+                alt="Current"
+              />
+            </div>
 
             <div
               className="flex items-center justify-center w-full"
@@ -201,18 +180,16 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
             </div>
 
             <div className="text-end mt-4">
-              {modalType === "edit" && (
-                <button
-                  type="button"
-                  className="border-2 border-gray-500 text-white bg-red-500 hover:bg-red-600 px-4 py-2 mr-2 rounded transition"
-                  onClick={closeModal}
-                >
-                  Close
-                </button>
-              )}
               <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                type="button"
+                className="bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded mr-5"
+                onClick={closeModal}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded"
                 onClick={handleSubmit}
               >
                 Save
@@ -221,18 +198,8 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
           </div>
         </div>
       )}
-
-      <DeleteConfirmationModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        heading="Delete!"
-        onDelete={() => {
-          handleDelete();
-          setIsModalOpen(false);
-        }}
-      />
     </div>
   );
 };
 
-export default LanguageImageSection;
+export default BlogImageSection;

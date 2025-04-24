@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
-import DeleteModal from "../../../Components/Modals/DeleteModal";
+import DeleteModal from "../../../components/Modals/DeleteModal";
 import { motion } from "framer-motion";
-import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
+import AddOverviewContentModal from "../../../components/Modals/AddOverviewContentModal";
 import OverviewCard from "../components/overviewCard";
 import MediaGalleryCard from "../components/mediaGalleryCard";
 import CoursesCard from "../components/coursesCard";

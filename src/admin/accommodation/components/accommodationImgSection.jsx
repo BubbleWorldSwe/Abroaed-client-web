@@ -55,13 +55,26 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
   };
 
   const handleSubmit = () => {
-    if (fileImage) {
-      onUploadImage(fileImage); // send file to parent
-      //toast.success("Image uploaded successfully");
-      closeModal();
-    } else {
+    if (!fileImage) {
       toast.error("Please select an image to upload");
+      return;
     }
+
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+    const maxSize = 1000 * 1024; // 500 KB
+
+    if (!allowedTypes.includes(fileImage.type)) {
+      toast.error("Only JPG and PNG images are allowed");
+      return;
+    }
+
+    if (fileImage.size > maxSize) {
+      toast.error("Image size must be less than 1MB");
+      return;
+    }
+
+    onUploadImage(fileImage); // send file to parent
+    closeModal();
   };
 
   return (

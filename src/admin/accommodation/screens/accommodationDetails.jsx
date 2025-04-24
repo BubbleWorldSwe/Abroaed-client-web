@@ -1,7 +1,7 @@
 /* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-import DeleteModal from "../../../Components/Modals/DeleteModal";
-import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
+import DeleteModal from "../../../components/Modals/DeleteModal";
+import AddOverviewContentModal from "../../../components/Modals/AddOverviewContentModal";
 import AccommodationImageSection from "../components/accommodationImgSection";
 import AccommodationDescription from "../components/accommodationDescription";
 import AccommodationLocation from "../components/accommodationLocation";

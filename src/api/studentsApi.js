@@ -1,9 +1,11 @@
 import { BASE_URL } from "../constants/baseUrl";
 import { pageDataLimit } from "../constants/values";
+import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
+  makePatchRequestWithToken,
   makePostRequest,
   makePostRequestWithFormData,
   makePutRequest,
@@ -171,11 +173,13 @@ export const getStudentApplications = async (leadId) => {
 
 export const setUpdateStudentApplication = async (credentials, appId) => {
   try {
+    const { adminToken } = store.getState().auth;
     console.log(credentials);
 
-    const data = await makePatchRequest(
+    const data = await makePatchRequestWithToken(
       `${BASE_URL}/api/v1/admin/applications/${appId}`,
-      credentials
+      credentials,
+      adminToken
     );
 
     if (data.success) {
