@@ -59,31 +59,33 @@ function HomeHeroSection() {
             style={{ mixBlendMode: "multiply" }}
           ></div>
           {/* <div className="absolute inset-0 bg-gradient-to-b from-white to-black opacity-30 z-0"></div> */}
-          <div className="absolute  top-1/2 md:top-1/3 flex flex-col items-end justify-start  mx-auto px-4 lg:flex-row ">
-            <div className="text-start   text-white lg:w-2/3 px-1 lg:px-8">
+          <div className="absolute  top-1/2 md:top-1/3   mx-auto px-4  ">
+            <div className="text-start   text-white lg:w-2/3 lg:px-8">
               <p className="">
                 {textEffect}
               </p>
-              <h1 className="mb-6 md:mb-3 text-[42px]  font-medium tracking-tight leading-none text-white md:text-[75px]">
+              <h1 className="mb-6 md:mb-3 text-[42px]  font-medium  leading-none  text-white md:text-[75px]">
                 From Here to Anywhere-Dream Big, Study Global
               </h1>
-              <div className="w-40 md:w-52">
-                <button
-                  type="submit"
-                  className="py-1 md:py-3 rounded-xl w-full whitespace-nowrap px-8 mx-auto text-[20px] font-semibold text-center text-[#432205]  bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-                  onClick={handleClickBookNow}
-                >
-                  Book Now
-                </button>
-              </div>
+
+            </div>
+            <div className="w-full  flex  flex-col  gap-6 md:flex-row justify-between md:items-center  md:pl-8 mt-20">
+              <button
+                type="submit"
+                className="py-1 md:py-3 md:w-52 rounded-xl w-44 whitespace-nowrap px-8  text-[20px] font-semibold text-center text-[#432205]  bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                onClick={handleClickBookNow}
+              >
+                Book Now
+              </button>
+              <button
+                onClick={() => navigate('/aboutUs')}
+                className=" hover:bg-white hover:bg-opacity-20 px-1 md:px-4 py-2 rounded-full transition-opacity flex justify-start items-center gap-2">
+                <Play className="text-white" size={15} />
+                <p className="text-white text-sm md:text-base">Why we build ABROAED ? </p>
+              </button>
             </div>
           </div>
-          <button
-            onClick={() => navigate('/aboutUs')}
-            className="absolute right-0 md:right-20 bottom-2 md:bottom-10 hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-full transition-opacity flex justify-center items-center gap-2">
-            <Play className="text-white" size={15} />
-            <p className="text-white">Why we build ABROAED ? </p>
-          </button>
+
         </section>
       </div>
     </>

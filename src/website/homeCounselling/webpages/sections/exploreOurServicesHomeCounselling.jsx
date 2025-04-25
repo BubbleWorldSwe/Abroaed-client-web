@@ -15,7 +15,7 @@ const serviceData = [
     {
         text1: "Home Consultation",
         text2:
-            "Our home consultation brings expert advice to your doorstep. We assess your educational aspirations, preferred destinations, and potential career paths. This service ensures personalized guidance from experienced counselors in the comfort of your home. With a focus on clarity, we discuss program options, visa processes, and financial planning. This consultation provides families an opportunity to understand the study abroad process comprehensively. Our home consultation services cover throughout Delhi, but on request, we can also serve you in NCR-region and other states of India. We focus on answering your questions, explaining the process, and providing honest, practical advice to help you kick-start your journey.",
+            "Our home consultation brings expert advice to your doorstep. We assess your educational aspirations, preferred destinations, and potential career paths. This service ensures personalized guidance from experienced counsellors in the comfort of your home. With a focus on clarity, we discuss program options, visa processes, and financial planning. This consultation provides families an opportunity to understand the study abroad process comprehensively. Our home consultation services cover throughout Delhi, but on request, we can also serve you in NCR-region and other states of India. We focus on answering your questions, explaining the process, and providing honest, practical advice to help you kick-start your journey.",
         imgUrl: homeService1,
     },
     {
