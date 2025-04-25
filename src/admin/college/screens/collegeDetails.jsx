@@ -1,5 +1,4 @@
 /* eslint-disable no-constant-condition */
-import DeleteModal from "../../../components/Modals/DeleteModal";
 import { motion } from "framer-motion";
 import AddOverviewContentModal from "../../../components/Modals/AddOverviewContentModal";
 import OverviewCard from "../components/overviewCard";
@@ -27,6 +26,7 @@ import { getAllDestinations } from "../../../api/destinationApi";
 import LocationModal from "../modals/locationModal";
 import CollegeLocation from "../components/collegeLocation";
 import CollegeImageSection from "../components/collegeImageSection";
+import DeleteModal from "../../../commons/modal/deletedModal";
 
 function CollegDetails() {
   const dispatch = useDispatch();
@@ -130,10 +130,10 @@ function CollegDetails() {
         closeModal={closeModal}
         onUpdate={onUpdate}
         onUploadImage={onUploadImage}
-        /*  onUploadImage={(files) => {
-          console.log("Uploaded Files:", files);
-          // You can send to server here using FormData
-        }} */
+      /*  onUploadImage={(files) => {
+        console.log("Uploaded Files:", files);
+        // You can send to server here using FormData
+      }} */
       />
     ),
     section2: (
