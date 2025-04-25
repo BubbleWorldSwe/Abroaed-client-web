@@ -357,7 +357,7 @@ function ComingSoonPage() {
   return (
     <div
       className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
-      // style={{ backgroundImage: `url(${comingSoon})` }}
+    // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards
