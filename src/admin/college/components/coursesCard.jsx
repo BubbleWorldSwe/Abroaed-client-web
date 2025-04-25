@@ -44,7 +44,7 @@ function CoursesCard({ onEdit, onUpdate }) {
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-sm text-gray-700  bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th className="px-4 py-3">Scholarship Name</th>
+              <th className="px-4 py-3">Name</th>
               <th className="px-4 py-3">Course Level</th>
               <th className="px-4 py-3">Duration</th>
               {isWriteAccess && <th className="px-4 py-3"></th>}

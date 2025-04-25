@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { motion } from "framer-motion";
-import AddOverviewContentModal from "../../../components/Modals/AddOverviewContentModal";
+
 import OverviewCard from "../components/overviewCard";
 import MediaGalleryCard from "../components/mediaGalleryCard";
 import CoursesCard from "../components/coursesCard";
@@ -86,10 +86,6 @@ function CollegDetails() {
     handleDeleteCloseModal();
   };
 
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
-  };
-
   const handleDelete = () => {
     dispatch(deleteCollegeRequest(state?._id));
     navigate("/admin/colleges");
@@ -131,7 +127,7 @@ function CollegDetails() {
         closeModal={closeModal}
         onUpdate={onUpdate}
         onUploadImage={onUploadImage}
-      /*  onUploadImage={(files) => {
+        /*  onUploadImage={(files) => {
         console.log("Uploaded Files:", files);
         // You can send to server here using FormData
       }} */
@@ -249,10 +245,6 @@ function CollegDetails() {
         title={sections[selectedSectionIndex]?.title || ""}
       />
 
-      <AddOverviewContentModal
-        isOpen={isAddModalOpen}
-        onClose={handleCloseAddModal}
-      />
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
           <CollegeImageSection

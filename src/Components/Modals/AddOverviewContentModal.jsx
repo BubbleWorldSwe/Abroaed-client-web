@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { updateContent } from "../../slices/collegeSectionSlice";
 
 function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
   // const dispatch = useDispatch();
@@ -70,7 +68,7 @@ function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block font-medium">About</label>
+            <label className="block font-medium">Abosssut</label>
             <textarea
               name="about"
               value={formData.about}
