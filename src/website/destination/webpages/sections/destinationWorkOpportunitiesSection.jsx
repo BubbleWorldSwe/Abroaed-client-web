@@ -22,8 +22,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               >
                 Studying in the {destinationDetails?.countryId?.name} offers a
                 variety of experiences. The cultural and traditional values of
-                the
-                {destinationDetails?.countryId?.name} attract several
+                the {destinationDetails?.countryId?.name} attract several
                 international students every year. The popular areas of
                 employment in {destinationDetails?.countryId?.name} are as
                 follows:

@@ -22,7 +22,7 @@ const TestPrepSimplifyThings = () => {
                 your weak areas to maximize scores. With flexible online classes
                 and visa-focused coaching, we prepare you for both the exam and
                 your study abroad journey. Join thousands who've boosted their
-                scores by 20%+ within a month with our ith our results-driven
+                scores by 20%+ within a month with our results-driven
                 system.
               </PrimaryBodyText>
             </div>

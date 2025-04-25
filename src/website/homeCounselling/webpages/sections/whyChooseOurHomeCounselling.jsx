@@ -34,7 +34,7 @@ const WhyChooseOurHomeCounselling = () => {
           <div className="">
             <div className="text-gray-500 sm:text-lg dark:text-gray-400">
               <SectionMainHeader className={`md:mb-6 leading-tight md:leading-normal tracking-tighter md:tracking-normal `}>
-                Why Choose Our Home counselling?
+                Why Choose Our Home Counsellors?
               </SectionMainHeader>
             </div>
             <div className="grid  grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10   mb-5 md:mt-10 mt-4 mx-auto ">

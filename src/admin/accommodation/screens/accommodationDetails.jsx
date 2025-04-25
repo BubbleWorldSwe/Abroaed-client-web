@@ -1,6 +1,5 @@
 /* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-import DeleteModal from "../../../components/Modals/DeleteModal";
 import AddOverviewContentModal from "../../../components/Modals/AddOverviewContentModal";
 import AccommodationImageSection from "../components/accommodationImgSection";
 import AccommodationDescription from "../components/accommodationDescription";
@@ -23,6 +22,7 @@ import {
 import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "../../../commons/modal/deletedModal";
 
 const AccommodationDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);

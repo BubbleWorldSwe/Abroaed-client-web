@@ -19,7 +19,7 @@ const serviceData = [
   {
     text1: "Home Consultation",
     text2:
-      "Experience personalized study abroad guidance from the comfort of your home. Our expert counselors visit you to understand your educational background, preferences, and long-term career vision. We explain study destinations, university options, course selection, application timelines, visa processes, and financial planning. This service is ideal for families who want clarity and expert advice without the hassle of traveling to an office. Available across Delhi and on-request in NCR and other states, our home consultations make the study abroad journey more accessible, informed, and comfortable for every student.",
+      "Experience personalized study abroad guidance from the comfort of your home. Our expert counsellors visit you to understand your educational background, preferences, and long-term career vision. We explain study destinations, university options, course selection, application timelines, visa processes, and financial planning. This service is ideal for families who want clarity and expert advice without the hassle of traveling to an office. Available across Delhi and on-request in NCR and other states, our home consultations make the study abroad journey more accessible, informed, and comfortable for every student.",
     imgUrl: homeService8,
   },
   {
@@ -32,7 +32,7 @@ const serviceData = [
   {
     text1: "Customized Personal Guidance",
     text2:
-      "Receive individual attention and expert guidance through every step of your study abroad journey. We begin by understanding your strengths and aspirations, helping you pick the right course and university. Our counselors assist with SOP writing, LORs, application review, and timely submission. We also support you with scholarship applications, interview readiness, and visa document preparation. This holistic, hands-on approach ensures your application is polished, competitive, and tailored to each institution. With us, you stay on track, informed, and fully equipped to achieve your global education goals.",
+      "Receive individual attention and expert guidance through every step of your study abroad journey. We begin by understanding your strengths and aspirations, helping you pick the right course and university. Our counsellors assist with SOP writing, LORs, application review, and timely submission. We also support you with scholarship applications, interview readiness, and visa document preparation. This holistic, hands-on approach ensures your application is polished, competitive, and tailored to each institution. With us, you stay on track, informed, and fully equipped to achieve your global education goals.",
     imgUrl: homeService2,
   },
   {
