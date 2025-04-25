@@ -98,6 +98,8 @@ function* handleUploadCollegeImage(action) {
     const { id, imageData } = action.payload;
     const response = yield call(setCollegeUploadFile, id, imageData);
 
+    console.log(response);
+
     if (response.status === 200) {
       yield put(uploadCollegeImageSuccess(response.data));
       toast.success(response.message);

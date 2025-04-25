@@ -95,7 +95,8 @@ function Header({ isHeaderBgWhite = false }) {
         );
 
         setColleges(publishedColleges);
-        setFilteredColleges(publishedColleges); // Show all initially
+        setFilteredColleges(publishedColleges);
+
         const uniqueStates = [
           ...new Map(
             publishedColleges.map((college) => [

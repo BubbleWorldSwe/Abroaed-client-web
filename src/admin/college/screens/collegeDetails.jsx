@@ -121,6 +121,7 @@ function CollegDetails() {
 
   const closeModal = () => {
     setSelectedSection(null);
+    setFormdata(null);
   };
 
   const modals = {

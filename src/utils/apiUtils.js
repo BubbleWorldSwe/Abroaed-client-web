@@ -255,8 +255,6 @@ export const makePutRequestWithFormData = async (url, payload, token) => {
   try {
     console.log("make PUT request = " + url);
 
-    console.log(payload);
-
     let controller = new AbortController();
     setTimeout(() => controller.abort(), PUT_REQUEST_TIMEOUT);
     const response = await fetch(
