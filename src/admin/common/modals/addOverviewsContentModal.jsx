@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useState, useEffect } from "react";
 
 function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
   // const dispatch = useDispatch();
@@ -38,14 +39,14 @@ function AddOverviewContentModal({ isOpen, onClose, isEditMode, editData }) {
     e.preventDefault();
 
     // Construct updated content for Overview
-    const updatedContent = {
-      about: formData.about,
-      estYear: formData.establishmentYear,
-      qsWorldRanking: formData.qsRanking,
-      totalStudents: formData.totalStudents,
-      studentToTeacherRatio: formData.studentToTeacherRatio,
-      maleToFemaleRatio: formData.maleToFemaleRatio,
-    };
+    // const updatedContent = {
+    //   about: formData.about,
+    //   estYear: formData.establishmentYear,
+    //   qsWorldRanking: formData.qsRanking,
+    //   totalStudents: formData.totalStudents,
+    //   studentToTeacherRatio: formData.studentToTeacherRatio,
+    //   maleToFemaleRatio: formData.maleToFemaleRatio,
+    // };
 
     // Dispatch action
     // dispatch(
