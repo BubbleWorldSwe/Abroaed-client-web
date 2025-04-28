@@ -42,7 +42,7 @@ function HomeDownloadApp() {
             </div>
             <div className="absolute bottom-0 right-32">
               <img
-                className="hidden mx-auto w-64  md:flex object-contain"
+                className="hidden mx-auto w-64  rounded-2xl   md:flex object-contain"
                 src={iPhoneIcon}
                 alt="mobile app"
               />
