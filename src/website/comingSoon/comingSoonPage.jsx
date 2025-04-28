@@ -1,22 +1,18 @@
 import { useEffect, useRef, useState } from "react";
-// import slider1 from "../assets/slider1.png";
-// import slider2 from "../assets/slider2.png";
-// import slider3 from "../assets/slider3.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import AppStore from "../assets/AppStore.png";
 import playStore from "../assets/gPlayStore.png";
-import InfiniteMovingCards from "../components/InfiniteMovingCards";
 import documentAdd from "../assets/documentAdd.png";
 import handMoney from "../assets/handMoney.png";
-// import homeSmileAngle from "../assets/homeSmileAngle.png";
 import passport from "../assets/passport.png";
 import squareAcademicCap from "../assets/squareAcademicCap.png";
 import diversity from "../assets/diversity.png";
 import iPhoneIcon from "../assets/iPhoneIcon.png";
 import homeIcon from "../assets/homeIcon.png";
-import ModalLayout from "../components/Modals/ModalLayout";
+import InfiniteMovingCards from "./scrollInfiniteCard";
+import ModalLayout from "./modals/comingSoonModal";
 const carouselItems = [
   {
     title: "Home Counselling",
