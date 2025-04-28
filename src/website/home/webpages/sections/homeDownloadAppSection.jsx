@@ -1,6 +1,6 @@
 import iPhoneIcon from "../../../../assets/iPhoneIcon.png";
 import playStore from "../../../../assets/gPlayStore.png";
-import AppStore from "../../../../assets/AppStore.png";
+import AppStore from "../../../../assets/appStoreImg.png";
 // import AppStoreButton from "../../../ comman / components / appStoreButton";
 function HomeDownloadApp() {
   return (
