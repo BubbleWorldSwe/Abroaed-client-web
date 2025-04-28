@@ -1,5 +1,5 @@
 import ContactUsForm from "../../comman/components/contactUsForm";
-// import Testimonials from "../../comman/components/testimonials";
+import Testimonials from "../../comman/components/testimonials";
 import Footer from "../../comman/sections/footerSection";
 import Header from "../../comman/sections/headerSection";
 import AbroaedPlusContent from "./sections/abroaedPlusContent";
@@ -64,9 +64,9 @@ const AbroaedPlusPage = () => {
         <SectionComponent >
           <AbroaedPlusExplorePlan />
         </SectionComponent>
-        {/* <SectionComponent >
+        <SectionComponent >
           <Testimonials />
-        </SectionComponent> */}
+        </SectionComponent>
         <div className="relative">
           <SectionComponent >
             <AbroaedPlusFaq />

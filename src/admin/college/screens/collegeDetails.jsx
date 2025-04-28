@@ -1,4 +1,3 @@
-/* eslint-disable no-constant-condition */
 import { motion } from "framer-motion";
 
 import OverviewCard from "../components/overviewCard";

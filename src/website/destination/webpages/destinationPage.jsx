@@ -13,7 +13,7 @@ import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorBelow from "../../../assets/vectorBelow.png";
 import destinationHeroImg from "../../../assets/destinationHeroImg.png";
-// import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
+import vectorNoseRightToLeft from "../../../assets/vectorNoseRightToLeft.png";
 import DestinationStudentAccommodationsSection from "./sections/destinationStudentAccommodationSection";
 import Footer from "../../comman/sections/footerSection";
 import { items } from "../data";
@@ -32,7 +32,7 @@ import {
 } from "../../../api/collegesApi";
 
 import { getAccommodationsByDestinationId } from "../../../api/accomodationApi";
-// import Testimonials from "../../comman/components/testimonials";
+import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -279,7 +279,7 @@ function DestinationPage() {
           </SectionComponent>
         )}
 
-        {/* <div className="relative">
+        <div className="relative">
           <SectionComponent>
             <Testimonials />
           </SectionComponent>
@@ -290,7 +290,7 @@ function DestinationPage() {
               alt="Counselling session"
             />
           </div>
-        </div> */}
+        </div>
         {/* <SectionComponent>
           <Blogs />
         </SectionComponent> */}

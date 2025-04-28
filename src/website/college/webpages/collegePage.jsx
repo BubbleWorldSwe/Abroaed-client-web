@@ -21,7 +21,7 @@ import { getCollegeDetailsById } from "../../../api/collegesApi";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { getAccommodationsByStateId } from "../../../api/accomodationApi";
 // import Blogs from "../../comman/components/blogs";
-// import Testimonials from "../../comman/components/testimonials";
+import Testimonials from "../../comman/components/testimonials";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
@@ -196,8 +196,10 @@ function CollegePage() {
             <CollegeFaqSection collegeDetails={collegeDetails} />
           </SectionComponent>
         )}
-        {/* <Testimonials />
-        <Blogs /> */}
+        <SectionComponent>
+          <Testimonials />
+        </SectionComponent>
+        {/* <Blogs /> */}
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
