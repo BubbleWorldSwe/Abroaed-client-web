@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import AppStore from "../assets/AppStore.png";
+import AppStoreImg from "../assets/appStoreImg.png";
 import playStore from "../assets/gPlayStore.png";
 import documentAdd from "../assets/documentAdd.png";
 import handMoney from "../assets/handMoney.png";
@@ -476,7 +476,7 @@ function ComingSoonPage() {
                       </div>
                       <div>
                         <img
-                          src={AppStore}
+                          src={AppStoreImg}
                           alt="googlePlayStoreIcon"
                           className=""
                         />
@@ -526,7 +526,7 @@ function ComingSoonPage() {
                     </div>
                     <div>
                       <img
-                        src={AppStore}
+                        src={AppStoreImg}
                         alt="googlePlayStoreIcon"
                         className=" "
                       />
