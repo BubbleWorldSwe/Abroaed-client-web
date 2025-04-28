@@ -277,27 +277,10 @@ function ComingSoonPage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
   const [openModal, setOpenModal] = useState(false);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTickerPosition((prev) => (prev <= -100 ? 100 : prev - 1)); // Reset when it moves off-screen
-    }, 20); // Adjust the interval to control the speed
 
-    return () => clearInterval(interval);
-  }, []);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
-  };
 
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + carouselItems.length) % carouselItems.length
-    );
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email, phone);
