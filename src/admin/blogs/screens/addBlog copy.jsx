@@ -6,7 +6,6 @@ import { SelectField } from "../../../commons/components/inputFields/selectField
 import { getBlogsCategory } from "../../../api/blogsApi";
 
 import ReactQuill from "react-quill";
-
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addBlogRequest } from "../../../redux/actions/blogActions";
@@ -33,10 +32,28 @@ const AddBlog = () => {
   const addBlog = () => {
     try {
       console.log("Add");
-      const { title, category, content } = formData;
+      const { title, category, content, files } = formData;
 
       if (!title || !category || !content) {
         toast.error("Please fill out all fields.");
+        return;
+      }
+
+      if (!files) {
+        toast.error("Please select an image to upload.");
+        return;
+      }
+
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      const maxSize = 1000 * 1024; // 500 KB
+
+      if (!allowedTypes.includes(files.type)) {
+        toast.error("Only JPG and PNG images are allowed.");
+        return;
+      }
+
+      if (files.size > maxSize) {
+        toast.error("Image size must be less than 2MB.");
         return;
       }
 
@@ -130,6 +147,18 @@ const AddBlog = () => {
                   required
                 />
               </div>
+
+              <div className="my-5 mb-6">
+                <TextInputField
+                  label="Upload Image"
+                  name="files"
+                  value={formData?.files}
+                  onChange={handleChange}
+                  placeholder={"Enter Title"}
+                  type="file"
+                />
+              </div>
+
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Content
               </label>

@@ -8,9 +8,11 @@ import { toast } from "react-toastify";
 import {
   addBlogRequest,
   editBlogRequest,
+  uploadBlogImageRequest,
 } from "../../../redux/actions/blogActions";
 import { getBlogsCategory } from "../../../api/blogsApi";
 import { useNavigate } from "react-router-dom";
+import BlogImageSection from "../components/blogImgSection";
 
 const EditBlog = () => {
   const navigate = useNavigate();
@@ -23,6 +25,19 @@ const EditBlog = () => {
     status: "",
   });
   const [blogsCategory, setBlogsCategory] = useState([]);
+
+  async function onUploadImage(data) {
+    try {
+      console.log(data);
+      dispatch(
+        uploadBlogImageRequest(blogDetails._id, {
+          files: data,
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     if (blogDetails) {
@@ -131,37 +146,43 @@ const EditBlog = () => {
               Last Updated{" "}
               {new Date(blogDetails.updatedAt).toLocaleDateString()}
             </div>
-            <div className="w-full mx-auto my-6 p-4 border rounded-lg shadow-lg bg-white">
-              <TextInputField
-                label="Title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                placeholder="Enter Title"
+            <div className="w-full mx-auto my-6 border rounded-lg shadow-lg bg-white">
+              <BlogImageSection
+                onUploadImage={onUploadImage}
+                isEditImage={true}
               />
-              <div className="my-5 mb-6">
-                <SelectField
-                  label="Category"
-                  name="category"
-                  value={formData.category}
+              <div className="p-4">
+                <TextInputField
+                  label="Title"
+                  name="title"
+                  value={formData.title}
                   onChange={handleChange}
-                  options={blogsCategory.map((data) => ({
-                    label: data.name,
-                    value: data._id,
-                  }))}
-                  required
+                  placeholder="Enter Title"
                 />
-              </div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Content
-              </label>
-              <div className="rounded-lg border-none bg-[#F4F4F5] p-2">
-                <ReactQuill
-                  value={formData.content}
-                  onChange={handleContentChange}
-                  className="border-none"
-                  style={{ minHeight: "300px" }}
-                />
+                <div className="my-5 mb-6">
+                  <SelectField
+                    label="Category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    options={blogsCategory.map((data) => ({
+                      label: data.name,
+                      value: data._id,
+                    }))}
+                    required
+                  />
+                </div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Content
+                </label>
+                <div className="rounded-lg border-none bg-[#F4F4F5] p-2">
+                  <ReactQuill
+                    value={formData.content}
+                    onChange={handleContentChange}
+                    className="border-none"
+                    style={{ minHeight: "300px" }}
+                  />
+                </div>
               </div>
             </div>
           </div>

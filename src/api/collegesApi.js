@@ -5,9 +5,7 @@ import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
-  makePostRequest,
   makePostRequestWithToken,
-  makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
 export const getColleges = async (page) => {
@@ -135,7 +133,6 @@ export const setCollegeUploadFile = async (id, imageData) => {
   try {
     const { files, type } = imageData;
 
-    // Build FormData
     const formData = new FormData();
 
     if (Array.isArray(files)) {
@@ -148,18 +145,22 @@ export const setCollegeUploadFile = async (id, imageData) => {
 
     formData.append("type", type);
 
-    const { adminToken } = store.getState().auth;
+    const requestOptions = {
+      method: "PUT",
+      body: formData,
+    };
 
     // Make request
-    const data = await makePutRequestWithFormData(
+    const data = await fetch(
       `${BASE_URL}/api/v1/admin/colleges/upload/file/${id}`,
-      formData,
-      adminToken
+      requestOptions
     );
 
-    console.log(data);
-    if (data.success) {
-      return data.data;
+    const result = await data.json();
+
+    console.log(result);
+    if (result.status === 200) {
+      return result;
     }
   } catch (error) {
     console.log(error);

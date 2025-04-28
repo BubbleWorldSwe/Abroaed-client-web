@@ -29,7 +29,7 @@ export const mentorsDetails = [
         text: (
             <div >
                 <p className="mb-2">
-                    At ABROAED, we are honored to be mentored by Molijit Lal, a respected academic leader and a key force behind the enduring excellence of IMM Business School. With a deep-rooted commitment to academic integrity and institutional growth, she has played a vital role in upholding and expanding IMM’s 55+ year legacy of delivering transformative education.
+                    At ABROAED, we are honoured to be mentored by Molijit Lal, a respected academic leader and a key force behind the enduring excellence of IMM Business School. With a deep-rooted commitment to academic integrity and institutional growth, she has played a vital role in upholding and expanding IMM’s 55+ year legacy of delivering transformative education.
                 </p>
                 <p className="mb-2">
                     As Registrar and Promoter, her structured, student-centric approach continues to shape IMM into a globally respected institution. At ABROAED, her mentorship brings that same spirit of discipline, compassion, and purpose. She helps us stay anchored in values while pushing forward with a global vision—ensuring every student journey is guided with care, clarity, and confidence.

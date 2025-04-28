@@ -49,11 +49,12 @@ function* handleFetchStudentProfile(action) {
       // toast.success("Profile fetched successfully!");
     } else {
       yield put(fetchStudentProfileFailure(response.message));
-      toast.error(response.message);
+      //toast.error(response.message);
+      console.log(response.message);
     }
   } catch (error) {
     yield put(fetchStudentProfileFailure(error.message));
-    toast.error("Failed to fetch student profile");
+    // toast.error("Failed to fetch student profile");
   }
 }
 
@@ -74,11 +75,12 @@ function* handleEditStudentProfile(action) {
         //  toast.success("Student updated successfully!");
       } else {
         yield put(editStudentProfileFailure(leadDetailsResponse.message));
-        toast.error(leadDetailsResponse.message);
+        //  toast.error(leadDetailsResponse.message);
+        console.log(response.message);
       }
     } else {
       yield put(editStudentProfileFailure(response.message));
-      toast.error(response.message);
+      // toast.error(response.message);
     }
   } catch (error) {
     yield put(editStudentProfileFailure(error.message));
@@ -97,11 +99,12 @@ function* handleFetchStudentApplications(action) {
       // toast.success("Student Application fetched successfully!");
     } else {
       yield put(fetchStudentApplicationSuccess(response.message));
-      toast.error(response.message);
+      console.log(response.message);
+      // toast.error(response.message);
     }
   } catch (error) {
     yield put(fetchStudentApplicationFailure(error.message));
-    toast.error("Failed to fetch applications");
+    // toast.error("Failed to fetch applications");
   }
 }
 
@@ -116,11 +119,12 @@ function* handleFetchStudentDocuments(action) {
       // toast.success("Student Application fetched successfully!");
     } else {
       yield put(fetchStudentDocumentsFailure(response.message));
-      toast.error(response.message);
+      //  toast.error(response.message);
+      console.log(response.message);
     }
   } catch (error) {
     yield put(fetchStudentDocumentsFailure(error.message));
-    toast.error("Failed to fetch documents");
+    //   toast.error("Failed to fetch documents");
   }
 }
 
@@ -134,11 +138,12 @@ function* handleFetchStudentTransactions(action) {
       //  toast.success("Student Transaction fetched successfully!");
     } else {
       yield put(fetchStudentTransactionsFailure(response.message));
-      toast.error(response.message);
+      // toast.error(response.message);
+      console.log(response.message);
     }
   } catch (error) {
     yield put(fetchStudentTransactionsFailure(error.message));
-    toast.error("Failed to fetch transactions");
+    //  toast.error("Failed to fetch transactions");
   }
 }
 
@@ -152,11 +157,12 @@ function* handleFetchSavedPreferences(action) {
       //  toast.success("Saved Prefrences fetched successfully!");
     } else {
       yield put(fetchStudentSavedPreferencesFailure(response.message));
-      toast.error(response.message);
+      //  toast.error(response.message);
+      console.log(response.message);
     }
   } catch (error) {
     yield put(fetchStudentSavedPreferencesFailure(error.message));
-    toast.error("Failed to fetch saved preferences");
+    //  toast.error("Failed to fetch saved preferences");
   }
 }
 
@@ -171,11 +177,12 @@ function* handleFetchPrepsBatches(action) {
       //  toast.success("Prep Batches fetched successfully!");
     } else {
       yield put(fetchStudentPrepsBatchesFailure(response.message));
-      toast.error(response.message);
+      //  toast.error(response.message);
+      console.log(response.message);
     }
   } catch (error) {
     yield put(fetchStudentPrepsBatchesFailure(error.message));
-    toast.error("Failed to fetch preps batches");
+    // toast.error("Failed to fetch preps batches");
   }
 }
 

@@ -15,6 +15,9 @@ import {
   FETCH_ALL_BLOGS_SUCCESS,
   FETCH_ALL_BLOGS_REQUEST,
   FETCH_ALL_BLOGS_FAILURE,
+  UPLOAD_BLOG_IMAGE_REQUEST,
+  UPLOAD_BLOG_IMAGE_SUCCESS,
+  UPLOAD_BLOG_IMAGE_FAILURE,
 } from "../actions/blogActions";
 
 const initialState = {
@@ -33,6 +36,7 @@ export const blogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_BLOGS_REQUEST:
     case FETCH_ALL_BLOGS_REQUEST:
+    case UPLOAD_BLOG_IMAGE_REQUEST:
       return { ...state, loading: true };
 
     case FETCH_BLOGS_SUCCESS:
@@ -83,6 +87,7 @@ export const blogsReducer = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case EDIT_BLOG_SUCCESS:
+    case UPLOAD_BLOG_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -106,6 +111,7 @@ export const blogsReducer = (state = initialState, action) => {
       };
 
     case EDIT_BLOG_FAILURE:
+    case UPLOAD_BLOG_IMAGE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_BLOG:

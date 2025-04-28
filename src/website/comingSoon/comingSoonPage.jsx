@@ -1,22 +1,19 @@
 import { useEffect, useRef, useState } from "react";
-// import slider1 from "../assets/slider1.png";
-// import slider2 from "../assets/slider2.png";
-// import slider3 from "../assets/slider3.png";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import AppStore from "../assets/AppStore.png";
-import playStore from "../assets/gPlayStore.png";
-import InfiniteMovingCards from "../Components/InfiniteMovingCards";
-import documentAdd from "../assets/documentAdd.png";
-import handMoney from "../assets/handMoney.png";
-// import homeSmileAngle from "../assets/homeSmileAngle.png";
-import passport from "../assets/passport.png";
-import squareAcademicCap from "../assets/squareAcademicCap.png";
-import diversity from "../assets/diversity.png";
-import iPhoneIcon from "../assets/iPhoneIcon.png";
-import homeIcon from "../assets/homeIcon.png";
-import ModalLayout from "../Components/Modals/ModalLayout";
+import AppStoreImg from "../../assets/appStoreImg.png";
+import playStore from "../../assets/gPlayStore.png";
+import documentAdd from "../../assets/documentAdd.png";
+import handMoney from "../../assets/handMoney.png";
+import passport from "../../assets/passport.png";
+import squareAcademicCap from "../../assets/squareAcademicCap.png";
+import diversity from "../../assets/diversity.png";
+import iPhoneIcon from "../../assets/iPhoneIcon.png";
+import homeIcon from "../../assets/homeIcon.png";
+import InfiniteMovingCards from "./scrollInfiniteCard";
+import ModalLayout from "./modals/comingSoonModal";
+
 const carouselItems = [
   {
     title: "Home Counselling",
@@ -280,28 +277,10 @@ function ComingSoonPage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const swiperRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
   const [openModal, setOpenModal] = useState(false);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTickerPosition((prev) => (prev <= -100 ? 100 : prev - 1)); // Reset when it moves off-screen
-    }, 20); // Adjust the interval to control the speed
 
-    return () => clearInterval(interval);
-  }, []);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
-  };
 
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + carouselItems.length) % carouselItems.length
-    );
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email, phone);
@@ -463,7 +442,9 @@ function ComingSoonPage() {
               </div>
               {/* <div className=""> */}
               <div className=" hidden lg:flex flex-col justify-end  ">
-                <div className={`relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl `}>
+                <div
+                  className={`relative  bg-[#26262A] w-full  py-5 px-4 shadow-xl rounded-lg mx-auto max-w-screen-5xl `}
+                >
                   <div className="lg:max-w-xs  ">
                     <h2 className="mb-4 text-lg md:text-center  font-rethink md:px-6 lg:px-1 lg:text-start   lg:text-3xl  font-extrabold text-gray-300 dark:text-white">
                       Join Waitlist for ABROAED mobile app.
@@ -478,7 +459,7 @@ function ComingSoonPage() {
                       </div>
                       <div>
                         <img
-                          src={AppStore}
+                          src={AppStoreImg}
                           alt="googlePlayStoreIcon"
                           className=""
                         />
@@ -528,7 +509,7 @@ function ComingSoonPage() {
                     </div>
                     <div>
                       <img
-                        src={AppStore}
+                        src={AppStoreImg}
                         alt="googlePlayStoreIcon"
                         className=" "
                       />

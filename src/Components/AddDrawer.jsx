@@ -1,5 +1,3 @@
-
-
 const sections = [
   {
     title: "Overview",
@@ -13,13 +11,12 @@ function AddDrawer({ isOpen, onClose, title }) {
   return (
     <>
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300"
-        >
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300">
           <div
             id="addReviewDrawer"
-            className={`fixed right-0 top-0 z-40 h-screen w-full max-w-md overflow-y-auto bg-white p-4 transition-transform duration-800 ease-in-out antialiased dark:bg-gray-800 ${isOpen ? "translate-x-0" : "translate-x-full"
-              }`}
+            className={`fixed right-0 top-0 z-40 h-screen w-full max-w-md overflow-y-auto bg-white p-4 transition-transform duration-800 ease-in-out antialiased dark:bg-gray-800 ${
+              isOpen ? "translate-x-0" : "translate-x-full"
+            }`}
             tabIndex="-1"
             aria-labelledby="addReviewDrawer-label"
           >

@@ -1,7 +1,5 @@
 /* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-import DeleteModal from "../../../Components/Modals/DeleteModal";
-import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
 import AccommodationImageSection from "../components/accommodationImgSection";
 import AccommodationDescription from "../components/accommodationDescription";
 import AccommodationLocation from "../components/accommodationLocation";
@@ -23,6 +21,8 @@ import {
 import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "../../../commons/modal/deletedModal";
+import AddOverviewContentModal from "../../common/modals/addOverviewsContentModal";
 
 const AccommodationDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);

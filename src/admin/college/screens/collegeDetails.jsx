@@ -1,7 +1,5 @@
-/* eslint-disable no-constant-condition */
-import DeleteModal from "../../../Components/Modals/DeleteModal";
 import { motion } from "framer-motion";
-import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
+
 import OverviewCard from "../components/overviewCard";
 import MediaGalleryCard from "../components/mediaGalleryCard";
 import CoursesCard from "../components/coursesCard";
@@ -27,6 +25,7 @@ import { getAllDestinations } from "../../../api/destinationApi";
 import LocationModal from "../modals/locationModal";
 import CollegeLocation from "../components/collegeLocation";
 import CollegeImageSection from "../components/collegeImageSection";
+import DeleteModal from "../../../commons/modal/deletedModal";
 
 function CollegDetails() {
   const dispatch = useDispatch();
@@ -86,10 +85,6 @@ function CollegDetails() {
     handleDeleteCloseModal();
   };
 
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
-  };
-
   const handleDelete = () => {
     dispatch(deleteCollegeRequest(state?._id));
     navigate("/admin/colleges");
@@ -121,6 +116,7 @@ function CollegDetails() {
 
   const closeModal = () => {
     setSelectedSection(null);
+    setFormdata(null);
   };
 
   const modals = {
@@ -131,9 +127,9 @@ function CollegDetails() {
         onUpdate={onUpdate}
         onUploadImage={onUploadImage}
         /*  onUploadImage={(files) => {
-          console.log("Uploaded Files:", files);
-          // You can send to server here using FormData
-        }} */
+        console.log("Uploaded Files:", files);
+        // You can send to server here using FormData
+      }} */
       />
     ),
     section2: (
@@ -248,10 +244,6 @@ function CollegDetails() {
         title={sections[selectedSectionIndex]?.title || ""}
       />
 
-      <AddOverviewContentModal
-        isOpen={isAddModalOpen}
-        onClose={handleCloseAddModal}
-      />
       <main className="min-h-screen font-rethink flex flex-col gap-6 overflow-y-auto p-6 bg-gray-100 dark:bg-gray-900">
         <div className="accordion space-y-4">
           <CollegeImageSection

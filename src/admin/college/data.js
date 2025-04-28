@@ -73,14 +73,3 @@ export const faqs = {
     ],
 };
 
-export const overview = {
-    content: {
-        about: "This is a prestigious university with a strong academic background.",
-        estYear: 1850,
-        qsWorldRanking: 50,
-        intake: "Fall & Spring",
-        totalStudents: 20000,
-        maleToFemaleRatio: "60:40",
-        studentToTeacherRatio: "10:1",
-    },
-};

@@ -1,5 +1,5 @@
 import playStore from "../../../assets/gPlayStore.png";
-import AppStore from "../../../assets/AppStore.png";
+import AppStore from "../../../assets/appStoreImg.png";
 import {
   FaFacebook,
   FaInstagram,

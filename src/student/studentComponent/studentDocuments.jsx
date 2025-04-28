@@ -69,6 +69,29 @@ const StudentDocuments = () => {
 
   async function uploadDocument() {
     try {
+      if (!selectedFile) {
+        toast.error("Please select a file to upload");
+        return;
+      }
+
+      const allowedTypes = [
+        "application/pdf",
+        "image/jpeg",
+        "image/png",
+        "image/jpg",
+      ];
+      const maxSize = 2 * 1024 * 1024; // 2MB
+
+      if (!allowedTypes.includes(selectedFile.type)) {
+        toast.error("Only PDF, JPG, and PNG files are allowed");
+        return;
+      }
+
+      if (selectedFile.size > maxSize) {
+        toast.error("File size must be less than 2MB");
+        return;
+      }
+
       const data = await setUpdateStudentDocuments(selectedDoc._id, {
         files: selectedFile,
         status: "pending",

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from "react";
-import AddOverviewContentModal from "../../../Components/Modals/AddOverviewContentModal";
-import { overview } from "../data";
 import { useSelector } from "react-redux";
+import AddOverviewContentModal from "../../common/modals/addOverviewsContentModal";
 
 function OverviewCard() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);

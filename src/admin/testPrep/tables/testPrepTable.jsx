@@ -216,7 +216,7 @@ const TestPrepTable = ({
           handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
           tableData={testPreps}
-          colSpan={5}
+          colSpan={6}
         />
       </table>
       <DeleteConfirmationModal

@@ -8,6 +8,7 @@ import locationIcon from "../../../assets/locationIcon.png";
 import wallet from "../../../assets/wallet.png";
 import { Bookmark } from "lucide-react";
 import AccomodationEnquiryModal from "../modals/accomodationEnquiryModal";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const AccommodationCard = ({
   item,
@@ -54,7 +55,11 @@ const AccommodationCard = ({
         <a href="#">
           <img
             className="rounded-t-lg w-full h-48 object-cover"
-            src={IMAGES.accommodations}
+            src={
+              item?.imageUrl
+                ? `${IMAGE_BASE_URL}/${item?.imageUrl}`
+                : IMAGES.noImage
+            }
             alt={item.name}
           />
         </a>

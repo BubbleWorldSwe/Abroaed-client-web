@@ -25,10 +25,11 @@ const ExploreCollegesNavItemModal = ({
               <li key={destination._id}>
                 <button
                   onClick={() => handleDestinationClick(destination)}
-                  className={`flex  justify-between whitespace-nowrap p-3 w-full text-left rounded-lg ${selectedDestination?._id === destination._id
-                    ? "bg-gray-100 dark:bg-gray-600"
-                    : "hover:bg-gray-50 dark:hover:bg-gray-700"
-                    }`}
+                  className={`flex  justify-between whitespace-nowrap p-3 w-full text-left rounded-lg ${
+                    selectedDestination?._id === destination._id
+                      ? "bg-gray-100 dark:bg-gray-600"
+                      : "hover:bg-gray-50 dark:hover:bg-gray-700"
+                  }`}
                 >
                   <span className="font-semibold text-base">
                     <Flag
@@ -70,10 +71,11 @@ const ExploreCollegesNavItemModal = ({
                   <button
                     key={state?._id}
                     onClick={() => handleStateClick(state)}
-                    className={`px-4 py-2 border rounded-full hover:bg-gray-primary hover:text-white font-semibold ${selectedState?._id === state?._id
-                      ? "bg-gray-800 text-white"
-                      : "bg-white text-gray-700"
-                      }`}
+                    className={`px-4 py-2 border rounded-full hover:bg-gray-primary hover:text-white font-semibold ${
+                      selectedState?._id === state?._id
+                        ? "bg-gray-800 text-white"
+                        : "bg-white text-gray-700"
+                    }`}
                   >
                     {state?.name}
                   </button>

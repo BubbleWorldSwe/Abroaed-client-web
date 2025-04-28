@@ -7,6 +7,7 @@ import {
   makePostRequest,
   makePostRequestWithToken,
   makePutRequest,
+  makePutRequestWithFormData,
 } from "../utils/apiUtils";
 
 export const getBlogs = async (page) => {
@@ -109,6 +110,27 @@ export const getBlogsByCategoryId = async (id) => {
   try {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/blogs/category/${id}`
+    );
+    console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setBlogUploadFile = async (id, imageData) => {
+  try {
+    console.log(imageData);
+    const { files } = imageData;
+    const { adminToken } = store.getState().auth;
+    const data = await makePutRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/blogs/post/upload/file/${id}`,
+      {
+        files,
+      },
+      adminToken
     );
     console.log(data);
     if (data.success) {

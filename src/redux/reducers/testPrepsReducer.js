@@ -59,8 +59,14 @@ export const testPrepsReducer = (state = initialState, action) => {
     case FETCH_ALL_TESTPREPS_SUCCESS:
       const testPreps = action.payload.result;
 
-      // Create a lookup for quick access
-      const testPrepMap = new Map(testPreps.map((test) => [test?.exam, test]));
+      const publishedItems = testPreps.filter((item) => {
+        console.log(item?.status);
+        return item.status === "publish";
+      });
+
+      const testPrepMap = new Map(
+        publishedItems.map((test) => [test?.exam, test])
+      );
 
       // Arrange destinations based on predefined sequence
       const sortedTestPrep = testPrepsSequence

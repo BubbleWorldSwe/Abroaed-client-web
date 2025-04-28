@@ -1,4 +1,3 @@
-
 import Header from "../../comman/sections/headerSection";
 import Footer from "../../comman/sections/footerSection";
 import HomeServicesSection from "./sections/homeServicesSection";
@@ -27,10 +26,9 @@ function HomeLayout() {
     dispatch(addLeadRequest(data));
   };
   let containerClass = {
-    outerContainer: 'md:max-w-screen-2xl px-8 mx-auto w-full lg:px-12',
-    internalContainer: ''
-  }
-
+    outerContainer: "md:max-w-screen-2xl px-8 mx-auto w-full lg:px-12",
+    internalContainer: "",
+  };
 
   return (
     <div className="font-rethink relative">
@@ -39,7 +37,7 @@ function HomeLayout() {
       <HomeSlidingImg />
       <div className="grid grid-cols-1 gap-10 md:gap-16  ">
         <div className=" relative">
-          <SectionComponent >
+          <SectionComponent>
             <HomeKpiMatrixSection
               title={"Why ABROAED?"}
               header={"What Sets Us Apart?"}
@@ -47,7 +45,6 @@ function HomeLayout() {
                 "ABROAED distinguishes itself through its highly personalized and student-centric approach to study abroad consulting. We offer end-to-end support, customizing every step—from university selection and application strategy to visa assistance and pre-departure preparation—to align with each student’s unique goals and aspirations. Leveraging data-driven insights and a proven track record of success, we ensure students target the best-fit programs that align with their academic and career ambitions. At ABROAED, we’re not just helping you move across borders; we’re helping you create a future filled with endless possibilities."
               }
             />
-
           </SectionComponent>
           <div className="absolute top-0 left-0 -z-20">
             <img
@@ -57,11 +54,11 @@ function HomeLayout() {
             />
           </div>
         </div>
-        <SectionComponent >
+        <SectionComponent>
           <HomePathwaySection />
         </SectionComponent>
         <div className="relative">
-          <div >
+          <div>
             <HomeServicesSection />
           </div>
           <div className="absolute top-0 right-0 -z-20">
@@ -72,7 +69,7 @@ function HomeLayout() {
             />
           </div>
         </div>
-        <SectionComponent >
+        <SectionComponent>
           <HomePromoSection
             onFormSubmit={handleAddLead}
             source={source.home}
@@ -83,7 +80,7 @@ function HomeLayout() {
           <Testimonials />
         </SectionComponent>
         <div className="relative ">
-          <SectionComponent >
+          <SectionComponent>
             <HomeDownloadApp />
           </SectionComponent>
           <div className="absolute -top-10 left-0 -z-10">

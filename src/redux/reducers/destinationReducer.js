@@ -64,9 +64,14 @@ export const destnationReducer = (state = initialState, action) => {
     case FETCH_ALL_DESTINATIONS_SUCCESS:
       const destinations = action.payload.result;
 
+      const publishedItems = destinations.filter((item) => {
+        console.log(item?.status);
+        return item.status === "complete";
+      });
+
       // Create a lookup for quick access
       const destinationMap = new Map(
-        destinations.map((dest) => [dest?.countryId?.name, dest])
+        publishedItems.map((dest) => [dest?.countryId?.name, dest])
       );
 
       // Arrange destinations based on predefined sequence

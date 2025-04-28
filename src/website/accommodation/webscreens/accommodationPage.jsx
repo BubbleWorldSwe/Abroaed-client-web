@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
-// import Testimonials from "../../comman/components/testimonials";
+import Testimonials from "../../comman/components/testimonials";
 // import OurPartners from "../../comman/sections/ourPartnersSection";
 import {
   addSavedPreferenceRequest,
@@ -52,8 +52,12 @@ function AccomodationPage() {
       }
 
       if (acc.status === 200) {
-        setAccList(acc.data.result);
+        const publishedAccs = acc.data.result.filter(
+          (item) => item.status === "publish"
+        );
+        setAccList(publishedAccs);
       }
+
       setIsDataLoading(false);
       setIsLoading(false);
     } catch (error) {
@@ -154,9 +158,9 @@ function AccomodationPage() {
         <SectionComponent>
           <AccommodationFaqSection />
         </SectionComponent>
-        {/* <SectionComponent>
+        <SectionComponent>
           <Testimonials />
-        </SectionComponent> */}
+        </SectionComponent>
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}

@@ -18,6 +18,10 @@ export const FETCH_ALL_BLOGS_REQUEST = "FETCH_ALL_BLOGS_REQUEST";
 export const FETCH_ALL_BLOGS_SUCCESS = "FETCH_ALL_BLOGS_SUCCESS";
 export const FETCH_ALL_BLOGS_FAILURE = "FETCH_ALL_BLOGS_FAILURE";
 
+export const UPLOAD_BLOG_IMAGE_REQUEST = "UPLOAD_BLOG_IMAGE_REQUEST";
+export const UPLOAD_BLOG_IMAGE_SUCCESS = "UPLOAD_BLOG_IMAGE_SUCCESS";
+export const UPLOAD_BLOG_IMAGE_FAILURE = "UPLOAD_BLOG_IMAGE_FAILURE";
+
 export const SET_SELECTED_BLOG = "SET_SELECTED_BLOG";
 
 export const fetchBlogsRequest = (page) => ({
@@ -101,4 +105,19 @@ export const editBlogFailure = (error) => ({
 export const setSelectedBlog = (blog) => ({
   type: SET_SELECTED_BLOG,
   payload: blog,
+});
+
+export const uploadBlogImageRequest = (id, imageData) => ({
+  type: UPLOAD_BLOG_IMAGE_REQUEST,
+  payload: { id, imageData },
+});
+
+export const uploadBlogImageSuccess = (data) => ({
+  type: UPLOAD_BLOG_IMAGE_SUCCESS,
+  payload: data,
+});
+
+export const uploadBlogImageFailure = (error) => ({
+  type: UPLOAD_BLOG_IMAGE_FAILURE,
+  payload: error,
 });

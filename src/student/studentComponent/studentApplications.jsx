@@ -63,7 +63,10 @@ const StudentApplications = () => {
               <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-4 py-3 min-w-[14rem]">
-                    Application ID
+                    College
+                  </th>
+                  <th scope="col" className="px-4 py-3 min-w-[14rem]">
+                    Course
                   </th>
                   <th scope="col" className="px-4 py-3 min-w-[10rem]">
                     Comment
@@ -71,36 +74,36 @@ const StudentApplications = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                  <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    APPID_123456
-                  </td>
-                  <td className="px-4 py-3 font-medium text-gray-900">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </td>
-                </tr>
-                <tr>
-                  <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    APPID_123456
-                  </td>
-                  <td className="px-4 py-3 font-medium text-gray-900">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </td>
-                </tr>
+                {applications.length > 0 &&
+                applications.some((app) => app.comments?.length > 0) ? (
+                  applications.map((app, _) =>
+                    app.comments.map((data, i) => (
+                      <tr
+                        key={`${app._id}-${i}`} // better unique key
+                        className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {app?.college?.name || "-"}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {app?.courseName || "-"}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900">
+                          {data?.message || "-"}
+                        </td>
+                      </tr>
+                    ))
+                  )
+                ) : (
+                  <tr>
+                    <td
+                      colSpan="3"
+                      className="px-4 py-3 text-center text-gray-500"
+                    >
+                      No data exists
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

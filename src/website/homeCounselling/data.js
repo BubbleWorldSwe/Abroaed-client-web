@@ -22,7 +22,7 @@ export const steps = [
     {
         step: 1,
         heading: "Schedule Session",
-        description: "Fill out a simple form to choose a time that works for you. Our counselors will reach out to confirm the details."
+        description: "Fill out a simple form to choose a time that works for you. Our counsellors will reach out to confirm the details."
     },
     {
         step: 2,
@@ -143,7 +143,7 @@ export const cardDetails = [
     },
     {
         key: "Expert Guidance",
-        value: 'Our counselors have years of experience in helping students successfully plan their study abroad journeys.'
+        value: 'Our counsellors have years of experience in helping students successfully plan their study abroad journeys.'
 
     },
     {
@@ -184,7 +184,7 @@ export const faqHomecounselling = [
     {
         question: "How can ABROAED help my study ABROAED journey?",
         answer:
-            "Abroed is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
+            "ABROAED is a global education agency that assists students in pursuing their studies in the UK. We advise on the best universities and courses based on your academic background and future goals, and assist you with the application process, including documentation support, visa guidance, and scholarship searches.",
     },
     // Add more FAQs here
 ]

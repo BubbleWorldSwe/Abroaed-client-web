@@ -51,7 +51,6 @@ import BlogsDetails from "../admin/blogs/screens/blogsDetails";
 import StudentSignIn from "../website/auth/studentSignIn";
 import StudentSignUp from "../website/auth/studentSignUp";
 import StudentResetPassword from "../website/auth/studentResetPassword";
-import ComingSoonPage from "../Layouts/comingSoonPage";
 import BatchLoginPage from "../website/authentication/batchLoginPage";
 import BatchSignupPage from "../website/authentication/batchSignupPage";
 import ForgetPasswordEmail from "../website/authentication/forgetPassword/forgetPasswordEmail";
@@ -61,6 +60,7 @@ import ForgetPasswordSuccessfull from "../website/authentication/forgetPassword/
 import Login from "../website/authentication/login";
 import AddBlog from "../admin/blogs/screens/addBlog";
 import EditBlog from "../admin/blogs/screens/editBlog";
+import ComingSoonPage from "../website/comingSoon/comingSoonPage";
 
 const AppRoutes = () => {
   const allRoutes = [

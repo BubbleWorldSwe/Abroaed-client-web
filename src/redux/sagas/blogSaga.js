@@ -3,6 +3,7 @@ import {
   getAllBlogs,
   getBlogs,
   setAddBlog,
+  setBlogUploadFile,
   setDeleteBlog,
   setUpdateBlog,
 } from "../../api/blogsApi"; // API functions
@@ -23,6 +24,9 @@ import {
   fetchAllBlogsSuccess,
   fetchAllBlogsFailure,
   FETCH_ALL_BLOGS_REQUEST,
+  uploadBlogImageSuccess,
+  uploadBlogImageFailure,
+  UPLOAD_BLOG_IMAGE_REQUEST,
 } from "../actions/blogActions";
 import { toast } from "react-toastify";
 
@@ -110,6 +114,25 @@ function* handleEditBlog(action) {
   }
 }
 
+// Upload a Blog Image
+function* handleUploadBlogImage(action) {
+  try {
+    const { id, imageData } = action.payload;
+    const response = yield call(setBlogUploadFile, id, imageData);
+
+    if (response.status === 200) {
+      yield put(uploadBlogImageSuccess(response.data));
+      toast.success(response.message);
+    } else {
+      yield put(uploadBlogImageFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(uploadBlogImageFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
 // Root saga for blogs
 export default function* blogsSaga() {
   yield takeLatest(FETCH_BLOGS_REQUEST, fetchBlogs);
@@ -117,4 +140,5 @@ export default function* blogsSaga() {
   yield takeLatest(ADD_BLOG_REQUEST, addNewBlog);
   yield takeLatest(DELETE_BLOG_REQUEST, deleteBlogSaga);
   yield takeLatest(EDIT_BLOG_REQUEST, handleEditBlog);
+  yield takeLatest(UPLOAD_BLOG_IMAGE_REQUEST, handleUploadBlogImage);
 }

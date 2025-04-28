@@ -41,7 +41,7 @@ export const TextGenerateEffect = ({
         <div className={cn("font-bold", className)}>
             <div className="mt-4">
                 <motion.div
-                    className="dark:text-white text-white text-[24px] md:text-[32px] leading-snug tracking-wide"
+                    className="dark:text-white text-white text-[22px] md:text-[32px] leading-snug tracking-wide"
                     key={currentHeadingIndex}
                 >
                     {displayText}

@@ -3,6 +3,8 @@ import TestimonialsCard from "./testimonialsCard";
 import testimonial1 from "../../../assets/testimonial1.jpg"
 import testimonial2 from "../../../assets/testimonial2.jpg"
 import testimonial3 from "../../../assets/testimonial3.jpg"
+import testimonial4 from "../../../assets/testimonial4.jpg"
+import testimonial5 from "../../../assets/testimonial5.jpg"
 const Testimonials = () => {
   // const videos = ["Ez8F0nW6S-w", "4wSL3KHSAns", "S_xwQNHOuSI"];
   const testimonials = [
@@ -32,7 +34,25 @@ const Testimonials = () => {
       testimonial:
         "I would like to thank the counsellors of ABROAED for their never ending support and availability around the clock. They were always available to answer my questions, irrespective of the time and provided clear, personalized guidance every step of the way. Their dedication and expertise truly made my journey smooth and peaceful. I'm genuinely grateful for their constant support.",
       img: testimonial3
-    }
+    },
+    {
+      name: " Vanshika Goel",
+      university: "University of Galway",
+      course: " Masters in International Management",
+      country: "Ireland",
+      testimonial:
+        "I sincerely appreciate the support received from the  counsellors of ABROAED team their efforts have been instrumental to our success and they are also available 24*7. My time at the University of Galway was truly transformative. The diverse, inclusive environment and practical approach to learning helped me grow both personally and professionally.",
+      img: testimonial4
+    },
+    {
+      name: "Riya",
+      university: "University of Liverpool",
+      course: "Master in Management",
+      country: " United Kingdom",
+      testimonial:
+        "A big thank you to the amazing counsellors of ABROAED team. They have been incredible in guiding me and are always available whenever I have any doubts or queries, even help in applying for jobs. Their expertise and contributions from across the globe have made a significant impact in achieving my goals.",
+      img: testimonial5
+    },
   ];
 
 
@@ -47,7 +67,7 @@ const Testimonials = () => {
             Read Our Success Stories
           </SectionMainHeader>
         </div>
-        <div className="grid  gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="gap-8 pb-4 flex overflow-x-auto">
           {testimonials.map((data, i) => (
             <TestimonialsCard key={i} data={data} />
           ))}
