@@ -13,6 +13,7 @@ import iPhoneIcon from "../../assets/iPhoneIcon.png";
 import homeIcon from "../../assets/homeIcon.png";
 import InfiniteMovingCards from "./scrollInfiniteCard";
 import ModalLayout from "./modals/comingSoonModal";
+
 const carouselItems = [
   {
     title: "Home Counselling",
@@ -276,7 +277,6 @@ function ComingSoonPage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const swiperRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tickerPosition, setTickerPosition] = useState(100); // Initial position off-screen
   const [openModal, setOpenModal] = useState(false);
