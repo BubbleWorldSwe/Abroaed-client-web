@@ -60,7 +60,7 @@ import ForgetPasswordSuccessfull from "../website/authentication/forgetPassword/
 import Login from "../website/authentication/login";
 import AddBlog from "../admin/blogs/screens/addBlog";
 import EditBlog from "../admin/blogs/screens/editBlog";
-import ComingSoonPage from "../layout/comingSoonPage";
+import ComingSoonPage from "../website/comingSoon/comingSoonPage";
 
 const AppRoutes = () => {
   const allRoutes = [
