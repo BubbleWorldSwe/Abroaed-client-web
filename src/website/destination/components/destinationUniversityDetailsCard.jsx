@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import locationIcon from "../../../assets/locationIcon.png";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 import { IMAGES } from "../../../constants/images";
 import { Bookmark } from "lucide-react";
 import { useSelector } from "react-redux";
@@ -18,6 +19,11 @@ const UniversityDetailsCard = ({
     (saved) => (saved.typeId?._id || saved.typeId) === item?._id
   );
 
+  const collegeImages = item?.images;
+
+  const logoImage = collegeImages?.find((img) => img.type === "logo");
+  const coverImage = collegeImages?.find((img) => img.type === "cover");
+
   const isSaved = Boolean(savedItem);
 
   return (
@@ -25,7 +31,11 @@ const UniversityDetailsCard = ({
       <a href="#">
         <img
           className="rounded-t-lg w-full h-48 object-cover"
-          src={IMAGES.collegeImage}
+          src={
+            coverImage
+              ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+              : IMAGES.noImage
+          }
           alt={item.name}
         />
       </a>
@@ -47,8 +57,9 @@ const UniversityDetailsCard = ({
               }
             >
               <Bookmark
-                className={`w-6 h-6 text-black ${isSaved ? "fill-black" : "text-gray-500"
-                  }`}
+                className={`w-6 h-6 text-black ${
+                  isSaved ? "fill-black" : "text-gray-500"
+                }`}
               />
             </button>
           )}

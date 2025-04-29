@@ -133,24 +133,19 @@ export const setCollegeUploadFile = async (id, imageData) => {
   try {
     const { files, type } = imageData;
 
-    console.log(files, type);
-
     const formData = new FormData();
 
     if (Array.isArray(files)) {
-      console.log("Array Type");
       files.forEach((file) => {
-        formData.append("files", file);
+        formData.append("files", file); // multiple files support
       });
     } else {
-      formData.append("files", files);
+      formData.append("files", files); // single file
     }
 
-    formData.append("type", type);
+    formData.append("type", type); // add type (gallery/logo/cover)
 
-    for (let [key, value] of formData.entries()) {
-      console.log(key, value);
-    }
+    console.log(formData);
 
     const response = await fetch(
       `${BASE_URL}/api/v1/admin/colleges/upload/file/${id}`,
@@ -160,7 +155,14 @@ export const setCollegeUploadFile = async (id, imageData) => {
       }
     );
 
-    let result = await response.json();
+    const contentType = response.headers.get("content-type");
+    let result;
+
+    if (contentType && contentType.includes("application/json")) {
+      result = await response.json();
+    } else {
+      result = await response.text();
+    }
 
     console.log(result);
 

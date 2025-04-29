@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
@@ -6,14 +6,19 @@ import pencil from "../../../assets/pencil.png";
 import dark from "../../../assets/dark.png";
 import add_a_photo from "../../../assets/add_a_photo.png";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
-const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
+const CollegeImageSection = ({
+  onUploadImage,
+  handleDelete,
+  onDeleteImage,
+}) => {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
   const { isWriteAccess } = useSelector((state) => state.auth);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
-  const [modalType, setModalType] = useState(null); // "logo" or "cover"
-
+  const [modalType, setModalType] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
 
@@ -23,6 +28,11 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
     setImagePreview(null);
     setFileImage(null);
   };
+
+  const collegeImages = collegeDetails?.images;
+
+  const logoImage = collegeImages?.find((img) => img.type === "logo");
+  const coverImage = collegeImages?.find((img) => img.type === "cover");
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -45,14 +55,54 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
     }
   };
 
-  const handleSubmit = () => {
-    if (fileImage) {
-      onUploadImage(fileImage, modalType); // send image + type
-      closeModal();
-    } else {
-      toast.error("Please select an image to upload");
+  const handleSubmit = async () => {
+    try {
+      if (fileImage) {
+        const fileSizeInKB = fileImage.size / 1024; // size in KB
+
+        if (modalType === "logo" && fileSizeInKB > 500) {
+          toast.error("Logo size should not exceed 500KB");
+          return;
+        }
+
+        if (modalType === "cover" && fileSizeInKB > 1024) {
+          toast.error("Cover image size should not exceed 1MB");
+          return;
+        }
+
+        if (modalType === "logo" && logoImage?._id) {
+          onDeleteImage(logoImage._id, fileImage, modalType);
+        } else if (modalType === "cover" && coverImage?._id) {
+          onDeleteImage(coverImage._id, fileImage, modalType);
+        } else {
+          onUploadImage(fileImage, modalType);
+        }
+
+        closeModal();
+      } else {
+        toast.error("Please select an image to upload");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (!openModal) {
+      setImagePreview(null);
+      setFileImage(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (openModal) {
+      if (modalType === "logo" && logoImage?.ImageUrl) {
+        setImagePreview(`${IMAGE_BASE_URL}/${logoImage.ImageUrl}`);
+      } else if (modalType === "cover" && coverImage?.ImageUrl) {
+        setImagePreview(`${IMAGE_BASE_URL}/${coverImage.ImageUrl}`);
+      }
+    }
+  }, [openModal, modalType]);
 
   return (
     <div className="flex flex-col">
@@ -65,26 +115,28 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
         }}
       >
         <img
-          src={collegeDetails?.coverImage || dark}
+          src={coverImage ? `${IMAGE_BASE_URL}/${coverImage.ImageUrl}` : dark}
           alt="Cover"
           className="w-full h-full object-cover rounded-t-xl"
         />
-        {/* Logo image button */}
+
+        {/* Logo Upload Button */}
         <div
           className="absolute w-24 h-24 p-4 left-20 cursor-pointer rounded-sm"
-          style={{
-            bottom: "-1.7rem",
-            backgroundColor: "rgb(227 231 237)",
-          }}
+          style={{ bottom: "-1.7rem", backgroundColor: "rgb(227 231 237)" }}
           onClick={(e) => {
-            e.stopPropagation(); // Prevent triggering cover click
+            e.stopPropagation();
             setModalType("logo");
             setOpenModal(true);
           }}
         >
           <img
-            src={collegeDetails?.logo || add_a_photo}
-            alt="Logo Upload"
+            src={
+              logoImage
+                ? `${IMAGE_BASE_URL}/${logoImage.ImageUrl}`
+                : add_a_photo
+            }
+            alt="Logo"
             className="w-full h-full object-contain"
           />
         </div>
@@ -129,9 +181,7 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
         {isWriteAccess && (
           <div className="flex items-center">
             <button
-              onClick={() => {
-                setIsModalOpen(!isModalOpen);
-              }}
+              onClick={() => setIsModalOpen(true)}
               type="button"
               className="flex items-center text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 bg-red-600 border-2 hover:bg-red-700"
             >
@@ -152,6 +202,7 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
             >
               &times;
             </button>
+
             <h2 className="text-2xl font-semibold mb-4 capitalize">
               {modalType === "logo" ? "Upload Logo" : "Upload Cover Image"}
             </h2>
@@ -159,20 +210,15 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
             <div className="w-full relative mb-4">
               <img
                 className="w-full h-60 object-cover rounded-lg"
-                src={
-                  imagePreview ||
-                  (modalType === "logo"
-                    ? collegeDetails?.logo || dark
-                    : collegeDetails?.coverImage || dark)
-                }
+                src={imagePreview || dark}
                 alt="Preview"
               />
             </div>
+
             <p className="text-gray-600 text-sm mb-4">
               {modalType === "logo"
                 ? "Max. File Size: 500KB"
                 : "Max. File Size: 1MB"}
-              {/*  . Supported files: JPG, PNG or JPEG */}
             </p>
 
             <div
@@ -231,6 +277,8 @@ const CollegeImageSection = ({ onUploadImage, handleDelete }) => {
           </div>
         </div>
       )}
+
+      {/* Delete College Modal */}
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

@@ -58,6 +58,7 @@ export const collegesReducer = (state = initialState, action) => {
       return initialState;
 
     case EDIT_COLLEGE_SUCCESS:
+    case UPLOAD_COLLEGE_IMAGE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -78,12 +79,13 @@ export const collegesReducer = (state = initialState, action) => {
         total: null,
       };
 
-    case UPLOAD_COLLEGE_IMAGE_SUCCESS:
+    /*  case UPLOAD_COLLEGE_IMAGE_SUCCESS:
       return {
         ...state,
+        
         loading: false,
       };
-
+ */
     case FETCH_COLLEGES_FAILURE:
     case ADD_COLLEGE_FAILURE:
     case DELETE_COLLEGE_FAILURE:

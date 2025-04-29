@@ -22,10 +22,7 @@ function StudentSignIn() {
         toast.error("Please enter Email ID and Password.");
         return;
       }
-      if (!formData.get("terms")) {
-        toast.error("You must accept the Terms and Conditions to proceed.");
-        return;
-      }
+
       dispatch(studentLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
@@ -48,9 +45,7 @@ function StudentSignIn() {
               // action="#"
               onSubmit={handleSubmit}
             >
-              <a
-                href="/"
-              >
+              <a href="/">
                 <FaHome fontSize={30} />
               </a>
               <h2 className="text-xl  font-bold   text-gray-900 dark:text-white">
@@ -104,10 +99,10 @@ function StudentSignIn() {
                   <div className="ml-3 text-sm">
                     <label
                       htmlFor="terms"
-                      className="font-light   text-gray-500 dark:text-gray-300"
+                      className="font-light text-gray-500 dark:text-gray-300"
                     >
-                      By signing up, you are creating a ABROAED account, and
-                      you agree to ABROAED’s{" "}
+                      By signing up, you are creating a ABROAED account, and you
+                      agree to ABROAED’s{" "}
                       <a
                         className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
                         href="#"
@@ -125,7 +120,6 @@ function StudentSignIn() {
                     </label>
                   </div>
                 </div>
-
               </div>
               <button
                 type="submit"

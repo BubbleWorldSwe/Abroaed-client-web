@@ -18,6 +18,7 @@ import {
   PUT_REQUEST_TIMEOUT,
   constructPostRequestOptionsWithFormData,
   constructPatchRequestOptionsWithToken,
+  constructDeleteRequestOptionsWithPayload,
 } from "./serviceUtils";
 
 export const makeGetRequest = async (url) => {
@@ -198,15 +199,28 @@ export const makePatchRequestWithToken = async (url, payload, token) => {
   }
 };
 
-export const makeDeleteRequest = async (url) => {
+export const makeDeleteRequest = async (url, payload) => {
   try {
     console.log("make Delete request = " + url);
 
     let controller = new AbortController();
     setTimeout(() => controller.abort(), DELETE_REQUEST_TIMEOUT);
-    const response = await fetch(url, constructDeleteRequestOptions(), {
-      signal: controller.signal,
-    });
+
+    let response;
+
+    if (payload) {
+      response = await fetch(
+        url,
+        constructDeleteRequestOptionsWithPayload(payload),
+        {
+          signal: controller.signal,
+        }
+      );
+    } else {
+      response = await fetch(url, constructDeleteRequestOptions(), {
+        signal: controller.signal,
+      });
+    }
 
     const json = await response.json();
     console.log(json);

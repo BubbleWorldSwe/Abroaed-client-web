@@ -102,6 +102,22 @@ export const constructPutRequestOptions = (payload) => {
   };
 };
 
+export const constructDeleteRequestOptionsWithPayload = (payload) => {
+  console.log(payload);
+  var requestHeaders = new Headers();
+  requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
+
+  var raw = JSON.stringify(payload);
+
+  console.log(raw);
+
+  return {
+    method: REQUEST_METHOD_DELETE,
+    headers: requestHeaders,
+    body: raw,
+  };
+};
+
 export const constructDeleteRequestOptions = () => {
   var requestHeaders = new Headers();
 
