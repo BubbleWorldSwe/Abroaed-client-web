@@ -1,14 +1,14 @@
-import { useState } from "react";
-import TestimonialModal from "../modals/testimonialModal";
 import PrimaryBodyText from "../../styleComponents/primaryBodyText";
 
 /* eslint-disable react/prop-types */
-const TestimonialsCard = ({ data }) => {
-  const [readMore, setReadMore] = useState(false);
+const TestimonialsCard = ({ data,
+  readMore,
+  setReadMore,
+  setIndex,
+  idx
+}) => {
 
-  const handleClose = () => {
-    setReadMore(false)
-  }
+
 
   return (
     // <div className="max-w-full bg-white border transition-transform duration-300 hover:scale-105 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -39,11 +39,7 @@ const TestimonialsCard = ({ data }) => {
     //   </div>
     // </div>
     <>
-      <TestimonialModal
-        item={data}
-        isOpen={readMore}
-        onClose={handleClose}
-      />
+
       <div className="   flex-shrink-0 hover:scale-[1.01] bg-white rounded-lg shadow-md overflow-hidden">
         <div className="relative w-full h-[15rem]  object-cover rounded-t-lg border border-gray-300">
           <img
@@ -65,7 +61,10 @@ const TestimonialsCard = ({ data }) => {
             </span>
             <span
               className="cursor-pointer text-blue-500 "
-              onClick={() => setReadMore(!readMore)}
+              onClick={() => {
+                setReadMore(!readMore);
+                setIndex(idx);
+              }}
             >
               {readMore ? " Read Less" : "Read More"}
             </span>

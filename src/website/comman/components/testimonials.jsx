@@ -9,9 +9,15 @@ import Slider from "react-slick";
 import NextArrow from "./nextArrow";
 import PrevArrow from "./prevArrow";
 import { useState } from "react";
+import TestimonialModal from "../modals/testimonialModal";
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [readMore, setReadMore] = useState(false);
+  const [index, setIndex] = useState(null);
 
+  const handleClose = () => {
+    setReadMore(false)
+  }
   // const videos = ["Ez8F0nW6S-w", "4wSL3KHSAns", "S_xwQNHOuSI"];
   const testimonials = [
     {
@@ -95,8 +101,8 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="  dark:bg-gray-900 mx-auto  max-w-screen-2xl relative">
-      <div className="px-6 md:px-12 mb-10 relative z-10">
+    <section className="  dark:bg-gray-900 mx-auto relative max-w-screen-2xl ">
+      <div className="px-6 md:px-12 mb-10  ">
         <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
           Success Stories
         </p>
@@ -104,15 +110,20 @@ const Testimonials = () => {
           Read Our Success Stories
         </SectionMainHeader>
       </div>
-      <div className="md:px-8">
-        <Slider {...settings} className="pb-4 flex  gap-10 ">
+      <div className="md:px-8 overflow-visible">
+        <Slider {...settings}>
           {testimonials.map((data, i) => (
             <div key={i} className="px-4">
-              <TestimonialsCard key={i} data={data} />
+              <TestimonialsCard key={i} data={data} idx={i} readMore={readMore} setReadMore={setReadMore} setIndex={setIndex} />
             </div>
           ))}
         </Slider>
       </div>
+      <TestimonialModal
+        item={testimonials[index]}
+        isOpen={readMore}
+        onClose={handleClose}
+      />
     </section>
   );
 };
