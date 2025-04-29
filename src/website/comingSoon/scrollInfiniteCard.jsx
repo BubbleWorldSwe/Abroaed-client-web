@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 
 // import MarqueeItem from 'react-marquee-line/lib/MarqueeItem';
 

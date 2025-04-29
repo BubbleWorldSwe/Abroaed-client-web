@@ -60,7 +60,8 @@ import ForgetPasswordSuccessfull from "../website/authentication/forgetPassword/
 import Login from "../website/authentication/login";
 import AddBlog from "../admin/blogs/screens/addBlog";
 import EditBlog from "../admin/blogs/screens/editBlog";
-import ComingSoonPage from "../layout/comingSoonPage";
+import ComingSoonPage from "../website/comingSoon/comingSoonPage";
+import ForexPage from "../website/forex/webpages/forexPage";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -121,6 +122,7 @@ const AppRoutes = () => {
     //   isPrivate: false,
     // },
     { path: "/finance", element: <FinancePage />, isPrivate: false },
+    { path: "/forex", element: <ForexPage />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },
     {
       path: "/languageprep/:id",

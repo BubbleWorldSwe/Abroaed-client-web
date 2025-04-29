@@ -15,7 +15,6 @@ import HomeCounsellingFaqSection from "./sections/homeCounsellingFaqSection";
 // import HomeCounsellingLeadFormSection from './sections/homeCounsellingLeadFormSection';
 import WhyChooseOurHomeCounselling from "./sections/whyChooseOurHomeCounselling";
 import BookCounsellingNow from "./sections/bookCounsellingNow";
-// import Testimonials from "../../comman/components/testimonials";
 import ExploreOurServicesHomeCounselling from "./sections/exploreOurServicesHomeCounselling";
 // import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
@@ -81,15 +80,17 @@ const HomeCounsellingPage = () => {
             />
           </div>
         </div>
-        <SectionComponent>
-          <Testimonials />
-        </SectionComponent>
+
         <div>
           <ExploreOurServicesHomeCounselling />
         </div>
+
         <SectionComponent>
           <HomeCounsellingFaqSection />
         </SectionComponent>
+        <div>
+          <Testimonials />
+        </div>
         {/* <div className="relative">
           <div>
             <Blogs />
@@ -102,6 +103,7 @@ const HomeCounsellingPage = () => {
             />
           </div>
         </div> */}
+
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}

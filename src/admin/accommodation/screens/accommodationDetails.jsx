@@ -21,6 +21,7 @@ import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../../commons/modal/deletedModal";
+import AddOverviewContentModal from "../../common/modals/addOverviewsContentModal";
 
 const AccommodationDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);

@@ -1,0 +1,65 @@
+import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
+import { advantages } from "../../data"
+
+
+
+
+const FrexAdvantangeSection = () => {
+    return (
+        <div className="relative">
+            <section className=" dark:bg-gray-900 relative ">
+                <div className="">
+                    <div className="flex flex-col gap-2 md:gap-6  text-gray-500 sm:text-lg dark:text-gray-400">
+                        <SectionMainHeader
+                            className="mb-6"
+                        >
+                            The ABROAED Advantages
+                        </SectionMainHeader>
+                    </div>
+                    <section className=" dark:bg-gray-900   ">
+                        <div className=" w-full mt-5 ">
+                            <div className=" dark:bg-gray-800 relative   overflow-hidden">
+                                <div className="overflow-x-auto">
+                                    <table className="w-full   text-left  border-t-2 border-gray-400  dark:text-gray-400">
+                                        <thead className={`text-[22px]  text-gray-primary font-semibold  border-b-2 border-gray-400 `}>
+                                            <tr>
+                                                <th scope="col" className="px-4 py-3 ">
+                                                    Name of Scholarship
+                                                </th>
+                                                <th scope="col" className="px-4 py-3">
+                                                    Description
+                                                </th>
+                                                <th scope="col" className="px-4 py-3">
+                                                    <span className="sr-only">Actions</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {advantages.map((item, index) => (
+                                                <tr
+                                                    key={index}
+                                                    className="border-b-2 border-gray-400  dark:border-gray-700"
+                                                >
+                                                    <th
+                                                        scope="row"
+                                                        className={`px-4 py-3 font-semibold text-[18px] text-gray-primary  dark:text-white`}                           >
+                                                        <p>
+                                                            {item.title}
+                                                        </p>
+                                                    </th>
+                                                    <td className={`px-4 py-3 text-base font-normal text-gray-primary `}>{item.advantage}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </div>
+    )
+}
+
+export default FrexAdvantangeSection

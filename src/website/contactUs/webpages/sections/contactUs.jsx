@@ -13,7 +13,7 @@ const ContactUs = () => {
                     <div className="grid grid-cols-1  md:justify-center md:grid-cols-2 gap-6  md:gap-10 pb-8 md:pb-16 pt-6 md:pt-10">
                         <div className="flex relative flex-col gap-4 text-white bg-gray-primary py-8 hover:scale-[1.01] rounded-xl shadow-lg px-4 md:px-10">
                             <div >
-                                <h5 className="text-[16px]  font-medium">
+                                <h5 className="text-[16px]  font-semibold">
                                     Corporate Office
                                 </h5>
                                 <p className=" text-base font-normal ">
@@ -23,7 +23,7 @@ const ContactUs = () => {
 
                             </div>
                             <div>
-                                <h5 className="text-[16px]  font-medium">
+                                <h5 className="text-[16px]  font-semibold">
                                     Contact Number
                                 </h5>
                                 <p className=" text-base font-normal ">
@@ -37,12 +37,12 @@ const ContactUs = () => {
                             </div>
 
                             <div>
-                                <h5 className="text-[16px]  font-medium">
+                                <h5 className="text-[16px]  font-semibold mb-4">
                                     Here are  emails for different parts of ABROAED:
                                 </h5>
                                 <div className="flex flex-col gap-2">
                                     <div>
-                                        <h5 className="text-[16px]  font-medium">
+                                        <h5 className="text-[16px]  font-semibold">
                                             General Inquiries
                                         </h5>
                                         <p className=" text-base font-normal ">
@@ -50,7 +50,7 @@ const ContactUs = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <h5 className="text-[16px]  font-medium">
+                                        <h5 className="text-[16px]  font-semibold">
                                             Work With Us
                                         </h5>
                                         <p className=" text-base font-normal ">
@@ -58,7 +58,7 @@ const ContactUs = () => {
                                         </p>
                                     </div>
                                     <div>
-                                        <h5 className="text-[16px]  font-medium">
+                                        <h5 className="text-[16px]  font-semibold">
                                             Collaborate With Us
                                         </h5>
                                         <p className=" text-base font-normal ">

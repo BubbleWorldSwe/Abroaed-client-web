@@ -1,6 +1,6 @@
 // import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
-// import Testimonials from "../../comman/components/testimonials";
+import Testimonials from "../../comman/components/testimonials";
 import Footer from "../../comman/sections/footerSection";
 import Header from "../../comman/sections/headerSection";
 import LeaguageOfExcellenceExplorePlan from "./sections/leaguageOfExcellenceExplorePlan";
@@ -10,7 +10,7 @@ import LeaguageOfExcellenceServicesOverviews from "./sections/leaguageOfExcellen
 import LeaguageOfExcellenceUniversity from "./sections/leaguageOfExcellenceUniversity";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
-// import vectorDownNose from "../../../assets/vectorDownNose.png";
+import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
@@ -83,10 +83,10 @@ const LeaguageOfExcellencePage = () => {
         <SectionComponent>
           <LeaguageOfExcellenceFaq />
         </SectionComponent>
-        {/* <div className="relative">
-          <SectionComponent>
+        <div className="relative">
+          <div>
             <Testimonials />
-          </SectionComponent>
+          </div>
           <div className="absolute top-32 left-0 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"
@@ -94,7 +94,7 @@ const LeaguageOfExcellencePage = () => {
               alt="Counselling session"
             />
           </div>
-        </div> */}
+        </div>
         {/* <SectionComponent>
           <Blogs />
         </SectionComponent> */}

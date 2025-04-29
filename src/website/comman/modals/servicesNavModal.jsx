@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const items =
     [
+        { title: "Forex", href: "/forex" },
         { title: "Finance", href: "/finance" },
         { title: "Accommodation", href: "/accomodation" },
         { title: "Home Counselling", href: "/homeCounselling" },

@@ -64,16 +64,41 @@ function AboutUsContentSection() {
     <div>
       <section className=" dark:bg-gray-900 relative ">
         <div className=" relative z-10">
-          <div className="flex flex-col gap-4 pt-10">
-            <SectionMainHeader>
-              Our Story
-            </SectionMainHeader>
-            <PrimaryBodyText
-              className="font-semibold"
-            >
-              ABROAED, established in 2025 under the prestigious 55-year legacy of IMM Business School, provides personalized guidance through your study overseas process in Delhi NCR. Our philosophy revolves around empowering students to unlock their full potential. Our focus is on holistic support and a promise of growth for every student.
-            </PrimaryBodyText>
+          <div className="flex flex-col gap-12 pt-10">
+            <div>
+              <SectionMainHeader>
+                Our Story
+              </SectionMainHeader>
+              <PrimaryBodyText
+                className="font-semibold"
+              >
+                At ABROAED, education is not just a destination — it’s a transformation.
+                Founded in 2025, we started with a simple yet powerful belief: that every student deserves not just a pathway to international education, but a guiding force to navigate it.
 
+                Much like the timeless North Star that once guided explorers through uncharted territories, Abroaed stands as a beacon of clarity, trust, and direction.
+                We are more than counselors — we are mentors, companions, and a structured force that propels students from uncertainty to purpose, from aspiration to achievement.
+
+                With every journey we guide, our mission remains the same: to empower futures, one student at a time.
+              </PrimaryBodyText>
+            </div>
+            <div>
+              <SectionMainHeader>
+                Our Vision
+              </SectionMainHeader>
+              <PrimaryBodyText
+                className="font-semibold">
+                To be the trusted North Star for students worldwide — illuminating paths, unlocking potential, and empowering global futures through mentorship, clarity, and unwavering support
+              </PrimaryBodyText>
+            </div>
+            <div>
+              <SectionMainHeader>
+                Our Mission
+              </SectionMainHeader>
+              <PrimaryBodyText
+                className="font-semibold"
+              >
+                At ABROAED, our mission is to guide, empower, and transform students' journeys through personalized mentorship and structured pathways. We are committed to being a constant source of clarity, support, and momentum, helping every student move from aspiration to achievement — with purpose, confidence, and a global vision.              </PrimaryBodyText>
+            </div>
           </div>
           <div className=" pt-10 ">
             {aboutUs.map((item, index) => (

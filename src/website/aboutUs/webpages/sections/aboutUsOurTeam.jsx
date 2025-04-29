@@ -14,20 +14,21 @@ function AboutUsOurTeam() {
       img: zeeshan
     },
     {
+      name: "Ravi",
+      designation: "Manager - University Admissions & Operations",
+      img: ravi
+    }, {
+      name: "Shubhangi",
+      designation: "Assistant Manager - Operations",
+      img: shubangi
+    },
+    {
       name: "Ishika",
       designation: "Manager - Marketing",
       img: ishika
     },
-    {
-      name: "Ravi",
-      designation: "Manager - University Admissions & Operations",
-      img: ravi
-    },
-    {
-      name: "Shubhangi",
-      designation: "Assistant Manager - Operations",
-      img: shubangi
-    }
+
+
   ];
 
 

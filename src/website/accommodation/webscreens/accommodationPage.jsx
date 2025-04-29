@@ -17,7 +17,7 @@ import { useParams } from "react-router-dom";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { entity, source } from "../../../constants/values";
 import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
-// import Testimonials from "../../comman/components/testimonials";
+import Testimonials from "../../comman/components/testimonials";
 // import OurPartners from "../../comman/sections/ourPartnersSection";
 import {
   addSavedPreferenceRequest,
@@ -158,9 +158,9 @@ function AccomodationPage() {
         <SectionComponent>
           <AccommodationFaqSection />
         </SectionComponent>
-        {/* <SectionComponent>
+        <div>
           <Testimonials />
-        </SectionComponent> */}
+        </div>
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}

@@ -44,8 +44,8 @@ const TestimonialsCard = ({ data }) => {
         isOpen={readMore}
         onClose={handleClose}
       />
-      <div className="max-w-md mx-auto hover:scale-[1.01] bg-white rounded-lg shadow-md overflow-hidden">
-        <div className="relative w-full h-[15rem] overflow-hidden rounded-t-lg border border-gray-300">
+      <div className="   flex-shrink-0 hover:scale-[1.01] bg-white rounded-lg shadow-md overflow-hidden">
+        <div className="relative w-full h-[15rem]  object-cover rounded-t-lg border border-gray-300">
           <img
             className="absolute  w-full h-full object-cover"
             src={data.img}
