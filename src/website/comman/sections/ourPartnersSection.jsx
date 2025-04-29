@@ -57,7 +57,7 @@ function OurPartners() {
             {financeImages.map((img, index) => (
               <div
                 key={index}
-                className="h-[6rem]   flex items-center justify-center rounded-lg overflow-hidden"
+                className="h-[4rem]   flex items-center justify-center rounded-lg overflow-hidden"
               >
                 <img
                   className="w-full h-full object-contain"

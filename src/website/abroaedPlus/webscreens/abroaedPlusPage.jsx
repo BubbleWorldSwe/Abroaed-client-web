@@ -64,9 +64,7 @@ const AbroaedPlusPage = () => {
         <SectionComponent >
           <AbroaedPlusExplorePlan />
         </SectionComponent>
-        <SectionComponent >
-          <Testimonials />
-        </SectionComponent>
+
         <div className="relative">
           <SectionComponent >
             <AbroaedPlusFaq />
@@ -78,6 +76,9 @@ const AbroaedPlusPage = () => {
               alt="Counselling session"
             />
           </div>
+        </div>
+        <div >
+          <Testimonials />
         </div>
         <SectionComponent >
           <ContactUsForm

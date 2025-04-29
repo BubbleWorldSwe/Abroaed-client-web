@@ -13,12 +13,6 @@ import { useState } from "react"
 
 const serviceData = [
     {
-        text1: "Home Consultation",
-        text2:
-            "Our home consultation brings expert advice to your doorstep. We assess your educational aspirations, preferred destinations, and potential career paths. This service ensures personalized guidance from experienced counsellors in the comfort of your home. With a focus on clarity, we discuss program options, visa processes, and financial planning. This consultation provides families an opportunity to understand the study abroad process comprehensively. Our home consultation services cover throughout Delhi, but on request, we can also serve you in NCR-region and other states of India. We focus on answering your questions, explaining the process, and providing honest, practical advice to help you kick-start your journey.",
-        imgUrl: homeService1,
-    },
-    {
         text1: "Comprehensive Research & Shortlisting",
         text2:
             "We make the highly complicated process of selecting the proper euniversity and course easier. Based on your educational background, the desired career outcome, and choice of country, our experts are going to analyze and research very thoroughly about any particular program to compare universities across the world in rank, courses available, fees and requirements to apply. That's how the personal approach could give you better insight into which choice is actually yours. Narrowing down your choices will lead us to help you focus on opportunities that best align with your aims toward the goal of a successful academic experience abroad.",

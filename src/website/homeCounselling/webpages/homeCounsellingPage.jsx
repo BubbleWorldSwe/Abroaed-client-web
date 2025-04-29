@@ -80,15 +80,17 @@ const HomeCounsellingPage = () => {
             />
           </div>
         </div>
-        <SectionComponent>
-          <Testimonials />
-        </SectionComponent>
+
         <div>
           <ExploreOurServicesHomeCounselling />
         </div>
+
         <SectionComponent>
           <HomeCounsellingFaqSection />
         </SectionComponent>
+        <div>
+          <Testimonials />
+        </div>
         {/* <div className="relative">
           <div>
             <Blogs />
@@ -101,6 +103,7 @@ const HomeCounsellingPage = () => {
             />
           </div>
         </div> */}
+
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}

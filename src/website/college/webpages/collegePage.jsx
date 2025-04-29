@@ -196,9 +196,9 @@ function CollegePage() {
             <CollegeFaqSection collegeDetails={collegeDetails} />
           </SectionComponent>
         )}
-        <SectionComponent>
+        <div>
           <Testimonials />
-        </SectionComponent>
+        </div>
         {/* <Blogs /> */}
         <SectionComponent>
           <ContactUsForm

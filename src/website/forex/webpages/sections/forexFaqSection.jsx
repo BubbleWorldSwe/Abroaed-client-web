@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import FaqsAnswerText from "../../../styleComponents/faqsAnswerText";
 import FaqsQuestionText from "../../../styleComponents/faqsQuestionText";
-import { faqFinance } from "../../../finance copy/data";
+import { faqFinance } from "../../data";
 
 const ForexFaqSection = () => {
     const [activeIndex, setActiveIndex] = useState(null);

@@ -4,28 +4,35 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import Slider from "react-slick";
 import NextArrow from "../../../comman/components/nextArrow";
 import PrevArrow from "../../../comman/components/prevArrow";
+import { useState } from "react";
 
 function CareerJoinTeam() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 800,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow right="right-0 md:right-4" />,
+    prevArrow: <PrevArrow left="left-0 md:left-4" />,
+    beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
+    customPaging: i => (
+      <div className={`rounded-full w-3 h-3 transition-all duration-300 
+        ${i === currentSlide ? 'bg-yellow-primary w-4' : 'bg-gray-500 '}`}
+      />
+    ),
+    appendDots: dots => (
+      <div>
+        <ul className="flex justify-center  mt-4">{dots}</ul>
+      </div>
+    ),
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
+
       {
         breakpoint: 768,
         settings: {
@@ -39,8 +46,8 @@ function CareerJoinTeam() {
 
   return (
     <div>
-      <section className=" dark:bg-gray-900 relative ">
-        <div className="px-6 md:px-12 mx-auto max-w-screen-2xl relative z-10">
+      <section className=" dark:bg-gray-900 mx-auto max-w-screen-2xl relative ">
+        <div className="px-6 md:px-12  relative z-10">
           <div className="mb-4 flex flex-col gap-1 lg:mb-6 not-format">
             <SectionMainHeader
             >
@@ -53,8 +60,8 @@ function CareerJoinTeam() {
             </h3>
           </div>
         </div>
-        <div className="md:block  hidden overflow-x-auto">
-          <Slider {...settings}>
+        <div className="md:block  hidden md:px-8">
+          <Slider {...settings} className="pb-6">
             {benefits.map((benefit, index) => (
               <div key={index} className="px-4">
                 <div
