@@ -76,7 +76,7 @@ function HomeLayout() {
             entity={entity.bookCounselling}
           />
         </SectionComponent>
-        <div>
+        <div >
           <Testimonials />
         </div>
         <div className="relative ">
