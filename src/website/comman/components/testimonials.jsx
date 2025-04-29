@@ -5,7 +5,13 @@ import testimonial2 from "../../../assets/testimonial2.jpg"
 import testimonial3 from "../../../assets/testimonial3.jpg"
 import testimonial4 from "../../../assets/testimonial4.jpg"
 import testimonial5 from "../../../assets/testimonial5.jpg"
+import Slider from "react-slick";
+import NextArrow from "./nextArrow";
+import PrevArrow from "./prevArrow";
+import { useState } from "react";
 const Testimonials = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   // const videos = ["Ez8F0nW6S-w", "4wSL3KHSAns", "S_xwQNHOuSI"];
   const testimonials = [
     {
@@ -54,24 +60,58 @@ const Testimonials = () => {
       img: testimonial5
     },
   ];
+  const settings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: true,
+    infinite: true,
+    speed: 800,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    nextArrow: <NextArrow right="right-0 md:right-4" />,
+    prevArrow: <PrevArrow left="left-0 md:left-4" />,
+    beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
+    customPaging: i => (
+      <div className={`rounded-full w-3 h-3 transition-all duration-300 
+        ${i === currentSlide ? 'bg-yellow-primary w-4' : 'bg-gray-500 '}`}
+      />
+    ),
+    appendDots: dots => (
+      <div>
+        <ul className="flex justify-center  mt-4">{dots}</ul>
+      </div>
+    ),
+    responsive: [
 
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
-    <section className="  dark:bg-gray-900 relative">
-      <div className="  ">
-        <div className=" max-w-screen-sm text-start mb-4 lg:mb-10 ">
-          <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
-            Success Stories
-          </p>
-          <SectionMainHeader >
-            Read Our Success Stories
-          </SectionMainHeader>
-        </div>
-        <div className="gap-8 pb-4 flex overflow-x-auto">
+    <section className="  dark:bg-gray-900 mx-auto  max-w-screen-2xl relative">
+      <div className="px-6 md:px-12 mb-10 relative z-10">
+        <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
+          Success Stories
+        </p>
+        <SectionMainHeader >
+          Read Our Success Stories
+        </SectionMainHeader>
+      </div>
+      <div className="md:px-8">
+        <Slider {...settings} className="pb-4 flex  gap-10 ">
           {testimonials.map((data, i) => (
-            <TestimonialsCard key={i} data={data} />
+            <div key={i} className="px-4">
+              <TestimonialsCard key={i} data={data} />
+            </div>
           ))}
-        </div>
+        </Slider>
       </div>
     </section>
   );

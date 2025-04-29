@@ -158,9 +158,9 @@ function AccomodationPage() {
         <SectionComponent>
           <AccommodationFaqSection />
         </SectionComponent>
-        <SectionComponent>
+        <div>
           <Testimonials />
-        </SectionComponent>
+        </div>
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}

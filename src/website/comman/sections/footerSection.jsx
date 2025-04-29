@@ -5,12 +5,17 @@ import {
   FaInstagram,
   FaLinkedin,
   FaXTwitter,
+  FaYoutube,
 } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Flag from "react-world-flags";
 // import AppStoreButton from "../components/appStoreButton";
 
 const socialLinks = [
+  {
+    icon: <FaYoutube size={20} />,
+    url: "https://www.youtube.com/@Abroaed",
+  },
   {
     icon: <FaFacebook size={20} />,
     url: "https://www.facebook.com/profile.php?id=61575250589330",

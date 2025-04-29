@@ -1,21 +1,32 @@
 /* eslint-disable react/prop-types */
 import locationIcon from "../../../../assets/locationIcon.png";
 import worldIcon from "../../../../assets/worldIcon.png";
+import { IMAGE_BASE_URL } from "../../../../constants/baseUrl";
+import { IMAGES } from "../../../../constants/images";
 import { heroStyle } from "../../../comman/contexts/heroStyle";
 import HeroTextComponent from "../../../styleComponents/heroText";
 
 const CollegeHeroSection = ({ img, collegeDetails }) => {
+  const logoImage = collegeDetails?.images?.find((img) => img.type === "logo");
+  const coverImage = collegeDetails?.images?.find(
+    (img) => img.type === "cover"
+  );
+
   return (
     <div className="">
-      <HeroTextComponent img={img}>
+      <HeroTextComponent
+        img={
+          coverImage
+            ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+            : IMAGES.noImage
+        }
+      >
         <h1 className={heroStyle.header}>
           Your trusted compass to opportunities abroad
         </h1>
-        <div >
+        <div>
           <div className="  text-sm mt-3   grid grid-cols-1 md:flex gap-1 md:gap-5">
-            <p>
-              {collegeDetails?.entityType}
-            </p>
+            <p>{collegeDetails?.entityType}</p>
             <div className="flex gap-2 whitespace-nowrap  items-center ">
               <img
                 src={locationIcon}
@@ -39,8 +50,6 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
           </div>
         </div>
       </HeroTextComponent>
-
-
     </div>
   );
 };

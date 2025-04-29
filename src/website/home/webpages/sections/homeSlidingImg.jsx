@@ -15,14 +15,15 @@ import NextArrow from "../../../comman/components/nextArrow";
 const HomeSlidingImg = () => {
     const isMobile = useMediaQuery({ maxWidth: 768 });
     const [countImg, setCountImg] = useState(0);
-
+    const [isHover, setIsHover] = useState(false);
     useEffect(() => {
-        const interval = setInterval(() => {
-            handleNextImage();
-        }, 4000);
-
-        return () => clearInterval(interval);
-    }, [countImg]);
+        if (!isHover) {
+            const interval = setInterval(() => {
+                handleNextImage();
+            }, 5000);
+            return () => clearInterval(interval);
+        }
+    }, [countImg, isHover]);
 
     const handleNextImage = () => {
         setCountImg((prev) => (prev + 1) % homeImages.length);
@@ -58,7 +59,10 @@ const HomeSlidingImg = () => {
     return (
         <section className="dark:bg-gray-900 relative py-4">
             <div className="overflow-x-auto">
-                <div className="relative w-full h-[92vh]">
+                <div className="relative w-full h-[92vh] "
+                    onMouseEnter={() => setIsHover(true)}
+                    onMouseLeave={() => setIsHover(false)}
+                >
                     <img
                         key={countImg}
                         className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out`}

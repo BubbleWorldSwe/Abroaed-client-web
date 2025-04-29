@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteAccommodationRequest,
   editAccommodationRequest,
-  fetchAccommodationsRequest,
   uploadAccommodationImageRequest,
 } from "../../../redux/actions/accommodationActions";
 import { getAllDestinations } from "../../../api/destinationApi";
@@ -27,7 +26,7 @@ import AddOverviewContentModal from "../../common/modals/addOverviewsContentModa
 const AccommodationDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(null);
@@ -51,9 +50,7 @@ const AccommodationDetails = () => {
   const handleDeleteSection = () => {
     handleDeleteCloseModal();
   };
-  const handleCloseAddModal = () => {
-    setIsAddModalOpen(false);
-  };
+
   const openModal = (section, type, index) => {
     setSelectedSection(section);
     setModalType(type);
@@ -159,10 +156,7 @@ const AccommodationDetails = () => {
         onConfirm={handleDeleteSection}
         title={sectionsData[selectedSectionIndex]?.title || ""}
       />
-      <AddOverviewContentModal
-        isOpen={isAddModalOpen}
-        onClose={handleCloseAddModal}
-      />
+
       <div className="accordion space-y-4 ">
         <AccommodationImageSection
           onUploadImage={onUploadImage}

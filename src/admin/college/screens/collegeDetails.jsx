@@ -18,6 +18,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   deleteCollegeRequest,
   editCollegeRequest,
+  setSelectedCollege,
   uploadCollegeImageRequest,
 } from "../../../redux/actions/collegeActions";
 import { getStatesByCountryId } from "../../../api/countriesApi";
@@ -26,10 +27,15 @@ import LocationModal from "../modals/locationModal";
 import CollegeLocation from "../components/collegeLocation";
 import CollegeImageSection from "../components/collegeImageSection";
 import DeleteModal from "../../../commons/modal/deletedModal";
+import {
+  getCollegeDetailsById,
+  setDeleteCollegeImage,
+} from "../../../api/collegesApi";
+import { toast } from "react-toastify";
 
 function CollegDetails() {
   const dispatch = useDispatch();
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
@@ -40,13 +46,12 @@ function CollegDetails() {
   const [statesList, setStatesList] = useState([]);
   const navigate = useNavigate();
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
-  const { state } = useLocation();
 
   const [formdata, setFormdata] = useState(null);
 
   async function onUpdate(data) {
     try {
-      dispatch(editCollegeRequest(state?._id, data));
+      dispatch(editCollegeRequest(collegeDetails?._id, data));
 
       closeModal();
     } catch (error) {
@@ -86,7 +91,7 @@ function CollegDetails() {
   };
 
   const handleDelete = () => {
-    dispatch(deleteCollegeRequest(state?._id));
+    dispatch(deleteCollegeRequest(collegeDetails?._id));
     navigate("/admin/colleges");
   };
 
@@ -94,9 +99,25 @@ function CollegDetails() {
     setSelectedSection(section);
     setActiveModalIndex(index);
   };
+
+  const handleAddImageClick = () => {
+    const galleryLength =
+      collegeDetails?.images?.filter((img) => img.type === "gallery")?.length ||
+      0;
+
+    if (galleryLength < 4) {
+      openModal("Media Gallery", "add", 1); // open Media Gallery Modal
+    } else {
+      alert("You can upload up to 4 images only");
+    }
+  };
+
   const sectionConfig = [
     { name: "Overview", component: <OverviewCard /> },
-    { name: "Media Gallery", component: <MediaGalleryCard /> },
+    {
+      name: "Media Gallery",
+      component: <MediaGalleryCard onDeleteImage={onDeleteGalleryImage} />,
+    },
     { name: "Location", component: <CollegeLocation /> },
     {
       name: "Courses",
@@ -122,15 +143,7 @@ function CollegDetails() {
   const modals = {
     section0: <OverviewModal closeModal={closeModal} onUpdate={onUpdate} />,
     section1: (
-      <MediaGallery
-        closeModal={closeModal}
-        onUpdate={onUpdate}
-        onUploadImage={onUploadImage}
-        /*  onUploadImage={(files) => {
-        console.log("Uploaded Files:", files);
-        // You can send to server here using FormData
-      }} */
-      />
+      <MediaGallery closeModal={closeModal} onUploadImage={onUploadImage} />
     ),
     section2: (
       <LocationModal
@@ -167,6 +180,7 @@ function CollegDetails() {
   async function fetchData() {
     try {
       const list = await getAllDestinations();
+      fetchCollegeDetails();
 
       if (list.status === 200) {
         setDestinationsList(list?.data?.result);
@@ -181,8 +195,6 @@ function CollegDetails() {
       console.log(error);
     }
   }
-
-  console.log(statesList);
 
   async function fetchStatesList(countryId) {
     try {
@@ -200,31 +212,67 @@ function CollegDetails() {
   async function onUploadImage(data, type) {
     console.log(data, type);
     try {
-      console.log(data);
       dispatch(
-        uploadCollegeImageRequest(state?._id, {
+        uploadCollegeImageRequest(collegeDetails?._id, {
           files: data,
           type,
         })
       );
-      //  fetchTestPrepsDetails();
+
+      // await fetchCollegeDetails();
+
       closeModal();
     } catch (error) {
       console.log(error);
     }
   }
 
-  async function onUploadMultiImage(data, type) {
-    console.log(data, type);
+  async function fetchCollegeDetails() {
     try {
-      console.log(data);
-      dispatch(
-        uploadCollegeImageRequest(state?._id, {
-          files: data,
-          type,
-        })
-      );
-      //  fetchTestPrepsDetails();
+      console.log(" fetchCollegeDetails");
+      const data = await getCollegeDetailsById(collegeDetails?._id);
+
+      //  console.log(data);
+
+      if (data.status === 200) {
+        // console.log(data.message);
+        dispatch(setSelectedCollege(data.data));
+      }
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function onDeleteImage(id, imageData, type) {
+    try {
+      const data = await setDeleteCollegeImage(id);
+
+      if (data.status === 200) {
+        //  console.log(data.message);
+        onUploadImage(imageData, type);
+      } else {
+        toast.error(data.message);
+      }
+
+      closeModal();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function onDeleteGalleryImage(id) {
+    try {
+      const data = await setDeleteCollegeImage(id);
+
+      if (data.status === 200) {
+        toast.success("Image Delete Sucessfully");
+        fetchCollegeDetails();
+        // onUploadImage(imageData, type);
+      } else {
+        toast.error(data.message);
+      }
+
       closeModal();
     } catch (error) {
       console.log(error);
@@ -249,6 +297,8 @@ function CollegDetails() {
           <CollegeImageSection
             onUploadImage={onUploadImage}
             handleDelete={handleDelete}
+            onDeleteImage={onDeleteImage}
+            fetchCollegeDetails={fetchCollegeDetails}
           />
           {sectionConfig.map((sectionItem, index) => (
             <div
@@ -270,7 +320,19 @@ function CollegDetails() {
                     className="px-4 py-4"
                     onClick={(e) => {
                       e.stopPropagation();
-                      openModal(sectionItem.name, "add", index);
+                      if (sectionItem.name === "Media Gallery") {
+                        const galleryLength =
+                          collegeDetails?.images?.filter(
+                            (img) => img.type === "gallery"
+                          )?.length || 0;
+                        if (galleryLength < 4) {
+                          openModal(sectionItem.name, "add", index);
+                        } else {
+                          toast.error("You can upload up to 4 images only");
+                        }
+                      } else {
+                        openModal(sectionItem.name, "add", index);
+                      }
                     }}
                   >
                     <svg

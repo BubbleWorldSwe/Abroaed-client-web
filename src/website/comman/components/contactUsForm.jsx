@@ -4,7 +4,14 @@ import { BorderTextInputField } from "../../../commons/components/inputFields/bo
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
-const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }) => {
+const ContactUsForm = ({
+  onFormSubmit,
+  source,
+  entity,
+  title,
+  text,
+  buttonText,
+}) => {
   const { error, loading } = useSelector((state) => state.leads);
 
   console.log(error + " : Error");
@@ -18,7 +25,6 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
 
   const [checkboxes, setCheckboxes] = useState({
     termsAgreed: false,
-    contactPermission: false,
   });
 
   const handleChange = (e) => {
@@ -40,7 +46,7 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
   const handleSubmit = (e) => {
     e.preventDefault();
     const { firstName, lastName, email, mobile } = formData;
-    const { termsAgreed, contactPermission } = checkboxes;
+    const { termsAgreed } = checkboxes;
 
     // Validate required fields
     if (!firstName || !lastName || !email || !mobile) {
@@ -49,8 +55,8 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
     }
 
     // Validate checkboxes
-    if (!termsAgreed || !contactPermission) {
-      toast.error("Please agree to both Terms & Conditions.");
+    if (!termsAgreed) {
+      toast.error("Please agree to our Terms & Conditions.");
       return;
     }
 
@@ -150,27 +156,10 @@ const ContactUsForm = ({ onFormSubmit, source, entity, title, text, buttonText }
                   className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
                 />
                 {/* <label className="ml-2 text-[12px] text-white"> */}
-                <label className="ml-2 text-[16px] text-white">
+                <label className="ml-2 text-[16px] text-white mb-10">
                   I agree to ABROAED{" "}
                   <span className="font-bold">Terms of Service</span> and{" "}
                   <span className="font-bold">Privacy Policy</span>.
-                </label>
-              </div>
-
-              {/* Checkbox 2 */}
-              <div className="flex items-start mt-4 mb-4">
-                <input
-                  type="checkbox"
-                  name="contactPermission"
-                  checked={checkboxes.contactPermission}
-                  onChange={handleCheckboxChange}
-                  className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded"
-                />
-                {/* <label className="ml-2 text-[12px] text-white"> */}
-                <label className="ml-2 text-[16px] text-white">
-                  Please contact me by phone, email, or SMS to assist with my
-                  enquiry. I would like to receive updates and offers from
-                  ABROAED.
                 </label>
               </div>
 

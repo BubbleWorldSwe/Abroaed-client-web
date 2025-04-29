@@ -66,7 +66,7 @@ function* addNewLead(action) {
 
     if (response.status === 200) {
       yield put(addLeadSuccess(response.data));
-      toast.success("Lead added successfully!");
+      toast.success("Your Request has been submitted successfully!");
     } else {
       yield put(addLeadFailure(response.message));
       toast.error(response.message);

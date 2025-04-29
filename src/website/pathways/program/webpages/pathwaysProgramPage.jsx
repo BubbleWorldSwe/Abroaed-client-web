@@ -100,8 +100,8 @@ const PathwaysProgramPage = () => {
         </div>
       </div>
       <PathwaysProgramStudentAccommodationSection />
-      <Testimonials />
       <PathwaysProgramFaqSection />
+      <Testimonials />
       <Blogs />
       <ContactUsForm
         onFormSubmit={handleAddLead}

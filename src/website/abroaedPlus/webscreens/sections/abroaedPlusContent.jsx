@@ -13,7 +13,7 @@ const AbroaedPlusContent = () => {
                     </SectionMainHeader>
                     <PrimaryBodyText
                         text=""
-                        className={`font-semibold`}
+                        className={``}
                     >
                         ABROAED<sup>+</sup> is your ultimate study abroad companion, offering end-to-end support to simplify your global education journey. From choosing the right country, university, and course to acing IELTS/PTE/TOEFL, securing loans, and managing finances, we’ve got you covered. Avoid hidden costs (up to ₹4 Lakh+), confusing paperwork, and stress. With expert guidance, personalized plans, and a supportive student community, ABROAED<sup>+</sup> ensures your journey is smooth, saving you time, money, and effort. Your dream university awaits!
                     </PrimaryBodyText>

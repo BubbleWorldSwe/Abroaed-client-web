@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
+  getCollegeDetailsById,
   getColleges,
   setAddCollege,
   setCollegeUploadFile,
@@ -101,8 +102,14 @@ function* handleUploadCollegeImage(action) {
     console.log(response);
 
     if (response.status === 200) {
-      yield put(uploadCollegeImageSuccess(response.data));
-      toast.success(response.message);
+      const data = yield call(getCollegeDetailsById, id);
+
+      console.log(data);
+
+      if (data.status === 200) {
+        yield put(uploadCollegeImageSuccess(data.data));
+        toast.success(response.message);
+      }
     } else {
       yield put(uploadCollegeImageFailure(response.message));
       toast.error(response.message);

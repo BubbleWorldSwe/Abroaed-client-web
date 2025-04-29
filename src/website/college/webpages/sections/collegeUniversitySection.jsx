@@ -1,22 +1,34 @@
 /* eslint-disable react/prop-types */
 import dark from "../../../../assets/dark.png";
+import { IMAGE_BASE_URL } from "../../../../constants/baseUrl";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
 const CollegeUniversitySection = ({ collegeDetails }) => {
+  const logoImage = collegeDetails?.images?.find((img) => img.type === "logo");
+  const coverImage = collegeDetails?.images?.find(
+    (img) => img.type === "cover"
+  );
+
+  const galleryImages = collegeDetails?.images?.filter(
+    (img) => img.type === "gallery"
+  );
+
   return (
-    <div>
-      <section className="dark:bg-gray-900 relative">
-        <div className=" relative z-10">
-          <div className=" text-center">
-            <SectionMainHeader className={`mb-4`}>
-              {collegeDetails?.name} at a Glance
-            </SectionMainHeader>
-          </div>
-          <div className="overflow-x-auto">
-            <div className="flex gap-5 pl-12" style={{ minWidth: "max-content" }}>
-              {Array(6)
-                .fill(0)
-                .map((_, index) => (
+    galleryImages?.length > 0 && (
+      <div>
+        <section className="dark:bg-gray-900 relative">
+          <div className=" relative z-10">
+            <div className=" text-center">
+              <SectionMainHeader className={`mb-4`}>
+                {collegeDetails?.name} at a Glance
+              </SectionMainHeader>
+            </div>
+            <div className="overflow-x-auto">
+              <div
+                className="flex gap-5 pl-12"
+                style={{ minWidth: "max-content" }}
+              >
+                {galleryImages.map((data, index) => (
                   <div
                     key={index}
                     className="hover:scale-[1.01] transition-all ease-in-out delay-100 md:w-[30vw]
@@ -26,7 +38,9 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
                     <div className="relative w-full h-full">
                       <img
                         className="w-full h-full object-cover rounded-lg"
-                        src={dark}
+                        src={
+                          data ? `${IMAGE_BASE_URL}/${data?.ImageUrl}` : dark
+                        }
                         alt={`Service ${index + 1}`}
                       />
                       <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
@@ -65,11 +79,12 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
                                            </div> */}
                   </div>
                 ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    )
   );
 };
 

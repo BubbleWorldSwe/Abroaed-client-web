@@ -280,9 +280,9 @@ function DestinationPage() {
         )}
 
         <div className="relative">
-          <SectionComponent>
+          <div>
             <Testimonials />
-          </SectionComponent>
+          </div>
           <div className="absolute top-64 left-48 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"

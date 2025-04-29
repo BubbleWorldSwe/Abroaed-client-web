@@ -84,9 +84,9 @@ const LeaguageOfExcellencePage = () => {
           <LeaguageOfExcellenceFaq />
         </SectionComponent>
         <div className="relative">
-          <SectionComponent>
+          <div>
             <Testimonials />
-          </SectionComponent>
+          </div>
           <div className="absolute top-32 left-0 -z-10">
             <img
               className="rounded-lg w-full h-full object-cover"

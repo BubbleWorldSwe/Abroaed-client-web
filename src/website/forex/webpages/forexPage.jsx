@@ -2,13 +2,15 @@ import { useDispatch } from "react-redux";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import Header from "../../comman/sections/headerSection";
 import SectionComponent from "../../styleComponents/sectionComponent";
-import OurPartners from "../../comman/sections/ourPartnersSection";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import Footer from "../../comman/sections/footerSection";
 import ForexHeroSection from "./sections/forexHeroSection";
 import ForexHowItWorks from "./sections/forexHowItWorkSection";
 import ForexFaqSection from "./sections/forexFaqSection"
+import WhychooseUsSection from "./sections/whychooseUsSection";
+import FrexAdvantangeSection from "./sections/forexAdvantangeSection";
+import ForexWireTransfer from "./sections/forexWireTransfer";
 
 const ForexPage = () => {
 
@@ -32,9 +34,16 @@ const ForexPage = () => {
                 <SectionComponent>
                     <ForexHowItWorks />
                 </SectionComponent>
+                <div>
+                    <WhychooseUsSection />
+                </div>
                 <SectionComponent>
-                    <OurPartners />
+                    <FrexAdvantangeSection />
                 </SectionComponent>
+                <SectionComponent>
+                    <ForexWireTransfer />
+                </SectionComponent>
+
                 {/* <div className="relative ">
         <FinanceBlogSection />
         <div className="absolute -bottom-4 left-0 z-0">

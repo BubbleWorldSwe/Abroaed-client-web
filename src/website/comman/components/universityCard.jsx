@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import locationIcon from "../../../assets/locationIcon.png";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import { IMAGES } from "../../../constants/images";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const UniversityCard = ({ item }) => {
   const navigate = useNavigate();
+  const coverImage = item?.images?.find((img) => img.type === "cover");
+
   return (
     <div>
       <div className="max-w-[330px] hidden bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 md:flex flex-col justify-between h-full">
@@ -14,7 +17,11 @@ const UniversityCard = ({ item }) => {
           {/* Image */}
           <img
             className="w-24 h-20 object-cover rounded-lg"
-            src={IMAGES.collegeImage}
+            src={
+              coverImage
+                ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+                : IMAGES.noImage
+            }
             alt={item.name}
           />
 
@@ -49,9 +56,9 @@ const UniversityCard = ({ item }) => {
         </div>
       </div>
 
-
       {/* mobile view */}
-      <button className="w-full md:hidden bg-white   border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col justify-between"
+      <button
+        className="w-full md:hidden bg-white   border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 flex flex-col justify-between"
         onClick={() => navigate(`/college/${item._id}`)}
       >
         <div className="flex items-center">
@@ -80,7 +87,6 @@ const UniversityCard = ({ item }) => {
           </div>
         </div>
       </button>
-
     </div>
   );
 };

@@ -39,6 +39,11 @@ function CollegePage() {
   const [collegeDetails, setCollegeDetails] = useState(null);
   const [accList, setAccList] = useState([]);
 
+  const logoImage = collegeDetails?.images?.find((img) => img.type === "logo");
+  const coverImage = collegeDetails?.images?.find(
+    (img) => img.type === "cover"
+  );
+
   async function fetchData() {
     try {
       const data = await getCollegeDetailsById(id);
@@ -196,9 +201,9 @@ function CollegePage() {
             <CollegeFaqSection collegeDetails={collegeDetails} />
           </SectionComponent>
         )}
-        <SectionComponent>
+        <div>
           <Testimonials />
-        </SectionComponent>
+        </div>
         {/* <Blogs /> */}
         <SectionComponent>
           <ContactUsForm

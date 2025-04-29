@@ -102,8 +102,9 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                     alt="Location Icon"
                   />
                   <p
-                    className={`text-gray-700 font-semibold ${readMore ? "line-clamp-4" : "line-clamp-none"
-                      } `}
+                    className={`text-gray-700 font-semibold ${
+                      readMore ? "line-clamp-4" : "line-clamp-none"
+                    } `}
                   >
                     {item?.location}
                   </p>

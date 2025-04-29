@@ -77,7 +77,7 @@ function Header({ isHeaderBgWhite = false }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolling(window.scrollY > window.innerHeight * 0.4);
+      setScrolling(window.scrollY > window.innerHeight * 0.2);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -280,11 +280,10 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
           ? "bg-gray-primary text-white shadow-md"
           : "bg-gray-primary text-white bg-opacity-10"
-      }`}
+        }`}
     >
       <nav>
         <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
@@ -320,11 +319,10 @@ function Header({ isHeaderBgWhite = false }) {
                     className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${
-                  activeDropdown === "exploreColleges"
-                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                    : "font-semibold"
-                }`}
+                ${activeDropdown === "exploreColleges"
+                        ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                        : "font-semibold"
+                      }`}
                   >
                     Explore Colleges
                   </a>
@@ -357,11 +355,10 @@ function Header({ isHeaderBgWhite = false }) {
                         className={`px-1 relative transition-colors duration-300
                 after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
                 after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
-                ${
-                  activeDropdown === key
-                    ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
-                    : "font-semibold"
-                }`}
+                ${activeDropdown === key
+                            ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                            : "font-semibold"
+                          }`}
                       >
                         {label}
                       </a>
@@ -370,13 +367,13 @@ function Header({ isHeaderBgWhite = false }) {
                           <Component
                             {...(data && Array.isArray(data)
                               ? {
-                                  menuItems: data.map(
-                                    ({ productName, _id }) => ({
-                                      title: productName,
-                                      _id,
-                                    })
-                                  ),
-                                }
+                                menuItems: data.map(
+                                  ({ productName, _id }) => ({
+                                    title: productName,
+                                    _id,
+                                  })
+                                ),
+                              }
                               : { ...data })}
                             handleMouseEnter={handleMouseEnter}
                             handleMouseLeave={handleMouseLeave}
@@ -471,7 +468,7 @@ function Header({ isHeaderBgWhite = false }) {
               // onMouseEnter={() => handleMouseEnter("login")}
               // onMouseLeave={handleMouseLeave}
               className="relative "
-              // className="relative hidden md:block"
+            // className="relative hidden md:block"
             >
               <button
                 onClick={() => handleMouseEnter("bookMenu")}

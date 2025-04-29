@@ -1,11 +1,11 @@
 
-import financeHero from "../../../../assets/dark.png";
+import forexHero from "../../../../assets/forex.png";
 import { heroStyle } from "../../../comman/contexts/heroStyle";
 import HeroTextComponent from "../../../styleComponents/heroText";
 
 function ForexHeroSection() {
   return (
-    <HeroTextComponent img={financeHero}>
+    <HeroTextComponent img={forexHero}>
       <h1 className={heroStyle.header}>
         Smart Financial Planning for Your Study ABROAED Success
       </h1>
