@@ -24,11 +24,6 @@ function SigninPage() {
         return;
       }
 
-      if (!formData.get("terms")) {
-        toast.error("You must accept the Terms and Conditions to proceed.");
-        return;
-      }
-
       dispatch(adminLoginRequest({ email, password }));
     } catch (error) {
       console.log(error);
