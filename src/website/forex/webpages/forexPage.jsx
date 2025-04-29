@@ -54,9 +54,9 @@ const ForexPage = () => {
           />
         </div>
       </div> */}
-                <SectionComponent>
+                {/* <SectionComponent>
                     <ForexFaqSection />
-                </SectionComponent>
+                </SectionComponent> */}
                 {/*  <FinanceLeadFromSection /> */}
                 <SectionComponent>
                     <ContactUsForm

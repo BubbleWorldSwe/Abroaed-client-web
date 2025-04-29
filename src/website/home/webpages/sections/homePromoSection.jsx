@@ -132,8 +132,8 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
           </div>
 
           {/* Right Side: Form */}
-          <div className="flex flex-col justify-start items-end">
-            <div className="flex flex-col items-start w-full rounded-lg   ">
+          <div className="flex flex-col justify-start  items-end">
+            <div className="flex flex-col items-center md:items-start w-full rounded-lg   ">
               {/* Tabs Row */}
               <div className="mb-3">
                 <h2
@@ -141,8 +141,8 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                 >
                   Book Counselling Now
                 </h2>
-                <form className="space-y-10" onSubmit={handleAddLead}>
-                  <div className="grid grid-cols-1 md:grid-cols-2  md:gap-y-2  md:gap-4">
+                <form className="space-y-10 w-full " onSubmit={handleAddLead}>
+                  <div className="grid grid-cols-1 md:grid-cols-2  w-full md:gap-y-2  md:gap-4">
                     <BorderTextInputField
                       label="First Name"
                       name="firstName"
