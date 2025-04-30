@@ -133,7 +133,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
 
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start  items-end">
-            <div className="flex flex-col items-center md:items-start w-full rounded-lg   ">
+            <div className="flex flex-col  w-full   md:items-start  rounded-lg   ">
               {/* Tabs Row */}
               <div className="mb-3">
                 <h2

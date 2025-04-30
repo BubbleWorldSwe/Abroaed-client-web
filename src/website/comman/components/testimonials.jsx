@@ -85,7 +85,7 @@ const Testimonials = () => {
     ),
     appendDots: dots => (
       <div>
-        <ul className="flex justify-center  mt-4">{dots}</ul>
+        <ul className="flex justify-center mt-4">{dots}</ul>
       </div>
     ),
     responsive: [
@@ -110,10 +110,10 @@ const Testimonials = () => {
           Read Our Success Stories
         </SectionMainHeader>
       </div>
-      <div className="md:px-8 overflow-visible">
+      <div className="md:px-8  overflow-visible">
         <Slider {...settings}>
           {testimonials.map((data, i) => (
-            <div key={i} className="px-4">
+            <div key={i} className="px-4 pb-6">
               <TestimonialsCard key={i} data={data} idx={i} readMore={readMore} setReadMore={setReadMore} setIndex={setIndex} />
             </div>
           ))}
