@@ -43,7 +43,7 @@ const financeImages = [
 function OurPartners() {
   return (
     <div>
-      <section className="bg-white relative ">
+      <section className="relative ">
         <div className=" relative z-10">
           <SectionMainHeader className={`mb-6 text-center`}>
             Our Partners

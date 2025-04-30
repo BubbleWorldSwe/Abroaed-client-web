@@ -11,7 +11,7 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import SectionComponent from "../../styleComponents/sectionComponent";
-
+import vectorleftNose from "../../../assets/vectorleftNose.png"
 function FinancePage() {
   const dispatch = useDispatch();
   const handleAddLead = (data) => {
@@ -33,9 +33,19 @@ function FinancePage() {
         <SectionComponent>
           <FinanceHowItWorks />
         </SectionComponent>
-        <SectionComponent>
-          <OurPartners />
-        </SectionComponent>
+        <div className="relative">
+          <SectionComponent>
+            <OurPartners />
+          </SectionComponent>
+          <div className="absolute top-4  right-0 z-0">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorleftNose}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
+
         {/* <div className="relative ">
         <FinanceBlogSection />
         <div className="absolute -bottom-4 left-0 z-0">
