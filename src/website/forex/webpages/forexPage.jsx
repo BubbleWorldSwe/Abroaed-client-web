@@ -11,6 +11,7 @@ import ForexFaqSection from "./sections/forexFaqSection"
 import WhychooseUsSection from "./sections/whychooseUsSection";
 import FrexAdvantangeSection from "./sections/forexAdvantangeSection";
 import ForexWireTransfer from "./sections/forexWireTransfer";
+import vectorleftNose from "../../../assets/vectorleftNose.png"
 
 const ForexPage = () => {
 
@@ -34,9 +35,17 @@ const ForexPage = () => {
                 <SectionComponent>
                     <ForexHowItWorks />
                 </SectionComponent>
-                <div>
+                <div className="relative">
                     <WhychooseUsSection />
+                    <div className="absolute top-0 right-0 -z-20">
+                        <img
+                            className="rounded-lg max-w-full"
+                            src={vectorleftNose}
+                            alt="Counselling session"
+                        />
+                    </div>
                 </div>
+
                 <SectionComponent>
                     <FrexAdvantangeSection />
                 </SectionComponent>

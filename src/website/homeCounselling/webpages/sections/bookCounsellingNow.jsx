@@ -98,7 +98,7 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
           Book Counselling Now
         </SectionMainHeader>
         <div className="flex justify-center items-center">
-          <form className="space-y-6" onSubmit={handleAddLead}>
+          <form className="space-y-6 w-full md:w-[46rem]" onSubmit={handleAddLead}>
             <div className="grid grid-cols-1 md:grid-cols-2  md:gap-y-0  md:gap-4">
               <BorderTextInputField
                 label="First Name"
@@ -182,30 +182,6 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
                 required
               />
             </div>
-
-            {/* Checkboxes */}
-            <div className="flex items-start mt-4">
-              <input
-                type="checkbox"
-                className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                required
-              />
-              <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                I agree to ABROAED <span className="font-bold">Terms of Service</span> and <span className="font-bold">Privacy Policy</span>.
-              </label>
-            </div>
-
-            <div className="flex items-start mt-4">
-              <input
-                type="checkbox"
-                className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                required
-              />
-              <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                I agree to ABROAED Terms and privacy policy. Please contact me by phone, email, or SMS to assist with my enquiry. I would like to receive updates and offers from ABROAED.
-              </label>
-            </div>
-
             {/* Submit Button */}
             <div>
               <button
