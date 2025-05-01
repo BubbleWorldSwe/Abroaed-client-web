@@ -66,7 +66,7 @@ function StudentOtpVerification() {
         toast.success("OTP resent!");
 
         setResendCount((prev) => prev + 1);
-        setResendTimer(5);
+        setResendTimer(60);
       }
     } catch (error) {
       console.log(error);

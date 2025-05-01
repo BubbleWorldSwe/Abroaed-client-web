@@ -11,7 +11,6 @@ function StudentSignUp() {
   const { loading, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  // State to hold form data
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,7 +18,6 @@ function StudentSignUp() {
     mobile: "",
   });
 
-  // Function to handle input changes and update state
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -28,7 +26,6 @@ function StudentSignUp() {
     }));
   };
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -61,7 +58,6 @@ function StudentSignUp() {
       return;
     }
 
-    // Dispatch form data
     dispatch(studentSignUpRequest(formData));
   };
   useEffect(() => {
