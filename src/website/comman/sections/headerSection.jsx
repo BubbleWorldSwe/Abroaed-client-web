@@ -249,6 +249,7 @@ function Header({ isHeaderBgWhite = false }) {
       key: "services",
       label: "Services",
       subItems: [
+        { title: "Forex", link: "/forex" },
         { title: "Finance", link: "/finance" },
         { title: "Accomodation", link: "/accomodation" },
         { title: "Home Counselling", link: "/homeCounselling" },
@@ -281,8 +282,8 @@ function Header({ isHeaderBgWhite = false }) {
   return (
     <header
       className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-          ? "bg-gray-primary text-white shadow-md"
-          : "bg-gray-primary text-white bg-opacity-10"
+        ? "bg-gray-primary text-white shadow-md"
+        : "bg-gray-primary text-white bg-opacity-10"
         }`}
     >
       <nav>

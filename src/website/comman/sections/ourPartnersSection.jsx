@@ -43,17 +43,17 @@ const financeImages = [
 function OurPartners() {
   return (
     <div>
-      <section className="bg-white relative ">
+      <section className="relative ">
         <div className=" relative z-10">
-          <SectionMainHeader className={`mb-1 text-center`}>
+          <SectionMainHeader className={`mb-6 text-center`}>
             Our Partners
           </SectionMainHeader>
           <div className="flex mb-10 justify-center items-center ">
-            <p className="text-center  text-[#52525B] text-[18px] font-semibold">
+            <p className="text-center  text-[#52525B] text-[20px] font-semibold">
               We work closely with trusted international partners who share our goal—making every student’s study abroad smoother, safer, and more supportive.
             </p>
           </div>
-          <div className="gap-10 mt-8 sm:grid grid-cols-1 md:grid-cols-4 sm:grid-rows-[auto] sm:mt-10">
+          <div className="gap-14 mt-8 sm:grid grid-cols-1 md:grid-cols-4 sm:grid-rows-[auto] sm:mt-10">
             {financeImages.map((img, index) => (
               <div
                 key={index}

@@ -3,7 +3,7 @@ import vectorRightFlat from "../../../../assets/vectorRightFlat.png"
 const ContactUs = () => {
     return (
         <section className="">
-            <div className="  py-6  pb-10 flex flex-col gap-6 mt-10 md:mt-5">
+            <div className="  py-6  pb-10 flex flex-col gap-6 mt-10 md:mt-8">
                 {/* Content */}
                 <div className="relative  z-10">
                     <h2 className={`mb-2 text-[45px]  font-extrabold text-gray-primary dark:text-white`}>

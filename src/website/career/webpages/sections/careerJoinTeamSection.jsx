@@ -18,8 +18,8 @@ function CareerJoinTeam() {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    nextArrow: <NextArrow right="right-0 md:right-4" />,
-    prevArrow: <PrevArrow left="left-0 md:left-4" />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
     customPaging: i => (
       <div className={`rounded-full w-3 h-3 transition-all duration-300 
@@ -60,7 +60,7 @@ function CareerJoinTeam() {
             </h3>
           </div>
         </div>
-        <div className="md:block  hidden md:px-8">
+        <div className=" md:px-8">
           <Slider {...settings} className="pb-6">
             {benefits.map((benefit, index) => (
               <div key={index} className="px-4">
@@ -98,19 +98,15 @@ function CareerJoinTeam() {
           </Slider>
         </div>
 
-        <div className="md:hidden flex  gap-4 px-4 overflow-x-auto">
+        {/* <div className="md:hidden flex  gap-4 px-4 overflow-x-auto">
           {benefits.map((benefit, index) => (
             <div key={index} className="">
               <div
                 className=" relative hover:scale-[1.01] transition-all ease-in-out delay-100 w-[23rem]  md:w-full h-[25rem] md:h-[20rem] bg-black bg-opacity-80 overflow-y-auto flex flex-col flex-grow-0 p-6  text-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
               >
                 <div
-                  // style={{
-                  //   backgroundImage:
-                  //     "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
-                  // }}
+
                   className="text-white">
-                  {/* <img className="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo"></img> */}
                   <h5 className="mt-2  text-[26px] leading-tight md:text-[36px] font-medium   dark:text-white"
                   >
                     {benefit.heading}
@@ -118,7 +114,6 @@ function CareerJoinTeam() {
                   <p className="font-normal text-justify text-[18px]  md:text-[16px]   mt-6  dark:text-gray-400">
                     {benefit.text}
                   </p>
-                  {/* <p className="text-sm">Location, India</p> */}
 
                 </div>
                 <div className="absolute right-0 w-32 top-20 bottom-0 overflow-hidden z-0">
@@ -132,7 +127,7 @@ function CareerJoinTeam() {
 
             </div>
           ))}
-        </div>
+        </div> */}
 
       </section>
     </div>

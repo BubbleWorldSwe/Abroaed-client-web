@@ -16,7 +16,7 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
   return (
     galleryImages?.length > 0 && (
       <div>
-        <section className="dark:bg-gray-900 relative">
+        <section className="dark:bg-gray-900 relative ">
           <div className=" relative z-10">
             <div className=" text-center">
               <SectionMainHeader className={`mb-4`}>
@@ -25,13 +25,13 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
             </div>
             <div className="overflow-x-auto">
               <div
-                className="flex gap-5 pl-12"
+                className="flex gap-5 py-6 pl-12"
                 style={{ minWidth: "max-content" }}
               >
                 {galleryImages.map((data, index) => (
                   <div
                     key={index}
-                    className="hover:scale-[1.01] transition-all ease-in-out delay-100 md:w-[30vw]
+                    className="hover:scale-[1.01]  transition-all ease-in-out delay-100 md:w-[30vw]
                                          h-[25rem] relative rounded-2xl overflow-hidden"
                   >
                     {/* Background Image with Overlay */}

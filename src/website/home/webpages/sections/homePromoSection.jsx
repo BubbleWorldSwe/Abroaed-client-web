@@ -110,7 +110,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
             </p>
             <div className="flex justify-center  lg:justify-start ">
               <img
-                className="rounded-lg w-full h-[40vh] object-cover"
+                className="rounded-lg w-full h-[32vh] object-cover"
                 src={homeQuery}
                 alt="Counselling session"
               />
@@ -119,10 +119,10 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
               <a href="/homeCounselling">
                 <button
                   className="py-1 md:py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-                  // onClick={(e) => {
-                  //   e.preventDefault()
-                  //   navigate("/homeCounselling")
-                  // }}
+                // onClick={(e) => {
+                //   e.preventDefault()
+                //   navigate("/homeCounselling")
+                // }}
                 >
                   Learn More About Home Counselling
                 </button>
@@ -132,8 +132,8 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
           </div>
 
           {/* Right Side: Form */}
-          <div className="flex flex-col justify-start items-end">
-            <div className="flex flex-col items-start w-full rounded-lg   ">
+          <div className="flex flex-col justify-start  items-end">
+            <div className="flex flex-col  w-full   md:items-start  rounded-lg   ">
               {/* Tabs Row */}
               <div className="mb-3">
                 <h2
@@ -141,8 +141,8 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                 >
                   Book Counselling Now
                 </h2>
-                <form className="space-y-5" onSubmit={handleAddLead}>
-                  <div className="grid grid-cols-1 md:grid-cols-2  md:gap-y-0  md:gap-4">
+                <form className="space-y-10 w-full " onSubmit={handleAddLead}>
+                  <div className="grid grid-cols-1 md:grid-cols-2  w-full md:gap-y-2  md:gap-4">
                     <BorderTextInputField
                       label="First Name"
                       name="firstName"
@@ -226,19 +226,6 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     />
                   </div>
 
-                  {/* Checkboxes */}
-                  <div className="flex items-start mt-4">
-                    <input
-                      type="checkbox"
-                      className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      required
-                    />
-                    <label className="ml-2 text-sm font-light text-gray-500 dark:text-gray-400">
-                      I agree to ABROAED{" "}
-                      <span className="font-bold">Terms of Service</span> and{" "}
-                      <span className="font-bold">Privacy Policy</span>.
-                    </label>
-                  </div>
 
                   {/*   <div className="flex items-start mt-4">
                     <input

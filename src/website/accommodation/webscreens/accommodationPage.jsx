@@ -24,7 +24,7 @@ import {
   deleteSavedPreferenceRequest,
 } from "../../../redux/actions/savedPreferencesActions";
 import SectionComponent from "../../styleComponents/sectionComponent";
-
+import vectorBelow from "../../../assets/vectorBelow.png"
 function AccomodationPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -151,9 +151,19 @@ function AccomodationPage() {
             removeFromSavedPreferences={removeFromSavedPreferences}
           />
         </SectionComponent>
-        <SectionComponent>
-          <AccommodationHowItWorkSection />
-        </SectionComponent>
+        <div className="relative">
+
+          <SectionComponent>
+            <AccommodationHowItWorkSection />
+          </SectionComponent>
+          <div className="absolute top-4  right-0 z-0">
+            <img
+              className="rounded-lg w-full h-full object-cover"
+              src={vectorBelow}
+              alt="Counselling session"
+            />
+          </div>
+        </div>
         {/* <OurPartners /> */}
         <SectionComponent>
           <AccommodationFaqSection />

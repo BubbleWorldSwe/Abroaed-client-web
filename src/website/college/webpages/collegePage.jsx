@@ -140,8 +140,8 @@ function CollegePage() {
         <div>
           <CollegeUniversitySection collegeDetails={collegeDetails} />
         </div>
-        <div className="relative">
-          {collegeDetails?.courses.length > 0 && (
+        {collegeDetails?.courses.length > 0 && (
+          <div className="relative">
             <SectionComponent>
               <CollegeCourseOfferSection
                 collegeDetails={collegeDetails}
@@ -151,15 +151,15 @@ function CollegePage() {
                 removeFromSavedPreferences={removeFromSavedPreferences}
               />
             </SectionComponent>
-          )}
-          <div className="absolute top-0 right-0  -z-10">
-            <img
-              className="rounded-lg w-full h-full object-cover"
-              src={vectorleftNose}
-              alt="Counselling session"
-            />
+            <div className="absolute top-0 right-0  -z-10">
+              <img
+                className="rounded-lg w-full h-full object-cover"
+                src={vectorleftNose}
+                alt="Counselling session"
+              />
+            </div>
           </div>
-        </div>
+        )}
         {collegeDetails?.scholarships.length > 0 && (
           <div className="relative">
             <SectionComponent>

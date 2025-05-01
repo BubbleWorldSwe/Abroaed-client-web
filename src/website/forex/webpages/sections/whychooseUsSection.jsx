@@ -18,8 +18,8 @@ const WhychooseUsSection = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    nextArrow: <NextArrow right="right-0 md:right-4" />,
-    prevArrow: <PrevArrow left="left-0 md:left-4" />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
     customPaging: i => (
       <div className={`rounded-full w-3 h-3 transition-all duration-300 

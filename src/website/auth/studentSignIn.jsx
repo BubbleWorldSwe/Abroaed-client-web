@@ -40,10 +40,10 @@ function StudentSignIn() {
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
-        <div className="grid lg:h-screen lg:grid-cols-2">
-          <div className="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0">
+        <div className="grid lg:h-screen grid-cols-1 lg:grid-cols-2">
+          <div className="flex justify-center items-center  py-6 ">
             <form
-              className="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
+              className="space-y-4  md:space-y-6  md:w-[36rem]"
               // action="#"
               onSubmit={handleSubmit}
             >
@@ -57,7 +57,6 @@ function StudentSignIn() {
               <div className="flex items-center">
                 <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
 
-                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
               </div>
 
               <div>
@@ -86,43 +85,7 @@ function StudentSignIn() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="terms"
-                      name="terms"
-                      aria-describedby="terms"
-                      type="checkbox"
-                      className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="terms"
-                      className="font-light text-gray-500 dark:text-gray-300"
-                    >
-                      By signing up, you are creating a ABROAED account, and you
-                      agree to ABROAED’s{" "}
-                      <a
-                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
-                        href="#"
-                      >
-                        Terms of Use
-                      </a>{" "}
-                      and{" "}
-                      <a
-                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
-                        href="#"
-                      >
-                        Privacy Policy
-                      </a>
-                      .
-                    </label>
-                  </div>
-                </div>
-              </div>
+
               <button
                 type="submit"
                 disabled={loading}
