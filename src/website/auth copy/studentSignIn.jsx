@@ -12,9 +12,7 @@ function StudentSignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { loading, studentToken, studentId } = useSelector(
-    (state) => state.auth
-  );
+  const { loading, studentToken } = useSelector((state) => state.auth);
 
   const handleSubmit = async (e) => {
     try {
@@ -32,7 +30,7 @@ function StudentSignIn() {
   };
 
   useEffect(() => {
-    if (studentToken && studentId) {
+    if (studentToken) {
       navigate("/");
     }
   }, [studentToken, navigate]);

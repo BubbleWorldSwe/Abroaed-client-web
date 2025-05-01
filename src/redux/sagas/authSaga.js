@@ -58,19 +58,9 @@ function* handleStudentSignUp(action) {
 
     console.log(response);
     if (response.status === 201) {
-      let message =
-        "Link has been sent to your email ID. Please create a password and log in.";
+      let message = `An OTP has been sent to ${action?.payload?.email}. Please check your inbox and enter the code.`;
       toast.success(message);
-      yield put(studentSignUpSuccess(message));
-      //window.location.href = "/home";
-      /*  const resetPasswordLink = response.data?.resetPasswordLink || "";
-      if (resetPasswordLink) {
-        const extractedPath =
-          resetPasswordLink.match(/\/update-password\/[^?]+/)?.[0] || "";
-
-        window.location.href = extractedPath;
-        yield put(studentSignUpSuccess({ user: response.data.user }));
-      } */
+      yield put(studentSignUpSuccess(response?.data?.data));
     } else {
       yield put(studentSignUpFailure(response.message));
       toast.error(response.message);

@@ -36,6 +36,36 @@ export const setStudentSignUp = async (credentials) => {
   }
 };
 
+export const setVerifyOtp = async (credentials) => {
+  try {
+    const data = await makePostRequest(
+      `${BASE_URL}/api/v1/auth/student/verify-otp`,
+      credentials
+    );
+    //console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setResendOtp = async (credentials) => {
+  try {
+    const data = await makePostRequest(
+      `${BASE_URL}/api/v1/auth/student/resend-otp`,
+      credentials
+    );
+    //console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const setUpdateStudent = async (credentials) => {
   try {
     const { studentToken } = store.getState().auth;

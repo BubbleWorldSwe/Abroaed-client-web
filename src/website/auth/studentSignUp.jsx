@@ -8,7 +8,8 @@ import { BorderTextInputField } from "../../commons/components/inputFields/borde
 
 function StudentSignUp() {
   const dispatch = useDispatch();
-  const { loading } = useSelector((state) => state.auth);
+  const { loading, user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   // State to hold form data
   const [formData, setFormData] = useState({
@@ -63,6 +64,14 @@ function StudentSignUp() {
     // Dispatch form data
     dispatch(studentSignUpRequest(formData));
   };
+  useEffect(() => {
+    if (user) {
+      console.log("User Received");
+      navigate("/otpVerification");
+    } else {
+      console.log("Not Received");
+    }
+  }, [user]);
 
   return (
     <div>

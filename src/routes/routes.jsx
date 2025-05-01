@@ -62,6 +62,7 @@ import AddBlog from "../admin/blogs/screens/addBlog";
 import EditBlog from "../admin/blogs/screens/editBlog";
 import ComingSoonPage from "../website/comingSoon/comingSoonPage";
 import ForexPage from "../website/forex/webpages/forexPage";
+import StudentOtpVerification from "../website/auth/studentOtpVerification";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -81,6 +82,11 @@ const AppRoutes = () => {
     { path: "/aboutus", element: <AboutUsPage />, isPrivate: false },
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/signin", element: <StudentSignIn />, isPrivate: false },
+    {
+      path: "/otpVerification",
+      element: <StudentOtpVerification />,
+      isPrivate: false,
+    },
     { path: "/signup", element: <StudentSignUp />, isPrivate: false },
     { path: "/batchLogin", element: <BatchLoginPage />, isPrivate: false },
     { path: "/batchSignup", element: <BatchSignupPage />, isPrivate: false },
@@ -110,7 +116,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     {
-      path: "/update-password/:id",
+      path: "/update-password",
       element: <StudentResetPassword />,
       isPrivate: false,
     },

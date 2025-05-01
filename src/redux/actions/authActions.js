@@ -33,6 +33,8 @@ export const ADMIN_GET_PROFILE_REQUEST = "ADMIN_GET_PROFILE_REQUEST";
 export const ADMIN_GET_PROFILE_SUCCESS = "ADMIN_GET_PROFILE_SUCCESS";
 export const ADMIN_GET_PROFILE_FAILURE = "ADMIN_GET_PROFILE_FAILURE";
 
+export const SET_STUDENT_TOKEN = "SET_STUDENT_TOKEN";
+
 export const LOGOUT = "LOGOUT";
 export const STUDENT_LOGOUT = "STUDENT_LOGOUT";
 export const ADMIN_LOGOUT = "ADMIN_LOGOUT";
@@ -162,6 +164,11 @@ export const adminGetProfileSuccess = (profile) => ({
 export const adminGetProfileFailure = (error) => ({
   type: ADMIN_GET_PROFILE_FAILURE,
   payload: error,
+});
+
+export const setStudentToken = (token) => ({
+  type: SET_STUDENT_TOKEN,
+  payload: token,
 });
 
 // Logout Actions

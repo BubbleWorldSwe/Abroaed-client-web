@@ -1,41 +1,68 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { studentLoginRequest } from "../../redux/actions/authActions";
+import { studentSignUpRequest } from "../../redux/actions/authActions";
 import { toast } from "react-toastify";
 import AbroaedInfo from "./components/abroaedInfo";
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
-import { FaHome } from "react-icons/fa";
 
-function StudentSignIn() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function StudentSignUp() {
   const dispatch = useDispatch();
-  const { loading, studentToken, studentId } = useSelector(
-    (state) => state.auth
-  );
+  const { loading } = useSelector((state) => state.auth);
 
-  const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
-      const formData = new FormData(e.currentTarget);
-      if (!formData.get("email")?.trim() || !formData.get("password")) {
-        toast.error("Please enter Email ID and Password.");
-        return;
-      }
+  // State to hold form data
+  const [formData, setFormData] = useState({
+    firstName: "Juhi",
+    lastName: "Kukreja",
+    email: "1611juhi@gmail.com",
+    mobile: "9871213837",
+  });
 
-      dispatch(studentLoginRequest({ email, password }));
-    } catch (error) {
-      console.log(error);
-    }
+  // Function to handle input changes and update state
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value.trim(),
+    }));
   };
 
-  useEffect(() => {
-    if (studentToken && studentId) {
-      navigate("/");
+  // Function to handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { firstName, lastName, email, mobile } = formData;
+
+    const nameRegex = /^[A-Za-z]+$/; // Only alphabets allowed
+
+    if (!firstName || !nameRegex.test(firstName)) {
+      toast.error("Please enter a valid First Name (Only letters allowed).");
+      return;
     }
-  }, [studentToken, navigate]);
+
+    if (!lastName || !nameRegex.test(lastName)) {
+      toast.error("Please enter a valid Last Name (Only letters allowed).");
+      return;
+    }
+
+    if (!email) {
+      toast.error("Please enter a valid Email ID.");
+      return;
+    }
+
+    if (!mobile || mobile.length < 10) {
+      toast.error("Phone Number must be at least 10 characters long.");
+      return;
+    }
+
+    if (!document.getElementById("terms").checked) {
+      toast.error("You must accept the Terms and Conditions to proceed.");
+      return;
+    }
+
+    // Dispatch form data
+    dispatch(studentSignUpRequest(formData));
+  };
 
   return (
     <div>
@@ -44,48 +71,59 @@ function StudentSignIn() {
           <div className="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0">
             <form
               className="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
-              // action="#"
               onSubmit={handleSubmit}
             >
-              <a href="/">
-                <FaHome fontSize={30} />
-              </a>
-              <h2 className="text-xl  font-bold   text-gray-900 dark:text-white">
-                Please Sign In to Continue
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                Create an Account
               </h2>
 
-              <div className="flex items-center">
-                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-
-                <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
+              <div className="flex gap-x-4">
+                <div className="w-1/2">
+                  <BorderTextInputField
+                    label="First Name"
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    placeholder="First Name"
+                    required
+                  />
+                </div>
+                <div className="w-1/2">
+                  <BorderTextInputField
+                    label="Last Name"
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    placeholder="Last Name"
+                    required
+                  />
+                </div>
               </div>
 
-              <div>
-                <BorderTextInputField
-                  label={"Your email"}
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="name@company.com"
-                  required=""
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <BorderTextInputField
-                  label={"Your password"}
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  required=""
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+              <BorderTextInputField
+                label="Your Email"
+                type="email"
+                name="email"
+                id="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="name@company.com"
+                required
+              />
+              <BorderTextInputField
+                label="Phone Number"
+                name="mobile"
+                id="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                placeholder="Enter Phone Number"
+                required
+              />
+
               <div className="space-y-3">
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
@@ -95,7 +133,7 @@ function StudentSignIn() {
                       aria-describedby="terms"
                       type="checkbox"
                       className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
+                      required
                     />
                   </div>
                   <div className="ml-3 text-sm">
@@ -123,6 +161,7 @@ function StudentSignIn() {
                   </div>
                 </div>
               </div>
+
               <button
                 type="submit"
                 disabled={loading}
@@ -133,16 +172,16 @@ function StudentSignIn() {
                     <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-white rounded-full"></div>
                   </div>
                 ) : (
-                  "Sign In"
+                  "Sign Up"
                 )}
               </button>
 
               <div className="text-center mt-4">
                 <a
-                  href="/signup"
+                  href="/signin"
                   className="text-sm text-yellow-500 hover:underline"
                 >
-                  New User? Sign Up
+                  Already have an account? Sign In
                 </a>
               </div>
             </form>
@@ -154,4 +193,4 @@ function StudentSignIn() {
   );
 }
 
-export default StudentSignIn;
+export default StudentSignUp;

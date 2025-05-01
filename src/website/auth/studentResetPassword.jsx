@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   studentLoginRequest,
   studentUpdatePasswordRequest,
@@ -11,10 +11,10 @@ import AbroaedInfo from "./components/abroaedInfo";
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
 
 function StudentResetPassword() {
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const { loading, studentToken } = useSelector((state) => state.auth);
+  const { loading, studentToken, studentId } = useSelector(
+    (state) => state.auth
+  );
 
   const [formData, setFormData] = useState({
     password: "",
@@ -58,26 +58,13 @@ function StudentResetPassword() {
     dispatch(studentUpdatePasswordRequest({ password, confirmPassword }));
   };
 
-  useEffect(() => {
-    // Get the current URL
-    const urlParams = new URLSearchParams(window.location.search);
-    // Extract the token
-    const token = urlParams.get("token");
-
-    if (token) {
-      // Store the token in localStorage
-      localStorage.setItem("token", token);
-      console.log("Token stored successfully:", token);
-    } else {
-      console.log("Token not found in URL.");
-    }
-  }, []);
+  console.log(studentToken);
 
   useEffect(() => {
-    if (studentToken) {
-      // navigate("/admin/dashboard");
+    if (studentToken && studentId) {
+      console.log("Token ----");
     }
-  }, [studentToken, navigate]);
+  }, [studentToken, studentId]);
 
   return (
     <div>

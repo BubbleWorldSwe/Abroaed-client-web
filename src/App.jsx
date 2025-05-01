@@ -39,6 +39,8 @@ const App = () => {
 
   const { leadId } = useSelector((state) => state.studentProfile);
 
+  console.log(isLoggedInStudent, studentToken, studentId);
+
   async function fetchData() {
     try {
       dispatch(fetchAllTestPrepsRequest());
