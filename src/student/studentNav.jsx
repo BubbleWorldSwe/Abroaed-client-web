@@ -60,7 +60,7 @@ const NavStudent = () => {
           >
             <img
               className="w-10 object-cover h-10 rounded-full border-2 border-gray-300"
-              src="https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=612x612&w=0&k=20&c=tyLvtzutRh22j9GqSGI33Z4HpIwv9vL_MZw_xOE19NQ="
+              src="https://static.vecteezy.com/system/resources/thumbnails/022/014/184/small_2x/user-icon-member-login-isolated-vector.jpg"
               alt="Rounded avatar"
             />
           </button>

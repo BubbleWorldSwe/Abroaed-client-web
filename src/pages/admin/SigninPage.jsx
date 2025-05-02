@@ -65,7 +65,6 @@ function SigninPage() {
               </div>
 
               <div>
-
                 <BorderTextInputField
                   type="email"
                   label="Your email"
@@ -79,7 +78,6 @@ function SigninPage() {
                 />
               </div>
               <div>
-
                 <BorderTextInputField
                   type="password"
                   label=" Your password"

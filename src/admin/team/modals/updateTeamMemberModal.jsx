@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import { useSelector } from "react-redux";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";

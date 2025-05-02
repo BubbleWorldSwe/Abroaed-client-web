@@ -13,19 +13,20 @@ function Dashboard() {
     navigate("/admin/signin");
   };
 
-  const { adminToken } = useSelector((state) => state.auth);
+  const { adminToken, admin } = useSelector((state) => state.auth);
 
-  console.log(adminToken);
-
-  let currentLocation = window.location;
-  console.log(currentLocation.origin);
+  console.log(admin);
 
   return (
     <div className="h-screen flex flex-col p-2">
       {/* Adjust padding and spacing */}
       <header className="p-4 bg-gray-800 text-white flex justify-between items-center">
         <h1 className="text-lg font-bold">Dashboard</h1>
-        <button onClick={handleSignOut}>Sign Out</button>
+        <button
+        // onClick={handleSignOut}
+        >
+          {`Welcome, ${admin.firstName} ${admin.lastName}`}
+        </button>
       </header>
 
       <main className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900">

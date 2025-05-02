@@ -30,7 +30,12 @@ import { toast } from "react-toastify";
 function* fetchColleges(action) {
   try {
     const data = yield call(getColleges, action.payload);
-    yield put(fetchCollegesSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchCollegesSuccess(data.data));
+    } else {
+      yield put(fetchCollegesFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchCollegesFailure(error.message));
     toast.error(error.message);

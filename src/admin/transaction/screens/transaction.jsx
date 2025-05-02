@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import filter_list from "../../../assets/filter_list.png";
-import { studentPayments } from "../data";
+
 import TransactionTable from "../tables/transactionTable";
-import { Download } from "lucide-react";
+
 import AddTransactionModal from "../modals/addTransactionModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +20,7 @@ const Transaction = () => {
   const [editData, setEditData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
+
   const { transactions, totalPages } = useSelector(
     (state) => state.transactions
   );
@@ -28,7 +28,6 @@ const Transaction = () => {
   const [students, setStudents] = useState([]);
 
   const handleOpenModal = (transaction = null) => {
-    console.log(transaction?.user);
     setEditData({
       date: transaction?.date,
       user: transaction?.user?._id,
@@ -74,17 +73,22 @@ const Transaction = () => {
   };
 
   const handleTransaction = (data) => {
-    if (editData && data?._id) {
-      console.log("Edit Data");
-      const { _id, ...transactionData } = data;
-      dispatch(editTransactionRequest(editData?._id, transactionData));
-    } else {
-      console.log("Add Data");
-      dispatch(addTransactionRequest(data));
+    // debugger;
+    try {
+      if (editData && data?._id) {
+        const { _id, ...transactionData } = data;
+        dispatch(editTransactionRequest(editData?._id, transactionData));
+      } else {
+        dispatch(addTransactionRequest(data));
+      }
+
+      dispatch(fetchTransactionsRequest(1));
+      setCurrentPage(1);
+
+      handleCloseModal();
+    } catch (error) {
+      console.log(error);
     }
-    setCurrentPage(1);
-    dispatch(fetchTransactionsRequest(1));
-    handleCloseModal();
   };
 
   const handleDelete = (id) => {

@@ -52,14 +52,13 @@ export const getAllTeams = async () => {
 
 export const setAddTeam = async (credentials) => {
   try {
-    console.log(credentials);
     const { adminToken } = store.getState().auth;
     const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/auth/signup`,
       credentials,
       adminToken
     );
-    // console.log(data);
+
     if (data.success) {
       return data.data;
     }

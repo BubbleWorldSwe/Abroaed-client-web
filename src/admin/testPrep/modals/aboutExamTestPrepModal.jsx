@@ -82,7 +82,7 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
           <TextInputField
-            label="Exam"
+            label="Acronym"
             name="exam"
             type="text"
             value={formData?.exam}

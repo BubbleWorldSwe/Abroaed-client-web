@@ -35,7 +35,11 @@ function* fetchDestinations(action) {
 
     console.log(data);
 
-    yield put(fetchDestinationsSuccess(data.data));
+    if (data.status === 200) {
+      yield put(fetchDestinationsSuccess(data.data));
+    } else {
+      yield put(fetchDestinationsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchDestinationsFailure(error.message));
     toast.error(error.message);
@@ -46,7 +50,11 @@ function* fetchAllDestinations() {
   try {
     const data = yield call(getAllDestinations);
 
-    yield put(fetchAllDestinationsSuccess(data.data));
+    if (data.status === 200) {
+      yield put(fetchAllDestinationsSuccess(data.data));
+    } else {
+      yield put(fetchAllDestinationsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchAllDestinationsFailure(error.message));
     console.log(error.message);

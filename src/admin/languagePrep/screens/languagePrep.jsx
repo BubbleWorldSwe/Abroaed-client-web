@@ -30,10 +30,6 @@ const LanguagePrep = () => {
     setIsAddModalOpen(false);
   };
   const handleAddLanguagePrep = (data) => {
-    //  setIsAddModalOpen(false);
-    console.log("handleAddLanguagePrep");
-    console.log(data);
-
     dispatch(addLanguagePrepRequest(data));
     setCurrentPage(1);
     dispatch(fetchLanguagePrepsRequest(1));

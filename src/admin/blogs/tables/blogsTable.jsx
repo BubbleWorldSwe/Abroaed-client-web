@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { formatDate, formatDateTime } from "../../../utils/helper";
 import { setSelectedBlog } from "../../../redux/actions/blogActions";
 import { useNavigate } from "react-router-dom";
+import { TableNoData } from "../../../commons/components/table/tableNoData";
 
 const BlogsTable = ({
   currentPage,
@@ -110,119 +111,127 @@ const BlogsTable = ({
           </tr>
         </thead>
         <tbody>
-          {blogs.map(
-            (item) =>
-              item.index === currentPage &&
-              item.data.map((blog, index) => (
-                <tr
-                  key={index}
-                  className="border-b  dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  <td className="px-4 py-3 w-4">
-                    <CheckboxField
-                      onClick={(e) => e.stopPropagation()}
-                      id={`checkbox-blog-${index}`}
-                      htmlFor={`checkbox-blog-${index}`}
-                    />
-                  </td>
+          {blogs.length > 0 ? (
+            blogs.map(
+              (item) =>
+                item.index === currentPage &&
+                item.data.map((blog, index) => (
+                  <tr
+                    key={index}
+                    className="border-b  dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                  >
+                    <td className="px-4 py-3 w-4">
+                      <CheckboxField
+                        onClick={(e) => e.stopPropagation()}
+                        id={`checkbox-blog-${index}`}
+                        htmlFor={`checkbox-blog-${index}`}
+                      />
+                    </td>
 
-                  <td className="px-4 py-3">{blog?.title}</td>
-                  <td className="px-4 py-3">{blog?.category?.name}</td>
-                  <td className="px-4 py-3">{blog?.status}</td>
-                  <td className="px-4 py-3">{blog?.author}</td>
-                  <td className="px-4 py-1">
-                    <span className="bg-[#F3F4F6] px-2 py-1 rounded-md">
-                      {formatDateTime(blog?.createdAt)}
-                    </span>
-                  </td>
+                    <td className="px-4 py-3">{blog?.title}</td>
+                    <td className="px-4 py-3">{blog?.category?.name}</td>
+                    <td className="px-4 py-3">{blog?.status}</td>
+                    <td className="px-4 py-3">
+                      {blog?.createdBy
+                        ? `${blog?.createdBy?.firstName} ${blog?.createdBy?.lastName}`
+                        : `---`}
+                    </td>
+                    <td className="px-4 py-1">
+                      <span className="bg-[#F3F4F6] px-2 py-1 rounded-md">
+                        {formatDateTime(blog?.createdAt)}
+                      </span>
+                    </td>
 
-                  <td className="px-4 py-3">
-                    <button
-                      className="focus:outline-none"
-                      onClick={(e) => handleDropdownToggle(e, index)}
-                    >
-                      <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                    </button>
-                    {dropdownVisible === index && (
-                      <div
-                        ref={dropdownRef}
-                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                          dropdownDirection === "up"
-                            ? "bottom-full mb-2"
-                            : "mt-2"
-                        }`}
+                    <td className="px-4 py-3">
+                      <button
+                        className="focus:outline-none"
+                        onClick={(e) => handleDropdownToggle(e, index)}
                       >
-                        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                          <li>
-                            <button
-                              type="button"
-                              onClick={() => handleViewBlogs(blog)}
-                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                            >
-                              <Eye className="w-4 h-4" />
-                              <span>View blog</span>
-                            </button>
-                          </li>
-                          {isWriteAccess && (
-                            <>
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => handleEditBlogs(blog)}
-                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                  <Edit2 className="w-4 h-4" />
-                                  <span>Edit Blog</span>
-                                </button>
-                              </li>
-                              <li>
-                                {blog?.status === "publish" ? (
+                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                      </button>
+                      {dropdownVisible === index && (
+                        <div
+                          ref={dropdownRef}
+                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                            dropdownDirection === "up"
+                              ? "bottom-full mb-2"
+                              : "mt-2"
+                          }`}
+                        >
+                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                            <li>
+                              <button
+                                type="button"
+                                onClick={() => handleViewBlogs(blog)}
+                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                              >
+                                <Eye className="w-4 h-4" />
+                                <span>View blog</span>
+                              </button>
+                            </li>
+                            {isWriteAccess && (
+                              <>
+                                <li>
                                   <button
                                     type="button"
-                                    onClick={() =>
-                                      changeStatus(blog?._id, "draft")
-                                    }
+                                    onClick={() => handleEditBlogs(blog)}
                                     className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                   >
-                                    <PaintbrushVerticalIcon className="w-4 h-4" />
-                                    <span>Save as Draft</span>
+                                    <Edit2 className="w-4 h-4" />
+                                    <span>Edit Blog</span>
                                   </button>
-                                ) : (
-                                  <button
-                                    type="button"
-                                    onClick={() =>
-                                      changeStatus(blog?._id, "publish")
-                                    }
-                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                  >
-                                    <PaintbrushVerticalIcon className="w-4 h-4" />
-                                    <span>Publish Blog</span>
-                                  </button>
-                                )}
-                              </li>
+                                </li>
+                                <li>
+                                  {blog?.status === "publish" ? (
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        changeStatus(blog?._id, "draft")
+                                      }
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <PaintbrushVerticalIcon className="w-4 h-4" />
+                                      <span>Save as Draft</span>
+                                    </button>
+                                  ) : (
+                                    <button
+                                      type="button"
+                                      onClick={() =>
+                                        changeStatus(blog?._id, "publish")
+                                      }
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <PaintbrushVerticalIcon className="w-4 h-4" />
+                                      <span>Publish Blog</span>
+                                    </button>
+                                  )}
+                                </li>
 
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => {
-                                    setDeleteId(blog?._id);
-                                    setIsModalOpen(!isModalOpen);
-                                    //setDropdownVisible(null);
-                                  }}
-                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                  <Trash2 className="w-4 h-4" />
-                                  <span>Delete</span>
-                                </button>
-                              </li>
-                            </>
-                          )}
-                        </ul>
-                      </div>
-                    )}
-                  </td>
-                </tr>
-              ))
+                                <li>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setDeleteId(blog?._id);
+                                      setIsModalOpen(!isModalOpen);
+                                      //setDropdownVisible(null);
+                                    }}
+                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    <Trash2 className="w-4 h-4" />
+                                    <span>Delete</span>
+                                  </button>
+                                </li>
+                              </>
+                            )}
+                          </ul>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                ))
+            )
+          ) : (
+            <TableNoData colSpan={7} />
           )}
         </tbody>
         <TableFooter

@@ -5,6 +5,7 @@ import pencil from "../../../assets/pencil.png";
 import trash from "../../../assets/delete.png";
 import { useEffect, useState } from "react";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { TableNoData } from "../../../commons/components/table/tableNoData";
 
 function CoursesCard({ onEdit, onUpdate }) {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
@@ -51,38 +52,42 @@ function CoursesCard({ onEdit, onUpdate }) {
             </tr>
           </thead>
           <tbody>
-            {collegeDetails?.courses?.map((data, i) => (
-              <tr
-                key={i}
-                className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <td className=" px-4 py-3 font-semibold">{data?.name}</td>
-                <td className=" px-4 py-3">{data?.courseLevel}</td>
-                <td className=" px-4 py-3">{data?.duration}</td>
-                {isWriteAccess && (
-                  <td className="text-center w-[100px]">
-                    <div className="flex items-center justify-center space-x-5">
-                      <img
-                        src={pencil}
-                        alt="Edit"
-                        className="w-5 h-5 cursor-pointer"
-                        onClick={() => handleEditClick(data)}
-                      />
-                      <img
-                        src={trash}
-                        alt="Delete"
-                        className="w-5 h-5 cursor-pointer"
-                        //  onClick={() => handleDeleteClick(data?._id)}
-                        onClick={() => {
-                          setDeleteId(data?._id);
-                          setIsModalOpen(!isModalOpen);
-                        }}
-                      />
-                    </div>
-                  </td>
-                )}
-              </tr>
-            ))}
+            {collegeDetails?.courses?.length > 0 ? (
+              collegeDetails?.courses?.map((data, i) => (
+                <tr
+                  key={i}
+                  className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <td className=" px-4 py-3 font-semibold">{data?.name}</td>
+                  <td className=" px-4 py-3">{data?.courseLevel}</td>
+                  <td className=" px-4 py-3">{data?.duration}</td>
+                  {isWriteAccess && (
+                    <td className="text-center w-[100px]">
+                      <div className="flex items-center justify-center space-x-5">
+                        <img
+                          src={pencil}
+                          alt="Edit"
+                          className="w-5 h-5 cursor-pointer"
+                          onClick={() => handleEditClick(data)}
+                        />
+                        <img
+                          src={trash}
+                          alt="Delete"
+                          className="w-5 h-5 cursor-pointer"
+                          //  onClick={() => handleDeleteClick(data?._id)}
+                          onClick={() => {
+                            setDeleteId(data?._id);
+                            setIsModalOpen(!isModalOpen);
+                          }}
+                        />
+                      </div>
+                    </td>
+                  )}
+                </tr>
+              ))
+            ) : (
+              <TableNoData colSpan={4} />
+            )}
           </tbody>
         </table>
       </div>

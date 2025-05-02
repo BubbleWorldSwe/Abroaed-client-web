@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import SearchDropdownField from "../../../commons/components/inputFields/searchDropdownFields";
+import { useState } from "react";
+
 import { useSelector } from "react-redux";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
@@ -25,8 +25,6 @@ const LocationModal = ({
     city: accommodationDetails?.city,
     streetName: accommodationDetails?.streetName,
   });
-
- 
 
   const handleInputChange = (fieldName, value) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));

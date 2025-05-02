@@ -26,7 +26,6 @@ const AddTransactionModal = ({
 
   const handleSubmit = (e) => {
     try {
-      console.log(formData);
       e.preventDefault();
       if (
         !formData.date ||
@@ -46,7 +45,6 @@ const AddTransactionModal = ({
           .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
       };
 
-      console.log(formattedData);
       onSave(formData);
       // onClose();
     } catch (error) {

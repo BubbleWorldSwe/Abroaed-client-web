@@ -11,7 +11,6 @@ import {
 } from "../utils/apiUtils";
 
 export const getTestPreps = async (page) => {
-  console.log(page + " getTestPreps");
   try {
     const path = page ? `?page=${page}&limit=${pageDataLimit}` : "";
 
@@ -29,7 +28,6 @@ export const getTestPreps = async (page) => {
 
 export const setAddTestPrep = async (credentials) => {
   try {
-    console.log(credentials);
     const { adminToken } = store.getState().auth;
 
     const data = await makePostRequestWithToken(
@@ -37,7 +35,7 @@ export const setAddTestPrep = async (credentials) => {
       credentials,
       adminToken
     );
-    // console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -48,13 +46,11 @@ export const setAddTestPrep = async (credentials) => {
 
 export const setUpdateTestPrep = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/test-preps/${id}`,
       credentials
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -65,12 +61,10 @@ export const setUpdateTestPrep = async (id, credentials) => {
 
 export const setDeleteTestPrep = async (id) => {
   try {
-    console.log(id + " id");
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/test-preps/${id}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -81,7 +75,6 @@ export const setDeleteTestPrep = async (id) => {
 
 export const getTestPrepDetailsById = async (id) => {
   try {
-    console.log(id);
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/test-preps/${id}`
     );
@@ -106,7 +99,7 @@ export const setTestPrepUploadFile = async (id, imageData) => {
       },
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

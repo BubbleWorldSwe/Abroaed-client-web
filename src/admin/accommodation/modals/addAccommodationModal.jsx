@@ -22,13 +22,6 @@ const AddAccommodationModal = ({
   statesList,
 }) => {
   const [formData, setFormData] = useState({});
-  const { countries } = useSelector((state) => state.countries);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsDone(true);
-    onClose();
-  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

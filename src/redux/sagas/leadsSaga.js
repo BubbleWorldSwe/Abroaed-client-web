@@ -34,8 +34,12 @@ import { toast } from "react-toastify";
 function* fetchLeads(action) {
   try {
     const data = yield call(getLeads, action.payload);
-    console.log(data);
-    yield put(fetchLeadsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchLeadsSuccess(data.data));
+    } else {
+      yield put(fetchLeadsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchLeadsFailure(error.message));
     toast.error(error.message);

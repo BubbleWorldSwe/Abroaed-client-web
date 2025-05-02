@@ -30,10 +30,14 @@ import { toast } from "react-toastify";
 
 // Fetch test preps
 function* fetchTestPreps(action) {
-  console.log(action);
   try {
     const data = yield call(getTestPreps, action.payload);
-    yield put(fetchTestPrepsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchTestPrepsSuccess(data.data));
+    } else {
+      yield put(fetchTestPrepsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchTestPrepsFailure(error.message));
     toast.error(error.message);
@@ -44,7 +48,12 @@ function* fetchTestPreps(action) {
 function* fetchAllTestPreps(action) {
   try {
     const data = yield call(getTestPreps);
-    yield put(fetchAllTestPrepsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchAllTestPrepsSuccess(data.data));
+    } else {
+      yield put(fetchAllTestPrepsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchAllTestPrepsFailure(error.message));
     console.log(error.message);
@@ -74,7 +83,6 @@ function* addNewTestPrep(action) {
 function* deleteTestPrep(action) {
   try {
     const response = yield call(setDeleteTestPrep, action.payload);
-    console.log(response);
 
     if (response.status === 200) {
       yield put(deleteTestPrepSuccess(action.payload));

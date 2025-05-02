@@ -25,7 +25,12 @@ import { toast } from "react-toastify";
 function* fetchSavedPreferences(action) {
   try {
     const data = yield call(getSavedPreferences, action.payload);
-    yield put(fetchSavedPreferencesSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchSavedPreferencesSuccess(data.data));
+    } else {
+      yield put(fetchSavedPreferencesFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchSavedPreferencesFailure(error.message));
     //  toast.error(error.message);

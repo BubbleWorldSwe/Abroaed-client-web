@@ -29,7 +29,12 @@ import { toast } from "react-toastify";
 function* fetchAccommodations(action) {
   try {
     const data = yield call(getAccommodations, action.payload);
-    yield put(fetchAccommodationsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchAccommodationsSuccess(data.data));
+    } else {
+      yield put(fetchAccommodationsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchAccommodationsFailure(error.message));
     //  console.log(error.message);

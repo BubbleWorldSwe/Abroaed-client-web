@@ -85,7 +85,6 @@ export const makePostRequestWithToken = async (url, payload, token) => {
   try {
     console.log("make POST request with TOKEN= " + url, token);
 
-    console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(
@@ -97,7 +96,6 @@ export const makePostRequestWithToken = async (url, payload, token) => {
     );
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);

@@ -27,7 +27,12 @@ function* fetchStudents(action) {
   try {
     const data = yield call(getStudents, action.payload);
 
-    yield put(fetchStudentsSuccess(data.data));
+    if (data.status === 200) {
+      yield put(fetchStudentsSuccess(data.data));
+    } else {
+      yield put(fetchStudentsFailure(data.message));
+      // toast.error(data.message);
+    }
   } catch (error) {
     yield put(fetchStudentsFailure(error.message));
     toast.error(error.message);

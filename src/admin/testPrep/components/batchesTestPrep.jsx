@@ -82,7 +82,7 @@ const Batches = ({ onEdit, onUpdate }) => {
             ) : (
               <tr>
                 <td
-                  colSpan="3"
+                  colSpan="5"
                   className="text-center py-4 border text-gray-500"
                 >
                   No Records

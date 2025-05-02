@@ -35,11 +35,12 @@ const App = () => {
     isLoggedInStudent,
     studentId,
     adminId,
+    admin,
   } = useSelector((state) => state.auth);
 
-  const { leadId } = useSelector((state) => state.studentProfile);
+  console.log(admin);
 
-  console.log(isLoggedInStudent, studentToken, studentId);
+  const { leadId } = useSelector((state) => state.studentProfile);
 
   async function fetchData() {
     try {

@@ -31,7 +31,11 @@ function* fetchTeams(action) {
   try {
     const response = yield call(getTeams, action.payload);
 
-    yield put(fetchTeamsSuccess(response.data));
+    if (response.status === 200) {
+      yield put(fetchTeamsSuccess(response.data));
+    } else {
+      yield put(fetchTeamsFailure(response.message));
+    }
   } catch (error) {
     yield put(fetchTeamsFailure(error.message));
     toast.error(error.message);

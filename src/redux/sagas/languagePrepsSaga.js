@@ -33,7 +33,12 @@ import { toast } from "react-toastify";
 function* fetchLanguagePreps(action) {
   try {
     const data = yield call(getLanguagePreps, action.payload);
-    yield put(fetchLanguagePrepsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchLanguagePrepsSuccess(data.data));
+    } else {
+      yield put(fetchLanguagePrepsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchLanguagePrepsFailure(error.message));
     toast.error(error.message);
@@ -43,7 +48,12 @@ function* fetchLanguagePreps(action) {
 function* fetchAllLanguagePreps() {
   try {
     const data = yield call(getAllLanguagePreps);
-    yield put(fetchAllLanguagePrepsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchAllLanguagePrepsSuccess(data.data));
+    } else {
+      yield put(fetchAllLanguagePrepsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchAllLanguagePrepsFailure(error.message));
     // toast.error(error.message);

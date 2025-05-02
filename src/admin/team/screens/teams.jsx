@@ -97,7 +97,7 @@ function Teams() {
   const handleAddTeam = (data) => {
     try {
       dispatch(addTeamRequest(data));
-      // Reset currentPage to 1 and fetch the updated teams
+
       setCurrentPage(1);
       dispatch(fetchTeamsRequest(1));
     } catch (error) {

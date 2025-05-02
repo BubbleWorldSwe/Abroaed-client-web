@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { formatDateTime } from "../../../utils/helper";
 import { setSelectedLead } from "../../../redux/actions/leadsActions";
+import { TableNoData } from "../../../commons/components/table/tableNoData";
 
 const LeadTable = ({
   handleAssignTeamMember,
@@ -97,137 +98,145 @@ const LeadTable = ({
         </tr>
       </thead>
       <tbody>
-        {leads.map(
-          (item) =>
-            item.index === currentPage &&
-            item.data.map((lead, index) => (
-              <tr
-                key={index}
-                className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 align-top"
-              >
-                <td className="px-4 py-3 w-4">
-                  <CheckboxField
-                    onClick={(e) => e.stopPropagation()}
-                    id={`checkbox-college-${index}`}
-                    htmlFor={`checkbox-college-${index}`}
-                  />
-                </td>
+        {leads.length > 0 ? (
+          leads.map(
+            (item) =>
+              item.index === currentPage &&
+              item.data.map((lead, index) => (
+                <tr
+                  key={index}
+                  className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 align-top"
+                >
+                  <td className="px-4 py-3 w-4">
+                    <CheckboxField
+                      onClick={(e) => e.stopPropagation()}
+                      id={`checkbox-college-${index}`}
+                      htmlFor={`checkbox-college-${index}`}
+                    />
+                  </td>
 
-                <td className="px-4 py-3">
-                  {`${lead?.user?.firstName} ${lead?.user?.lastName}`}
-                </td>
-                <td className="px-4 py-3">{lead?.user?.mobile}</td>
-                <td className="px-4 py-3">{lead?.source}</td>
+                  <td className="px-4 py-3">
+                    {`${lead?.user?.firstName} ${lead?.user?.lastName}`}
+                  </td>
+                  <td className="px-4 py-3">{lead?.user?.mobile}</td>
+                  <td className="px-4 py-3">{lead?.source}</td>
 
-                <td className="px-4 py-3">{lead?.entity}</td>
+                  <td className="px-4 py-3">{lead?.entity}</td>
 
-                <td className="px-4 py-3">
-                  <span
-                    className={`font-medium p-2 rounded ${
-                      lead?.status?.toLowerCase() === "nurture"
-                        ? "bg-[#FDF6B2] text-[#723B13]"
-                        : lead?.status?.toLowerCase() === "converted"
-                        ? "bg-[#DEF7EC] text-[#03543F]"
-                        : lead?.status?.toLowerCase() === "lost"
-                        ? "bg-[#FDE8E8] text-[#9B1C1C]"
-                        : "bg-gray-200"
-                    }`}
-                  >
-                    {lead?.status
-                      ? lead.status.charAt(0).toUpperCase() +
-                        lead.status.slice(1).toLowerCase()
-                      : ""}
-                  </span>
-                </td>
-                <td className="px-4 py-3">
-                  <span
-                  // className="p-2 rounded bg-[#FDE8E8]"
-                  >
-                    {lead?.scheduleDetails
-                      ? `${
-                          lead?.scheduleDetails?.appointmentType
-                        } at ${formatDateTime(
-                          lead?.scheduleDetails?.preferredSlot
-                        )}`
-                      : "To be Scheduled"}
-                  </span>
-                </td>
-
-                <td className="px-4 py-3 whitespace-nowrap">
-                  <span
-                  //className="text-[#111928] bg-gray-100 p-2 rounded-md"
-                  >
-                    {formatDateTime(lead?.createdAt)}
-                  </span>
-                </td>
-                <td className="px-4 py-3">
-                  <button
-                    ref={dropdownRef}
-                    className="focus:outline-none"
-                    onClick={(e) => {
-                      handleDropdownToggle(e, index);
-                    }}
-                  >
-                    <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                  </button>
-                  {dropdownVisible === index && (
-                    <div
-                      className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                        dropdownDirection === "up" ? "bottom-full mb-2" : "mt-2"
+                  <td className="px-4 py-3">
+                    <span
+                      className={`font-medium p-2 rounded ${
+                        lead?.status?.toLowerCase() === "nurture"
+                          ? "bg-[#FDF6B2] text-[#723B13]"
+                          : lead?.status?.toLowerCase() === "converted"
+                          ? "bg-[#DEF7EC] text-[#03543F]"
+                          : lead?.status?.toLowerCase() === "lost"
+                          ? "bg-[#FDE8E8] text-[#9B1C1C]"
+                          : "bg-gray-200"
                       }`}
                     >
-                      <ul
-                        className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                        aria-labelledby="apple-imac-27-dropdown-button"
-                      >
-                        {isWriteAccess && (
-                          <>
-                            <li>
-                              <button
-                                onClick={() => handleAssignTeamMember(lead)}
-                                className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Plus className="w-5 h-5" />
-                                <span>Assign Team</span>
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                onClick={() => handleUpdateTeamMember(lead)}
-                                className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Pencil className="w-4 h-4" />
-                                <span>Update Lead Status</span>
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                onClick={() => handleScheduleAppointment(lead)}
-                                className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <CalendarDays className="w-4 h-4" />
-                                <span>Schedule Appointment</span>
-                              </button>
-                            </li>
-                          </>
-                        )}
+                      {lead?.status
+                        ? lead.status.charAt(0).toUpperCase() +
+                          lead.status.slice(1).toLowerCase()
+                        : ""}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span
+                    // className="p-2 rounded bg-[#FDE8E8]"
+                    >
+                      {lead?.scheduleDetails
+                        ? `${
+                            lead?.scheduleDetails?.appointmentType
+                          } at ${formatDateTime(
+                            lead?.scheduleDetails?.preferredSlot
+                          )}`
+                        : "To be Scheduled"}
+                    </span>
+                  </td>
 
-                        <li>
-                          <button
-                            type="button"
-                            onClick={() => handleViewDetails(lead)}
-                            className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                          >
-                            <Eye className="w-4 h-4" />
-                            <span>View Profile</span>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            ))
+                  <td className="px-4 py-3 whitespace-nowrap">
+                    <span
+                    //className="text-[#111928] bg-gray-100 p-2 rounded-md"
+                    >
+                      {formatDateTime(lead?.createdAt)}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <button
+                      ref={dropdownRef}
+                      className="focus:outline-none"
+                      onClick={(e) => {
+                        handleDropdownToggle(e, index);
+                      }}
+                    >
+                      <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                    </button>
+                    {dropdownVisible === index && (
+                      <div
+                        className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                          dropdownDirection === "up"
+                            ? "bottom-full mb-2"
+                            : "mt-2"
+                        }`}
+                      >
+                        <ul
+                          className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                          aria-labelledby="apple-imac-27-dropdown-button"
+                        >
+                          {isWriteAccess && (
+                            <>
+                              <li>
+                                <button
+                                  onClick={() => handleAssignTeamMember(lead)}
+                                  className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Plus className="w-5 h-5" />
+                                  <span>Assign Team</span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() => handleUpdateTeamMember(lead)}
+                                  className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Pencil className="w-4 h-4" />
+                                  <span>Update Lead Status</span>
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleScheduleAppointment(lead)
+                                  }
+                                  className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <CalendarDays className="w-4 h-4" />
+                                  <span>Schedule Appointment</span>
+                                </button>
+                              </li>
+                            </>
+                          )}
+
+                          <li>
+                            <button
+                              type="button"
+                              onClick={() => handleViewDetails(lead)}
+                              className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                            >
+                              <Eye className="w-4 h-4" />
+                              <span>View Profile</span>
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))
+          )
+        ) : (
+          <TableNoData colSpan={9} />
         )}
       </tbody>
 

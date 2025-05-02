@@ -31,7 +31,12 @@ import { toast } from "react-toastify";
 function* fetchTransactions(action) {
   try {
     const data = yield call(getTransactions, action.payload);
-    yield put(fetchTransactionsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchTransactionsSuccess(data.data));
+    } else {
+      yield put(fetchTransactionsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchTransactionsFailure(error.message));
     toast.error(error.message);

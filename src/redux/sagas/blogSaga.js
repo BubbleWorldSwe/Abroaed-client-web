@@ -34,7 +34,12 @@ import { toast } from "react-toastify";
 function* fetchBlogs(action) {
   try {
     const data = yield call(getBlogs, action.payload);
-    yield put(fetchBlogsSuccess(data.data));
+
+    if (data.status === 200) {
+      yield put(fetchBlogsSuccess(data.data));
+    } else {
+      yield put(fetchBlogsFailure(data.message));
+    }
   } catch (error) {
     yield put(fetchBlogsFailure(error.message));
     toast.error(error.message);

@@ -53,7 +53,6 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
     onAddTeam(data);
     onClose();
   };
-  console.log(error);
 
   useEffect(() => {
     if (!error) {

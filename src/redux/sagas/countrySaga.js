@@ -11,7 +11,12 @@ import { getAllCountries, getCountries } from "../../api/countriesApi";
 function* fetchCountries(action) {
   try {
     const response = yield call(getCountries, action.payload);
-    yield put(fetchCountriesSuccess(response.data)); // Assuming API response contains country data
+
+    if (response.status === 200) {
+      yield put(fetchCountriesSuccess(response.data));
+    } else {
+      yield put(fetchCountriesFailure(response.message));
+    }
   } catch (error) {
     yield put(fetchCountriesFailure(error.message));
   }
