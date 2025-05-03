@@ -22,7 +22,7 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
           {allDestinations?.map((item, index) => (
             <li
               key={item._id}
-              className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-5 py-3 hover:bg-gray-100 rounded-lg transition-all"
+              className="flex  items-center cursor-pointer justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-5 py-3 hover:bg-gray-100 rounded-lg transition-all"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleNavigate(item._id)}
@@ -32,7 +32,7 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
                 <span className="">
                   <Flag width={30} code={item?.countryId?.code} style={{}} />
                 </span>
-                <a className="cursor-pointer">
+                <a >
                   {item?.countryId?.name}
                 </a>
               </div>

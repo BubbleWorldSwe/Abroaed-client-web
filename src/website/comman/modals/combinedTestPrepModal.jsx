@@ -22,7 +22,7 @@ const CombinedTestPrepModal = ({ eltPreps = [], languagePreps = [], handleMouseE
 
           {eltPreps.map((data, index) => (
             <li key={index}
-              className="flex  items-center justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
+              className="flex  items-center justify-between  cursor-pointer text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleNavigate(data?._id)}

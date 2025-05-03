@@ -30,12 +30,10 @@ function FinancePage() {
       <Header />
       <FinanceHeroSection />
       <div className="grid grid-cols-1 gap-10 md:gap-16">
-        <SectionComponent>
-          <FinanceHowItWorks />
-        </SectionComponent>
+
         <div className="relative">
           <SectionComponent>
-            <OurPartners />
+            <FinanceHowItWorks />
           </SectionComponent>
           <div className="absolute top-4  right-0 z-0">
             <img
@@ -45,7 +43,9 @@ function FinancePage() {
             />
           </div>
         </div>
-
+        <SectionComponent>
+          <OurPartners />
+        </SectionComponent>
         {/* <div className="relative ">
         <FinanceBlogSection />
         <div className="absolute -bottom-4 left-0 z-0">
