@@ -261,3 +261,34 @@ export const getStudentPrepsBatches = async (leadId) => {
     throw error;
   }
 };
+
+
+export const createOrder = async (payload) => {
+  try {
+    const data = await makePostRequest(
+      `${BASE_URL}/api/v1/admin/subscribe-batches/create-order`,
+      payload
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+export const paymentVerify = async (payload) => {
+  try {
+    const data = await makePostRequest(
+      `${BASE_URL}/api/v1/admin/subscribe-batches/verify-payment`,
+      payload
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
