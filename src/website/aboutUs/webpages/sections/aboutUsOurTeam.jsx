@@ -2,8 +2,9 @@ import PrimaryBodyText from "../../../styleComponents/primaryBodyText"
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 import ishika from "../../../../assets/ishika.png"
 import ravi from "../../../../assets/ravi.png"
-import shubangi from "../../../../assets/shubangi.png"
-import zeeshan from "../../../../assets/zeeshan.jpg"
+import shubangini from "../../../../assets/shubangini.png"
+import zeeshan from "../../../../assets/zeeshan.png"
+import khushali from "../../../../assets/khushali.png"
 
 function AboutUsOurTeam() {
 
@@ -20,12 +21,17 @@ function AboutUsOurTeam() {
     }, {
       name: "Shubhangi",
       designation: "Assistant Manager - Operations",
-      img: shubangi
+      img: shubangini
     },
     {
       name: "Ishika",
       designation: "Manager - Marketing",
       img: ishika
+    },
+    {
+      name: "Khushali",
+      designation: "Manager HR",
+      img: khushali
     },
 
 
@@ -45,13 +51,12 @@ function AboutUsOurTeam() {
             <PrimaryBodyText
               className={"text-center"}
               style={{ text: 'text-center' }}
-
             >
               Interact with talented professionals, will be challenged to solve difficult problems and think in new and
               creative ways.
             </PrimaryBodyText>
           </div>
-          <div className="grid grid-cols-1 gap-4 mt-8 lg:mt-12 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 mt-8 lg:mt-12 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
             {team.map((member, index) => (
               <div key={index} className="relative overflow-hidden rounded-lg group">
                 <img
