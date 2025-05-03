@@ -25,26 +25,30 @@ function StudentOtpVerification() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (otp.length < 6) {
-        toast.error("Please enter the 6-digit OTP.");
-        return;
-      }
+      if (user?.email) {
+        if (otp.length < 6) {
+          toast.error("Please enter the 6-digit OTP.");
+          return;
+        }
 
-      // Dispatch OTP verification action here
-      console.log("Verifying OTP:", otp);
+        // Dispatch OTP verification action here
+        console.log("Verifying OTP:", otp);
 
-      const data = await setVerifyOtp({
-        email: user?.email,
-        otp: otp,
-      });
+        const data = await setVerifyOtp({
+          email: user?.email,
+          otp: otp,
+        });
 
-      console.log(data);
+        console.log(data);
 
-      if (data?.status === 201) {
-        navigate("/update-password");
-        dispatch(setStudentToken(data?.data?.token));
-        /*  window.location.href =
+        if (data?.status === 201) {
+          navigate("/update-password");
+          dispatch(setStudentToken(data?.data?.token));
+          /*  window.location.href =
           "/update-password?token=" + encodeURIComponent(data?.token); */
+        }
+      } else {
+        toast.error("Can't send request");
       }
     } catch (error) {
       console.log("Error verifying OTP:", error);
@@ -53,25 +57,37 @@ function StudentOtpVerification() {
 
   const handleResendOtp = async () => {
     try {
-      if (resendCount >= 3) {
-        toast.error("You have reached the maximum resend attempts.");
-        return;
-      }
+      if (user?.email) {
+        if (resendCount >= 3) {
+          toast.error("You have reached the maximum resend attempts.");
+          return;
+        }
 
-      const data = await setResendOtp({
-        email: user?.email,
-      });
+        const data = await setResendOtp({
+          email: user?.email,
+        });
 
-      if (data?.status === 201) {
-        toast.success("OTP resent!");
+        if (data?.status === 201) {
+          toast.success("OTP resent!");
 
-        setResendCount((prev) => prev + 1);
-        setResendTimer(60);
+          setResendCount((prev) => prev + 1);
+          setResendTimer(60);
+        } else {
+          toast.error(data.message);
+        }
+      } else {
+        toast.error("Can't send request");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (!user && !user?.email) {
+      navigate("/signin");
+    }
+  }, [user]);
 
   useEffect(() => {
     let timer;
@@ -90,17 +106,19 @@ function StudentOtpVerification() {
               className="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
               onSubmit={handleSubmit}
             >
-              <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                OTP Verification
-              </h2>
+              <div>
+                <h1 className="text-xl md:text-[32px] font-bold leading-tight tracking-tight text-gray-primary  dark:text-white ">
+                  Enter OTP
+                </h1>
 
-              <p className="text-gray-500">
-                We’ve sent a 6-digit verification code to your email. Please
-                enter it below.
-              </p>
+                <p className="text-[#52525B] text-base font-medium mt-2 mb-10">
+                  We have sent an OTP to your email. Please enter the 6 digit
+                  code below to verify.
+                </p>
+              </div>
 
               <OtpInput length={6} onChange={handleOtpChange} />
-
+              <div style={{ marginTop: 30 }} />
               <button
                 type="submit"
                 disabled={loading}

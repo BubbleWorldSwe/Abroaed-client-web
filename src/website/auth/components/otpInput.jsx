@@ -34,14 +34,7 @@ const OtpInput = ({ length = 6, onChange }) => {
           onChange={(e) => handleChange(e.target.value, i)}
           onKeyDown={(e) => handleKeyDown(e, i)}
           ref={(el) => (inputs.current[i] = el)}
-          style={{
-            width: "60px",
-            height: "50px",
-            fontSize: "24px",
-            textAlign: "center",
-            border: "1px solid #ccc",
-            borderRadius: "4px",
-          }}
+          className={`w-12 h-12 text-center text-lg border rounded-md outline-none focus:border-black border-gray-500 mr-1`}
         />
       ))}
     </div>
