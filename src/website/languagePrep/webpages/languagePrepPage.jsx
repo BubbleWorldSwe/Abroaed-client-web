@@ -7,6 +7,9 @@ import Footer from "../../comman/sections/footerSection";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getLanguagePrepDetailsById } from "../../../api/languagePrepsApi";
+
+import { createOrder,paymentVerify } from "../../../api/studentsApi";
+
 import LanguagePrepHero from "./sections/languagePrepHeroSection";
 import LanguagePrepAbout from "./sections/languagePrepAboutSection";
 import LanguagePrepSimplifyThings from "./sections/languagePrepSimplifyThings";
@@ -58,17 +61,30 @@ function LanguagePrepLayout() {
 
   const { isLoading: loading, Razorpay } = useRazorpay();
 
-  const handlePayment = (data) => {
+  const handlePayment = async (data) => {
+    const res=  await createOrder({
+          userId:student._id,
+          type:"language_prep",
+          prepId:id,
+          batchId:data._id,
+          amount: parseFloat(1) * 100,
+    })
+    const order  = res.data
     const options = {
+      order_id: order.id,
       key: razorpayKey,
       amount: parseFloat(data.fees) * 100,
       currency: "INR",
       name: "ABROAED",
       description: "Test Transaction",
 
-      handler: (response) => {
-        console.log(response);
-        subscribeBatches(data, response.razorpay_payment_id);
+      handler: async(response) => {
+       await  paymentVerify({
+          orderId: order.id,
+          paymentId:response.razorpay_payment_id,
+          signature:response.razorpay_signature,
+        })
+        // subscribeBatches(data, response.razorpay_payment_id);
         toast.success("Payment Successful!");
       },
       prefill: {
