@@ -47,7 +47,7 @@ const CollegeCourseCard = ({
           <div>
             <div className="flex justify-between">
               <h5
-                className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white`}
+                className={`mb-2 text-[22px] font-semibold  text-gray-primary dark:text-white line-clamp-1`}
               >
                 {course.name}
               </h5>
@@ -61,8 +61,9 @@ const CollegeCourseCard = ({
                   }
                 >
                   <Bookmark
-                    className={`w-6 h-6 text-black ${isSaved ? "fill-black" : "text-gray-500"
-                      }`}
+                    className={`w-6 h-6 text-black ${
+                      isSaved ? "fill-black" : "text-gray-500"
+                    }`}
                   />
                 </button>
               )}
@@ -92,7 +93,7 @@ const CollegeCourseCard = ({
               {course.intake}
             </p>
 
-            <p className="mb-3 font-normal text-[#71717A] text-base dark:text-gray-400 flex-grow">
+            <p className="mb-3 font-normal text-[#71717A] text-base dark:text-gray-400 flex-grow line-clamp-4">
               {course.brief}
             </p>
           </div>

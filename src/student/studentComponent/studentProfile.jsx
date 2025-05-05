@@ -6,6 +6,7 @@ import StudentProfileEditModal from "../modals/studentProfileEditModal";
 import { getStudentDetailsById } from "../../api/studentsApi";
 import { useDispatch, useSelector } from "react-redux";
 import { editStudentProfileRequest } from "../../redux/actions/studentProfileActions";
+import StudentAdditionInfoModal from "../modals/studentAdditionInfoModal";
 
 const StudentProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -15,6 +16,8 @@ const StudentProfile = () => {
   };
   const { _id } = useSelector((state) => state.auth.student);
   const dispatch = useDispatch();
+
+  const [addInfoModal, setAddInfoModal] = useState(null);
 
   const {
     savedPreferences,
@@ -37,10 +40,13 @@ const StudentProfile = () => {
     try {
       dispatch(editStudentProfileRequest(userId, data, studentProfile?._id));
       handleCloseAddModal();
+      setAddInfoModal(false);
     } catch (error) {
       console.log(error);
     }
   }
+
+  console.log(studentProfile?.user?.userDetail);
 
   console.log(studentId, leadId);
 
@@ -57,6 +63,21 @@ const StudentProfile = () => {
           email: studentProfile?.user?.email,
           mobile: studentProfile?.user?.mobile,
           address: studentProfile?.user?.address || "",
+        }}
+      />
+
+      <StudentAdditionInfoModal
+        isOpen={addInfoModal}
+        onClose={() => setAddInfoModal(false)}
+        onUpdate={onUpdateStudent}
+        userId={studentProfile?.user?._id}
+        leadId={studentProfile?._id}
+        filledData={{
+          highestEducation: studentProfile?.user?.userDetail?.highestEducation,
+          preferredDestination:
+            studentProfile?.user?.userDetail?.preferredDestination?._id,
+          applyingFor: studentProfile?.user?.userDetail?.applyingFor,
+          targetYear: studentProfile?.user?.userDetail?.targetYear,
         }}
       />
       <div className="w-full bg-[#fff] font-rethink min-h-[90vh] px-5 py-10 scroll-smooth">
@@ -133,7 +154,9 @@ const StudentProfile = () => {
             <h2 className={`text-2xl font-bold  text-gray-primary`}>
               Additional Information
             </h2>
-            <img src={pencil} alt="pencil-img" className="w-6 h-6" />
+            <button onClick={() => setAddInfoModal(!addInfoModal)}>
+              <img src={pencil} alt="pencil-img" className="w-6 h-6" />
+            </button>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <div className="flex flex-col">

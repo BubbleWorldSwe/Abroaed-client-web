@@ -35,15 +35,16 @@ export const makeGetRequest = async (url, token) => {
 
     if (token) {
       console.log("With Token");
-      response = await fetch(url, constructGetRequestOptionsWithToken(token), {
-        signal: controller.signal,
-      });
+      response = await fetch(
+        url,
+        { signal: controller.signal },
+        constructGetRequestOptionsWithToken(token)
+      );
     } else {
       response = await fetch(
         url,
-
-        constructGetRequestOptions(),
-        { signal: controller.signal }
+        { signal: controller.signal },
+        constructGetRequestOptions()
       );
     }
     console.log("response");

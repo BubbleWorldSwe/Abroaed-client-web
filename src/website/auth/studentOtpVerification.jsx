@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AbroaedInfo from "./components/abroaedInfo";
 import OtpInput from "./components/otpInput";
 import { setResendOtp, setVerifyOtp } from "../../api/authApi";
@@ -11,12 +11,21 @@ function StudentOtpVerification() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, user, studentToken } = useSelector((state) => state.auth);
+  const location = useLocation();
 
-  console.log(studentToken);
+  // Prefer location.state.email, fallback to user?.email
+  const [email] = useState(location.state?.email || user?.email || "");
 
   const [resendTimer, setResendTimer] = useState(0);
   const [resendCount, setResendCount] = useState(0);
   const [otp, setOtp] = useState("");
+
+  useEffect(() => {
+    if (!email) {
+      toast.error("Email not found. Redirecting to sign in...");
+      navigate("/signin");
+    }
+  }, [email, navigate]);
 
   const handleOtpChange = (value) => {
     setOtp(value);
@@ -24,70 +33,59 @@ function StudentOtpVerification() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!email) {
+      toast.error("Email is missing. Please sign in again.");
+      return;
+    }
+
+    if (otp.length < 6) {
+      toast.error("Please enter the 6-digit OTP.");
+      return;
+    }
+
     try {
-      if (user?.email) {
-        if (otp.length < 6) {
-          toast.error("Please enter the 6-digit OTP.");
-          return;
-        }
+      const data = await setVerifyOtp({ email, otp });
 
-        // Dispatch OTP verification action here
-        console.log("Verifying OTP:", otp);
-
-        const data = await setVerifyOtp({
-          email: user?.email,
-          otp: otp,
-        });
-
-        console.log(data);
-
-        if (data?.status === 201) {
-          navigate("/update-password");
-          dispatch(setStudentToken(data?.data?.token));
-          /*  window.location.href =
-          "/update-password?token=" + encodeURIComponent(data?.token); */
-        }
+      if (data?.data?.success) {
+        dispatch(setStudentToken(data?.data?.token));
+        toast.success("OTP verified successfully!");
+        navigate("/update-password");
       } else {
-        toast.error("Can't send request");
+        toast.error(data?.message || "Invalid OTP.");
       }
     } catch (error) {
-      console.log("Error verifying OTP:", error);
+      console.error("OTP verification error:", error);
+      toast.error("Something went wrong.");
     }
   };
 
   const handleResendOtp = async () => {
+    if (!email) {
+      toast.error("Email not available. Please sign in again.");
+      return;
+    }
+
+    if (resendCount >= 3) {
+      toast.error("You have reached the maximum resend attempts.");
+      return;
+    }
+
     try {
-      if (user?.email) {
-        if (resendCount >= 3) {
-          toast.error("You have reached the maximum resend attempts.");
-          return;
-        }
+      const data = await setResendOtp({ email });
 
-        const data = await setResendOtp({
-          email: user?.email,
-        });
-
-        if (data?.status === 201) {
-          toast.success("OTP resent!");
-
-          setResendCount((prev) => prev + 1);
-          setResendTimer(60);
-        } else {
-          toast.error(data.message);
-        }
+      if (data?.data?.success) {
+        toast.success("OTP resent!");
+        setResendCount((prev) => prev + 1);
+        setResendTimer(60);
       } else {
-        toast.error("Can't send request");
+        toast.error(data?.message || "Failed to resend OTP.");
       }
     } catch (error) {
-      console.log(error);
+      console.error("Resend error:", error);
+      toast.error("Could not resend OTP.");
     }
   };
-
-  useEffect(() => {
-    if (!user && !user?.email) {
-      navigate("/signin");
-    }
-  }, [user]);
 
   useEffect(() => {
     let timer;
@@ -107,17 +105,17 @@ function StudentOtpVerification() {
               onSubmit={handleSubmit}
             >
               <div>
-                <h1 className="text-xl md:text-[32px] font-bold leading-tight tracking-tight text-gray-primary  dark:text-white ">
+                <h1 className="text-xl md:text-[32px] font-bold leading-tight tracking-tight text-gray-primary dark:text-white">
                   Enter OTP
                 </h1>
-
                 <p className="text-[#52525B] text-base font-medium mt-2 mb-10">
-                  We have sent an OTP to your email. Please enter the 6 digit
-                  code below to verify.
+                  We have sent an OTP to your email <strong>{email}</strong>.
+                  Please enter the 6-digit code below to verify.
                 </p>
               </div>
 
               <OtpInput length={6} onChange={handleOtpChange} />
+
               <div style={{ marginTop: 30 }} />
               <button
                 type="submit"
@@ -157,7 +155,6 @@ function StudentOtpVerification() {
             </form>
           </div>
 
-          {/* Right Side Info Section */}
           <AbroaedInfo />
         </div>
       </section>

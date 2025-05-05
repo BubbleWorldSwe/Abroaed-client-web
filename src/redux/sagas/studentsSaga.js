@@ -27,6 +27,8 @@ function* fetchStudents(action) {
   try {
     const data = yield call(getStudents, action.payload);
 
+    console.log(data);
+
     if (data.status === 200) {
       yield put(fetchStudentsSuccess(data.data));
     } else {

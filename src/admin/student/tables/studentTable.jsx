@@ -70,7 +70,7 @@ const StudentTable = ({
               id={`checkbox-college-all`}
               htmlFor={`checkbox-college-all`}
             />
-          </th>{" "}
+          </th>
           <th scope="col" className="px-4 py-3 min-w-[14rem]">
             Student Name
           </th>
@@ -126,16 +126,7 @@ const StudentTable = ({
                         : null}
                     </td>
                     <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {index + 1}
-                      {/*  <Tooltip
-                      content={<TooltipContent />}
-                      placement="bottom"
-                      className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
-                    >
-                      <span className="bg-gray-100 text-green-800 text-xs font-medium mr-2 px-4 py-1 rounded dark:bg-green-900 dark:text-green-300">
-                        {member.appCount}
-                      </span>
-                    </Tooltip> */}
+                      {member?.applicationCount}
                     </td>
                     <td className="px-4 py-3">
                       <button

@@ -126,7 +126,7 @@ function Student() {
       dispatch(fetchStudentsRequest(currentPage));
     }
     fetchData();
-  }, [dispatch, students, currentPage]);
+  }, [dispatch, currentPage]);
 
   return (
     <>

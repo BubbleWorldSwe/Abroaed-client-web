@@ -12,10 +12,12 @@ import {
 
 export const getLeads = async (page) => {
   try {
+    const { adminToken } = store.getState().auth;
     const path = page ? `page=${page}&limit=${pageDataLimit}&` : "";
 
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list?${path}filter={"type":"lead"}`
+      `${BASE_URL}/api/v1/admin/leads/list?${path}filter={"type":"lead"}`,
+      adminToken
     );
     console.log(data);
     if (data.success) {
@@ -28,8 +30,10 @@ export const getLeads = async (page) => {
 
 export const getSearchLeads = async (query) => {
   try {
+    const { adminToken } = store.getState().auth;
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"lead"}&search=${query}`
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"lead"}&search=${query}`,
+      adminToken
     );
     console.log(data);
     if (data.success) {
@@ -42,7 +46,11 @@ export const getSearchLeads = async (query) => {
 
 export const getAllLeads = async () => {
   try {
-    const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/leads/list`);
+    const { adminToken } = store.getState().auth;
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/leads/list`,
+      adminToken
+    );
     console.log(data);
     if (data.success) {
       return data.data;

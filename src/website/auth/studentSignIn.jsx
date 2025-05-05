@@ -56,7 +56,6 @@ function StudentSignIn() {
 
               <div className="flex items-center">
                 <div className="w-full h-0.5 bg-gray-200 dark:bg-gray-700"></div>
-
               </div>
 
               <div>
@@ -84,6 +83,13 @@ function StudentSignIn() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+
+                <a
+                  href="/forgot-password"
+                  className="block text-right text-sm font-medium text-yellow-500 hover:underline dark:text-primary-500"
+                >
+                  Forgot password?
+                </a>
               </div>
 
               <button

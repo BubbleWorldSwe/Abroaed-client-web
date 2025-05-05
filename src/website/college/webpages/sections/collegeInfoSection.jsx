@@ -4,7 +4,6 @@
 import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
-
 const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
   return (
     <div className="relative z-10">
@@ -14,7 +13,7 @@ const CollegeInfoSection = ({ header, text1, text2, collegeDetails }) => {
             Why Study at {collegeDetails?.name}?
           </SectionMainHeader>
           <PrimaryBodyText className="mb-4 ">{text1}</PrimaryBodyText>
-          <PrimaryBodyText >{collegeDetails?.description}</PrimaryBodyText>
+          <PrimaryBodyText>{collegeDetails?.description}</PrimaryBodyText>
         </div>
       </section>
     </div>

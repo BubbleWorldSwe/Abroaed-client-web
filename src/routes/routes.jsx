@@ -63,6 +63,7 @@ import EditBlog from "../admin/blogs/screens/editBlog";
 import ComingSoonPage from "../website/comingSoon/comingSoonPage";
 import ForexPage from "../website/forex/webpages/forexPage";
 import StudentOtpVerification from "../website/auth/studentOtpVerification";
+import StudentForgotPassword from "../website/auth/studentForgotPassword";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -118,6 +119,11 @@ const AppRoutes = () => {
     {
       path: "/update-password",
       element: <StudentResetPassword />,
+      isPrivate: false,
+    },
+    {
+      path: "/forgot-password",
+      element: <StudentForgotPassword />,
       isPrivate: false,
     },
     { path: "/blog/:id", element: <BlogPage />, isPrivate: false },

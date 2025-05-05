@@ -13,8 +13,10 @@ import {
 
 export const getStudents = async (page) => {
   try {
+    const { adminToken } = store.getState().auth;
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list?page=${page}&limit=${pageDataLimit}&filter={"type":"student"}`
+      `${BASE_URL}/api/v1/admin/leads/list?page=${page}&limit=${pageDataLimit}&filter={"type":"student"}`,
+      adminToken
     );
     console.log(data);
     if (data.success) {
@@ -27,8 +29,10 @@ export const getStudents = async (page) => {
 
 export const getSearchStudents = async (query) => {
   try {
+    const { adminToken } = store.getState().auth;
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}&search=${query}`
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}&search=${query}`,
+      adminToken
     );
     console.log(data);
     if (data.success) {
@@ -41,8 +45,10 @@ export const getSearchStudents = async (query) => {
 
 export const getAllStudents = async (page) => {
   try {
+    const { adminToken } = store.getState().auth;
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}`
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}`,
+      adminToken
     );
     console.log(data);
     if (data.success) {
@@ -206,8 +212,10 @@ export const getStudentDetailsById = async (userId) => {
 
 export const getStudentProfile = async (id) => {
   try {
+    const { studentToken } = store.getState().auth;
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/leads/list?filter={"user":"${id}"}`
+      `${BASE_URL}/api/v1/admin/leads/list?filter={"user":"${id}"}`,
+      studentToken
     );
     if (data.success) {
       return data.data;
@@ -262,7 +270,6 @@ export const getStudentPrepsBatches = async (leadId) => {
   }
 };
 
-
 export const createOrder = async (payload) => {
   try {
     const data = await makePostRequest(
@@ -276,8 +283,6 @@ export const createOrder = async (payload) => {
     console.log(error);
   }
 };
-
-
 
 export const paymentVerify = async (payload) => {
   try {

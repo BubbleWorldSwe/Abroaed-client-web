@@ -33,6 +33,17 @@ export const constructGetRequestOptions = () => {
   };
 };
 
+export const constructGetRequestOptionsWithToken = (token) => {
+  console.log(token);
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${token}`);
+
+  return {
+    method: REQUEST_METHOD_GET,
+    headers: myHeaders,
+  };
+};
+
 export const constructPostRequestOptions = (payload) => {
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
@@ -128,6 +139,7 @@ export const constructDeleteRequestOptions = () => {
 };
 
 export const constructSuccessResponse = (payload) => {
+  console.log(payload);
   return {
     success: RESPONSE_SUCCESS,
     data: payload,

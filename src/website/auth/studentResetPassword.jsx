@@ -49,11 +49,6 @@ function StudentResetPassword() {
       return;
     }
 
-    if (!document.getElementById("terms").checked) {
-      toast.error("You must accept the Terms and Conditions to proceed.");
-      return;
-    }
-
     // Proceed with password reset logic
     dispatch(studentUpdatePasswordRequest({ password, confirmPassword }));
   };
@@ -72,7 +67,7 @@ function StudentResetPassword() {
         <div className="grid lg:h-screen lg:grid-cols-2">
           <div className="flex justify-center items-center py-6 px-4 lg:py-0 sm:px-0">
             <form
-              className="space-y-4 max-w-md md:space-y-6 xl:max-w-xl"
+              className="space-y-4  md:space-y-6  md:w-[36rem]"
               // action="#"
               onSubmit={handleSubmit}
             >
@@ -112,62 +107,7 @@ function StudentResetPassword() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="terms"
-                      name="terms"
-                      aria-describedby="terms"
-                      type="checkbox"
-                      className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="terms"
-                      className="font-light   text-gray-500 dark:text-gray-300"
-                    >
-                      By signing up, you are creating a Flowbite account, and
-                      you agree to Flowbite’s{" "}
-                      <a
-                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
-                        href="#"
-                      >
-                        Terms of Use
-                      </a>{" "}
-                      and{" "}
-                      <a
-                        className="font-medium   text-primary-600 dark:text-primary-500 hover:underline"
-                        href="#"
-                      >
-                        Privacy Policy
-                      </a>
-                      .
-                    </label>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="newsletter"
-                      aria-describedby="newsletter"
-                      type="checkbox"
-                      className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="newsletter"
-                      className="font-light   text-gray-500 dark:text-gray-300"
-                    >
-                      Email me about product updates and resources.
-                    </label>
-                  </div>
-                </div>
-              </div>
+              <div />
               <button
                 type="submit"
                 disabled={loading}

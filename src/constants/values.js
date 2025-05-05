@@ -92,7 +92,7 @@ export const source = {
   pathways: "Pathways",
   pathwaysProgram: "Pathways Program",
   menu: "Menu",
-  forex: "Forex"
+  forex: "Forex",
 };
 
 export const entity = {

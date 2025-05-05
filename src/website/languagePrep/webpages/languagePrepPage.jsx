@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getLanguagePrepDetailsById } from "../../../api/languagePrepsApi";
 
-import { createOrder,paymentVerify } from "../../../api/studentsApi";
+import { createOrder, paymentVerify } from "../../../api/studentsApi";
 
 import LanguagePrepHero from "./sections/languagePrepHeroSection";
 import LanguagePrepAbout from "./sections/languagePrepAboutSection";
@@ -39,7 +39,7 @@ function LanguagePrepLayout() {
     try {
       const data = await getLanguagePrepDetailsById(id);
 
-      if (data.status === 200) {
+      if (data?.status === 200) {
         setLanguagePrepsDetails(data.data);
       }
       setIsLoading(false);
@@ -62,43 +62,55 @@ function LanguagePrepLayout() {
   const { isLoading: loading, Razorpay } = useRazorpay();
 
   const handlePayment = async (data) => {
-    const res=  await createOrder({
-          userId:student._id,
-          type:"language_prep",
-          prepId:id,
-          batchId:data._id,
-          amount: parseFloat(1) * 100,
-    })
-    const order  = res.data
-    const options = {
-      order_id: order.id,
-      key: razorpayKey,
-      amount: parseFloat(data.fees) * 100,
-      currency: "INR",
-      name: "ABROAED",
-      description: "Test Transaction",
+    try {
+      const res = await createOrder({
+        userId: student._id,
+        type: "language_prep",
+        prepId: id,
+        batchId: data._id,
+        // amount: parseFloat(1) * 100,
+        amount: parseFloat(data.fees),
+      });
 
-      handler: async(response) => {
-       await  paymentVerify({
-          orderId: order.id,
-          paymentId:response.razorpay_payment_id,
-          signature:response.razorpay_signature,
-        })
-        // subscribeBatches(data, response.razorpay_payment_id);
-        toast.success("Payment Successful!");
-      },
-      prefill: {
-        name: `${student.firstName} ${student.lastName}`,
-        email: student.email,
-        contact: student.mobile,
-      },
-      theme: {
-        color: "#e2a303",
-      },
-    };
+      if (res?.data) {
+        const order = res.data;
+        const options = {
+          order_id: order.id,
+          key: razorpayKey,
+          amount: parseFloat(data.fees) * 100,
+          currency: "INR",
+          name: "ABROAED",
+          description: "Test Transaction",
 
-    const razorpayInstance = new Razorpay(options);
-    razorpayInstance.open();
+          handler: async (response) => {
+            await paymentVerify({
+              orderId: order.id,
+              paymentId: response.razorpay_payment_id,
+              signature: response.razorpay_signature,
+            });
+
+            console.log(response);
+            // subscribeBatches(data, response.razorpay_payment_id);
+            toast.success("Payment Successful!");
+          },
+          prefill: {
+            name: `${student.firstName} ${student.lastName}`,
+            email: student.email,
+            contact: student.mobile,
+          },
+          theme: {
+            color: "#e2a303",
+          },
+        };
+
+        const razorpayInstance = new Razorpay(options);
+        razorpayInstance.open();
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   async function subscribeBatches(data, paymentId) {
@@ -179,7 +191,9 @@ function LanguagePrepLayout() {
         {languagePrepsDetails?.faqs.length > 0 && (
           <div className="relative ">
             <SectionComponent>
-              <LanguagePrepFaqSection languagePrepsDetails={languagePrepsDetails} />
+              <LanguagePrepFaqSection
+                languagePrepsDetails={languagePrepsDetails}
+              />
             </SectionComponent>
             <div className="absolute -top-10 left-0 -z-10">
               <img

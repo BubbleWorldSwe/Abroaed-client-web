@@ -21,9 +21,7 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
             : IMAGES.noImage
         }
       >
-        <h1 className={heroStyle.header}>
-          Your trusted compass to opportunities abroad
-        </h1>
+        <h1 className={heroStyle.header}>{collegeDetails?.name}</h1>
         <div>
           <div className="  text-sm mt-3   grid grid-cols-1 md:flex gap-1 md:gap-5">
             <p>{collegeDetails?.entityType}</p>

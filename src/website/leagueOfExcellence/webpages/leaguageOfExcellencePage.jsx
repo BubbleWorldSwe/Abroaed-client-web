@@ -20,18 +20,16 @@ import { countriesName } from "../data";
 import SectionComponent from "../../styleComponents/sectionComponent";
 
 const LeaguageOfExcellencePage = () => {
-  const [selectCountry, setSelectCountry] = useState(
-    {
-      code: countriesName[0].code,
-      name: countriesName[0].name
-    }
-  );
+  const [selectCountry, setSelectCountry] = useState({
+    code: countriesName[0].code,
+    name: countriesName[0].name,
+  });
 
   const dispatch = useDispatch();
   const handleAddLead = (data) => {
     try {
       console.log("handleAddLead");
-      console.log(data);
+      //  console.log(data);
 
       dispatch(addLeadRequest(data));
     } catch (error) {

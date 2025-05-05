@@ -28,7 +28,7 @@ const EditBlog = () => {
 
   async function onUploadImage(data) {
     try {
-      console.log(data);
+      // console.log(data);
       dispatch(
         uploadBlogImageRequest(blogDetails._id, {
           files: data,

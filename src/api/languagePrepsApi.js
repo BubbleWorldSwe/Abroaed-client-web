@@ -90,7 +90,7 @@ export const setDeleteLanguagePrep = async (id) => {
 };
 
 export const getLanguagePrepDetailsById = async (id) => {
-  console.log(" hElllo    ID ");
+  console.log(" hElllo    ID ", id);
   try {
     console.log(id);
     const data = await makeGetRequest(

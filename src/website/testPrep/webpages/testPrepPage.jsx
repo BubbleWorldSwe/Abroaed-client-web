@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 import { useRazorpay } from "react-razorpay";
 import { setLeadSubscribeBatch } from "../../../api/leadsApi";
 import SectionComponent from "../../styleComponents/sectionComponent";
+import { createOrder, paymentVerify } from "../../../api/studentsApi";
 
 function TestPrepLayout() {
   const { id } = useParams();
@@ -59,7 +60,7 @@ function TestPrepLayout() {
 
   const { error, isLoading: loading, Razorpay } = useRazorpay();
 
-  const handlePayment = (data) => {
+  const handlePayment2 = (data) => {
     const options = {
       key: razorpayKey,
       amount: parseFloat(data.fees) * 100,
@@ -84,6 +85,58 @@ function TestPrepLayout() {
 
     const razorpayInstance = new Razorpay(options);
     razorpayInstance.open();
+  };
+
+  const handlePayment = async (data) => {
+    try {
+      const res = await createOrder({
+        userId: student._id,
+        type: "test_prep",
+        prepId: id,
+        batchId: data._id,
+        // amount: parseFloat(1) * 100,
+        amount: parseFloat(data.fees),
+      });
+
+      if (res?.data) {
+        const order = res.data;
+        const options = {
+          order_id: order.id,
+          key: razorpayKey,
+          amount: parseFloat(data.fees) * 100,
+          currency: "INR",
+          name: "ABROAED",
+          description: "Test Transaction",
+
+          handler: async (response) => {
+            await paymentVerify({
+              orderId: order.id,
+              paymentId: response.razorpay_payment_id,
+              signature: response.razorpay_signature,
+            });
+
+            console.log(response);
+            // subscribeBatches(data, response.razorpay_payment_id);
+            toast.success("Payment Successful!");
+          },
+          prefill: {
+            name: `${student.firstName} ${student.lastName}`,
+            email: student.email,
+            contact: student.mobile,
+          },
+          theme: {
+            color: "#e2a303",
+          },
+        };
+
+        const razorpayInstance = new Razorpay(options);
+        razorpayInstance.open();
+      } else {
+        toast.error(res.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   async function subscribeBatches(data, paymentId) {

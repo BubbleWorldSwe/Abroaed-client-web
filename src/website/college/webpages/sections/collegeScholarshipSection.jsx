@@ -3,7 +3,6 @@
 import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 
-
 const CollegeScholarshipSection = ({ collegeDetails }) => {
   return (
     <div className="relative ">
@@ -29,7 +28,9 @@ const CollegeScholarshipSection = ({ collegeDetails }) => {
               <div className=" dark:bg-gray-800 relative   overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full   text-left  border-t-2 border-gray-400  dark:text-gray-400">
-                    <thead className={`text-[22px]  text-gray-primary font-semibold  border-b-2 border-gray-400 `}>
+                    <thead
+                      className={`text-[22px]  text-gray-primary font-semibold  border-b-2 border-gray-400 `}
+                    >
                       <tr>
                         <th scope="col" className="px-4 py-3">
                           Name
@@ -50,11 +51,23 @@ const CollegeScholarshipSection = ({ collegeDetails }) => {
                         >
                           <th
                             scope="row"
-                            className={`px-4 py-3 font-semibold text-[18px] text-gray-primary  dark:text-white`}
+                            className="px-4 py-3 font-semibold text-[18px] text-gray-primary dark:text-white"
                           >
-                            {item.name}
+                            <a
+                              href={item.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-yellow-500 hover:underline"
+                            >
+                              {item.name}
+                            </a>
                           </th>
-                          <td className={`px-4 py-3 text-base font-normal text-gray-primary`}>{item.description}</td>
+
+                          <td
+                            className={`px-4 py-3 text-base font-normal text-gray-primary`}
+                          >
+                            {item.description}
+                          </td>
                         </tr>
                       ))}
                     </tbody>

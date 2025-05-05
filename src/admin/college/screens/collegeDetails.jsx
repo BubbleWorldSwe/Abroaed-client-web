@@ -68,13 +68,13 @@ function CollegDetails() {
   function onEditCourses(params) {
     console.log("Edit Courses");
     setFormdata(params);
-    openModal("Courses", "edit", 2);
+    openModal("Courses", "edit", 3);
   }
 
   function onEditScholarship(params) {
     console.log("Edit Scholarship");
     setFormdata(params);
-    openModal("Financial Aid & Scholarships", "edit", 3);
+    openModal("Financial Aid & Scholarships", "edit", 4);
   }
 
   const toggleAccordion = (index) => {

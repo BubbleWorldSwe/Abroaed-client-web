@@ -18,7 +18,7 @@ function PathwaysHomePage() {
   const handleAddLead = (data) => {
     try {
       console.log("handleAddLead");
-      console.log(data);
+      //   console.log(data);
 
       dispatch(addLeadRequest(data));
     } catch (error) {

@@ -14,9 +14,7 @@ const CollegeCourseOfferSection = ({
       {/* Blob Background */}
       <section className="">
         <div className="">
-          <SectionMainHeader>
-            Course Offerings
-          </SectionMainHeader>
+          <SectionMainHeader>Course Offerings</SectionMainHeader>
           <div className="my-1 border-t border-gray-300"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:pt-10 pt-6">
             {collegeDetails?.courses?.map((course, index) => (
@@ -31,8 +29,8 @@ const CollegeCourseOfferSection = ({
             ))}
           </div>
         </div>
-      </section >
-    </div >
+      </section>
+    </div>
   );
 };
 

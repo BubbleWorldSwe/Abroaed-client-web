@@ -72,7 +72,7 @@ function* handleEditStudentProfile(action) {
 
       if (leadDetailsResponse.status === 200) {
         yield put(editStudentProfileSuccess(leadDetailsResponse.data));
-        //  toast.success("Student updated successfully!");
+        toast.success("Student updated successfully!");
       } else {
         yield put(editStudentProfileFailure(leadDetailsResponse.message));
         //  toast.error(leadDetailsResponse.message);

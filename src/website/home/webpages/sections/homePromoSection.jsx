@@ -68,7 +68,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
       return;
     }
 
-    console.log("Lead Data:", formData);
+    //  console.log("Lead Data:", formData);
     onFormSubmit({ user: formData, source: source, entity: entity });
   };
 
@@ -119,10 +119,10 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
               <a href="/homeCounselling">
                 <button
                   className="py-1 md:py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-                // onClick={(e) => {
-                //   e.preventDefault()
-                //   navigate("/homeCounselling")
-                // }}
+                  // onClick={(e) => {
+                  //   e.preventDefault()
+                  //   navigate("/homeCounselling")
+                  // }}
                 >
                   Learn More About Home Counselling
                 </button>
@@ -225,7 +225,6 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                       required
                     />
                   </div>
-
 
                   {/*   <div className="flex items-start mt-4">
                     <input

@@ -39,7 +39,7 @@ const Accommodations = () => {
   const handleAddAccommodation = (data) => {
     //  setIsAddModalOpen(false);
     console.log("handleAddAccommodation");
-    console.log(data);
+    // console.log(data);
 
     dispatch(addAccommodationRequest(data));
     setCurrentPage(1);
