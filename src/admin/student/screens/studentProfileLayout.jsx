@@ -65,7 +65,7 @@ const StudentProfileLayout = () => {
     (state) => state?.students?.selectedStudent
   );
 
-  console.log(studentProfile?.documents);
+  // console.log(studentProfile?.documents);
 
   const [openModal, setOpenModal] = useState(false);
   const [modal, setModal] = useState(null);
@@ -169,7 +169,7 @@ const StudentProfileLayout = () => {
 
   async function fetchStudentSavedPefrences() {
     try {
-      const list = await getStudentSavedPreferences(id);
+      const list = await getStudentSavedPreferences(studentProfile?.user?._id);
 
       if (list.status === 200) {
         dispatch(addStudentSavedPrefrences(list.data?.result));
@@ -228,7 +228,7 @@ const StudentProfileLayout = () => {
   async function uploadStudentDocument(fileData) {
     try {
       const data = await setUploadStudentDocuments(id, fileData);
-      console.log(data);
+      // console.log(data);
 
       if (data?.status === 200) {
         dispatch(addStudentApplication(data?.data));
@@ -282,7 +282,7 @@ const StudentProfileLayout = () => {
         selectedApplication?._id
       );
 
-      console.log(data);
+      //   console.log(data);
 
       if (data?.status === 200) {
         fetchStudentApplications();
@@ -332,7 +332,7 @@ const StudentProfileLayout = () => {
       console.log(error);
     }
   }
-  console.log(selectedDoc);
+  //  console.log(selectedDoc);
 
   useEffect(() => {
     fetchData();

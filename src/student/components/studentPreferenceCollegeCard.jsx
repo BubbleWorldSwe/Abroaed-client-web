@@ -3,14 +3,27 @@ import studentcolFrame from "../../assets/studentcolFrame.png";
 import squareacademiccapbold from "../../assets/squareacademiccapbold.png";
 import fluent_person from "../../assets/fluent_person.png";
 import Book from "../../assets/Book.png";
+import { IMAGE_BASE_URL } from "../../constants/baseUrl";
+import { IMAGES } from "../../constants/images";
 
 const StudentPreferenceCollegeCard = ({ college }) => {
+  const coverImage = college?.typeId?.images?.find(
+    (img) => img.type === "cover"
+  );
+
+  const logoImage = college?.typeId?.images?.find((img) => img.type === "logo");
+
+  console.log(college?.typeId?.images);
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="relative">
         <img
           className="rounded-t-lg max-w-xl h-40 object-cover"
-          src={studentColImg}
+          src={
+            coverImage
+              ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+              : IMAGES.noImage
+          }
           alt={"pic"}
         />
         <div className="absolute w-24 h-24  -bottom-16  left-5">

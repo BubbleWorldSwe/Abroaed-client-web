@@ -23,7 +23,6 @@ function StudentSavedPreference() {
     (pref) => pref.type === "accommodation"
   );
 
-  // Decide which array to show based on the active tab
   const activeData =
     activeTab === 0 ? colleges : activeTab === 1 ? courses : accommodations;
 

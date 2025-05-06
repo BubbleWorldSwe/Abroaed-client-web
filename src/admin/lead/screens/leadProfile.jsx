@@ -71,7 +71,7 @@ const LeadProfileLayout = () => {
 
   async function fetchLeadSavedPefrences() {
     try {
-      const list = await getLeadSavedPrefrences(id);
+      const list = await getLeadSavedPrefrences(leadProfile?.user?._id);
 
       if (list.status === 200) {
         dispatch(addLeadSavedPrefrences(list.data?.result));

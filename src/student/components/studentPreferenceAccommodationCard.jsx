@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
-import accommodations from "../../assets/accommodations.webp";
+
 import locationIcon from "../../assets/locationIcon.png";
 import wallet from "../../assets/wallet.png";
+import { IMAGE_BASE_URL } from "../../constants/baseUrl";
+import { IMAGES } from "../../constants/images";
 
 const StudentPreferenceAccommodationCard = ({ accommodation }) => {
   return (
@@ -9,7 +11,11 @@ const StudentPreferenceAccommodationCard = ({ accommodation }) => {
       <a href="#">
         <img
           className="rounded-t-lg w-full h-48 object-cover"
-          src={accommodations}
+          src={
+            accommodation?.typeId?.imageUrl
+              ? `${IMAGE_BASE_URL}/${accommodation?.typeId?.imageUrl}`
+              : IMAGES.noImage
+          }
           alt={accommodation.name}
         />
       </a>

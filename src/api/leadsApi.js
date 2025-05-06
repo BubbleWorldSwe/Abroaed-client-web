@@ -19,7 +19,7 @@ export const getLeads = async (page) => {
       `${BASE_URL}/api/v1/admin/leads/list?${path}filter={"type":"lead"}`,
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

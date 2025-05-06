@@ -46,14 +46,8 @@ export const makeGetRequest = async (url, token) => {
         { signal: controller.signal }
       );
     }
-    console.log("response");
-    console.log(url);
-    console.log(response);
-    console.log("response");
 
     const json = await response.json();
-
-    console.log(json);
 
     if (json) {
       if (json.status) return constructSuccessResponse(json);

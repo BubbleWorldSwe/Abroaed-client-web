@@ -3,19 +3,41 @@ import studentcolFrame from "../../../assets/studentcolFrame.png";
 import squareacademiccapbold from "../../../assets/squareacademiccapbold.png";
 import fluent_person from "../../../assets/fluent_person.png";
 import Book from "../../../assets/Book.png";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import { IMAGES } from "../../../constants/images";
+import add_a_photo from "../../../assets/add_a_photo.png";
 
 const StudentPreferenceCollegeCard = ({ college }) => {
+  const coverImage = college?.typeId?.images?.find(
+    (img) => img.type === "cover"
+  );
+
+  const logoImage = college?.typeId?.images?.find((img) => img.type === "logo");
+
+  console.log(college?.typeId?.images);
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="bg-white w-80 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="relative">
         <img
           className="rounded-t-lg max-w-xl h-40 object-cover"
-          src={studentColImg}
+          src={
+            coverImage
+              ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+              : IMAGES.noImage
+          }
           alt={"pic"}
         />
-        <div className="absolute w-24 h-24  -bottom-16  left-5">
-          <img src={studentcolFrame} alt="add_img_pic" />
-        </div>
+        {/*  <div className="absolute w-24 h-24  -bottom-16  left-5">
+          <img
+            src={
+              logoImage
+                ? `${IMAGE_BASE_URL}/${logoImage.ImageUrl}`
+                : add_a_photo
+            }
+            className="w-24 h-24"
+            alt="add_img_pic"
+          />
+        </div> */}
       </div>
       <div className="p-5 mt-5">
         <div className="flex justify-between">
@@ -24,10 +46,9 @@ const StudentPreferenceCollegeCard = ({ college }) => {
           </h5>
         </div>
         <p className="text-gray-500 mb-2">
-          {" "}
           {`${college?.typeId?.stateId?.name}, ${college?.typeId?.destinationId?.countryId?.name}`}
         </p>
-        <div className="mb-2  flex flex-col justify-between text-center ">
+        <div className="mb-2  flex flex-col justify-between ">
           <div className="flex gap-2 ">
             <img
               className="rounded-t-lg  object-contain"
