@@ -11,84 +11,74 @@ const StudentPreferenceCollegeCard = ({ college }) => {
   const coverImage = college?.typeId?.images?.find(
     (img) => img.type === "cover"
   );
-
   const logoImage = college?.typeId?.images?.find((img) => img.type === "logo");
 
-  console.log(college?.typeId?.images);
   return (
     <div className="bg-white w-80 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="relative">
         <img
-          className="rounded-t-lg max-w-xl h-40 object-cover"
+          className="rounded-t-lg w-full h-40 object-cover"
           src={
             coverImage
               ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
               : IMAGES.noImage
           }
-          alt={"pic"}
+          alt="cover"
         />
-        {/*  <div className="absolute w-24 h-24  -bottom-16  left-5">
-          <img
-            src={
-              logoImage
-                ? `${IMAGE_BASE_URL}/${logoImage.ImageUrl}`
-                : add_a_photo
-            }
-            className="w-24 h-24"
-            alt="add_img_pic"
-          />
-        </div> */}
+        <div className="absolute w-20 h-20 -bottom-7 left-5 bg-white rounded-[5px] overflow-hidden shadow-md">
+          {logoImage ? (
+            <img
+              src={`${IMAGE_BASE_URL}/${logoImage.ImageUrl}`}
+              className="w-full h-full object-contain"
+              alt="logo"
+            />
+          ) : (
+            <img
+              src={IMAGES.noLogo}
+              className="w-full h-full object-cover"
+              alt="no-logo"
+            />
+          )}
+        </div>
       </div>
-      <div className="p-5 mt-5">
+
+      <div className="p-5 mt-7">
         <div className="flex justify-between">
-          <h5 className=" text-xl whitespace-nowrap font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white whitespace-nowrap">
             {college?.typeId?.name}
           </h5>
         </div>
         <p className="text-gray-500 mb-2">
           {`${college?.typeId?.stateId?.name}, ${college?.typeId?.destinationId?.countryId?.name}`}
         </p>
-        <div className="mb-2  flex flex-col justify-between ">
-          <div className="flex gap-2 ">
+
+        <div className="mb-4 flex flex-col gap-2">
+          <div className="flex gap-2 items-center">
             <img
-              className="rounded-t-lg  object-contain"
+              className="w-5 h-5 object-contain"
               src={squareacademiccapbold}
-              alt={"academic-img"}
+              alt="ranking"
             />
-
-            <p className="font-medium  text-gray-500 dark:text-gray-400 py-1">
-              World Ranking: {`${college?.typeId?.ranking}`}
+            <p className="text-gray-500 dark:text-gray-400">
+              World Ranking: {college?.typeId?.ranking}
             </p>
           </div>
-          <div className="flex gap-2 ">
+          <div className="flex gap-2 items-center">
             <img
-              className="rounded-t-lg  object-contain"
+              className="w-5 h-5 object-contain"
               src={fluent_person}
-              alt={"fluent_person"}
+              alt="students"
             />
-
-            <p className="font-medium  text-gray-500 dark:text-gray-400 py-1">
-              Total Students: {`${college?.typeId?.totalStudents}`}
+            <p className="text-gray-500 dark:text-gray-400">
+              Total Students: {college?.typeId?.totalStudents}
             </p>
           </div>
-          <div className="flex gap-2 ">
-            <img
-              className="rounded-t-lg  object-contain"
-              src={Book}
-              alt={"Book"}
-            />
-            <p className="font-medium  text-gray-500 dark:text-gray-400 py-1">
-              Courses Available: {`${college?.typeId?.courses?.length}`}
+          <div className="flex gap-2 items-center">
+            <img className="w-5 h-5 object-contain" src={Book} alt="courses" />
+            <p className="text-gray-500 dark:text-gray-400">
+              Courses Available: {college?.typeId?.courses?.length}
             </p>
           </div>
-        </div>
-        <div>
-          <button
-            type="button"
-            className="py-2.5 w-full px-5 me-2 mb-2 text font-medium text-gray-700 focus:outline-none bg-white rounded-lg border border-gray-700 hover:bg-gray-100 hover:text-green-900 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            View Details
-          </button>
         </div>
       </div>
     </div>
