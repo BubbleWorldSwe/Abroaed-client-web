@@ -299,38 +299,7 @@ function Header({ isHeaderBgWhite = false }) {
             <ul
               className={`flex items-center space-x-1 text-white   justify-center text-[12px] font-medium`}
             >
-              <li className="relative"
-                onMouseEnter={() => handleMouseEnter("exploreColleges")}
-                onMouseLeave={handleMouseLeave}>
-                <div
-                  className={`
-    px-2 relative transition-colors duration-300 cursor-pointer
-    after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
-    after:bg-white after:opacity-0 after:-z-10
-    ${activeDropdown === "exploreColleges"
-                      ? "after:opacity-100 font-semibold  text-gray-primary"
-                      : "font-semibold"}
-  `}
-                >
-                  <a className="cursor-pointer">Explore Colleges</a>
-                </div>
 
-                {activeDropdown === "exploreColleges" && (
-                  <div className="absolute top-full left-0 z-50">
-                    <ExploreCollegesNavItemModal
-                      allDestinations={allDestinations}
-                      selectedDestination={selectedDestination}
-                      selectedState={selectedState}
-                      states={states}
-                      colleges={colleges}
-                      filteredColleges={filteredColleges}
-                      isLoading={isLoading}
-                      handleDestinationClick={handleDestinationClick}
-                      handleStateClick={handleStateClick}
-                    />
-                  </div>
-                )}
-              </li>
               {menuItems.map(({ key, label, link, component: Component, data }) => (
                 <li
                   key={key}
@@ -368,7 +337,38 @@ function Header({ isHeaderBgWhite = false }) {
                   )}
                 </li>
               ))}
+              <li className="relative"
+                onMouseEnter={() => handleMouseEnter("exploreColleges")}
+                onMouseLeave={handleMouseLeave}>
+                <div
+                  className={`
+    px-2 relative transition-colors duration-300 cursor-pointer
+    after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
+    after:bg-white after:opacity-0 after:-z-10
+    ${activeDropdown === "exploreColleges"
+                      ? "after:opacity-100 font-semibold  text-gray-primary"
+                      : "font-semibold"}
+  `}
+                >
+                  <a className="cursor-pointer">Explore Colleges</a>
+                </div>
 
+                {activeDropdown === "exploreColleges" && (
+                  <div className="absolute top-full right-0 z-50">
+                    <ExploreCollegesNavItemModal
+                      allDestinations={allDestinations}
+                      selectedDestination={selectedDestination}
+                      selectedState={selectedState}
+                      states={states}
+                      colleges={colleges}
+                      filteredColleges={filteredColleges}
+                      isLoading={isLoading}
+                      handleDestinationClick={handleDestinationClick}
+                      handleStateClick={handleStateClick}
+                    />
+                  </div>
+                )}
+              </li>
             </ul>
           </div>
         </div>
