@@ -1,4 +1,3 @@
-import homeService1 from "../../../../assets/homeService1.png"
 import homeService2 from "../../../../assets/homeService2.png"
 import homeService3 from "../../../../assets/homeService3.png"
 import homeService4 from "../../../../assets/homeService4.png"
@@ -10,6 +9,11 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import ServiceCardComponents from "../../../comman/components/serviceCardComponents"
 import DotsComponent from "../../../comman/components/dotsComponent"
 import { useState } from "react"
+import NextArrow from "../../../comman/components/nextArrow"
+import PrevArrow from "../../../comman/components/prevArrow"
+import ServiceContent from "../../../home/components/serviceContent"
+import BackgroundLayer from "../../../home/components/backgroundLayer"
+import Slider from "react-slick"
 
 const serviceData = [
     {
@@ -60,6 +64,7 @@ const serviceData = [
 
 const ExploreOurServicesHomeCounselling = () => {
     const [countImg, setCountImg] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const handleNextImage = () => {
         setCountImg((prev) => (prev + 1) % serviceData.length);
@@ -73,7 +78,32 @@ const ExploreOurServicesHomeCounselling = () => {
         setCountImg((prev) => (prev - 1 + serviceData.length) % serviceData.length);
     };
 
-
+    const settings = {
+        dots: true,
+        pauseOnHover: true,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
+        beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
+        customPaging: i => (
+            <div className={`rounded-full w-3 h-3 transition-all duration-300 
+        ${i === currentSlide ? 'bg-yellow-primary w-4' : 'bg-gray-500 '}`}
+            />
+        ),
+        appendDots: dots => (
+            <div>
+                <ul className="flex justify-center mt-4">{dots}</ul>
+            </div>
+        ),
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    };
 
     return (
         <section className=" dark:bg-gray-900 flex flex-col space-y-4 w-full md:max-w-screen-2xl mx-auto  relative">
@@ -82,20 +112,38 @@ const ExploreOurServicesHomeCounselling = () => {
                     Explore Our Other Services
                 </SectionMainHeader>
             </div>
-
-            {/* service cards */}
-            <ServiceCardComponents
-                serviceData={serviceData}
-                countImg={countImg}
-                handleNextImage={handleNextImage}
-                handlePrevImage={handlePrevImage}
-            />
-            {/* dots */}
-            <DotsComponent
-                serviceData={serviceData}
-                handleDotClick={handleDotClick}
-                countImg={countImg}
-            />
+            <div className="hidden md:flex flex-col gap-6">
+                {/* service cards */}
+                <ServiceCardComponents
+                    serviceData={serviceData}
+                    countImg={countImg}
+                    handleNextImage={handleNextImage}
+                    handlePrevImage={handlePrevImage}
+                />
+                {/* dots */}
+                <DotsComponent
+                    serviceData={serviceData}
+                    handleDotClick={handleDotClick}
+                    countImg={countImg}
+                />
+            </div>
+            <div className="block relative  md:hidden">
+                <Slider {...settings}>
+                    {serviceData.map((data, i) => (
+                        <div key={i} className="px-4 pb-4">
+                            <div className="w-full   h-[32rem] relative rounded-lg">
+                                <BackgroundLayer />
+                                <img
+                                    className="w-full h-full object-cover rounded-lg"
+                                    src={data.imgUrl}
+                                    alt={`Service ${data.imgUrl}`}
+                                />
+                                <ServiceContent data={data} />
+                            </div>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
         </section>
     )
 }

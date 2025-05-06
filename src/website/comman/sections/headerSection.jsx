@@ -144,7 +144,7 @@ function Header({ isHeaderBgWhite = false }) {
   }, [isNotMobile]);
 
   const menuItems = [
-    { key: "whyAbroad", label: "Why ABROAED?", component: WhyAbroaedNavModal },
+    { key: "aboutUs", label: "About Us", component: WhyAbroaedNavModal },
     {
       key: "abroaedPlus",
       label: (
@@ -155,11 +155,11 @@ function Header({ isHeaderBgWhite = false }) {
       link: "/abroaedPlus",
     },
     {
-      key: "destinations",
-      label: "Destinations",
-      component: DestinationNavItemModal,
+      key: "leaguageOfExcellence",
+      label: "League of Excellence",
+      link: "/leaguageOfExcellence",
     },
-    // { key: "accomodation", label: "Accommodation", link: "/accomodation" },
+    { key: "pathways", label: "Pathways", link: "/pathways" },
     {
       key: "testPrep",
       label: "Test Prep",
@@ -169,14 +169,17 @@ function Header({ isHeaderBgWhite = false }) {
         languagePreps: allLanguagePreps,
       },
     },
-    // { key: "finance", label: "Finance", link: "/finance" },
-    { key: "pathways", label: "Pathways", link: "/pathways" },
     {
-      key: "leaguageOfExcellence",
-      label: "League of Excellence",
-      link: "/leaguageOfExcellence",
+      key: "destinations",
+      label: "Destinations",
+      component: DestinationNavItemModal,
     },
     { key: "services", label: "Services", component: ServicesNavModal },
+
+    // { key: "accomodation", label: "Accommodation", link: "/accomodation" },
+
+    // { key: "finance", label: "Finance", link: "/finance" },
+
     { key: "contactUs", label: "Contact Us", link: "/contactUs" },
   ];
   const mobileMenuItem = [
@@ -190,10 +193,10 @@ function Header({ isHeaderBgWhite = false }) {
       link: "/",
     },
     {
-      key: "why-abroaed",
-      label: "Why ABROAED?",
+      key: "aboutUs",
+      label: "About Us",
       subItems: [
-        { title: "About Us", link: "/aboutus" },
+        { title: "Why ABROAED?", link: "/whyAbroaed" },
         { title: "Career", link: "/careers" },
       ],
     },
@@ -207,21 +210,14 @@ function Header({ isHeaderBgWhite = false }) {
       link: "/abroaedPlus",
     },
     {
-      key: "destinations",
-      label: "Destinations",
-      // component: () => (
-      //   <ul className="space-y-1 p-2">
-      //     {allDestinations?.map((item, index) => (
-      //       <li key={index} className="text-sm hover:bg-gray-100 p-2 rounded">
-      //         <a href={`/destinations/${item._id}`} className="flex items-center gap-2">
-      //           <Flag width={5} code={item?.countryId?.code} />
-      //           {item?.countryId?.name}
-      //         </a>
-      //       </li>
-      //     ))}
-      //   </ul>
-      // )
-      component: DestinationNavItemModal,
+      key: "league-excellence",
+      label: "League of Excellence",
+      link: "/leaguageOfExcellence",
+    },
+    {
+      key: "pathways",
+      label: "Pathways",
+      link: "/pathways",
     },
     {
       key: "test-prep",
@@ -236,14 +232,9 @@ function Header({ isHeaderBgWhite = false }) {
       data: allLanguagePreps,
     },
     {
-      key: "pathways",
-      label: "Pathways",
-      link: "/pathways",
-    },
-    {
-      key: "league-excellence",
-      label: "League of Excellence",
-      link: "/leaguageOfExcellence",
+      key: "destinations",
+      label: "Destinations",
+      component: DestinationNavItemModal,
     },
     {
       key: "services",

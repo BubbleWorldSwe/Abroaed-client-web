@@ -80,7 +80,7 @@ const AppRoutes = () => {
     },
     { path: "/testprep", element: <TestPrepLayout />, isPrivate: false },
 
-    { path: "/aboutus", element: <AboutUsPage />, isPrivate: false },
+    { path: "/whyAbroaed", element: <AboutUsPage />, isPrivate: false },
     { path: "/careers", element: <CareerPage />, isPrivate: false },
     { path: "/signin", element: <StudentSignIn />, isPrivate: false },
     {

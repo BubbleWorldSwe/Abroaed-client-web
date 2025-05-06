@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const items =
     [
-        { title: "About Us", href: "/aboutus" },
+        { title: "Why ABROAED?", href: "/whyAbroaed" },
         { title: "Career", href: "/careers" },
     ]
 const WhyAbroaedNavModal = ({ handleMouseEnter,
@@ -19,7 +19,7 @@ const WhyAbroaedNavModal = ({ handleMouseEnter,
     return (
         <div
             className="absolute left-0 top-full w-max py-[5px]  z-50"
-            onMouseEnter={() => handleMouseEnter("whyAbroad")}
+            onMouseEnter={() => handleMouseEnter("aboutUs")}
             onMouseLeave={handleMouseLeave}
         >
             <ul className="space-1 grid grid-cols-1 shadow-lg w-[15vw]  rounded-b-lg mt-2 bg-white" >

@@ -3,12 +3,10 @@
 const HeroTextComponent = ({ children, img }) => {
   return (
     <section
-      className="relative h-[100vh] bg-cover bg-center"
+      className="relative  h-[100vh] bg-cover bg-center"
       style={{
         backgroundImage: `url(${img})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+
       }}
     >
       {/* Overlay */}

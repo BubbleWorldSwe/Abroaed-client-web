@@ -15,7 +15,7 @@ const ServiceCardComponents = ({
     return (
         <div className="overflow-x-auto ">
             <div className="w-full px-4  h-[32rem] relative rounded-lg">
-                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                <div className=" relative w-full h-full rounded-lg overflow-hidden">
                     <BackgroundLayer />
                     <img
                         className="w-full h-full object-cover rounded-lg"
@@ -23,9 +23,9 @@ const ServiceCardComponents = ({
                         alt={`Service ${countImg + 1}`}
                     />
                     <ServiceContent data={serviceData[countImg]} />
+                    <NextArrow right="right-0" onClick={handleNextImage} />
+                    <PrevArrow left="left-0" onClick={handlePrevImage} />
                 </div>
-                <NextArrow right={right} onClick={handleNextImage} />
-                <PrevArrow left={left} onClick={handlePrevImage} />
             </div>
         </div>
     )

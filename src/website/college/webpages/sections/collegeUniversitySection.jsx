@@ -43,7 +43,7 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
                         }
                         alt={`Service ${index + 1}`}
                       />
-                      <div className="absolute inset-0 bg-black opacity-50"></div>{" "}
+                      <div className="absolute inset-0 "></div>{" "}
                       {/* Overlay */}
                     </div>
 

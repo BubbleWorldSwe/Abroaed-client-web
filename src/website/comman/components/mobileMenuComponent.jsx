@@ -54,7 +54,7 @@ const MobileMenuComponent = ({
                                         {subItems?.map(({ title, link }, index) => (
                                             <>
                                                 <a key={index} href={link} >
-                                                    <div className="hover:bg-blue-50 py-1 ">
+                                                    <div className="hover:bg-white hover:bg-opacity-10 py-1 ">
                                                         {title}
                                                     </div>
                                                 </a>
