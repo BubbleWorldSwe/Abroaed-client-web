@@ -64,6 +64,7 @@ import ComingSoonPage from "../website/comingSoon/comingSoonPage";
 import ForexPage from "../website/forex/webpages/forexPage";
 import StudentOtpVerification from "../website/auth/studentOtpVerification";
 import StudentForgotPassword from "../website/auth/studentForgotPassword";
+import StudentOtpLogin from "../website/auth/studentOtpLogin";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -124,6 +125,11 @@ const AppRoutes = () => {
     {
       path: "/forgot-password",
       element: <StudentForgotPassword />,
+      isPrivate: false,
+    },
+    {
+      path: "/otp-login",
+      element: <StudentOtpLogin />,
       isPrivate: false,
     },
     { path: "/blog/:id", element: <BlogPage />, isPrivate: false },

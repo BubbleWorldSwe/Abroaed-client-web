@@ -114,6 +114,14 @@ function StudentSignIn() {
                   New User? Sign Up
                 </a>
               </div>
+              {/*   <div className="text-center mt-4">
+                <a
+                  href="/otp-login"
+                  className="text-sm text-yellow-500 hover:underline"
+                >
+                  Login Via OTP
+                </a>
+              </div> */}
             </form>
           </div>
           <AbroaedInfo />

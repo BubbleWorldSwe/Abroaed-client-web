@@ -180,7 +180,7 @@ function Header({ isHeaderBgWhite = false }) {
 
     // { key: "finance", label: "Finance", link: "/finance" },
 
-    { key: "contactUs", label: "Contact Us", link: "/contactUs" },
+    // { key: "contactUs", label: "Contact Us", link: "/contactUs" },
   ];
   const mobileMenuItem = [
     {
@@ -198,6 +198,7 @@ function Header({ isHeaderBgWhite = false }) {
       subItems: [
         { title: "Why ABROAED?", link: "/whyAbroaed" },
         { title: "Career", link: "/careers" },
+        { title: "Contact Us", link: "/contactUs" },
       ],
     },
     {
@@ -246,11 +247,6 @@ function Header({ isHeaderBgWhite = false }) {
         { title: "Home Counselling", link: "/homeCounselling" },
       ],
     },
-    {
-      key: "contact-us",
-      label: "Contact Us",
-      link: "/contactUs",
-    },
   ];
 
   const socialLinks = [
@@ -272,10 +268,11 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary text-white shadow-md"
-        : "bg-gray-primary text-white bg-opacity-10"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-gray-primary text-white shadow-md"
+          : "bg-gray-primary text-white bg-opacity-10"
+      }`}
     >
       <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
         <div className="flex  basis  items-center">
@@ -299,55 +296,62 @@ function Header({ isHeaderBgWhite = false }) {
             <ul
               className={`flex items-center space-x-1 text-white   justify-center text-[12px] font-medium`}
             >
-
-              {menuItems.map(({ key, label, link, component: Component, data }) => (
-                <li
-                  key={key}
-                  onMouseEnter={() => handleMouseEnter(key)}
-                  onMouseLeave={handleMouseLeave}
-                  className="relative"
-                >
-                  <div
-                    className={`
+              {menuItems.map(
+                ({ key, label, link, component: Component, data }) => (
+                  <li
+                    key={key}
+                    onMouseEnter={() => handleMouseEnter(key)}
+                    onMouseLeave={handleMouseLeave}
+                    className="relative"
+                  >
+                    <div
+                      className={`
     px-2 relative transition-colors duration-300 cursor-pointer
     after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
     after:bg-white after:opacity-0 after:-z-10
-    ${activeDropdown === key
-                        ? "after:opacity-100 font-semibold  text-gray-primary"
-                        : "font-semibold"}
+    ${
+      activeDropdown === key
+        ? "after:opacity-100 font-semibold  text-gray-primary"
+        : "font-semibold"
+    }
   `}
-                  >
-                    <a href={link || "#"}>{label}</a>
-                  </div>
-                  {activeDropdown === key && Component && (
-                    <div className="absolute top-full left-0 z-50">
-                      <Component
-                        {...(Array.isArray(data)
-                          ? {
-                            menuItems: data.map(({ productName, _id }) => ({
-                              title: productName,
-                              _id,
-                            })),
-                          }
-                          : { ...data })}
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                      />
+                    >
+                      <a href={link || "#"}>{label}</a>
                     </div>
-                  )}
-                </li>
-              ))}
-              <li className="relative"
+                    {activeDropdown === key && Component && (
+                      <div className="absolute top-full left-0 z-50">
+                        <Component
+                          {...(Array.isArray(data)
+                            ? {
+                                menuItems: data.map(({ productName, _id }) => ({
+                                  title: productName,
+                                  _id,
+                                })),
+                              }
+                            : { ...data })}
+                          handleMouseEnter={handleMouseEnter}
+                          handleMouseLeave={handleMouseLeave}
+                        />
+                      </div>
+                    )}
+                  </li>
+                )
+              )}
+              <li
+                className="relative"
                 onMouseEnter={() => handleMouseEnter("exploreColleges")}
-                onMouseLeave={handleMouseLeave}>
+                onMouseLeave={handleMouseLeave}
+              >
                 <div
                   className={`
     px-2 relative transition-colors duration-300 cursor-pointer
     after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
     after:bg-white after:opacity-0 after:-z-10
-    ${activeDropdown === "exploreColleges"
-                      ? "after:opacity-100 font-semibold  text-gray-primary"
-                      : "font-semibold"}
+    ${
+      activeDropdown === "exploreColleges"
+        ? "after:opacity-100 font-semibold  text-gray-primary"
+        : "font-semibold"
+    }
   `}
                 >
                   <a className="cursor-pointer">Explore Colleges</a>
@@ -454,7 +458,7 @@ function Header({ isHeaderBgWhite = false }) {
             // onMouseEnter={() => handleMouseEnter("login")}
             // onMouseLeave={handleMouseLeave}
             className="relative "
-          // className="relative hidden md:block"
+            // className="relative hidden md:block"
           >
             <button
               onClick={() => handleMouseEnter("bookMenu")}

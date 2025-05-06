@@ -1,4 +1,3 @@
-
 export default function AbroaedInfo() {
   return (
     <div className="md:flex justify-center hidden   items-center py-6 px-4 bg-gray-primary lg:py-0 sm:px-0">
