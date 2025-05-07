@@ -169,12 +169,13 @@ function Header({ isHeaderBgWhite = false }) {
         languagePreps: allLanguagePreps,
       },
     },
+
+    { key: "services", label: "Services", component: ServicesNavModal },
     {
       key: "destinations",
       label: "Destinations",
       component: DestinationNavItemModal,
     },
-    { key: "services", label: "Services", component: ServicesNavModal },
 
     // { key: "accomodation", label: "Accommodation", link: "/accomodation" },
 
@@ -233,11 +234,6 @@ function Header({ isHeaderBgWhite = false }) {
       data: allLanguagePreps,
     },
     {
-      key: "destinations",
-      label: "Destinations",
-      component: DestinationNavItemModal,
-    },
-    {
       key: "services",
       label: "Services",
       subItems: [
@@ -246,6 +242,11 @@ function Header({ isHeaderBgWhite = false }) {
         { title: "Accomodation", link: "/accomodation" },
         { title: "Home Counselling", link: "/homeCounselling" },
       ],
+    },
+    {
+      key: "destinations",
+      label: "Destinations",
+      component: DestinationNavItemModal,
     },
   ];
 
