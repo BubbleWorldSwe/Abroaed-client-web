@@ -17,6 +17,7 @@ import NextArrow from "../../../comman/components/nextArrow";
 import PrevArrow from "../../../comman/components/prevArrow";
 import ServiceContent from "../../components/serviceContent";
 import BackgroundLayer from "../../components/backgroundLayer";
+import { motion } from "framer-motion";
 
 
 
@@ -126,9 +127,16 @@ const HomeServicesSection = () => {
     <div>
       <section className=" dark:bg-gray-900 flex flex-col space-y-4 w-full md:max-w-screen-2xl mx-auto  relative">
         <div className="px-4 md:px-12  max-w-screen-2xl relative z-10">
-          <SectionMainHeader className="mb-6">
-            Discover Our Unique Offerings
-          </SectionMainHeader>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.5 }}
+          >
+            <SectionMainHeader className="mb-6">
+              Discover Our Unique Offerings
+            </SectionMainHeader>
+          </motion.div>
         </div>
         <div className="hidden md:flex flex-col gap-6">
           {/* service cards */}

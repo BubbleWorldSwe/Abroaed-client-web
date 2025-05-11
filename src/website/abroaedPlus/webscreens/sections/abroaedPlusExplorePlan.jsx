@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { addLeadRequest } from "../../../../redux/actions/leadsActions";
 import FeatureLOEModal from "../../../leagueOfExcellence/modals/featureLOEModal";
 import ExplorePlanCardComponent from "../../../comman/components/explorePlanCardComponent";
+import { motion } from "framer-motion";
 
 const AbroaedPlusExplorePlan = () => {
     const dispatch = useDispatch();
@@ -46,11 +47,19 @@ const AbroaedPlusExplorePlan = () => {
                         <SectionMainHeader className="">Explore Plans</SectionMainHeader>
                         <hr className="" />
                     </div>
-                    <div className="flex flex-col md:flex-row gap-6 justify-center md:mt-4">
-                        <ExplorePlanCardComponent
-                            plans={plans}
-                        />
-                    </div >
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="flex flex-col md:flex-row gap-6 justify-center md:mt-4">
+                            <ExplorePlanCardComponent
+                                plans={plans}
+                            />
+                        </div >
+                    </motion.div>
 
                     <div className="flex justify-center mt-10">
                         <button

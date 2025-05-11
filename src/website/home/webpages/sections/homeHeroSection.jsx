@@ -78,7 +78,7 @@ function HomeHeroSection() {
                 Book Now
               </button>
               <button
-                onClick={() => navigate('/aboutUs')}
+                onClick={() => navigate('/whyAbroaed')}
                 className=" hover:bg-white hover:bg-opacity-20 px-1  md:px-4 py-2 rounded-full transition-opacity flex justify-start items-center gap-2">
                 <Play className="text-white" size={15} />
                 <p className="text-white text-sm md:text-lg font-bold">Why we build ABROAED ? </p>

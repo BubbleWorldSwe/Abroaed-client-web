@@ -1,6 +1,7 @@
 import { useState } from "react";
 import directHomeImg from "../../../../assets/directHomeImg.png";
 import explorePathImg from "../../../../assets/explorePathImg.png";
+import { motion } from "framer-motion";
 
 const HomePathwaySection = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -15,7 +16,7 @@ const HomePathwaySection = () => {
     },
     {
       title: "League of Excellence",
-      href: "/leaguageOfExcellence",
+      href: "/leagueOfExcellence",
       img: explorePathImg,
       content:
         "We at ABROAED help aspiring students get into top-tier universities across the UK, US, Australia, New Zealand, Canada, Asia, and Europe. We have a dedicated team to help students seek entrance into the renowned Ivy League schools in the USA. From admission support and mock interviews to VISA support and accommodation services in the destination country, we offer them all.",
@@ -49,21 +50,41 @@ const HomePathwaySection = () => {
                     style={{ mixBlendMode: "multiply" }}
                   ></div>
                   <div className="absolute bottom-2 overflow-auto md:bottom-14 md:left-4 px-4 mx-auto md:px-5">
+                    {/* <motion.div
+                      initial={{ opacity: 0, x: 0 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.9, ease: "easeOut" }}
+                      viewport={{ once: false, amount: 0.5 }}
+                    > */}
                     <p className="text-gray-200 lg:mb-2 text-[12px] md:text-base">Explore</p>
                     <h1 className="mb-2 text-[24px] md:text-5xl tracking-tight font-medium text-white">
                       {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title}
-                      {/* {title === "ABROAED" ? (<>{title}<sup>+</sup></>) : title} */}
                     </h1>
+                    {/* </motion.div> */}
                     <div className="hidden md:block">
                       {hoverOn === title.toLowerCase() && isHovered && (
                         <div className="text-white  text-justify pb-6 text-[16px] md:text-base transition-opacity duration-300">
-                          {content}
+                          <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.9, ease: "easeOut" }}
+                            viewport={{ once: false, amount: 0.5 }}
+                          >
+                            {content}
+                          </motion.div>
                         </div>
                       )}
                     </div>
                     <div className="block md:hidden">
                       <div className="text-white  text-justify pb-6 text-[16px] md:text-base transition-opacity duration-300">
-                        {content}
+                        <motion.div
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.9, ease: "easeOut" }}
+                          viewport={{ once: false, amount: 0.5 }}
+                        >
+                          {content}
+                        </motion.div>
                       </div>
                     </div>
                   </div>

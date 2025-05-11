@@ -5,6 +5,7 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import CardComponent from "../../components/cardComponent";
 import wwUsContent1 from "../../../../assets/wwUsContent1.png";
 import wwUsContent2 from "../../../../assets/wwUsContent2.png";
+import { motion } from "framer-motion";
 
 export const careerData = [
   {

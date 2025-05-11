@@ -59,7 +59,7 @@ const links = [
         link: "/abroaedPlus",
       },
       { name: "Accommodation", link: "/accomodation" },
-      { name: "League of Excellence", link: "/leaguageOfExcellence" },
+      { name: "League of Excellence", link: "/leagueOfExcellence" },
       // { name: "Test Prep", link: "/test-prep" },
       { name: "Finance", link: "/finance" },
     ],

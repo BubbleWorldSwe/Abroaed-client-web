@@ -17,6 +17,7 @@ import sbi from "../../../assets/finance/sbi.jpg"
 import tataCapital from "../../../assets/finance/tataCapital.jpg"
 import unionBank from "../../../assets/finance/unionBank.jpg"
 import yesBank from "../../../assets/finance/yesBank.jpg"
+import { motion } from "framer-motion";
 
 const financeImages = [
   { src: auxiloBank, alt: "Auxilo Bank" },
@@ -48,28 +49,35 @@ function OurPartners() {
           <SectionMainHeader className={`mb-6 text-center`}>
             Our Partners
           </SectionMainHeader>
-          <div className="flex mb-10 justify-center items-center ">
-            <p className="text-center  text-[#52525B] text-[20px] font-semibold">
-              We work closely with trusted international partners who share our goal—making every student’s study abroad smoother, safer, and more supportive.
-            </p>
-          </div>
-          <div className="gap-14 mt-8 sm:grid grid-cols-1 md:grid-cols-4 sm:grid-rows-[auto] sm:mt-10">
-            {financeImages.map((img, index) => (
-              <div
-                key={index}
-                className="h-[4rem]   flex items-center justify-center rounded-lg overflow-hidden"
-              >
-                <img
-                  className="w-full h-full object-contain"
-                  src={typeof img === 'string' ? img : img.src}
-                  alt={typeof img === 'string' ? `finance-img-${index + 1}` : img.alt}
-                />
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+            className="overflow-hidden"
+          >
+            <div className="flex mb-10 justify-center items-center ">
+              <p className="text-center  text-[#52525B] text-[20px] font-semibold">
+                We work closely with trusted international partners who share our goal—making every student’s study abroad smoother, safer, and more supportive.
+              </p>
+            </div>
+            <div className="gap-14 mt-8 sm:grid grid-cols-1 md:grid-cols-4 sm:grid-rows-[auto] sm:mt-10">
+              {financeImages.map((img, index) => (
+                <div
+                  key={index}
+                  className="h-[4rem]   flex items-center justify-center rounded-lg overflow-hidden"
+                >
+                  <img
+                    className="w-full h-full object-contain"
+                    src={typeof img === 'string' ? img : img.src}
+                    alt={typeof img === 'string' ? `finance-img-${index + 1}` : img.alt}
+                  />
 
-              </div>
-            ))}
+                </div>
+              ))}
 
-          </div>
-
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>

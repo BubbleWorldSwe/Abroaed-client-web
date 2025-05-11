@@ -5,6 +5,8 @@ import Slider from "react-slick"
 import NextArrow from "../../../comman/components/nextArrow"
 import PrevArrow from "../../../comman/components/prevArrow"
 import { useState } from "react"
+import { motion } from "framer-motion";
+import { MotionComponent } from "../../../comman/components/motionComponent"
 
 const WhychooseUsSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -49,9 +51,11 @@ const WhychooseUsSection = () => {
       <div className=" relative z-10">
         <section className="max-w-screen-2xl mx-auto">
           <div className="px-6 md:px-12   relative z-10">
-            <SectionMainHeader className={`mb-4`}>
-              Why Choose Us?
-            </SectionMainHeader>
+            <MotionComponent>
+              <SectionMainHeader className={`mb-4`}>
+                Why Choose Us?
+              </SectionMainHeader>
+            </MotionComponent>
           </div>
           <div className="mt-10  md:px-8">
             <Slider {...settings} className="pb-4 flex  gap-10 ">
@@ -60,7 +64,6 @@ const WhychooseUsSection = () => {
                   key={step.step}
                   className="px-4"
                 >
-
                   <div
 
                     className="flex  flex-shrink-0 h-60 w- relative justify-center items-center text-justify hover:scale-[1.01] transition-all ease-in-out delay-100 flex-col gap-1   p-6 bg-gray-primary border border-gray-200 rounded-lg "
@@ -74,9 +77,17 @@ const WhychooseUsSection = () => {
                         height: "100%",
                       }}
                     ></div>
-                    <h5 className="mb-2 text-[24px] md:text-[28px] font-medium  text-[#FFFFFF]">
-                      {step.heading}
-                    </h5>
+                    <motion.div
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <h5 className="mb-2 text-[24px] md:text-[28px] font-medium  text-[#FFFFFF]">
+                        {step.heading}
+                      </h5>
+                    </motion.div>
                     <div className="absolute top-0 right-0">
                       <img src={vectorRightRing} alt="vector" />
                     </div>

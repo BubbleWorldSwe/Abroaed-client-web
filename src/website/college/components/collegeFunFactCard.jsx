@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import vectorRightFlat from "../../../assets/vectorRightFlat.png"
+import { motion } from "framer-motion";
 
 const CollegeFunFactCard = ({ icon, title, desc }) => {
     return (
@@ -17,12 +18,20 @@ const CollegeFunFactCard = ({ icon, title, desc }) => {
                     }}
                 ></div>
                 <div className="text-yellow-500 text-4xl">{icon}</div>
-                <div className="flex flex-col gap-4 text-white text-left">
-                    <p className="text-[24px] md:text-[32px] font-bold text-[#FFFFFF]">{title}</p>
-                    <p className="text-[16px] md:text-[22px] font-semibold text-[#F4F4F5] ">
-                        {desc}
-                    </p>
-                </div>
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="overflow-hidden"
+                >
+                    <div className="flex flex-col gap-4 text-white text-left">
+                        <p className="text-[24px] md:text-[32px] font-bold text-[#FFFFFF]">{title}</p>
+                        <p className="text-[16px] md:text-[22px] font-semibold text-[#F4F4F5] ">
+                            {desc}
+                        </p>
+                    </div>
+                </motion.div>
                 <div className="absolute right-0">
                     <img src={vectorRightFlat} />
                 </div>
