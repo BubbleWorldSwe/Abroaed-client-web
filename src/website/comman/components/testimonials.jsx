@@ -5,11 +5,14 @@ import testimonial2 from "../../../assets/testimonial2.jpg"
 import testimonial3 from "../../../assets/testimonial3.jpg"
 import testimonial4 from "../../../assets/testimonial4.jpg"
 import testimonial5 from "../../../assets/testimonial5.jpg"
+import amritpal from "../../../assets/amritpal.jpg"
 import Slider from "react-slick";
 import NextArrow from "./nextArrow";
 import PrevArrow from "./prevArrow";
 import { useState } from "react";
 import TestimonialModal from "../modals/testimonialModal";
+import { motion } from "framer-motion";
+
 const Testimonials = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [readMore, setReadMore] = useState(false);
@@ -65,6 +68,19 @@ const Testimonials = () => {
         "A big thank you to the amazing counsellors of ABROAED team. They have been incredible in guiding me and are always available whenever I have any doubts or queries, even help in applying for jobs. Their expertise and contributions from across the globe have made a significant impact in achieving my goals.",
       img: testimonial5
     },
+    {
+      name: "Amritpal Kaur",
+      university: "University Of Huddersfield",
+      course: "MSc Management Specialization in Marketing FT",
+      country: " United Kingdom",
+      testimonial:
+        `I’m incredibly grateful to my consultancy for their outstanding support and dedication throughout my student visa journey. From guiding me step-by-step with the documentation to helping me secure my education loan in just one week, their commitment and efficiency made the entire process smooth and stress-free.
+
+A special thanks to Ankit Gupta, who has been a true pillar of support during this time.He was always available to answer my questions, no matter how big or small, and went above and beyond to make sure everything was in place.His expertise, patience, and proactive attitude made a huge difference, and I truly couldn’t have done it without him.
+
+Highly recommended to anyone looking for genuine, reliable, and professional help with student visas and educational planning.Thank you once again for turning a complex process into a successful and manageable journey!`,
+      img: amritpal
+    },
   ];
   const settings = {
     slidesToShow: 3,
@@ -103,12 +119,19 @@ const Testimonials = () => {
   return (
     <section className="  dark:bg-gray-900 mx-auto relative max-w-screen-2xl ">
       <div className="px-6 md:px-12 mb-10  ">
-        <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
-          Success Stories
-        </p>
-        <SectionMainHeader >
-          Read Our Success Stories
-        </SectionMainHeader>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.5 }}
+        >
+          <p className="font-semibold text-[#52525B] text-base dark:text-gray-400">
+            Success Stories
+          </p>
+          <SectionMainHeader >
+            Read Our Success Stories
+          </SectionMainHeader>
+        </motion.div>
       </div>
       <div className="md:px-8  overflow-visible">
         <Slider {...settings}>

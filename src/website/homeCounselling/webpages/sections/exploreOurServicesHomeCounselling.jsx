@@ -14,7 +14,7 @@ import PrevArrow from "../../../comman/components/prevArrow"
 import ServiceContent from "../../../home/components/serviceContent"
 import BackgroundLayer from "../../../home/components/backgroundLayer"
 import Slider from "react-slick"
-
+import { MotionComponent } from "../../../comman/components/motionComponent";
 const serviceData = [
     {
         text1: "Comprehensive Research & Shortlisting",
@@ -108,9 +108,11 @@ const ExploreOurServicesHomeCounselling = () => {
     return (
         <section className=" dark:bg-gray-900 flex flex-col space-y-4 w-full md:max-w-screen-2xl mx-auto  relative">
             <div className="px-4 md:px-12  max-w-screen-2xl relative z-10">
-                <SectionMainHeader className="mb-6">
-                    Explore Our Other Services
-                </SectionMainHeader>
+                <MotionComponent>
+                    <SectionMainHeader className="mb-6">
+                        Explore Our Other Services
+                    </SectionMainHeader>
+                </MotionComponent>
             </div>
             <div className="hidden md:flex flex-col gap-6">
                 {/* service cards */}

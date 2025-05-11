@@ -2,6 +2,7 @@ import vectorRightRing from "../../../../assets/vectorRightRing.png"
 import PrimaryBodyText from "../../../styleComponents/primaryBodyText"
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 import { steps } from "../../data"
+import { motion } from "framer-motion";
 
 
 const AccommodationHowItWorkSection = () => {
@@ -10,18 +11,26 @@ const AccommodationHowItWorkSection = () => {
         <div className="relative z-10">
             <section className="dark:bg-gray-900">
                 <div className="">
-                    <div className="">
-                        <SectionMainHeader
-                            className="mb-5"
-                        >
-                            How It Works?
-                        </SectionMainHeader>
-                        <PrimaryBodyText
-                            className={'mt-4'}
-                        >
-                            Finding accommodation abroad is a highly challenging task; however, when you are taking the services from ABROAED, finding accommodation becomes not only simple but also stress-free. We, at ABROAED Consultancy, provide a very structured three-step approach that assures every student gets a suitable and comfortable place to live in. From discussing your preferences to making all the needful arrangements for you, we are here for you at every stage. With ABROAED, you can completely focus on your studies while we take care of your house hunt.
-                        </PrimaryBodyText>
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="">
+                            <SectionMainHeader
+                                className="mb-5"
+                            >
+                                How It Works?
+                            </SectionMainHeader>
+                            <PrimaryBodyText
+                                className={'mt-4'}
+                            >
+                                Finding accommodation abroad is a highly challenging task; however, when you are taking the services from ABROAED, finding accommodation becomes not only simple but also stress-free. We, at ABROAED Consultancy, provide a very structured three-step approach that assures every student gets a suitable and comfortable place to live in. From discussing your preferences to making all the needful arrangements for you, we are here for you at every stage. With ABROAED, you can completely focus on your studies while we take care of your house hunt.
+                            </PrimaryBodyText>
+                        </div>
+                    </motion.div>
                     <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
                         {steps.map((step) => (
                             <div
@@ -37,17 +46,20 @@ const AccommodationHowItWorkSection = () => {
                                         height: "100%",
                                     }}
                                 ></div>
-                                <div>
-                                    {/* <span className="block text-[57px] font-extrabold text-[#FFFFFF] ">
-                                            {step.step}
-                                        </span> */}
-                                </div>
-                                <h5 className="mb-2 text-[24px] md:text-[32px] font-bold tracking-tight text-[#FFFFFF]">
-                                    {step.heading}
-                                </h5>
-                                <p className="font-normal text-white text-base dark:text-gray-400">
-                                    {step.description}
-                                </p>
+                                <motion.div
+                                    initial={{ opacity: 0, x: -30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 0.6, ease: "easeOut" }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    className="overflow-hidden"
+                                >
+                                    <h5 className="mb-2 text-[24px] md:text-[32px] font-bold tracking-tight text-[#FFFFFF]">
+                                        {step.heading}
+                                    </h5>
+                                    <p className="font-normal text-white text-base dark:text-gray-400">
+                                        {step.description}
+                                    </p>
+                                </motion.div>
                                 <div className="absolute top-0 right-0">
                                     <img src={vectorRightRing} alt="vector" />
                                 </div>

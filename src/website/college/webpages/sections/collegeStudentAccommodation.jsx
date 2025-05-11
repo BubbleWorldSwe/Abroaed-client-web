@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import AccommodationCard from "../../../comman/components/accommodationCard";
+import { MotionComponent } from "../../../comman/components/motionComponent";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import { motion } from "framer-motion";
+
 const CollegeStudentAccommodation = ({
   accommodationList,
   source,
@@ -14,23 +17,33 @@ const CollegeStudentAccommodation = ({
         <section className=" dark:bg-gray-900 relative">
           <div className="">
             <div className="font  text-gray-500 sm:text-lg dark:text-gray-400">
-              <SectionMainHeader className={`mb-5`}>
-                Popular Student Accommodations
-              </SectionMainHeader>
-              <div className="my-2 border-t border-gray-300"></div>
+              <MotionComponent>
+                <SectionMainHeader className={`mb-5`}>
+                  Popular Student Accommodations
+                </SectionMainHeader>
+                <div className="my-2 border-t border-gray-300"></div>
+              </MotionComponent>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-6 md:pt-10">
-              {accommodationList?.slice(0, 4).map((item, index) => (
-                <AccommodationCard
-                  item={item}
-                  key={index}
-                  source={source}
-                  onAddLead={onAddLead}
-                  addToSavedPreferences={addToSavedPreferences}
-                  removeFromSavedPreferences={removeFromSavedPreferences}
-                />
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 pt-6 md:pt-10">
+                {accommodationList?.slice(0, 4).map((item, index) => (
+                  <AccommodationCard
+                    item={item}
+                    key={index}
+                    source={source}
+                    onAddLead={onAddLead}
+                    addToSavedPreferences={addToSavedPreferences}
+                    removeFromSavedPreferences={removeFromSavedPreferences}
+                  />
+                ))}
+              </div>
+            </motion.div>
             <div className="text-center mt-2">
               <button
                 type="submit"

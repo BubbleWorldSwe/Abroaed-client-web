@@ -10,6 +10,7 @@ import {
   targetYear,
 } from "../../../../constants/values";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import { motion } from "framer-motion";
 
 const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
@@ -97,102 +98,110 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
         >
           Book Counselling Now
         </SectionMainHeader>
-        <div className="flex justify-center items-center">
-          <form className="space-y-6 w-full md:w-[46rem]" onSubmit={handleAddLead}>
-            <div className="grid grid-cols-1 md:grid-cols-2  md:gap-y-0  md:gap-4">
-              <BorderTextInputField
-                label="First Name"
-                name="firstName"
-                type="text"
-                value={formData.firstName}
-                onChange={handleChange}
-                placeholder="Enter"
-                required
-              />
-              <BorderTextInputField
-                label="Last Name"
-                name="lastName"
-                type="text"
-                value={formData.lastName}
-                onChange={handleChange}
-                placeholder="Enter"
-                required
-              />
-              <BorderTextInputField
-                label="Email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Enter"
-                required
-              />
-              <BorderTextInputField
-                label="Mobile Number"
-                name="mobile"
-                type="tel"
-                value={formData.mobile}
-                onChange={handleChange}
-                placeholder="Enter"
-                required
-              />
-              <BorderSelectField
-                label="Highest Education Qualification"
-                name="highestEducation"
-                value={formData.userDetail.highestEducation}
-                onChange={handleChange}
-                options={highestEducation.map((data) => ({
-                  label: data,
-                  value: data,
-                }))}
-                required
-              />
-              <BorderSelectField
-                label="Preferred Study Level"
-                name="applyingFor"
-                value={formData.userDetail.applyingFor}
-                onChange={handleChange}
-                required
-                options={applyingFor.map((data) => ({
-                  label: data,
-                  value: data,
-                }))}
-              />
-              <BorderSelectField
-                label="When Do You Plan to Study?"
-                name="targetYear"
-                value={formData.userDetail.targetYear}
-                onChange={handleChange}
-                options={targetYear.map((data) => ({
-                  label: data,
-                  value: data,
-                }))}
-                required
-              />
-              <BorderSelectField
-                label="Preferred Study Destination"
-                name="preferredDestination"
-                value={formData.userDetail.preferredDestination}
-                onChange={handleChange}
-                options={allDestinations.map((data) => ({
-                  label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                  value: data?._id,
-                  ...data,
-                }))}
-                required
-              />
-            </div>
-            {/* Submit Button */}
-            <div>
-              <button
-                type="submit"
-                className="py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-              >
-                Book Now
-              </button>
-            </div>
-          </form>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="overflow-hidden"
+        >
+          <div className="flex justify-center items-center">
+            <form className="space-y-6 w-full md:w-[46rem]" onSubmit={handleAddLead}>
+              <div className="grid grid-cols-1 md:grid-cols-2  md:gap-y-0  md:gap-4">
+                <BorderTextInputField
+                  label="First Name"
+                  name="firstName"
+                  type="text"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="Enter"
+                  required
+                />
+                <BorderTextInputField
+                  label="Last Name"
+                  name="lastName"
+                  type="text"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="Enter"
+                  required
+                />
+                <BorderTextInputField
+                  label="Email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter"
+                  required
+                />
+                <BorderTextInputField
+                  label="Mobile Number"
+                  name="mobile"
+                  type="tel"
+                  value={formData.mobile}
+                  onChange={handleChange}
+                  placeholder="Enter"
+                  required
+                />
+                <BorderSelectField
+                  label="Highest Education Qualification"
+                  name="highestEducation"
+                  value={formData.userDetail.highestEducation}
+                  onChange={handleChange}
+                  options={highestEducation.map((data) => ({
+                    label: data,
+                    value: data,
+                  }))}
+                  required
+                />
+                <BorderSelectField
+                  label="Preferred Study Level"
+                  name="applyingFor"
+                  value={formData.userDetail.applyingFor}
+                  onChange={handleChange}
+                  required
+                  options={applyingFor.map((data) => ({
+                    label: data,
+                    value: data,
+                  }))}
+                />
+                <BorderSelectField
+                  label="When Do You Plan to Study?"
+                  name="targetYear"
+                  value={formData.userDetail.targetYear}
+                  onChange={handleChange}
+                  options={targetYear.map((data) => ({
+                    label: data,
+                    value: data,
+                  }))}
+                  required
+                />
+                <BorderSelectField
+                  label="Preferred Study Destination"
+                  name="preferredDestination"
+                  value={formData.userDetail.preferredDestination}
+                  onChange={handleChange}
+                  options={allDestinations.map((data) => ({
+                    label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                    value: data?._id,
+                    ...data,
+                  }))}
+                  required
+                />
+              </div>
+              {/* Submit Button */}
+              <div>
+                <button
+                  type="submit"
+                  className="py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                >
+                  Book Now
+                </button>
+              </div>
+            </form>
+          </div>
+        </motion.div>
       </div>
       {/* </div> */}
     </section>

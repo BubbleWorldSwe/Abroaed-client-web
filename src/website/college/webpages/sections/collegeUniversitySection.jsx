@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import dark from "../../../../assets/dark.png";
 import { IMAGE_BASE_URL } from "../../../../constants/baseUrl";
+import { MotionComponent } from "../../../comman/components/motionComponent";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import { motion } from "framer-motion";
 
 const CollegeUniversitySection = ({ collegeDetails }) => {
   const logoImage = collegeDetails?.images?.find((img) => img.type === "logo");
@@ -19,36 +21,45 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
         <section className="dark:bg-gray-900 relative ">
           <div className=" relative z-10">
             <div className=" text-center">
-              <SectionMainHeader className={`mb-4`}>
-                {collegeDetails?.name} at a Glance
-              </SectionMainHeader>
+              <MotionComponent>
+                <SectionMainHeader className={`mb-4`}>
+                  {collegeDetails?.name} at a Glance
+                </SectionMainHeader>
+              </MotionComponent>
             </div>
-            <div className="overflow-x-auto">
-              <div
-                className="flex gap-5 py-6 pl-12"
-                style={{ minWidth: "max-content" }}
-              >
-                {galleryImages.map((data, index) => (
-                  <div
-                    key={index}
-                    className="hover:scale-[1.01]  transition-all ease-in-out delay-100 md:w-[30vw]
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="overflow-x-auto">
+                <div
+                  className="flex gap-5 py-6 pl-12"
+                  style={{ minWidth: "max-content" }}
+                >
+                  {galleryImages.map((data, index) => (
+                    <div
+                      key={index}
+                      className="hover:scale-[1.01]  transition-all ease-in-out delay-100 md:w-[30vw]
                                          h-[25rem] relative rounded-2xl overflow-hidden"
-                  >
-                    {/* Background Image with Overlay */}
-                    <div className="relative w-full h-full">
-                      <img
-                        className="w-full h-full object-cover rounded-lg"
-                        src={
-                          data ? `${IMAGE_BASE_URL}/${data?.ImageUrl}` : dark
-                        }
-                        alt={`Service ${index + 1}`}
-                      />
-                      <div className="absolute inset-0 "></div>{" "}
-                      {/* Overlay */}
-                    </div>
+                    >
+                      {/* Background Image with Overlay */}
+                      <div className="relative w-full h-full">
+                        <img
+                          className="w-full h-full object-cover rounded-lg"
+                          src={
+                            data ? `${IMAGE_BASE_URL}/${data?.ImageUrl}` : dark
+                          }
+                          alt={`Service ${index + 1}`}
+                        />
+                        <div className="absolute inset-0 "></div>{" "}
+                        {/* Overlay */}
+                      </div>
 
-                    {/* Text Content */}
-                    {/* <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
+                      {/* Text Content */}
+                      {/* <div className="absolute inset-0 flex flex-col justify-between p-6 z-10">
                                                <div>
                                                    <p className="text-gray-200 lg:mb-2 sm:text-xl">Explore</p>
                                                    <h1 className="mb-4 text-3xl font-bold text-white">
@@ -77,10 +88,11 @@ const CollegeUniversitySection = ({ collegeDetails }) => {
                                                    </svg>
                                                </button>
                                            </div> */}
-                  </div>
-                ))}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
       </div>

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { MotionComponent } from "../comman/components/motionComponent";
 
 const HeroTextComponent = ({ children, img }) => {
   return (
@@ -17,7 +18,9 @@ const HeroTextComponent = ({ children, img }) => {
 
       {/* Text Content */}
       <div className="absolute top-1/2 md:top-1/3 px-4 flex flex-row items-center justify-start max-w-5xl">
-        <div className="text-white px-1 lg:px-8">{children}</div>
+        <MotionComponent>
+          <div className="text-white px-1 lg:px-8">{children}</div>
+        </MotionComponent>
       </div>
     </section>
   );

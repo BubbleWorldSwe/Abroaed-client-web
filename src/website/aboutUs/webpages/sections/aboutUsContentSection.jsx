@@ -5,6 +5,7 @@ import CardComponent from "../../components/cardComponent";
 import aboutUs1 from "../../../../assets/aboutUs1.png";
 import aboutUs2 from "../../../../assets/aboutUs2.png";
 import aboutUs3 from "../../../../assets/aboutUs3.png";
+import { motion } from "framer-motion";
 
 
 export const aboutUs = [
@@ -64,42 +65,65 @@ function AboutUsContentSection() {
     <div>
       <section className=" dark:bg-gray-900 relative ">
         <div className=" relative z-10">
+
           <div className="flex flex-col gap-12 pt-10">
             <div>
-              <SectionMainHeader>
-                Our Story
-              </SectionMainHeader>
-              <PrimaryBodyText
-                className="font-semibold"
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.5 }}
               >
-                At ABROAED, education is not just a destination — it’s a transformation.
-                Founded in 2025, we started with a simple yet powerful belief: that every student deserves not just a pathway to international education, but a guiding force to navigate it.
+                <SectionMainHeader>
+                  Our Story
+                </SectionMainHeader>
+                <PrimaryBodyText
+                  className="font-semibold"
+                >
+                  At ABROAED, education is not just a destination — it’s a transformation.
+                  Founded in 2025, we started with a simple yet powerful belief: that every student deserves not just a pathway to international education, but a guiding force to navigate it.
 
-                Much like the timeless North Star that once guided explorers through uncharted territories, Abroaed stands as a beacon of clarity, trust, and direction.
-                We are more than counselors — we are mentors, companions, and a structured force that propels students from uncertainty to purpose, from aspiration to achievement.
+                  Much like the timeless North Star that once guided explorers through uncharted territories, Abroaed stands as a beacon of clarity, trust, and direction.
+                  We are more than counselors — we are mentors, companions, and a structured force that propels students from uncertainty to purpose, from aspiration to achievement.
 
-                With every journey we guide, our mission remains the same: to empower futures, one student at a time.
-              </PrimaryBodyText>
+                  With every journey we guide, our mission remains the same: to empower futures, one student at a time.
+                </PrimaryBodyText>
+              </motion.div>
             </div>
             <div>
-              <SectionMainHeader>
-                Our Vision
-              </SectionMainHeader>
-              <PrimaryBodyText
-                className="font-semibold">
-                To be the trusted North Star for students worldwide — illuminating paths, unlocking potential, and empowering global futures through mentorship, clarity, and unwavering support
-              </PrimaryBodyText>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.5 }}
+              >
+                <SectionMainHeader>
+                  Our Vision
+                </SectionMainHeader>
+                <PrimaryBodyText
+                  className="font-semibold">
+                  To be the trusted North Star for students worldwide — illuminating paths, unlocking potential, and empowering global futures through mentorship, clarity, and unwavering support
+                </PrimaryBodyText>
+              </motion.div>
             </div>
             <div>
-              <SectionMainHeader>
-                Our Mission
-              </SectionMainHeader>
-              <PrimaryBodyText
-                className="font-semibold"
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.5 }}
               >
-                At ABROAED, our mission is to guide, empower, and transform students' journeys through personalized mentorship and structured pathways. We are committed to being a constant source of clarity, support, and momentum, helping every student move from aspiration to achievement — with purpose, confidence, and a global vision.              </PrimaryBodyText>
+                <SectionMainHeader>
+                  Our Mission
+                </SectionMainHeader>
+                <PrimaryBodyText
+                  className="font-semibold"
+                >
+                  At ABROAED, our mission is to guide, empower, and transform students' journeys through personalized mentorship and structured pathways. We are committed to being a constant source of clarity, support, and momentum, helping every student move from aspiration to achievement — with purpose, confidence, and a global vision.              </PrimaryBodyText>
+              </motion.div>
             </div>
           </div>
+
           <div className=" pt-10 ">
             {aboutUs.map((item, index) => (
               <CardComponent key={index} {...item} idx={index} />

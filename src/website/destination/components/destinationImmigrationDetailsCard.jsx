@@ -10,7 +10,7 @@ const DestinationImmigrationDetailsCard = ({ data }) => {
             {data?.visaName}
           </h5>
         </div>
-        <p className="mb-3 font-semibold text-[18px] md:text-sm text-[#52525B] dark:text-gray-400">
+        <p className="mb-3 font-semibold text-[18px] md:text-[20px] text-[#52525B] dark:text-gray-400">
           {data?.visaType?.name}
         </p>
         <PrimaryBodyText>

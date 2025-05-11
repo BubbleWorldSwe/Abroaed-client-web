@@ -7,6 +7,7 @@ import languageIconWhite from "../../../../assets/languageIconWhite.png";
 import currencyIconWhite from "../../../../assets/currencyIconWhite.png";
 import callIconWhite from "../../../../assets/callIconWhite.png";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import { MotionComponent } from "../../../comman/components/motionComponent";
 
 const DestinationFunFactSection = ({ items, destinationDetails }) => {
   const list = [
@@ -43,7 +44,9 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
       <section className="antialiased ">
         <div className=" ">
           <div className="flex items-center justify-center text-center">
-            <SectionMainHeader className="mb-1 md:mb-5">Fun Facts</SectionMainHeader>
+            <MotionComponent>
+              <SectionMainHeader className="mb-1 md:mb-5">Fun Facts</SectionMainHeader>
+            </MotionComponent>
           </div>
           <div className="mt-5 md:mt-10 space-y-6">
             <div className="flex flex-col md:flex-row  justify-center flex-wrap gap-5 ">
