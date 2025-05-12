@@ -35,7 +35,7 @@ const FrexAdvantangeSection = () => {
                                             <thead className={`text-[22px]  text-gray-primary font-semibold  border-b-2 border-gray-400 `}>
                                                 <tr>
                                                     <th scope="col" className="px-4 py-3 ">
-                                                        Name of Scholarship
+                                                        Particulars
                                                     </th>
                                                     <th scope="col" className="px-4 py-3">
                                                         Description
