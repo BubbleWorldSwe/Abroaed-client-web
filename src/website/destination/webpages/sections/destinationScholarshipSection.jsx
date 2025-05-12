@@ -2,20 +2,14 @@
 import { Element } from "react-scroll";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
-import { motion } from "framer-motion";
+import { MotionComponent } from "../../../comman/components/motionComponent";
 
 const DestinationScholarshipSection = ({ destinationDetails }) => {
   return (
     <Element name="scholarships">
       <div className="relative">
         <section className=" dark:bg-gray-900 relative ">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.3 }}
-            className="overflow-hidden"
-          >
+          <MotionComponent >
             <div className="">
               <div className="flex flex-col gap-2 md:gap-6  text-gray-500 sm:text-lg dark:text-gray-400">
                 <SectionMainHeader
@@ -92,7 +86,7 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
 
               </div>
             </div>
-          </motion.div>
+          </MotionComponent>
         </section>
       </div>
     </Element>
