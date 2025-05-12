@@ -22,16 +22,17 @@ import {
   studentGetProfileFailure,
   STUDENT_GET_PROFILE_REQUEST,
   ADMIN_GET_PROFILE_REQUEST,
+  ADMIN_UPDATE_PASSWORD_REQUEST,
 } from "../actions/authActions";
 
 import {
   getUserProfile,
   loginApi,
   setStudentSignUp,
+  setUpdateAdmin,
   setUpdateStudent,
 } from "../../api/authApi";
 import { toast } from "react-toastify";
-import { BASE_URL } from "../../constants/baseUrl";
 
 function* handleStudentLogin(action) {
   try {
@@ -98,12 +99,42 @@ function* handleStudentResetPassword(action) {
   }
 }
 
+function* handleAdminResetPassword(action) {
+  try {
+    setUpdateAdmin;
+    const response = yield call(setUpdateAdmin, action.payload);
+
+    console.log(response);
+    if (response.status === 200) {
+      yield put(studentUpdatePasswordSuccess(response.data));
+      toast.success("Password Set Successfully, Please Login to Continue");
+
+      yield delay(2000);
+      window.location.replace("/signin");
+    } else {
+      yield put(studentUpdatePasswordFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(
+      studentUpdatePasswordFailure(
+        error.response?.data?.message || "Student Update Password failed"
+      )
+    );
+  }
+}
+
 function* handleGetStudentProfile(action) {
   try {
     const response = yield call(getUserProfile, action.payload);
+
+    console.log("response");
+    console.log(response);
     if (response.status === 200) {
+      console.log("studentGetProfileSuccess");
       yield put(studentGetProfileSuccess(response.data));
     } else {
+      console.log("studentGetProfileFailure");
       yield put(studentGetProfileFailure(response.message));
       // toast.error("Failed to fetch student profile");
     }
@@ -175,4 +206,6 @@ export default function* authSaga() {
   yield takeLatest(STUDENT_UPDATE_PASSWORD_REQUEST, handleStudentResetPassword);
   yield takeLatest(STUDENT_GET_PROFILE_REQUEST, handleGetStudentProfile);
   yield takeLatest(ADMIN_GET_PROFILE_REQUEST, handleGetAdminProfile);
+
+  yield takeLatest(ADMIN_UPDATE_PASSWORD_REQUEST, handleAdminResetPassword);
 }

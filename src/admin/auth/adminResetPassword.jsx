@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { studentUpdatePasswordRequest } from "../../redux/actions/authActions";
-
+import {
+  adminUpdatePasswordRequest,
+  setAdminToken,
+} from "../../redux/actions/authActions";
 import { toast } from "react-toastify";
-
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
 import AbroaedInfo from "../../commons/components/abroaedInfo";
+import { useLocation } from "react-router-dom";
 
-function StudentResetPassword() {
+function AdminResetPassword() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const token = queryParams.get("token");
+
   const dispatch = useDispatch();
-  const { loading, studentToken, studentId } = useSelector(
-    (state) => state.auth
-  );
+  const { loading } = useSelector((state) => state.auth);
 
   const [formData, setFormData] = useState({
     password: "",
@@ -47,16 +51,17 @@ function StudentResetPassword() {
     }
 
     // Proceed with password reset logic
-    dispatch(studentUpdatePasswordRequest({ password, confirmPassword }));
+    dispatch(adminUpdatePasswordRequest({ password, confirmPassword }));
   };
-
-  console.log(studentToken);
+  console.log(token);
 
   useEffect(() => {
-    if (studentToken && studentId) {
-      console.log("Token ----");
+    if (token) {
+      dispatch(setAdminToken(token));
+    } else {
+      toast.error("Token is missing or invalid.");
     }
-  }, [studentToken, studentId]);
+  }, [dispatch, token]);
 
   return (
     <div>
@@ -136,4 +141,4 @@ function StudentResetPassword() {
   );
 }
 
-export default StudentResetPassword;
+export default AdminResetPassword;

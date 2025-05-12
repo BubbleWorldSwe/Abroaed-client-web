@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { studentLoginRequest } from "../../redux/actions/authActions";
 import { toast } from "react-toastify";
-import AbroaedInfo from "./components/abroaedInfo";
+
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
 import { FaHome } from "react-icons/fa";
+import AbroaedInfo from "../../commons/components/abroaedInfo";
 
 function StudentSignIn() {
   const navigate = useNavigate();

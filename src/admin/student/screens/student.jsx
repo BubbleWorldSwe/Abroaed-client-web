@@ -30,9 +30,7 @@ function Student() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showTeamModal, setshowTeamModal] = useState(false);
 
-  const { searchResults, loading, error, students, totalPages } = useSelector(
-    (state) => state.students
-  );
+  const { students, totalPages } = useSelector((state) => state.students);
   const [query, setQuery] = useState("");
 
   const [rolesList, setRolesList] = useState([]);
@@ -126,7 +124,7 @@ function Student() {
       dispatch(fetchStudentsRequest(currentPage));
     }
     fetchData();
-  }, [dispatch, currentPage]);
+  }, [dispatch, currentPage, students]);
 
   return (
     <>

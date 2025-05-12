@@ -20,6 +20,22 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
     permission: "",
   });
 
+  const resetForm = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      role: "",
+      permission: "",
+    });
+  };
+
+  const handleClose = () => {
+    resetForm();
+    onClose();
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -73,7 +89,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
       <div className="bg-white w-2/5 font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 relative">
         <button
           className="absolute top-2 right-2 text-gray-600 text-2xl"
-          onClick={onClose}
+          onClick={handleClose}
         >
           &times;
         </button>
@@ -119,6 +135,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
               onChange={handleChange}
               placeholder="Enter mobile number"
               required
+              maxLength={10}
             />
 
             <SelectField
@@ -156,7 +173,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
           <div style={{ marginTop: 30 }} />
           {/* Buttons */}
           <div className="flex justify-end mt-5">
-            <ModalCloseButton label={"Cancel"} onClick={onClose} />
+            <ModalCloseButton label={"Cancel"} onClick={handleClose} />
             <ModalSubmitButton type="submit" label={"Add"} />
           </div>
         </form>

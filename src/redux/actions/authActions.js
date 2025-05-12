@@ -33,7 +33,13 @@ export const ADMIN_GET_PROFILE_REQUEST = "ADMIN_GET_PROFILE_REQUEST";
 export const ADMIN_GET_PROFILE_SUCCESS = "ADMIN_GET_PROFILE_SUCCESS";
 export const ADMIN_GET_PROFILE_FAILURE = "ADMIN_GET_PROFILE_FAILURE";
 
+export const ADMIN_UPDATE_PASSWORD_REQUEST = "ADMIN_UPDATE_PASSWORD_REQUEST";
+export const ADMIN_UPDATE_PASSWORD_SUCCESS = "ADMIN_UPDATE_PASSWORD_SUCCESS";
+export const ADMIN_UPDATE_PASSWORD_FAILURE = "ADMIN_UPDATE_PASSWORD_FAILURE";
+
 export const SET_STUDENT_TOKEN = "SET_STUDENT_TOKEN";
+
+export const SET_ADMIN_TOKEN = "SET_ADMIN_TOKEN";
 
 export const LOGOUT = "LOGOUT";
 export const STUDENT_LOGOUT = "STUDENT_LOGOUT";
@@ -169,6 +175,27 @@ export const adminGetProfileFailure = (error) => ({
 export const setStudentToken = (token) => ({
   type: SET_STUDENT_TOKEN,
   payload: token,
+});
+
+export const setAdminToken = (token) => ({
+  type: SET_ADMIN_TOKEN,
+  payload: token,
+});
+
+// Admin Update Password Actions
+export const adminUpdatePasswordRequest = (passwordData) => ({
+  type: ADMIN_UPDATE_PASSWORD_REQUEST,
+  payload: passwordData,
+});
+
+export const adminUpdatePasswordSuccess = (message) => ({
+  type: ADMIN_UPDATE_PASSWORD_SUCCESS,
+  payload: message,
+});
+
+export const adminUpdatePasswordFailure = (error) => ({
+  type: ADMIN_UPDATE_PASSWORD_FAILURE,
+  payload: error,
 });
 
 // Logout Actions

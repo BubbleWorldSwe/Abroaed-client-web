@@ -84,6 +84,24 @@ export const setUpdateStudent = async (credentials) => {
   }
 };
 
+export const setUpdateAdmin = async (credentials) => {
+  try {
+    const { adminToken } = store.getState().auth;
+
+    const data = await makePutRequestWithToken(
+      `${BASE_URL}/api/v1/auth/update-user`,
+      credentials,
+      adminToken
+    );
+    //console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getUserProfile = async (id) => {
   try {
     const data = await makeGetRequest(`${BASE_URL}/api/v1/auth/get-user/${id}`);

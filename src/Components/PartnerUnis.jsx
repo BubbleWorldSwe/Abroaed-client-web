@@ -120,10 +120,11 @@ function Testimonials() {
           {testimonialData.map((testimonial, index) => (
             <SwiperSlide key={testimonial.id}>
               <article
-                className={`p-6  max-w-sm bg-white rounded-lg shadow-md border transition-transform duration-300 ${index === activeIndex
-                  ? "h-[250px] border-blue-500"
-                  : "h-[200px] border-gray-200"
-                  } dark:border-gray-700 dark:bg-gray-900`}
+                className={`p-6  max-w-sm bg-white rounded-lg shadow-md border transition-transform duration-300 ${
+                  index === activeIndex
+                    ? "h-[250px] border-blue-500"
+                    : "h-[200px] border-gray-200"
+                } dark:border-gray-700 dark:bg-gray-900`}
               >
                 {" "}
                 <div className="flex items-center mb-4">

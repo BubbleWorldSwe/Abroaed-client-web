@@ -75,7 +75,6 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     placeholder="Enter first name"
                     required
                   />
-
                   {/* Last Name */}
                   <TextInputField
                     label="Last Name"
@@ -86,9 +85,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     placeholder="Enter last name"
                     required
                   />
-
-                  {/* Email ID */}
-                  <TextInputField
+                  {/*   <TextInputField
                     label="Email ID"
                     name="email"
                     type="text"
@@ -96,8 +93,6 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     disabled
                     placeholder="Enter Email ID"
                   />
-
-                  {/* Mobile Number */}
                   <TextInputField
                     label="Mobile Number"
                     name="phoneNumber"
@@ -105,7 +100,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     value={formData.phoneNumber}
                     disabled
                     placeholder="Enter Mobile Number"
-                  />
+                  /> */}
 
                   {/* Select Role */}
                   <SelectField
@@ -123,7 +118,6 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                       }))}
                     required
                   />
-
                   {/* Permission */}
                   <SelectField
                     label="Permission"

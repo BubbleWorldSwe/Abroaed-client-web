@@ -112,7 +112,7 @@ const ContactUsForm = ({
                 type={"text"}
                 value={formData.firstName}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: "16px" }}
+                labelStyle={{ color: "white", fontSize: "16px" }}
                 required
               />
               <BorderTextInputField
@@ -122,7 +122,7 @@ const ContactUsForm = ({
                 type={"text"}
                 value={formData.lastName}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: "16px" }}
+                labelStyle={{ color: "white", fontSize: "16px" }}
                 required
               />
               <BorderTextInputField
@@ -132,7 +132,7 @@ const ContactUsForm = ({
                 type={"email"}
                 value={formData.email}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: "16px" }}
+                labelStyle={{ color: "white", fontSize: "16px" }}
                 required
               />
               <BorderTextInputField
@@ -142,7 +142,7 @@ const ContactUsForm = ({
                 type={"phone"}
                 value={formData.mobile}
                 onChange={handleChange}
-                sx={{ color: "white", fontSize: "16px" }}
+                labelStyle={{ color: "white", fontSize: "16px" }}
                 required
               />
 

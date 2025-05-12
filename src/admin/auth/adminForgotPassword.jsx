@@ -1,18 +1,14 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
 import { setResendOtp } from "../../api/authApi";
 import AbroaedInfo from "../../commons/components/abroaedInfo";
 
-function StudentForgotPassword() {
-  const { user } = useSelector((state) => state.auth);
+function AdminForgotPassword() {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
-
   const [formData, setFormData] = useState({
     email: "",
   });
@@ -43,8 +39,8 @@ function StudentForgotPassword() {
 
       if (data?.data?.success) {
         toast.success("OTP sent successfully!");
-        // navigate("/otpVerification");
-        navigate("/otpVerification", { state: { email } });
+
+        navigate("/admin/otpVerification", { state: { email } });
       } else {
         toast.error(data?.data?.message || "Failed to send OTP");
       }
@@ -102,7 +98,7 @@ function StudentForgotPassword() {
 
               <div className="text-center">
                 <a
-                  href="/signin"
+                  href="/admin/signin"
                   className="text-sm text-yellow-500 hover:underline"
                 >
                   Remember Password? Sign In
@@ -117,4 +113,4 @@ function StudentForgotPassword() {
   );
 }
 
-export default StudentForgotPassword;
+export default AdminForgotPassword;

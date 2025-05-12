@@ -25,7 +25,7 @@ function Dashboard() {
         <button
         // onClick={handleSignOut}
         >
-          {`Welcome, ${admin.firstName} ${admin.lastName}`}
+          {/*  {`Welcome, ${admin?.firstName} ${admin?.lastName}`} */}
         </button>
       </header>
 

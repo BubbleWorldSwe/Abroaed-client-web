@@ -49,8 +49,9 @@ const App = () => {
 
       if (isLoggedInStudent) {
         if (studentToken && studentId) {
-          dispatch(fetchSavedPreferencesRequest(studentId));
+          console.log(studentToken, studentId);
           dispatch(studentGetProfileRequest(studentId));
+          dispatch(fetchSavedPreferencesRequest(studentId));
 
           dispatch(fetchStudentProfileRequest(studentId));
           dispatch(fetchStudentSavedPreferencesRequest(studentId));

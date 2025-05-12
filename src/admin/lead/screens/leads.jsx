@@ -27,7 +27,7 @@ function Leads() {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { leads, totalPages } = useSelector((state) => state.leads);
+  const { leads, totalPages, total } = useSelector((state) => state.leads);
 
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -178,7 +178,7 @@ function Leads() {
       dispatch(fetchLeadsRequest(currentPage));
     }
     fetchData();
-  }, [dispatch, leads, currentPage]);
+  }, [dispatch, currentPage, total]);
 
   return (
     <>

@@ -10,8 +10,8 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
   const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const handleNavigate = (id) => {
-    navigate(`/destinations/${id}`)
-  }
+    navigate(`/destinations/${id}`);
+  };
   return (
     <>
       <div
@@ -27,41 +27,37 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => handleNavigate(item._id)}
             >
-
               <div className="flex items-center gap-2 ">
                 <span className="">
                   <Flag width={30} code={item?.countryId?.code} style={{}} />
                 </span>
-                <a >
-                  {item?.countryId?.name}
-                </a>
+                <a>{item?.countryId?.name}</a>
               </div>
               <ChevronRightIcon
-                className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
-                  }`}
+                className={`w-5 h-5   ${
+                  hoveredIndex === index ? " opacity-100" : "opacity-0"
+                }`}
               />
             </li>
           ))}
         </ul>
-
       </div>
 
       {/* mobile view */}
       <ul className="flex px-2  items-center gap-3 py-1 bg overflow-x-auto sm:hidden">
         {allDestinations?.map((item, index) => (
-          <li
-            key={index}
-            className=""
-          >
+          <li key={index} className="">
             <div className="flex flex-col  justify-center items-center gap-1">
               <span className="">
                 <Flag width={50} code={item?.countryId?.code} style={{}} />
               </span>
-              <a href={`/destinations/${item._id}`} className="cursor-pointer whitespace-nowrap">
+              <a
+                href={`/destinations/${item._id}`}
+                className="cursor-pointer whitespace-nowrap"
+              >
                 {item?.countryId?.name}
               </a>
             </div>
-
           </li>
         ))}
       </ul>

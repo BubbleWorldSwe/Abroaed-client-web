@@ -66,7 +66,7 @@ const AdminNav = () => {
           </button>
 
           {isMenuOpen && (
-            <div className="absolute top-full right-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-[9999]">
+            <div className="absolute top-full right-0 mt-4 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-[9999]">
               <button
                 onClick={handleProfileClick}
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"

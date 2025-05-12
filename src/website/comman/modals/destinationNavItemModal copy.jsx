@@ -3,13 +3,10 @@ import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-const DestinationNavItemModal = ({
-  menuItems = [],
-  handleMouseEnter,
-  handleMouseLeave,
-}) => {
-  const { loading, destinations, totalPages, total, allDestinations } =
-    useSelector((state) => state.destinations);
+const DestinationNavItemModal = ({ handleMouseEnter, handleMouseLeave }) => {
+  const { totalPages, allDestinations } = useSelector(
+    (state) => state.destinations
+  );
 
   console.log(totalPages);
 

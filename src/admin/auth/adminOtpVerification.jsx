@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { setResendOtp, setVerifyOtp } from "../../api/authApi";
-import { setStudentToken } from "../../redux/actions/authActions";
+import { setAdminToken } from "../../redux/actions/authActions";
 import { toast } from "react-toastify";
 import OtpInput from "../../commons/components/inputFields/otpInput";
 import AbroaedInfo from "../../commons/components/abroaedInfo";
 
-function StudentOtpVerification() {
+function AdminOtpVerification() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, user, studentToken } = useSelector((state) => state.auth);
+  const { loading, user } = useSelector((state) => state.auth);
   const location = useLocation();
 
   // Prefer location.state.email, fallback to user?.email
@@ -49,9 +49,10 @@ function StudentOtpVerification() {
       const data = await setVerifyOtp({ email, otp });
 
       if (data?.data?.success) {
-        dispatch(setStudentToken(data?.data?.token));
+        let token = data?.data?.token;
+        dispatch(setAdminToken(token));
         toast.success("OTP verified successfully!");
-        navigate("/update-password");
+        navigate(`/update-password/token=${token}`);
       } else {
         toast.error(data?.message || "Invalid OTP.");
       }
@@ -163,4 +164,4 @@ function StudentOtpVerification() {
   );
 }
 
-export default StudentOtpVerification;
+export default AdminOtpVerification;

@@ -27,6 +27,7 @@ import {
   ADMIN_GET_PROFILE_SUCCESS,
   ADMIN_GET_PROFILE_FAILURE,
   SET_STUDENT_TOKEN,
+  SET_ADMIN_TOKEN,
 } from "../actions/authActions";
 
 import storage from "redux-persist/lib/storage";
@@ -82,6 +83,10 @@ export const authReducer = (state = initialState, action) => {
         user: action.payload,
       };
 
+    case SET_ADMIN_TOKEN:
+      console.log(action.payload);
+      return { ...state, adminToken: action.payload };
+
     case STUDENT_UPDATE_PASSWORD_SUCCESS:
       return { ...state, loading: false, message: action.payload };
 
@@ -126,14 +131,40 @@ export const authReducer = (state = initialState, action) => {
         admin: action.payload,
       };
 
+    case STUDENT_GET_PROFILE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+
+        student: null,
+        studentToken: null,
+
+        isLoggedInStudent: null,
+
+        studentId: null,
+      };
+
+    case ADMIN_GET_PROFILE_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+
+        admin: null,
+        adminToken: null,
+        role: null,
+        isWriteAccess: null,
+        isLoggedInAdmin: false,
+        adminId: null,
+      };
+
     case STUDENT_LOGIN_FAILURE:
     case STUDENT_SIGNUP_FAILURE:
     case STUDENT_UPDATE_PASSWORD_FAILURE:
     case STUDENT_UPDATE_PROFILE_FAILURE:
     case ADMIN_LOGIN_FAILURE:
     case ADMIN_UPDATE_PROFILE_FAILURE:
-    case STUDENT_GET_PROFILE_FAILURE:
-    case ADMIN_GET_PROFILE_FAILURE:
       return { ...state, loading: false, error: action.payload };
 
     case LOGOUT:

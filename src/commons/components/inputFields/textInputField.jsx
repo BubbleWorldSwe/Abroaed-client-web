@@ -9,6 +9,7 @@ export function TextInputField({
   required,
   disabled,
   className,
+  maxLength,
 }) {
   return (
     <div className={className}>
@@ -20,14 +21,14 @@ export function TextInputField({
       <input
         type={type}
         name={name}
-        className="mt-1 block w-full text-black rounded-md bg-[#F4F4F5] border-none focus:ring-primary-600 focus:border-primary-600 sm:text-sm"
+        className="mt-1 block w-full text-black rounded-md bg-[#F4F4F5] border-none focus:ring-primary-600 focus:border-primary-600 sm:text-sm disabled:text-gray-400"
         placeholder={placeholder}
         // defaultValue={value}
         value={value}
         onChange={onChange}
         required={required}
         disabled={disabled}
-        multiple
+        maxLength={maxLength}
       />
     </div>
   );

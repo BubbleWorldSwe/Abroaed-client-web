@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import OtpInput from "./components/otpInput";
-import AbroaedInfo from "./components/abroaedInfo";
 import { auth } from "../../utils/firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import OtpInput from "../../commons/components/inputFields/otpInput";
+import AbroaedInfo from "../../commons/components/abroaedInfo";
 
 function StudentOtpLogin() {
   const navigate = useNavigate();

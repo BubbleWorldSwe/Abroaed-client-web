@@ -8,6 +8,7 @@ import NurtureLeads from "../pages/admin/NurtureLeads";
 import Student from "../admin/student/screens/student";
 import Leads from "../admin/lead/screens/leads";
 import HomeLayout from "../website/home/webpages/homePage";
+import SigninPage from "../pages/admin/SigninPage";
 import TestPrepLayout from "../website/testPrep/webpages/testPrepPage";
 import AboutUsPage from "../website/aboutUs/webpages/aboutUsPage";
 import LanguagePrep from "../admin/languagePrep/screens/languagePrep";
@@ -64,10 +65,6 @@ import ForexPage from "../website/forex/webpages/forexPage";
 import StudentOtpVerification from "../website/auth/studentOtpVerification";
 import StudentForgotPassword from "../website/auth/studentForgotPassword";
 import StudentOtpLogin from "../website/auth/studentOtpLogin";
-import AdminOtpVerification from "../admin/auth/adminOtpVerification";
-import AdminForgotPassword from "../admin/auth/adminForgotPassword";
-import AdminSignin from "../admin/auth/adminSignin";
-import AdminResetPassword from "../admin/auth/adminResetPassword";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -206,22 +203,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     // Admin Dashboard Routes (Private)
-    { path: "/admin/signin", element: <AdminSignin />, isPrivate: false },
-    {
-      path: "/admin/forgotPassword",
-      element: <AdminForgotPassword />,
-      isPrivate: false,
-    },
-    {
-      path: "/update-password/:id",
-      element: <AdminResetPassword />,
-      isPrivate: false,
-    },
-    {
-      path: "/admin/otpVerification",
-      element: <AdminOtpVerification />,
-      isPrivate: false,
-    },
+    { path: "/admin/signin", element: <SigninPage />, isPrivate: false },
     {
       path: "/admin",
       element: <AdminLayout />,
@@ -229,7 +211,6 @@ const AppRoutes = () => {
       requiredRole: "admin",
       children: [
         { path: "", element: <Navigate to="dashboard" replace /> },
-
         { path: "dashboard", element: <Dashboard /> },
         { path: "teams", element: <Teams /> },
         { path: "nurtureLeads", element: <NurtureLeads /> },

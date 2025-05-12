@@ -91,6 +91,9 @@ export const transactionReducer = (state = initialState, action) => {
       return initialState;
 
     case FETCH_TRANSACTIONS_FAILURE:
+      console.log("Failure");
+      return { ...state, loading: false, error: action.payload, total: null };
+
     case FETCH_ALL_TRANSACTIONS_FAILURE:
     case ADD_TRANSACTION_FAILURE:
     case DELETE_TRANSACTION_FAILURE:

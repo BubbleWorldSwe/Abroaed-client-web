@@ -9,7 +9,9 @@ const BatchLoginPage = () => {
         <div className=" px-4 py-6 flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
           {/* Content */}
           <div className="relative z-10">
-            <h2 className={`mb-5 text-3xl md:text-[57px]  font-extrabold text-gray-primary dark:text-white`}>
+            <h2
+              className={`mb-5 text-3xl md:text-[57px]  font-extrabold text-gray-primary dark:text-white`}
+            >
               Batch Name
             </h2>
             <div className="flex items-center gap-5 text-base text-[#52525B]">
@@ -22,7 +24,9 @@ const BatchLoginPage = () => {
             </div>
             <div className="flex md:flex-row flex-col gap-10 justify-between  py-5">
               <div className="flex flex-col gap-5 ">
-                <h5 className={`text-xl md:text-[32px] text-gray-primary font-bold leading-tight `}>
+                <h5
+                  className={`text-xl md:text-[32px] text-gray-primary font-bold leading-tight `}
+                >
                   Features you’ll love
                 </h5>
                 <ul className="list-disc text-lg md:text-[24px] font-normal text-gray-primary space-y-2 px-5 ">
@@ -40,7 +44,10 @@ const BatchLoginPage = () => {
                   </h1>
                   <form className="space-y-4 ">
                     <div>
-                      <label htmlFor="email" className="block mb-1 text-sm font-medium text-[#3B454F] dark:text-white">
+                      <label
+                        htmlFor="email"
+                        className="block mb-1 text-sm font-medium text-[#3B454F] dark:text-white"
+                      >
                         Email*
                       </label>
                       <input
@@ -53,7 +60,10 @@ const BatchLoginPage = () => {
                       />
                     </div>
                     <div>
-                      <label htmlFor="password" className="block mb-1 text-sm font-medium text-[#3B454F] dark:text-white">
+                      <label
+                        htmlFor="password"
+                        className="block mb-1 text-sm font-medium text-[#3B454F] dark:text-white"
+                      >
                         Password*
                       </label>
                       <div className="relative">
@@ -70,13 +80,19 @@ const BatchLoginPage = () => {
                           onClick={() => setShowPassword(!showPassword)}
                           className="absolute inset-y-0 right-3 flex items-center text-gray-500 dark:text-gray-300"
                         >
-                          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                          {showPassword ? (
+                            <EyeOff size={20} />
+                          ) : (
+                            <Eye size={20} />
+                          )}
                         </button>
                       </div>
                     </div>
-                    <div >
-
-                      <a href="/forgetPassword" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
+                    <div>
+                      <a
+                        href="/forgetPassword"
+                        className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      >
                         Forgot password?
                       </a>
                     </div>
@@ -84,12 +100,14 @@ const BatchLoginPage = () => {
                       type="submit"
                       className="w-full text-gray-primary text-base bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300  rounded-lg font-semibold px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     >
-
                       Log in
                     </button>
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Don’t have an account yet?{" "}
-                      <a href="/batchSignup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                      <a
+                        href="/batchSignup"
+                        className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                      >
                         Sign up
                       </a>
                     </p>
@@ -101,7 +119,7 @@ const BatchLoginPage = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default BatchLoginPage
+export default BatchLoginPage;

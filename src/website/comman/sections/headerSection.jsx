@@ -21,8 +21,9 @@ import { useMediaQuery } from "react-responsive";
 import ExploreCollegeModalPhone from "../modals/exploreCollegeModalPhone";
 import CollegeListPhone from "../modals/collegeListPhone";
 //import { destinationMenuItems } from "../../../constants/values";
-import logoYellowWhite from "../../../assets/logoYellowWhite.png";
+
 import MobileMenuComponent from "../components/mobileMenuComponent";
+import { IMAGES } from "../../../constants/images";
 
 function Header({ isHeaderBgWhite = false }) {
   const [scrolling, setScrolling] = useState(false);
@@ -287,7 +288,7 @@ function Header({ isHeaderBgWhite = false }) {
           </h3>
           <div className="md:hidden block w-6">
             <a href="/">
-              <img src={logoYellowWhite} alt="logo" />
+              <img src={IMAGES.logo} alt="logo" />
             </a>
           </div>
         </div>

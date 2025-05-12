@@ -1,43 +1,62 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { adminLoginRequest } from "../../redux/actions/authActions";
+import { studentUpdatePasswordRequest } from "../../redux/actions/authActions";
 
 import { toast } from "react-toastify";
+
 import { BorderTextInputField } from "../../commons/components/inputFields/borderTextInputField";
-import { FaHome } from "react-icons/fa";
 import AbroaedInfo from "../../commons/components/abroaedInfo";
 
-function SigninPage() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function ResetPassword() {
   const dispatch = useDispatch();
-  const { loading, adminToken, role } = useSelector((state) => state.auth);
+  const { loading, studentToken, studentId } = useSelector(
+    (state) => state.auth
+  );
 
-  const handleSubmit = async (e) => {
-    try {
-      e.preventDefault();
+  const [formData, setFormData] = useState({
+    password: "",
+    confirmPassword: "",
+  });
 
-      const formData = new FormData(e.currentTarget);
-
-      if (!formData.get("email")?.trim() || !formData.get("password")) {
-        toast.error("Please enter Email ID and Password.");
-        return;
-      }
-
-      dispatch(adminLoginRequest({ email, password }));
-    } catch (error) {
-      console.log(error);
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value.trim(),
+    }));
   };
 
-  useEffect(() => {
-    if (adminToken && role !== "Student") {
-      navigate("/admin/dashboard");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { password, confirmPassword } = formData;
+
+    if (!password || !confirmPassword) {
+      toast.error("Both password fields are required.");
+      return;
     }
-  }, [adminToken, navigate]);
+
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match. Please re-enter.");
+      return;
+    }
+
+    // Proceed with password reset logic
+    dispatch(studentUpdatePasswordRequest({ password, confirmPassword }));
+  };
+
+  console.log(studentToken);
+
+  useEffect(() => {
+    if (studentToken && studentId) {
+      console.log("Token ----");
+    }
+  }, [studentToken, studentId]);
 
   return (
     <div>
@@ -49,11 +68,8 @@ function SigninPage() {
               // action="#"
               onSubmit={handleSubmit}
             >
-              <a href="/">
-                <FaHome fontSize={30} />
-              </a>
               <h2 className="text-xl font-bold   text-gray-900 dark:text-white">
-                Admin & Team Login
+                Create Password
               </h2>
 
               <div className="flex items-center">
@@ -64,52 +80,53 @@ function SigninPage() {
 
               <div>
                 <BorderTextInputField
-                  type="email"
-                  label="Your email"
-                  name="email"
-                  id="email"
+                  label={"Password"}
+                  type="password"
+                  name="password"
+                  id="password"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="name@company.com"
+                  placeholder="******"
                   required=""
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.password}
+                  onChange={handleChange}
                 />
               </div>
               <div>
                 <BorderTextInputField
+                  label={"Confirm Password"}
                   type="password"
-                  label=" Your password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  placeholder="******"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
                   required=""
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
                 />
               </div>
-              <div>
-                <a
-                  href="/admin/forgotPassword"
-                  className="text-sm text-right font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  Forgot password?
-                </a>
-              </div>
-
+              <div />
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full text-white bg-primary-600 hover:bg-gray-primary  font-medium   rounded-lg text-sm px-5 py-2.5 text-center "
+                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium   rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
               >
                 {loading ? (
                   <div className="flex justify-center items-center">
                     <div className="spinner-border animate-spin h-5 w-5 border-t-2 border-b-2 border-white rounded-full"></div>
                   </div>
                 ) : (
-                  "Sign In"
+                  "Submit"
                 )}
               </button>
+
+              <div className="text-center mt-4">
+                <a
+                  href="/signin"
+                  className="text-sm text-yellow-500 hover:underline"
+                >
+                  Already have an account ? Sign In
+                </a>
+              </div>
             </form>
           </div>
           <AbroaedInfo />
@@ -119,4 +136,4 @@ function SigninPage() {
   );
 }
 
-export default SigninPage;
+export default ResetPassword;

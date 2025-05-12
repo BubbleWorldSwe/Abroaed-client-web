@@ -9,7 +9,7 @@ import { BorderTextInputField } from "../../commons/components/inputFields/borde
 import { FaHome } from "react-icons/fa";
 import AbroaedInfo from "../../commons/components/abroaedInfo";
 
-function SigninPage() {
+function AdminSignin() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -119,4 +119,4 @@ function SigninPage() {
   );
 }
 
-export default SigninPage;
+export default AdminSignin;
