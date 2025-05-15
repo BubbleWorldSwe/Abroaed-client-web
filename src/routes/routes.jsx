@@ -171,7 +171,7 @@ const AppRoutes = () => {
       isPrivate: false,
     },
     {
-      path: "/leaguageOfExcellence",
+      path: "/leagueOfExcellence",
       element: <LeaguageOfExcellencePage />,
       isPrivate: false,
     },

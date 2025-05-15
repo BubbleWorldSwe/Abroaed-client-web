@@ -72,7 +72,7 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextInputField
-          label="Name"
+          label="Name*"
           name="productName"
           type="text"
           value={formData.productName}
@@ -82,25 +82,27 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
           <TextInputField
-            label="Acronym"
+            label="Acronym*"
             name="exam"
             type="text"
             value={formData?.exam}
             onChange={(e) => handleInputChange(e, "exam")}
             placeholder={"Enter Exam"}
+            required
           />
           <TextInputField
-            label="Language"
+            label="Language*"
             name="language"
             type="text"
             value={formData?.language}
             onChange={(e) => handleInputChange(e, "language")}
             placeholder={"Enter Language"}
+            required
           />
         </div>
         <div className="my-5">
           <TextareaInputField
-            label="About"
+            label="About*"
             name="about"
             value={formData.about}
             onChange={(e) => handleInputChange(e, "about")}
@@ -116,7 +118,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
             type="date"
             value={formData.aboutExam.examDate}
             onChange={(e) => handleAboutExamChange(e, "examDate")}
-            required
           />
           <TextInputField
             label="Exam Center"
@@ -124,7 +125,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
             type="text"
             value={formData.aboutExam.examCenter}
             onChange={(e) => handleAboutExamChange(e, "examCenter")}
-            required
             placeholder="Enter Exam Center"
           />
           <TextInputField
@@ -133,7 +133,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
             type="url"
             value={formData.aboutExam.registration}
             onChange={(e) => handleAboutExamChange(e, "registration")}
-            required
             placeholder="Enter Registration URL"
           />
           <TextInputField
@@ -142,7 +141,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
             type="text"
             value={formData.aboutExam.fees}
             onChange={(e) => handleAboutExamChange(e, "fees")}
-            required
             placeholder="Enter Fees"
           />
           <TextInputField
@@ -151,7 +149,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
             type="text"
             value={formData.aboutExam.syllabus}
             onChange={(e) => handleAboutExamChange(e, "syllabus")}
-            required
             placeholder="Enter Syllabus"
           />
           <TextInputField
@@ -160,14 +157,13 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
             type="text"
             value={formData.aboutExam.scoring_and_results}
             onChange={(e) => handleAboutExamChange(e, "scoring_and_results")}
-            required
             placeholder="Enter Scoring & Results Info"
           />
         </div>
 
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

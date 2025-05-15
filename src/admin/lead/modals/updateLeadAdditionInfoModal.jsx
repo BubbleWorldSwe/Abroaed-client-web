@@ -23,8 +23,6 @@ const UpdateLeadAdditionInfo = ({
 
   const [formData, setFormData] = useState(filledData);
 
-  // console.log(filledData);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -74,10 +72,13 @@ const UpdateLeadAdditionInfo = ({
               Update Additional Information
             </h2>
             <div>
-              <form className="space-y-6">
+              <form
+                onSubmit={handleUpdateLeadProfileInfo}
+                className="space-y-6"
+              >
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
                   <SelectField
-                    label="Highest Education Qualification"
+                    label="Highest Education Qualification*"
                     name="highestEducation"
                     value={formData.highestEducation}
                     onChange={handleChange}
@@ -88,7 +89,7 @@ const UpdateLeadAdditionInfo = ({
                     required
                   />
                   <SelectField
-                    label="Preferred Study Destination"
+                    label="Preferred Study Destination*"
                     name="preferredDestination"
                     value={formData.preferredDestination}
                     onChange={handleChange}
@@ -100,7 +101,7 @@ const UpdateLeadAdditionInfo = ({
                     required
                   />
                   <SelectField
-                    label="Applying For"
+                    label="Applying For*"
                     name="applyingFor"
                     value={formData.applyingFor}
                     onChange={handleChange}
@@ -111,7 +112,7 @@ const UpdateLeadAdditionInfo = ({
                     }))}
                   />
                   <SelectField
-                    label="Target Year"
+                    label="Target Year*"
                     name="targetYear"
                     value={formData.targetYear}
                     onChange={handleChange}
@@ -125,8 +126,9 @@ const UpdateLeadAdditionInfo = ({
                 <div className="flex justify-end space-x-4 mt-10">
                   <ModalCloseButton label="Cancel" onClick={onClose} />
                   <ModalSubmitButton
+                    type="submit"
                     label="Submit"
-                    onClick={handleUpdateLeadProfileInfo}
+                    //onClick={handleUpdateLeadProfileInfo}
                   />
                 </div>
               </form>

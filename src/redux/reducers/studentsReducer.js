@@ -23,6 +23,7 @@ import {
   SEARCH_STUDENTS_REQUEST,
   SEARCH_STUDENTS_FAILURE,
   SEARCH_STUDENTS_SUCCESS,
+  STUDENT_DATA_LOADING,
 } from "../actions/studentsActions";
 
 const initialState = {
@@ -214,6 +215,14 @@ export const studentsReducer = (state = initialState, action) => {
 
     case SET_SELECTED_STUDENT:
       return { ...state, selectedStudent: action.payload };
+
+    case STUDENT_DATA_LOADING:
+      console.log("STUDENT_DATA_LOADING");
+
+      return {
+        ...state,
+        loading: action.payload,
+      };
 
     default:
       return state;

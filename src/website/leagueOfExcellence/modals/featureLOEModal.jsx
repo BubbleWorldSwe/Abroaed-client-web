@@ -7,7 +7,14 @@ import { applyingFor, highestEducation, targetYear } from "../data";
 import { useSelector } from "react-redux";
 import { useClickOutside } from "../../comman/customHooks/useOutSideModalClose";
 
-const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity, title }) => {
+const FeatureLOEModal = ({
+  isOpen,
+  onClose,
+  onFormSubmit,
+  source,
+  entity,
+  title,
+}) => {
   const modalRef = useRef();
   const [formData, setFormData] = useState({
     email: "",
@@ -87,13 +94,15 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity, title 
     }
   }, [error]);
 
-  useClickOutside(modalRef, onClose, isOpen)
+  useClickOutside(modalRef, onClose, isOpen);
   return (
     <>
-
       {isOpen && (
         <div className="fixed inset-0 flex items-center px-6 mx-auto  justify-center bg-gray-800 bg-opacity-75 z-50">
-          <div ref={modalRef} className="bg-white max-h-[85vh] py-10  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 md:w-full max-w-3xl overflow-y-auto  md:overflow-y-hidden z-50 relative">
+          <div
+            ref={modalRef}
+            className="bg-white max-h-[85vh] py-10  font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 md:w-full max-w-3xl overflow-y-auto  md:overflow-y-hidden z-50 relative"
+          >
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -167,6 +176,7 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity, title 
                     onChange={handleChange}
                     placeholder="Enter"
                     required
+                    maxLength={10}
                   />
                   <BorderSelectField
                     label="Preferred Study Level"
@@ -216,7 +226,7 @@ const FeatureLOEModal = ({ isOpen, onClose, onFormSubmit, source, entity, title 
               </div>
             </form>
           </div>
-        </div >
+        </div>
       )}
     </>
   );

@@ -16,8 +16,19 @@ const StudentProfile = () => {
           src={IMAGES.user}
         />
         <div className=" dark:text-white">
-          <div className=" text-center px-2  max-w-min text-sm bg-[#F3F4F6]">
-            Premium
+          <div
+            className={`text-center px-2 max-w-min text-sm rounded
+    ${
+      studentProfile?.status?.toLowerCase() === "nurture"
+        ? "bg-[#FDF6B2] text-[#723B13]"
+        : studentProfile?.status?.toLowerCase() === "converted"
+        ? "bg-[#DEF7EC] text-[#03543F]"
+        : studentProfile?.status?.toLowerCase() === "lost"
+        ? "bg-[#FDE8E8] text-[#9B1C1C]"
+        : "bg-[#F3F4F6] text-black"
+    }`}
+          >
+            {studentProfile?.status}
           </div>
           <div className="text-[#111928] text-3xl font-bold">{`${studentProfile?.user?.firstName} ${studentProfile?.user?.lastName}`}</div>
           <div className=" text-[#6B7280] text-xl dark:text-gray-400">

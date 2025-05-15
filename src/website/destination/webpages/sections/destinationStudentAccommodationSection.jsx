@@ -2,6 +2,8 @@
 import { Element } from "react-scroll";
 import AccommodationCard from "../../../comman/components/accommodationCard";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
+import { motion } from "framer-motion";
+import { MotionComponent } from "../../../comman/components/motionComponent";
 
 const DestinationStudentAccommodationsSection = ({
   accommodationList,
@@ -17,24 +19,33 @@ const DestinationStudentAccommodationsSection = ({
         <section className=" dark:bg-gray-900 relative">
           <div className="">
             <div className="font  text-gray-500  dark:text-gray-400">
-              <SectionMainHeader className="mb-6 md:mb-10">
-                Popular Student Accommodations
-              </SectionMainHeader>
+              <MotionComponent>
+                <SectionMainHeader className="mb-6 md:mb-4">
+                  Popular Student Accommodations
+                </SectionMainHeader>
+              </MotionComponent>
               <div className="my-5 border-t-2 border-gray-300"></div>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-              {accommodationList.slice(0, 4).map((item, index) => (
-                <AccommodationCard
-                  item={item}
-                  key={index}
-                  onAddLead={onAddLead}
-                  source={source}
-                  addToSavedPreferences={addToSavedPreferences}
-                  removeFromSavedPreferences={removeFromSavedPreferences}
-                />
-              ))}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                {accommodationList.slice(0, 4).map((item, index) => (
+                  <AccommodationCard
+                    item={item}
+                    key={index}
+                    onAddLead={onAddLead}
+                    source={source}
+                    addToSavedPreferences={addToSavedPreferences}
+                    removeFromSavedPreferences={removeFromSavedPreferences}
+                  />
+                ))}
+              </div>
+            </motion.div>
             <div className="text-center mt-4">
               <a
                 href={`/accomodation/${destinationDetails._id}`}

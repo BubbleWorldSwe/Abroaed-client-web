@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import LeadAdditionInfo from "../components/leadAdditionInfo";
@@ -12,19 +12,39 @@ import UpdateLeadPersonalInfo from "../modals/updateLeadPersonalInfoModal";
 import UpdateLeadAdditionInfo from "../modals/updateLeadAdditionInfoModal";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
 import {
+  addLeadDocuments,
   addLeadSavedPrefrences,
+  deleteLeadRequest,
   editLeadRequest,
   editLeadsStudentRequest,
+  setLeadsDataLoading,
 } from "../../../redux/actions/leadsActions";
 import AppointmentModal from "../modals/appointmentModal";
 import { getTeamsByMembers } from "../../../api/teamsApi";
 import LeadSavedPreference from "../components/leadSavedPreference";
-import { getLeadSavedPrefrences } from "../../../api/leadsApi";
+import {
+  getLeadDocuments,
+  getLeadSavedPrefrences,
+  setDeleteLeadDocument,
+  setUpdateLeadDocuments,
+  setUploadLeadDocuments,
+} from "../../../api/leadsApi";
+import LeadUploadDocumentModal from "../modals/leadDocumentUploadModal";
+import { getCollegesByDestinationId } from "../../../api/collegesApi";
+import { toast } from "react-toastify";
+import {
+  setUpdateStudentDocuments,
+  setUploadStudentDocuments,
+} from "../../../api/studentsApi";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const LeadProfileLayout = () => {
   const { id } = useParams();
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { loading } = useSelector((state) => state.leads);
 
   const [membersList, setMembersList] = useState([]);
   const [rolesList, setRolesList] = useState([]);
@@ -36,6 +56,8 @@ const LeadProfileLayout = () => {
   const handleModal = (modalType) => {
     setModal(modalType);
   };
+
+  const [openModal, setOpenModal] = useState(false);
 
   async function onUpdate(data, id) {
     try {
@@ -60,6 +82,7 @@ const LeadProfileLayout = () => {
     try {
       const list = await getTeamsByMembers();
       fetchLeadSavedPefrences();
+      fetchLeadUploadedDocuments();
 
       if (list.status === 200) {
         setRolesList(list.data);
@@ -69,6 +92,11 @@ const LeadProfileLayout = () => {
     }
   }
 
+  const handleDelete = () => {
+    dispatch(deleteLeadRequest(id));
+    navigate("/admin/leads");
+  };
+
   async function fetchLeadSavedPefrences() {
     try {
       const list = await getLeadSavedPrefrences(leadProfile?.user?._id);
@@ -77,6 +105,58 @@ const LeadProfileLayout = () => {
         dispatch(addLeadSavedPrefrences(list.data?.result));
       } else {
         dispatch(addLeadSavedPrefrences([]));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function fetchLeadUploadedDocuments() {
+    try {
+      const list = await getLeadDocuments(leadProfile?.user?._id);
+
+      if (list.status === 200) {
+        dispatch(addLeadDocuments(list.data?.result));
+      } else {
+        dispatch(addLeadDocuments([]));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function uploadLeadDocument(fileData) {
+    try {
+      dispatch(setLeadsDataLoading(true));
+      const data = await setUploadLeadDocuments(
+        leadProfile?.user?._id,
+        fileData
+      );
+      // console.log(data);
+
+      if (data?.status === 200) {
+        fetchLeadUploadedDocuments();
+        toast.success(data?.message);
+        setOpenModal(false);
+      } else {
+        toast.error(data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteLeadDocument(id) {
+    try {
+      dispatch(setLeadsDataLoading(true));
+      const data = await setDeleteLeadDocument(id);
+
+      if (data?.status === 200) {
+        fetchLeadUploadedDocuments();
+        toast.success(data?.message);
+      } else {
+        toast.error(data?.message);
+        dispatch(setLeadsDataLoading(false));
       }
     } catch (error) {
       console.log(error);
@@ -147,10 +227,18 @@ const LeadProfileLayout = () => {
         />
       )}
 
+      <LeadUploadDocumentModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        uploadDocument={uploadLeadDocument}
+        leadId={id}
+      />
+
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="max-w-7xl p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
-          <LeadProfile />
+          <LeadProfile handleDelete={handleDelete} />
           <LeadPersonalDetails onOpenModal={() => handleModal("personal")} />
+
           <LeadAdditionInfo onOpenModal={() => handleModal("addition")} />
           <LeadAssignTeam
             onOpenModal={() => handleModal("assignTeam")}
@@ -160,10 +248,16 @@ const LeadProfileLayout = () => {
             onOpenModal={() => handleModal("appointment")}
           />
 
-          {/*    <LeadDocumentLibrary /> */}
+          <LeadDocumentLibrary
+            handleOpenUploadModal={() => {
+              setOpenModal(true);
+            }}
+            deleteDocument={deleteLeadDocument}
+          />
           <LeadSavedPreference />
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

@@ -163,6 +163,35 @@ export const setDeleteStudentDocument = async (id) => {
   }
 };
 
+export const setDeleteStudentTransaction = async (id) => {
+  try {
+    const data = await makeDeleteRequest(
+      `${BASE_URL}/api/v1/admin/transaction/${id}`
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Update a transaction
+export const setUpdateStudentTransaction = async (id, credentials) => {
+  try {
+    console.log(credentials);
+    const data = await makePatchRequest(
+      `${BASE_URL}/api/v1/admin/transaction/${id}`,
+      credentials
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getStudentApplications = async (leadId) => {
   try {
     const data = await makeGetRequest(

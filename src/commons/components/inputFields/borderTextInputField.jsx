@@ -12,6 +12,7 @@ export function BorderTextInputField({
   required,
   disabled,
   labelStyle,
+  maxLength,
 }) {
   const [showPassword, setShowPassword] = useState(false);
   const isPasswordType = type === "password";
@@ -34,6 +35,7 @@ export function BorderTextInputField({
           onChange={onChange}
           required={required}
           disabled={disabled}
+          maxLength={maxLength}
         />
         {isPasswordType && (
           <button

@@ -118,10 +118,11 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
           {statusList.map(({ label, bg, text, border }) => (
             <span
               key={label}
-              className={`text-sm rounded-md px-3 py-1 cursor-pointer border ${border} ${bg} ${text} ${formData.status?.toLowerCase() === label.toLowerCase()
+              className={`text-sm rounded-md px-3 py-1 cursor-pointer border ${border} ${bg} ${text} ${
+                formData.status?.toLowerCase() === label.toLowerCase()
                   ? "font-semibold border-1"
                   : "border-0"
-                }`}
+              }`}
               onClick={() => handleStatusSelect(label)}
             >
               {label}
@@ -129,65 +130,68 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
           ))}
         </div>
 
-        {formData.status === "Converted" && (
-          <div className="mt-5">
-            <SelectField
-              label="Service Type"
-              name="servicerType"
-              value={formData.servicerType}
-              onChange={handleChange}
-              options={servicerType.map((data) => ({
-                label: data,
-                value: data,
-              }))}
-              required
-            />
-            <div className="grid mt-5 grid-cols-1 gap-4 lg:grid-cols-2">
-              {isPlanTypeEnabled && (
-                <>
-                  <SelectField
-                    label="Plan Type"
-                    name="planType"
-                    value={formData.planType}
-                    onChange={handleChange}
-                    options={planType.map((data) => ({
-                      label: data,
-                      value: data,
-                    }))}
-                    required={isPlanTypeEnabled}
-                    disabled={!isPlanTypeEnabled}
-                  />
+        <form onSubmit={handleSubmit}>
+          {formData.status === "Converted" && (
+            <div className="mt-5">
+              <SelectField
+                label="Service Type"
+                name="servicerType"
+                value={formData.servicerType}
+                onChange={handleChange}
+                options={servicerType.map((data) => ({
+                  label: data,
+                  value: data,
+                }))}
+                required
+              />
+              <div className="grid mt-5 grid-cols-1 gap-4 lg:grid-cols-2">
+                {isPlanTypeEnabled && (
+                  <>
+                    <SelectField
+                      label="Plan Type"
+                      name="planType"
+                      value={formData.planType}
+                      onChange={handleChange}
+                      options={planType.map((data) => ({
+                        label: data,
+                        value: data,
+                      }))}
+                      required={isPlanTypeEnabled}
+                      disabled={!isPlanTypeEnabled}
+                    />
 
-                  <TextInputField
-                    label="Billable Amount (INR)"
-                    name="billableAmount"
-                    value={formData.billableAmount}
-                    onChange={handleChange}
-                    required={isPlanTypeEnabled}
-                    disabled={!isPlanTypeEnabled}
-                  />
-                </>
-              )}
+                    <TextInputField
+                      label="Billable Amount (in ₹)"
+                      name="billableAmount"
+                      type="text"
+                      value={formData?.billableAmount || ""}
+                      onChange={handleChange}
+                      required={isPlanTypeEnabled}
+                      disabled={!isPlanTypeEnabled}
+                    />
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {formData.status === "Lost" && (
-          <div className="mt-5">
-            <TextareaInputField
-              label="Remark"
-              name="remark"
-              value={formData.remark}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        )}
+          {formData.status === "Lost" && (
+            <div className="mt-5">
+              <TextareaInputField
+                label="Remark"
+                name="remark"
+                value={formData.remark}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          )}
 
-        <div className="flex justify-end space-x-2 mt-10">
-          <ModalCloseButton label="Close" onClick={onClose} />
-          <ModalSubmitButton label="Update" onClick={handleSubmit} />
-        </div>
+          <div className="flex justify-end space-x-2 mt-10">
+            <ModalCloseButton label="Close" onClick={onClose} />
+            <ModalSubmitButton label="Update" type="submit" />
+          </div>
+        </form>
       </div>
     </div>
   );

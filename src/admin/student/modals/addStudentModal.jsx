@@ -39,7 +39,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
                   {/* First Name */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       First Name
                     </label>
                     <input
@@ -54,7 +56,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Last Name */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       Last Name
                     </label>
                     <input
@@ -69,7 +73,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Email */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       Email
                     </label>
                     <input
@@ -84,7 +90,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Contact Number */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       Contact Number
                     </label>
                     <input
@@ -94,12 +102,15 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
                       onChange={handleChange}
                       className="w-full px-3 py-1 border-none bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter Contact Number"
+                      maxLength={10}
                     />
                   </div>
 
                   {/* Highest Education Qualification (Dropdown) */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       Highest Education Qualification
                     </label>
                     <select
@@ -121,7 +132,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Preferred Study Destination (Dropdown) */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       Preferred Study Destination
                     </label>
                     <select
@@ -141,7 +154,9 @@ function AddStudentModal({ isOpen, onClose, setNext }) {
 
                   {/* Target Year (Dropdown) */}
                   <div>
-                    <label className={`block text-sm font-semibold text-gray-primary mb-1`}>
+                    <label
+                      className={`block text-sm font-semibold text-gray-primary mb-1`}
+                    >
                       Target Year
                     </label>
                     <select

@@ -104,13 +104,6 @@ const DocumentLibrary = ({
             <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th scope="col" className="p-4">
-                    <CheckboxField
-                      onClick={(e) => e.stopPropagation()}
-                      id={`checkbox-college-all`}
-                      htmlFor={`checkbox-college-all`}
-                    />
-                  </th>
                   <th className="px-4 py-3">Document Name</th>
                   <th className="px-4 py-3">Category</th>
                   <th className="px-4 py-3">College</th>
@@ -135,13 +128,6 @@ const DocumentLibrary = ({
                         key={i}
                         className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
-                        <td className="px-4 py-3 w-4">
-                          <CheckboxField
-                            onClick={(e) => e.stopPropagation()}
-                            id={`checkbox-college-${i}`}
-                            htmlFor={`checkbox-college-${i}`}
-                          />
-                        </td>
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {data?.title}
                         </td>
@@ -316,18 +302,11 @@ const DocumentLibrary = ({
             <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
                 <tr>
-                  <th scope="col" className="p-4">
-                    <CheckboxField
-                      onClick={(e) => e.stopPropagation()}
-                      id={`checkbox-college-all`}
-                      htmlFor={`checkbox-college-all`}
-                    />
-                  </th>
                   <th className="px-4 py-3">Document Name</th>
                   <th className="px-4 py-3">Category</th>
                   <th className="px-4 py-3">College</th>
 
-                  <th className="px-4 py-3"></th>
+                  <th className="px-4 py-3 w-5"></th>
                 </tr>
               </thead>
 
@@ -338,13 +317,6 @@ const DocumentLibrary = ({
                       key={i}
                       className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      <td className="px-4 py-3 w-4">
-                        <CheckboxField
-                          onClick={(e) => e.stopPropagation()}
-                          id={`checkbox-college-${i}`}
-                          htmlFor={`checkbox-college-${i}`}
-                        />
-                      </td>
                       <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {data?.title}
                       </td>
@@ -400,7 +372,7 @@ const DocumentLibrary = ({
                                   <span>Delete</span>
                                 </button>
                               </li>
-                              <li>
+                              {/* <li>
                                 <button
                                   onClick={() => {
                                     setSelectedDoc(data);
@@ -411,7 +383,7 @@ const DocumentLibrary = ({
                                   <Edit className="w-4 h-4" />
                                   <span>Edit</span>
                                 </button>
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         )}

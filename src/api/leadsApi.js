@@ -6,6 +6,7 @@ import {
   makeGetRequest,
   makePatchRequest,
   makePostRequest,
+  makePostRequestWithFormData,
   makePostRequestWithToken,
   makePutRequest,
 } from "../utils/apiUtils";
@@ -176,5 +177,61 @@ export const getLeadSavedPrefrences = async (leadId) => {
     }
   } catch (error) {
     throw error;
+  }
+};
+
+export const getLeadDocuments = async (id) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/document-upload/list/?filter={"userId":"${id}"}`
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUploadLeadDocuments = async (id, fileData) => {
+  console.log(fileData);
+  try {
+    const data = await makePostRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/document-upload/file/${id}`,
+      fileData
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUpdateLeadDocuments = async (docId, fileData) => {
+  console.log(fileData);
+  try {
+    const data = await makePostRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/document-upload/update/${docId}`,
+      fileData
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setDeleteLeadDocument = async (id) => {
+  try {
+    const data = await makeDeleteRequest(
+      `${BASE_URL}/api/v1/admin/document-upload/${id}`
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };

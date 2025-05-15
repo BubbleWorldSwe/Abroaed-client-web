@@ -63,8 +63,8 @@ function* addNewTeam(action) {
     console.log(response);
 
     if (response.status === 201) {
-      yield put(addTeamSuccess(response.data.data));
       toast.success("Team added successfully!");
+      yield put(addTeamSuccess(response.data.data));
     } else {
       console.log("Error");
       yield put(addTeamFailure(response.message));

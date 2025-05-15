@@ -63,10 +63,10 @@ const AppointmentModal = ({ leadId, onClose, onUpdate, filledData }) => {
           <h2 className="text-xl font-semibold mb-7">
             Schedule an Appointment
           </h2>
-          <div className="space-y-4 mt-4">
+          <form className="space-y-4 mt-4" onSubmit={handleSubmit}>
             <div className="mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
               <SelectField
-                label="Appointment Type"
+                label="Appointment Type*"
                 name="appointmentType"
                 value={formData.appointmentType}
                 onChange={handleChange}
@@ -78,7 +78,7 @@ const AppointmentModal = ({ leadId, onClose, onUpdate, filledData }) => {
               />
 
               <TextInputField
-                label="Preferred Slot"
+                label="Preferred Slot*"
                 name="preferredSlot"
                 type="datetime-local"
                 // value={formData?.preferredSlot}
@@ -98,9 +98,9 @@ const AppointmentModal = ({ leadId, onClose, onUpdate, filledData }) => {
                 label=" Cancel Appointment"
                 onClick={onClose}
               /> */}
-              <ModalSubmitButton label="Schedule" onClick={handleSubmit} />
+              <ModalSubmitButton type="submit" label="Schedule" />
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <ConfirmModal

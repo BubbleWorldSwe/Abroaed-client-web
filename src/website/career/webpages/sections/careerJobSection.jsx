@@ -2,6 +2,8 @@
 
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 import vector from ".././../../../assets/kpiVector.png"
+import { motion } from "framer-motion";
+
 function CareerJobSection() {
 
     const jobOpenings = [
@@ -43,17 +45,25 @@ function CareerJobSection() {
                                 src={vector}
                                 alt="Decorative vector"
                             />
-                            <div className="flex flex-col font-cinzel justify-center items-center">
-                                <h5 className="text-[28px] md:text-[32px] font-medium bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
-                                    style={{
-                                        backgroundImage:
-                                            "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
-                                    }}>
-                                    {job.jobTitle}
-                                </h5>
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                                viewport={{ once: false, amount: 0.3 }}
+                                className="overflow-hidden"
+                            >
+                                <div className="flex flex-col font-cinzel justify-center items-center">
+                                    <h5 className="text-[28px] md:text-[32px] font-medium bg-clip-text text-transparent z-10 flex justify-center items-center w-full text-center"
+                                        style={{
+                                            backgroundImage:
+                                                "linear-gradient(91.57deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%)",
+                                        }}>
+                                        {job.jobTitle}
+                                    </h5>
 
-                                <p className="text-white sm:text-[18px]">{job.location}</p>
-                            </div>
+                                    <p className="text-white sm:text-[18px]">{job.location}</p>
+                                </div>
+                            </motion.div>
                         </div>
                     ))}
                 </div>

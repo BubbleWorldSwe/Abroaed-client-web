@@ -69,20 +69,31 @@ export const destnationReducer = (state = initialState, action) => {
         return item.status === "complete";
       });
 
-      // Create a lookup for quick access
       const destinationMap = new Map(
         publishedItems.map((dest) => [dest?.countryId?.name, dest])
       );
 
-      // Arrange destinations based on predefined sequence
+      // 1. Get sorted destinations first
       const sortedDestinations = destinationSequence
         .map((name) => destinationMap.get(name))
-        .filter(Boolean); // Remove undefined values (if any country is missing)
+        .filter(Boolean);
+
+      // 2. Get remaining destinations (not in destinationSequence)
+      const sortedNamesSet = new Set(destinationSequence);
+      const remainingDestinations = publishedItems.filter(
+        (dest) => !sortedNamesSet.has(dest?.countryId?.name)
+      );
+
+      // 3. Combine sorted + remaining
+      const finalDestinations = [
+        ...sortedDestinations,
+        ...remainingDestinations,
+      ];
 
       return {
         ...state,
         loading: false,
-        allDestinations: sortedDestinations,
+        allDestinations: finalDestinations,
       };
 
     case EDIT_DESTINATION_SUCCESS:

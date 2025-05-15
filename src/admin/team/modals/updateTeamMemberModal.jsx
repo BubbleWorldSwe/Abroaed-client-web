@@ -67,7 +67,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                   {/* First Name */}
                   <TextInputField
-                    label="First Name"
+                    label="First Name*"
                     name="firstName"
                     type="text"
                     value={formData.firstName}
@@ -77,7 +77,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                   />
                   {/* Last Name */}
                   <TextInputField
-                    label="Last Name"
+                    label="Last Name*"
                     name="lastName"
                     type="text"
                     value={formData.lastName}
@@ -100,11 +100,12 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     value={formData.phoneNumber}
                     disabled
                     placeholder="Enter Mobile Number"
+                    maxLength={10}
                   /> */}
 
                   {/* Select Role */}
                   <SelectField
-                    label="Role Type"
+                    label="Role Type*"
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
@@ -120,7 +121,7 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                   />
                   {/* Permission */}
                   <SelectField
-                    label="Permission"
+                    label="Permission*"
                     name="permission"
                     value={formData.permission}
                     onChange={handleChange}

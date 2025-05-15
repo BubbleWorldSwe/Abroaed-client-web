@@ -42,7 +42,9 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                 />
               </div>
               <div className="flex justify-center text-center mt-5">
-                <button className={`py-2 px-5 border-2 rounded-lg font-semibold border-gray-primary text-[#71717A]`}>
+                <button
+                  className={`py-2 px-5 border-2 rounded-lg font-semibold border-gray-primary text-[#71717A]`}
+                >
                   Learn About Home Counselling
                 </button>
               </div>
@@ -86,6 +88,7 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                         <BorderTextInputField
                           label={"Contact Number*"}
                           placeholder="Enter"
+                          maxLength={10}
                         />
                         <div className="my-2">
                           <BorderSelectField

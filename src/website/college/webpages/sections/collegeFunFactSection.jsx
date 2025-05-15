@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { MotionComponent } from "../../../comman/components/motionComponent";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import CollegeFunFactCard from "../../components/collegeFunFactCard";
 
@@ -17,7 +18,9 @@ const CollegeFunFactSection = ({ collegeDetails }) => {
       <section className="   antialiased dark:bg-gray-900 ">
         <div className="">
           <div className="flex items-center justify-center text-center">
-            <SectionMainHeader>Fun Facts</SectionMainHeader>
+            <MotionComponent>
+              <SectionMainHeader>Fun Facts</SectionMainHeader>
+            </MotionComponent>
           </div>
           <div className="mt-6 space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8 ">

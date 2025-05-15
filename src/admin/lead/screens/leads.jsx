@@ -21,14 +21,18 @@ import {
 import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
 import { getRoles } from "../../../api/api";
 import { getTeamsByMembers } from "../../../api/teamsApi";
+import { Search } from "lucide-react";
+import { toast } from "react-toastify";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 function Leads() {
   const dispatch = useDispatch();
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { leads, totalPages, total } = useSelector((state) => state.leads);
-
+  const { leads, totalPages, loading } = useSelector((state) => state.leads);
+  const location = useLocation();
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
@@ -52,16 +56,24 @@ function Leads() {
     }
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = (value) => {
     try {
-      const value = e.target.value;
       setQuery(value);
-      if (value.trim() === "") {
-        dispatch(fetchLeadsRequest(currentPage));
+
+      const trimmedValue = value.trim();
+
+      if (trimmedValue === "") {
         setCurrentPage(1);
-      } else {
-        dispatch(searchLeadsRequest(value));
+        dispatch(fetchLeadsRequest(1));
+        return;
       }
+
+      if (trimmedValue.length < 2) {
+        toast.error("Please enter at least 2 characters to search.");
+        return;
+      }
+
+      dispatch(searchLeadsRequest(trimmedValue));
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +130,7 @@ function Leads() {
       console.log("handleAddLead");
       console.log(data);
 
-      dispatch(addLeadRequest(data));
+      dispatch(addLeadRequest(data, "Lead Added Sucessfully"));
       setCurrentPage(1);
       dispatch(fetchLeadsRequest(1));
       handleCloseAddModal();
@@ -131,6 +143,19 @@ function Leads() {
     try {
       console.log(data, id);
       dispatch(editLeadRequest(id, data));
+      setshowAppointmentModal(false);
+      setShowUpdateModal(false);
+      setshowTeamModal(false);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function onAssignTeam(data, id) {
+    try {
+      console.log(data, id);
+      dispatch(editLeadRequest(id, data));
+
       setshowAppointmentModal(false);
       setShowUpdateModal(false);
       setshowTeamModal(false);
@@ -177,15 +202,31 @@ function Leads() {
       console.log("fetchLeadsRequest");
       dispatch(fetchLeadsRequest(currentPage));
     }
-    fetchData();
-  }, [dispatch, currentPage, total]);
+  }, [dispatch, currentPage, leads]);
+
+  useEffect(() => {
+    fetchData(); // Call fetchData once on mount
+  }, []);
+
+  useEffect(() => {
+    if (selectedMember) {
+      const updated = leads.find((lead) => lead._id === selectedMember._id);
+      if (updated) {
+        setSelectedMember(updated);
+      }
+    }
+  }, [leads]);
+
+  useEffect(() => {
+    dispatch(fetchLeadsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>
       {showTeamModal && (
         <AssignTeamModal
           leadId={selectedMember?._id}
-          leadName={selectedMember?.name}
+          leadName={`${selectedMember?.user?.firstName} ${selectedMember?.user?.lastName}`}
           team={{
             counsellor: selectedMember?.counsellor,
             backendManager: selectedMember?.backendManager,
@@ -196,7 +237,7 @@ function Leads() {
           rolesList={rolesList}
           membersList={membersList}
           setMembersList={setMembersList}
-          onUpdate={onUpdate}
+          onUpdate={onAssignTeam}
         />
       )}
 
@@ -240,29 +281,9 @@ function Leads() {
               <div className="flex justify-between  py-3">
                 <div className="w-full  flex  space-y-1 md:space-y-0  ">
                   <form className="w-full md:max-w-sm flex-1 md:mr-4">
-                    <label
-                      htmlFor="default-search"
-                      className="text-sm font-medium text-gray-900 sr-only dark:text-white"
-                    >
-                      Search
-                    </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg
-                          aria-hidden="true"
-                          className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                          />
-                        </svg>
+                        <Search size={16} />
                       </div>
                       <input
                         type="search"
@@ -271,12 +292,21 @@ function Leads() {
                         placeholder="Search Leads"
                         required=""
                         value={query}
-                        onChange={handleSearch}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setQuery(value);
+                          if (value.trim() === "") {
+                            handleSearch("");
+                          }
+                        }}
                       />
                     </div>
                   </form>
-                  <div className="flex items-center space-x-4">
-                    <img src={filter_list} alt="filterIcon" />
+                  <div
+                    className="bg-[#EDBD05] p-2 rounded-md cursor-pointer"
+                    onClick={() => handleSearch(query)} // pass query on click
+                  >
+                    <Search color="black" size={22} />
                   </div>
                 </div>
 
@@ -302,6 +332,7 @@ function Leads() {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 }

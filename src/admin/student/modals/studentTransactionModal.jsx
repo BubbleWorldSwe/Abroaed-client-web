@@ -9,7 +9,14 @@ import { toast } from "react-toastify";
 import moment from "moment";
 import { paymentMode } from "../../../constants/values";
 
-const StudentTransactionModal = ({ isOpen, onClose, onSave, studentId }) => {
+const StudentTransactionModal = ({
+  isOpen,
+  onClose,
+  onSave,
+  studentId,
+  initialData,
+  onUpdate,
+}) => {
   const [formData, setFormData] = useState({
     date: "",
     user: studentId,
@@ -20,30 +27,31 @@ const StudentTransactionModal = ({ isOpen, onClose, onSave, studentId }) => {
 
   const handleSubmit = (e) => {
     try {
-      console.log(formData);
       e.preventDefault();
       if (
         !formData.date ||
         !formData.user ||
         !formData.amount ||
-        !formData.mode ||
-        !formData.description
+        !formData.mode
       ) {
         toast.error("Please fill out all fields.");
         return;
       }
 
-      const formattedData = {
-        ...formData,
-        date: moment(formData.date, "YYYY-MM-DDTHH:mm")
-          .utc()
-          .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
+      const filteredData = {
+        date: formData?.date,
+        user: studentId,
+        amount: formData.amount,
+        mode: formData.mode,
+        description: formData.description,
       };
 
-      console.log(formattedData);
-      onSave(formData);
-
-      onClose();
+      if (initialData) {
+        onUpdate(filteredData);
+      } else {
+        onSave(formData);
+      }
+      //  onClose();
     } catch (error) {
       console.log(error);
     }
@@ -54,6 +62,20 @@ const StudentTransactionModal = ({ isOpen, onClose, onSave, studentId }) => {
   };
 
   useEffect(() => {}, [formData]);
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData(initialData);
+    } else {
+      setFormData({
+        date: "",
+        user: studentId,
+        amount: "",
+        mode: "",
+        description: "",
+      });
+    }
+  }, [initialData]);
 
   return (
     isOpen && (
@@ -74,24 +96,26 @@ const StudentTransactionModal = ({ isOpen, onClose, onSave, studentId }) => {
               <TextInputField
                 label="Date"
                 name="date"
-                type="datetime-local"
+                type="date"
                 value={
                   formData?.date
-                    ? moment(formData.date).format("YYYY-MM-DDTHH:mm")
+                    ? moment(formData.date).format("YYYY-MM-DD")
                     : ""
                 }
                 onChange={handleChange}
+                required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <TextInputField
-                label="Amount"
+                label="Amount (in ₹)"
                 name="amount"
                 type="number"
                 value={formData.amount}
                 onChange={handleChange}
                 placeholder="Enter Amount"
+                required
               />
               <SelectField
                 label="Payment Mode"
@@ -115,7 +139,10 @@ const StudentTransactionModal = ({ isOpen, onClose, onSave, studentId }) => {
             />
             <div className="flex justify-end space-x-4 mt-5">
               <ModalCloseButton label="Cancel" onClick={onClose} />
-              <ModalSubmitButton label={"Add"} onClick={handleSubmit} />
+              <ModalSubmitButton
+                label={initialData ? "Update" : "Add"}
+                type="submit"
+              />
             </div>
           </form>
         </div>

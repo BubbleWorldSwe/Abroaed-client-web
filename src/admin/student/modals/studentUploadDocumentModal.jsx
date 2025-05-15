@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 
 import { Search, Upload } from "lucide-react";
-import { Toaster } from "react-hot-toast";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { docCategory } from "../../../constants/values";
 import { useEffect, useRef, useState } from "react";
@@ -24,27 +23,61 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
     (state) => state?.students?.selectedStudent
   );
 
-  console.log(applications);
-
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleFileDrop = (e) => {
-    e.preventDefault();
-    const droppedFile = e.dataTransfer.files[0];
-    if (droppedFile) {
-      setFormData({ ...formData, files: droppedFile });
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const allowedTypes = [
+      "application/pdf",
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+    ];
+    const maxSize = 2 * 1024 * 1024; // 2MB
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only PDF, JPG, and PNG files are allowed");
+      return;
     }
+
+    if (file.size > maxSize) {
+      toast.error("File size must be less than 2MB");
+      return;
+    }
+
+    setFormData({ ...formData, files: file });
   };
 
-  const handleFileChange = (e) => {
-    const files = e.target.files[0];
-    if (files) {
-      setFormData({ ...formData, files });
+  const handleFileDrop = (e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (!file) return;
+
+    const allowedTypes = [
+      "application/pdf",
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+    ];
+    const maxSize = 2 * 1024 * 1024;
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only PDF, JPG, and PNG files are allowed");
+      return;
     }
+
+    if (file.size > maxSize) {
+      toast.error("File size must be less than 2MB");
+      return;
+    }
+
+    setFormData({ ...formData, files: file });
   };
 
   const handleSubmit = async (e) => {
@@ -54,24 +87,6 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
 
     if (!files) {
       toast.error("Please select a file to upload");
-      return;
-    }
-
-    const allowedTypes = [
-      "application/pdf",
-      "image/jpeg",
-      "image/png",
-      "image/jpeg",
-    ];
-    const maxSize = 2 * 1024 * 1024; // 2MB
-
-    if (!allowedTypes.includes(files.type)) {
-      toast.error("Only PDF, JPG, and PNG files are allowed");
-      return;
-    }
-
-    if (files.size > maxSize) {
-      toast.error("File size must be less than 2MB");
       return;
     }
 
@@ -119,10 +134,18 @@ const StudentUploadDocument = ({ isOpen, onClose, leadId, uploadDocument }) => {
                   name="type"
                   value={formData.type}
                   onChange={handleChange}
-                  options={docCategory.map((data) => ({
-                    label: data,
-                    value: data,
-                  }))}
+                  options={docCategory
+                    .filter(
+                      (category) =>
+                        category !== "Applications" ||
+                        (category === "Applications" &&
+                          Array.isArray(applications) &&
+                          applications.length > 0)
+                    )
+                    .map((data) => ({
+                      label: data,
+                      value: data,
+                    }))}
                   required
                 />
 

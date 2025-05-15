@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { setSelectedStudent } from "../../../redux/actions/studentsActions";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
+import { formatDate, formatDateTime } from "../../../utils/helper";
 
 const StudentTable = ({
   handleOpenAddModal,
@@ -64,131 +65,118 @@ const StudentTable = ({
     <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
       <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" className="p-4">
-            <CheckboxField
-              onClick={(e) => e.stopPropagation()}
-              id={`checkbox-college-all`}
-              htmlFor={`checkbox-college-all`}
-            />
-          </th>
-          <th scope="col" className="px-4 py-3 min-w-[14rem]">
-            Student Name
-          </th>
-          <th scope="col" className="px-4 py-3 min-w-[10rem]">
-            Phone Number
-          </th>
-          <th scope="col" className="px-4 py-3 min-w-[7rem]">
-            Service
-          </th>
-          <th scope="col" className="px-4 py-3 min-w-[6rem]">
-            Counselleor
-          </th>
-          <th scope="col" className="px-4 py-3 min-w-[7rem]">
-            Application Counts
-          </th>
-          <th scope="col" className="px-4 py-3">
-            <span className="sr-only">Actions</span>
-          </th>
+          <th className="px-4 py-3">Student Name</th>
+          <th className="px-4 py-3">Email</th>
+          <th className="px-4 py-3">Phone Number</th>
+          <th className="px-4 py-3">Service</th>
+          <th className="px-4 py-3">Counsellor</th>
+          <th className="px-4 py-3">Application Counts</th>
+          <th className="px-4 py-3">Updated At</th>
+          <th className="px-4 py-3">Actions</th>
         </tr>
       </thead>
       <tbody>
         {students.length > 0 ? (
-          students.map(
-            (item) =>
-              item.index === currentPage &&
-              item.data.map((member, index) => {
-                let counsellor = getCounsellor(member?.assignTeamMembers);
-                return (
-                  <tr
-                    key={index}
-                    className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  >
-                    <td className="px-4 py-3 w-4">
-                      <CheckboxField
-                        onClick={(e) => e.stopPropagation()}
-                        id={`checkbox-college-${index}`}
-                        htmlFor={`checkbox-college-${index}`}
-                      />
-                    </td>
-                    <td
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
+          students.some(
+            (item) => item.index === currentPage && item.data.length > 0
+          ) ? (
+            students.map(
+              (item) =>
+                item.index === currentPage &&
+                item.data.map((member, index) => {
+                  let counsellor = getCounsellor(member?.assignTeamMembers);
+                  return (
+                    <tr
+                      key={index}
+                      className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                      {`${member?.user?.firstName} ${member?.user?.lastName}`}
-                    </td>
-                    <td className="px-4 py-3">+91 {member?.user?.mobile}</td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {member?.servicerType || "--"}
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {counsellor?.firstName || counsellor?.lastName
-                        ? `${counsellor?.firstName} ${counsellor?.lastName}`
-                        : null}
-                    </td>
-                    <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {member?.applicationCount}
-                    </td>
-                    <td className="px-4 py-3">
-                      <button
-                        className="focus:outline-none"
-                        onClick={(e) => handleDropdownToggle(e, index)}
+                      <td
+                        onClick={() => handleViewDetails(member)}
+                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white flex items-center"
                       >
-                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                      </button>
-                      {dropdownVisible === index && (
-                        <div
-                          ref={dropdownRef}
-                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                            dropdownDirection === "up"
-                              ? "bottom-full mb-2"
-                              : "mt-2"
-                          }`}
+                        {`${member?.user?.firstName} ${member?.user?.lastName}`}
+                      </td>
+                      <td className="px-4 py-3">{member?.user?.email}</td>
+                      <td className="px-4 py-3">{member?.user?.mobile}</td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {member?.servicerType || "--"}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {counsellor?.firstName || counsellor?.lastName
+                          ? `${counsellor?.firstName} ${counsellor?.lastName}`
+                          : null}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {member?.applicationCount}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {formatDateTime(member?.updatedAt)}
+                      </td>
+                      <td className="px-4 py-3">
+                        <button
+                          className="focus:outline-none"
+                          onClick={(e) => handleDropdownToggle(e, index)}
                         >
-                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                            {isWriteAccess && (
+                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                        </button>
+                        {dropdownVisible === index && (
+                          <div
+                            ref={dropdownRef}
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
+                              dropdownDirection === "up"
+                                ? "bottom-full mb-2"
+                                : "mt-2"
+                            }`}
+                          >
+                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                              {isWriteAccess && (
+                                <li>
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      handleOpenAddModal("assign");
+                                      handleAssignTeamMember(member);
+                                    }}
+                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                  >
+                                    <Plus className="w-4 h-4" />
+                                    <span>Assign Member</span>
+                                  </button>
+                                </li>
+                              )}
                               <li>
                                 <button
                                   type="button"
-                                  onClick={() => {
-                                    handleOpenAddModal("assign");
-                                    handleAssignTeamMember(member);
-                                  }}
+                                  onClick={() => handleViewDetails(member)}
                                   className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
-                                  <Plus className="w-4 h-4" />
-                                  <span>Assign Member</span>
+                                  <Eye className="w-4 h-4" />
+                                  <span>View Profile</span>
                                 </button>
                               </li>
-                            )}
-                            <li>
-                              <button
-                                type="button"
-                                onClick={() => handleViewDetails(member)}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Eye className="w-4 h-4" />
-                                <span>View Profile</span>
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })
+                            </ul>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })
+            )
+          ) : (
+            <TableNoData colSpan={8} />
           )
         ) : (
-          <TableNoData colSpan={7} />
+          <TableNoData colSpan={8} />
         )}
       </tbody>
+
       <TableFooter
         totalPages={totalPages}
         currentPage={currentPage}
         handleNextPage={handleNextPage}
         handlePrevPage={handlePrevPage}
         tableData={students}
-        colSpan={7}
+        colSpan={8}
       />
     </table>
   );

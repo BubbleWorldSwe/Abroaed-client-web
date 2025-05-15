@@ -64,58 +64,60 @@ const StartApplicationModal = ({
             </button>
             <h2 className="text-lg font-semibold">Start a New Application</h2>
 
-            {/* Dropdowns for College, Program, Course, and Intake */}
-            <div className="grid grid-cols-2 gap-4 mt-4">
-              <SelectField
-                label="Destination"
-                name="destinationId"
-                value={destinationId}
-                onChange={(e) => {
-                  setDestinationId(e.target.value);
-                  getCollegesList(e.target.value);
-                }}
-                options={allDestinations.map((data) => ({
-                  label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                  value: data?._id,
-                }))}
-                required
-              />
-              <SelectField
-                label="Select College"
-                name="college"
-                value={formData.college}
-                onChange={handleChange}
-                options={collegesList.map((data) => ({
-                  label: data?.name,
-                  value: data?._id,
-                }))}
-                required
-              />
-              <TextInputField
-                label="Course"
-                name="courseName"
-                type="text"
-                value={formData.courseName}
-                onChange={handleChange}
-                placeholder="Enter Course"
-              />
-              <TextInputField
-                label="Intake"
-                name="intake"
-                type="text"
-                value={formData.intake}
-                onChange={handleChange}
-                placeholder="Enter Intake"
-              />
-            </div>
+            <form onSubmit={handleSubmit}>
+              {/* Dropdowns for College, Program, Course, and Intake */}
+              <div className="grid grid-cols-2 gap-4 mt-4">
+                <SelectField
+                  label="Destination*"
+                  name="destinationId"
+                  value={destinationId}
+                  onChange={(e) => {
+                    setDestinationId(e.target.value);
+                    getCollegesList(e.target.value);
+                  }}
+                  options={allDestinations.map((data) => ({
+                    label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                    value: data?._id,
+                  }))}
+                  required
+                />
+                <SelectField
+                  label="Select College*"
+                  name="college"
+                  value={formData.college}
+                  onChange={handleChange}
+                  options={collegesList.map((data) => ({
+                    label: data?.name,
+                    value: data?._id,
+                  }))}
+                  required
+                />
+                <TextInputField
+                  label="Course*"
+                  name="courseName"
+                  type="text"
+                  value={formData.courseName}
+                  onChange={handleChange}
+                  placeholder="Enter Course*"
+                  required
+                />
+                <TextInputField
+                  label="Intake*"
+                  name="intake"
+                  type="text"
+                  value={formData.intake}
+                  onChange={handleChange}
+                  placeholder="Enter Intake*"
+                  required
+                />
+              </div>
 
-            <div className="flex justify-end space-x-2 mt-10">
-              <ModalCloseButton label="Close" onClick={onClose} />
+              <div className="flex justify-end space-x-2 mt-10">
+                <ModalCloseButton label="Close" onClick={onClose} />
 
-              <ModalSubmitButton label="Submit" onClick={handleSubmit} />
-            </div>
-
-            {/* Submit Button */}
+                <ModalSubmitButton label="Submit" type="submit" />
+              </div>
+            </form>
           </div>
         </div>
       )}

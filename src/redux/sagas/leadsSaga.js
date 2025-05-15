@@ -65,12 +65,15 @@ function* searchLeads(action) {
 // Add new lead
 function* addNewLead(action) {
   try {
-    const response = yield call(setAddLead, action.payload);
+    const response = yield call(setAddLead, action.payload?.leadData);
     console.log(response);
 
     if (response.status === 200) {
       yield put(addLeadSuccess(response.data));
-      toast.success("Your Request has been submitted successfully!");
+      toast.success(
+        action.payload?.alertMsg ||
+          "Your Request has been submitted successfully!"
+      );
     } else {
       yield put(addLeadFailure(response.message));
       toast.error(response.message);

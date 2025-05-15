@@ -50,26 +50,39 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
   };
 
   const handleAddLead = () => {
-    const { email, firstName, lastName, mobile, userDetail } = formData;
-    const { highestEducation, preferredDestination, applyingFor, targetYear } =
-      userDetail;
+    try {
+      const { email, firstName, lastName, mobile, userDetail } = formData;
+      const {
+        highestEducation,
+        preferredDestination,
+        applyingFor,
+        targetYear,
+      } = userDetail;
 
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !mobile ||
-      !highestEducation ||
-      !preferredDestination ||
-      !applyingFor ||
-      !targetYear
-    ) {
-      toast.error("Please fill out all fields.");
-      return;
+      if (
+        !firstName ||
+        !lastName ||
+        !email ||
+        !mobile ||
+        !highestEducation ||
+        !preferredDestination ||
+        !applyingFor ||
+        !targetYear
+      ) {
+        toast.error("Please fill out all fields.");
+        return;
+      }
+
+      console.log("Lead Data:", formData);
+      onAddLead({
+        user: formData,
+        source: "Panel",
+        entity: "Admin",
+        // alertMsg: "Lead Addes Sucessfully",
+      });
+    } catch (error) {
+      console.log(error);
     }
-
-    console.log("Lead Data:", formData);
-    onAddLead({ user: formData, source: "Websites", entity: "admin" });
   };
 
   useEffect(() => {
@@ -79,6 +92,12 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
         lastName: "",
         email: "",
         mobile: "",
+        userDetail: {
+          highestEducation: "",
+          preferredDestination: "",
+          applyingFor: "",
+          targetYear: "",
+        },
       });
     }
   }, [error]);
@@ -97,11 +116,11 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
             <h2 className="text-xl font-semibold mb-4">Add Lead</h2>
 
             <div>
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleAddLead}>
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
                   {/* First Name */}
                   <TextInputField
-                    label="First Name"
+                    label="First Name*"
                     name="firstName"
                     type="text"
                     value={formData.firstName}
@@ -113,7 +132,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                   {/* Last Name */}
 
                   <TextInputField
-                    label="Last Name"
+                    label="Last Name*"
                     name="lastName"
                     type="text"
                     value={formData.lastName}
@@ -124,7 +143,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
 
                   {/* Email */}
                   <TextInputField
-                    label="Email"
+                    label="Email*"
                     name="email"
                     type="email"
                     value={formData.email}
@@ -135,18 +154,19 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
 
                   {/* Contact Number */}
                   <TextInputField
-                    label="Mobile Number"
+                    label="Mobile Number*"
                     name="mobile"
                     type="tel"
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder="Enter mobile number"
                     required
+                    maxLength={10}
                   />
 
                   {/* Highest Education Qualification (Dropdown) */}
                   <SelectField
-                    label="Highest Education Qualification"
+                    label="Highest Education Qualification*"
                     name="highestEducation"
                     value={formData?.userDetail?.highestEducation}
                     onChange={handleChange}
@@ -158,7 +178,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                   />
                   {/* Preferred Study Destination (Dropdown) */}
                   <SelectField
-                    label="Preferred Study Destination"
+                    label="Preferred Study Destination*"
                     name="preferredDestination"
                     value={formData?.userDetail?.preferredDestination}
                     onChange={handleChange}
@@ -172,7 +192,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
 
                   {/* Applying For (Dropdown) */}
                   <SelectField
-                    label="Applying For"
+                    label="Applying For*"
                     name="applyingFor"
                     value={formData?.userDetail?.applyingFor}
                     onChange={handleChange}
@@ -185,7 +205,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
 
                   {/* Target Year (Dropdown) */}
                   <SelectField
-                    label="Target Year"
+                    label="Target Year*"
                     name="targetYear"
                     value={formData?.userDetail?.targetYear}
                     onChange={handleChange}
@@ -199,7 +219,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                 {/* Action Buttons */}
                 <div className="flex justify-end space-x-4 mt-10">
                   <ModalCloseButton label="Cancel" onClick={onClose} />
-                  <ModalSubmitButton label="Submit" onClick={handleAddLead} />
+                  <ModalSubmitButton type="submit" label="Submit" />
                 </div>
               </form>
             </div>

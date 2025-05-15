@@ -7,7 +7,7 @@ function PathwaysHomeHero() {
     return (
         <HeroTextComponent img={pathwaysHome}>
             <h1 className={heroStyle.header}>
-                Pathways Program
+                Pathway Programs
             </h1>
             <p className={heroStyle.text}>
                 Start Locally, Graduate Globally

@@ -101,7 +101,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Left Column */}
             <TextInputField
-              label="First Name"
+              label="First Name*"
               name="firstName"
               type="text"
               value={formData.firstName}
@@ -110,7 +110,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
               required
             />
             <TextInputField
-              label="Last Name"
+              label="Last Name*"
               name="lastName"
               type="text"
               value={formData.lastName}
@@ -119,7 +119,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
               required
             />
             <TextInputField
-              label="Email"
+              label="Email*"
               name="email"
               type="email"
               value={formData.email}
@@ -128,7 +128,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
               required
             />
             <TextInputField
-              label="Mobile Number"
+              label="Mobile Number*"
               name="phoneNumber"
               type="tel"
               value={formData.phoneNumber}
@@ -139,7 +139,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
             />
 
             <SelectField
-              label="Role Type"
+              label="Role Type*"
               name="role"
               value={formData.role}
               onChange={handleChange}
@@ -159,7 +159,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
             />
 
             <SelectField
-              label="Permission"
+              label="Permission*"
               name="permission"
               value={formData.permission}
               onChange={handleChange}

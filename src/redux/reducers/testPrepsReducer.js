@@ -59,25 +59,33 @@ export const testPrepsReducer = (state = initialState, action) => {
     case FETCH_ALL_TESTPREPS_SUCCESS:
       const testPreps = action.payload.result;
 
-      const publishedItems = testPreps.filter((item) => {
-        console.log(item?.status);
-        return item.status === "publish";
-      });
+      // Filter only published test preps
+      const publishedItems = testPreps.filter(
+        (item) => item.status === "publish"
+      );
 
+      // Map exam name to test prep object for quick lookup
       const testPrepMap = new Map(
         publishedItems.map((test) => [test?.exam, test])
       );
 
-      // Arrange destinations based on predefined sequence
+      // First, arrange items according to predefined sequence
       const sortedTestPrep = testPrepsSequence
         .map((name) => testPrepMap.get(name))
-        .filter(Boolean); // Remove undefined values (if any country is missing)
-      console.log(sortedTestPrep);
+        .filter(Boolean); // Remove undefined (missing exams)
+
+      // Then, collect remaining test preps that are published but not in the sequence
+      const remainingPreps = publishedItems.filter(
+        (test) => !testPrepsSequence.includes(test.exam)
+      );
+
+      // Combine both: sorted + remaining
+      const finalTestPreps = [...sortedTestPrep, ...remainingPreps];
 
       return {
         ...state,
         loading: false,
-        allTestPreps: sortedTestPrep,
+        allTestPreps: finalTestPreps,
       };
 
     case FETCH_TESTPREPS_FAILURE:

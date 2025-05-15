@@ -102,10 +102,18 @@ const RequestDocumentModal = ({
                   name="type"
                   value={formData.type}
                   onChange={handleChange}
-                  options={docCategory.map((data) => ({
-                    label: data,
-                    value: data,
-                  }))}
+                  options={docCategory
+                    .filter(
+                      (category) =>
+                        category !== "Applications" ||
+                        (category === "Applications" &&
+                          Array.isArray(applications) &&
+                          applications.length > 0)
+                    )
+                    .map((data) => ({
+                      label: data,
+                      value: data,
+                    }))}
                   required
                 />
 
@@ -116,6 +124,7 @@ const RequestDocumentModal = ({
                   value={formData.title}
                   onChange={handleChange}
                   placeholder="Enter Document Title"
+                  required
                 />
               </div>
 
@@ -136,15 +145,16 @@ const RequestDocumentModal = ({
               <div className="flex-1">
                 <TextInputField
                   label="Deadline"
-                  name={`deadline`}
-                  type="datetime-local"
+                  name="deadline"
+                  type="date" // <-- changed from "datetime-local" to "date"
                   value={
                     formData?.deadline
-                      ? moment(formData.deadline).format("YYYY-MM-DDTHH:mm")
-                      : ""
+                      ? moment(formData.deadline).format("YYYY-MM-DD") // <-- simplified format
+                      : null || ""
                   }
                   onChange={handleChange}
                   placeholder="Enter Deadline"
+                  required
                 />
               </div>
 

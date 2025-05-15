@@ -19,6 +19,7 @@ import {
   editStudentLeadRequest,
   editStudentRequest,
   setSelectedStudent,
+  setStudentDataLoading,
 } from "../../../redux/actions/studentsActions";
 import { editLeadsStudentRequest } from "../../../redux/actions/leadsActions";
 import UpdateStudentPersonalInfo from "../modals/updateStudentPersonalInfoModal";
@@ -39,8 +40,10 @@ import {
   getStudentTransactions,
   setCreateStudentApplication,
   setDeleteStudentDocument,
+  setDeleteStudentTransaction,
   setUpdateStudentApplication,
   setUpdateStudentDocuments,
+  setUpdateStudentTransaction,
   setUploadStudentDocuments,
 } from "../../../api/studentsApi";
 import { toast } from "react-toastify";
@@ -55,6 +58,9 @@ import StudentUploadDocument from "../modals/studentUploadDocumentModal";
 import RequestDocumentModal from "../modals/requestDocumentModal";
 import DocStatusConfirmationModal from "../modals/docStatusConfirmationModal";
 import AddCommentModal from "../modals/addCommentsModal";
+import StudentAvailedServices from "../components/studentAvailedServices";
+import StudentTransactionModal from "../modals/studentTransactionModal";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const StudentProfileLayout = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -76,7 +82,10 @@ const StudentProfileLayout = () => {
   const [updateApplicatinModal, setUpdateApplicationModal] = useState(false);
   const [updateDocModal, setUpdateDocModal] = useState(false);
 
+  const [transactionModal, setTransactionModal] = useState(false);
+
   const [selectedApplication, setSelectedApplication] = useState(null);
+  const [selectedTransaction, setSelectedTransaction] = useState(null);
 
   const [changeStatusModal, setChangeStatusModal] = useState(null);
   const [docChangeStatusModal, setDocChangeStatusModal] = useState(null);
@@ -84,6 +93,8 @@ const StudentProfileLayout = () => {
   const [docCommentModal, setDocCommentModal] = useState(false);
 
   const [selectedDoc, setSelectedDoc] = useState(null);
+
+  const { loading } = useSelector((state) => state.students);
 
   const handleModal = (modalType) => {
     setModal(modalType);
@@ -115,7 +126,7 @@ const StudentProfileLayout = () => {
         // dispatch(addStudentTransaction(transData));
         fetchStudentTransactions();
         toast.success(data?.message);
-
+        setTransactionModal(false);
         dispatch(fetchTransactionsRequest(1));
       } else {
         toast.error(data?.message);
@@ -127,6 +138,7 @@ const StudentProfileLayout = () => {
 
   async function fetchStudentApplications() {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await getStudentApplications(id);
 
       if (data?.status === 200) {
@@ -141,6 +153,7 @@ const StudentProfileLayout = () => {
 
   async function fetchStudentDocuments() {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await getStudentDocuments(id);
 
       if (data?.status === 200) {
@@ -155,6 +168,7 @@ const StudentProfileLayout = () => {
 
   async function fetchStudentTransactions() {
     try {
+      dispatch(setStudentDataLoading(true));
       const list = await getStudentTransactions(studentProfile?.user?._id);
 
       if (list.status === 200) {
@@ -169,6 +183,7 @@ const StudentProfileLayout = () => {
 
   async function fetchStudentSavedPefrences() {
     try {
+      dispatch(setStudentDataLoading(true));
       const list = await getStudentSavedPreferences(studentProfile?.user?._id);
 
       if (list.status === 200) {
@@ -181,8 +196,32 @@ const StudentProfileLayout = () => {
     }
   }
 
+  async function updateStudentTransaction(updatedData) {
+    try {
+      dispatch(setStudentDataLoading(true));
+      const { _id, ...transactionData } = updatedData;
+
+      const data = await setUpdateStudentTransaction(
+        selectedTransaction?._id,
+        transactionData
+      );
+
+      if (data?.status === 200) {
+        fetchStudentTransactions();
+        toast.success(data?.message);
+        setTransactionModal(false);
+        setSelectedTransaction(null);
+      } else {
+        toast.error(data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async function fetchStudentPrepsBatches() {
     try {
+      dispatch(setStudentDataLoading(true));
       const list = await getStudentPrepsBatches(id);
 
       if (list.status === 200) {
@@ -210,6 +249,7 @@ const StudentProfileLayout = () => {
 
   async function createStudentApplication(appData) {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await setCreateStudentApplication(appData);
 
       if (data?.status === 200) {
@@ -219,6 +259,7 @@ const StudentProfileLayout = () => {
         setOpenApplicationModal(false);
       } else {
         toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
       }
     } catch (error) {
       console.log(error);
@@ -227,6 +268,7 @@ const StudentProfileLayout = () => {
 
   async function uploadStudentDocument(fileData) {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await setUploadStudentDocuments(id, fileData);
       // console.log(data);
 
@@ -238,6 +280,7 @@ const StudentProfileLayout = () => {
         setOpenModal(false);
       } else {
         toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
       }
     } catch (error) {
       console.log(error);
@@ -246,6 +289,7 @@ const StudentProfileLayout = () => {
 
   async function updateUploadStudentDocument(docId, fileData) {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await setUpdateStudentDocuments(docId, fileData);
 
       if (data?.status === 200) {
@@ -254,6 +298,7 @@ const StudentProfileLayout = () => {
         setUpdateDocModal(false);
       } else {
         toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
       }
     } catch (error) {
       console.log(error);
@@ -262,6 +307,7 @@ const StudentProfileLayout = () => {
 
   async function deleteStudentDocument(id) {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await setDeleteStudentDocument(id);
 
       if (data?.status === 200) {
@@ -269,6 +315,24 @@ const StudentProfileLayout = () => {
         toast.success(data?.message);
       } else {
         toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function deleteStudentTransaction(id) {
+    try {
+      dispatch(setStudentDataLoading(true));
+      const data = await setDeleteStudentTransaction(id);
+
+      if (data?.status === 200) {
+        fetchStudentTransactions();
+        toast.success(data?.message);
+      } else {
+        toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
       }
     } catch (error) {
       console.log(error);
@@ -277,6 +341,7 @@ const StudentProfileLayout = () => {
 
   async function updateStudentApplication(appData) {
     try {
+      dispatch(setStudentDataLoading(true));
       const data = await setUpdateStudentApplication(
         appData,
         selectedApplication?._id
@@ -293,6 +358,7 @@ const StudentProfileLayout = () => {
         setDocCommentModal(false);
       } else {
         toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
       }
     } catch (error) {
       console.log(error);
@@ -484,11 +550,26 @@ const StudentProfileLayout = () => {
           _id: selectedApplication?._id,
         }}
       />
+
+      <StudentTransactionModal
+        isOpen={transactionModal}
+        onClose={() => {
+          setTransactionModal(false);
+          setSelectedTransaction(null); // Reset selected on close
+        }}
+        studentId={studentProfile?.user?._id}
+        onSave={createStudentTransaction}
+        selectedTransaction={selectedTransaction}
+        onUpdate={updateStudentTransaction}
+        initialData={selectedTransaction}
+      />
+
       {/* Page Content */}
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="max-w-7xl p-3 px-5 flex flex-col gap-4 sm:py-5 flex-grow">
           <StudentProfile />
           <StudentPersonalDetails onOpenModal={() => handleModal("personal")} />
+          <StudentAvailedServices />
           <StudentAdditionalDetails
             onOpenModal={() => handleModal("addition")}
           />
@@ -513,7 +594,6 @@ const StudentProfileLayout = () => {
             }}
             openStatusModal={(data) => {
               setSelectedDoc(data);
-
               setDocChangeStatusModal(!docChangeStatusModal);
             }}
           />
@@ -527,13 +607,26 @@ const StudentProfileLayout = () => {
             onOpenStatusModal={() => setChangeStatusModal(true)}
             onOpenCommentModal={() => setDocCommentModal(true)}
           />
-          <StudentLangPrep />
+
           <StudentTransaction
             studentId={studentProfile?.user?._id}
             onSave={createStudentTransaction}
+            handleDelete={deleteStudentTransaction}
+            onOpen={() => {
+              setSelectedTransaction(null); // new transaction
+              setTransactionModal(true);
+            }}
+            onEdit={(transaction) => {
+              setSelectedTransaction(transaction);
+              setTransactionModal(true);
+            }}
+            isOpen={transactionModal}
           />
+
+          <StudentLangPrep />
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

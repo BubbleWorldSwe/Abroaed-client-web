@@ -12,6 +12,7 @@ import {
   editTransactionRequest,
 } from "../../../redux/actions/transactionActions";
 import { getAllStudents } from "../../../api/studentsApi";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const Transaction = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -21,7 +22,7 @@ const Transaction = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
-  const { transactions, totalPages } = useSelector(
+  const { transactions, totalPages, loading } = useSelector(
     (state) => state.transactions
   );
 
@@ -169,12 +170,12 @@ const Transaction = () => {
                   <img src={filter_list} alt="filterIcon" />
                 </div> */}
               </div>
-              {isWriteAccess && (
+              {/*  {isWriteAccess && (
                 <AddButton
                   onClick={() => handleOpenModal()}
                   label={"Add Transaction"}
                 />
-              )}
+              )} */}
             </div>
             <div className="flex-grow mt-2 overflow-auto bg-white dark:bg-gray-800 px-5">
               <TransactionTable
@@ -190,6 +191,7 @@ const Transaction = () => {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

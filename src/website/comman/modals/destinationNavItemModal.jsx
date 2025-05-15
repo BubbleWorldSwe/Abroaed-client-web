@@ -7,6 +7,7 @@ import Flag from "react-world-flags";
 
 const DestinationNavItemModal = ({ handleMouseEnter }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
+
   const navigate = useNavigate();
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const handleNavigate = (id) => {

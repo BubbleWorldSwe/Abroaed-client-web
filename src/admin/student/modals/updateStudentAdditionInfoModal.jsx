@@ -74,7 +74,10 @@ const UpdateStudentAdditionInfo = ({
               Update Additional Information
             </h2>
             <div>
-              <form className="space-y-6">
+              <form
+                onSubmit={handleUpdateLeadProfileInfo}
+                className="space-y-6"
+              >
                 <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
                   <SelectField
                     label="Highest Education Qualification"
@@ -124,10 +127,7 @@ const UpdateStudentAdditionInfo = ({
                 </div>
                 <div className="flex justify-end space-x-4 mt-10">
                   <ModalCloseButton label="Cancel" onClick={onClose} />
-                  <ModalSubmitButton
-                    label="Submit"
-                    onClick={handleUpdateLeadProfileInfo}
-                  />
+                  <ModalSubmitButton label="Submit" type="submit" />
                 </div>
               </form>
             </div>

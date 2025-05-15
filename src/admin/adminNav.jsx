@@ -28,6 +28,7 @@ const AdminNav = () => {
     setIsMenuOpen(false);
   };
 
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -40,7 +41,7 @@ const AdminNav = () => {
 
   return (
     <>
-      <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md z-[9999] relative">
+      <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md">
         <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
           <a
             href="/home"
@@ -66,15 +67,15 @@ const AdminNav = () => {
           </button>
 
           {isMenuOpen && (
-            <div className="absolute top-full right-0 mt-3 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-[9999]">
+            <div className="absolute top-0 right-0 mt-14 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
               <button
-                onClick={handleProfileClick}
+                //  onClick={handleProfileClick}
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
               >
                 My Profile
               </button>
               <button
-                onClick={handleChangePasswordClick}
+                // onClick={handleChangePasswordClick}
                 className="block w-full text-left px-4 py-2 hover:bg-gray-100"
               >
                 Change Password
@@ -89,7 +90,6 @@ const AdminNav = () => {
           )}
         </div>
       </nav>
-
       <LogoutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

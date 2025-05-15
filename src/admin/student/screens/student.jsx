@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import StudentTable from "../tables/studentTable";
-import { studentsData } from "../data";
+
 // import AddStudentModal from "../modals/addStudentModal";
 import ServiceTypePlanStudent from "../modals/serviceTypePlanStudentModal";
 import AssignTeamMemberStudentModal from "../modals/assignTeamMemberStudentModal";
@@ -17,8 +17,12 @@ import {
 
 import { getTeamsByMembers } from "../../../api/teamsApi";
 import { Search } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 function Student() {
+  const location = useLocation();
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [next, setNext] = useState(false);
   const [done, setDone] = useState(false);
@@ -30,14 +34,14 @@ function Student() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showTeamModal, setshowTeamModal] = useState(false);
 
-  const { students, totalPages } = useSelector((state) => state.students);
+  const { students, totalPages, loading } = useSelector(
+    (state) => state.students
+  );
   const [query, setQuery] = useState("");
 
   const [rolesList, setRolesList] = useState([]);
 
   const [membersList, setMembersList] = useState([]);
-
-  console.log(students);
 
   const handleOpenAddModal = (modalType) => {
     setIsAddModalOpen(true);
@@ -104,15 +108,24 @@ function Student() {
     setDropdownVisible(false);
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = async (value) => {
     try {
-      const value = e.target.value;
       setQuery(value);
-      if (value.trim() === "") {
-        dispatch(fetchStudentsRequest(currentPage));
-      } else {
-        dispatch(searchStudentsRequest(value));
+
+      const trimmedValue = value.trim();
+
+      if (trimmedValue === "") {
+        setCurrentPage(1);
+        dispatch(fetchStudentsRequest(1));
+        return;
       }
+
+      if (trimmedValue.length < 2) {
+        toast.error("Please enter at least 2 characters to search.");
+        return;
+      }
+
+      dispatch(searchStudentsRequest(trimmedValue));
     } catch (error) {
       console.log(error);
     }
@@ -123,8 +136,15 @@ function Student() {
       console.log("fetchStudentsRequest");
       dispatch(fetchStudentsRequest(currentPage));
     }
-    fetchData();
   }, [dispatch, currentPage, students]);
+
+  useEffect(() => {
+    dispatch(fetchStudentsRequest(currentPage));
+  }, [location.pathname]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -157,14 +177,8 @@ function Student() {
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative  sm:rounded-lg">
             <div className=" dark:border-gray-700 mx-4">
               <div className="flex justify-between  py-3">
-                <div className="w-full  flex  space-y-3 md:space-y-0  ">
+                <div className="w-full  flex  space-y-1 md:space-y-0  ">
                   <form className="w-full md:max-w-sm flex-1 md:mr-4">
-                    <label
-                      htmlFor="default-search"
-                      className="text-sm font-medium text-gray-900 sr-only dark:text-white"
-                    >
-                      Search
-                    </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <Search size={16} />
@@ -173,15 +187,24 @@ function Student() {
                         type="search"
                         id="default-search"
                         className="block w-full p-2 pl-10 text-sm text-gray-900 border-2 border-gray-500 rounded-lg  focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Search Teams"
+                        placeholder="Search Leads"
                         required=""
                         value={query}
-                        onChange={handleSearch}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setQuery(value);
+                          if (value.trim() === "") {
+                            handleSearch("");
+                          }
+                        }}
                       />
                     </div>
                   </form>
-                  <div className="flex items-center space-x-4">
-                    <img src={filter_list} alt="filterIcon" />
+                  <div
+                    className="bg-[#EDBD05] p-2 rounded-md cursor-pointer"
+                    onClick={() => handleSearch(query)} // pass query on click
+                  >
+                    <Search color="black" size={22} />
                   </div>
                 </div>
               </div>
@@ -200,6 +223,7 @@ function Student() {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 }

@@ -13,10 +13,13 @@ import TeamTable from "../tables/teamTable";
 import filter_list from "../../../assets/filter_list.png";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import { getRoles } from "../../../api/api";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 function Teams() {
   const dispatch = useDispatch();
-  const { teams, totalPages, page } = useSelector((state) => state.teams);
+  const { teams, totalPages, page, loading } = useSelector(
+    (state) => state.teams
+  );
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -144,6 +147,8 @@ function Teams() {
 
   return (
     <>
+      <ActivityLoader loading={loading} />
+
       <AddTeamMember
         isOpen={isModalOpen && modalType === "add"}
         onClose={handleCloseModal}

@@ -18,6 +18,9 @@ import {
   SEARCH_LEADS_REQUEST,
   SEARCH_LEADS_SUCCESS,
   SEARCH_LEADS_FAILURE,
+  ADD_LEAD_DOCUMENTS,
+  LEADS_DATA_LOADING,
+  EDIT_LEADS_STUDENT_REQUEST,
 } from "../actions/leadsActions";
 
 const initialState = {
@@ -37,6 +40,7 @@ export const leadsReducer = (state = initialState, action) => {
     case ADD_LEAD_REQUEST:
     case DELETE_LEAD_REQUEST:
     case EDIT_LEAD_REQUEST:
+    case EDIT_LEADS_STUDENT_REQUEST:
     case FETCH_LEADS_STUDENTS_REQUEST:
     case SEARCH_LEADS_REQUEST:
       return { ...state, loading: true };
@@ -145,6 +149,37 @@ export const leadsReducer = (state = initialState, action) => {
         page: 1,
         limit: null,
         total: null,
+      };
+
+    case ADD_LEAD_DOCUMENTS:
+      console.log("ADD_LEAD_DOCUMENTS");
+      console.log(action);
+
+      return {
+        ...state,
+        loading: false,
+
+        selectedLead: {
+          ...state.selectedLead,
+          documents: action.payload || [],
+        },
+
+        leads: [],
+
+        error: null,
+        totalPages: null,
+
+        page: 1,
+        limit: null,
+        total: null,
+      };
+
+    case LEADS_DATA_LOADING:
+      console.log("LEADS_DATA_LOADING");
+
+      return {
+        ...state,
+        loading: action.payload,
       };
 
     default:

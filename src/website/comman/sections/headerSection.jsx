@@ -158,7 +158,7 @@ function Header({ isHeaderBgWhite = false }) {
     {
       key: "leaguageOfExcellence",
       label: "League of Excellence",
-      link: "/leaguageOfExcellence",
+      link: "/leagueOfExcellence",
     },
     { key: "pathways", label: "Pathways", link: "/pathways" },
     {
@@ -215,7 +215,7 @@ function Header({ isHeaderBgWhite = false }) {
     {
       key: "league-excellence",
       label: "League of Excellence",
-      link: "/leaguageOfExcellence",
+      link: "/leagueOfExcellence",
     },
     {
       key: "pathways",

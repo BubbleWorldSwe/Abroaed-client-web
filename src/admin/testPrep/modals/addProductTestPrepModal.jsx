@@ -6,19 +6,9 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
 
-const AddProductTestPrepModal = ({
-  isOpen,
-  onClose,
-  setIsDone,
-  onAddTestPreps,
-}) => {
+const AddProductTestPrepModal = ({ isOpen, onClose, onAddTestPreps }) => {
   const [formData, setFormData] = useState({ language: "English" });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsDone(true);
-    onClose();
-  };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -47,13 +37,13 @@ const AddProductTestPrepModal = ({
           <div className="bg-white max-w-md py-8 px-8 font-rethink dark:bg-gray-900 rounded-lg shadow-lg w-full  relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
-              onClick={onClose}
+              onClick={onReset}
             >
               &times;
             </button>
             <h2 className="text-xl font-bold ">Add Product</h2>
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleAddTestPreps}
               className="flex flex-col gap-5 mx-auto py-5 rounded-lg"
             >
               <TextInputField
@@ -83,7 +73,7 @@ const AddProductTestPrepModal = ({
 
               <div className="flex justify-end space-x-4 mt-5">
                 <ModalCloseButton label="Reset" onClick={onReset} />
-                <ModalSubmitButton label="Add" onClick={handleAddTestPreps} />
+                <ModalSubmitButton label="Add" type="submit" />
               </div>
             </form>
           </div>

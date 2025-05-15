@@ -12,7 +12,7 @@ export function SelectField({
       <label className="block text-sm font-medium text-gray-700">{label}</label>
       <select
         name={name}
-        className="mt-1 block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:ring-[#F4F4F5] sm:text-sm border-none"
+        className="mt-1 block w-full px-3 py-2 bg-[#F4F4F5] rounded-md focus:ring-primary-600 focus:border-primary-600 sm:text-sm border-none"
         value={value}
         onChange={onChange}
         required={required}

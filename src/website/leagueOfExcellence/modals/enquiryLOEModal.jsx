@@ -177,6 +177,7 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                   onChange={handleChange}
                   placeholder="Enter phone"
                   required
+                  maxLength={10}
                 />
               </div>
               {/* <div className="mt-4 flex items-center justify-center gap-2">

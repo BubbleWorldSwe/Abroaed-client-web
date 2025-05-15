@@ -12,12 +12,15 @@ import {
   fetchTestPrepsRequest,
 } from "../../../redux/actions/testPrepsActions";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const TestPrep = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const { isWriteAccess } = useSelector((state) => state.auth);
-  const { testPreps, totalPages } = useSelector((state) => state.testPreps);
+  const { testPreps, totalPages, loading } = useSelector(
+    (state) => state.testPreps
+  );
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
   const [isDone, setIsDone] = useState(false);
@@ -164,6 +167,7 @@ const TestPrep = () => {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

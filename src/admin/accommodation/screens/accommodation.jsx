@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import filter_list from "../../../assets/filter_list.png";
 import { accommodationData } from "../data";
 import AccommodationTable from "../tables/accommodationTable";
 import AddAccommodationModal from "../modals/addAccommodationModal";

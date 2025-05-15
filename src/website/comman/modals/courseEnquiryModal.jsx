@@ -79,12 +79,15 @@ const CourseEnquiryModal = ({
     }
   }, [error]);
   // when click on the outside the modal then modal will close
-  useClickOutside(modalRef, onClose, isOpen)
+  useClickOutside(modalRef, onClose, isOpen);
   return (
     <>
       {isOpen && (
         <div className="fixed h-screen px-6 mx-auto inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-[9999]">
-          <div ref={modalRef} className="bg-white max-h-[73vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg z-50 relative">
+          <div
+            ref={modalRef}
+            className="bg-white max-h-[73vh] overflow-y-auto font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 w-full max-w-lg z-50 relative"
+          >
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -155,6 +158,7 @@ const CourseEnquiryModal = ({
                   value={formData.mobile}
                   onChange={handleChange}
                   required
+                  maxLength={10}
                 />
               </div>
               {/* <div className="mt-4 flex items-center justify-center gap-2">

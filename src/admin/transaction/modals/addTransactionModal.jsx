@@ -31,8 +31,7 @@ const AddTransactionModal = ({
         !formData.date ||
         !formData.user ||
         !formData.amount ||
-        !formData.mode ||
-        !formData.description
+        !formData.mode
       ) {
         toast.error("Please fill out all fields.");
         return;
@@ -89,19 +88,22 @@ const AddTransactionModal = ({
           >
             <div className="grid grid-cols-2 gap-4">
               <TextInputField
-                label="Date"
+                label="Date*"
                 name="date"
-                type="datetime-local"
+                //   type="datetime-local"
+                type="date"
                 value={
                   formData?.date
-                    ? moment(formData.date).format("YYYY-MM-DDTHH:mm")
+                    ? //? moment(formData.date).format("YYYY-MM-DDTHH:mm")
+                      moment(formData.date).format("YYYY-MM-DD")
                     : ""
                 }
                 onChange={handleChange}
+                required
               />
 
               <SelectField
-                label="User"
+                label="User*"
                 name="user"
                 value={formData?.user}
                 onChange={handleChange}
@@ -115,15 +117,16 @@ const AddTransactionModal = ({
 
             <div className="grid grid-cols-2 gap-4">
               <TextInputField
-                label="Amount"
+                label="Amount*"
                 name="amount"
                 type="number"
                 value={formData.amount}
                 onChange={handleChange}
                 placeholder="Enter Amount"
+                required
               />
               <SelectField
-                label="Payment Mode"
+                label="Payment Mode*"
                 name="mode"
                 value={formData?.mode}
                 onChange={handleChange}
@@ -141,6 +144,7 @@ const AddTransactionModal = ({
               value={formData.description}
               onChange={handleChange}
               placeholder="Enter Description"
+              required
             />
             <div className="flex justify-end space-x-4 mt-5">
               <ModalCloseButton label="Cancel" onClick={onClose} />

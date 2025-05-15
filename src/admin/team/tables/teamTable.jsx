@@ -6,7 +6,7 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { useSelector } from "react-redux";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
-import { formatDate } from "../../../utils/helper";
+import { formatDate, formatDateTime } from "../../../utils/helper";
 
 const TeamTable = ({
   handleDelete,
@@ -90,7 +90,7 @@ const TeamTable = ({
                       )}
                     </td>
                     <td className="px-4 py-3">
-                      {formatDate(member.createdAt)}
+                      {formatDateTime(member.createdAt)}
                     </td>
                     {isWriteAccess ? (
                       <td className="px-4 py-3 relative flex justify-center items-center group">

@@ -29,6 +29,9 @@ export const EDIT_LEADS_STUDENT_FAILURE = "EDIT_LEADS_STUDENT_FAILURE";
 export const SET_SELECTED_LEAD = "SET_SELECTED_LEAD";
 
 export const ADD_LEAD_SAVEDPREFRENCES = "ADD_LEAD_SAVEDPREFRENCES";
+export const ADD_LEAD_DOCUMENTS = "ADD_LEAD_DOCUMENTS";
+
+export const LEADS_DATA_LOADING = "LEADS_DATA_LOADING";
 
 // Fetch Leads
 export const fetchLeadsRequest = (page) => ({
@@ -63,9 +66,9 @@ export const fetchStudentsFailure = (error) => ({
 });
 
 // Add Lead
-export const addLeadRequest = (leadData) => ({
+export const addLeadRequest = (leadData, alertMsg) => ({
   type: ADD_LEAD_REQUEST,
-  payload: leadData,
+  payload: { leadData, alertMsg },
 });
 
 export const addLeadSuccess = (lead) => ({
@@ -139,6 +142,13 @@ export const addLeadSavedPrefrences = (lead) => {
   };
 };
 
+export const addLeadDocuments = (lead) => {
+  return {
+    type: ADD_LEAD_DOCUMENTS,
+    payload: lead,
+  };
+};
+
 export const searchLeadsRequest = (query) => ({
   type: SEARCH_LEADS_REQUEST,
   payload: query,
@@ -152,4 +162,9 @@ export const searchLeadsSuccess = (results) => ({
 export const searchLeadsFailure = (error) => ({
   type: SEARCH_LEADS_FAILURE,
   payload: error,
+});
+
+export const setLeadsDataLoading = (loading) => ({
+  type: LEADS_DATA_LOADING,
+  payload: loading,
 });

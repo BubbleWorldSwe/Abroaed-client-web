@@ -143,7 +143,7 @@ const DestinationTable = ({
                     <td className="px-4 py-3">
                       {destination?.createdBy
                         ? `${destination?.createdBy?.firstName} ${destination?.createdBy?.lastName}`
-                        : `---`}
+                        : `Admin`}
                     </td>
 
                     <td className="px-4 py-3">

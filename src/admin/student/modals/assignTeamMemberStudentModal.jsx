@@ -90,57 +90,59 @@ const AssignTeamMemberStudentModal = ({
             )}
           </div>
 
-          <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
-            <SelectField
-              label="Member Type"
-              name="type"
-              onChange={({ target }) => {
-                setSelectedMember(null);
-                setMembersList([]);
-                const selectedRole = rolesList?.find(
-                  (data) => data.roleId === target.value
-                );
-                setMembersList(selectedRole?.users);
-              }}
-              options={rolesList
-                ?.filter(
-                  (data) =>
-                    !["Admin", "Content Manager"].includes(data.roleName)
-                )
-                .filter((data) => {
-                  const assignedRoleIds = assignTeamMembers.map(
-                    (member) => member.roleId?._id
+          <form onSubmit={handleSave}>
+            <div className="grid mt-3 grid-cols-1 gap-4 lg:grid-cols-2">
+              <SelectField
+                label="Member Type"
+                name="type"
+                onChange={({ target }) => {
+                  setSelectedMember(null);
+                  setMembersList([]);
+                  const selectedRole = rolesList?.find(
+                    (data) => data.roleId === target.value
                   );
-                  return !assignedRoleIds.includes(data.roleId);
-                })
-                .map((data) => ({
-                  label: data?.roleName,
-                  value: data?.roleId,
+                  setMembersList(selectedRole?.users);
+                }}
+                options={rolesList
+                  ?.filter(
+                    (data) =>
+                      !["Admin", "Content Manager"].includes(data.roleName)
+                  )
+                  .filter((data) => {
+                    const assignedRoleIds = assignTeamMembers.map(
+                      (member) => member.roleId?._id
+                    );
+                    return !assignedRoleIds.includes(data.roleId);
+                  })
+                  .map((data) => ({
+                    label: data?.roleName,
+                    value: data?.roleId,
+                  }))}
+                required
+              />
+              <SelectField
+                label="Members"
+                name="members"
+                value={selectedMember}
+                onChange={handleChange}
+                options={membersList?.map((data) => ({
+                  label: `${data?.firstName} ${data?.lastName}`,
+                  value: data?._id,
                 }))}
-              required
-            />
-            <SelectField
-              label="Members"
-              name="members"
-              value={selectedMember}
-              onChange={handleChange}
-              options={membersList?.map((data) => ({
-                label: `${data?.firstName} ${data?.lastName}`,
-                value: data?._id,
-              }))}
-              required
-            />
-          </div>
+                required
+              />
+            </div>
 
-          <div className="flex justify-end space-x-2 mt-10">
-            <ModalCloseButton label="Close" onClick={onClose} />
+            <div className="flex justify-end space-x-2 mt-10">
+              <ModalCloseButton label="Close" onClick={onClose} />
 
-            {/* <ModalDeleteButton
+              {/* <ModalDeleteButton
                           label=" Cancel Appointment"
                           onClick={onClose}
                         /> */}
-            <ModalSubmitButton label="Assign" onClick={handleSave} />
-          </div>
+              <ModalSubmitButton type="submit" label="Assign" />
+            </div>
+          </form>
         </div>
       </div>
     </>

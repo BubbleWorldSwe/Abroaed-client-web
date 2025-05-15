@@ -124,6 +124,7 @@ const UpdateLeadPersonalInfo = ({
                   onChange={handleChange}
                   placeholder="Enter mobile number"
                   required
+                  maxLength={10}
                 />
               </div>
 

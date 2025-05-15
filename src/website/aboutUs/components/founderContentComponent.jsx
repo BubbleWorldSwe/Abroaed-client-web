@@ -7,6 +7,7 @@ const FounderContentComponent = ({ text, role, name, imgUrl }) => {
         <div>
             <div className="relative ">
                 <div className="">
+
                     <img
                         src={imgUrl}
                         alt="img"
@@ -19,7 +20,6 @@ const FounderContentComponent = ({ text, role, name, imgUrl }) => {
                 <PrimaryBodyText className="text-black">
                     {role}
                 </PrimaryBodyText>
-
                 <TextComponent text={text} />
             </div>
         </div>

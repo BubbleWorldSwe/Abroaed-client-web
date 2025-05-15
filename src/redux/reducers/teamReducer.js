@@ -41,7 +41,7 @@ export const teamReducer = (state = initialState, action) => {
       console.log(action.payload.page, state.page, action.payload);
       return {
         ...state,
-        loading: false,
+
         /*  teams:
           action.payload.page === 1
             ? action.payload.result
@@ -59,6 +59,7 @@ export const teamReducer = (state = initialState, action) => {
         page: action.payload.page,
         limit: action.payload.limit,
         total: action.payload.total,
+        loading: false,
       };
 
     case FETCH_ALL_TEAMS_SUCCESS:

@@ -30,6 +30,8 @@ export const ADD_STUDENT_DOCUMENTS = "ADD_STUDENT_DOCUMENTS";
 
 export const SET_SELECTED_STUDENT = "SET_SELECTED_STUDENT";
 
+export const STUDENT_DATA_LOADING = "STUDENT_DATA_LOADING";
+
 export const fetchStudentsRequest = (page) => ({
   type: FETCH_STUDENTS_REQUEST,
   payload: page,
@@ -166,4 +168,9 @@ export const searchStudentsFailure = (error) => ({
 export const setSelectedStudent = (student) => ({
   type: SET_SELECTED_STUDENT,
   payload: student,
+});
+
+export const setStudentDataLoading = (loading) => ({
+  type: STUDENT_DATA_LOADING,
+  payload: loading,
 });

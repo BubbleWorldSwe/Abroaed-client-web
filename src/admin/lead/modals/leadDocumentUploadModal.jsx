@@ -1,13 +1,117 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
+
 import { Search, Upload } from "lucide-react";
 import { Toaster } from "react-hot-toast";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { docCategory } from "../../../constants/values";
+import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { TextInputField } from "../../../commons/components/inputFields/textInputField";
+import { toast } from "react-toastify";
 
-const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
+const LeadUploadDocumentModal = ({
+  isOpen,
+  onClose,
+  leadId,
+  uploadDocument,
+}) => {
+  const [formData, setFormData] = useState({
+    applicationId: "",
+    lead: leadId,
+    type: "",
+    title: "",
+    files: null,
+    status: "approved",
+  });
+
+  const { applications } = useSelector(
+    (state) => state?.students?.selectedStudent
+  );
+
+  console.log(applications);
+
+  const fileInputRef = useRef(null);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFileDrop = (e) => {
+    e.preventDefault();
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile) {
+      setFormData({ ...formData, files: droppedFile });
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const files = e.target.files[0];
+    if (files) {
+      setFormData({ ...formData, files });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { files } = formData;
+
+    if (!files) {
+      toast.error("Please select a file to upload");
+      return;
+    }
+
+    const allowedTypes = [
+      "application/pdf",
+      "image/jpeg",
+      "image/png",
+      "image/jpeg",
+    ];
+    const maxSize = 2 * 1024 * 1024; // 2MB
+
+    if (!allowedTypes.includes(files.type)) {
+      toast.error("Only PDF, JPG, and PNG files are allowed");
+      return;
+    }
+
+    if (files.size > maxSize) {
+      toast.error("File size must be less than 2MB");
+      return;
+    }
+
+    try {
+      const filteredData = Object.fromEntries(
+        Object.entries(formData).filter(
+          ([_, value]) => value !== null && value !== undefined && value !== ""
+        )
+      );
+
+      await uploadDocument(filteredData);
+
+      setFormData({
+        applicationId: "",
+        lead: leadId,
+        type: "",
+        title: "",
+        files: null,
+        status: "approved",
+      });
+
+      onClose();
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred while uploading the document");
+    }
+  };
+
+  console.log(isOpen, "handleOpenUploadModal");
+
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50  ">
-          <div className="bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6  max-w-4xl max-h-[600px] overflow-auto relative">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+          <div className="w-1/2 bg-white font-rethink dark:bg-gray-900 rounded-lg shadow-lg p-6 max-w-4xl max-h-[600px] overflow-auto relative">
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={onClose}
@@ -15,113 +119,112 @@ const LeadDocumentUploadModal = ({ isOpen, onClose }) => {
               &times;
             </button>
             <h2 className="text-xl font-semibold mb-4">Upload Documents</h2>
-            <div>
-              <form onSubmit={""} className="space-y-6">
-                <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-3">
-                  {/* Highest Education Qualification (Dropdown) */}
-                  <div>
-                    <label
-                      className={`block text-sm font-semibold text-gray-primary mb-1`}
-                    >
-                      {" "}
-                      Document Type
-                    </label>
-                    <select
-                      name="education"
-                      // value={formData.education}
-                      // onChange={handleChange}
-                      className="w-full px-3 py-1 border-none text-[#3F3F46] bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">Gov/Acad/Fin/Clg Name</option>
-                      <option value="High School">High School</option>
-                      <option value="Diploma">Diploma</option>
-                      <option value="Bachelor's Degree">
-                        Bachelor&apos;s Degree
-                      </option>
-                      <option value="Master's Degree">
-                        Master&apos;s Degree
-                      </option>
-                      <option value="PhD">PhD</option>
-                    </select>
-                  </div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2">
+                <SelectField
+                  label="Document Category"
+                  name="type"
+                  value={formData.type}
+                  onChange={handleChange}
+                  /*  options={docCategory.map((data) => ({
+                    label: data,
+                    value: data,
+                  }))} */
+                  options={docCategory
+                    .filter((data) => data !== "Applications")
+                    .map((data) => ({
+                      label: data,
+                      value: data,
+                    }))}
+                  required
+                />
 
-                  <div>
-                    <label
-                      className={`block text-sm font-semibold text-gray-primary mb-1`}
-                    >
-                      Select Document Name
-                    </label>
-                    <select
-                      name="studyDestination"
-                      // value={formData.studyDestination}
-                      // onChange={handleChange}
-                      className="w-full px-3 py-1 border-none text-[#3F3F46] bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="">Conditional Values</option>
-                      <option value="USA">USA</option>
-                      <option value="UK">UK</option>
-                      <option value="Canada">Canada</option>
-                      <option value="Australia">Australia</option>
-                      <option value="Germany">Germany</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label
-                      className={`block text-sm font-semibold text-gray-primary mb-1`}
-                    >
-                      Title
-                    </label>
+                <TextInputField
+                  label="Title"
+                  name="title"
+                  type="text"
+                  value={formData.title}
+                  onChange={handleChange}
+                  placeholder="Enter Document Title"
+                  required
+                />
+              </div>
+
+              {formData?.type === "Applications" && (
+                <SelectField
+                  label="Select College"
+                  name="applicationId"
+                  value={formData.applicationId}
+                  onChange={handleChange}
+                  options={applications.map((data) => ({
+                    label: data?.college?.name,
+                    value: data?._id,
+                  }))}
+                  required
+                />
+              )}
+              <div className="text-base font-semibold">
+                Upload Documents for the student{" "}
+                <span className="text-gray-500 text-sm">
+                  (supported format: .pdf, .jpg, .jpeg, .png)
+                </span>
+              </div>
+
+              <div>
+                <div
+                  onDrop={handleFileDrop}
+                  onDragOver={(e) => e.preventDefault()}
+                  className="flex items-center justify-center w-full"
+                >
+                  <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <Upload className="text-gray-500" size={30} />
+                      <p className="mb-2 text-md text-gray-500 font-semibold dark:text-gray-400 mt-5">
+                        Click to upload or drag and drop
+                      </p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">
+                        Max. File Size: 2MB
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="flex items-center gap-2 mt-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                      >
+                        <Search className="w-4 h-4" />
+                        Browse File
+                      </button>
+                    </div>
                     <input
-                      className="w-full px-3 py-1 border-none bg-[#F4F4F5] border-gray-300 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      placeholder="Add Name"
+                      id="dropzone-file"
+                      type="file"
+                      className="hidden"
+                      accept=".pdf,.jpg,.jpeg,.png"
+                      onChange={handleFileChange}
+                      ref={fileInputRef}
                     />
-                  </div>
+                  </label>
                 </div>
-                <div className="text-base    font-semibold">
-                  Upload Documents for the student{" "}
-                  <span className="text-gray-500">
-                    (supported format: .pdf, .jpg, .jpeg, .png)
-                  </span>
-                </div>
-                <div>
-                  <div className="flex items-center justify-center w-full">
-                    <label className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                        <Upload className="text-gray-500" />
-                        <p className="mb-2 text-lg text-gray-500 dark:text-gray-400">
-                          Click to upload or drag and drop
-                        </p>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">
-                          Max. File Size: 2MB
-                        </p>
-                        <button className="flex items-center gap-2 mt-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition">
-                          <Search className="w-4 h-4" />
-                          Browse File
-                        </button>
-                      </div>
-                      <input
-                        id="dropzone-file"
-                        type="file"
-                        className="hidden"
-                      />
-                    </label>
-                  </div>
-                </div>
-                <div className="flex gap-3 justify-end mt-4">
-                  <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded-md"
-                  >
-                    Upload
-                  </button>
-                </div>
-              </form>
-            </div>
+                {formData.files && (
+                  <p className="mt-2 text-sm text-black-600 font-bold">
+                    Selected File: {formData.files.name}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex gap-3 justify-end mt-4">
+                <button
+                  type="submit"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md"
+                >
+                  Upload
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };
-export default LeadDocumentUploadModal;
+
+export default LeadUploadDocumentModal;

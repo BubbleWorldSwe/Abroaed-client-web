@@ -70,24 +70,22 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
             className="flex w-full -mb-px text-sm font-medium text-center"
             role="tablist"
           >
-            {tabs
-              .filter((data) => data !== "Applications")
-              .map((tab) => (
-                <li key={tab} className="w-full" role="presentation">
-                  <button
-                    className={`inline-block p-4 w-full text-base font-semibold rounded-t-lg ${
-                      activeTab === tab
-                        ? "text-black border-b-2 border-blue-500"
-                        : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                    }`}
-                    onClick={() => setActiveTab(tab)}
-                    role="tab"
-                    aria-selected={activeTab === tab}
-                  >
-                    {tab}
-                  </button>
-                </li>
-              ))}
+            {tabs.map((tab) => (
+              <li key={tab} className="w-full" role="presentation">
+                <button
+                  className={`inline-block p-4 w-full text-base font-semibold rounded-t-lg ${
+                    activeTab === tab
+                      ? "text-black border-b-2 border-blue-500"
+                      : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  }`}
+                  onClick={() => setActiveTab(tab)}
+                  role="tab"
+                  aria-selected={activeTab === tab}
+                >
+                  {tab}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
 

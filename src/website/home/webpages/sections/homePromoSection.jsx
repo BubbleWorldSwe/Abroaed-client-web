@@ -11,10 +11,15 @@ import {
 // import { SelectField } from "../../../../commons/components/inputFields/selectField";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 
 function HomePromoSection({ source, entity, onFormSubmit }) {
   const { allDestinations } = useSelector((state) => state.destinations);
   const { error } = useSelector((state) => state.leads);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const initialX = isMobile ? -4 : -30;
+  const initialX1 = isMobile ? 4 : 30;
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -95,138 +100,151 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
         <div className="grid grid-cols-1  lg:grid-cols-2 gap-12 md:gap-28 mx-auto  ">
           {/* Left Side: Text and Image */}
           <div className="flex flex-col  gap-3 justify-center">
-            {/* <div className="text-start "> */}
-            <h2
-              className={`mb-2 text-[28px] md:text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
+            <motion.div
+              initial={{ opacity: 0, x: initialX1 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.5 }}
             >
-              Need Clarifications on Your Study Abroad Plans?
-            </h2>
-            <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
-              Our study abroad consultants will reach out to you and guide you
-              through every step of the application process and document
-              preparation, allowing you to focus on what matters most while we
-              handle all the details and ensure a smooth experience easing into
-              your global transition.
-            </p>
-            <div className="flex justify-center  lg:justify-start ">
-              <img
-                className="rounded-lg w-full h-[32vh] object-cover"
-                src={homeQuery}
-                alt="Counselling session"
-              />
-            </div>
-            <div className="flex justify-center text-center mt-5">
-              <a href="/homeCounselling">
-                <button
-                  className="py-1 md:py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-                  // onClick={(e) => {
-                  //   e.preventDefault()
-                  //   navigate("/homeCounselling")
-                  // }}
-                >
-                  Learn More About Home Counselling
-                </button>
-              </a>
-            </div>
-            {/* </div> */}
+              {/* <div className="text-start "> */}
+              <h2
+                className={`mb-2 text-[28px] md:text-[45px] leading-tight  font-extrabold text-gray-primary dark:text-white`}
+              >
+                Need Clarifications on Your Study Abroad Plans?
+              </h2>
+              <p className="text-[#52525B] mb-1 font-semibold text-[16px]">
+                Our study abroad consultants will reach out to you and guide you
+                through every step of the application process and document
+                preparation, allowing you to focus on what matters most while we
+                handle all the details and ensure a smooth experience easing
+                into your global transition.
+              </p>
+              <div className="flex justify-center  lg:justify-start ">
+                <img
+                  className="rounded-lg w-full h-[32vh] object-cover"
+                  src={homeQuery}
+                  alt="Counselling session"
+                />
+              </div>
+              <div className="flex justify-center text-center mt-5">
+                <a href="/homeCounselling">
+                  <button
+                    className="py-1 md:py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                    // onClick={(e) => {
+                    //   e.preventDefault()
+                    //   navigate("/homeCounselling")
+                    // }}
+                  >
+                    Learn More About Home Counselling
+                  </button>
+                </a>
+              </div>
+              {/* </div> */}
+            </motion.div>
           </div>
-
           {/* Right Side: Form */}
           <div className="flex flex-col justify-start  items-end">
-            <div className="flex flex-col  w-full   md:items-start  rounded-lg   ">
-              {/* Tabs Row */}
-              <div className="mb-3">
-                <h2
-                  className={`mb-4 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
-                >
-                  Book Counselling Now
-                </h2>
-                <form className="space-y-10 w-full " onSubmit={handleAddLead}>
-                  <div className="grid grid-cols-1 md:grid-cols-2  w-full md:gap-y-2  md:gap-4">
-                    <BorderTextInputField
-                      label="First Name"
-                      name="firstName"
-                      type="text"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      placeholder="Enter"
-                      required
-                    />
-                    <BorderTextInputField
-                      label="Last Name"
-                      name="lastName"
-                      type="text"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      placeholder="Enter"
-                      required
-                    />
-                    <BorderTextInputField
-                      label="Email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Enter"
-                      required
-                    />
-                    <BorderTextInputField
-                      label="Mobile Number"
-                      name="mobile"
-                      type="tel"
-                      value={formData.mobile}
-                      onChange={handleChange}
-                      placeholder="Enter"
-                      required
-                    />
-                    <BorderSelectField
-                      label="Highest Education Qualification"
-                      name="highestEducation"
-                      value={formData.userDetail.highestEducation}
-                      onChange={handleChange}
-                      options={highestEducation.map((data) => ({
-                        label: data,
-                        value: data,
-                      }))}
-                      required
-                    />
-                    <BorderSelectField
-                      label="Preferred Study Level"
-                      name="applyingFor"
-                      value={formData.userDetail.applyingFor}
-                      onChange={handleChange}
-                      required
-                      options={applyingFor.map((data) => ({
-                        label: data,
-                        value: data,
-                      }))}
-                    />
-                    <BorderSelectField
-                      label="When Do You Plan to Study?"
-                      name="targetYear"
-                      value={formData.userDetail.targetYear}
-                      onChange={handleChange}
-                      options={targetYear.map((data) => ({
-                        label: data,
-                        value: data,
-                      }))}
-                      required
-                    />
-                    <BorderSelectField
-                      label="Preferred Study Destination"
-                      name="preferredDestination"
-                      value={formData.userDetail.preferredDestination}
-                      onChange={handleChange}
-                      options={allDestinations.map((data) => ({
-                        label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
-                        value: data?._id,
-                        ...data,
-                      }))}
-                      required
-                    />
-                  </div>
+            <div className="flex flex-col  w-full relative  md:items-start  rounded-lg   ">
+              <motion.div
+                initial={{ opacity: 0, x: initialX }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.5 }}
+              >
+                {/* Tabs Row */}
+                <div className="mb-3">
+                  <h2
+                    className={`mb-4 text-[28px] md:text-[45px]  font-extrabold text-gray-primary dark:text-white`}
+                  >
+                    Book Counselling Now
+                  </h2>
+                  <form className="space-y-10 w-full " onSubmit={handleAddLead}>
+                    <div className="grid grid-cols-1 md:grid-cols-2  w-full md:gap-y-2  md:gap-4">
+                      <BorderTextInputField
+                        label="First Name"
+                        name="firstName"
+                        type="text"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        placeholder="Enter"
+                        required
+                      />
+                      <BorderTextInputField
+                        label="Last Name"
+                        name="lastName"
+                        type="text"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        placeholder="Enter"
+                        required
+                      />
+                      <BorderTextInputField
+                        label="Email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Enter"
+                        required
+                      />
+                      <BorderTextInputField
+                        label="Mobile Number"
+                        name="mobile"
+                        type="tel"
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        placeholder="Enter"
+                        required
+                        maxLength={10}
+                      />
+                      <BorderSelectField
+                        label="Highest Education Qualification"
+                        name="highestEducation"
+                        value={formData.userDetail.highestEducation}
+                        onChange={handleChange}
+                        options={highestEducation.map((data) => ({
+                          label: data,
+                          value: data,
+                        }))}
+                        required
+                      />
+                      <BorderSelectField
+                        label="Preferred Study Level"
+                        name="applyingFor"
+                        value={formData.userDetail.applyingFor}
+                        onChange={handleChange}
+                        required
+                        options={applyingFor.map((data) => ({
+                          label: data,
+                          value: data,
+                        }))}
+                      />
+                      <BorderSelectField
+                        label="When Do You Plan to Study?"
+                        name="targetYear"
+                        value={formData.userDetail.targetYear}
+                        onChange={handleChange}
+                        options={targetYear.map((data) => ({
+                          label: data,
+                          value: data,
+                        }))}
+                        required
+                      />
+                      <BorderSelectField
+                        label="Preferred Study Destination"
+                        name="preferredDestination"
+                        value={formData.userDetail.preferredDestination}
+                        onChange={handleChange}
+                        options={allDestinations.map((data) => ({
+                          label: `${data?.countryId?.emoji} ${data?.countryId?.name}`,
+                          value: data?._id,
+                          ...data,
+                        }))}
+                        required
+                      />
+                    </div>
 
-                  {/*   <div className="flex items-start mt-4">
+                    {/*   <div className="flex items-start mt-4">
                     <input
                       type="checkbox"
                       className="w-4 h-4 mt-0.5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
@@ -237,17 +255,18 @@ function HomePromoSection({ source, entity, onFormSubmit }) {
                     </label>
                   </div>
  */}
-                  {/* Submit Button */}
-                  <div>
-                    <button
-                      type="submit"
-                      className="py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
-                    >
-                      Book Now
-                    </button>
-                  </div>
-                </form>
-              </div>
+                    {/* Submit Button */}
+                    <div>
+                      <button
+                        type="submit"
+                        className="py-3 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
+                      >
+                        Book Now
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
