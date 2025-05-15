@@ -69,7 +69,7 @@ export const languagePrepsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        allLanguagePreps: action.payload.result,
+        allLanguagePreps: publishedItems,
       };
 
     case EDIT_LANGUAGEPREP_SUCCESS:

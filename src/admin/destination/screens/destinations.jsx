@@ -10,6 +10,7 @@ import {
 } from "../../../redux/actions/destinationActions";
 import AddDestinationModal from "../modals/addDestinationModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 function Destinations() {
   const dispatch = useDispatch();
@@ -158,6 +159,7 @@ function Destinations() {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 }

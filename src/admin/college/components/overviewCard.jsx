@@ -30,6 +30,10 @@ function OverviewCard() {
         <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-4 gap-4">
           {[
             {
+              key: "Website",
+              value: collegeDetails?.website,
+            },
+            {
               key: "Established Year",
               value: collegeDetails?.establishmentYear,
             },

@@ -35,7 +35,7 @@ const FaqLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
         );
       } else {
         const newFaq = { ...formData };
-        updatedFaqs = [newFaq, ...languagePrepDetails.faqs];
+        updatedFaqs = [...languagePrepDetails.faqs, newFaq];
       }
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
@@ -54,7 +54,7 @@ const FaqLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-5">
           <TextInputField
-            label="Question"
+            label="Question*"
             name="question"
             type="text"
             value={formData.question}
@@ -65,7 +65,7 @@ const FaqLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
         </div>
 
         <TextareaInputField
-          label="Answer"
+          label="Answer*"
           name="answer"
           type="text"
           value={formData.answer}
@@ -76,7 +76,7 @@ const FaqLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

@@ -53,7 +53,7 @@ const AboutExamTestPrep = () => {
                 </td>
               </tr>
               <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
-                <td className=" px-4 py-3 font-semibold">Fees</td>
+                <td className=" px-4 py-3 font-semibold">Fees (in ₹)</td>
                 <td className=" px-4 py-3">
                   {testPrepDetails?.aboutExam?.fees}
                 </td>

@@ -71,7 +71,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
     <div className="w-[100vh] max-w-full mx-auto">
       <form onSubmit={handleSubmit}>
         <TextInputField
-          label="Course Name"
+          label="Course Name*"
           name="name"
           type="text"
           value={formData.name}
@@ -82,7 +82,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="mt-5">
           <TextareaInputField
-            label="Course Brief"
+            label="Course Brief*"
             name="brief"
             type="text"
             value={formData.brief}
@@ -97,7 +97,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <SelectField
-            label="Course Level"
+            label="Course Level*"
             name="courseLevel"
             value={formData.courseLevel}
             onChange={(e) => handleInputChange(e, "courseLevel")}
@@ -108,7 +108,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Duration (in months)"
+            label="Duration (in months)*"
             name="duration"
             type="number"
             value={formData.duration}
@@ -118,7 +118,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
           />
 
           <SelectField
-            label="Intake"
+            label="Intake*"
             name="intake"
             value={formData.intake}
             onChange={(e) => handleInputChange(e, "intake")}
@@ -130,7 +130,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
           />
 
           <TextInputField
-            label="Fees (in ₹)"
+            label="Fees (in ₹)*"
             name="fees"
             type="number"
             value={formData.fees}
@@ -140,7 +140,7 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
           />
 
           <SelectField
-            label="Domain"
+            label="Domain*"
             name="domain"
             value={formData.domain}
             onChange={(e) => handleInputChange(e, "domain")}
@@ -148,11 +148,12 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
               label: data,
               value: data,
             }))}
+            required
           />
         </div>
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

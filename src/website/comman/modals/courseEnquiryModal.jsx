@@ -128,6 +128,7 @@ const CourseEnquiryModal = ({
                   value={formData.firstName}
                   onChange={handleChange}
                   required
+                  type={"text"}
                 />
 
                 {/* L Name */}
@@ -138,6 +139,7 @@ const CourseEnquiryModal = ({
                   value={formData.lastName}
                   onChange={handleChange}
                   required
+                  type={"text"}
                 />
 
                 {/* Email */}
@@ -148,6 +150,7 @@ const CourseEnquiryModal = ({
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  type={"email"}
                 />
 
                 {/* Contact Number */}
@@ -159,6 +162,7 @@ const CourseEnquiryModal = ({
                   onChange={handleChange}
                   required
                   maxLength={10}
+                  type={"text"}
                 />
               </div>
               {/* <div className="mt-4 flex items-center justify-center gap-2">

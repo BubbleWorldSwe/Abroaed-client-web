@@ -28,6 +28,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import OverviewDest from "../components/overviewDest";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 function DestinationDetails() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function DestinationDetails() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [states, setStates] = useState([]);
   const [formdata, setFormdata] = useState(null);
-
+  const { loading } = useSelector((state) => state.destinations);
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -323,6 +324,7 @@ function DestinationDetails() {
           </div>
         </div>
       )}
+      <ActivityLoader loading={loading} />
     </div>
   );
 }

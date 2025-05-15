@@ -34,7 +34,7 @@ const AboutLanguagePrepModal = ({ closeModal, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-5">
           <TextInputField
-            label="Name"
+            label="Name*"
             name="about"
             type="text"
             value={formData.productName}
@@ -44,7 +44,7 @@ const AboutLanguagePrepModal = ({ closeModal, onUpdate }) => {
           />
 
           <TextareaInputField
-            label="About"
+            label="About*"
             name="about"
             type="text"
             value={formData.about}
@@ -55,7 +55,7 @@ const AboutLanguagePrepModal = ({ closeModal, onUpdate }) => {
         </div>
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

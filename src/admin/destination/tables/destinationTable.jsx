@@ -86,21 +86,15 @@ const DestinationTable = ({
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="p-4">
-              <CheckboxField
-                onClick={(e) => e.stopPropagation()}
-                id={`checkbox-college-all`}
-                htmlFor={`checkbox-college-all`}
-              />
-            </th>
             <th scope="col" className="px-4 py-3 min-w-[14rem]">
               Country Name
             </th>
-            <th scope="col" className="px-4 py-3 min-w-[10rem]">
-              Author
-            </th>
+
             <th scope="col" className="px-4 py-3 min-w-[10rem]">
               Status
+            </th>
+            <th scope="col" className="px-4 py-3 min-w-[10rem]">
+              Author
             </th>
             <th scope="col" className="px-4 py-3 min-w-[14rem]">
               Created At
@@ -120,35 +114,22 @@ const DestinationTable = ({
                     key={index}
                     className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <td className="px-4 py-3 w-4">
-                      <CheckboxField
-                        onClick={(e) => e.stopPropagation()}
-                        id={`checkbox-college-${index}`}
-                        htmlFor={`checkbox-college-${index}`}
-                      />
-                      {/*  <img
-                      src={`${IMAGE_BASE_URL}/${destination?.imageUrl}`}
-                      alt="pic"
-                      className="w-4 h-4 mr-2"
-                    /> */}
-                    </td>
-
                     <th
-                      scope="row"
+                      onClick={() => handleViewDetails(destination)}
                       className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       {destination?.countryId?.name}
                     </th>
 
                     <td className="px-4 py-3">
+                      {destination?.status === "draft" ? "Draft" : "Published"}
+                    </td>
+                    <td className="px-4 py-3">
                       {destination?.createdBy
                         ? `${destination?.createdBy?.firstName} ${destination?.createdBy?.lastName}`
                         : `Admin`}
                     </td>
 
-                    <td className="px-4 py-3">
-                      {destination?.status === "draft" ? "Draft" : "Published"}
-                    </td>
                     <td className="px-4 py-3">
                       {formatDate(destination.createdAt)}
                     </td>
@@ -185,7 +166,7 @@ const DestinationTable = ({
                                 <li>
                                   <button
                                     onClick={() => {
-                                      setDeleteId(destination._id);
+                                      setDeleteId(destination);
                                       setIsModalOpen(!isModalOpen);
                                     }}
                                     // onClick={() => handleDelete(destination._id)}
@@ -241,9 +222,9 @@ const DestinationTable = ({
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        heading="Delete Destination!"
+        heading={`Delete : ${deleteId?.countryId?.name}`}
         onDelete={() => {
-          handleDelete(deleteId);
+          handleDelete(deleteId?._id);
           setIsModalOpen(false);
         }}
       />

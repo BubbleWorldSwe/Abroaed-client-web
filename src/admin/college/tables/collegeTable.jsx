@@ -8,6 +8,7 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import { setSelectedCollege } from "../../../redux/actions/collegeActions";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
+import { formatDateTime } from "../../../utils/helper";
 
 const CollegeTable = ({
   currentPage,
@@ -71,13 +72,6 @@ const CollegeTable = ({
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="p-4">
-              <CheckboxField
-                onClick={(e) => e.stopPropagation()}
-                id={`checkbox-college-all`}
-                htmlFor={`checkbox-college-all`}
-              />
-            </th>
             <th scope="col" className="px-4 py-3">
               College Name
             </th>
@@ -88,11 +82,18 @@ const CollegeTable = ({
             <th scope="col" className="px-4 py-3">
               Website
             </th>
+
+            <th scope="col" className="px-4 py-3">
+              Entity Type
+            </th>
+            <th scope="col" className="px-4 py-3">
+              Author
+            </th>
             <th scope="col" className="px-4 py-3">
               Status
             </th>
             <th scope="col" className="px-4 py-3">
-              Entity Type
+              Created At
             </th>
 
             <th scope="col" className="px-4 py-3"></th>
@@ -109,16 +110,8 @@ const CollegeTable = ({
                     key={index}
                     className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <td className="px-4 py-3 w-4">
-                      <CheckboxField
-                        onClick={(e) => e.stopPropagation()}
-                        id={`checkbox-college-${index}`}
-                        htmlFor={`checkbox-college-${index}`}
-                      />
-                    </td>
-
                     <th
-                      scope="row"
+                      onClick={() => handleViewDetails(college)}
                       className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                     >
                       {college.name}
@@ -141,6 +134,14 @@ const CollegeTable = ({
                     <td className="px-4 py-3">{college?.entityType}</td>
                     <td className="px-4 py-3">
                       {college?.status === "draft" ? "Draft" : "Published"}
+                    </td>
+                    <td className="px-4 py-3">
+                      {college?.createdBy
+                        ? `${college?.createdBy?.firstName} ${college?.createdBy?.lastName}`
+                        : `Admin`}
+                    </td>
+                    <td className="px-4 py-3">
+                      {formatDateTime(college.createdAt)}
                     </td>
                     <td className="px-4 py-3">
                       <button
@@ -199,7 +200,7 @@ const CollegeTable = ({
                                 setDropdownVisible(null);
                               }} */
                                     onClick={() => {
-                                      setDeleteId(college._id);
+                                      setDeleteId(college);
                                       setIsModalOpen(!isModalOpen);
                                       //setDropdownVisible(null);
                                     }}
@@ -237,9 +238,9 @@ const CollegeTable = ({
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        heading="Delete!"
+        heading={`Delete : ${deleteId?.name}`}
         onDelete={() => {
-          handleDelete(deleteId);
+          handleDelete(deleteId?._id);
           setIsModalOpen(false);
         }}
       />

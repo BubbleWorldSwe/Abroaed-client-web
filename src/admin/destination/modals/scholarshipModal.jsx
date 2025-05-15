@@ -58,7 +58,7 @@ const ScholarshipModal = ({ closeModal, filledData, onUpdate }) => {
     <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-5">
         <TextInputField
-          label="Scholarship Name"
+          label="Scholarship Name*"
           name="name"
           type="text"
           value={formData.name}
@@ -68,7 +68,7 @@ const ScholarshipModal = ({ closeModal, filledData, onUpdate }) => {
         />
 
         <TextInputField
-          label="Link"
+          label="Link*"
           name="link"
           type="text"
           value={formData.link}
@@ -79,7 +79,7 @@ const ScholarshipModal = ({ closeModal, filledData, onUpdate }) => {
       </div>
 
       <TextareaInputField
-        label="Brief Description"
+        label="Brief Description*"
         name="description"
         type="text"
         value={formData.description}
@@ -90,7 +90,7 @@ const ScholarshipModal = ({ closeModal, filledData, onUpdate }) => {
 
       <div className="text-end mt-10">
         <ModalCloseButton label="Cancel" onClick={closeModal} />
-        <ModalSubmitButton label="Save" onClick={handleSubmit} />
+        <ModalSubmitButton label="Save" type="submit" />
       </div>
     </form>
   );

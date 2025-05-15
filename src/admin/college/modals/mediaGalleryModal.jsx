@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const MediaGallery = ({ closeModal, onUploadImage }) => {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
@@ -10,6 +11,8 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
 
   const galleryImages = collegeImages.filter((img) => img.type === "gallery");
   const [files, setFiles] = useState([]);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleFileSelect = (e) => {
     const selectedFiles = Array.from(e.target.files);
@@ -51,8 +54,6 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
     closeModal();
   };
 
-  console.log(galleryImages);
-
   return (
     <div className="w-[100vh] max-w-full mx-auto">
       {/* Image Previews */}
@@ -66,13 +67,23 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
               style={{ flex: "0 0 auto" }}
             >
               <img
-                className="w-full h-50 object-fill rounded-lg"
+                className="w-full h-50 object-fill rounded-lg cursor-pointer"
                 src={`${IMAGE_BASE_URL}/${image.ImageUrl}`}
                 alt={`Existing ${index + 1}`}
+                onClick={() => {
+                  setImagePreview(`${IMAGE_BASE_URL}/${image.ImageUrl}`);
+                  setShowPreviewModal(true);
+                }}
               />
-              {/* No delete button for existing images here */}
             </div>
           ))}
+
+          {showPreviewModal && (
+            <ImagePreviewModalContent
+              imagePreview={imagePreview}
+              onClose={() => setShowPreviewModal(false)}
+            />
+          )}
 
           {/* Show newly selected files */}
           {files.length > 0
@@ -83,9 +94,13 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
                   style={{ flex: "0 0 auto" }}
                 >
                   <img
-                    className="w-full h-50 object-fill rounded-lg"
+                    className="w-full h-50 object-fill rounded-lg cursor-pointer"
                     src={URL.createObjectURL(file)}
                     alt={`Selected ${index + 1}`}
+                    onClick={() => {
+                      setImagePreview(URL.createObjectURL(file));
+                      setShowPreviewModal(true);
+                    }}
                   />
                   <button
                     type="button"

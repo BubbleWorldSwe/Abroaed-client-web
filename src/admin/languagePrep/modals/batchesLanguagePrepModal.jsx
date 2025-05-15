@@ -88,7 +88,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextInputField
-          label="Batch Name"
+          label="Batch Name*"
           name="batchName"
           type="text"
           value={formData.batchName}
@@ -144,7 +144,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <SelectField
-            label="Language"
+            label="Language*"
             name="language"
             value={formData.language}
             onChange={(e) => handleInputChange(e, "language")}
@@ -152,7 +152,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Seats"
+            label="Seats*"
             name="seats"
             type="number"
             value={formData.seats}
@@ -161,7 +161,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             placeholder="Enter Seats"
           />
           <TextInputField
-            label="Duration (Months)"
+            label="Duration (Months)*"
             name="duration"
             type="number"
             value={formData.duration}
@@ -170,7 +170,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
             placeholder="Enter Duration"
           />
           <TextInputField
-            label="Fees (in ₹)"
+            label="Fees (in ₹)*"
             name="fees"
             type="number"
             value={formData.fees}
@@ -201,7 +201,7 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

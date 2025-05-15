@@ -78,7 +78,7 @@ const ImmigrationDetailsModal = ({
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-5">
           <TextInputField
-            label="Visa Name"
+            label="Visa Name*"
             name="visaName"
             type="text"
             value={formData.visaName}
@@ -88,7 +88,7 @@ const ImmigrationDetailsModal = ({
           />
 
           <SelectField
-            label="Visa Type"
+            label="Visa Type*"
             name="visaType"
             value={formData.visaType}
             onChange={(e) => handleInputChange(e, "visaType")}
@@ -101,7 +101,7 @@ const ImmigrationDetailsModal = ({
         </div>
 
         <TextareaInputField
-          label="Brief Description"
+          label="Brief Description*"
           name="description"
           type="text"
           value={formData.description}
@@ -112,7 +112,7 @@ const ImmigrationDetailsModal = ({
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

@@ -6,6 +6,7 @@ import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
   const languagePrepDetails = useSelector(
@@ -18,7 +19,7 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
 
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
-
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
   const closeModal = () => {
     setOpenModal(false);
     setModalType(null);
@@ -91,9 +92,18 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
           <img
             src={`${IMAGE_BASE_URL}/${languagePrepDetails?.imageUrl}`}
             className="w-full h-full object-cover rounded-md"
+            onClick={() => setShowPreviewModal(true)}
           />
         )}
       </div>
+
+      {showPreviewModal && (
+        <ImagePreviewModalContent
+          imagePreview={imagePreview}
+          imageUrl={languagePrepDetails?.imageUrl}
+          onClose={() => setShowPreviewModal(false)}
+        />
+      )}
 
       <div className="rounded-b-xl px-10 flex justify-between border-l-2 p-4 border-r-2 border-b-2 border-gray-400 dark:border-gray-700 shadow-md bg-white dark:bg-gray-800">
         <p className="text-2xl font-semibold">

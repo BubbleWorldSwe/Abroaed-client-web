@@ -50,19 +50,6 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    /*  if (!formData.partTimeStudents.trim()) {
-      toast.error("Part-time options for students is required.");
-      return;
-    }
-    if (!formData.postDegreeOpportunity.trim()) {
-      toast.error("Post-degree popular work opportunities are required.");
-      return;
-    }
-    if (!formData.additionalInformation.trim()) {
-      toast.error("Additional Information is required.");
-      return;
-    }
- */
     professions.forEach((profession, index) => {
       if (!profession?.professionName.trim()) {
         toast.error(`Profession Name (Entry ${index + 1}) is required.`);
@@ -78,8 +65,6 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
 
     const fullFormData = { ...formData, professions: professionWithoutId };
 
-    console.log("Form submitted with data:", fullFormData);
-
     onUpdate({ workOpportunities: fullFormData });
 
     // closeModal();
@@ -92,7 +77,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <TextareaInputField
-            label="Part-time options for Students"
+            label="Part-time options for Students*"
             name="partTimeStudents"
             type="text"
             value={formData?.partTimeStudents || ""}
@@ -103,7 +88,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
         </div>
         <div className="mt-5 mb-5">
           <TextareaInputField
-            label="Part-degree popular work opportunities"
+            label="Part-degree popular work opportunities*"
             name="postDegreeOpportunity"
             type="text"
             value={formData?.postDegreeOpportunity || ""}
@@ -118,7 +103,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
           {professions.map((profession, index) => (
             <div key={index} className="flex gap-4 items-end">
               <TextInputField
-                label="Profession Name"
+                label="Profession Name*"
                 name={`profession-${index}`}
                 type="text"
                 value={profession.professionName}
@@ -133,7 +118,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
                 placeholder="Enter"
               />
               <TextInputField
-                label="Average Salary"
+                label="Average Salary (in ₹)*"
                 name={`salary-${index}`}
                 type="number"
                 value={profession.salary}
@@ -182,13 +167,12 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
           type="text"
           value={formData?.additionalInformation || ""}
           onChange={(e) => handleInputChange(e, "additionalInformation")}
-          required
           placeholder="Enter"
         />
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

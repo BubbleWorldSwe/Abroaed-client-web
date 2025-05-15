@@ -1,7 +1,5 @@
 // import CourseCard from "../../Components/CourseCard";
 
-
-
 const courses = [
   {
     courseName: "Computer Science",
@@ -10,7 +8,8 @@ const courses = [
     duration: "4 Years",
     fees: "$40,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Business Administration",
@@ -19,7 +18,8 @@ const courses = [
     duration: "2 Years",
     fees: "$30,000/year",
     intake: "Spring 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Mechanical Engineering",
@@ -28,7 +28,8 @@ const courses = [
     duration: "4 Years",
     fees: "$35,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Data Science",
@@ -37,7 +38,8 @@ const courses = [
     duration: "2 Years",
     fees: "$45,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Data Science",
@@ -46,7 +48,8 @@ const courses = [
     duration: "2 Years",
     fees: "$45,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Data Science",
@@ -55,7 +58,8 @@ const courses = [
     duration: "2 Years",
     fees: "$45,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Data Science",
@@ -64,7 +68,8 @@ const courses = [
     duration: "2 Years",
     fees: "$45,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
   {
     courseName: "Data Science",
@@ -73,7 +78,8 @@ const courses = [
     duration: "2 Years",
     fees: "$45,000/year",
     intake: "Fall 2024",
-    description: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
+    description:
+      "lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique felis non odio accumsan laoreet. Integer cursus",
   },
 ];
 
@@ -82,7 +88,6 @@ const CourseOffer = () => {
     <div className="relative">
       {/* Blob Background */}
       <section className="px-10 mx-auto">
-
         <div className=" px-4  flex flex-col gap-6 mx-auto max-w-screen-2xl mt-5">
           {/* Content */}
 
@@ -99,12 +104,10 @@ const CourseOffer = () => {
               ))}
             </div>
           </div>
-
         </div>
       </section>
-
     </div>
-  )
-}
+  );
+};
 
-export default CourseOffer
+export default CourseOffer;

@@ -32,6 +32,7 @@ import {
   setDeleteCollegeImage,
 } from "../../../api/collegesApi";
 import { toast } from "react-toastify";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 function CollegDetails() {
   const dispatch = useDispatch();
@@ -48,6 +49,8 @@ function CollegDetails() {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
 
   const [formdata, setFormdata] = useState(null);
+
+  const { loading } = useSelector((state) => state.colleges);
 
   async function onUpdate(data) {
     try {
@@ -267,11 +270,11 @@ function CollegDetails() {
 
       if (data.status === 200) {
         toast.success("Image Delete Sucessfully");
-        fetchCollegeDetails();
-        // onUploadImage(imageData, type);
       } else {
         toast.error(data.message);
       }
+
+      fetchCollegeDetails();
 
       closeModal();
     } catch (error) {
@@ -389,6 +392,7 @@ function CollegDetails() {
           </div>
         )}
       </main>
+      <ActivityLoader loading={loading} />
     </div>
   );
 }

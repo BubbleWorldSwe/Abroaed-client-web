@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 import add_a_photo from "../../../assets/add_a_photo.png";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
   const testPrepDetails = useSelector(
@@ -21,6 +22,8 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
 
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
+
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   const closeModal = () => {
     setOpenModal(false);
@@ -86,8 +89,16 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
               src={`${IMAGE_BASE_URL}/${testPrepDetails?.imageUrl}`}
               alt="Logo Upload"
               className="w-full h-full object-contain rounded-md"
+              onClick={() => setShowPreviewModal(true)}
             />
           </div>
+        )}
+        {showPreviewModal && (
+          <ImagePreviewModalContent
+            imagePreview={imagePreview}
+            imageUrl={testPrepDetails?.imageUrl}
+            onClose={() => setShowPreviewModal(false)}
+          />
         )}
       </div>
 
@@ -131,24 +142,24 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
               &times;
             </button>
             <h2 className="text-2xl font-semibold mb-4">
-              {modalType === "add" ? "Upload Image" : "Update Image"}
+              {modalType === "add" ? "Upload Logo" : "Update Logo"}
             </h2>
 
             {modalType === "edit" && (
-              <div className="w-full relative mb-4">
-                <img
-                  className="w-full h-60 object-cover rounded-lg"
-                  // src={imagePreview || dark}
-
-                  src={
-                    imagePreview
-                      ? imagePreview
-                      : testPrepDetails?.imageUrl
-                      ? `${IMAGE_BASE_URL}/${testPrepDetails.imageUrl}`
-                      : dark
-                  }
-                  alt="Current"
-                />
+              <div className="w-full flex mb-4">
+                <div className="w-1/2 h-40 relative">
+                  <img
+                    className="w-full h-full object-contain rounded-lg"
+                    src={
+                      imagePreview
+                        ? imagePreview
+                        : testPrepDetails?.imageUrl
+                        ? `${IMAGE_BASE_URL}/${testPrepDetails.imageUrl}`
+                        : dark
+                    }
+                    alt="Current"
+                  />
+                </div>
               </div>
             )}
 

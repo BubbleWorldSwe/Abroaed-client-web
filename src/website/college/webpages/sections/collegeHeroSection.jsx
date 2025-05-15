@@ -42,7 +42,14 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
                 alt="pic-location"
                 className="w-[14px] h-[14px] object-contain"
               />
-              <p className="">{collegeDetails?.website}</p>
+              <a
+                href={collegeDetails?.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {collegeDetails?.website}
+              </a>
               <div></div>
             </div>
           </div>

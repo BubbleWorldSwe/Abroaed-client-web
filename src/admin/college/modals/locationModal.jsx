@@ -50,7 +50,7 @@ const LocationModal = ({
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-3 gap-4 mb-5">
           <SelectField
-            label="Country"
+            label="Country*"
             name="destinationId"
             value={formData.destinationId}
             onChange={(e) => {
@@ -78,7 +78,7 @@ const LocationModal = ({
           />
 
           <SelectField
-            label="State"
+            label="State*"
             name="stateId"
             value={formData?.stateId}
             onChange={(e) => handleInputChange("stateId", e.target.value)}
@@ -90,24 +90,26 @@ const LocationModal = ({
           />
 
           <TextInputField
-            label="City"
+            label="City*"
             name="city"
             value={formData?.city}
             onChange={(e) => handleInputChange("city", e.target.value)}
             placeholder={"Enter City"}
+            required
           />
         </div>
         <TextareaInputField
-          label="Address"
+          label="Address*"
           name="address"
           value={formData?.address}
           onChange={(e) => handleInputChange("address", e.target.value)}
           placeholder={"Enter Address"}
+          required
         />
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

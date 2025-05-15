@@ -36,12 +36,10 @@ const FaqTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
         );
       } else {
         const newFaq = { ...formData };
-        updatedFaqs = [newFaq, ...testPrepDetails.faqs];
+        updatedFaqs = [...testPrepDetails.faqs, newFaq];
       }
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
-
-      console.log(faqWithoutId);
 
       onUpdate({ faqs: faqWithoutId });
 
@@ -78,7 +76,7 @@ const FaqTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

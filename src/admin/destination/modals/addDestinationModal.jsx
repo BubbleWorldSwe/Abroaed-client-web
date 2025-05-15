@@ -71,7 +71,7 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
 
         {/* Country Selection */}
         <SearchDropdownField
-          label="Select Country"
+          label="Select Country*"
           options={countries.map((data) => ({
             label: `${data.emoji} ${data.name}`,
             value: data._id,
@@ -85,18 +85,19 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
         {/* Currency Input */}
         <div className="my-5">
           <TextInputField
-            label="Currency"
+            label="Currency*"
             name="currency"
             type="text"
             value={selectedCountry?.currency}
             disabled={true}
             placeholder={"Enter"}
+            required
           />
         </div>
 
         {/* State Selection */}
         <SearchDropdownField
-          label="Select Capital"
+          label="Select Capital*"
           options={filteredStates.map((data) => ({
             label: data.name,
             value: data._id,
@@ -104,6 +105,7 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
           value={selectedState}
           onSelect={(data) => setSelectedState(data.value)}
           onSearch={handleStateSearch}
+          required
         />
         {/* Currency */}
 

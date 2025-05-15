@@ -6,6 +6,7 @@ import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const DestinationImage = ({ onUploadImage, handleDelete }) => {
   const details = useSelector(
@@ -19,6 +20,8 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
 
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
+
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   const closeModal = () => {
     setOpenModal(false);
@@ -79,18 +82,20 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
 
   return (
     <div className="flex flex-col">
-      <div
-        className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer"
-        onClick={(e) => {
-          e.preventDefault();
-          setOpenModal(true);
-          setModalType("add");
-        }}
-      >
+      <div className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer">
         {details?.imageUrl && (
           <img
             src={`${IMAGE_BASE_URL}/${details?.imageUrl}`}
             className="w-full h-full object-cover rounded-md"
+            onClick={() => setShowPreviewModal(true)}
+          />
+        )}
+
+        {showPreviewModal && (
+          <ImagePreviewModalContent
+            imagePreview={imagePreview}
+            imageUrl={details?.imageUrl}
+            onClose={() => setShowPreviewModal(false)}
           />
         )}
       </div>

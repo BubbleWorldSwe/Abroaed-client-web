@@ -19,6 +19,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
     internationalStudent: collegeDetails?.internationalStudent || "",
     studentTeacherRatio: collegeDetails?.studentTeacherRatio || "",
     totalStudents: collegeDetails?.totalStudents || "",
+    website: collegeDetails?.website || "",
   });
 
   const handleSubmit = (e) => {
@@ -34,6 +35,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
       "internationalStudent",
       "studentTeacherRatio",
       "totalStudents",
+      "website",
     ];
 
     // Check if any required field is missing or empty
@@ -70,7 +72,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div className="mb-5">
           <TextInputField
-            label="College Name"
+            label="College Name*"
             name="College Name"
             type="text"
             value={formData.name}
@@ -81,7 +83,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
         </div>
 
         <TextareaInputField
-          label={`Description `}
+          label={`Description*`}
           name="description"
           type="text"
           value={formData?.description}
@@ -95,7 +97,16 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <TextInputField
-            label="Establishment Year"
+            label="Website*"
+            name="website"
+            type="text"
+            value={formData.website}
+            onChange={(e) => handleInputChange(e, "website")}
+            placeholder="Enter"
+            required
+          />
+          <TextInputField
+            label="Establishment Year*"
             name="establishmentYear"
             type="text"
             value={formData.establishmentYear}
@@ -104,7 +115,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Ranking"
+            label="Ranking*"
             name="ranking"
             type="text"
             value={formData.ranking}
@@ -113,7 +124,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Intake"
+            label="Intake*"
             name="intake"
             type="text"
             value={formData.intake}
@@ -122,7 +133,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Total Students"
+            label="Total Students*"
             name="totalStudents"
             value={formData.totalStudents}
             onChange={(e) => handleInputChange(e, "totalStudents")}
@@ -130,7 +141,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
             required
           />
           <TextInputField
-            label="Student to Teacher Ratio"
+            label="Student to Teacher Ratio*"
             name="studentTeacherRatio"
             type="text"
             value={formData.studentTeacherRatio}
@@ -139,7 +150,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
             required
           />
           <TextInputField
-            label="International Students (in %)"
+            label="International Students (in %)*"
             name="internationalStudent"
             type="text"
             value={formData.internationalStudent}
@@ -150,7 +161,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
         </div>
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

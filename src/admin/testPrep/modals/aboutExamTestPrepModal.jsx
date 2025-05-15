@@ -130,7 +130,8 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
           <TextInputField
             label="Registration Link"
             name="registration"
-            type="url"
+            //type="url"
+            type="text"
             value={formData.aboutExam.registration}
             onChange={(e) => handleAboutExamChange(e, "registration")}
             placeholder="Enter Registration URL"

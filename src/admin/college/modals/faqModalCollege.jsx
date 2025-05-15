@@ -33,7 +33,7 @@ const FaqModalCollege = ({ closeModal, filledData, onUpdate }) => {
         );
       } else {
         const newFaq = { ...formData };
-        updatedFaqs = [newFaq, ...collegeDetails.faqSchema];
+        updatedFaqs = [...collegeDetails.faqSchema, newFaq];
       }
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
@@ -75,7 +75,7 @@ const FaqModalCollege = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton label="Save" onClick={handleSubmit} />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import dark from "../../../assets/dark.png"; // fallback image
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent"; // import your preview modal
 import { useState } from "react";
 
 function MediaGalleryCard({ onDeleteImage }) {
@@ -12,6 +13,10 @@ function MediaGalleryCard({ onDeleteImage }) {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null); // track which image to delete
+
+  // New state for preview modal
+  const [previewImage, setPreviewImage] = useState(null);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
   const handleDeleteConfirm = () => {
     if (deleteId) {
@@ -33,9 +38,15 @@ function MediaGalleryCard({ onDeleteImage }) {
             >
               {/* Image */}
               <img
-                className="w-full h-60 object-cover rounded-lg"
+                className="w-full h-60 object-cover rounded-lg cursor-pointer"
                 src={img.ImageUrl ? `${IMAGE_BASE_URL}/${img.ImageUrl}` : dark}
                 alt="Gallery"
+                onClick={() => {
+                  setPreviewImage(
+                    img.ImageUrl ? `${IMAGE_BASE_URL}/${img.ImageUrl}` : dark
+                  );
+                  setIsPreviewOpen(true);
+                }}
               />
               {/* Delete Button */}
               <div className="absolute top-2 right-2">
@@ -77,6 +88,14 @@ function MediaGalleryCard({ onDeleteImage }) {
         heading="Delete!"
         onDelete={handleDeleteConfirm}
       />
+
+      {/* Image Preview Modal */}
+      {isPreviewOpen && (
+        <ImagePreviewModalContent
+          imagePreview={previewImage}
+          onClose={() => setIsPreviewOpen(false)}
+        />
+      )}
     </div>
   );
 }

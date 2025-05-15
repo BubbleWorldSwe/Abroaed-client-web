@@ -16,6 +16,7 @@ import {
   // getDestinationDetailsById,
 } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 function College() {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -27,7 +28,9 @@ function College() {
 
   const [destinationsList, setDestinationsList] = useState([]);
 
-  const { colleges, totalPages } = useSelector((state) => state.colleges);
+  const { colleges, totalPages, loading } = useSelector(
+    (state) => state.colleges
+  );
 
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
@@ -206,6 +209,7 @@ function College() {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 }

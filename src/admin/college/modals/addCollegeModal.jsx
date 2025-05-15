@@ -80,10 +80,13 @@ function AddCollegeModal({
               </svg>
               <span className="sr-only">Close menu</span>
             </button>
-            <form className="flex flex-col gap-4 bg-white  w-full ">
+            <form
+              onSubmit={handleAddCollege}
+              className="flex flex-col gap-4 bg-white  w-full "
+            >
               {/* College Name */}
               <TextInputField
-                label="College Name"
+                label="College Name*"
                 name="name"
                 type="text"
                 value={formData.name}
@@ -95,7 +98,7 @@ function AddCollegeModal({
               <div className="grid grid-cols-2 gap-4">
                 {/* Entity Type */}
                 <TextInputField
-                  label="Entity Type"
+                  label="Entity Type*"
                   name="entityType"
                   type="text"
                   value={formData.entityType}
@@ -106,7 +109,7 @@ function AddCollegeModal({
 
                 {/* Website */}
                 <TextInputField
-                  label="Website"
+                  label="Website*"
                   name="website"
                   type="text"
                   value={formData.website}
@@ -120,7 +123,7 @@ function AddCollegeModal({
 
               <div className="grid grid-cols-3 gap-4">
                 <SelectField
-                  label="Country"
+                  label="Country*"
                   name="destinationId"
                   value={formData.destinationId}
                   onChange={(e) => {
@@ -149,7 +152,7 @@ function AddCollegeModal({
                 {/* State */}
 
                 <SelectField
-                  label="State"
+                  label="State*"
                   name="stateId"
                   value={formData.stateId}
                   onChange={(e) => handleInputChange(e, "stateId")}
@@ -162,7 +165,7 @@ function AddCollegeModal({
 
                 {/* City */}
                 <TextInputField
-                  label="City"
+                  label="City*"
                   name="city"
                   type="text"
                   value={formData.city}
@@ -175,7 +178,7 @@ function AddCollegeModal({
               {/* Address */}
 
               <TextareaInputField
-                label="Address"
+                label="Address*"
                 name="address"
                 type="text"
                 value={formData.Address}
@@ -187,7 +190,7 @@ function AddCollegeModal({
               {/* Action Buttons */}
               <div className="flex justify-end space-x-4 mt-10">
                 <ModalCloseButton label="Cancel" onClick={onClose} />
-                <ModalSubmitButton label="Add" onClick={handleAddCollege} />
+                <ModalSubmitButton label="Add" type="submit" />
               </div>
             </form>
           </div>

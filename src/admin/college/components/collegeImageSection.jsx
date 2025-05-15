@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 import pencil from "../../../assets/pencil.png";
 import dark from "../../../assets/dark.png";
 import add_a_photo from "../../../assets/add_a_photo.png";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const CollegeImageSection = ({
   onUploadImage,
@@ -15,12 +16,14 @@ const CollegeImageSection = ({
 }) => {
   const collegeDetails = useSelector((state) => state.colleges.selectedCollege);
   const { isWriteAccess } = useSelector((state) => state.auth);
-
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
+
+  const [showLogoPreviewModal, setShowLogoPreviewModal] = useState(false);
 
   const closeModal = () => {
     setOpenModal(false);
@@ -107,30 +110,30 @@ const CollegeImageSection = ({
   return (
     <div className="flex flex-col">
       {/* Cover Section */}
-      <div
-        className="w-full h-72 relative rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500"
-        onClick={() => {
-          setModalType("cover");
-          setOpenModal(true);
-        }}
-      >
-        <img
-          src={coverImage ? `${IMAGE_BASE_URL}/${coverImage.ImageUrl}` : dark}
-          alt="Cover"
-          className="w-full h-full object-cover rounded-t-xl"
-        />
+      <div className="w-full h-72 relative rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500">
+        {coverImage?.ImageUrl && (
+          <img
+            src={`${IMAGE_BASE_URL}/${coverImage.ImageUrl}`}
+            alt="Cover"
+            className="w-full h-full object-cover rounded-t-xl"
+            onClick={() => setShowPreviewModal(true)}
+          />
+        )}
 
+        {showPreviewModal && coverImage?.ImageUrl && (
+          <ImagePreviewModalContent
+            imagePreview={imagePreview}
+            imageUrl={coverImage?.ImageUrl}
+            onClose={() => setShowPreviewModal(false)}
+          />
+        )}
         {/* Logo Upload Button */}
         <div
           className="absolute w-24 h-24 p-4 left-20 cursor-pointer rounded-sm"
           style={{ bottom: "-1.7rem", backgroundColor: "rgb(227 231 237)" }}
-          onClick={(e) => {
-            e.stopPropagation();
-            setModalType("logo");
-            setOpenModal(true);
-          }}
         >
           <img
+            onClick={() => setShowLogoPreviewModal(true)} // open logo preview modal here
             src={
               logoImage
                 ? `${IMAGE_BASE_URL}/${logoImage.ImageUrl}`
@@ -139,7 +142,27 @@ const CollegeImageSection = ({
             alt="Logo"
             className="w-full h-full object-contain"
           />
+
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+              setModalType("logo");
+              setOpenModal(true);
+            }}
+            className="absolute bottom-0 right-0 bg-black bg-opacity-60 rounded-md p-1"
+            style={{ width: "24px", height: "24px" }}
+          >
+            <Pencil className="text-white w-4 h-4" />
+          </div>
         </div>
+
+        {showLogoPreviewModal && logoImage?.ImageUrl && (
+          <ImagePreviewModalContent
+            imagePreview={imagePreview}
+            imageUrl={logoImage?.ImageUrl}
+            onClose={() => setShowLogoPreviewModal(false)}
+          />
+        )}
       </div>
 
       {/* College Info Card */}
@@ -156,7 +179,9 @@ const CollegeImageSection = ({
             {collegeDetails?.destinationId?.countryId?.name}
           </p>
           <div className="flex gap-5 mt-3">
-            <button
+            <a
+              href={collegeDetails?.website}
+              target="_blank"
               type="button"
               className="flex items-center justify-center gap-2 text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-lg px-5 py-2.5 dark:focus:ring-yellow-900"
             >
@@ -174,12 +199,23 @@ const CollegeImageSection = ({
                 />
               </svg>
               Visit Website
-            </button>
+            </a>
           </div>
         </div>
 
         {isWriteAccess && (
           <div className="flex items-center">
+            <button
+              type="button"
+              className="text-green-600 text-lg border-green-500 hover:border-2 font-semibold rounded-lg  px-5 py-2.5 text-center inline-flex items-center me-2 bg-white border-2"
+              onClick={() => {
+                setModalType("cover");
+                setOpenModal(true);
+              }}
+            >
+              <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
+              Cover Image
+            </button>
             <button
               onClick={() => setIsModalOpen(true)}
               type="button"
@@ -208,11 +244,21 @@ const CollegeImageSection = ({
             </h2>
 
             <div className="w-full relative mb-4">
-              <img
-                className="w-full h-60 object-cover rounded-lg"
-                src={imagePreview || dark}
-                alt="Preview"
-              />
+              {modalType === "logo" ? (
+                <div className="w-1/2 h-40 relative">
+                  <img
+                    className="w-full h-full object-contain rounded-lg"
+                    src={imagePreview || dark}
+                    alt="Current"
+                  />
+                </div>
+              ) : (
+                <img
+                  className="w-full h-60 object-cover rounded-lg"
+                  src={imagePreview || dark}
+                  alt="Preview"
+                />
+              )}
             </div>
 
             <p className="text-gray-600 text-sm mb-4">

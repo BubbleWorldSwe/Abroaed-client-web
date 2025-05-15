@@ -11,13 +11,14 @@ import {
 import AddProductLanguagePrepModal from "../modals/addProductLanguagePrepModal";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const LanguagePrep = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { languagePreps, totalPages } = useSelector(
+  const { languagePreps, totalPages, loading } = useSelector(
     (state) => state.languagePreps
   );
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
@@ -165,6 +166,7 @@ const LanguagePrep = () => {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

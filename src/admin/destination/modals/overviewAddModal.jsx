@@ -67,7 +67,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
     <form onSubmit={handleSubmit}>
       <TextareaInputField
         label={`Why Study in ${details?.countryId?.name}? `}
-        name="description"
+        name="description*"
         type="text"
         value={formData?.description}
         onChange={(e) => handleInputChange(e?.target?.value, "description")}
@@ -77,7 +77,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
         <SelectField
-          label="Capital"
+          label="Capital*"
           name="capitalId"
           value={formData.capitalId}
           onChange={(e) => {
@@ -92,7 +92,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           required
         />
         <TextInputField
-          label="Language"
+          label="Language*"
           name="language"
           type="text"
           value={formData.language}
@@ -102,13 +102,14 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         />
 
         <TextInputField
-          label="Currency"
+          label="Currency*"
           name="currency"
           type="text"
           value={details?.countryId?.currency}
           //onChange={(e) => handleInputChange(e?.target?.value, "currency")}
           //    placeholder="Enter Capital"
           disabled
+          required
         />
 
         {/*  <TextInputField
@@ -123,7 +124,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
           required
         /> */}
         <TextInputField
-          label="International Students"
+          label="International Students*"
           name="intrStudents"
           type="number"
           value={formData.intrStudents}
@@ -133,7 +134,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
         />
 
         <TextInputField
-          label="Dailing Code"
+          label="Dailing Code*"
           name="dialcode"
           type="text"
           value={formData.dialcode}
@@ -144,7 +145,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
       </div>
       <div className="text-end mt-10">
         <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-        <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+        <ModalSubmitButton label={"Save"} type="submit" />
       </div>
     </form>
   );

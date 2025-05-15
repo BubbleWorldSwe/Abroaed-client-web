@@ -33,7 +33,6 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
     if (
       !formData.batchName.trim() ||
       !formData.seats.trim() ||
-      !formData.mode.trim() ||
       !String(formData.duration).trim() ||
       !String(formData.fees).trim()
     ) {
@@ -89,7 +88,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <TextInputField
-          label="Batch Name"
+          label="Batch Name*"
           name="batchName"
           type="text"
           value={formData.batchName}
@@ -99,7 +98,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
         />
 
         <p className="block text-sm font-medium text-gray-700 mt-5">
-          Features you’ll love
+          Features you’ll love*
         </p>
         <div className="grid gap-2">
           {formData.features.map((feature, index) => (
@@ -140,25 +139,8 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <SelectField
-            label="Mode"
-            name="mode"
-            value={formData.mode}
-            onChange={(e) => handleInputChange(e, "mode")}
-            options={testMode.map((data) => ({ label: data, value: data }))}
-            required
-          />
           <TextInputField
-            label="Seats"
-            name="seats"
-            type="number"
-            value={formData.seats}
-            onChange={(e) => handleInputChange(e, "seats")}
-            required
-            placeholder="Enter Seats"
-          />
-          <TextInputField
-            label="Duration (Months)"
+            label="Duration (in Months)*"
             name="duration"
             type="number"
             value={formData.duration}
@@ -166,14 +148,33 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
             required
             placeholder="Enter Duration"
           />
+
           <TextInputField
-            label="Fees (in ₹)"
+            label="Fees (in ₹)*"
             name="fees"
             type="number"
             value={formData.fees}
             onChange={(e) => handleInputChange(e, "fees")}
             required
             placeholder="Enter Fees"
+          />
+
+          <TextInputField
+            label="Seats*"
+            name="seats"
+            type="number"
+            value={formData.seats}
+            onChange={(e) => handleInputChange(e, "seats")}
+            required
+            placeholder="Enter Seats"
+          />
+
+          <SelectField
+            label="Mode"
+            name="mode"
+            value={formData.mode}
+            onChange={(e) => handleInputChange(e, "mode")}
+            options={testMode.map((data) => ({ label: data, value: data }))}
           />
           <div className="flex items-center text-center gap-3 mt-5">
             <CheckboxField
@@ -197,7 +198,7 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

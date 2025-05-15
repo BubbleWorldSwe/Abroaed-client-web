@@ -9,17 +9,15 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
     <Element name="scholarships">
       <div className="relative">
         <section className=" dark:bg-gray-900 relative ">
-          <MotionComponent >
+          <MotionComponent>
             <div className="">
               <div className="flex flex-col gap-2 md:gap-6  text-gray-500 sm:text-lg dark:text-gray-400">
-                <SectionMainHeader
-                  className=""
-                >
+                <SectionMainHeader className="">
                   Scholarships & Financial Aid
                 </SectionMainHeader>
                 <PrimaryBodyText
-                  className={'font-semibold'}
-                  style={{ fontSize: '18px' }}
+                  className={"font-semibold"}
+                  style={{ fontSize: "18px" }}
                 >
                   For Study in {destinationDetails?.countryId?.name}, the amount
                   of money available and the type of award varies between
@@ -35,7 +33,9 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                   <div className=" dark:bg-gray-800 relative   overflow-hidden">
                     <div className="overflow-x-auto">
                       <table className="w-full   text-left  border-t-2 border-gray-400  dark:text-gray-400">
-                        <thead className={`text-[22px]  text-gray-primary font-semibold  border-b-2 border-gray-400 `}>
+                        <thead
+                          className={`text-[22px]  text-gray-primary font-semibold  border-b-2 border-gray-400 `}
+                        >
                           <tr>
                             <th scope="col" className="px-4 py-3 ">
                               Name of Scholarship
@@ -49,29 +49,33 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
                           </tr>
                         </thead>
                         <tbody>
-                          {destinationDetails?.scholarships.map((item, index) => (
-                            <tr
-                              key={index}
-                              className="border-b-2 border-gray-400  dark:border-gray-700"
-                            >
-                              <th
-                                scope="row"
-                                className={`px-4 py-3 font-semibold text-[18px] text-gray-primary  dark:text-white`}                           >
-                                <p>
-                                  {item.name}
-                                </p>
-                                {/* <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-500 hover:underline cursor-pointer"
+                          {destinationDetails?.scholarships.map(
+                            (item, index) => (
+                              <tr
+                                key={index}
+                                className="border-b-2 border-gray-400  dark:border-gray-700"
                               >
-                                {item.name}
-                              </a> */}
-                              </th>
-                              <td className={`px-4 py-3 text-base font-normal text-gray-primary `}>{item.description}</td>
-                            </tr>
-                          ))}
+                                <th
+                                  scope="row"
+                                  className={`px-4 py-3 font-semibold text-[18px] text-gray-primary  dark:text-white`}
+                                >
+                                  <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline cursor-pointer"
+                                  >
+                                    {item.name}
+                                  </a>
+                                </th>
+                                <td
+                                  className={`px-4 py-3 text-base font-normal text-gray-primary `}
+                                >
+                                  {item.description}
+                                </td>
+                              </tr>
+                            )
+                          )}
                         </tbody>
                       </table>
                     </div>
@@ -80,10 +84,10 @@ const DestinationScholarshipSection = ({ destinationDetails }) => {
               </section>
               <div className="pt-4">
                 <PrimaryBodyText>
-                  If you want to bring down your educational expenses, it is best
-                  to apply to various scholarships available for Indian students.
+                  If you want to bring down your educational expenses, it is
+                  best to apply to various scholarships available for Indian
+                  students.
                 </PrimaryBodyText>
-
               </div>
             </div>
           </MotionComponent>

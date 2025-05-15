@@ -6,10 +6,21 @@ import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { motion } from "framer-motion";
 
 function TextPrepAbout({ testPrepsDetails }) {
+  const aboutExam = testPrepsDetails?.aboutExam;
+
+  // Check if at least one field has a value
+  const hasExamDetails =
+    aboutExam?.examDate ||
+    aboutExam?.examCenter ||
+    aboutExam?.registration ||
+    aboutExam?.fees ||
+    aboutExam?.syllabus ||
+    aboutExam?.scoring_and_results;
+
   return (
     <div className="relative z-10">
-      <div className="mx-auto  max-w-screen-2xl   flex flex-col gap-6">
-        <header className=" not-format">
+      <div className="mx-auto max-w-screen-2xl flex flex-col gap-6">
+        <header className="not-format">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -17,41 +28,38 @@ function TextPrepAbout({ testPrepsDetails }) {
             viewport={{ once: false, amount: 0.3 }}
             className="overflow-hidden"
           >
-            <SectionMainHeader
-              className="mb-4"
-            >
+            <SectionMainHeader className="mb-4">
               About {testPrepsDetails?.productName}
             </SectionMainHeader>
-            <PrimaryBodyText
-              className={'mt-2'}
-            >
+            <PrimaryBodyText className="mt-2">
               {testPrepsDetails?.about}
             </PrimaryBodyText>
           </motion.div>
         </header>
-        {testPrepsDetails?.aboutExam?.examDate &&
-          testPrepsDetails?.aboutExam?.examCenter && (
-            <div className="relative overflow-x-auto ">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="flex  items-center justify-center  mx-auto ">
-                  <table className=" bg-white  text-sm text-left text-gray-500 border-2 border-[#E4E4E7] dark:text-gray-400">
-                    <thead className="text-base  text-[#71717A] font-bold  bg-[#E4E4E7] dark:bg-gray-700 ">
-                      <tr>
-                        <th scope="col" className="px-6 py-3">
-                          Particular
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Detail
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
+
+        {hasExamDetails && (
+          <div className="relative overflow-x-auto ">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="w-full overflow-x-auto flex justify-center">
+                <table className="max-w-4xl w-full bg-white text-sm text-left text-gray-500 border-2 border-[#E4E4E7] dark:text-gray-400">
+                  <thead className="text-base text-[#71717A] font-bold bg-[#E4E4E7] dark:bg-gray-700">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        Particular
+                      </th>
+                      <th scope="col" className="px-6 py-3">
+                        Detail
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {aboutExam.examDate && (
                       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th
                           scope="row"
@@ -60,9 +68,11 @@ function TextPrepAbout({ testPrepsDetails }) {
                           Exam Date
                         </th>
                         <td className="px-6 py-4">
-                          {formatDate(testPrepsDetails?.aboutExam?.examDate)}
+                          {formatDate(aboutExam.examDate)}
                         </td>
                       </tr>
+                    )}
+                    {aboutExam.examCenter && (
                       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th
                           scope="row"
@@ -70,10 +80,10 @@ function TextPrepAbout({ testPrepsDetails }) {
                         >
                           Exam Centre
                         </th>
-                        <td className="px-6 py-4">
-                          {testPrepsDetails?.aboutExam?.examCenter}
-                        </td>
+                        <td className="px-6 py-4">{aboutExam.examCenter}</td>
                       </tr>
+                    )}
+                    {aboutExam.registration && (
                       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th
                           scope="row"
@@ -81,21 +91,21 @@ function TextPrepAbout({ testPrepsDetails }) {
                         >
                           Registration
                         </th>
-                        <td className="px-6 py-4">
-                          {testPrepsDetails?.aboutExam?.registration}
-                        </td>
+                        <td className="px-6 py-4">{aboutExam.registration}</td>
                       </tr>
+                    )}
+                    {aboutExam.fees && (
                       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th
                           scope="row"
                           className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                         >
-                          Fees
+                          Fees (in ₹)
                         </th>
-                        <td className="px-6 py-4">
-                          {testPrepsDetails?.aboutExam?.fees}
-                        </td>
+                        <td className="px-6 py-4">{aboutExam.fees}</td>
                       </tr>
+                    )}
+                    {aboutExam.syllabus && (
                       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th
                           scope="row"
@@ -103,10 +113,10 @@ function TextPrepAbout({ testPrepsDetails }) {
                         >
                           Syllabus
                         </th>
-                        <td className="px-6 py-4">
-                          {testPrepsDetails?.aboutExam?.syllabus}
-                        </td>
+                        <td className="px-6 py-4">{aboutExam.syllabus}</td>
                       </tr>
+                    )}
+                    {aboutExam.scoring_and_results && (
                       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th
                           scope="row"
@@ -115,25 +125,26 @@ function TextPrepAbout({ testPrepsDetails }) {
                           Scoring & Results
                         </th>
                         <td className="px-6 py-4">
-                          {testPrepsDetails?.aboutExam?.scoring_and_results}
+                          {aboutExam.scoring_and_results}
                         </td>
                       </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <td className="m-0 p-0" colSpan={2}>
-                          <nav
-                            className="bg-[#E4E4E7]  w-full  md:space-y-0 p-4"
-                            aria-label="Table navigation"
-                          ></nav>
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-              </motion.div>
-            </div>
-          )}
+                    )}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td className="m-0 p-0" colSpan={2}>
+                        <nav
+                          className="bg-[#E4E4E7] w-full md:space-y-0 p-4"
+                          aria-label="Table navigation"
+                        />
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </motion.div>
+          </div>
+        )}
       </div>
     </div>
   );

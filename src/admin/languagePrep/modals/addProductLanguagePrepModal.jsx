@@ -47,16 +47,17 @@ const AddProductLanguagePrepModal = ({
             </button>
             <h2 className="text-xl font-bold ">Add Language Prep</h2>
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleAddLanguagePreps}
               className="flex flex-col gap-5 mx-auto py-5 rounded-lg"
             >
               <TextInputField
-                label="Name"
+                label="Name*"
                 name="productName"
                 type="text"
                 value={formData?.productName}
                 onChange={handleChange}
                 placeholder={"Enter Name"}
+                required
               />
 
               {/*   <TextInputField
@@ -70,10 +71,7 @@ const AddProductLanguagePrepModal = ({
 
               <div className="flex justify-end space-x-4 mt-5">
                 <ModalCloseButton label="Cancel" onClick={onClose} />
-                <ModalSubmitButton
-                  label="Add"
-                  onClick={handleAddLanguagePreps}
-                />
+                <ModalSubmitButton label="Add" type="submit" />
               </div>
             </form>
           </div>

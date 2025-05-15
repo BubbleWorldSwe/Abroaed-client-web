@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 function TestPrepBatchDetaileSection({
   testPrepsDetails,
   onClickPayment,
-  disabledPayment
+  disabledPayment,
 }) {
   const [openModal, setOpenModal] = useState(false);
   const { studentToken } = useSelector((state) => state.auth);
@@ -27,11 +27,7 @@ function TestPrepBatchDetaileSection({
         <div className="   flex flex-col gap-6">
           {/* Content */}
           <div className="relative z-10">
-            <SectionMainHeader
-              className="mb-2"
-            >
-              Batches
-            </SectionMainHeader>
+            <SectionMainHeader className="mb-2">Batches</SectionMainHeader>
             <div className=" border-t border-gray-300"></div>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -76,21 +72,24 @@ function TestPrepBatchDetaileSection({
                       </p>
                     </div>
 
-                    <p className="font-semibold text-base mb-3 mt-2">
-                      {" "}
-                      Features you'll love{" "}
-                    </p>
+                    {data.features?.length > 0 && (
+                      <div>
+                        <p className="font-semibold text-base mb-3 mt-2">
+                          Features you'll love{" "}
+                        </p>
 
-                    <ul role="list" className="mb-8 space-y-2 text-left">
-                      {data.features?.map((item, i) => (
-                        <li key={i} className="flex items-center space-x-3">
-                          <CheckIcon color={"gray-primary"} size={14} />
-                          <span className="text-[12px] text-[#52525B] font-normal ">
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                        <ul role="list" className="mb-8 space-y-2 text-left">
+                          {data.features?.map((item, i) => (
+                            <li key={i} className="flex items-start space-x-3">
+                              <span className="w-1 h-1 mt-2 rounded-full bg-[#71717A] flex-shrink-0"></span>
+                              <span className="text-[12px] text-[#52525B] font-normal">
+                                {item}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
