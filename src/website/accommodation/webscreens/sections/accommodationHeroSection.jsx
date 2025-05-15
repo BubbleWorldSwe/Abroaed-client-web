@@ -1,10 +1,10 @@
-import accommodationHero from "../../../../assets/accommodationHero.png";
+import accommodation from "../../../../assets/accommodation.jpg";
 import { heroStyle } from "../../../comman/contexts/heroStyle";
 import HeroTextComponent from "../../../styleComponents/heroText";
 
 function AccommodationHeroSection() {
   return (
-    <HeroTextComponent img={accommodationHero}>
+    <HeroTextComponent img={accommodation}>
       <h1 className={heroStyle.header}>
         Accomodations
       </h1>
