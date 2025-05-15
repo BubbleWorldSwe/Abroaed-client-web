@@ -37,7 +37,7 @@ const AvailabilityModal = ({ closeModal, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-1">
           <TextInputField
-            label="Availability"
+            label="Availability*"
             name="availablity"
             type="text"
             value={formData?.availablity || ""}
@@ -49,7 +49,7 @@ const AvailabilityModal = ({ closeModal, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

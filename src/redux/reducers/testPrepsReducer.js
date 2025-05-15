@@ -133,7 +133,7 @@ export const testPrepsReducer = (state = initialState, action) => {
       };
 
     case SET_SELECTED_TESTPREP:
-      return { ...state, selectedTestPrep: action.payload };
+      return { ...state, selectedTestPrep: action.payload, loading: false };
 
     default:
       return state;

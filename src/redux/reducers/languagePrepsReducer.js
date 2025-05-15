@@ -110,7 +110,7 @@ export const languagePrepsReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_LANGUAGEPREP:
-      return { ...state, selectedLanguagePrep: action.payload };
+      return { ...state, selectedLanguagePrep: action.payload, loading: false };
 
     default:
       return state;

@@ -39,7 +39,7 @@ const DescriptionModal = ({ closeModal, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-5">
           <TextInputField
-            label="Accomodation Name"
+            label="Accomodation Name*"
             name="accomodationName"
             type="text"
             value={formData?.accomodationName || ""}
@@ -48,7 +48,7 @@ const DescriptionModal = ({ closeModal, onUpdate }) => {
             placeholder="Enter"
           />
           <TextareaInputField
-            label="Description"
+            label="Description*"
             name="description"
             type="text"
             value={formData?.description || ""}
@@ -64,7 +64,7 @@ const DescriptionModal = ({ closeModal, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

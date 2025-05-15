@@ -6,6 +6,7 @@ import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
   const accommodationDetails = useSelector(
@@ -21,6 +22,8 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
   const [fileImage, setFileImage] = useState(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
 
   const closeModal = () => {
     setOpenModal(false);
@@ -79,18 +82,19 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
 
   return (
     <div className="flex flex-col">
-      <div
-        className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer"
-        onClick={(e) => {
-          e.preventDefault();
-          setOpenModal(true);
-          setModalType("add");
-        }}
-      >
+      <div className="w-full h-48 rounded-t-xl bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer">
         {accommodationDetails?.imageUrl && (
           <img
             src={`${IMAGE_BASE_URL}/${accommodationDetails?.imageUrl}`}
             className="w-full h-full object-cover rounded-md"
+            onClick={() => setShowPreviewModal(true)}
+          />
+        )}
+        {showPreviewModal && (
+          <ImagePreviewModalContent
+            imagePreview={imagePreview}
+            imageUrl={accommodationDetails?.imageUrl}
+            onClose={() => setShowPreviewModal(false)}
           />
         )}
       </div>

@@ -2,23 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import BlogImageSection from "../components/blogImgSection";
 import { uploadBlogImageRequest } from "../../../redux/actions/blogActions";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
+import { useState } from "react";
+import ImagePreviewModalContent from "../../../commons/modal/imagePreviewModalContent";
 
 const BlogsDetails = () => {
   const blogDetails = useSelector((state) => state?.blogs?.selectedBlog);
-  const dispatch = useDispatch();
-  async function onUploadImage(data) {
-    try {
-      console.log(data);
-      dispatch(
-        uploadBlogImageRequest(blogDetails._id, {
-          files: data,
-        })
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
   return (
     <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
       <section className="py-3 sm:py-5 flex-grow">
@@ -30,6 +19,14 @@ const BlogsDetails = () => {
                   src={`${IMAGE_BASE_URL}/${blogDetails?.image}`}
                   alt="Blog"
                   className="w-full h-full object-cover"
+                  onClick={() => setShowPreviewModal(true)}
+                />
+              )}
+              {showPreviewModal && (
+                <ImagePreviewModalContent
+                  // imagePreview={imagePreview}
+                  imageUrl={blogDetails?.image}
+                  onClose={() => setShowPreviewModal(false)}
                 />
               )}
             </div>

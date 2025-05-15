@@ -93,7 +93,7 @@ export const collegesReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_COLLEGE:
-      return { ...state, selectedCollege: action.payload };
+      return { ...state, selectedCollege: action.payload, loading: false };
 
     default:
       return state;

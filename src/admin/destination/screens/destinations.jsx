@@ -27,10 +27,10 @@ function Destinations() {
     setIsAddModalOpen(false);
   };
 
-  const onAddDestination = (countryId, capitalId) => {
-    console.log(countryId, capitalId);
+  const onAddDestination = (countryId, capital) => {
+    console.log(countryId, capital);
 
-    dispatch(addDestinationRequest({ countryId, capitalId }));
+    dispatch(addDestinationRequest({ countryId, capital }));
     setCurrentPage(1);
     dispatch(fetchDestinationsRequest(1));
     setIsAddModalOpen(false);

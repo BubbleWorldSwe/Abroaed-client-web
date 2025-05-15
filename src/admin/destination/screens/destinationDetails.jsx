@@ -173,6 +173,7 @@ function DestinationDetails() {
       console.log(error);
     }
   }
+  console.log(loading, "loadng");
 
   async function fetchDestnationDetails() {
     try {

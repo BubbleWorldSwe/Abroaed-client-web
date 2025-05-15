@@ -30,7 +30,9 @@ import {
   loginApi,
   setStudentSignUp,
   setUpdateAdmin,
+  setUpdateAdminPassword,
   setUpdateStudent,
+  setUpdateStudentPassword,
 } from "../../api/authApi";
 import { toast } from "react-toastify";
 
@@ -77,7 +79,7 @@ function* handleStudentSignUp(action) {
 
 function* handleStudentResetPassword(action) {
   try {
-    const response = yield call(setUpdateStudent, action.payload);
+    const response = yield call(setUpdateStudentPassword, action.payload);
 
     console.log(response);
     if (response.status === 200) {
@@ -101,8 +103,7 @@ function* handleStudentResetPassword(action) {
 
 function* handleAdminResetPassword(action) {
   try {
-    setUpdateAdmin;
-    const response = yield call(setUpdateAdmin, action.payload);
+    const response = yield call(setUpdateAdminPassword, action.payload);
 
     console.log(response);
     if (response.status === 200) {

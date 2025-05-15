@@ -20,7 +20,7 @@ const UniversityCard = ({ item }) => {
             src={
               coverImage
                 ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
-                : IMAGES.noImage
+                : IMAGES.noCollege
             }
             alt={item.name}
           />

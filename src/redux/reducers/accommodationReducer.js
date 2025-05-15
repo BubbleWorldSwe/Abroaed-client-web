@@ -92,7 +92,11 @@ export const accommodationsReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_ACCOMMODATION:
-      return { ...state, selectedAccommodation: action.payload };
+      return {
+        ...state,
+        selectedAccommodation: action.payload,
+        loading: false,
+      };
 
     default:
       return state;

@@ -14,6 +14,7 @@ import { fetchCountriesRequest } from "../../../redux/actions/countryActions";
 import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const Accommodations = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -31,7 +32,7 @@ const Accommodations = () => {
   const [destinationsList, setDestinationsList] = useState([]);
   const [statesList, setStatesList] = useState([]);
 
-  const { accommodations, totalPages } = useSelector(
+  const { accommodations, totalPages, loading } = useSelector(
     (state) => state.accommodations
   );
 
@@ -210,6 +211,7 @@ const Accommodations = () => {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

@@ -16,7 +16,8 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
   );
   const [formData, setFormData] = useState({
     description: details?.description || "",
-    capitalId: details?.capitalId?._id || "",
+
+    capital: details?.capital || "",
 
     language: details?.language || "",
     intrStudents: details?.intrStudents || "",
@@ -30,7 +31,7 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
     // List of required fields
     const requiredFields = [
       "description",
-      "capitalId",
+      "capital",
       "language",
       "intrStudents",
       "dialcode",
@@ -76,19 +77,13 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-5">
-        <SelectField
+        <TextInputField
           label="Capital*"
-          name="capitalId"
-          value={formData.capitalId}
-          onChange={(e) => {
-            console.log("e");
-            console.log(e);
-            handleInputChange(e?.target?.value, "capitalId");
-          }}
-          options={states.map((data) => ({
-            label: data.name,
-            value: data._id,
-          }))}
+          name="capital"
+          type="text"
+          value={formData.capital}
+          onChange={(e) => handleInputChange(e?.target?.value, "capital")}
+          placeholder="Enter Capital"
           required
         />
         <TextInputField

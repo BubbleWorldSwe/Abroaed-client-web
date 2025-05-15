@@ -13,7 +13,7 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
   const list = [
     {
       title: "Capital",
-      value: destinationDetails?.capitalId?.name,
+      value: destinationDetails?.capital,
       icon: locationIconWhite,
     },
     {
@@ -45,7 +45,9 @@ const DestinationFunFactSection = ({ items, destinationDetails }) => {
         <div className=" ">
           <div className="flex items-center justify-center text-center">
             <MotionComponent>
-              <SectionMainHeader className="mb-1 md:mb-5">Fun Facts</SectionMainHeader>
+              <SectionMainHeader className="mb-1 md:mb-5">
+                Fun Facts
+              </SectionMainHeader>
             </MotionComponent>
           </div>
           <div className="mt-5 md:mt-10 space-y-6">

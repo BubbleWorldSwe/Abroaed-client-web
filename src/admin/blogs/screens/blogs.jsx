@@ -9,6 +9,7 @@ import {
   fetchBlogsRequest,
 } from "../../../redux/actions/blogActions";
 import { AddButton } from "../../../commons/components/buttons/addButton";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const Blogs = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -17,7 +18,7 @@ const Blogs = () => {
 
   const dispatch = useDispatch();
 
-  const { blogs, totalPages } = useSelector((state) => state.blogs);
+  const { blogs, totalPages, loading } = useSelector((state) => state.blogs);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -133,6 +134,7 @@ const Blogs = () => {
           </div>
         </section>
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

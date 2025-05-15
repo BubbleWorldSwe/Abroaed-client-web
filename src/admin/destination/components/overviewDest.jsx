@@ -17,7 +17,7 @@ function OverviewDest() {
       {/* Grid Section */}
       <div className="justify-start w-full grid grid-cols-1 sm:grid-cols-5 gap-4">
         {[
-          { key: "Capital", value: details?.capitalId?.name },
+          { key: "Capital", value: details?.capital },
           { key: "Language", value: details?.language },
           //  { key: "Total Population", value: details?.totalPopulation },
 

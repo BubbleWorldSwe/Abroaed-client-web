@@ -11,9 +11,9 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
     (state) => state.destinations.selectedDestination
   );
   const defaultFormData = [
-    { id: 1, label: "Average Tuition Fees UG (per year)", value: "" },
-    { id: 2, label: "Average Tuition Fees PG (per year)", value: "" },
-    { id: 3, label: "Average Tuition Fees PhD (per year)", value: "" },
+    { id: 1, label: "Average Tuition Fees UG (per intake)", value: "" },
+    { id: 2, label: "Average Tuition Fees PG (per intake)", value: "" },
+    { id: 3, label: "Average Tuition Fees PhD (per intake)", value: "" },
     { id: 4, label: "Average Rent (per month)", value: "" },
     { id: 5, label: "Average Food Expenses (per month)", value: "" },
     { id: 6, label: "Average Transport Expenses (per month)", value: "" },

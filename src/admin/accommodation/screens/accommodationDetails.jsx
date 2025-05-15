@@ -22,10 +22,12 @@ import { getStatesByCountryId } from "../../../api/countriesApi";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../../commons/modal/deletedModal";
 import AddOverviewContentModal from "../../common/modals/addOverviewsContentModal";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const AccommodationDetails = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.accommodations);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedSection, setSelectedSection] = useState(null);
@@ -262,6 +264,7 @@ const AccommodationDetails = () => {
           </div>
         </div>
       )}
+      <ActivityLoader loading={loading} />
     </div>
   );
 };

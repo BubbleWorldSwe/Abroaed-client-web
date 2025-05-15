@@ -13,6 +13,7 @@ import {
 import { getBlogsCategory } from "../../../api/blogsApi";
 import { useNavigate } from "react-router-dom";
 import BlogImageSection from "../components/blogImgSection";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const EditBlog = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const EditBlog = () => {
     status: "",
   });
   const [blogsCategory, setBlogsCategory] = useState([]);
-
+  const { loading } = useSelector((state) => state.blogs);
   async function onUploadImage(data) {
     try {
       // console.log(data);
@@ -158,6 +159,7 @@ const EditBlog = () => {
                   value={formData.title}
                   onChange={handleChange}
                   placeholder="Enter Title"
+                  type={"text"}
                 />
                 <div className="my-5 mb-6">
                   <SelectField
@@ -213,6 +215,7 @@ const EditBlog = () => {
           }
         `}
       </style>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

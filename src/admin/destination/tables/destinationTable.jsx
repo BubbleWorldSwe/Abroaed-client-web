@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { formatDate } from "../../../utils/helper";
+import { formatDate, formatDateTime } from "../../../utils/helper";
 import { setSelectedDestination } from "../../../redux/actions/destinationActions";
 import { useDispatch, useSelector } from "react-redux";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
@@ -131,7 +131,7 @@ const DestinationTable = ({
                     </td>
 
                     <td className="px-4 py-3">
-                      {formatDate(destination.createdAt)}
+                      {formatDateTime(destination.createdAt)}
                     </td>
 
                     <td className="px-4 py-3">

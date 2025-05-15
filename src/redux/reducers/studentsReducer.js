@@ -214,7 +214,7 @@ export const studentsReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload, students: [] };
 
     case SET_SELECTED_STUDENT:
-      return { ...state, selectedStudent: action.payload };
+      return { ...state, selectedStudent: action.payload, loading: false };
 
     case STUDENT_DATA_LOADING:
       console.log("STUDENT_DATA_LOADING");

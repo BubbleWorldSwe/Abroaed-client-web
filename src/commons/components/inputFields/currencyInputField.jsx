@@ -16,7 +16,7 @@ export function CurrencyInputField({
         <input
           type={type}
           name={name}
-          className="block w-full rounded-l-md bg-[#F4F4F5] border-transparent focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2"
+          className="block w-full rounded-l-md bg-[#F4F4F5] border-transparent focus:ring-primary-600 focus:border-primary-600 sm:text-sm px-3 py-2"
           placeholder={placeholder}
           value={value}
           onChange={onChange}

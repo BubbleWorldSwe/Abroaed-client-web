@@ -18,7 +18,7 @@ const CollegeHeroSection = ({ img, collegeDetails }) => {
         img={
           coverImage
             ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
-            : IMAGES.noImage
+            : IMAGES.noCollege
         }
       >
         <h1 className={heroStyle.header}>{collegeDetails?.name}</h1>

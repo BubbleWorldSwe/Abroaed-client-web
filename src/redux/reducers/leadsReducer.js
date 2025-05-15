@@ -117,7 +117,7 @@ export const leadsReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_LEAD:
-      return { ...state, selectedLead: action.payload };
+      return { ...state, selectedLead: action.payload, loading: false };
 
     case ADD_LEAD_SAVEDPREFRENCES:
       console.log("ADD_LEAD_SAVEDPREFRENCES");

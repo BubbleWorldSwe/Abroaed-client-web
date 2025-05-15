@@ -138,7 +138,7 @@ export const destnationReducer = (state = initialState, action) => {
       };
 
     case SET_SELECTED_DESTINATION:
-      return { ...state, selectedDestination: action.payload };
+      return { ...state, selectedDestination: action.payload, loading: false };
 
     /*  case LOGOUT:
       return initialState; */

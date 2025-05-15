@@ -84,12 +84,48 @@ export const setUpdateStudent = async (credentials) => {
   }
 };
 
+export const setUpdateStudentPassword = async (credentials) => {
+  try {
+    const { studentToken } = store.getState().auth;
+
+    const data = await makePutRequestWithToken(
+      `${BASE_URL}/api/v1/auth/set-password`,
+      credentials,
+      studentToken
+    );
+    //console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const setUpdateAdmin = async (credentials) => {
   try {
     const { adminToken } = store.getState().auth;
 
     const data = await makePutRequestWithToken(
       `${BASE_URL}/api/v1/auth/update-user`,
+      credentials,
+      adminToken
+    );
+    //console.log(data);
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUpdateAdminPassword = async (credentials) => {
+  try {
+    const { adminToken } = store.getState().auth;
+
+    const data = await makePutRequestWithToken(
+      `${BASE_URL}/api/v1/auth/set-password`,
       credentials,
       adminToken
     );

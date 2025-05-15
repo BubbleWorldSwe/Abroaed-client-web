@@ -46,7 +46,7 @@ const LocationModal = ({
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 gap-5">
           <SelectField
-            label="Country"
+            label="Country*"
             name="destinationId"
             value={formData.destinationId}
             onChange={(e) => {
@@ -68,7 +68,7 @@ const LocationModal = ({
           />
 
           <SelectField
-            label="State"
+            label="State*"
             name="stateId"
             value={formData?.stateId}
             onChange={(e) => handleInputChange("stateId", e.target.value)}
@@ -80,19 +80,23 @@ const LocationModal = ({
           />
 
           <TextInputField
-            label="City"
+            label="City*"
             name="city"
             value={formData?.city}
             onChange={(e) => handleInputChange("city", e.target.value)}
             placeholder={"Enter City"}
+            required
+            type={"text"}
           />
 
           <TextInputField
-            label="Street Name"
+            label="Street Name*"
             name="streetName"
             value={formData?.streetName}
             onChange={(e) => handleInputChange("streetName", e.target.value)}
             placeholder={"Enter Street Name"}
+            required
+            type={"text"}
           />
         </div>
 

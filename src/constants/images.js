@@ -2,6 +2,8 @@ import collegeImage from "../assets/college.jpg";
 import accommodations from "../assets/accommodations.webp";
 import logoBlack from "../assets/logoBlack.png";
 import noImage from "../assets/dark.png";
+import noCollege from "../assets/no-college.png";
+import noAccommodation from "../assets/no-accommodation.jpg";
 import logo from "../assets/logoYellowWhite.png";
 
 const noLogo =
@@ -18,4 +20,6 @@ export const IMAGES = {
   noLogo,
   user,
   logo,
+  noCollege,
+  noAccommodation,
 };

@@ -83,13 +83,6 @@ const BlogsTable = ({
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="p-4">
-              <CheckboxField
-                onClick={(e) => e.stopPropagation()}
-                id={`checkbox-blog-all`}
-                htmlFor={`checkbox-blog-all`}
-              />
-            </th>
             <th scope="col" className="px-4 py-3 min-w-[14rem]">
               Title
             </th>
@@ -103,7 +96,7 @@ const BlogsTable = ({
               Author
             </th>
             <th scope="col" className="px-4 py-3 min-w-[14rem]">
-              Last Updated
+              Created At
             </th>
             <th scope="col" className="px-4 py-3">
               <span className="sr-only">Actions</span>
@@ -120,17 +113,16 @@ const BlogsTable = ({
                     key={index}
                     className="border-b  dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <td className="px-4 py-3 w-4">
-                      <CheckboxField
-                        onClick={(e) => e.stopPropagation()}
-                        id={`checkbox-blog-${index}`}
-                        htmlFor={`checkbox-blog-${index}`}
-                      />
+                    <td
+                      className="px-4 py-3"
+                      onClick={() => handleViewBlogs(blog)}
+                    >
+                      {blog?.title}
                     </td>
-
-                    <td className="px-4 py-3">{blog?.title}</td>
                     <td className="px-4 py-3">{blog?.category?.name}</td>
-                    <td className="px-4 py-3">{blog?.status}</td>
+                    <td className="px-4 py-3">
+                      {blog?.status === "draft" ? "Draft" : "Published"}
+                    </td>
                     <td className="px-4 py-3">
                       {blog?.createdBy
                         ? `${blog?.createdBy?.firstName} ${blog?.createdBy?.lastName}`

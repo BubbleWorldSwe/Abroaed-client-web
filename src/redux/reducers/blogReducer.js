@@ -115,7 +115,7 @@ export const blogsReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_BLOG:
-      return { ...state, selectedBlog: action.payload };
+      return { ...state, selectedBlog: action.payload, loading: false };
 
     default:
       return state;

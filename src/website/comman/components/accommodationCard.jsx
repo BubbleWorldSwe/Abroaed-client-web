@@ -58,7 +58,7 @@ const AccommodationCard = ({
             src={
               item?.imageUrl
                 ? `${IMAGE_BASE_URL}/${item?.imageUrl}`
-                : IMAGES.noImage
+                : IMAGES.noAccommodation
             }
             alt={item.name}
           />

@@ -8,12 +8,13 @@ import { getBlogsCategory } from "../../../api/blogsApi";
 import ReactQuill from "react-quill";
 
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBlogRequest } from "../../../redux/actions/blogActions";
+import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const AddBlog = () => {
   const [formData, setFormData] = useState({ content: "" });
-
+  const { loading } = useSelector((state) => state.blogs);
   const [blogsCategory, setBlogsCategory] = useState([]);
   const dispatch = useDispatch();
 
@@ -116,6 +117,7 @@ const AddBlog = () => {
                 value={formData?.title}
                 onChange={handleChange}
                 placeholder={"Enter Title"}
+                type={"text"}
               />
               <div className="my-5 mb-6">
                 <SelectField
@@ -172,6 +174,7 @@ const AddBlog = () => {
           }
         `}
       </style>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

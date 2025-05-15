@@ -25,7 +25,6 @@ function DestinationUniCoursersSection({
             {/* Content */}
             <div className="relative z-10">
               <MotionComponent>
-
                 <SectionMainHeader className="mb-2">
                   Top Universities in {destinationDetails?.countryId?.name}
                 </SectionMainHeader>
@@ -65,8 +64,8 @@ function DestinationUniCoursersSection({
                     multiple opportunities in different fields, the{" "}
                     {destinationDetails?.countryId?.name} is a top choice among
                     international students. Know all the popular study ABROAED
-                    courses of {destinationDetails?.countryId?.name} universities
-                    so you can make the best of your career choice
+                    courses of {destinationDetails?.countryId?.name}{" "}
+                    universities so you can make the best of your career choice
                   </PrimaryBodyText>
                 </MotionComponent>
                 <p className="font-semibold  text-[#52525B] text-[22px] mt-4"></p>

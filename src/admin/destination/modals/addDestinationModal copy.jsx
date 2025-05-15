@@ -54,7 +54,7 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
     setFilteredStates([]);
   };
 
-  useEffect(() => {}, [selectedCountry]);
+  useEffect(() => {}, [selectedState, selectedCountry]);
 
   if (!isOpen) return null;
 
@@ -100,10 +100,24 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
           name="capital"
           type="text"
           value={capital}
-          onChange={(e) => setCapital(e.target.value)}
+          onChange={(t) => setCapital(t)}
           placeholder={"Enter"}
           required
         />
+
+        {/* State Selection */}
+        <SearchDropdownField
+          label="Select Capital*"
+          options={filteredStates.map((data) => ({
+            label: data.name,
+            value: data._id,
+          }))}
+          value={selectedState}
+          onSelect={(data) => setSelectedState(data.value)}
+          onSearch={handleStateSearch}
+          required
+        />
+        {/* Currency */}
 
         <div className="flex justify-end space-x-4 mt-10">
           <ModalCloseButton label="Cancel" onClick={onClose} />

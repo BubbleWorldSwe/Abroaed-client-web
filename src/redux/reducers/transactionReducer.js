@@ -101,7 +101,7 @@ export const transactionReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SET_SELECTED_TRANSACTION:
-      return { ...state, selectedTransaction: action.payload };
+      return { ...state, selectedTransaction: action.payload, loading: false };
 
     default:
       return state;

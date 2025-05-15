@@ -8,6 +8,7 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { setSelectedAccommodation } from "../../../redux/actions/accommodationActions";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
+import { formatDateTime } from "../../../utils/helper";
 
 const AccommodationTable = ({
   currentPage,
@@ -76,29 +77,14 @@ const AccommodationTable = ({
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">
         <thead className=" text-[#71717A] font-rethink  bg-[#E4E4E7] dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="p-4">
-              <CheckboxField
-                onClick={(e) => e.stopPropagation()}
-                id={`checkbox-accommodation-all`}
-                htmlFor={`checkbox-accommodation-all`}
-              />
-            </th>
-            <th scope="col" className="px-4 py-3 min-w-[14rem]">
-              Name
-            </th>
-            <th scope="col" className="px-4 py-3 min-w-[10rem]">
-              Location
-            </th>
-            <th scope="col" className="px-4 py-3 min-w-[10rem]">
-              Price
-            </th>
-            <th scope="col" className="px-4 py-3 min-w-[14rem]">
-              Availability
-            </th>
-            <th scope="col" className="px-4 py-3 min-w-[14rem]">
-              Status
-            </th>
-            <th scope="col" className="px-4 py-3">
+            <th className="px-4 py-3">Name</th>
+            <th className="px-4 py-3">Location</th>
+            <th className="px-4 py-3">Price</th>
+            <th className="px-4 py-3">Availability</th>
+            <th className="px-4 py-3">Status</th>
+            <th className="px-4 py-3">Author</th>
+            <th className="px-4 py-3">Created At</th>
+            <th className="px-4 py-3 w-5">
               <span className="sr-only">Actions</span>
             </th>
           </tr>
@@ -113,17 +99,9 @@ const AccommodationTable = ({
                     key={index}
                     className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    <td className="px-4 py-3 w-4">
-                      <CheckboxField
-                        onClick={(e) => e.stopPropagation()}
-                        id={`checkbox-accommodation-${index}`}
-                        htmlFor={`checkbox-accommodation-${index}`}
-                      />
-                    </td>
-
                     <th
-                      scope="row"
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-4 py-3"
+                      onClick={() => handleViewDetails(accommodation)}
                     >
                       {accommodation.accomodationName}
                     </th>
@@ -140,6 +118,14 @@ const AccommodationTable = ({
                       {accommodation?.status === "draft"
                         ? "Draft"
                         : "Published"}
+                    </td>
+                    <td className="px-4 py-3">
+                      {accommodation?.createdBy
+                        ? `${accommodation?.createdBy?.firstName} ${accommodation?.createdBy?.lastName}`
+                        : `Admin`}
+                    </td>
+                    <td className="px-4 py-3">
+                      {formatDateTime(accommodation.createdAt)}
                     </td>
 
                     <td className="px-4 py-3">
@@ -196,7 +182,7 @@ const AccommodationTable = ({
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setDeleteId(accommodation._id);
+                                      setDeleteId(accommodation);
                                       setIsModalOpen(!isModalOpen);
                                       //setDropdownVisible(null);
                                     }}
@@ -216,7 +202,7 @@ const AccommodationTable = ({
                 ))
             )
           ) : (
-            <TableNoData colSpan={7} />
+            <TableNoData colSpan={8} />
           )}
         </tbody>
         <TableFooter
@@ -225,16 +211,16 @@ const AccommodationTable = ({
           handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
           tableData={accommodations}
-          colSpan={7}
+          colSpan={8}
         />
       </table>
 
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        heading="Delete!"
+        heading={`Delete : ${deleteId?.accomodationName}`}
         onDelete={() => {
-          handleDelete(deleteId);
+          handleDelete(deleteId?._id);
           setIsModalOpen(false);
         }}
       />

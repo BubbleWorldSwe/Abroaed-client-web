@@ -58,7 +58,7 @@ const PriceModal = ({ closeModal, onUpdate }) => {
           /> */}
 
           <CurrencyInputField
-            label="Amount (Monthly)"
+            label="Amount (Monthly)*"
             name="price"
             type="text"
             value={formData?.price || ""}
@@ -71,7 +71,7 @@ const PriceModal = ({ closeModal, onUpdate }) => {
 
         <div className="text-end mt-10">
           <ModalCloseButton label={"Cancel"} onClick={closeModal} />
-          <ModalSubmitButton label={"Save"} onClick={handleSubmit} />
+          <ModalSubmitButton label={"Save"} type="submit" />
         </div>
       </form>
     </div>

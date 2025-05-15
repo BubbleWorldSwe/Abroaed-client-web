@@ -80,14 +80,7 @@ const BlogImageSection = ({ onUploadImage }) => {
 
   return (
     <div className="flex flex-col overflow-hidden">
-      <div
-        className="relative w-full h-48 bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer overflow-hidden"
-        onClick={(e) => {
-          e.preventDefault();
-          setOpenModal(true);
-          setModalType("add");
-        }}
-      >
+      <div className="relative w-full h-48 bg-gradient-to-r from-yellow-200 to-blue-500 cursor-pointer overflow-hidden">
         {blogDetails?.image && (
           <img
             src={`${IMAGE_BASE_URL}/${blogDetails?.image}`}
