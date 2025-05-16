@@ -27,7 +27,7 @@ function AdminSignin() {
         return;
       }
 
-      dispatch(adminLoginRequest({ email, password }));
+      dispatch(adminLoginRequest({ email, password, isAdmin: true }));
     } catch (error) {
       console.log(error);
     }

@@ -20,6 +20,7 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
   const [showPreviewModal, setShowPreviewModal] = useState(false);
+
   const closeModal = () => {
     setOpenModal(false);
     setModalType(null);
@@ -27,9 +28,28 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
     setFileImage(null);
   };
 
+  const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+  const maxSize = 1000 * 1024; // 1MB
+
+  const validateFile = (file) => {
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only JPG and PNG images are allowed");
+      return false;
+    }
+    if (file.size > maxSize) {
+      toast.error("Image size must be less than 1MB");
+      return false;
+    }
+    return true;
+  };
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
+      if (!validateFile(file)) {
+        e.target.value = null; // reset file input if invalid
+        return;
+      }
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -43,6 +63,9 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith("image/")) {
+      if (!validateFile(file)) {
+        return;
+      }
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -58,16 +81,7 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
       return;
     }
 
-    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-    const maxSize = 1000 * 1024;
-
-    if (!allowedTypes.includes(fileImage.type)) {
-      toast.error("Only JPG and PNG images are allowed");
-      return;
-    }
-
-    if (fileImage.size > maxSize) {
-      toast.error("Image size must be less than 1MB");
+    if (!validateFile(fileImage)) {
       return;
     }
 

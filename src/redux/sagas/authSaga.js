@@ -23,6 +23,7 @@ import {
   STUDENT_GET_PROFILE_REQUEST,
   ADMIN_GET_PROFILE_REQUEST,
   ADMIN_UPDATE_PASSWORD_REQUEST,
+  ADMIN_UPDATE_PROFILE_REQUEST,
 } from "../actions/authActions";
 
 import {
@@ -101,30 +102,6 @@ function* handleStudentResetPassword(action) {
   }
 }
 
-function* handleAdminResetPassword(action) {
-  try {
-    const response = yield call(setUpdateAdminPassword, action.payload);
-
-    console.log(response);
-    if (response.status === 200) {
-      yield put(studentUpdatePasswordSuccess(response.data));
-      toast.success("Password Set Successfully, Please Login to Continue");
-
-      yield delay(2000);
-      window.location.replace("/signin");
-    } else {
-      yield put(studentUpdatePasswordFailure(response.message));
-      toast.error(response.message);
-    }
-  } catch (error) {
-    yield put(
-      studentUpdatePasswordFailure(
-        error.response?.data?.message || "Student Update Password failed"
-      )
-    );
-  }
-}
-
 function* handleGetStudentProfile(action) {
   try {
     const response = yield call(getUserProfile, action.payload);
@@ -143,6 +120,30 @@ function* handleGetStudentProfile(action) {
     yield put(
       studentGetProfileFailure(
         error.response?.data?.message || "Error fetching student profile"
+      )
+    );
+  }
+}
+
+function* handleAdminResetPassword(action) {
+  try {
+    const response = yield call(setUpdateAdminPassword, action.payload);
+
+    console.log(response);
+    if (response.status === 200) {
+      yield put(studentUpdatePasswordSuccess(response.data));
+      toast.success("Password Set Successfully, Please Login to Continue");
+
+      yield delay(2000);
+      window.location.replace("/admin/signin");
+    } else {
+      yield put(studentUpdatePasswordFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(
+      studentUpdatePasswordFailure(
+        error.response?.data?.message || "Student Update Password failed"
       )
     );
   }
@@ -186,10 +187,10 @@ function* handleAdminLogin(action) {
 
 function* handleAdminProfileUpdate(action) {
   try {
-    const response = yield call(getUserProfile, action.payload);
+    const response = yield call(setUpdateAdmin, action.payload);
     if (response?.status === 200) {
       yield put(adminUpdateProfileSuccess(response?.data));
-      toast.success("Admin Profile Updated Successfully!");
+      toast.success("Profile Updated Successfully!");
     } else {
       yield put(adminUpdateProfileFailure(response?.message));
       toast.error(response.message);
@@ -209,4 +210,5 @@ export default function* authSaga() {
   yield takeLatest(ADMIN_GET_PROFILE_REQUEST, handleGetAdminProfile);
 
   yield takeLatest(ADMIN_UPDATE_PASSWORD_REQUEST, handleAdminResetPassword);
+  yield takeLatest(ADMIN_UPDATE_PROFILE_REQUEST, handleAdminProfileUpdate);
 }

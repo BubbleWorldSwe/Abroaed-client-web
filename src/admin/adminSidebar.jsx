@@ -11,6 +11,7 @@ import {
   MapPinned,
   Compass,
   ClipboardList,
+  Settings,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
@@ -102,6 +103,11 @@ function CollapsableSidebar() {
       label: "Blogs",
       icon: ClipboardList,
       roles: ["Admin", "Content Manager"],
+    },
+    {
+      path: "/admin/viewProfile",
+      label: "Profile Settings",
+      icon: Settings,
     },
   ];
 

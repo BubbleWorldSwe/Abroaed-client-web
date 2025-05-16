@@ -59,7 +59,7 @@ function* fetchAllTeams() {
 function* addNewTeam(action) {
   try {
     const response = yield call(setAddTeam, action.payload);
-
+    debugger;
     console.log(response);
 
     if (response.status === 201) {
@@ -95,6 +95,7 @@ function* handleEditTeam(action) {
   try {
     const { id, credentials } = action.payload;
     const response = yield call(setUpdateTeam, id, credentials);
+    debugger;
     if (response && response.success) {
       yield put(editTeamSuccess(response.data.data));
       toast.success("Team Updated successfully!");

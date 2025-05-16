@@ -32,15 +32,37 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
     setFileImage(null);
   };
 
+  // Validation function to reuse
+  const validateImageFile = (file) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+    const maxSize = 1000 * 1024; // 1MB
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only JPG and PNG images are allowed");
+      return false;
+    }
+
+    if (file.size > maxSize) {
+      toast.error("Image size must be less than 1MB");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
+      if (!validateImageFile(file)) return;
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      toast.error("Please select a valid image file");
     }
   };
 
@@ -48,12 +70,16 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith("image/")) {
+      if (!validateImageFile(file)) return;
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      toast.error("Please drop a valid image file");
     }
   };
 
@@ -63,16 +89,8 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
       return;
     }
 
-    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-    const maxSize = 1000 * 1024; // 500 KB
-
-    if (!allowedTypes.includes(fileImage.type)) {
-      toast.error("Only JPG and PNG images are allowed");
-      return;
-    }
-
-    if (fileImage.size > maxSize) {
-      toast.error("Image size must be less than 1MB");
+    // Double-check validation on submit (optional)
+    if (!validateImageFile(fileImage)) {
       return;
     }
 
@@ -88,6 +106,7 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
             src={`${IMAGE_BASE_URL}/${accommodationDetails?.imageUrl}`}
             className="w-full h-full object-cover rounded-md"
             onClick={() => setShowPreviewModal(true)}
+            alt="Accommodation"
           />
         )}
         {showPreviewModal && (
@@ -148,7 +167,6 @@ const AccommodationImageSection = ({ onUploadImage, handleDelete }) => {
               <div className="w-full relative mb-4">
                 <img
                   className="w-full h-60 object-cover rounded-lg"
-                  //src={imagePreview || dark}
                   src={
                     imagePreview
                       ? imagePreview

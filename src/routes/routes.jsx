@@ -68,6 +68,7 @@ import AdminOtpVerification from "../admin/auth/adminOtpVerification";
 import AdminForgotPassword from "../admin/auth/adminForgotPassword";
 import AdminSignin from "../admin/auth/adminSignin";
 import AdminResetPassword from "../admin/auth/adminResetPassword";
+import AdminProfile from "../admin/profile/screens/viewProfile";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -231,6 +232,7 @@ const AppRoutes = () => {
         { path: "", element: <Navigate to="dashboard" replace /> },
 
         { path: "dashboard", element: <Dashboard /> },
+        { path: "viewProfile", element: <AdminProfile /> },
         { path: "teams", element: <Teams /> },
         { path: "nurtureLeads", element: <NurtureLeads /> },
         { path: "students", element: <Student /> },

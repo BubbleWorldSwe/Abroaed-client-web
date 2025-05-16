@@ -14,10 +14,8 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
     { id: 1, label: "Average Tuition Fees UG (per intake)", value: "" },
     { id: 2, label: "Average Tuition Fees PG (per intake)", value: "" },
     { id: 3, label: "Average Tuition Fees PhD (per intake)", value: "" },
-    { id: 4, label: "Average Rent (per month)", value: "" },
-    { id: 5, label: "Average Food Expenses (per month)", value: "" },
-    { id: 6, label: "Average Transport Expenses (per month)", value: "" },
-    { id: 7, label: "Misc. Expenses (per month)", value: "" },
+    { id: 4, label: "Average Cost of Living - Tier 1 (per year)", value: "" },
+    { id: 5, label: "Average Cost of Living - Tier 2 (per year)", value: "" },
   ];
 
   const [formData, setFormData] = useState(defaultFormData);
@@ -65,7 +63,7 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
 
   return (
     <div className="w-[400px] mx-auto">
-      <form className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {formData.map((field) => (
           <CurrencyInputField
             key={field.id}
@@ -82,11 +80,7 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
 
         <div className="col-span-full text-end mt-5">
           <ModalCloseButton label="Cancel" onClick={closeModal} />
-          <ModalSubmitButton
-            label="Save"
-            onClick={handleSubmit}
-            type="button"
-          />
+          <ModalSubmitButton label="Save" type="submit" />
         </div>
       </form>
     </div>

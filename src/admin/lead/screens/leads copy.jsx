@@ -156,9 +156,10 @@ function Leads() {
       console.log(data, id);
       dispatch(editLeadRequest(id, data));
 
-      // setshowAppointmentModal(false);
-      // setShowUpdateModal(false);
-      // setshowTeamModal(false);
+      //  setshowAppointmentModal(false);
+      //  setShowUpdateModal(false);
+      //  setshowTeamModal(false);
+      dispatch(fetchLeadsRequest(currentPage));
     } catch (error) {
       console.log(error);
     }
@@ -238,7 +239,6 @@ function Leads() {
           membersList={membersList}
           setMembersList={setMembersList}
           onUpdate={onAssignTeam}
-          selectedMember={selectedMember}
         />
       )}
 

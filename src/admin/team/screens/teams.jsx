@@ -102,7 +102,8 @@ function Teams() {
       dispatch(addTeamRequest(data));
 
       setCurrentPage(1);
-      dispatch(fetchTeamsRequest(1));
+      //  dispatch(fetchTeamsRequest(1));
+      handleCloseModal();
     } catch (error) {
       console.log(error);
     }
@@ -136,14 +137,18 @@ function Teams() {
     }
   }
 
+  console.log(loading, "teams loading");
+
   useEffect(() => {
     if (teams.length === 0) {
-      dispatch(fetchTeamsRequest(page));
-      setCurrentPage(1);
+      dispatch(fetchTeamsRequest(currentPage));
+      // setCurrentPage(1);
     }
+  }, [dispatch, currentPage, teams, editData]);
 
+  useEffect(() => {
     fetchData();
-  }, [dispatch, page, teams, editData]);
+  }, []);
 
   return (
     <>

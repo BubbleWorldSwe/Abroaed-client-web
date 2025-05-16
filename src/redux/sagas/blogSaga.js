@@ -20,7 +20,6 @@ import {
   EDIT_BLOG_REQUEST,
   editBlogSuccess,
   editBlogFailure,
-  FETCH_ALL_BLOGS_SUCCESS,
   fetchAllBlogsSuccess,
   fetchAllBlogsFailure,
   FETCH_ALL_BLOGS_REQUEST,

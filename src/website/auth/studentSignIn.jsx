@@ -26,7 +26,7 @@ function StudentSignIn() {
         return;
       }
 
-      dispatch(studentLoginRequest({ email, password }));
+      dispatch(studentLoginRequest({ email, password, isAdmin: false }));
     } catch (error) {
       console.log(error);
     }

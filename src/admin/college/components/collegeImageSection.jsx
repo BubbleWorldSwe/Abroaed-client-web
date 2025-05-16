@@ -37,24 +37,57 @@ const CollegeImageSection = ({
   const logoImage = collegeImages?.find((img) => img.type === "logo");
   const coverImage = collegeImages?.find((img) => img.type === "cover");
 
+  // Validate and handle file selected from input
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
+      const fileSizeInKB = file.size / 1024;
+
+      if (modalType === "logo" && fileSizeInKB > 500) {
+        toast.error("Logo size should not exceed 500KB");
+        e.target.value = null;
+        return;
+      }
+
+      if (modalType === "cover" && fileSizeInKB > 1024) {
+        toast.error("Cover image size should not exceed 1MB");
+        e.target.value = null;
+        return;
+      }
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => setImagePreview(reader.result);
       reader.readAsDataURL(file);
+    } else {
+      toast.error("Please select a valid image file");
+      e.target.value = null;
     }
   };
 
+  // Validate and handle file dropped
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith("image/")) {
+      const fileSizeInKB = file.size / 1024;
+
+      if (modalType === "logo" && fileSizeInKB > 500) {
+        toast.error("Logo size should not exceed 500KB");
+        return;
+      }
+
+      if (modalType === "cover" && fileSizeInKB > 1024) {
+        toast.error("Cover image size should not exceed 1MB");
+        return;
+      }
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => setImagePreview(reader.result);
       reader.readAsDataURL(file);
+    } else {
+      toast.error("Please select a valid image file");
     }
   };
 
@@ -95,7 +128,7 @@ const CollegeImageSection = ({
       setImagePreview(null);
       setFileImage(null);
     }
-  }, []);
+  }, [openModal]);
 
   useEffect(() => {
     if (openModal) {
@@ -105,7 +138,7 @@ const CollegeImageSection = ({
         setImagePreview(`${IMAGE_BASE_URL}/${coverImage.ImageUrl}`);
       }
     }
-  }, [openModal, modalType]);
+  }, [openModal, modalType, logoImage, coverImage]);
 
   return (
     <div className="flex flex-col">
@@ -127,13 +160,14 @@ const CollegeImageSection = ({
             onClose={() => setShowPreviewModal(false)}
           />
         )}
+
         {/* Logo Upload Button */}
         <div
           className="absolute w-24 h-24 p-4 left-20 cursor-pointer rounded-sm"
           style={{ bottom: "-1.7rem", backgroundColor: "rgb(227 231 237)" }}
         >
           <img
-            onClick={() => setShowLogoPreviewModal(true)} // open logo preview modal here
+            onClick={() => setShowLogoPreviewModal(true)}
             src={
               logoImage
                 ? `${IMAGE_BASE_URL}/${logoImage.ImageUrl}`
@@ -182,6 +216,7 @@ const CollegeImageSection = ({
             <a
               href={collegeDetails?.website}
               target="_blank"
+              rel="noreferrer"
               type="button"
               className="flex items-center justify-center gap-2 text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-lg px-5 py-2.5 dark:focus:ring-yellow-900"
             >
@@ -298,42 +333,41 @@ const CollegeImageSection = ({
                 <input
                   type="file"
                   className="hidden"
-                  accept="image/*"
+                  accept="image/png, image/jpeg, image/jpg"
                   onChange={handleImageUpload}
                 />
               </label>
             </div>
 
-            <div className="text-end mt-4">
+            <div className="flex justify-end gap-4 mt-6">
               <button
-                type="button"
-                className="text-white bg-red-500 hover:bg-red-600 px-4 py-2 mr-2 rounded transition"
+                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-600"
                 onClick={closeModal}
               >
-                Close
+                Cancel
               </button>
               <button
-                type="submit"
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                className="bg-yellow-400 px-4 py-2 rounded hover:bg-yellow-600 text-black"
                 onClick={handleSubmit}
               >
-                Save
+                Upload
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Delete College Modal */}
-      <DeleteConfirmationModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        heading="Delete!"
-        onDelete={() => {
-          handleDelete();
-          setIsModalOpen(false);
-        }}
-      />
+      {/* Delete Confirmation Modal */}
+      {isModalOpen && (
+        <DeleteConfirmationModal
+          onClose={() => setIsModalOpen(false)}
+          onDelete={() => {
+            handleDelete();
+            setIsModalOpen(false);
+          }}
+          message="Are you sure you want to delete this college?"
+        />
+      )}
     </div>
   );
 };

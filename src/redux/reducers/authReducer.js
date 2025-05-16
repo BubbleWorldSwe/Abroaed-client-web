@@ -105,6 +105,7 @@ export const authReducer = (state = initialState, action) => {
       return { ...state, loading: false, student: action.payload };
 
     case ADMIN_GET_PROFILE_SUCCESS:
+    case ADMIN_UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -122,13 +123,6 @@ export const authReducer = (state = initialState, action) => {
         isWriteAccess: action.payload?.user?.isWriteAccess,
         isLoggedInAdmin: true,
         adminId: action.payload.user._id,
-      };
-
-    case ADMIN_UPDATE_PROFILE_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        admin: action.payload,
       };
 
     case STUDENT_GET_PROFILE_FAILURE:

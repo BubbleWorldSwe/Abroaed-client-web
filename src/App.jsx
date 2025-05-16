@@ -72,6 +72,8 @@ const App = () => {
     }
   }
 
+  console.log(adminToken);
+
   useEffect(() => {
     fetchData();
     if (leadId) {

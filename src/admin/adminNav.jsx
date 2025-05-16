@@ -53,7 +53,8 @@ const AdminNav = () => {
 
         <div className="relative flex items-center space-x-5" ref={menuRef}>
           <button
-            onClick={() => setIsMenuOpen((prev) => !prev)}
+            onClick={() => setIsModalOpen(true)}
+            // onClick={() => setIsMenuOpen((prev) => !prev)}
             className="flex items-center gap-2 text-gray-500 hover:text-gray-700"
           >
             <img

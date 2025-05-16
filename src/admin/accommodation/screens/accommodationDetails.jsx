@@ -176,60 +176,32 @@ const AccommodationDetails = () => {
                 onClick={() => toggleAccordion(index)}
               >
                 <span>{sectionItem.name}</span>
-                {true ? (
-                  <button
-                    className="px-4 py-4"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openModal(sectionItem.name, "add", index);
-                    }}
+                <button
+                  disabled={!isWriteAccess}
+                  className="px-4 py-4"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openModal(sectionItem.name, "add", index);
+                  }}
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-800 dark:text-white"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    fill="none"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      className="w-6 h-6 text-gray-800 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 12h14m-7 7V5"
-                      ></path>
-                    </svg>
-                  </button>
-                ) : (
-                  // Pencil icon for editing
-                  <button
-                    className="px-4 py-4"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      openModal(sectionItem.name, "edit");
-                    }}
-                  >
-                    <svg
-                      className="w-6 h-6 text-gray-800 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M10.779 17.779L4.36 19.918 6.5 13.5m4.279 4.279l8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14l6.213-6.504M12.75 7.04L17 11.28"
-                      ></path>
-                    </svg>
-                  </button>
-                )}
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 12h14m-7 7V5"
+                    ></path>
+                  </svg>
+                </button>
               </div>
             </h2>
             <motion.div

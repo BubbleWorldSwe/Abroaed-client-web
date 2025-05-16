@@ -19,34 +19,26 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
           >
             <div className=" ">
               <div className="">
-                <SectionMainHeader
-                  className="mb-2"
-                >
-                  Expenses
-                </SectionMainHeader>
+                <SectionMainHeader className="mb-2">Expenses</SectionMainHeader>
 
                 <PrimaryBodyText
-                  className={'font-semibold'}
-                  style={{ fontSize: '18px' }}
+                  className={"font-semibold"}
+                  style={{ fontSize: "18px" }}
                 >
-                  Here’s a list of the minimum amount you should expect for living
-                  expenses in the {destinationDetails?.countryId?.name}:
+                  Here’s a list of the minimum amount you should expect for
+                  living expenses in the {destinationDetails?.countryId?.name}:
                 </PrimaryBodyText>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-6 ">
                 <div className="">
-                  <SecondaryTitle
-                    className="mb-2"
-                  >
+                  <SecondaryTitle className="mb-2">
                     Cost of Studying
                   </SecondaryTitle>
-                  <PrimaryBodyText >
+                  <PrimaryBodyText>
                     Here’s a list of the minimum amount you should expect for
                     studying in the {destinationDetails?.countryId?.name}:
                   </PrimaryBodyText>
-                  <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] ">
-
-                  </p>
+                  <p className="mb-1 text-[18px] font-semibold w-10/12 text-[#52525B] "></p>
                   <section className="  pt-6">
                     <div className=" w-full">
                       <div className=" dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -58,7 +50,7 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                                   Degree Type
                                 </th>
                                 <th scope="col" className="px-4 py-3">
-                                  Average Annual Fees (in{" "}
+                                  Average Fees (in{" "}
                                   {destinationDetails?.countryId?.currency})
                                 </th>
                               </tr>
@@ -77,7 +69,10 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                                       >
                                         {data.label}
                                       </th>
-                                      <td className="px-4 py-3"> {data.value}</td>
+                                      <td className="px-4 py-3">
+                                        {" "}
+                                        {data.value}
+                                      </td>
                                     </tr>
                                   )
                               )}
@@ -92,13 +87,11 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                     </div>
                   </section>
                 </div>
-                <div >
-                  <SecondaryTitle
-                    className="mb-4"
-                  >
+                <div>
+                  <SecondaryTitle className="mb-4">
                     Cost of Living
                   </SecondaryTitle>
-                  <PrimaryBodyText >
+                  <PrimaryBodyText>
                     Here’s the basic cost of living:
                   </PrimaryBodyText>
                   <section className=" dark:bg-gray-900 py-3 sm:py-5">
@@ -112,7 +105,8 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                                   Heading
                                 </th>
                                 <th scope="col" className="px-4 py-3">
-                                  Monthly Costs
+                                  Costs (In{" "}
+                                  {destinationDetails?.countryId?.currency})
                                 </th>
                               </tr>
                             </thead>
@@ -130,7 +124,10 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                                       >
                                         {data.label}
                                       </th>
-                                      <td className="px-4 py-3"> {data.value}</td>
+                                      <td className="px-4 py-3">
+                                        {" "}
+                                        {data.value}
+                                      </td>
                                     </tr>
                                   )
                               )}
@@ -145,8 +142,6 @@ const DestinationExpansesSection = ({ destinationDetails }) => {
                     </div>
                   </section>
                 </div>
-
-
               </div>
             </div>
           </motion.div>

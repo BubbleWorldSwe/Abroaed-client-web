@@ -2,19 +2,15 @@ import pencil from "../../../assets/pencil.png";
 import { useState } from "react";
 import dark from "../../../assets/dark.png";
 import { useSelector } from "react-redux";
-import { Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
-import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const BlogImageSection = ({ onUploadImage }) => {
   const blogDetails = useSelector((state) => state?.blogs?.selectedBlog);
-
   const { isWriteAccess } = useSelector((state) => state.auth);
 
   const [openMadal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState(null);
-
   const [imagePreview, setImagePreview] = useState(null);
   const [fileImage, setFileImage] = useState(null);
 
@@ -25,57 +21,56 @@ const BlogImageSection = ({ onUploadImage }) => {
     setFileImage(null);
   };
 
+  const validateImage = (file) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+    const maxSize = 1000 * 1024; // 1MB
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only JPG and PNG images are allowed");
+      return false;
+    }
+
+    if (file.size > maxSize) {
+      toast.error("Image size must be less than 1MB");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setFileImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    if (!file) return;
+
+    if (!validateImage(file)) return;
+
+    setFileImage(file);
+    const reader = new FileReader();
+    reader.onloadend = () => setImagePreview(reader.result);
+    reader.readAsDataURL(file);
   };
 
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith("image/")) {
-      setFileImage(file);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
+    if (!file) return;
+
+    if (!validateImage(file)) return;
+
+    setFileImage(file);
+    const reader = new FileReader();
+    reader.onloadend = () => setImagePreview(reader.result);
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = () => {
-    try {
-      console.log("handleSubmit");
-      if (!fileImage) {
-        toast.error("Please select an image to upload");
-        return;
-      }
-
-      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-      const maxSize = 1000 * 1024; // 500 KB
-
-      if (!allowedTypes.includes(fileImage.type)) {
-        toast.error("Only JPG and PNG images are allowed");
-        return;
-      }
-
-      if (fileImage.size > maxSize) {
-        toast.error("Image size must be less than 1MB");
-        return;
-      }
-
-      onUploadImage(fileImage); // send file to parent
-      closeModal();
-    } catch (error) {
-      console.log(error);
+    if (!fileImage) {
+      toast.error("Please select an image to upload");
+      return;
     }
+
+    onUploadImage(fileImage); // send file to parent
+    closeModal();
   };
 
   return (
@@ -121,7 +116,6 @@ const BlogImageSection = ({ onUploadImage }) => {
             <div className="w-full relative mb-4">
               <img
                 className="w-full h-60 object-cover"
-                //src={imagePreview || dark}
                 src={
                   imagePreview
                     ? imagePreview

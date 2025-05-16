@@ -1,22 +1,14 @@
 import PrimaryBodyText from "../../styleComponents/primaryBodyText";
 
 /* eslint-disable react/prop-types */
-const TestimonialsCard = ({ data,
-  readMore,
-  setReadMore,
-  setIndex,
-  idx
-}) => {
-
-
-
+const TestimonialsCard = ({ data, readMore, setReadMore, setIndex, idx }) => {
   return (
     // <div className="max-w-full bg-white border transition-transform duration-300 hover:scale-105 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     //   {/* Video Wrapper */}
     //   <div className="relative w-full h-[23rem] pb-[56.25%] overflow-hidden rounded-t-lg border border-gray-300">
     //     <iframe
-    //       id="ytplayer"
-    //       type="text/html"
+    //       id="ytplayerhtml"
+    //
     //       className="absolute top-0 left-0 w-full h-full"
     //       src={`https://www.youtube.com/embed/${data}`}
     //       allowFullScreen
@@ -39,7 +31,6 @@ const TestimonialsCard = ({ data,
     //   </div>
     // </div>
     <>
-
       <div className="   flex-shrink-0 hover:scale-[1.01] bg-white rounded-lg shadow-md overflow-hidden">
         <div className="relative w-full h-[15rem]  object-cover rounded-t-lg border border-gray-300">
           <img
@@ -52,13 +43,15 @@ const TestimonialsCard = ({ data,
         <div className="p-4 flex flex-col justify-between">
           <h3 className="text-xl font-medium">{data.name}</h3>
           <div>
-            <p className="text-[15px] text-gray-primary font-medium">{data.university}</p>
-            <p className="text-[15px] text-gray-primary font-me">{data.country}</p>
+            <p className="text-[15px] text-gray-primary font-medium">
+              {data.university}
+            </p>
+            <p className="text-[15px] text-gray-primary font-me">
+              {data.country}
+            </p>
           </div>
-          <PrimaryBodyText >
-            <span className={"line-clamp-2"}>
-              {data.testimonial}
-            </span>
+          <PrimaryBodyText>
+            <span className={"line-clamp-2"}>{data.testimonial}</span>
             <span
               className="cursor-pointer text-blue-500 "
               onClick={() => {

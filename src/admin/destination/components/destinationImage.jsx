@@ -22,6 +22,7 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
   const [fileImage, setFileImage] = useState(null);
 
   const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const closeModal = () => {
     setOpenModal(false);
@@ -30,17 +31,37 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
     setFileImage(null);
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Validation function reused here
+  const validateImageFile = (file) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+    const maxSize = 1000 * 1024; // 1MB
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only JPG and PNG images are allowed");
+      return false;
+    }
+
+    if (file.size > maxSize) {
+      toast.error("Image size must be less than 1MB");
+      return false;
+    }
+
+    return true;
+  };
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file && file.type.startsWith("image/")) {
+      if (!validateImageFile(file)) return;
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      toast.error("Please select a valid image file");
     }
   };
 
@@ -48,12 +69,16 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
     if (file && file.type.startsWith("image/")) {
+      if (!validateImageFile(file)) return;
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result);
       };
       reader.readAsDataURL(file);
+    } else {
+      toast.error("Please drop a valid image file");
     }
   };
 
@@ -63,16 +88,8 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
       return;
     }
 
-    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-    const maxSize = 1000 * 1024;
-
-    if (!allowedTypes.includes(fileImage.type)) {
-      toast.error("Only JPG and PNG images are allowed");
-      return;
-    }
-
-    if (fileImage.size > maxSize) {
-      toast.error("Image size must be less than 1MB");
+    // Double-check validation on submit (optional)
+    if (!validateImageFile(fileImage)) {
       return;
     }
 
@@ -88,6 +105,7 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
             src={`${IMAGE_BASE_URL}/${details?.imageUrl}`}
             className="w-full h-full object-cover rounded-md"
             onClick={() => setShowPreviewModal(true)}
+            alt="Destination"
           />
         )}
 
@@ -136,6 +154,7 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
             <button
               className="absolute w-10 h-10 top-2 right-2 text-gray-600 hover:text-gray-900 text-2xl"
               onClick={closeModal}
+              aria-label="Close modal"
             >
               &times;
             </button>

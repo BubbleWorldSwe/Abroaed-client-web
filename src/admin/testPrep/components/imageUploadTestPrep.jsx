@@ -34,7 +34,20 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith("image/")) {
+    if (file) {
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      const maxSize = 500 * 1024; // 500 KB
+
+      if (!allowedTypes.includes(file.type)) {
+        toast.error("Only JPG and PNG images are allowed");
+        return;
+      }
+
+      if (file.size > maxSize) {
+        toast.error("Image size must be less than 500KB");
+        return;
+      }
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -47,7 +60,20 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
   const handleDrop = (e) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith("image/")) {
+    if (file) {
+      const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
+      const maxSize = 500 * 1024; // 500 KB
+
+      if (!allowedTypes.includes(file.type)) {
+        toast.error("Only JPG and PNG images are allowed");
+        return;
+      }
+
+      if (file.size > maxSize) {
+        toast.error("Image size must be less than 500KB");
+        return;
+      }
+
       setFileImage(file);
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -60,19 +86,6 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
   const handleSubmit = () => {
     if (!fileImage) {
       toast.error("Please select an image to upload");
-      return;
-    }
-
-    const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
-    const maxSize = 500 * 1024; // 500 KB
-
-    if (!allowedTypes.includes(fileImage.type)) {
-      toast.error("Only JPG and PNG images are allowed");
-      return;
-    }
-
-    if (fileImage.size > maxSize) {
-      toast.error("Image size must be less than 500KB");
       return;
     }
 

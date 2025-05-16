@@ -67,7 +67,6 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
     };
 
     onAddTeam(data);
-    onClose();
   };
 
   useEffect(() => {

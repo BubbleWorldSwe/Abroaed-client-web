@@ -22,9 +22,10 @@ const DocumentLibrary = ({
   setSelectedDoc,
   openStatusModal,
 }) => {
-  const dropdownRef = useRef(null);
-  const [dropdownVisible, setDropdownVisible] = useState(null);
+  // Store refs for all dropdowns (both for reqDropdown and approvedDocuments dropdown)
+  const dropdownRefs = useRef([]);
 
+  const [dropdownVisible, setDropdownVisible] = useState(null);
   const [reqDropdownVisible, setReqDropdownVisible] = useState(null);
 
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
@@ -58,8 +59,12 @@ const DocumentLibrary = ({
   };
 
   const handleClickOutside = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+    const clickedInside = dropdownRefs.current.some(
+      (ref) => ref && ref.contains(e.target)
+    );
+    if (!clickedInside) {
       setDropdownVisible(null);
+      setReqDropdownVisible(null);
     }
   };
 
@@ -75,6 +80,10 @@ const DocumentLibrary = ({
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  // Reset refs before rendering so they don't accumulate stale nodes
+  dropdownRefs.current = [];
+
   return (
     <>
       <StudentUploadDocument
@@ -179,7 +188,7 @@ const DocumentLibrary = ({
                           </button>
                           {reqDropdownVisible === i && (
                             <div
-                              ref={dropdownRef}
+                              ref={(el) => (dropdownRefs.current[i] = el)}
                               className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] `}
                             >
                               <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
@@ -202,6 +211,7 @@ const DocumentLibrary = ({
                                       <a
                                         href={`${IMAGE_BASE_URL}/${data?.file}`}
                                         target="_blank"
+                                        rel="noreferrer"
                                         className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
                                         <Eye className="w-4 h-4" />
@@ -264,7 +274,6 @@ const DocumentLibrary = ({
             {isWriteAccess && (
               <div className="flex gap-4 items-center">
                 <button
-                  //   className="flex items-center gap-2 px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:bg-gray-200 rounded"
                   className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
                   onClick={handleOpenUploadModal}
                 >
@@ -327,15 +336,7 @@ const DocumentLibrary = ({
                       <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {data?.applicationId?.college?.name || "---"}
                       </td>
-                      {/* <td className="px-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <a
-                          href={`${IMAGE_BASE_URL}/${data?.file}`}
-                          target="_blank"
-                          className="text-blue-900 hover:underline font-bold hover:decoration-blue-800"
-                        >
-                          View File
-                        </a>
-                      </td> */}
+
                       <td className="px-4 py-3">
                         <button
                           className="focus:outline-none"
@@ -345,26 +346,26 @@ const DocumentLibrary = ({
                         </button>
                         {dropdownVisible === i && (
                           <div
-                            ref={dropdownRef}
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] `}
+                            ref={(el) => (dropdownRefs.current[i + 1000] = el)} // offset so refs don't collide with reqDropdown
+                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999]`}
                           >
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>
                                 <a
                                   href={`${IMAGE_BASE_URL}/${data?.file}`}
                                   target="_blank"
+                                  rel="noreferrer"
                                   className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                 >
                                   <Eye className="w-4 h-4" />
                                   <span>View File</span>
                                 </a>
                               </li>
-
                               <li>
                                 <button
                                   onClick={() => {
                                     deleteDocument(data?._id);
-                                    setDropdownVisible(false);
+                                    setDropdownVisible(null);
                                   }}
                                   className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
                                 >
@@ -372,18 +373,6 @@ const DocumentLibrary = ({
                                   <span>Delete</span>
                                 </button>
                               </li>
-                              {/* <li>
-                                <button
-                                  onClick={() => {
-                                    setSelectedDoc(data);
-                                    setDropdownVisible(false);
-                                  }}
-                                  className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                >
-                                  <Edit className="w-4 h-4" />
-                                  <span>Edit</span>
-                                </button>
-                              </li> */}
                             </ul>
                           </div>
                         )}
@@ -393,10 +382,10 @@ const DocumentLibrary = ({
                 ) : (
                   <tr>
                     <td
-                      colSpan="6"
+                      colSpan="4"
                       className="px-4 py-3 text-center text-gray-500"
                     >
-                      No documents found
+                      No data exists
                     </td>
                   </tr>
                 )}
