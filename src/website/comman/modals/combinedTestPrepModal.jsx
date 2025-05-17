@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { ChevronRightIcon } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const CombinedTestPrepModal = ({
   eltPreps = [],
@@ -11,10 +10,7 @@ const CombinedTestPrepModal = ({
 }) => {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const navigate = useNavigate();
-  const handleNavigate = (id) => {
-    navigate(`/testprep/${id}`);
-  };
+
   return (
     <div
       className="absolute text-gray-primary left-0 top-full w-[15rem] py-[5px] z-50"
@@ -26,32 +22,27 @@ const CombinedTestPrepModal = ({
           {/* ELT Prep Main Item */}
 
           {eltPreps.map((data, index) => (
-            <li
+            <a href={`/testprep/${data?._id}`}
               key={index}
-              className="flex  items-center justify-between  cursor-pointer text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              onClick={() => handleNavigate(data?._id)}
             >
-              <a className="block">
-                <span className="text-sm font-semibold text-gray-700 py-1 px-4">
-                  {data.exam}
-                </span>
-              </a>
-              <ChevronRightIcon
-                className={`w-5 h-5   ${
-                  hoveredIndex === index ? " opacity-100" : "opacity-0"
-                }`}
-              />
-            </li>
+              <li
+                className="flex  items-center justify-between  cursor-pointer text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <a className="block">
+                  <span className="text-sm font-semibold text-gray-700 py-1 px-4">
+                    {data.exam}
+                  </span>
+                </a>
+                <ChevronRightIcon
+                  className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
+                    }`}
+                />
+              </li>
+            </a>
           ))}
-          {/* <ChevronRightIcon className="w-4 h-4" /> */}
-          {/* Submenu for ELT */}
-          {/* {activeSubMenu === "elt" && (
-                            <ul className="absolute top-0 shadow-lg left-full w-[15rem] bg-white  z-50">
-                               
-                            </ul>
-                        )} */}
+
 
           {/* Language Prep Main Item */}
           <li
@@ -66,9 +57,8 @@ const CombinedTestPrepModal = ({
               Language Prep
             </span>
             <ChevronRightIcon
-              className={`w-5 h-5   ${
-                hoveredIndex === "lang" ? " opacity-100" : "opacity-0"
-              }`}
+              className={`w-5 h-5   ${hoveredIndex === "lang" ? " opacity-100" : "opacity-0"
+                }`}
             />
             {/* Submenu for Language */}
             {activeSubMenu === "lang" && (
