@@ -3,12 +3,10 @@ import { useMemo, useState } from "react";
 import { TextGenerateEffect } from "../../components/TextGenerateEffect";
 import homeVideoHero from "../../../../assets/homeVideoHero.mp4"
 import BookCounsellingModal from "../../../comman/modals/bookCounsellingModal";
-import { useNavigate } from "react-router-dom";
 import { Play } from "lucide-react";
 
 function HomeHeroSection() {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const navigate = useNavigate()
   const textEffect = useMemo(
     () => (
       <TextGenerateEffect
@@ -47,8 +45,9 @@ function HomeHeroSection() {
         >
           <video
             autoPlay
-            loop
             muted
+            playsInline
+            loop
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={homeVideoHero} type="video/mp4" />
@@ -77,12 +76,13 @@ function HomeHeroSection() {
               >
                 Book Now
               </button>
-              <button
-                onClick={() => navigate('/whyAbroaed')}
-                className=" hover:bg-white hover:bg-opacity-20 px-1  md:px-4 py-2 rounded-full transition-opacity flex justify-start items-center gap-2">
-                <Play className="text-white" size={15} />
-                <p className="text-white text-sm md:text-lg font-bold">Why we build ABROAED ? </p>
-              </button>
+              <a href="/whyAbroaed">
+                <button
+                  className=" hover:bg-white hover:bg-opacity-20 px-1  md:px-4 py-2 rounded-full transition-opacity flex justify-start items-center gap-2">
+                  <Play className="text-white" size={15} />
+                  <p className="text-white text-sm md:text-lg font-bold">Why we build ABROAED ? </p>
+                </button>
+              </a>
             </div>
           </div>
 
