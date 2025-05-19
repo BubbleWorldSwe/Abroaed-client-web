@@ -6,7 +6,8 @@ import aboutUs1 from "../../../../assets/aboutUs1.png";
 import aboutUs2 from "../../../../assets/aboutUs2.png";
 import aboutUs3 from "../../../../assets/aboutUs3.png";
 import { motion } from "framer-motion";
-
+import vectorRightRing from "../../../../assets/vectorRightRing.png"
+import { whyabroaed } from "../../data";
 
 export const aboutUs = [
   {
@@ -90,38 +91,42 @@ function AboutUsContentSection() {
                 </PrimaryBodyText>
               </motion.div>
             </div>
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.5 }}
-              >
-                <SectionMainHeader>
-                  Our Vision
-                </SectionMainHeader>
-                <PrimaryBodyText
-                  className="font-semibold">
-                  To be the trusted North Star for students worldwide — illuminating paths, unlocking potential, and empowering global futures through mentorship, clarity, and unwavering support
-                </PrimaryBodyText>
-              </motion.div>
-            </div>
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: "easeOut" }}
-                viewport={{ once: false, amount: 0.5 }}
-              >
-                <SectionMainHeader>
-                  Our Mission
-                </SectionMainHeader>
-                <PrimaryBodyText
-                  className="font-semibold"
+            <div className="mt-4 md:mt-8 grid grid-cols-1 gap-6 md:gap-12 md:grid-cols-2 ">
+              {whyabroaed.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex hover:scale-[1.01] transition-all ease-in-out delay-100 relative flex-col gap-1 h-full w-200 p-6 bg-gray-primary border border-gray-200 rounded-lg shadow"
                 >
-                  At ABROAED, our mission is to guide, empower, and transform students' journeys through personalized mentorship and structured pathways. We are committed to being a constant source of clarity, support, and momentum, helping every student move from aspiration to achievement — with purpose, confidence, and a global vision.              </PrimaryBodyText>
-              </motion.div>
+                  <div
+                    className="absolute rounded-lg inset-0 bg-gradient-to-r from-transparent to-black/50  pointer-events-none"
+                    style={{
+                      left: "auto",
+                      right: 0,
+                      width: "70%",
+                      height: "100%",
+                    }}
+                  ></div>
+                  <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    className=""
+                  >
+                    <h5 className="mb-2 text-[24px] md:text-[32px] font-bold tracking-tight text-[#FFFFFF]">
+                      {item.title}
+                    </h5>
+                    <p className="font-normal text-white text-base dark:text-gray-400">
+                      {item.value}
+                    </p>
+                  </motion.div>
+                  <div className="absolute top-0 right-0">
+                    <img src={vectorRightRing} alt="vector" />
+                  </div>
+                </div>
+              ))}
             </div>
+
           </div>
 
           <div className=" pt-10 ">
