@@ -33,7 +33,7 @@ const LanguagePrep = () => {
   const handleAddLanguagePrep = (data) => {
     dispatch(addLanguagePrepRequest(data));
     setCurrentPage(1);
-    dispatch(fetchLanguagePrepsRequest(1));
+    //  dispatch(fetchLanguagePrepsRequest(1));
     handleCloseAddModal();
   };
 

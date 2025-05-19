@@ -32,6 +32,7 @@ const initialState = {
   total: null,
 
   selectedLanguagePrep: {},
+  success: null,
 };
 
 export const languagePrepsReducer = (state = initialState, action) => {
@@ -42,7 +43,7 @@ export const languagePrepsReducer = (state = initialState, action) => {
     case DELETE_LANGUAGEPREP_REQUEST:
     case EDIT_LANGUAGEPREP_REQUEST:
     case UPLOAD_LANGUAGEPREP_IMAGE_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_LANGUAGEPREPS_SUCCESS:
       return {
@@ -98,8 +99,9 @@ export const languagePrepsReducer = (state = initialState, action) => {
       };
 
     case DELETE_LANGUAGEPREP_SUCCESS:
-    case ADD_LANGUAGEPREP_SUCCESS:
       return initialState;
+    case ADD_LANGUAGEPREP_SUCCESS:
+      return { ...initialState, success: true };
 
     case FETCH_LANGUAGEPREPS_FAILURE:
     case FETCH_ALL_LANGUAGEPREPS_FAILURE:
@@ -107,7 +109,12 @@ export const languagePrepsReducer = (state = initialState, action) => {
     case DELETE_LANGUAGEPREP_FAILURE:
     case EDIT_LANGUAGEPREP_FAILURE:
     case UPLOAD_LANGUAGEPREP_IMAGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
 
     case SET_SELECTED_LANGUAGEPREP:
       return { ...state, selectedLanguagePrep: action.payload, loading: false };

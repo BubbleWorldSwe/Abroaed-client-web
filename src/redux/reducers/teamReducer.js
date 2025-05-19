@@ -26,6 +26,7 @@ const initialState = {
   limit: null,
   total: null,
   allTeams: [],
+  success: null,
 };
 
 export const teamReducer = (state = initialState, action) => {
@@ -35,7 +36,7 @@ export const teamReducer = (state = initialState, action) => {
     case ADD_TEAM_REQUEST:
     case DELETE_TEAM_REQUEST:
     case EDIT_TEAM_REQUEST:
-      return { ...state, loading: true, error: null };
+      return { ...state, loading: true, error: null, success: null };
 
     case FETCH_TEAMS_SUCCESS:
       console.log(action.payload.page, state.page, action.payload);
@@ -82,9 +83,12 @@ export const teamReducer = (state = initialState, action) => {
               : item
           ),
         })),
+        success: true,
       };
 
     case ADD_TEAM_SUCCESS:
+      return { ...initialState, success: true };
+
     case DELETE_TEAM_SUCCESS:
       return initialState;
 
@@ -98,6 +102,7 @@ export const teamReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+        success: false,
       };
 
     /* case LOGOUT:

@@ -34,7 +34,7 @@ const TestPrep = () => {
   const handleAddTestPrep = (data) => {
     dispatch(addTestPrepRequest(data));
     setCurrentPage(1);
-    dispatch(fetchTestPrepsRequest(1));
+    // dispatch(fetchTestPrepsRequest(1));
     handleCloseAddModal();
   };
 

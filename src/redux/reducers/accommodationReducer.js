@@ -28,6 +28,7 @@ const initialState = {
   total: null,
 
   selectedAccommodation: {},
+  success: null,
 };
 
 export const accommodationsReducer = (state = initialState, action) => {
@@ -37,7 +38,7 @@ export const accommodationsReducer = (state = initialState, action) => {
     case DELETE_ACCOMMODATION_REQUEST:
     case EDIT_ACCOMMODATION_REQUEST:
     case UPLOAD_ACCOMMODATION_IMAGE_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_ACCOMMODATIONS_SUCCESS:
       return {
@@ -55,7 +56,7 @@ export const accommodationsReducer = (state = initialState, action) => {
       };
 
     case ADD_ACCOMMODATION_SUCCESS:
-      return initialState;
+      return { ...initialState, success: true };
 
     case DELETE_ACCOMMODATION_SUCCESS:
       return initialState;
@@ -82,6 +83,7 @@ export const accommodationsReducer = (state = initialState, action) => {
         page: 1,
         limit: null,
         total: null,
+        success: true,
       };
 
     case FETCH_ACCOMMODATIONS_FAILURE:
@@ -89,7 +91,12 @@ export const accommodationsReducer = (state = initialState, action) => {
     case DELETE_ACCOMMODATION_FAILURE:
     case EDIT_ACCOMMODATION_FAILURE:
     case UPLOAD_ACCOMMODATION_IMAGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
 
     case SET_SELECTED_ACCOMMODATION:
       return {

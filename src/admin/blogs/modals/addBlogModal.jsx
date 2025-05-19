@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
@@ -14,7 +14,7 @@ import { CurrencyInputField } from "../../../commons/components/inputFields/curr
 const AddBlogModal = ({
   isOpen,
   onClose,
-  setIsDone,
+
   onAddAccommodation,
 
   destinationsList,
@@ -22,14 +22,7 @@ const AddBlogModal = ({
   statesList,
 }) => {
   const [formData, setFormData] = useState({});
-  const { countries } = useSelector((state) => state.countries);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsDone(true);
-    onClose();
-  };
-
+  const { success } = useSelector((state) => state.blogs);
   const handleChange = (e) => {
     console.log(e.target.name);
     console.log("e.target.name");
@@ -61,6 +54,12 @@ const AddBlogModal = ({
     }
     onAddAccommodation(formData);
   };
+
+  useEffect(() => {
+    if (success) {
+      setFormData({});
+    }
+  }, [success]);
 
   return (
     <>

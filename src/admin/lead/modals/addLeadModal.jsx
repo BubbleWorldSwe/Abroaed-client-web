@@ -13,10 +13,9 @@ import {
 import { toast } from "react-toastify";
 
 const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
-  const { error } = useSelector((state) => state.leads);
+  const { success } = useSelector((state) => state.leads);
   const { allDestinations } = useSelector((state) => state.destinations);
-
-  const [formData, setFormData] = useState({
+  const initialState = {
     email: "",
     firstName: "",
     lastName: "",
@@ -27,7 +26,9 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
       applyingFor: "",
       targetYear: "",
     },
-  });
+  };
+
+  const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -86,21 +87,12 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
   };
 
   useEffect(() => {
-    if (!error) {
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        mobile: "",
-        userDetail: {
-          highestEducation: "",
-          preferredDestination: "",
-          applyingFor: "",
-          targetYear: "",
-        },
-      });
+    if (success) {
+      setFormData(initialState);
     }
-  }, [error]);
+  }, [success]);
+
+  console.log(success);
 
   return (
     <>

@@ -9,6 +9,7 @@ import { setSelectedCollege } from "../../../redux/actions/collegeActions";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import { formatDateTime } from "../../../utils/helper";
+import { toast } from "react-toastify";
 
 const CollegeTable = ({
   currentPage,
@@ -33,9 +34,33 @@ const CollegeTable = ({
       setDropdownVisible(null);
     }
   };
+  /*  if (
+        college === "publish" &&
+        (!college?.imageUrl ||
+          !college?.description ||
+          !college?.website ||
+          !college?.establishmentYear ||
+          !college?.ranking ||
+          !college?.intake ||
+          !college?.totalStudents ||
+          !college?.studentTeacherRatio ||
+          !college?.internationalStudent)
+      ) { */
 
-  const handleSubmit = (status, id) => {
+  const handleSubmit = (status, id, college) => {
     try {
+      if (
+        status === "publish" &&
+        (!college?.description?.trim() ||
+          !college?.images?.some((img) => img.type === "cover") ||
+          !college?.images?.some((img) => img.type === "logo"))
+      ) {
+        toast.error(
+          "Add both cover and logo images, and fill out the description to publish the page."
+        );
+        return;
+      }
+
       onUpdate({ status: status }, id);
       setDropdownVisible(null);
     } catch (error) {
@@ -179,7 +204,8 @@ const CollegeTable = ({
                                         college?.status === "draft"
                                           ? "publish"
                                           : "draft",
-                                        college._id
+                                        college._id,
+                                        college
                                       )
                                     }
                                     className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"

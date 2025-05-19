@@ -30,7 +30,7 @@ const StudentAdditionInfoModal = ({
   };
 
   const validateForm = () => {
-    if (!formData.highestEducation) {
+    /* if (!formData.highestEducation) {
       toast.error("Please select your highest education qualification.");
       return false;
     }
@@ -45,7 +45,7 @@ const StudentAdditionInfoModal = ({
     if (!formData.targetYear) {
       toast.error("Please select the target year.");
       return false;
-    }
+    } */
     return true;
   };
 

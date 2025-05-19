@@ -30,6 +30,7 @@ const initialState = {
   limit: null,
   total: null,
   selectedBlog: {},
+  success: null,
 };
 
 export const blogsReducer = (state = initialState, action) => {
@@ -37,7 +38,7 @@ export const blogsReducer = (state = initialState, action) => {
     case FETCH_BLOGS_REQUEST:
     case FETCH_ALL_BLOGS_REQUEST:
     case UPLOAD_BLOG_IMAGE_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_BLOGS_SUCCESS:
       return {
@@ -69,10 +70,15 @@ export const blogsReducer = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case ADD_BLOG_SUCCESS:
-      return initialState;
+      return { ...initialState, success: true };
 
     case ADD_BLOG_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
 
     case DELETE_BLOG_REQUEST:
       return { ...state, loading: true };
@@ -108,11 +114,17 @@ export const blogsReducer = (state = initialState, action) => {
         page: 1,
         limit: null,
         total: null,
+        success: true,
       };
 
     case EDIT_BLOG_FAILURE:
     case UPLOAD_BLOG_IMAGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
 
     case SET_SELECTED_BLOG:
       return { ...state, selectedBlog: action.payload, loading: false };

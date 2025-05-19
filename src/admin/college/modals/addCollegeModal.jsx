@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { useSelector } from "react-redux";
@@ -23,6 +23,8 @@ function AddCollegeModal({
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const { success } = useSelector((state) => state.colleges);
+
   const handleAddCollege = () => {
     const { name, destinationId, stateId, city, address, entityType, website } =
       formData;
@@ -43,6 +45,12 @@ function AddCollegeModal({
     console.log(formData);
     onAddCollege(formData);
   };
+
+  useEffect(() => {
+    if (success) {
+      setFormData({});
+    }
+  }, [success]);
 
   return (
     <>

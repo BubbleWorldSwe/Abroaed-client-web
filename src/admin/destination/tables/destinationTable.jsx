@@ -18,6 +18,7 @@ import { CheckboxField } from "../../../commons/components/inputFields/checkboxF
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
+import { toast } from "react-toastify";
 
 const DestinationTable = ({
   currentPage,
@@ -61,8 +62,20 @@ const DestinationTable = ({
     setDropdownDirection("down");
   };
 
-  const handleSubmit = (status, id) => {
+  const handleSubmit = (status, id, destination) => {
     try {
+      if (
+        status === "complete" &&
+        (!destination?.imageUrl ||
+          !destination?.description ||
+          !destination?.language ||
+          !destination?.dialcode ||
+          !destination?.intrStudents)
+      ) {
+        toast.error("Add image and overview details to publish page");
+        return;
+      }
+
       onUpdate({ status: status }, id);
       setDropdownVisible(null);
     } catch (error) {
@@ -183,7 +196,8 @@ const DestinationTable = ({
                                         destination?.status === "draft"
                                           ? "complete"
                                           : "draft",
-                                        destination._id
+                                        destination._id,
+                                        destination
                                       )
                                     }
                                     className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"

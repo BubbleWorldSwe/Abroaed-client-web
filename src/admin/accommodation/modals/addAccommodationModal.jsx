@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { TextareaInputField } from "../../../commons/components/inputFields/textareaInputField";
@@ -14,7 +14,7 @@ import { CurrencyInputField } from "../../../commons/components/inputFields/curr
 const AddAccommodationModal = ({
   isOpen,
   onClose,
-  setIsDone,
+
   onAddAccommodation,
 
   destinationsList,
@@ -22,6 +22,8 @@ const AddAccommodationModal = ({
   statesList,
 }) => {
   const [formData, setFormData] = useState({});
+
+  const { success } = useSelector((state) => state.accommodations);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,6 +54,12 @@ const AddAccommodationModal = ({
     }
     onAddAccommodation(formData);
   };
+
+  useEffect(() => {
+    if (success) {
+      setFormData({});
+    }
+  }, [success]);
 
   return (
     <>

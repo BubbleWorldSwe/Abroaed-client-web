@@ -25,6 +25,7 @@ const initialState = {
   limit: null,
   total: null,
   selectedCollege: {},
+  success: null,
 };
 
 export const collegesReducer = (state = initialState, action) => {
@@ -34,7 +35,7 @@ export const collegesReducer = (state = initialState, action) => {
     case DELETE_COLLEGE_REQUEST:
     case EDIT_COLLEGE_REQUEST:
     case UPLOAD_COLLEGE_IMAGE_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_COLLEGES_SUCCESS:
       return {
@@ -52,7 +53,7 @@ export const collegesReducer = (state = initialState, action) => {
       };
 
     case ADD_COLLEGE_SUCCESS:
-      return initialState;
+      return { ...initialState, success: true };
 
     case DELETE_COLLEGE_SUCCESS:
       return initialState;
@@ -90,7 +91,12 @@ export const collegesReducer = (state = initialState, action) => {
     case ADD_COLLEGE_FAILURE:
     case DELETE_COLLEGE_FAILURE:
     case EDIT_COLLEGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
 
     case SET_SELECTED_COLLEGE:
       return { ...state, selectedCollege: action.payload, loading: false };

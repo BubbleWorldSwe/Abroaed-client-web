@@ -10,11 +10,10 @@ import { TextInputField } from "../../../commons/components/inputFields/textInpu
 function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
   const dispatch = useDispatch();
   const { countries } = useSelector((state) => state.countries);
+  const { success } = useSelector((state) => state.destinations);
 
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [statesList, setStatesList] = useState([]); // Stores states of selected country
-  const [filteredStates, setFilteredStates] = useState([]); // For search functionality
-  const [selectedState, setSelectedState] = useState(null);
+
   const [capital, setCapital] = useState(null);
 
   const fetchCountries = (q) => {
@@ -23,19 +22,6 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
 
   const handleCountrySelect = (data) => {
     setSelectedCountry(data);
-
-    setStatesList(data.states || []); // Extract states from selected country
-    setFilteredStates(data.states || []); // Reset search results
-    setSelectedState(null); // Reset state selection
-  };
-
-  const handleStateSearch = (query) => {
-    if (!statesList.length) return;
-    setFilteredStates(
-      statesList.filter((state) =>
-        state.name.toLowerCase().includes(query.toLowerCase())
-      )
-    );
   };
 
   const handleAddDestination = () => {
@@ -49,12 +35,16 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
     }
     onAddDestination(selectedCountry?._id, capital);
     setSelectedCountry(null);
-    setSelectedState(null);
-    setStatesList([]);
-    setFilteredStates([]);
   };
 
   useEffect(() => {}, [selectedCountry]);
+
+  useEffect(() => {
+    if (success) {
+      setSelectedCountry(null);
+      setCapital(null);
+    }
+  }, [success]);
 
   if (!isOpen) return null;
 
@@ -69,46 +59,48 @@ function AddDestinationModal({ isOpen, onClose, onAddDestination }) {
         </button>
         <h2 className="text-xl font-bold mb-4">Add New Destination</h2>
 
-        {/* Country Selection */}
-        <SearchDropdownField
-          label="Select Country*"
-          options={countries.map((data) => ({
-            label: `${data.emoji} ${data.name}`,
-            value: data._id,
-            ...data,
-          }))}
-          value={selectedCountry}
-          onSelect={handleCountrySelect}
-          onSearch={fetchCountries}
-        />
+        <form onSubmit={handleAddDestination}>
+          {/* Country Selection */}
+          <SearchDropdownField
+            label="Select Country*"
+            options={countries.map((data) => ({
+              label: `${data.emoji} ${data.name}`,
+              value: data._id,
+              ...data,
+            }))}
+            value={selectedCountry}
+            onSelect={handleCountrySelect}
+            onSearch={fetchCountries}
+          />
 
-        {/* Currency Input */}
-        <div className="my-5">
+          {/* Currency Input */}
+          <div className="my-5">
+            <TextInputField
+              label="Currency*"
+              name="currency"
+              type="text"
+              value={selectedCountry?.currency}
+              disabled={true}
+              placeholder={"Enter"}
+              required
+            />
+          </div>
+
           <TextInputField
-            label="Currency*"
-            name="currency"
+            label="Capital*"
+            name="capital"
             type="text"
-            value={selectedCountry?.currency}
-            disabled={true}
+            value={capital}
+            onChange={(e) => setCapital(e.target.value)}
             placeholder={"Enter"}
             required
           />
-        </div>
 
-        <TextInputField
-          label="Capital*"
-          name="capital"
-          type="text"
-          value={capital}
-          onChange={(e) => setCapital(e.target.value)}
-          placeholder={"Enter"}
-          required
-        />
-
-        <div className="flex justify-end space-x-4 mt-10">
-          <ModalCloseButton label="Cancel" onClick={onClose} />
-          <ModalSubmitButton label="Add" onClick={handleAddDestination} />
-        </div>
+          <div className="flex justify-end space-x-4 mt-10">
+            <ModalCloseButton label="Cancel" onClick={onClose} />
+            <ModalSubmitButton label="Add" type="submit" />
+          </div>
+        </form>
       </div>
     </div>
   );

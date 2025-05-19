@@ -132,7 +132,7 @@ function Leads() {
 
       dispatch(addLeadRequest(data, "Lead Added Sucessfully"));
       setCurrentPage(1);
-      dispatch(fetchLeadsRequest(1));
+      // dispatch(fetchLeadsRequest(1));
       handleCloseAddModal();
     } catch (error) {
       console.log(error);

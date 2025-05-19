@@ -6,6 +6,7 @@ import { CheckboxField } from "../../commons/components/inputFields/checkboxFiel
 import { formatDate, formatStudentApplications } from "../../utils/helper";
 import StudentApplicationsList from "../components/studentApplicationsList";
 import StudentPreferenceDetails from "../components/studentPreferencesDetails";
+import { IMAGES } from "../../constants/images";
 
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);
@@ -35,14 +36,13 @@ const StudentHome = () => {
 
   return (
     <div className="w-full bg-[#fff] min-h-[90vh] px-5 py-10 ">
-      <h1 className="text-3xl font-bold">My Dashbssoard</h1>
+      <h1 className="text-3xl font-bold">My Dashboard</h1>
       <div className="bg-white mb-10 p-6 rounded-xl shadow-md">
         <div className="flex items-center gap-10">
           <div className="flex justify-center">
             <img
-              className="w-12 object-cover h-12 rounded-full border-2 border-gray-300"
-              src="https://media.istockphoto.com/id/1437816897/photo/business-woman-manager-or-human-resources-portrait-for-career-success-company-we-are-hiring.jpg?s=612x612&w=0&k=20&c=tyLvtzutRh22j9GqSGI33Z4HpIwv9vL_MZw_xOE19NQ="
-              alt="Rounded avatar"
+              className="w-14 object-cover h-15 rounded-full bg-slate-300 border-2"
+              src={IMAGES.user}
             />
             <div className="ml-4">
               <h2 className="text-lg font-semibold">

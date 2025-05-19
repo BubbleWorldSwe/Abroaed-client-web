@@ -32,6 +32,7 @@ const initialState = {
   limit: null,
   total: null,
   selectedDestination: {},
+  success: null,
 };
 
 export const destnationReducer = (state = initialState, action) => {
@@ -42,7 +43,7 @@ export const destnationReducer = (state = initialState, action) => {
     case DELETE_DESTINATION_REQUEST:
     case EDIT_DESTINATION_REQUEST:
     case UPLOAD_DESTINATION_IMAGE_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_DESTINATIONS_SUCCESS:
       return {
@@ -122,6 +123,8 @@ export const destnationReducer = (state = initialState, action) => {
       };
 
     case ADD_DESTINATION_SUCCESS:
+      return { ...initialState, success: true };
+
     case DELETE_DESTINATION_SUCCESS:
       return initialState;
 
@@ -135,6 +138,7 @@ export const destnationReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
+        success: false,
       };
 
     case SET_SELECTED_DESTINATION:

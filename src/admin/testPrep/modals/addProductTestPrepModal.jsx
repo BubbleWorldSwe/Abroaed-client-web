@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const AddProductTestPrepModal = ({ isOpen, onClose, onAddTestPreps }) => {
+  const { success } = useSelector((state) => state.testPreps);
+
   const [formData, setFormData] = useState({ language: "English" });
 
   const handleChange = (e) => {
@@ -29,6 +32,12 @@ const AddProductTestPrepModal = ({ isOpen, onClose, onAddTestPreps }) => {
       onClose();
     } catch (error) {}
   };
+
+  useEffect(() => {
+    if (success) {
+      onReset();
+    }
+  }, [success]);
 
   return (
     <>

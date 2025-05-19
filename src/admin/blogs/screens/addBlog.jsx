@@ -14,7 +14,7 @@ import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const AddBlog = () => {
   const [formData, setFormData] = useState({ content: "" });
-  const { loading } = useSelector((state) => state.blogs);
+  const { loading, success } = useSelector((state) => state.blogs);
   const [blogsCategory, setBlogsCategory] = useState([]);
   const dispatch = useDispatch();
 
@@ -33,11 +33,18 @@ const AddBlog = () => {
 
   const addBlog = () => {
     try {
-      console.log("Add");
       const { title, category, content } = formData;
 
-      if (!title || !category || !content) {
-        toast.error("Please fill out all fields.");
+      if (!title) {
+        toast.error("Please Enter Title.");
+        return;
+      }
+      if (!category) {
+        toast.error("Please Select Category.");
+        return;
+      }
+      if (!content) {
+        toast.error("Please Enter Content.");
         return;
       }
 
@@ -50,11 +57,18 @@ const AddBlog = () => {
 
   const publishBlog = () => {
     try {
-      console.log("Add");
       const { title, category, content } = formData;
 
-      if (!title || !category || !content) {
-        toast.error("Please fill out all fields.");
+      if (!title) {
+        toast.error("Please Enter Title.");
+        return;
+      }
+      if (!category) {
+        toast.error("Please Select Category.");
+        return;
+      }
+      if (!content) {
+        toast.error("Please Enter Content.");
         return;
       }
 
@@ -80,6 +94,12 @@ const AddBlog = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (success) {
+      setFormData({});
+    }
+  }, [success]);
 
   return (
     <>
@@ -112,7 +132,7 @@ const AddBlog = () => {
             </div>
             <div className="w-full mx-auto my-6 p-4 border rounded-lg shadow-lg bg-white">
               <TextInputField
-                label="Title"
+                label="Title*"
                 name="title"
                 value={formData?.title}
                 onChange={handleChange}
@@ -121,7 +141,7 @@ const AddBlog = () => {
               />
               <div className="my-5 mb-6">
                 <SelectField
-                  label="Category"
+                  label="Category*"
                   name="category"
                   value={formData.category}
                   onChange={handleChange}

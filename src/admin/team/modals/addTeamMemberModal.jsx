@@ -9,7 +9,7 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 
 function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
-  const { error } = useSelector((state) => state.teams);
+  const { success } = useSelector((state) => state.teams);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -67,10 +67,11 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
     };
 
     onAddTeam(data);
+    // resetForm();
   };
 
   useEffect(() => {
-    if (!error) {
+    if (success) {
       setFormData({
         firstName: "",
         lastName: "",
@@ -81,7 +82,9 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
       });
       onClose();
     }
-  }, [error]);
+  }, [success]);
+
+  console.log(success);
 
   return isOpen ? (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">

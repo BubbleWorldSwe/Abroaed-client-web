@@ -17,7 +17,6 @@ function Destinations() {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [query, setQuery] = useState("");
 
   const { loading, destinations, totalPages, total } = useSelector(
     (state) => state.destinations
@@ -32,7 +31,7 @@ function Destinations() {
 
     dispatch(addDestinationRequest({ countryId, capital }));
     setCurrentPage(1);
-    dispatch(fetchDestinationsRequest(1));
+    // dispatch(fetchDestinationsRequest(1));
     setIsAddModalOpen(false);
   };
 

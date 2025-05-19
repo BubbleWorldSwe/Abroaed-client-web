@@ -135,6 +135,7 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
           <TextInputField
             label="Total Students*"
             name="totalStudents"
+            type="text"
             value={formData.totalStudents}
             onChange={(e) => handleInputChange(e, "totalStudents")}
             placeholder="Enter"

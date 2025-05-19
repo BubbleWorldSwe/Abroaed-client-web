@@ -16,6 +16,7 @@ import { formatDate, formatDateTime } from "../../../utils/helper";
 import { setSelectedBlog } from "../../../redux/actions/blogActions";
 import { useNavigate } from "react-router-dom";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
+import { toast } from "react-toastify";
 
 const BlogsTable = ({
   currentPage,
@@ -47,6 +48,21 @@ const BlogsTable = ({
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  const handleUpdateStatus = (status, id, blog) => {
+    try {
+      if (status === "publish" && (!blog?.image || !blog?.content)) {
+        toast.error("Add image and content to publish page");
+        return;
+      }
+      changeStatus(id, status);
+      //  onUpdate({ status: status }, id);
+      //  setDropdownVisible(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleEditBlogs = (blog) => {
     try {
       console.log(blog);
@@ -177,8 +193,14 @@ const BlogsTable = ({
                                   {blog?.status === "publish" ? (
                                     <button
                                       type="button"
-                                      onClick={() =>
-                                        changeStatus(blog?._id, "draft")
+                                      onClick={
+                                        () =>
+                                          handleUpdateStatus(
+                                            "draft",
+                                            blog?._id,
+                                            blog
+                                          )
+                                        //  changeStatus(blog?._id, "draft")
                                       }
                                       className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                     >
@@ -188,8 +210,14 @@ const BlogsTable = ({
                                   ) : (
                                     <button
                                       type="button"
-                                      onClick={() =>
-                                        changeStatus(blog?._id, "publish")
+                                      onClick={
+                                        () =>
+                                          handleUpdateStatus(
+                                            "publish",
+                                            blog?._id,
+                                            blog
+                                          )
+                                        // changeStatus(blog?._id, "publish")
                                       }
                                       className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                     >

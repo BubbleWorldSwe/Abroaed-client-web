@@ -91,6 +91,14 @@ const EditBlog = () => {
   const publishBlog = (status) => {
     console.log("status", status);
     try {
+      if (
+        status === "publish" &&
+        (!blogDetails?.image || !blogDetails?.content)
+      ) {
+        toast.error("Add image and content to publish page");
+        return;
+      }
+
       dispatch(editBlogRequest(blogDetails?._id, { status }));
     } catch (error) {
       console.log(error);

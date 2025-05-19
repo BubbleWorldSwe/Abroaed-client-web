@@ -32,13 +32,14 @@ const initialState = {
   limit: null,
   total: null,
   selectedTestPrep: {},
+  success: null,
 };
 
 export const testPrepsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_TESTPREPS_REQUEST:
     case FETCH_ALL_TESTPREPS_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_TESTPREPS_SUCCESS:
       return {
@@ -96,9 +97,11 @@ export const testPrepsReducer = (state = initialState, action) => {
     case DELETE_TESTPREP_REQUEST:
     case EDIT_TESTPREP_REQUEST:
     case UPLOAD_TESTPREP_IMAGE_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case ADD_TESTPREP_SUCCESS:
+      return { ...initialState, success: true };
+
     case DELETE_TESTPREP_SUCCESS:
       return initialState;
 
@@ -106,7 +109,12 @@ export const testPrepsReducer = (state = initialState, action) => {
     case DELETE_TESTPREP_FAILURE:
     case EDIT_TESTPREP_FAILURE:
     case UPLOAD_TESTPREP_IMAGE_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+      };
 
     case EDIT_TESTPREP_SUCCESS:
     case UPLOAD_TESTPREP_IMAGE_SUCCESS:

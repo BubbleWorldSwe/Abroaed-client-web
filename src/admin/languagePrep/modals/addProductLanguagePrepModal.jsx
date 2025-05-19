@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const AddProductLanguagePrepModal = ({
   isOpen,
@@ -12,6 +13,8 @@ const AddProductLanguagePrepModal = ({
   setIsDone,
   onAddLanguagePreps,
 }) => {
+  const { success } = useSelector((state) => state.languagePreps);
+
   const [formData, setFormData] = useState({
     language: "English",
   });
@@ -33,6 +36,14 @@ const AddProductLanguagePrepModal = ({
     }
     onAddLanguagePreps(formData);
   };
+
+  useEffect(() => {
+    if (success) {
+      setFormData({
+        language: "English",
+      });
+    }
+  }, [success]);
 
   return (
     <>

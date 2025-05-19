@@ -42,7 +42,7 @@ function College() {
 
     dispatch(addCollegeRequest(data));
     setCurrentPage(1);
-    dispatch(fetchCollegesRequest(1));
+    // dispatch(fetchCollegesRequest(1));
     handleCloseAddModal();
   };
 

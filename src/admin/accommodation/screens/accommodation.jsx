@@ -43,7 +43,7 @@ const Accommodations = () => {
 
     dispatch(addAccommodationRequest(data));
     setCurrentPage(1);
-    dispatch(fetchAccommodationsRequest(1));
+    // dispatch(fetchAccommodationsRequest(1));
     handleCloseAddModal();
   };
 

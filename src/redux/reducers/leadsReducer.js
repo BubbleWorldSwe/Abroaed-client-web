@@ -32,6 +32,7 @@ const initialState = {
   limit: null,
   total: null,
   selectedLead: {},
+  success: null,
 };
 
 export const leadsReducer = (state = initialState, action) => {
@@ -43,7 +44,7 @@ export const leadsReducer = (state = initialState, action) => {
     case EDIT_LEADS_STUDENT_REQUEST:
     case FETCH_LEADS_STUDENTS_REQUEST:
     case SEARCH_LEADS_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: true, success: null };
 
     case FETCH_LEADS_SUCCESS:
     case SEARCH_LEADS_SUCCESS:
@@ -104,14 +105,22 @@ export const leadsReducer = (state = initialState, action) => {
       };
 
     case DELETE_LEAD_SUCCESS:
-    case ADD_LEAD_SUCCESS:
       return initialState;
+
+    case ADD_LEAD_SUCCESS:
+      return { ...initialState, success: true };
 
     case FETCH_LEADS_FAILURE:
     case ADD_LEAD_FAILURE:
     case DELETE_LEAD_FAILURE:
     case EDIT_LEAD_FAILURE:
-      return { ...state, loading: false, error: action.payload, leads: [] };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        leads: [],
+        success: false,
+      };
 
     case SEARCH_LEADS_FAILURE:
       return { ...state, loading: false, error: action.payload };

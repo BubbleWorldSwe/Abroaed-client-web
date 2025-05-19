@@ -9,6 +9,7 @@ import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationMo
 import { setSelectedAccommodation } from "../../../redux/actions/accommodationActions";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import { formatDateTime } from "../../../utils/helper";
+import { toast } from "react-toastify";
 
 const AccommodationTable = ({
   currentPage,
@@ -35,8 +36,16 @@ const AccommodationTable = ({
     }
   };
 
-  const handleSubmit = (status, id) => {
+  const handleSubmit = (status, id, accommodation) => {
     try {
+      if (
+        status === "publish" &&
+        (!accommodation?.imageUrl || !accommodation?.description)
+      ) {
+        toast.error("Add image and about to publish page");
+        return;
+      }
+
       onUpdate({ status: status }, id);
       setDropdownVisible(null);
     } catch (error) {
@@ -165,7 +174,8 @@ const AccommodationTable = ({
                                         accommodation?.status === "draft"
                                           ? "publish"
                                           : "draft",
-                                        accommodation._id
+                                        accommodation._id,
+                                        accommodation
                                       )
                                     }
                                     className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
