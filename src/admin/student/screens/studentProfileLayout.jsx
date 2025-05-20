@@ -21,7 +21,7 @@ import {
   setSelectedStudent,
   setStudentDataLoading,
 } from "../../../redux/actions/studentsActions";
-import { editLeadsStudentRequest } from "../../../redux/actions/leadsActions";
+
 import UpdateStudentPersonalInfo from "../modals/updateStudentPersonalInfoModal";
 import UpdateStudentAdditionInfo from "../modals/updateStudentAdditionInfoModal";
 import StudentAssignTeamModal from "../modals/studentAssignTeamModal";
@@ -103,6 +103,7 @@ const StudentProfileLayout = () => {
   async function onUpdateLead(data, id) {
     try {
       dispatch(editStudentLeadRequest(id, data));
+      fetchData();
       handleModal(null);
     } catch (error) {
       console.log(error);
@@ -112,6 +113,7 @@ const StudentProfileLayout = () => {
   async function onUpdateStudent(data, userId) {
     try {
       dispatch(editStudentRequest(userId, data, id));
+      fetchData();
       handleModal(null);
     } catch (error) {
       console.log(error);

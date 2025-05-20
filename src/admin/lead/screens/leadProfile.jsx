@@ -61,7 +61,6 @@ const LeadProfileLayout = () => {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editLeadRequest(id, data));
       handleModal(null);
     } catch (error) {

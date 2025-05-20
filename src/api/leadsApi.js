@@ -5,6 +5,7 @@ import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
+  makePatchRequestWithToken,
   makePostRequest,
   makePostRequestWithFormData,
   makePostRequestWithToken,
@@ -80,11 +81,13 @@ export const setAddLead = async (credentials) => {
 
 export const setUpdateLead = async (id, credentials) => {
   try {
+    const { adminToken } = store.getState().auth;
     console.log(credentials);
 
-    const data = await makePatchRequest(
+    const data = await makePatchRequestWithToken(
       `${BASE_URL}/api/v1/admin/leads/${id}`,
-      credentials
+      credentials,
+      adminToken
     );
     if (data.success) {
       return data.data;

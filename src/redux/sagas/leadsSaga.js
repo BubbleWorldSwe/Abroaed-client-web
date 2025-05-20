@@ -107,6 +107,8 @@ function* handleEditLead(action) {
     const response = yield call(setUpdateLead, id, leadData);
     console.log("handleEditLead in Saga", response);
 
+    debugger;
+
     if (response.status === 200) {
       yield put(editLeadSuccess(response.data));
       toast.success("Lead updated successfully!");

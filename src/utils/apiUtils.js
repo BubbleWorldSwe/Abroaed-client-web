@@ -183,6 +183,8 @@ export const makePatchRequestWithToken = async (url, payload, token) => {
   try {
     console.log("make PATCH TOKEN request = " + url);
 
+    console.log(token);
+
     console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);

@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import AssignTeamModal from "../modals/assignTeamMemberModal";
-import filter_list from "../../../assets/filter_list.png";
-import { leadsData } from "../data";
 import LeadTable from "../tables/leadTable";
 import AppointmentModal from "../modals/appointmentModal";
 import UpdateLeadStatus from "../modals/updateLeadStatusModal";
@@ -19,7 +17,6 @@ import {
   searchLeadsRequest,
 } from "../../../redux/actions/leadsActions";
 import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
-import { getRoles } from "../../../api/api";
 import { getTeamsByMembers } from "../../../api/teamsApi";
 import { Search } from "lucide-react";
 import { toast } from "react-toastify";
@@ -126,10 +123,6 @@ function Leads() {
 
   const handleAddLead = (data) => {
     try {
-      //  setIsAddModalOpen(false);
-      console.log("handleAddLead");
-      console.log(data);
-
       dispatch(addLeadRequest(data, "Lead Added Sucessfully"));
       setCurrentPage(1);
       // dispatch(fetchLeadsRequest(1));
@@ -141,7 +134,6 @@ function Leads() {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editLeadRequest(id, data));
       setshowAppointmentModal(false);
       setShowUpdateModal(false);
@@ -153,12 +145,11 @@ function Leads() {
 
   async function onAssignTeam(data, id) {
     try {
-      console.log(data, id);
       dispatch(editLeadRequest(id, data));
 
-      // setshowAppointmentModal(false);
-      // setShowUpdateModal(false);
-      // setshowTeamModal(false);
+      setshowAppointmentModal(false);
+      setShowUpdateModal(false);
+      setshowTeamModal(false);
     } catch (error) {
       console.log(error);
     }
@@ -195,11 +186,8 @@ function Leads() {
     }
   };
 
-  console.log(leads?.length, " Lead Length", leads);
-
   useEffect(() => {
     if (leads?.length === 0) {
-      console.log("fetchLeadsRequest");
       dispatch(fetchLeadsRequest(currentPage));
     }
   }, [dispatch, currentPage, leads]);
@@ -210,8 +198,12 @@ function Leads() {
 
   useEffect(() => {
     if (selectedMember) {
+      // console.log("selectedMember Updated");
       const updated = leads.find((lead) => lead._id === selectedMember._id);
+
+      console.log(updated);
       if (updated) {
+        console.log("selectedMember Updated");
         setSelectedMember(updated);
       }
     }

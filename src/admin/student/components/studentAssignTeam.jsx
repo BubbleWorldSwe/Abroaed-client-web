@@ -57,7 +57,10 @@ const StudentAssignTeam = ({ onOpenModal, onUpdate }) => {
         <tbody>
           {studentProfile?.assignTeamMembers?.length > 0 ? (
             studentProfile?.assignTeamMembers.map((data, i) => (
-              <tr className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700">
+              <tr
+                key={i}
+                className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
                 <td className=" px-4 py-3 font-semibold">
                   {`${data?.firstName} ${data?.lastName}`}
                 </td>

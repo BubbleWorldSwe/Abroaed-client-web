@@ -32,14 +32,12 @@ const LeadTable = ({
   handleNextPage,
   handlePrevPage,
   handleDelete,
-  onUpdate,
 }) => {
   const dispatch = useDispatch();
   const { leads, totalPages } = useSelector((state) => state.leads);
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [deleteId, setDeleteId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(leads);
 
   const [dropdownDirection, setDropdownDirection] = useState(null);
   const dropdownRef = useRef(null);
@@ -68,8 +66,6 @@ const LeadTable = ({
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
-  console.log(leads);
 
   return (
     <>
