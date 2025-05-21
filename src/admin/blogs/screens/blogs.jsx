@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import filter_list from "../../../assets/filter_list.png";
 import BlogsTable from "../tables/blogsTable";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteBlogRequest,
@@ -15,7 +15,7 @@ const Blogs = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
-
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const { blogs, totalPages, loading } = useSelector((state) => state.blogs);
@@ -65,6 +65,10 @@ const Blogs = () => {
       dispatch(fetchBlogsRequest(currentPage));
     }
   }, [dispatch, blogs, currentPage]);
+
+  useEffect(() => {
+    dispatch(fetchBlogsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

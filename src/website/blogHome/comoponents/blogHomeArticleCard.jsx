@@ -8,13 +8,11 @@ const BlogHomeArticleCard = ({ data }) => {
 
   return (
     <div className=" mx-auto w-full bg-white rounded-xl shadow-md dark:bg-gray-900 dark:border-gray-700">
-      <a href="#">
-        <img
-          className=" rounded-t-xl hover:opacity-80"
-          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png"
-          alt="office laptop working"
-        />
-      </a>
+      <img
+        className=" rounded-t-xl hover:opacity-80"
+        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/blog/office-laptops.png"
+        alt="office laptop working"
+      />
       <div className="p-4">
         <div className="flex items-center mb-1 space-x-2">
           <div className="text-base font-normal text-[#52525B] dark:text-gray-400">

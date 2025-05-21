@@ -49,7 +49,6 @@ const App = () => {
 
       if (isLoggedInStudent) {
         if (studentToken && studentId) {
-          console.log(studentToken, studentId);
           dispatch(studentGetProfileRequest(studentId));
           dispatch(fetchSavedPreferencesRequest(studentId));
 
@@ -71,8 +70,6 @@ const App = () => {
       console.log(error);
     }
   }
-
-  console.log(adminToken);
 
   useEffect(() => {
     fetchData();

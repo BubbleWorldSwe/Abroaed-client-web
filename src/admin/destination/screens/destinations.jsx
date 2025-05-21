@@ -11,13 +11,14 @@ import {
 import AddDestinationModal from "../modals/addDestinationModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 function Destinations() {
   const dispatch = useDispatch();
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-
+  const location = useLocation();
   const { loading, destinations, totalPages, total } = useSelector(
     (state) => state.destinations
   );
@@ -84,6 +85,10 @@ function Destinations() {
       dispatch(fetchDestinationsRequest(currentPage));
     }
   }, [dispatch, destinations, currentPage]);
+
+  useEffect(() => {
+    dispatch(fetchDestinationsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

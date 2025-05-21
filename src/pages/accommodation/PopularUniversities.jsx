@@ -97,13 +97,11 @@ function PopularUniversityCards() {
           {cardData.map((card) => (
             <SwiperSlide key={card.id}>
               <article className="p-4 max-w-sm bg-white rounded-lg shadow-md border border-gray-200 dark:border-gray-800 dark:bg-gray-800">
-                <a href="#">
-                  <img
-                    className="mb-5    object-cover w-full rounded-lg"
-                    src={card.img}
-                    alt={card.name}
-                  />
-                </a>
+                <img
+                  className="mb-5    object-cover w-full rounded-lg"
+                  src={card.img}
+                  alt={card.name}
+                />
                 <h3 className="mb-2 text-xl font-bold tracking-tight text-gray-900 lg:text-2xl dark:text-white">
                   {card.name}
                 </h3>

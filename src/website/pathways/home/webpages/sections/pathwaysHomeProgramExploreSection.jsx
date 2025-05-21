@@ -17,13 +17,11 @@ const PathwayHomeProgramExplore = () => {
                     key={index}
                     className="max-w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                   >
-                    <a href="#">
-                      <img
-                        className="rounded-t-lg w-full h-56 object-cover"
-                        src={dark}
-                        alt={"name"}
-                      />
-                    </a>
+                    <img
+                      className="rounded-t-lg w-full h-56 object-cover"
+                      src={dark}
+                      alt={"name"}
+                    />
                     <div className="p-5">
                       <div className="flex justify-between align-middle">
                         <div className="">

@@ -35,8 +35,6 @@ function AdminForgotPassword() {
       setIsLoading(true);
       const data = await setResendOtp({ email });
 
-      console.log(data);
-
       if (data?.data?.success) {
         toast.success("OTP sent successfully!");
 

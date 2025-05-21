@@ -13,9 +13,11 @@ import {
 } from "../../../redux/actions/testPrepsActions";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 const TestPrep = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const { isWriteAccess } = useSelector((state) => state.auth);
   const { testPreps, totalPages, loading } = useSelector(
@@ -88,6 +90,10 @@ const TestPrep = () => {
       dispatch(fetchTestPrepsRequest(currentPage));
     }
   }, [dispatch, testPreps, currentPage]);
+
+  useEffect(() => {
+    dispatch(fetchTestPrepsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

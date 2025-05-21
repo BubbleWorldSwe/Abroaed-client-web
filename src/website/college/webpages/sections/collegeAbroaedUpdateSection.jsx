@@ -16,13 +16,11 @@ const CollegeAbroaedUpdateSection = () => {
               key={idx}
               className="p-4 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700"
             >
-              <a href="#">
-                <img
-                  className="mb-5 rounded-lg"
-                  src={article.image}
-                  alt="office laptop working"
-                />
-              </a>
+              <img
+                className="mb-5 rounded-lg"
+                src={article.image}
+                alt="office laptop working"
+              />
               <p className="mb-3 text-gray-500 dark:text-gray-400">
                 {article.content}
               </p>

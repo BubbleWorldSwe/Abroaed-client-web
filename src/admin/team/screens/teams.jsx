@@ -14,12 +14,12 @@ import filter_list from "../../../assets/filter_list.png";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import { getRoles } from "../../../api/api";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 function Teams() {
   const dispatch = useDispatch();
-  const { teams, totalPages, page, loading } = useSelector(
-    (state) => state.teams
-  );
+  const { teams, totalPages, loading } = useSelector((state) => state.teams);
+  const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -142,13 +142,16 @@ function Teams() {
   useEffect(() => {
     if (teams.length === 0) {
       dispatch(fetchTeamsRequest(currentPage));
-      // setCurrentPage(1);
     }
   }, [dispatch, currentPage, teams, editData]);
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchTeamsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

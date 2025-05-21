@@ -137,16 +137,16 @@ const CollegeTable = ({
                   >
                     <th
                       onClick={() => handleViewDetails(college)}
-                      className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                      className="px-4 py-3 font-medium max-w-[250px] text-gray-900 dark:text-white"
                     >
                       {college.name}
                     </th>
 
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 max-w-[200px]">
                       {college.city}, {college?.destinationId?.countryId?.name}
                     </td>
 
-                    <td className="px-4 py-3">
+                    <td className="px-4 py-3 max-w-[200px]  text-ellipsis overflow-scroll line-clamp-1">
                       <a
                         href={college.website}
                         target="_blank"
@@ -156,6 +156,7 @@ const CollegeTable = ({
                         {college.website}
                       </a>
                     </td>
+
                     <td className="px-4 py-3">{college?.entityType}</td>
                     <td className="px-4 py-3">
                       {college?.status === "draft" ? "Draft" : "Published"}

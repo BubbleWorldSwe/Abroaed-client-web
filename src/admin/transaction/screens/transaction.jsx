@@ -13,6 +13,7 @@ import {
 } from "../../../redux/actions/transactionActions";
 import { getAllStudents } from "../../../api/studentsApi";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 const Transaction = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null);
@@ -21,7 +22,7 @@ const Transaction = () => {
   const [editData, setEditData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
-
+  const location = useLocation();
   const { transactions, totalPages, loading } = useSelector(
     (state) => state.transactions
   );
@@ -114,9 +115,15 @@ const Transaction = () => {
     if (transactions?.length === 0) {
       dispatch(fetchTransactionsRequest(currentPage));
     }
-
-    fetchData();
   }, [dispatch, transactions, currentPage]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchTransactionsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

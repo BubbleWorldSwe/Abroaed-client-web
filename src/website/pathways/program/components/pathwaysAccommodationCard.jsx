@@ -30,13 +30,11 @@ const PathwaysAccommodationCard = ({ item, source, onAddLead }) => {
         accommodationDetails={item}
       />
       <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
-        <a href="#">
-          <img
-            className="rounded-t-lg w-full h-48 object-cover"
-            src={IMAGES.accommodations}
-            alt={item.name}
-          />
-        </a>
+        <img
+          className="rounded-t-lg w-full h-48 object-cover"
+          src={IMAGES.accommodations}
+          alt={item.name}
+        />
         <div className="p-5 flex flex-col flex-grow">
           {/* Header */}
           <div className="flex justify-between">

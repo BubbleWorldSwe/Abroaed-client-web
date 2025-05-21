@@ -132,7 +132,6 @@ const AccommodationDetails = () => {
 
   async function onUploadImage(data) {
     try {
-      console.log(data);
       dispatch(
         uploadAccommodationImageRequest(accommodationDetails._id, {
           files: data,

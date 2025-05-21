@@ -5,14 +5,11 @@ import image from "../../../assets/dark.png";
 const BlogCard = ({ article }) => {
   return (
     <article className="p-4  bg-white flex-shrink-0  rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 flex flex-col h-[25rem]">
-      <a href="#">
-        <img
-          className="mb-5 rounded-lg"
-          src={image}
-          alt="office laptop working"
-        />
-      </a>
-
+      <img
+        className="mb-5 rounded-lg"
+        src={image}
+        alt="office laptop working"
+      />
       <div
         className="mb-3 dark:text-gray-400 line-clamp-3 flex-grow"
         dangerouslySetInnerHTML={{ __html: article.content }}

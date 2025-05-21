@@ -23,13 +23,11 @@ const UniversityCardDetails = ({ item, onAddLead }) => {
         onAddLead={onAddLead}
       />
       <div className="w-[18rem] md:w-[25rem] bg-white border overflow-y-auto h-[30rem] border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <a href="#">
-          <img
-            className="rounded-t-lg w-full h-48 object-cover"
-            src={item.imgUrl}
-            alt={item.name}
-          />
-        </a>
+        <img
+          className="rounded-t-lg w-full h-48 object-cover"
+          src={item.imgUrl}
+          alt={item.name}
+        />
         <div className="p-5">
           <div className="flex justify-between">
             <h5

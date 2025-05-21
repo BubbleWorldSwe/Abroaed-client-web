@@ -12,12 +12,13 @@ import AddProductLanguagePrepModal from "../modals/addProductLanguagePrepModal";
 import ConfirmModal from "../../../commons/modal/confirmModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 const LanguagePrep = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
-
+  const location = useLocation();
   const { languagePreps, totalPages, loading } = useSelector(
     (state) => state.languagePreps
   );
@@ -87,6 +88,10 @@ const LanguagePrep = () => {
       dispatch(fetchLanguagePrepsRequest(currentPage));
     }
   }, [dispatch, languagePreps, currentPage]);
+
+  useEffect(() => {
+    dispatch(fetchLanguagePrepsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

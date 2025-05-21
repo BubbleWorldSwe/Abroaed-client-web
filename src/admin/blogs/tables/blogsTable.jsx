@@ -231,7 +231,7 @@ const BlogsTable = ({
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setDeleteId(blog?._id);
+                                      setDeleteId(blog);
                                       setIsModalOpen(!isModalOpen);
                                       //setDropdownVisible(null);
                                     }}
@@ -267,9 +267,9 @@ const BlogsTable = ({
       <DeleteConfirmationModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        heading="Delete!"
+        heading={`Delete : ${deleteId?.title}`}
         onDelete={() => {
-          handleDelete(deleteId);
+          handleDelete(deleteId?._id);
           setIsModalOpen(false);
         }}
       />

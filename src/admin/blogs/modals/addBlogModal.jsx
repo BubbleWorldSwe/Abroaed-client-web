@@ -23,9 +23,8 @@ const AddBlogModal = ({
 }) => {
   const [formData, setFormData] = useState({});
   const { success } = useSelector((state) => state.blogs);
+
   const handleChange = (e) => {
-    console.log(e.target.name);
-    console.log("e.target.name");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

@@ -28,17 +28,15 @@ const UniversityDetailsCard = ({
 
   return (
     <div className="w-full md:max-w-sm h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
-        <img
-          className="rounded-t-lg w-full h-48 object-cover"
-          src={
-            coverImage
-              ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
-              : IMAGES.noCollege
-          }
-          alt={item.name}
-        />
-      </a>
+      <img
+        className="rounded-t-lg w-full h-48 object-cover"
+        src={
+          coverImage
+            ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+            : IMAGES.noCollege
+        }
+        alt={item.name}
+      />
       <div className="p-5 flex flex-col flex-grow">
         {/* Header Section */}
         <div className="flex justify-between">

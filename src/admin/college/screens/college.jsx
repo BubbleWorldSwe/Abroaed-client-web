@@ -17,11 +17,12 @@ import {
 } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 function College() {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // State to manage Add modal open/close
-
+  const location = useLocation();
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
@@ -122,8 +123,15 @@ function College() {
       console.log("fetchCollegesRequest");
       dispatch(fetchCollegesRequest(currentPage));
     }
-    fetchData();
   }, [dispatch, colleges, currentPage]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchCollegesRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>

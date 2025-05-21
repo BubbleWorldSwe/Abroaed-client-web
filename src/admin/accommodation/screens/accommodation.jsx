@@ -15,6 +15,7 @@ import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { AddButton } from "../../../commons/components/buttons/addButton";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import { useLocation } from "react-router-dom";
 
 const Accommodations = () => {
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -26,7 +27,7 @@ const Accommodations = () => {
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
-
+  const location = useLocation();
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [destinationsList, setDestinationsList] = useState([]);
@@ -113,7 +114,6 @@ const Accommodations = () => {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editAccommodationRequest(id, data));
     } catch (error) {
       console.log(error);
@@ -125,8 +125,15 @@ const Accommodations = () => {
       console.log("fetchAccommodationsRequest");
       dispatch(fetchAccommodationsRequest(currentPage));
     }
-    fetchData();
   }, [dispatch, accommodations, currentPage]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchAccommodationsRequest(currentPage));
+  }, [location.pathname]);
 
   return (
     <>
