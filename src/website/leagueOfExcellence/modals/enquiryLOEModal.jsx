@@ -5,7 +5,7 @@ import wallet from "../../../assets/wallet.png";
 import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { toast } from "react-toastify";
-import { source } from "../../../constants/values";
+import { entity, source } from "../../../constants/values";
 
 const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
   const [formData, setFormData] = useState({
@@ -60,8 +60,8 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
 
       onAddLead({
         user: formData,
-        source: source.leaguageOfExcellence,
-        entity: item?.name,
+        entity: source.leaguageOfExcellence,
+        source: "Website",
       });
       onClose();
     } catch (error) {

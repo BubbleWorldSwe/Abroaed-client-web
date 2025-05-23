@@ -11,7 +11,7 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import { entity, source } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import SectionComponent from "../../styleComponents/sectionComponent";
-import vectorleftNose from "../../../assets/vectorleftNose.png"
+import vectorleftNose from "../../../assets/vectorleftNose.png";
 function FinancePage() {
   const dispatch = useDispatch();
   const handleAddLead = (data) => {
@@ -30,7 +30,6 @@ function FinancePage() {
       <Header />
       <FinanceHeroSection />
       <div className="grid grid-cols-1 gap-10 md:gap-16">
-
         <div className="relative">
           <SectionComponent>
             <FinanceHowItWorks />
@@ -63,8 +62,8 @@ function FinancePage() {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.finance}
-            entity={`${entity.contactUs}`}
+            entity={entity.finance}
+            source={`Website`}
             buttonText="Register Now To Know More"
             title={"Keen to know more?"}
             text="Schedule your counselling session today Our specialized home counselling session is available at your convenience. Don’t waste a minute—take a stride towards your future by contacting our study abroad expert today."

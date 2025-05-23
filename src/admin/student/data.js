@@ -1,6 +1,6 @@
 export const tabsData = [
   {
-    tabName: "To Start",
+    tabName: "Shortlisting",
     cardDetails: [
       {
         imgUrl: "studentColImg",
@@ -38,7 +38,7 @@ export const tabsData = [
     ],
   },
   {
-    tabName: "Application Filed",
+    tabName: "STU",
     cardDetails: [
       {
         imgUrl: "studentColImg",
@@ -88,10 +88,10 @@ export const tabsData = [
 ];
 
 export const tabColors = {
-  "To Start": "bg-[#FECCE1]",
+  Shortlisting: "bg-[#FECCE1]",
   "Verifying Documents": "bg-[#FFFCC2]",
-  "Application Filed": "bg-[#BAE6FF]",
-  "Application Filled": "bg-[#BAE6FF]",
+  STU: "bg-[#BAE6FF]",
+
   "Awaiting Response": "bg-[#D4D4D8]",
   Rejected: "bg-[#DB4437]",
   "Offer Letter Received": "bg-[#DBFDEC]",

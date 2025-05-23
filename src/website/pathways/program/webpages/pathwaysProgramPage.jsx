@@ -105,8 +105,8 @@ const PathwaysProgramPage = () => {
       <Blogs />
       <ContactUsForm
         onFormSubmit={handleAddLead}
-        source={source.pathwaysProgram}
-        entity={entity.contactUs}
+        entity={entity.pathwaysProgram}
+        source={`Website`}
       />
       <Footer />
     </div>

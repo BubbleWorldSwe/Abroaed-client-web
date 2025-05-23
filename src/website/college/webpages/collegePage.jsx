@@ -208,8 +208,8 @@ function CollegePage() {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.college}
-            entity={`${collegeDetails?.name}_${entity.contactUs}`}
+            entity={entity.college}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

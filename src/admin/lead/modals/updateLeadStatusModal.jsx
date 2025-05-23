@@ -175,17 +175,15 @@ const UpdateLeadStatus = ({ leadId, onClose, onUpdate, filledData }) => {
             </div>
           )}
 
-          {formData.status === "Lost" && (
-            <div className="mt-5">
-              <TextareaInputField
-                label="Remark"
-                name="remark"
-                value={formData.remark}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          )}
+          <div className="mt-5">
+            <TextareaInputField
+              label="Remarks"
+              name="remark"
+              value={formData.remark}
+              onChange={handleChange}
+              // required
+            />
+          </div>
 
           <div className="flex justify-end space-x-2 mt-10">
             <ModalCloseButton label="Close" onClick={onClose} />

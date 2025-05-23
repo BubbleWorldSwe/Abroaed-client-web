@@ -24,8 +24,6 @@ import { useDispatch, useSelector } from "react-redux";
 import SectionComponent from "../../styleComponents/sectionComponent";
 import Testimonials from "../../comman/components/testimonials";
 
-
-
 const HomeCounsellingPage = () => {
   const dispatch = useDispatch();
 
@@ -44,9 +42,7 @@ const HomeCounsellingPage = () => {
   return (
     <div className="font-rethink">
       <Header />
-      <HomeCounsellingHeroSection
-        img={homeCounsellingHero}
-      />
+      <HomeCounsellingHeroSection img={homeCounsellingHero} />
       <div className="grid grid-cols-1 gap-10 md:gap-16">
         <div className="relative">
           <SectionComponent>
@@ -107,8 +103,8 @@ const HomeCounsellingPage = () => {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.homeCounselling}
-            entity={entity.contactUs}
+            entity={entity.homeCounselling}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

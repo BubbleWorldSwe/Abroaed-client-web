@@ -69,8 +69,8 @@ function PathwaysHomePage() {
           <SectionComponent>
             <ContactUsForm
               onFormSubmit={handleAddLead}
-              source={source.pathways}
-              entity={entity.contactUs}
+              entity={entity.pathways}
+              source={`Website`}
             />
           </SectionComponent>
         </div>

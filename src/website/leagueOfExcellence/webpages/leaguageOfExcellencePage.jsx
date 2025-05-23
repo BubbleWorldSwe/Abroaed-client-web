@@ -66,8 +66,8 @@ const LeaguageOfExcellencePage = () => {
           <SectionComponent>
             <LeaguageOfExcellenceExplorePlan
               onFormSubmit={handleAddLead}
-              source={source.leaguageOfExcellence}
-              entity={entity.explorePlans}
+              entity={entity.leaguageOfExcellence}
+              source={`Website`}
             />
           </SectionComponent>
           <div className="absolute top-20 right-0 -z-10">
@@ -100,8 +100,8 @@ const LeaguageOfExcellencePage = () => {
           <SectionComponent>
             <ContactUsForm
               onFormSubmit={handleAddLead}
-              source={source.leaguageOfExcellence}
-              entity={entity.contactUs}
+              entity={entity.leaguageOfExcellence}
+              source={`Website`}
             />
           </SectionComponent>
           <div className="absolute -top-16 right-0 -z-10">

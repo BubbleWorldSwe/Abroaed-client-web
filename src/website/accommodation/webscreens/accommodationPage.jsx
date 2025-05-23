@@ -24,7 +24,7 @@ import {
   deleteSavedPreferenceRequest,
 } from "../../../redux/actions/savedPreferencesActions";
 import SectionComponent from "../../styleComponents/sectionComponent";
-import vectorBelow from "../../../assets/vectorBelow.png"
+import vectorBelow from "../../../assets/vectorBelow.png";
 function AccomodationPage() {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -152,7 +152,6 @@ function AccomodationPage() {
           />
         </SectionComponent>
         <div className="relative">
-
           <SectionComponent>
             <AccommodationHowItWorkSection />
           </SectionComponent>
@@ -174,8 +173,8 @@ function AccomodationPage() {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.accommodation}
-            entity={`${entity.contactUs}`}
+            entity={entity.accommodation}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

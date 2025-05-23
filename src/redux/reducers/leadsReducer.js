@@ -118,7 +118,7 @@ export const leadsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload,
-        leads: [],
+        //  leads: [],
         success: false,
       };
 

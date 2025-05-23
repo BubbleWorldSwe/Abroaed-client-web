@@ -12,7 +12,7 @@ const StudentAvailedServices = ({ onOpenModal }) => {
     <div className="w-full mx-auto mb-8 p-5 bg-white rounded-lg shadow-lg">
       <div className="flex justify-between items-center mb-4">
         <h2 className={`text-2xl font-bold text-gray-primary`}>
-          Availed Services
+          Availed Service
         </h2>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -49,6 +49,16 @@ const StudentAvailedServices = ({ onOpenModal }) => {
           </span>
         </div>
       </div>
+      {studentProfile?.remark && (
+        <div className="flex flex-col mt-4">
+          <label className="font-semibold tracking-tight text-[#111928]">
+            Remarks
+          </label>
+          <span className="text-[#6B7280] tracking-tight">
+            {`${studentProfile?.remark}`}
+          </span>
+        </div>
+      )}
     </div>
   );
 };

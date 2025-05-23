@@ -276,10 +276,10 @@ const StudentProfileLayout = () => {
 
       if (data?.status === 200) {
         dispatch(addStudentApplication(data?.data));
-        fetchStudentDocuments();
         toast.success(data?.message);
         setUpdateDocModal(false);
         setOpenModal(false);
+        fetchData();
       } else {
         toast.error(data?.message);
         dispatch(setStudentDataLoading(false));
@@ -295,7 +295,7 @@ const StudentProfileLayout = () => {
       const data = await setUpdateStudentDocuments(docId, fileData);
 
       if (data?.status === 200) {
-        fetchStudentDocuments();
+        fetchData();
         toast.success(data?.message);
         setUpdateDocModal(false);
       } else {
@@ -313,7 +313,7 @@ const StudentProfileLayout = () => {
       const data = await setDeleteStudentDocument(id);
 
       if (data?.status === 200) {
-        fetchStudentDocuments();
+        fetchData();
         toast.success(data?.message);
       } else {
         toast.error(data?.message);

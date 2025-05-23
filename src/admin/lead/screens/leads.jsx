@@ -28,7 +28,9 @@ function Leads() {
   const { isWriteAccess } = useSelector((state) => state.auth);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { leads, totalPages, loading } = useSelector((state) => state.leads);
+  const { leads, totalPages, loading, success } = useSelector(
+    (state) => state.leads
+  );
   const location = useLocation();
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -156,7 +158,6 @@ function Leads() {
   }
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteLeadRequest(id));
     setCurrentPage(1);
     dispatch(fetchLeadsRequest(1));
@@ -197,21 +198,10 @@ function Leads() {
   }, []);
 
   useEffect(() => {
-    if (selectedMember) {
-      // console.log("selectedMember Updated");
-      const updated = leads.find((lead) => lead._id === selectedMember._id);
-
-      console.log(updated);
-      if (updated) {
-        console.log("selectedMember Updated");
-        setSelectedMember(updated);
-      }
-    }
-  }, [leads]);
-
-  useEffect(() => {
     dispatch(fetchLeadsRequest(currentPage));
   }, [location.pathname]);
+
+  console.log(loading, "loading");
 
   return (
     <>

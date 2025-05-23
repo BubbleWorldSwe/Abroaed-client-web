@@ -99,8 +99,8 @@ function HomeLayout() {
       </div>
       <HomePromoSection
         onFormSubmit={handleAddLead}
-        source={source.home}
-        entity={entity.bookCounselling}
+        entity={entity.home}
+        source={`Website`}
       />
       <Testimonials />
       <div className="relative ">
@@ -125,8 +125,8 @@ function HomeLayout() {
       </div>
       <ContactUsForm
         onFormSubmit={handleAddLead}
-        source={source.home}
-        entity={entity.contactUs}
+        entity={entity.home}
+        source={`Website`}
         isLoading={isLoading}
       />
       <Footer />

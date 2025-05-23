@@ -210,8 +210,8 @@ function LanguagePrepLayout() {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.languagePrep}
-            entity={`${languagePrepsDetails?.productName}_${entity.contactUs}`}
+            entity={entity.languagePrep}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

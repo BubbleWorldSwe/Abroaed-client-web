@@ -11,9 +11,9 @@ export const formatDateTime = (date) => {
 
 export const formatStudentApplications = (applications = []) => {
   const statusOrder = [
-    { key: "to_start", title: "To Start" },
+    { key: "to_start", title: "Shortlisting" },
     { key: "verifying_documents", title: "Verifying Documents" },
-    { key: "application_filled", title: "Application Filled" },
+    { key: "application_filled", title: "STU" },
     /*  { key: "awaiting_response", title: "Awaiting Response" }, */
     { key: "offer_letter_received", title: "Offer Letter Received" },
     { key: "rejected", title: "Rejected" },

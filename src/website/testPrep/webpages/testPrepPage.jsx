@@ -234,8 +234,8 @@ function TestPrepLayout() {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.testPrep}
-            entity={`${testPrepsDetails?.productName}_${entity.contactUs}`}
+            entity={entity.testPrep}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

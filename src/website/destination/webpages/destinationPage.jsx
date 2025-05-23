@@ -297,8 +297,8 @@ function DestinationPage() {
         <SectionComponent>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.destination}
-            entity={`${destinationDetails?.countryId?.name}_${entity.contactUs}`}
+            entity={entity.destination}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

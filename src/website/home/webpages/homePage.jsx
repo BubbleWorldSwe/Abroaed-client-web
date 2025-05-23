@@ -72,11 +72,11 @@ function HomeLayout() {
         <SectionComponent>
           <HomePromoSection
             onFormSubmit={handleAddLead}
-            source={source.home}
-            entity={entity.bookCounselling}
+            entity={entity.home}
+            source={`Website`}
           />
         </SectionComponent>
-        <div >
+        <div>
           <Testimonials />
         </div>
         <div className="relative ">
@@ -107,8 +107,8 @@ function HomeLayout() {
         <SectionComponent className={containerClass.outerContainer}>
           <ContactUsForm
             onFormSubmit={handleAddLead}
-            source={source.home}
-            entity={entity.contactUs}
+            entity={entity.home}
+            source={`Website`}
           />
         </SectionComponent>
         <Footer />

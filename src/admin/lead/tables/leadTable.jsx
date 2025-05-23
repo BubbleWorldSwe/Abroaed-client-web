@@ -123,34 +123,36 @@ const LeadTable = ({
                       <td className="px-4 py-3">{lead?.source}</td>
                       <td className="px-4 py-3">{lead?.entity}</td>
                       <td className="px-4 py-3">
-                        {lead?.status?.toLowerCase() === "lost" ? (
+                        {lead?.status ? (
                           <Tooltip
-                            content={<div>{lead?.remark}</div>}
+                            content={
+                              <div>
+                                {lead?.remark || "No remarks available"}
+                              </div>
+                            }
                             placement="bottom"
                             className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
                           >
-                            <span className="font-medium p-2 rounded bg-[#FDE8E8] text-[#9B1C1C]">
+                            <span
+                              className={`font-medium p-2 rounded ${
+                                lead.status.toLowerCase() === "lost"
+                                  ? "bg-[#FDE8E8] text-[#9B1C1C]"
+                                  : lead.status.toLowerCase() === "nurture"
+                                  ? "bg-[#FDF6B2] text-[#723B13]"
+                                  : lead.status.toLowerCase() === "converted"
+                                  ? "bg-[#DEF7EC] text-[#03543F]"
+                                  : "bg-gray-200"
+                              }`}
+                            >
                               {lead.status.charAt(0).toUpperCase() +
                                 lead.status.slice(1).toLowerCase()}
                             </span>
                           </Tooltip>
                         ) : (
-                          <span
-                            className={`font-medium p-2 rounded ${
-                              lead?.status?.toLowerCase() === "nurture"
-                                ? "bg-[#FDF6B2] text-[#723B13]"
-                                : lead?.status?.toLowerCase() === "converted"
-                                ? "bg-[#DEF7EC] text-[#03543F]"
-                                : "bg-gray-200"
-                            }`}
-                          >
-                            {lead?.status
-                              ? lead.status.charAt(0).toUpperCase() +
-                                lead.status.slice(1).toLowerCase()
-                              : ""}
-                          </span>
+                          "-"
                         )}
                       </td>
+
                       <td className="px-4 py-3">
                         <span>
                           {lead?.scheduleDetails

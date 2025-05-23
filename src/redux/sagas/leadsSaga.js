@@ -76,7 +76,9 @@ function* addNewLead(action) {
       );
     } else {
       yield put(addLeadFailure(response.message));
-      toast.error(response.message);
+      toast.error(
+        `We already have your email/mobile number with us. Please try with different credentials if it's not you.`
+      );
     }
   } catch (error) {
     yield put(addLeadFailure(error.message));

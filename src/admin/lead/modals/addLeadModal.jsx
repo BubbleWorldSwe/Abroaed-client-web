@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import {
   applyingFor,
   highestEducation,
+  leadSources,
   targetYear,
 } from "../../../constants/values";
 import { toast } from "react-toastify";
@@ -15,6 +16,8 @@ import { toast } from "react-toastify";
 const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
   const { success } = useSelector((state) => state.leads);
   const { allDestinations } = useSelector((state) => state.destinations);
+
+  const [leadSource, setLeadSource] = useState(null);
   const initialState = {
     email: "",
     firstName: "",
@@ -74,11 +77,16 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
         return;
       }
 
+      if (!leadSource) {
+        toast.error("Please Select Lead Source.");
+        return;
+      }
+
       console.log("Lead Data:", formData);
       onAddLead({
         user: formData,
-        source: "Panel",
-        entity: "Admin",
+        source: leadSource,
+        entity: "Panel",
         // alertMsg: "Lead Addes Sucessfully",
       });
     } catch (error) {
@@ -91,8 +99,6 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
       setFormData(initialState);
     }
   }, [success]);
-
-  console.log(success);
 
   return (
     <>
@@ -208,6 +214,18 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
                     required
                   />
                 </div>
+                {/* Highest Education Qualification (Dropdown) */}
+                <SelectField
+                  label="Lead Source*"
+                  name="source"
+                  value={leadSource}
+                  onChange={(e) => setLeadSource(e.target.value)}
+                  options={leadSources?.map((data) => ({
+                    label: data,
+                    value: data,
+                  }))}
+                  required
+                />
                 {/* Action Buttons */}
                 <div className="flex justify-end space-x-4 mt-10">
                   <ModalCloseButton label="Cancel" onClick={onClose} />

@@ -64,13 +64,15 @@ export const highestEducation = [
   "Post Graduation",
 ];
 
+export const leadSources = ["Meta", "Google", "Website", "Paid", "Free"];
+
 export const appointmentType = ["Virtual Consellings", "Home", "In-Person"];
 
 export const servicerType = [
-  "ABROAED Plus",
   "ABROAED Standard",
-  "ABROAED Pathways",
+  "ABROAED Plus",
   "ABROAED LOE",
+  "ABROAED Pathways",
 ];
 
 export const planType = ["Basic", "Advance", "Elite"];
@@ -96,6 +98,24 @@ export const source = {
 };
 
 export const entity = {
+  home: "Home",
+  destination: "Destination",
+  courses: "Courses",
+  accommodation: "Accommodation",
+  college: "College",
+  languagePrep: "Language Prep",
+  testPrep: "Test Prep",
+  finance: "Finance",
+  abroaedPlus: "ABROAED Plus",
+  homeCounselling: "Home Counselling",
+  leaguageOfExcellence: "Leaguage Of Excellence",
+  pathways: "Pathways",
+  pathwaysProgram: "Pathways Program",
+  menu: "Menu",
+  forex: "Forex",
+};
+
+export const entity2 = {
   contactUs: "Contact Us",
   explorePlans: "Explore Plans",
   bookCounselling: "Book Counselling",
@@ -158,10 +178,10 @@ export const testPrepsSequence = [
 ];
 
 export const tabColors = {
-  "To Start": "bg-[#FECCE1]",
+  Shortlisting: "bg-[#FECCE1]",
   "Verifying Documents": "bg-[#FFFCC2]",
-  "Application Filed": "bg-[#BAE6FF]",
-  "Application Filled": "bg-[#BAE6FF]",
+  STU: "bg-[#BAE6FF]",
+
   "Awaiting Response": "bg-[#D4D4D8]",
   Rejected: "bg-[#DB4437]",
   "Offer Letter Received": "bg-[#DBFDEC]",

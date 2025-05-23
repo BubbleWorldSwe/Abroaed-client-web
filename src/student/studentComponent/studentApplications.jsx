@@ -23,7 +23,7 @@ const StudentApplications = () => {
       <div className="grid mb-8 grid-cols-1 lg:grid-cols-4 gap-3">
         <div className="flex flex-col shadow-lg rounded-lg p-3 px-5">
           <label className="font-bold text-4xl text-[#EDBD05]">
-            {/* {getDataLengthByStatus("to_start")} */} {applications?.length}
+            {applications?.length}
           </label>
           <span className="text-xl font-semibold">Applied</span>
         </div>
