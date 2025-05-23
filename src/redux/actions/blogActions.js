@@ -55,10 +55,10 @@ export const fetchAllBlogsFailure = (error) => ({
   payload: error,
 });
 
-export const addBlogRequest = (blogData) => {
+export const addBlogRequest = (blogData, imageData) => {
   return {
     type: ADD_BLOG_REQUEST,
-    payload: blogData,
+    payload: { blogData, imageData },
   };
 };
 

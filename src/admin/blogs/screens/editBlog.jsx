@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { SelectField } from "../../../commons/components/inputFields/selectField";
-import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import ReactQuill from "react-quill";
 import { toast } from "react-toastify";
 import {
-  addBlogRequest,
   editBlogRequest,
   uploadBlogImageRequest,
 } from "../../../redux/actions/blogActions";
@@ -39,31 +37,6 @@ const EditBlog = () => {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    if (blogDetails) {
-      setFormData({
-        title: blogDetails.title || "",
-        category: blogDetails.category?._id || blogDetails.category,
-        content: blogDetails.content || "",
-        status: blogDetails.status || "",
-      });
-    }
-  }, [blogDetails]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const list = await getBlogsCategory();
-        if (list.status === 200) {
-          setBlogsCategory(list.data.result);
-        }
-      } catch (error) {
-        console.error("Error fetching blog categories:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   const handleChange = (e) => {
     setFormData((prevData) => ({
@@ -104,6 +77,31 @@ const EditBlog = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (blogDetails) {
+      setFormData({
+        title: blogDetails.title || "",
+        category: blogDetails.category?._id || blogDetails.category,
+        content: blogDetails.content || "",
+        status: blogDetails.status || "",
+      });
+    }
+  }, [blogDetails]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const list = await getBlogsCategory();
+        if (list.status === 200) {
+          setBlogsCategory(list.data.result);
+        }
+      } catch (error) {
+        console.error("Error fetching blog categories:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -156,10 +154,7 @@ const EditBlog = () => {
               {new Date(blogDetails.updatedAt).toLocaleDateString()}
             </div>
             <div className="w-full mx-auto my-6 border rounded-lg shadow-lg bg-white">
-              <BlogImageSection
-                onUploadImage={onUploadImage}
-                isEditImage={true}
-              />
+              <BlogImageSection onUploadImage={onUploadImage} />
               <div className="p-4">
                 <TextInputField
                   label="Title"

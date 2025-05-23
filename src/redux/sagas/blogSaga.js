@@ -60,15 +60,22 @@ function* fetchAllBlogs() {
 // Add a new blog
 function* addNewBlog(action) {
   try {
-    console.log(action);
-    console.log("addNewBlog");
-    const response = yield call(setAddBlog, action.payload);
+    const { blogData, imageData } = action.payload;
+    const response = yield call(setAddBlog, blogData);
 
     console.log(response);
 
     if (response.status === 200) {
-      yield put(addBlogSuccess(response.data.data));
-      toast.success(response.message || "Blog Added Sucessfully");
+      const id = response.data?._id;
+      const data = yield call(setBlogUploadFile, id, imageData);
+
+      if (data.status === 200) {
+        yield put(addBlogSuccess(response.data));
+        toast.success(response.message || "Blog Added Sucessfully");
+      } else {
+        yield put(addBlogFailure(data?.message));
+        toast.error(data?.message);
+      }
     } else {
       yield put(addBlogFailure(response.message));
       toast.error(response.message);
@@ -88,7 +95,7 @@ function* deleteBlogSaga(action) {
 
     if (response.status === 200) {
       yield put(deleteBlogSuccess(action.payload));
-      toast.success(response.message);
+      toast.success(response.message || "Blog Deleted Sucessfully");
     } else {
       yield put(deleteBlogFailure(response.message));
       toast.error(response.message);

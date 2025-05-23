@@ -122,7 +122,7 @@ export const getBlogsByCategoryId = async (id) => {
 
 export const setBlogUploadFile = async (id, imageData) => {
   try {
-    console.log(imageData);
+    console.log(id, "id");
     const { files } = imageData;
     const { adminToken } = store.getState().auth;
     const data = await makePutRequestWithFormData(

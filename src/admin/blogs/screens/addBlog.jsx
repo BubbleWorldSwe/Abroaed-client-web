@@ -11,12 +11,16 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { addBlogRequest } from "../../../redux/actions/blogActions";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import BlogImageSection from "../components/blogImgSection";
+import AddBlogImage from "../components/addBlogImage";
 
 const AddBlog = () => {
   const [formData, setFormData] = useState({ content: "" });
   const { loading, success } = useSelector((state) => state.blogs);
   const [blogsCategory, setBlogsCategory] = useState([]);
   const dispatch = useDispatch();
+
+  const [imageFile, setImageFile] = useState(null);
 
   const handleChangeContent = (value) => {
     setFormData((prevData) => ({
@@ -33,6 +37,11 @@ const AddBlog = () => {
     try {
       const { title, category, content } = formData;
 
+      if (!imageFile) {
+        toast.error("Please Select Blog Image.");
+        return;
+      }
+
       if (!title) {
         toast.error("Please Enter Title.");
         return;
@@ -46,7 +55,11 @@ const AddBlog = () => {
         return;
       }
 
-      dispatch(addBlogRequest(formData));
+      dispatch(
+        addBlogRequest(formData, {
+          files: imageFile,
+        })
+      );
       //onAddAccommodation(formData);
     } catch (error) {
       console.log(error);
@@ -57,6 +70,11 @@ const AddBlog = () => {
     try {
       const { title, category, content } = formData;
 
+      if (!imageFile) {
+        toast.error("Please Select Blog Image.");
+        return;
+      }
+
       if (!title) {
         toast.error("Please Enter Title.");
         return;
@@ -70,7 +88,14 @@ const AddBlog = () => {
         return;
       }
 
-      dispatch(addBlogRequest({ ...formData, status: "publish" }));
+      dispatch(
+        addBlogRequest(
+          { ...formData, status: "publish" },
+          {
+            files: imageFile,
+          }
+        )
+      );
       //onAddAccommodation(formData);
     } catch (error) {
       console.log(error);
@@ -98,6 +123,8 @@ const AddBlog = () => {
       setFormData({});
     }
   }, [success]);
+
+  console.log(imageFile);
 
   return (
     <>
@@ -128,40 +155,47 @@ const AddBlog = () => {
             <div className="text-sm text-gray-500 mb-4">
               Last Updated Feb 21, 2025
             </div>
-            <div className="w-full mx-auto my-6 p-4 border rounded-lg shadow-lg bg-white">
-              <TextInputField
-                label="Title*"
-                name="title"
-                value={formData?.title}
-                onChange={handleChange}
-                placeholder={"Enter Title"}
-                type={"text"}
+
+            <div className="w-full mx-auto my-6 border rounded-lg shadow-lg bg-white">
+              <AddBlogImage
+                setImageFile={setImageFile}
+                // onUploadImage={onUploadImage}
               />
-              <div className="my-5 mb-6">
-                <SelectField
-                  label="Category*"
-                  name="category"
-                  value={formData.category}
+              <div className="p-4">
+                <TextInputField
+                  label="Title*"
+                  name="title"
+                  value={formData?.title}
                   onChange={handleChange}
-                  options={blogsCategory.map((data) => ({
-                    label: data?.name,
-                    value: data?._id,
-                  }))}
-                  required
+                  placeholder={"Enter Title"}
+                  type={"text"}
                 />
-              </div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Content
-              </label>
-              <div className="rounded-lg border-none bg-[#F4F4F5] p-2">
-                <ReactQuill
-                  value={formData.content}
-                  onChange={handleChangeContent}
-                  className="border-none"
-                  style={{
-                    minHeight: "300px",
-                  }}
-                />
+                <div className="my-5 mb-6">
+                  <SelectField
+                    label="Category*"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    options={blogsCategory.map((data) => ({
+                      label: data?.name,
+                      value: data?._id,
+                    }))}
+                    required
+                  />
+                </div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Content
+                </label>
+                <div className="rounded-lg border-none bg-[#F4F4F5] p-2">
+                  <ReactQuill
+                    value={formData.content}
+                    onChange={handleChangeContent}
+                    className="border-none"
+                    style={{
+                      minHeight: "300px",
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
