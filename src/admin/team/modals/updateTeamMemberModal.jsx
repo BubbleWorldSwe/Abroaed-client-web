@@ -5,6 +5,7 @@ import { SelectField } from "../../../commons/components/inputFields/selectField
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { ModalCloseButton } from "../../../commons/components/buttons/modalCloseButton";
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
+import { useSelector } from "react-redux";
 
 const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
     role: "",
     permission: "",
   });
+
+  const { role } = useSelector((state) => state.auth);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -109,10 +112,26 @@ const UpdateTeamMember = ({ isOpen, onClose, data, onUpdateTeam, roles }) => {
                     name="role"
                     value={formData.role}
                     onChange={handleChange}
-                    options={roles
+                    /* options={roles
                       ?.filter(
                         (data) => !["Admin", "Student"].includes(data.roleName) // Step 1: Remove Admin & Content Manager
                       )
+                      .map((data) => ({
+                        label: data?.roleName,
+                        value: data?._id,
+                      }))} */
+
+                    options={roles
+                      ?.filter((data) => {
+                        if (role === "Counsellor Manager") {
+                          return data.roleName === "Counsellor";
+                        }
+                        if (role === "Backend Manager") {
+                          return data.roleName === "Backend Associate";
+                        }
+                        // Default filter: exclude Admin and Student
+                        return !["Admin", "Student"].includes(data.roleName);
+                      })
                       .map((data) => ({
                         label: data?.roleName,
                         value: data?._id,

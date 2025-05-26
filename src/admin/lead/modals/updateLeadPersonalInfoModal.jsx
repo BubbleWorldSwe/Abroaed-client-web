@@ -47,10 +47,10 @@ const UpdateLeadPersonalInfo = ({
       toast.error("Enter a valid 10-digit mobile number");
       return false;
     }
-    if (!formData.address.trim()) {
+    /*  if (!formData.address.trim()) {
       toast.error("Address is required");
       return false;
-    }
+    } */
     return true;
   };
 
@@ -83,7 +83,7 @@ const UpdateLeadPersonalInfo = ({
               <div className="grid font-rethink grid-cols-1 gap-4 lg:grid-cols-2 my-5">
                 {/* First Name */}
                 <TextInputField
-                  label="First Name"
+                  label="First Name*"
                   name="firstName"
                   type="text"
                   value={formData.firstName}
@@ -94,7 +94,7 @@ const UpdateLeadPersonalInfo = ({
 
                 {/* Last Name */}
                 <TextInputField
-                  label="Last Name"
+                  label="Last Name*"
                   name="lastName"
                   type="text"
                   value={formData.lastName}
@@ -105,7 +105,7 @@ const UpdateLeadPersonalInfo = ({
 
                 {/* Email */}
                 <TextInputField
-                  label="Email"
+                  label="Email*"
                   name="email"
                   type="email"
                   value={formData.email}
@@ -117,7 +117,7 @@ const UpdateLeadPersonalInfo = ({
 
                 {/* Mobile Number */}
                 <TextInputField
-                  label="Mobile Number"
+                  label="Mobile Number*"
                   name="mobile"
                   type="tel"
                   value={formData.mobile}
@@ -136,7 +136,6 @@ const UpdateLeadPersonalInfo = ({
                 value={formData.address}
                 onChange={handleChange}
                 placeholder="Enter Address"
-                required
               />
 
               {/* Action Buttons */}

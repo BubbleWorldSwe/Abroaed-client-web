@@ -16,7 +16,7 @@ import LogoutModal from "../../../commons/modal/logoutModal";
 
 const AdminProfile = () => {
   const dispatch = useDispatch();
-  const { admin, adminId, loading } = useSelector((state) => state.auth);
+  const { admin, adminId, loading, role } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -99,7 +99,10 @@ const AdminProfile = () => {
               src={IMAGES.user}
             />
             <div>
-              <div className="text-sm bg-[#F3F4F6] px-2 max-w-min">Admin</div>
+              <div className="inline-block text-sm bg-[#F3F4F6] px-2 w-auto">
+                {role}
+              </div>
+
               <div className="text-[#111928] text-3xl font-bold">
                 {`${admin?.firstName} ${admin?.lastName}`}
               </div>

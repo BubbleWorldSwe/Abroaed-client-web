@@ -53,7 +53,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
     });
   };
 
-  const handleAddLead = () => {
+  const handleAddLead = async () => {
     try {
       const { email, firstName, lastName, mobile, userDetail } = formData;
       const {

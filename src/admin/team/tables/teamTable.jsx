@@ -130,7 +130,7 @@ const TeamTable = ({
                                   <span>Update Member</span>
                                 </button>
                               </li>
-                              <li>
+                              {/*  <li>
                                 <button
                                   onClick={() => {
                                     setDeleteId(member);
@@ -143,7 +143,7 @@ const TeamTable = ({
                                   <Trash2 className="w-4 h-4" />
                                   <span>Delete</span>
                                 </button>
-                              </li>
+                              </li> */}
                             </ul>
                           </div>
                         )}

@@ -31,6 +31,7 @@ function CollapsableSidebar() {
       label: "Teams",
       icon: Users,
       roles: ["Admin", "Backend Manager", "Counsellor Manager"],
+      // roles: ["Admin"],
     },
     {
       path: "/admin/leads",

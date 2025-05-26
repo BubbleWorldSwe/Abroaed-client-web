@@ -219,13 +219,9 @@ const CollegeTable = ({
                                     </span>
                                   </button>
                                 </li>
-                                <li>
+                                {/*  <li>
                                   <button
                                     type="button"
-                                    /*  onClick={() => {
-                                handleDelete(college._id);
-                                setDropdownVisible(null);
-                              }} */
                                     onClick={() => {
                                       setDeleteId(college);
                                       setIsModalOpen(!isModalOpen);
@@ -236,7 +232,7 @@ const CollegeTable = ({
                                     <Trash2 className="w-4 h-4" />
                                     <span>Delete</span>
                                   </button>
-                                </li>
+                                </li> */}
                               </>
                             )}
                           </ul>

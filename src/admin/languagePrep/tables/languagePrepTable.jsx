@@ -178,14 +178,9 @@ const LanguagePrepTable = ({
                                     </span>
                                   </button>
                                 </li>
-                                <li>
+                                {/*   <li>
                                   <button
                                     type="button"
-                                    /*  onClick={() => {
-                              handleDelete(language._id);
-                              setDropdownVisible(null);
-                            }} */
-
                                     onClick={() => {
                                       setDeleteId(language);
                                       setIsModalOpen(!isModalOpen);
@@ -196,7 +191,7 @@ const LanguagePrepTable = ({
                                     <Trash2 className="w-4 h-4" />
                                     <span>Delete</span>
                                   </button>
-                                </li>
+                                </li> */}
                               </>
                             )}
                           </ul>

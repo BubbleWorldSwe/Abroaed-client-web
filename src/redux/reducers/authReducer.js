@@ -111,6 +111,7 @@ export const authReducer = (state = initialState, action) => {
         loading: false,
         admin: action.payload,
         isWriteAccess: action.payload.isWriteAccess,
+        role: action.payload?.roleId?.roleName,
       };
 
     case ADMIN_LOGIN_SUCCESS:

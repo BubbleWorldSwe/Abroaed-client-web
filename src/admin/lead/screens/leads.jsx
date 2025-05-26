@@ -6,7 +6,8 @@ import AppointmentModal from "../modals/appointmentModal";
 import UpdateLeadStatus from "../modals/updateLeadStatusModal";
 import AddLeadModal from "../modals/addLeadModal";
 import { AddButton } from "../../../commons/components/buttons/addButton";
-
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
 import {
@@ -18,10 +19,13 @@ import {
 } from "../../../redux/actions/leadsActions";
 import { fetchAllTeamsRequest } from "../../../redux/actions/teamActions";
 import { getTeamsByMembers } from "../../../api/teamsApi";
-import { Search } from "lucide-react";
+import { Filter, FilterXIcon, Search } from "lucide-react";
 import { toast } from "react-toastify";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
 import { useLocation } from "react-router-dom";
+import { IconButton } from "../../../commons/components/buttons/iconButton";
+import { leadsData } from "../data";
+import FilterModal from "../modals/filterModal";
 
 function Leads() {
   const dispatch = useDispatch();
@@ -31,6 +35,57 @@ function Leads() {
   const { leads, totalPages, loading, success } = useSelector(
     (state) => state.leads
   );
+  console.log(leads);
+
+  const flatData = leads[0]?.data?.map((item) => ({
+    _id: item._id || "",
+    firstName: item.user?.firstName || "",
+    lastName: item.user?.lastName || "",
+    address: item.user?.address || "",
+    email: item.user?.email || "",
+    mobile: item.user?.mobile || "",
+    roleName: item.user?.roleId?.roleName || "",
+    highestEducation: item.user?.userDetail?.highestEducation || "",
+    applyingFor: item.user?.userDetail?.applyingFor || "",
+    preferredDestination:
+      item.user?.userDetail?.preferredDestination?.countryId?.name || "",
+    targetYear: item.user?.userDetail?.targetYear || "",
+    source: item.source || "",
+    status: item.status || "",
+    entity: item.entity || "",
+    createdAt: item.createdAt || "",
+  }));
+
+  const handleDownload = () => {
+    // Convert JSON to worksheet
+    const worksheet = XLSX.utils.json_to_sheet(flatData);
+
+    // Set dynamic column widths based on header text and content
+    const headers = Object.keys(flatData[0] || {});
+    const colWidths = headers.map((header) => {
+      const headerLength = header.length;
+      const maxContentLength = Math.max(
+        ...flatData.map((row) => String(row[header] || "").length)
+      );
+      return { wch: Math.max(headerLength, maxContentLength) + 2 }; // +2 padding
+    });
+    worksheet["!cols"] = colWidths;
+
+    // Create a new workbook and append the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Write workbook and convert to binary array
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+
+    // Create a Blob and trigger download
+    const data = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(data, "leads.xlsx");
+  };
+
   const location = useLocation();
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -38,6 +93,8 @@ function Leads() {
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  const [showFilterModal, setShowFilterModal] = useState(null);
 
   const [rolesList, setRolesList] = useState([]);
 
@@ -59,7 +116,7 @@ function Leads() {
     try {
       setQuery(value);
 
-      const trimmedValue = value.trim();
+      const trimmedValue = value?.trim();
 
       if (trimmedValue === "") {
         setCurrentPage(1);
@@ -203,6 +260,8 @@ function Leads() {
 
   console.log(loading, "loading");
 
+  console.log(query.length);
+
   return (
     <>
       {showTeamModal && (
@@ -255,6 +314,17 @@ function Leads() {
         onAddLead={handleAddLead}
       />
 
+      <FilterModal
+        isOpen={showFilterModal}
+        leadId={selectedMember?._id}
+        onClose={() => setShowFilterModal(false)}
+        onUpdate={onUpdate}
+        filledData={{
+          appointmentType: selectedMember?.scheduleDetails?.appointmentType,
+          preferredSlot: selectedMember?.scheduleDetails?.preferredSlot,
+        }}
+      />
+
       <div className="min-h-screen bg-white dark:bg-gray-900 ">
         {/* Adjust padding and spacing */}
 
@@ -286,16 +356,36 @@ function Leads() {
                     </div>
                   </form>
                   <div
-                    className="bg-[#EDBD05] p-2 rounded-md cursor-pointer"
-                    onClick={() => handleSearch(query)} // pass query on click
+                    className="bg-[#EDBD05] h-10 w-10 flex items-center justify-center rounded-md cursor-pointer"
+                    onClick={() => {
+                      if (!query || query.trim().length < 2) {
+                        toast.error(
+                          "Please enter at least 2 characters to search."
+                        );
+                      } else {
+                        handleSearch(query.trim());
+                      }
+                    }}
                   >
                     <Search color="black" size={22} />
                   </div>
-                </div>
 
-                {isWriteAccess && (
-                  <AddButton onClick={handleOpenAddModal} label={" New Lead"} />
-                )}
+                  <div
+                    className="bg-[#EDBD05] ml-4 h-10 w-10 flex items-center justify-center rounded-md cursor-pointer"
+                    onClick={() => setShowFilterModal(true)}
+                  >
+                    <Filter color="black" size={22} />
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  {isWriteAccess && (
+                    <AddButton
+                      onClick={handleOpenAddModal}
+                      label={" New Lead"}
+                    />
+                  )}
+                  <IconButton onClick={handleDownload} label={" Export"} />
+                </div>
               </div>
             </div>
           </div>

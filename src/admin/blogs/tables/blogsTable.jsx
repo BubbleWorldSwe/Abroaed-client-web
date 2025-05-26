@@ -227,7 +227,7 @@ const BlogsTable = ({
                                   )}
                                 </li>
 
-                                <li>
+                                {/* <li>
                                   <button
                                     type="button"
                                     onClick={() => {
@@ -240,7 +240,7 @@ const BlogsTable = ({
                                     <Trash2 className="w-4 h-4" />
                                     <span>Delete</span>
                                   </button>
-                                </li>
+                                </li> */}
                               </>
                             )}
                           </ul>

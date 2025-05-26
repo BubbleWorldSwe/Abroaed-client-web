@@ -16,7 +16,6 @@ const AssignTeamMemberStudentModal = ({
   setMembersList,
 }) => {
   const { assignTeamMembers } = filledData;
-  const [confirmModalOpen, setConfirmModalOpen] = useState(false);
 
   const [selectedMember, setSelectedMember] = useState(null);
 

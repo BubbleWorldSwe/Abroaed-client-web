@@ -11,6 +11,10 @@ import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubm
 function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
   const { success } = useSelector((state) => state.teams);
 
+  const { role } = useSelector((state) => state.auth);
+
+  console.log(role, "role");
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -58,7 +62,7 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
     }
 
     const data = {
-      email,
+      email: email.toLowerCase(),
       firstName,
       lastName,
       mobile: phoneNumber,
@@ -145,14 +149,17 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
               name="role"
               value={formData.role}
               onChange={handleChange}
-              /*   options={roles.map((data) => ({
-                label: data.roleName,
-                value: data._id,
-              }))} */
               options={roles
-                ?.filter(
-                  (data) => !["Admin", "Student"].includes(data.roleName)
-                )
+                ?.filter((data) => {
+                  if (role === "Counsellor Manager") {
+                    return data.roleName === "Counsellor";
+                  }
+                  if (role === "Backend Manager") {
+                    return data.roleName === "Backend Associate";
+                  }
+                  // Default filter: exclude Admin and Student
+                  return !["Admin", "Student"].includes(data.roleName);
+                })
                 .map((data) => ({
                   label: data?.roleName,
                   value: data?._id,

@@ -176,7 +176,7 @@ const DestinationTable = ({
                             </li>
                             {isWriteAccess && (
                               <>
-                                <li>
+                                {/*  <li>
                                   <button
                                     onClick={() => {
                                       setDeleteId(destination);
@@ -188,7 +188,7 @@ const DestinationTable = ({
                                     <Trash2 className="w-4 h-4" />
                                     <span>Delete</span>
                                   </button>
-                                </li>
+                                </li> */}
                                 <li>
                                   <button
                                     onClick={() =>

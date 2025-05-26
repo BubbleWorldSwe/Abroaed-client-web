@@ -144,6 +144,8 @@ export const getUserProfile = async (id) => {
     if (data.success) {
       return data.data;
     }
+
+    console.log(data?.data);
   } catch (error) {
     throw error;
   }

@@ -188,7 +188,7 @@ const AccommodationTable = ({
                                     </span>
                                   </button>
                                 </li>
-                                <li>
+                                {/*   <li>
                                   <button
                                     type="button"
                                     onClick={() => {
@@ -201,7 +201,7 @@ const AccommodationTable = ({
                                     <Trash2 className="w-4 h-4" />
                                     <span>Delete</span>
                                   </button>
-                                </li>
+                                </li> */}
                               </>
                             )}
                           </ul>
