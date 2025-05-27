@@ -26,7 +26,13 @@ function StudentSignIn() {
         return;
       }
 
-      dispatch(studentLoginRequest({ email, password, isAdmin: false }));
+      dispatch(
+        studentLoginRequest({
+          email: email?.toLowerCase(),
+          password,
+          isAdmin: false,
+        })
+      );
     } catch (error) {
       console.log(error);
     }

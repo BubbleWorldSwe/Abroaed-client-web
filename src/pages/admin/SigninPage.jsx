@@ -27,7 +27,7 @@ function SigninPage() {
         return;
       }
 
-      dispatch(adminLoginRequest({ email, password }));
+      dispatch(adminLoginRequest({ email: email?.toLowerCase(), password }));
     } catch (error) {
       console.log(error);
     }

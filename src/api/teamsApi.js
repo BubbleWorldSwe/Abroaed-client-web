@@ -12,7 +12,8 @@ import {
 export const getTeams = async (page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/users?page=${page}&limit=${pageDataLimit}`
+      // `${BASE_URL}/api/v1/admin/users?page=${page}&limit=${pageDataLimit}`
+      `${BASE_URL}/api/v1/admin/users`
     );
     console.log(data);
     if (data.success) {

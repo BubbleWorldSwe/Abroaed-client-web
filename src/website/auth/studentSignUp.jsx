@@ -59,7 +59,9 @@ function StudentSignUp() {
       return;
     }
 
-    dispatch(studentSignUpRequest(formData));
+    dispatch(
+      studentSignUpRequest({ ...formData, email: email?.toLowerCase() })
+    );
   };
   useEffect(() => {
     if (user) {

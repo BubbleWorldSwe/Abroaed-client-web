@@ -1,4 +1,3 @@
-
 const PathwaysHomeLeadForm = () => {
   return (
     <section className=" relative isolate overflow-hidden z-10 px-6 mx-auto">

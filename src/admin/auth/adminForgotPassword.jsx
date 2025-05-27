@@ -33,12 +33,14 @@ function AdminForgotPassword() {
 
     try {
       setIsLoading(true);
-      const data = await setResendOtp({ email });
+      const data = await setResendOtp({ email: email.toLowerCase() });
 
       if (data?.data?.success) {
         toast.success("OTP sent successfully!");
 
-        navigate("/admin/otpVerification", { state: { email } });
+        navigate("/admin/otpVerification", {
+          state: { email: email.toLowerCase() },
+        });
       } else {
         toast.error(data?.data?.message || "Failed to send OTP");
       }

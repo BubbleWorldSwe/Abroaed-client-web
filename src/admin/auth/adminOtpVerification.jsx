@@ -46,7 +46,7 @@ function AdminOtpVerification() {
     }
 
     try {
-      const data = await setVerifyOtp({ email, otp });
+      const data = await setVerifyOtp({ email: email.toLowerCase(), otp });
 
       if (data?.data?.success) {
         let token = data?.data?.token;
@@ -74,7 +74,7 @@ function AdminOtpVerification() {
     }
 
     try {
-      const data = await setResendOtp({ email });
+      const data = await setResendOtp({ email: email.toLowerCase() });
 
       if (data?.data?.success) {
         toast.success("OTP resent!");

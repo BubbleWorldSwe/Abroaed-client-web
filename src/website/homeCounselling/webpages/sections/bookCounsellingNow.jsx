@@ -69,7 +69,11 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
     }
 
     console.log("Lead Data:", formData);
-    onFormSubmit({ user: formData, source: source, entity: entity });
+    onFormSubmit({
+      user: { ...formData, email: email?.toLowerCase() },
+      source: source,
+      entity: entity,
+    });
   };
 
   useEffect(() => {

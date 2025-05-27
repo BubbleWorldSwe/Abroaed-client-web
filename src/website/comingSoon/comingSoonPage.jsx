@@ -279,8 +279,6 @@ function ComingSoonPage() {
   const [phone, setPhone] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(name, email, phone);
@@ -289,7 +287,7 @@ function ComingSoonPage() {
         "https://script.google.com/macros/s/AKfycbzAmkN343OGaUNk7PDzzAvjqi5J38-Xf_aP7guPux7qY5tpWJhMG0Yqj6XDYPKxjYQPiA/exec",
         {
           method: "POST",
-          body: JSON.stringify({ name, email, phone }),
+          body: JSON.stringify({ name, email: email?.toLowerCase(), phone }),
           headers: { "Content-Type": "application/json" },
           mode: "no-cors",
         }
@@ -336,7 +334,7 @@ function ComingSoonPage() {
   return (
     <div
       className="relative w-full  text-white p-0  overflow-hidden bg-[#323238]"
-    // style={{ backgroundImage: `url(${comingSoon})` }}
+      // style={{ backgroundImage: `url(${comingSoon})` }}
     >
       <div className="overflow-hidden bg-black  bg-opacity-80  ">
         <InfiniteMovingCards

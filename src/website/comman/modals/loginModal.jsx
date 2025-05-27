@@ -25,7 +25,7 @@ const LoginModal = ({ isOpen, onClose }) => {
         return;
       }
 
-      dispatch(studentLoginRequest({ email, password }));
+      dispatch(studentLoginRequest({ email: email?.toLowerCase(), password }));
     } catch (error) {
       console.log(error);
     }

@@ -64,7 +64,11 @@ const CourseEnquiryModal = ({
 
     console.log("Form Submitted:", formData);
 
-    onAddLead({ user: formData, source, entity });
+    onAddLead({
+      user: { ...formData, email: email?.toLowerCase() },
+      source,
+      entity,
+    });
     onClose();
   };
 

@@ -68,7 +68,11 @@ const AccomodationEnquiryModal = ({
 
       console.log("Form Submitted:", formData, source, entity, onAddLead);
 
-      onAddLead({ user: formData, source, entity });
+      onAddLead({
+        user: { formData, email: email?.toLowerCase() },
+        source,
+        entity,
+      });
       onClose();
     } catch (error) {
       console.log(error);

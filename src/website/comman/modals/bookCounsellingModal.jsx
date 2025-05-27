@@ -73,9 +73,9 @@ const BookCounsellingModal = ({ isOpen, onClose }) => {
     try {
       await dispatch(
         addLeadRequest({
-          user: formData,
-          source: source.menu,
-          entity: entity.bookCounselling,
+          user: { ...formData, email: email?.toLowerCase() },
+          source: "Website",
+          entity: entity.menu,
         })
       );
       onClose();

@@ -46,7 +46,7 @@ function StudentOtpVerification() {
     }
 
     try {
-      const data = await setVerifyOtp({ email, otp });
+      const data = await setVerifyOtp({ email: email?.toLowerCase(), otp });
 
       if (data?.data?.success) {
         dispatch(setStudentToken(data?.data?.token));

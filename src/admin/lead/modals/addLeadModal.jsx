@@ -18,6 +18,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
   const { allDestinations } = useSelector((state) => state.destinations);
 
   const [leadSource, setLeadSource] = useState(null);
+
   const initialState = {
     email: "",
     firstName: "",
@@ -84,7 +85,7 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
 
       console.log("Lead Data:", formData);
       onAddLead({
-        user: formData,
+        user: { ...formData, email: email.toLowerCase() },
         source: leadSource,
         entity: "Panel",
         // alertMsg: "Lead Addes Sucessfully",

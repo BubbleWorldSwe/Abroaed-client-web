@@ -27,7 +27,13 @@ function AdminSignin() {
         return;
       }
 
-      dispatch(adminLoginRequest({ email, password, isAdmin: true }));
+      dispatch(
+        adminLoginRequest({
+          email: email.toLowerCase(),
+          password,
+          isAdmin: true,
+        })
+      );
     } catch (error) {
       console.log(error);
     }

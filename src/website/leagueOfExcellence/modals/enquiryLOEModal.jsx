@@ -59,7 +59,7 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
       console.log("Form Submitted:", formData, source, onAddLead);
 
       onAddLead({
-        user: formData,
+        user: { ...formData, email: email?.toLowerCase() },
         entity: source.leaguageOfExcellence,
         source: "Website",
       });
