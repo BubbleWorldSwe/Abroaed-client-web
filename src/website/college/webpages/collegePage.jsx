@@ -22,7 +22,7 @@ import ContactUsForm from "../../comman/components/contactUsForm";
 import { getAccommodationsByStateId } from "../../../api/accomodationApi";
 // import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -145,7 +145,8 @@ function CollegePage() {
             <SectionComponent>
               <CollegeCourseOfferSection
                 collegeDetails={collegeDetails}
-                source={`${source.college}_${source.courses}`}
+                entity={`${entity.college}_${entity.courses}`}
+                source={"Website"}
                 onAddLead={handleAddLead}
                 addToSavedPreferences={addToSavedPreferences}
                 removeFromSavedPreferences={removeFromSavedPreferences}
@@ -181,7 +182,8 @@ function CollegePage() {
               <CollegeStudentAccommodation
                 collegeDetails={collegeDetails}
                 accommodationList={accList}
-                source={`${source.college}_${source.accommodation}`}
+                entity={`${entity.college}_${entity.accommodation}`}
+                source={"Website"}
                 onAddLead={handleAddLead}
                 addToSavedPreferences={addToSavedPreferences}
                 removeFromSavedPreferences={removeFromSavedPreferences}

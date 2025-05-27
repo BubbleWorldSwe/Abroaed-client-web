@@ -12,6 +12,7 @@ const DestinationStudentAccommodationsSection = ({
   source,
   addToSavedPreferences,
   removeFromSavedPreferences,
+  entity,
 }) => {
   return (
     <Element name="accommodation">
@@ -40,6 +41,7 @@ const DestinationStudentAccommodationsSection = ({
                     key={index}
                     onAddLead={onAddLead}
                     source={source}
+                    entity={entity}
                     addToSavedPreferences={addToSavedPreferences}
                     removeFromSavedPreferences={removeFromSavedPreferences}
                   />

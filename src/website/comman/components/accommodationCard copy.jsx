@@ -49,7 +49,7 @@ const AccommodationCard = ({
         isOpen={openModal}
         onClose={handleCloseAddModal}
         entity={entity}
-        source={source}
+        source={"Website"}
         onAddLead={onAddLead}
         accommodationDetails={item}
       />

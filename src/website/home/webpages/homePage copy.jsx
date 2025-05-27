@@ -28,12 +28,9 @@ import { fetchAllLanguagePrepsRequest } from "../../../redux/actions/languagePre
 import ContactUsForm from "../../comman/components/contactUsForm";
 import Blogs from "../../comman/components/blogs";
 import Testimonials from "../../comman/components/testimonials";
-// import vectorDownNose from "../../../assets/vectorDownNose.png";
-import vectorleftNose from "../../../assets/vectorleftNose.png";
-import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
-import vectorBelow from "../../../assets/vectorBelow.png";
+
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 import { fetchAllBlogsRequest } from "../../../redux/actions/blogActions";
 import HomeSlidingImg from "./sections/homeSlidingImg";

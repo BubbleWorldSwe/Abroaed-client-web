@@ -14,7 +14,7 @@ import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorRightNoseCurve from "../../../assets/vectorRightNoseCurve.png";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import HomeSlidingImg from "./sections/homeSlidingImg";
 import SectionComponent from "../../styleComponents/sectionComponent";
 import vectorBelow from "../../../assets/vectorBelow.png";

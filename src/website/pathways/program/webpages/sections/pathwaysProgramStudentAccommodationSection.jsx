@@ -1,5 +1,5 @@
 import { accommodations } from "../../data";
-import PathwaysAccommodationCard from "../../components/pathwaysAccommodationCard"
+import PathwaysAccommodationCard from "../../components/pathwaysAccommodationCard";
 import SectionMainHeader from "../../../../styleComponents/sectionMainHeader";
 
 const PathwaysProgramStudentAccommodationSection = () => {
@@ -19,8 +19,8 @@ const PathwaysProgramStudentAccommodationSection = () => {
               <PathwaysAccommodationCard
                 item={item}
                 key={index}
-                onAddLead={() => { }}
-                source={'New Delhi'}
+                onAddLead={() => {}}
+                source={"New Delhi"}
               />
             ))}
             <div></div>

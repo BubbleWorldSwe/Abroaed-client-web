@@ -18,7 +18,7 @@ import BookCounsellingNow from "./sections/bookCounsellingNow";
 import ExploreOurServicesHomeCounselling from "./sections/exploreOurServicesHomeCounselling";
 // import Blogs from "../../comman/components/blogs";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import { entity, source } from "../../../constants/values";
+import { entity,   } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
 import SectionComponent from "../../styleComponents/sectionComponent";
@@ -63,8 +63,8 @@ const HomeCounsellingPage = () => {
           <SectionComponent>
             <BookCounsellingNow
               onFormSubmit={handleAddLead}
-              source={source.homeCounselling}
-              entity={entity.bookCounselling}
+              source={"Website"}
+              entity={entity.homeCounselling}
               loading={loading}
             />
           </SectionComponent>

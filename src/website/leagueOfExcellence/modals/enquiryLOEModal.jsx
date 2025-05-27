@@ -2,10 +2,9 @@
 import { useState } from "react";
 import locationIcon from "../../../assets/locationIcon.png";
 import wallet from "../../../assets/wallet.png";
-import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { TextInputField } from "../../../commons/components/inputFields/textInputField";
 import { toast } from "react-toastify";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 
 const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
   const [formData, setFormData] = useState({
@@ -56,11 +55,9 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
         return;
       }
 
-      console.log("Form Submitted:", formData, source, onAddLead);
-
       onAddLead({
         user: { ...formData, email: email?.toLowerCase() },
-        entity: source.leaguageOfExcellence,
+        entity: entity.leaguageOfExcellence,
         source: "Website",
       });
       onClose();
@@ -145,6 +142,7 @@ const EnquiryLOEModal = ({ item, isOpen, onClose, onAddLead }) => {
                   value={formData.firstName}
                   onChange={handleChange}
                   required
+                  type={"text"}
                 />
 
                 {/* L Name */}

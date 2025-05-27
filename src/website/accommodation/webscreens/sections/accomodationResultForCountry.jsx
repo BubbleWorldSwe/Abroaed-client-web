@@ -2,6 +2,7 @@
 import Flag from "react-world-flags";
 import AccommodationCard from "../../../comman/components/accommodationCard";
 import Loader from "../../../comman/components/loader";
+import { entity } from "../../../../constants/values";
 
 function AccommodationResultForCountry({
   onSelectCountry,
@@ -9,7 +10,7 @@ function AccommodationResultForCountry({
   isLoading,
   selectedCountry,
   destinationsList,
-  source,
+
   onAddLead,
   addToSavedPreferences,
   removeFromSavedPreferences,
@@ -26,10 +27,11 @@ function AccommodationResultForCountry({
               {destinationsList.map((country) => (
                 <button
                   key={country._id}
-                  className={`px-4 py-2 text-gray-500 rounded-md text-left ${selectedCountry?._id === country._id
-                    ? "bg-gray-200 font-bold"
-                    : "hover:bg-gray-100"
-                    }`}
+                  className={`px-4 py-2 text-gray-500 rounded-md text-left ${
+                    selectedCountry?._id === country._id
+                      ? "bg-gray-200 font-bold"
+                      : "hover:bg-gray-100"
+                  }`}
                   onClick={(e) => {
                     e.preventDefault();
                     onSelectCountry(country._id);
@@ -72,10 +74,11 @@ function AccommodationResultForCountry({
                   <AccommodationCard
                     key={index}
                     item={item}
-                    source={source}
                     onAddLead={onAddLead}
                     addToSavedPreferences={addToSavedPreferences}
                     removeFromSavedPreferences={removeFromSavedPreferences}
+                    source={"Website"}
+                    entity={`${entity.accommodation}_${item.accomodationName}`}
                   />
                 ))
               ) : (

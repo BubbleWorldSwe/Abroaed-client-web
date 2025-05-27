@@ -36,7 +36,7 @@ import Testimonials from "../../comman/components/testimonials";
 import Header from "../../comman/sections/headerSection";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import {
   addSavedPreferenceRequest,
   deleteSavedPreferenceRequest,
@@ -178,7 +178,8 @@ function DestinationPage() {
                 destinationDetails={destinationDetails}
                 collegesList={collegesList}
                 coursesList={coursesList}
-                source={`${source.destination}_${source.courses}`}
+                source={"Website"}
+                entity={`${entity.destination}_${entity.courses}`}
                 onAddLead={handleAddLead}
                 addToSavedPreferences={addToSavedPreferences}
                 removeFromSavedPreferences={removeFromSavedPreferences}
@@ -265,7 +266,8 @@ function DestinationPage() {
             <DestinationStudentAccommodationsSection
               destinationDetails={destinationDetails}
               accommodationList={accList}
-              source={`${source.destination}_${source.accommodation}`}
+              source={"Website"}
+              entity={`${entity.destination}_${entity.accommodation}`}
               onAddLead={handleAddLead}
               addToSavedPreferences={addToSavedPreferences}
               removeFromSavedPreferences={removeFromSavedPreferences}

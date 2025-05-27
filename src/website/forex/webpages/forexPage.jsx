@@ -3,7 +3,7 @@ import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import Header from "../../comman/sections/headerSection";
 import SectionComponent from "../../styleComponents/sectionComponent";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import Footer from "../../comman/sections/footerSection";
 import ForexHeroSection from "./sections/forexHeroSection";
 import ForexHowItWorks from "./sections/forexHowItWorkSection";

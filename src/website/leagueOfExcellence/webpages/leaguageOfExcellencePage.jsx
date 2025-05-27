@@ -12,7 +12,7 @@ import vectoreLeftFlat from "../../../assets/vectoreLeftFlat.png";
 import vectorleftNose from "../../../assets/vectorleftNose.png";
 import vectorDownNose from "../../../assets/vectorDownNose.png";
 import vectorLeftNoseSmall from "../../../assets/vectorLeftNoseSmall.png";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";

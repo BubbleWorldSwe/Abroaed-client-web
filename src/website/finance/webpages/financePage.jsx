@@ -8,7 +8,7 @@ import OurPartners from "../../comman/sections/ourPartnersSection";
 import FinanceFaqSection from "./sections/financeFaqSection";
 import { useDispatch } from "react-redux";
 import ContactUsForm from "../../comman/components/contactUsForm";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import SectionComponent from "../../styleComponents/sectionComponent";
 import vectorleftNose from "../../../assets/vectorleftNose.png";

@@ -17,7 +17,7 @@ import PageLoader from "../../../commons/components/loader/pageLoader";
 import ContactUsForm from "../../comman/components/contactUsForm";
 import TestPrepSimplifyThings from "./sections/testPrepSimplifyThings";
 // import Blogs from "../../comman/components/blogs";
-import { entity, razorpayKey, source } from "../../../constants/values";
+import { entity, razorpayKey } from "../../../constants/values";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";

@@ -66,10 +66,8 @@ const AccomodationEnquiryModal = ({
         return;
       }
 
-      console.log("Form Submitted:", formData, source, entity, onAddLead);
-
       onAddLead({
-        user: { formData, email: email?.toLowerCase() },
+        user: { ...formData, email: email?.toLowerCase() },
         source,
         entity,
       });
@@ -163,6 +161,7 @@ const AccomodationEnquiryModal = ({
                   value={formData.firstName}
                   onChange={handleChange}
                   required
+                  type="text"
                 />
 
                 {/* L Name */}
@@ -173,6 +172,7 @@ const AccomodationEnquiryModal = ({
                   value={formData.lastName}
                   onChange={handleChange}
                   required
+                  type="text"
                 />
 
                 {/* Email */}

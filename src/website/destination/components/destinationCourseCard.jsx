@@ -12,6 +12,7 @@ const CourseCard = ({
   onAddLead,
   addToSavedPreferences,
   removeFromSavedPreferences,
+  entity,
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const { savedPreferences } = useSelector((state) => state.savedPreferences);
@@ -37,8 +38,8 @@ const CourseCard = ({
       <CourseEnquiryModal
         isOpen={openModal}
         onClose={handleCloseAddModal}
-        entity={`${course.name}`}
         source={source}
+        entity={entity}
         onAddLead={onAddLead}
         courseDetails={course}
       />

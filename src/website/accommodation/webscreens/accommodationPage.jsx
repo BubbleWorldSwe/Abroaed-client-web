@@ -15,7 +15,7 @@ import {
 } from "../../../api/accomodationApi";
 import { useParams } from "react-router-dom";
 import { addLeadRequest } from "../../../redux/actions/leadsActions";
-import { entity, source } from "../../../constants/values";
+import { entity } from "../../../constants/values";
 import AccommodationHeaderTextSection from "./sections/accommodationHeaderTextSection";
 import Testimonials from "../../comman/components/testimonials";
 // import OurPartners from "../../comman/sections/ourPartnersSection";
@@ -145,7 +145,6 @@ function AccomodationPage() {
             isLoading={isDataLoading}
             selectedCountry={selectedCountry}
             destinationsList={destinationsList}
-            source={`${source.accommodation}`}
             onAddLead={handleAddLead}
             addToSavedPreferences={addToSavedPreferences}
             removeFromSavedPreferences={removeFromSavedPreferences}

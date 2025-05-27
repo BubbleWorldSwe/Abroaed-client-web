@@ -10,6 +10,7 @@ const CollegeCourseOfferSection = ({
   onAddLead,
   addToSavedPreferences,
   removeFromSavedPreferences,
+  entity,
 }) => {
   return (
     <div className="relative">
@@ -36,6 +37,7 @@ const CollegeCourseOfferSection = ({
                   onAddLead={onAddLead}
                   addToSavedPreferences={addToSavedPreferences}
                   removeFromSavedPreferences={removeFromSavedPreferences}
+                  entity={entity}
                 />
               ))}
             </div>

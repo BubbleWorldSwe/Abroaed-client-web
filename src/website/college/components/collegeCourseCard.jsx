@@ -11,6 +11,7 @@ const CollegeCourseCard = ({
   onAddLead,
   addToSavedPreferences,
   removeFromSavedPreferences,
+  entity,
 }) => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -37,10 +38,10 @@ const CollegeCourseCard = ({
       <CourseEnquiryModal
         isOpen={openModal}
         onClose={handleCloseAddModal}
-        entity={`${course.name}`}
         source={source}
         onAddLead={onAddLead}
         courseDetails={course}
+        entity={entity}
       />
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
         <div className="flex flex-col flex-grow">

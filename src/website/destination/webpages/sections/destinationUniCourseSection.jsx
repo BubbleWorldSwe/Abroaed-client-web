@@ -16,6 +16,7 @@ function DestinationUniCoursersSection({
   onAddLead,
   addToSavedPreferences,
   removeFromSavedPreferences,
+  entity,
 }) {
   return (
     <Element name="top-universities">
@@ -76,6 +77,7 @@ function DestinationUniCoursersSection({
                         course={course}
                         key={index}
                         source={source}
+                        entity={entity}
                         onAddLead={onAddLead}
                         addToSavedPreferences={addToSavedPreferences}
                         removeFromSavedPreferences={removeFromSavedPreferences}
