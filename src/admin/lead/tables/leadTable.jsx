@@ -236,7 +236,7 @@ const LeadTable = ({
                                   <span>View Profile</span>
                                 </button>
                               </li>
-                              {isWriteAccess && (
+                              {/* {isWriteAccess && (
                                 <li>
                                   <button
                                     onClick={() => {
@@ -249,7 +249,7 @@ const LeadTable = ({
                                     <span>Delete</span>
                                   </button>
                                 </li>
-                              )}
+                              )} */}
                             </ul>
                           </div>
                         )}
