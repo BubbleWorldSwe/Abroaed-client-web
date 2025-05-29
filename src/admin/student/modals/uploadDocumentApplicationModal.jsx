@@ -23,16 +23,12 @@ const UpdateDocApplicationModal = ({ isOpen, onClose, leadId }) => {
     (state) => state?.students?.selectedStudent
   );
 
-  console.log(applications);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("Form ready to submit", formData);
   };
 
   return (

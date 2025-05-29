@@ -50,9 +50,6 @@ function LanguagePrepLayout() {
 
   const handleAddLead = (data) => {
     try {
-      console.log("handleAddLead");
-      console.log(data);
-
       dispatch(addLeadRequest(data));
     } catch (error) {
       console.log(error);
@@ -89,7 +86,6 @@ function LanguagePrepLayout() {
               signature: response.razorpay_signature,
             });
 
-            console.log(response);
             // subscribeBatches(data, response.razorpay_payment_id);
             toast.success("Payment Successful!");
           },
@@ -115,7 +111,6 @@ function LanguagePrepLayout() {
 
   async function subscribeBatches(data, paymentId) {
     try {
-      console.log(student._id, "language_prep", id, data._id, paymentId);
       const prep = await setLeadSubscribeBatch(
         student._id,
         "language_prep",
@@ -123,7 +118,6 @@ function LanguagePrepLayout() {
         data._id,
         paymentId
       );
-      console.log(prep);
 
       if (prep?.status === 200) {
         toast.success(prep?.message);

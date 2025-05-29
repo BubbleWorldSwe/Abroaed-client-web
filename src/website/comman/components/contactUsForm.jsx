@@ -61,8 +61,6 @@ const ContactUsForm = ({
       return;
     }
 
-    console.log("Form Submitted:", formData);
-
     onFormSubmit({ user: formData, source, entity });
   };
 
@@ -76,8 +74,6 @@ const ContactUsForm = ({
       });
     }
   }, [loading, error]);
-
-  console.log(formData);
 
   return (
     <section className="relative ">

@@ -50,7 +50,7 @@ function* fetchAllTransactions() {
     yield put(fetchAllTransactionsSuccess(data.data));
   } catch (error) {
     yield put(fetchAllTransactionsFailure(error.message));
-    console.log(error.message);
+    console.log(error);
   }
 }
 

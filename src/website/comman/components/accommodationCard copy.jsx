@@ -24,7 +24,6 @@ const AccommodationCard = ({
 
   // Find saved accommodation by typeId
   const savedItem = [...savedPreferences].find((saved) => {
-    console.log(saved?.typeId?._id, item?._id);
     return (saved?.typeId?._id || saved?.typeId) === item?._id;
   });
 
@@ -32,7 +31,6 @@ const AccommodationCard = ({
 
   const isSaved = Boolean(savedItem);
 
-  console.log(isSaved, " : Is Saved");
   const { isLoggedInStudent } = useSelector((state) => state.auth);
 
   const handleCloseAddModal = () => {

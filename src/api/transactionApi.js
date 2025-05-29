@@ -15,7 +15,7 @@ export const getTransactions = async (page) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/transaction/list?page=${page}&limit=${pageDataLimit}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -30,7 +30,7 @@ export const getAllTransactions = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/transaction/list`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -42,7 +42,6 @@ export const getAllTransactions = async () => {
 // Add a new transaction
 export const setAddTransaction = async (credentials) => {
   try {
-    console.log(credentials);
     const { adminToken } = store.getState().auth;
     const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/transaction/create`,
@@ -60,7 +59,6 @@ export const setAddTransaction = async (credentials) => {
 // Update a transaction
 export const setUpdateTransaction = async (id, credentials) => {
   try {
-    console.log(credentials);
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/transaction/${id}`,
       credentials
@@ -76,11 +74,10 @@ export const setUpdateTransaction = async (id, credentials) => {
 // Delete a transaction
 export const setDeleteTransaction = async (id) => {
   try {
-    console.log(id + " id");
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/transaction/${id}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -92,7 +89,6 @@ export const setDeleteTransaction = async (id) => {
 // Fetch transaction details by ID
 export const getTransactionDetailsById = async (id) => {
   try {
-    console.log(id);
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/transaction/${id}`
     );

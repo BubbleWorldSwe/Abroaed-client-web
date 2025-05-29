@@ -23,8 +23,6 @@ const UpdateStudentAdditionInfo = ({
 
   const [formData, setFormData] = useState(filledData);
 
-  // console.log(filledData);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -52,7 +50,6 @@ const UpdateStudentAdditionInfo = ({
 
   const handleUpdateLeadProfileInfo = () => {
     if (validateForm()) {
-      //  console.log(formData, leadId);
       onUpdate({ userDetail: formData }, userId);
 
       // onUpdate({ user: { userDetail: formData } }, leadId);

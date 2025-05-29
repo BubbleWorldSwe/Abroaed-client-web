@@ -12,7 +12,7 @@ export const loginApi = async (credentials) => {
       `${BASE_URL}/api/v1/auth/login`,
       credentials
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -27,7 +27,7 @@ export const setStudentSignUp = async (credentials) => {
       `${BASE_URL}/api/v1/auth/student/signup`,
       credentials
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -42,7 +42,7 @@ export const setVerifyOtp = async (credentials) => {
       `${BASE_URL}/api/v1/auth/student/verify-otp`,
       credentials
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -57,7 +57,7 @@ export const setResendOtp = async (credentials) => {
       `${BASE_URL}/api/v1/auth/student/resend-otp`,
       credentials
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -75,7 +75,7 @@ export const setUpdateStudent = async (credentials) => {
       credentials,
       studentToken
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -93,7 +93,7 @@ export const setUpdateStudentPassword = async (credentials) => {
       credentials,
       studentToken
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -111,7 +111,7 @@ export const setUpdateAdmin = async (credentials) => {
       credentials,
       adminToken
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -129,7 +129,7 @@ export const setUpdateAdminPassword = async (credentials) => {
       credentials,
       adminToken
     );
-    //console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -144,8 +144,6 @@ export const getUserProfile = async (id) => {
     if (data.success) {
       return data.data;
     }
-
-    console.log(data?.data);
   } catch (error) {
     throw error;
   }

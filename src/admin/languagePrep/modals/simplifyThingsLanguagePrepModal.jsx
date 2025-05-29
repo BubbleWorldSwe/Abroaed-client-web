@@ -47,12 +47,9 @@ const SimplifyThingsModal = ({ closeModal, filledData, onUpdate }) => {
     const simplifyThingsWithoutId = updatedSimplifyThings.map(
       ({ _id, ...rest }) => rest
     );
-    console.log(simplifyThingsWithoutId);
 
     onUpdate({ simplifyThings: simplifyThingsWithoutId });
   };
-
-  console.log(formData);
 
   return (
     <form onSubmit={handleSubmit}>

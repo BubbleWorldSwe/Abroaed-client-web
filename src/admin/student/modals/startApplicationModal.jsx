@@ -45,7 +45,6 @@ const StartApplicationModal = ({
       return;
     }
 
-    console.log("Form Data:", formData);
     addApplication(formData);
 
     // Submit form data to API or process it

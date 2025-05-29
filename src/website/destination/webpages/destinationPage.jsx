@@ -96,9 +96,6 @@ function DestinationPage() {
 
   const handleAddLead = (data) => {
     try {
-      console.log("handleAddLead");
-      console.log(data);
-
       dispatch(addLeadRequest(data));
     } catch (error) {
       console.log(error);
@@ -107,9 +104,6 @@ function DestinationPage() {
 
   const addToSavedPreferences = (type, typeId) => {
     try {
-      console.log("addToSavedPreferences");
-      console.log(type, typeId);
-
       dispatch(
         addSavedPreferenceRequest({
           user: studentId,
@@ -124,9 +118,6 @@ function DestinationPage() {
 
   const removeFromSavedPreferences = (id) => {
     try {
-      console.log("removeFromSavedPreferences");
-      console.log(id);
-
       dispatch(deleteSavedPreferenceRequest(id));
     } catch (error) {
       console.log(error);

@@ -51,7 +51,6 @@ const StudentAdditionInfoModal = ({
 
   const handleUpdateAddInfo = () => {
     if (validateForm()) {
-      console.log(formData, leadId);
       onUpdate({ userDetail: formData }, userId);
 
       // onUpdate({ user: { userDetail: formData } }, leadId);

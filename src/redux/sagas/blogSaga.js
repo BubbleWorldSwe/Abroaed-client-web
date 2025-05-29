@@ -53,7 +53,7 @@ function* fetchAllBlogs() {
   } catch (error) {
     yield put(fetchAllBlogsFailure(error.message));
     //  toast.error(error.message);
-    console.log(error.message);
+    console.log(error);
   }
 }
 
@@ -62,8 +62,6 @@ function* addNewBlog(action) {
   try {
     const { blogData, imageData } = action.payload;
     const response = yield call(setAddBlog, blogData);
-
-    console.log(response);
 
     if (response.status === 200) {
       const id = response.data?._id;
@@ -90,7 +88,6 @@ function* addNewBlog(action) {
 // Delete a blog
 function* deleteBlogSaga(action) {
   try {
-    console.log(action);
     const response = yield call(setDeleteBlog, action.payload);
 
     if (response.status === 200) {

@@ -51,20 +51,17 @@ const LanguagePrepDetails = () => {
   };
 
   function onEditFaq(params) {
-    console.log("Edit FAQ");
     setFormdata(params);
     openModal("FAQs", "edit", 2);
   }
 
   function onEditBatches(params) {
-    console.log("Edit Batches");
     setFormdata(params);
     openModal("Batches", "edit", 1);
   }
 
   async function onUploadImage(data) {
     try {
-      console.log(data);
       dispatch(
         uploadLanguagePrepImageRequest(id, {
           files: data,

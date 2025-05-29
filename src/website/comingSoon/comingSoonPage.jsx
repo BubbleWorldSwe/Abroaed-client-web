@@ -281,7 +281,7 @@ function ComingSoonPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, email, phone);
+
     try {
       await fetch(
         "https://script.google.com/macros/s/AKfycbzAmkN343OGaUNk7PDzzAvjqi5J38-Xf_aP7guPux7qY5tpWJhMG0Yqj6XDYPKxjYQPiA/exec",

@@ -64,7 +64,6 @@ function* addNewCollege(action) {
 function* deleteCollege(action) {
   try {
     const response = yield call(setDeleteCollege, action.payload);
-    console.log(response);
 
     if (response.status === 200) {
       yield put(deleteCollegeSuccess(action.payload));
@@ -104,12 +103,8 @@ function* handleUploadCollegeImage(action) {
     const { id, imageData } = action.payload;
     const response = yield call(setCollegeUploadFile, id, imageData);
 
-    console.log(response);
-
     if (response.status === 200) {
       const data = yield call(getCollegeDetailsById, id);
-
-      console.log(data);
 
       if (data.status === 200) {
         yield put(uploadCollegeImageSuccess(data.data));

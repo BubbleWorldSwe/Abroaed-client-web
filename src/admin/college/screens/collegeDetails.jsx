@@ -63,19 +63,16 @@ function CollegDetails() {
   }
 
   function onEditFaq(params) {
-    console.log("Edit FAQ");
     setFormdata(params);
     openModal("FAQs", "edit", 4);
   }
 
   function onEditCourses(params) {
-    console.log("Edit Courses");
     setFormdata(params);
     openModal("Courses", "edit", 3);
   }
 
   function onEditScholarship(params) {
-    console.log("Edit Scholarship");
     setFormdata(params);
     openModal("Financial Aid & Scholarships", "edit", 4);
   }
@@ -213,7 +210,6 @@ function CollegDetails() {
   }
 
   async function onUploadImage(data, type) {
-    console.log(data, type);
     try {
       dispatch(
         uploadCollegeImageRequest(collegeDetails?._id, {
@@ -232,13 +228,11 @@ function CollegDetails() {
 
   async function fetchCollegeDetails() {
     try {
-      console.log(" fetchCollegeDetails");
       const data = await getCollegeDetailsById(collegeDetails?._id);
 
-      //  console.log(data);
+      //
 
       if (data.status === 200) {
-        // console.log(data.message);
         dispatch(setSelectedCollege(data.data));
       }
       closeModal();
@@ -252,7 +246,6 @@ function CollegDetails() {
       const data = await setDeleteCollegeImage(id);
 
       if (data.status === 200) {
-        //  console.log(data.message);
         onUploadImage(imageData, type);
       } else {
         toast.error(data.message);

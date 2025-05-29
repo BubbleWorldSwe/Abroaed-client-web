@@ -27,8 +27,6 @@ function* fetchStudents(action) {
   try {
     const data = yield call(getStudents, action.payload);
 
-    console.log(data);
-
     if (data.status === 200) {
       yield put(fetchStudentsSuccess(data.data));
     } else {
@@ -61,10 +59,8 @@ function* searchStudents(action) {
 function* handleEditStudentLead(action) {
   try {
     const { id, studentData } = action.payload;
-    console.log(id, studentData);
-    const response = yield call(setUpdateLead, id, studentData);
 
-    console.log(response);
+    const response = yield call(setUpdateLead, id, studentData);
 
     if (response.status === 200) {
       yield put(editStudentLeadSuccess(response.data));
@@ -85,7 +81,6 @@ function* handleEditStudent(action) {
 
     // First API call to update the student
     const response = yield call(setUpdateStudent, userId, studentData);
-    console.log("handleEditStudent in Saga", response);
 
     if (response.status === 200) {
       // Second API call to get updated student details from lead

@@ -8,10 +8,6 @@ const DestinationNavItemModal = ({ handleMouseEnter, handleMouseLeave }) => {
     (state) => state.destinations
   );
 
-  console.log(totalPages);
-
-  console.log(allDestinations);
-
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (

@@ -35,7 +35,6 @@ function Leads() {
   const { leads, totalPages, loading, success } = useSelector(
     (state) => state.leads
   );
-  console.log(leads);
 
   const flatData = leads[0]?.data?.map((item) => ({
     _id: item._id || "",
@@ -257,10 +256,6 @@ function Leads() {
   useEffect(() => {
     dispatch(fetchLeadsRequest(currentPage));
   }, [location.pathname]);
-
-  console.log(loading, "loading");
-
-  console.log(query.length);
 
   return (
     <>

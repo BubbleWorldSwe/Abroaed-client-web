@@ -90,10 +90,6 @@ const DestinationTable = ({
     };
   }, []);
 
-  useEffect(() => {
-    console.log("destinations updated:", destinations);
-  }, [destinations, currentPage, totalPages]);
-
   return (
     <>
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">

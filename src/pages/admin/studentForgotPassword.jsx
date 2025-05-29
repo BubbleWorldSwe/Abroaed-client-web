@@ -39,8 +39,6 @@ function StudentForgotPassword() {
       setIsLoading(true);
       const data = await setResendOtp({ email: email?.toLowerCase() });
 
-      console.log(data);
-
       if (data?.data?.success) {
         toast.success("OTP sent successfully!");
         // navigate("/otpVerification");

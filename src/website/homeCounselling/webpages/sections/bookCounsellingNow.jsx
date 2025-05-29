@@ -68,7 +68,6 @@ const BookCounsellingNow = ({ source, entity, onFormSubmit }) => {
       return;
     }
 
-    console.log("Lead Data:", formData);
     onFormSubmit({
       user: { ...formData, email: email?.toLowerCase() },
       source: source,

@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Dashboard from "../pages/admin/Dashboard";
+
 import PrivateRoute from "./privateRoute";
 import AccomodationPage from "../website/accommodation/webscreens/accommodationPage";
 import FinancePage from "../website/finance/webpages/financePage";
@@ -69,6 +69,7 @@ import AdminForgotPassword from "../admin/auth/adminForgotPassword";
 import AdminSignin from "../admin/auth/adminSignin";
 import AdminResetPassword from "../admin/auth/adminResetPassword";
 import AdminProfile from "../admin/profile/screens/viewProfile";
+import Dashboard from "../admin/dashboard/Dashboard";
 
 const AppRoutes = () => {
   const allRoutes = [

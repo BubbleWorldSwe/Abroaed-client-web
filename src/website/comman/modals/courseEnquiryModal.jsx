@@ -62,8 +62,6 @@ const CourseEnquiryModal = ({
       return;
     }
 
-    console.log("Form Submitted:", formData);
-
     onAddLead({
       user: { ...formData, email: email?.toLowerCase() },
       source,

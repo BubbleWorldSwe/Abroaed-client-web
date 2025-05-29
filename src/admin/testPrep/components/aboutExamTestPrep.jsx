@@ -7,12 +7,6 @@ const AboutExamTestPrep = () => {
     (state) => state.testPreps.selectedTestPrep
   );
 
-  useEffect(() => {
-    console.log(
-      "testPrepDetails updated in AboutExamTestPrep : " + testPrepDetails
-    );
-  }, [testPrepDetails]);
-
   return (
     <div className="flex flex-col gap-1">
       {testPrepDetails?.about ? (

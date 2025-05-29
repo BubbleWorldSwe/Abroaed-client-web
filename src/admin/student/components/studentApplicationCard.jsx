@@ -23,8 +23,6 @@ const StudentApplicationCard = ({
     setSelectedApplication(data);
   };
 
-  console.log(status);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {

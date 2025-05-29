@@ -24,12 +24,6 @@ const LocationModal = ({
     address: collegeDetails?.address,
   });
 
-  console.log(formData);
-
-  console.log(collegeDetails.destinationId);
-
-  console.log(destinationsList);
-
   const handleInputChange = (fieldName, value) => {
     setFormData((prev) => ({ ...prev, [fieldName]: value }));
   };

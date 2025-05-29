@@ -36,7 +36,6 @@ const TestPrepDetails = () => {
 
   async function onUpdate(data) {
     try {
-      console.log(data);
       dispatch(editTestPrepRequest(state?._id, data));
       //  fetchTestPrepsDetails();
       closeModal();
@@ -48,7 +47,6 @@ const TestPrepDetails = () => {
 
   async function onUploadImage(data) {
     try {
-      console.log(data);
       dispatch(
         uploadTestPrepImageRequest(state?._id, { files: data, type: "logo" })
       );
@@ -64,8 +62,6 @@ const TestPrepDetails = () => {
       const data = await getTestPrepDetailsById(state?._id);
 
       if (data.status === 200) {
-        console.log("data.data");
-        console.log(data.data);
         dispatch(setSelectedTestPrep(data.data));
       }
     } catch (error) {
@@ -122,13 +118,11 @@ const TestPrepDetails = () => {
   };
 
   function onEditFaq(params) {
-    console.log("Edit FAQ");
     setFormdata(params);
     openModal("FAQs", "edit", 2);
   }
 
   function onEditBatches(params) {
-    console.log("Edit Batches");
     setFormdata(params);
     openModal("Batches", "edit", 1);
   }
@@ -141,8 +135,6 @@ const TestPrepDetails = () => {
   useEffect(() => {
     fetchTestPrepsDetails();
   }, [dispatch]);
-
-  console.log(loading, "loading");
 
   return (
     <>

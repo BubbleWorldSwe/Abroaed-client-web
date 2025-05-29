@@ -13,7 +13,7 @@ export const getColleges = async (page) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=${pageDataLimit}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -25,7 +25,7 @@ export const getColleges = async (page) => {
 export const getAllColleges = async (page) => {
   try {
     const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/colleges/list`);
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -50,14 +50,13 @@ export const getCollegesByDestinationId = async (destId) => {
 
 export const setAddCollege = async (credentials) => {
   try {
-    console.log(credentials);
     const { adminToken } = store.getState().auth;
     const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/colleges/create`,
       credentials,
       adminToken
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -68,13 +67,11 @@ export const setAddCollege = async (credentials) => {
 
 export const setUpdateCollege = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/colleges/${id}`,
       credentials
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -85,12 +82,10 @@ export const setUpdateCollege = async (id, credentials) => {
 
 export const setDeleteCollege = async (id) => {
   try {
-    console.log(id + " id");
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/colleges/${id}`
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -101,7 +96,6 @@ export const setDeleteCollege = async (id) => {
 
 export const getCollegeDetailsById = async (id) => {
   try {
-    console.log(id);
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/colleges/${id}`
     );
@@ -116,7 +110,6 @@ export const getCollegeDetailsById = async (id) => {
 
 export const getCoursesListByDestinationId = async (id) => {
   try {
-    console.log(id);
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/colleges/courses/by-destination/${id}`
     );
@@ -145,8 +138,6 @@ export const setCollegeUploadFile = async (id, imageData) => {
 
     formData.append("type", type); // add type (gallery/logo/cover)
 
-    console.log(formData);
-
     const response = await fetch(
       `${BASE_URL}/api/v1/admin/colleges/upload/file/${id}`,
       {
@@ -164,8 +155,6 @@ export const setCollegeUploadFile = async (id, imageData) => {
       result = await response.text();
     }
 
-    console.log(result);
-
     if (response.ok) {
       return result;
     } else {
@@ -179,7 +168,6 @@ export const setCollegeUploadFile = async (id, imageData) => {
 
 export const setDeleteCollegeImage = async (id) => {
   try {
-    console.log(id);
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/colleges/file/remove`,
       { ids: [id] }

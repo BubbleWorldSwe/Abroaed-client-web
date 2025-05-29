@@ -46,13 +46,11 @@ function* fetchAllTeams() {
   try {
     const response = yield call(getAllTeams);
 
-    console.log(response.data);
-
     yield put(fetchAllTeamsSuccess(response.data));
   } catch (error) {
     yield put(fetchAllTeamsFailure(error.message));
     //toast.error(error.message);
-    console.log(error.message);
+    console.log(error);
   }
 }
 
@@ -60,13 +58,11 @@ function* addNewTeam(action) {
   try {
     const response = yield call(setAddTeam, action.payload);
     //  debugger;
-    console.log(response);
 
     if (response.status === 201) {
       toast.success("Team added successfully!");
       yield put(addTeamSuccess(response.data.data));
     } else {
-      console.log("Error");
       yield put(addTeamFailure(response.message));
       toast.error(response.message);
     }

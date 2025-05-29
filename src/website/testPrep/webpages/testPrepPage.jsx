@@ -49,9 +49,6 @@ function TestPrepLayout() {
 
   const handleAddLead = (data) => {
     try {
-      console.log("handleAddLead");
-      console.log(data);
-
       dispatch(addLeadRequest(data));
     } catch (error) {
       console.log(error);
@@ -69,7 +66,6 @@ function TestPrepLayout() {
       description: "Test Transaction",
 
       handler: (response) => {
-        console.log(response);
         subscribeBatches(data, response.razorpay_payment_id);
         // toast.success("Payment Successful!");
       },
@@ -115,7 +111,6 @@ function TestPrepLayout() {
               signature: response.razorpay_signature,
             });
 
-            console.log(response);
             // subscribeBatches(data, response.razorpay_payment_id);
             toast.success("Payment Successful!");
           },
@@ -160,8 +155,6 @@ function TestPrepLayout() {
       console.log(error);
     }
   }
-
-  console.log(testPrepsDetails);
 
   useEffect(() => {
     // window.scrollTo(0, 0);

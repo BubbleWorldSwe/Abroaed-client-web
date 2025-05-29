@@ -53,7 +53,6 @@ function AdminResetPassword() {
     // Proceed with password reset logic
     dispatch(adminUpdatePasswordRequest({ password, confirmPassword }));
   };
-  console.log(token);
 
   useEffect(() => {
     if (token) {

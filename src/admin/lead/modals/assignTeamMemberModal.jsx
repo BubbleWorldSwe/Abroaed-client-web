@@ -32,7 +32,6 @@ const AssignTeamModal = ({
 
     const newArray = updatedAssignTeamMembers.map((m) => m._id);
 
-    console.log("Updated assignTeamMembers IDs:", newArray);
     onUpdate({ assignTeamMembers: newArray }, leadId);
   };
 
@@ -43,7 +42,6 @@ const AssignTeamModal = ({
 
         const newAssignTeamMembers = [...existingMemberIds, selectedMember];
 
-        console.log("New assignTeamMembers array:", newAssignTeamMembers);
         onUpdate({ assignTeamMembers: newAssignTeamMembers }, leadId);
       } else {
         toast.error("Please Select Member");
@@ -52,10 +50,6 @@ const AssignTeamModal = ({
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    console.log("assignTeamMembers Updated");
-  }, [assignTeamMembers]);
 
   return (
     <>

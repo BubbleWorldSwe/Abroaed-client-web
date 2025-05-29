@@ -58,14 +58,10 @@ const CoursesModal = ({ closeModal, filledData, onUpdate }) => {
 
     const coursesWithoutId = updatedCourses.map(({ _id, ...rest }) => rest);
 
-    // console.log(coursesWithoutId);
-
     onUpdate({ courses: coursesWithoutId });
 
     //  closeModal();
   };
-
-  console.log(formData);
 
   return (
     <div className="w-[100vh] max-w-full mx-auto">

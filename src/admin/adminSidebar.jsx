@@ -116,8 +116,6 @@ function CollapsableSidebar() {
     (item) => !item.roles || item.roles.includes(role)
   );
 
-  // console.log(filteredMenuItems);
-
   useEffect(() => {
     const handleResize = () => {
       const screenWidth = window.innerWidth;

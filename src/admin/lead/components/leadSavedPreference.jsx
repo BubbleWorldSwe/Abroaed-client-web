@@ -14,8 +14,6 @@ function LeadSavedPreference() {
 
   const savedPreferences = leadProfile?.savedPreferences || [];
 
-  console.log(savedPreferences);
-
   const colleges = savedPreferences.filter((pref) => pref.type === "colleges");
   const courses = savedPreferences.filter((pref) => pref.type === "courses");
   const accommodations = savedPreferences.filter(

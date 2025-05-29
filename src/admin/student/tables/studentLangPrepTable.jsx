@@ -7,8 +7,6 @@ const StudentLangPrep = () => {
     (state) => state?.students?.selectedStudent
   );
 
-  console.log(studentProfile?.prepsBatches);
-
   return (
     <div className="bg-white dark:bg-gray-900 flex flex-col p-5 mb-3 ">
       <div className="flex py-2 flex-col  mx-auto w-full bg-white dark:bg-gray-800 relative  sm:rounded-lg">

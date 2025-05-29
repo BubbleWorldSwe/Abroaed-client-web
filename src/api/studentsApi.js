@@ -18,7 +18,7 @@ export const getStudents = async (page) => {
       `${BASE_URL}/api/v1/admin/leads/list?page=${page}&limit=${pageDataLimit}&filter={"type":"student"}`,
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -34,7 +34,7 @@ export const getSearchStudents = async (query) => {
       `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}&search=${query}`,
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -50,7 +50,7 @@ export const getAllStudents = async (page) => {
       `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"student"}`,
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -61,8 +61,6 @@ export const getAllStudents = async (page) => {
 
 export const setUpdateStudent = async (id, credentials) => {
   try {
-    console.log(credentials, id);
-
     const data = await makePutRequest(
       `${BASE_URL}/api/v1/admin/users/${id}`,
       credentials
@@ -77,8 +75,6 @@ export const setUpdateStudent = async (id, credentials) => {
 
 export const setEditStudentProfile = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/leads/${id}`,
       credentials
@@ -93,8 +89,6 @@ export const setEditStudentProfile = async (id, credentials) => {
 
 export const setCreateStudentApplication = async (credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePostRequest(
       `${BASE_URL}/api/v1/admin/applications/create`,
       credentials
@@ -121,7 +115,6 @@ export const getStudentDocuments = async (id) => {
 };
 
 export const setUploadStudentDocuments = async (id, fileData) => {
-  console.log(fileData);
   try {
     const data = await makePostRequestWithFormData(
       `${BASE_URL}/api/v1/admin/document-upload/file/${id}`,
@@ -136,7 +129,6 @@ export const setUploadStudentDocuments = async (id, fileData) => {
 };
 
 export const setUpdateStudentDocuments = async (docId, fileData) => {
-  console.log(fileData);
   try {
     const data = await makePostRequestWithFormData(
       `${BASE_URL}/api/v1/admin/document-upload/update/${docId}`,
@@ -179,7 +171,6 @@ export const setDeleteStudentTransaction = async (id) => {
 // Update a transaction
 export const setUpdateStudentTransaction = async (id, credentials) => {
   try {
-    console.log(credentials);
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/transaction/${id}`,
       credentials
@@ -197,7 +188,7 @@ export const getStudentApplications = async (leadId) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/applications/list?filter={"lead":"${leadId}"}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -209,7 +200,6 @@ export const getStudentApplications = async (leadId) => {
 export const setUpdateStudentApplication = async (credentials, appId) => {
   try {
     const { adminToken } = store.getState().auth;
-    console.log(credentials);
 
     const data = await makePatchRequestWithToken(
       `${BASE_URL}/api/v1/admin/applications/${appId}`,
@@ -230,7 +220,7 @@ export const getStudentDetailsById = async (userId) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/leads/${userId}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -260,7 +250,7 @@ export const getStudentTransactions = async (leadId) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/transaction/list?filter={"user":"${leadId}"}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -275,7 +265,7 @@ export const getStudentSavedPreferences = async (leadId) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/save-preference/list?filter={"user":"${leadId}"}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -290,7 +280,7 @@ export const getStudentPrepsBatches = async (leadId) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/subscribe-batches/list?filter={"lead":"${leadId}"}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

@@ -129,9 +129,6 @@ export const leadsReducer = (state = initialState, action) => {
       return { ...state, selectedLead: action.payload, loading: false };
 
     case ADD_LEAD_SAVEDPREFRENCES:
-      console.log("ADD_LEAD_SAVEDPREFRENCES");
-      console.log(action.payload);
-
       return {
         ...state,
         loading: false,
@@ -161,9 +158,6 @@ export const leadsReducer = (state = initialState, action) => {
       };
 
     case ADD_LEAD_DOCUMENTS:
-      console.log("ADD_LEAD_DOCUMENTS");
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -184,8 +178,6 @@ export const leadsReducer = (state = initialState, action) => {
       };
 
     case LEADS_DATA_LOADING:
-      console.log("LEADS_DATA_LOADING");
-
       return {
         ...state,
         loading: action.payload,

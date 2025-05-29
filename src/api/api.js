@@ -46,7 +46,19 @@ export const getVisaTypesList = async () => {
 export const getRoles = async () => {
   try {
     const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/roles`);
-    console.log(data);
+
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAdminDashboard = async () => {
+  try {
+    const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/dashboard`);
+
     if (data.success) {
       return data.data;
     }

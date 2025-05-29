@@ -14,23 +14,15 @@ function FinancialAidTable({ onEdit, onUpdate }) {
   };
   const { isWriteAccess } = useSelector((state) => state.auth);
   function handleDeleteClick(id) {
-    console.log("Delete scholarships : " + id);
-
     const updatedScholarships = collegeDetails.scholarships.filter(
       (scholarship) => scholarship._id !== id
     );
     const scholarshipsWithoutId = updatedScholarships.map(
       ({ _id, ...rest }) => rest
     );
-    //console.log(scholarshipsWithoutId);
 
     onUpdate({ scholarships: scholarshipsWithoutId });
   }
-
-  useEffect(() => {
-    console.log("details updated in ScholarshipsDest ");
-    console.log(collegeDetails.scholarships);
-  }, [collegeDetails]);
 
   return (
     <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">

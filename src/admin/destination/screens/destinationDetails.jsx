@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // /* eslint-disable no-constant-condition */
 import { useEffect, useState } from "react";
-import AdmissionReqDest from "../components/admissionReqDest";
+
 import ExpensesDest from "../components/expensesDest";
 import ScholarshipsDest from "../components/scholarshipsDest";
 import DestinationFAQ from "../components/destinationFAQ";
@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import OverviewDest from "../components/overviewDest";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
+import AdmissionReqDest from "../components/admissionReqDest";
 
 function DestinationDetails() {
   const dispatch = useDispatch();
@@ -147,19 +148,16 @@ function DestinationDetails() {
   };
 
   function onEditFaq(params) {
-    console.log("Edit FAQ");
     setFormdata(params);
     openModal("FAQs", "edit", 6);
   }
 
   function onEditScholarship(params) {
-    console.log("Edit onEditScholarship");
     setFormdata(params);
     openModal("Scholarships", "edit", 3);
   }
 
   function onEditImmigration(params) {
-    console.log("Edit onEditImmigration");
     setFormdata(params);
     openModal("Immigration Details", "edit", 4);
   }
@@ -173,7 +171,6 @@ function DestinationDetails() {
       console.log(error);
     }
   }
-  console.log(loading, "loadng");
 
   async function fetchDestnationDetails() {
     try {
@@ -218,7 +215,6 @@ function DestinationDetails() {
 
   async function onUploadImage(data) {
     try {
-      console.log(data);
       dispatch(
         uploadDestinationImageRequest(state?._id, {
           files: data,

@@ -34,8 +34,6 @@ const FilterModal = ({ isOpen, leadId, onClose, onUpdate, filledData }) => {
         .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
     };
 
-    //console.log("Updated Data:", formattedData);
-
     onUpdate({ scheduleDetails: formattedData }, leadId);
 
     // setConfirmModalOpen(true);

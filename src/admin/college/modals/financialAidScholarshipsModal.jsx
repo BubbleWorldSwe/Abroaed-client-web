@@ -50,8 +50,6 @@ const FinancialAidScholarshipsModal = ({
       ({ _id, ...rest }) => rest
     );
 
-    // console.log(scholarshipsWithoutId);
-
     onUpdate({ scholarships: scholarshipsWithoutId });
 
     //  closeModal();

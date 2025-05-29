@@ -38,9 +38,6 @@ function College() {
   const [statesList, setStatesList] = useState([]);
 
   const handleAddCollege = (data) => {
-    console.log("handleAddCollege");
-    console.log(data);
-
     dispatch(addCollegeRequest(data));
     setCurrentPage(1);
     // dispatch(fetchCollegesRequest(1));
@@ -76,7 +73,6 @@ function College() {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteCollegeRequest(id));
     setCurrentPage(1);
     dispatch(fetchCollegesRequest(1));
@@ -94,8 +90,6 @@ function College() {
     }
   }
 
-  console.log(statesList);
-
   async function fetchStatesList(countryId) {
     try {
       setStatesList([]);
@@ -111,7 +105,6 @@ function College() {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editCollegeRequest(id, data));
     } catch (error) {
       console.log(error);
@@ -120,7 +113,6 @@ function College() {
 
   useEffect(() => {
     if (colleges?.length === 0) {
-      console.log("fetchCollegesRequest");
       dispatch(fetchCollegesRequest(currentPage));
     }
   }, [dispatch, colleges, currentPage]);

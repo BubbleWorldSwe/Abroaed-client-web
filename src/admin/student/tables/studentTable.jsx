@@ -40,7 +40,6 @@ const StudentTable = ({
   };
 
   function getCounsellor(studentProfile) {
-    console.log(studentProfile);
     const counsellor = studentProfile?.find(
       (member) => member?.roleId?.roleName === "Counsellor"
     );

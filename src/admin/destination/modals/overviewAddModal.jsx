@@ -56,7 +56,6 @@ const OverviewAddModal = ({ closeModal, onUpdate, states }) => {
       return;
     }
 
-    console.log("Form submitted with data:", formData);
     onUpdate(formData);
   };
 

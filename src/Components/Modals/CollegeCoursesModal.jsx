@@ -9,7 +9,7 @@ function CoursesModal({ isEditMode, initialData, onClose, onSave }) {
       duration: "",
     }
   );
-  console.log("called");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

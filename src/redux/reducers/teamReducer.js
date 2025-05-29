@@ -39,7 +39,6 @@ export const teamReducer = (state = initialState, action) => {
       return { ...state, loading: true, error: null, success: null };
 
     case FETCH_TEAMS_SUCCESS:
-      console.log(action.payload.page, state.page, action.payload);
       return {
         ...state,
 
@@ -97,7 +96,6 @@ export const teamReducer = (state = initialState, action) => {
     case EDIT_TEAM_FAILURE:
     case ADD_TEAM_FAILURE:
     case FETCH_ALL_TEAMS_FAILURE:
-      console.log(action);
       return {
         ...state,
         loading: false,

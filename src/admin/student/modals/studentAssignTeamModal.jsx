@@ -31,7 +31,6 @@ const StudentAssignTeamModal = ({
 
     const newArray = updatedAssignTeamMembers.map((m) => m._id);
 
-    console.log("Updated assignTeamMembers IDs:", newArray);
     onUpdate({ assignTeamMembers: newArray }, leadId);
   };
 
@@ -42,7 +41,6 @@ const StudentAssignTeamModal = ({
 
         const newAssignTeamMembers = [...existingMemberIds, selectedMember];
 
-        console.log("New assignTeamMembers array:", newAssignTeamMembers);
         onUpdate({ assignTeamMembers: newAssignTeamMembers }, leadId);
       } else {
         toast.error("Please Select Member");

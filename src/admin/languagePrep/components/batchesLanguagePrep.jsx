@@ -12,18 +12,14 @@ const Batches = ({ onEdit, onUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const handleEditClick = (batches) => {
-    console.log(batches);
     onEdit(batches);
   };
 
   function handleDeleteClick(id) {
-    console.log("Delete onDeleteBatches : " + id);
-
     const updatedBatches = languagePrepDetails.batches.filter(
       (batches) => batches._id !== id
     );
     const batchesWithoutId = updatedBatches.map(({ _id, ...rest }) => rest);
-    console.log(batchesWithoutId);
 
     onUpdate({ batches: batchesWithoutId });
   }

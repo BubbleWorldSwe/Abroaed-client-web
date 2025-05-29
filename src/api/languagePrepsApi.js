@@ -15,7 +15,7 @@ export const getLanguagePreps = async (page) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/language-preps/list?page=${page}&limit=${pageDataLimit}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -29,7 +29,7 @@ export const getAllLanguagePreps = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/language-preps/list`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -47,7 +47,7 @@ export const setAddLanguagePrep = async (credentials) => {
       credentials,
       adminToken
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -58,13 +58,11 @@ export const setAddLanguagePrep = async (credentials) => {
 
 export const setUpdateLanguagePrep = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/language-preps/${id}`,
       credentials
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -75,12 +73,10 @@ export const setUpdateLanguagePrep = async (id, credentials) => {
 
 export const setDeleteLanguagePrep = async (id) => {
   try {
-    console.log(id + " id");
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/language-preps/${id}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -90,9 +86,7 @@ export const setDeleteLanguagePrep = async (id) => {
 };
 
 export const getLanguagePrepDetailsById = async (id) => {
-  console.log(" hElllo    ID ", id);
   try {
-    console.log(id);
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/language-preps/${id}`
     );
@@ -111,7 +105,6 @@ export const setLanguagePrepUploadFile = async (id, imageData) => {
 
     const { adminToken } = store.getState().auth;
 
-    console.log(id, imageData);
     const data = await makePutRequestWithFormData(
       `${BASE_URL}/api/v1/admin/language-preps/upload/file/${id}`,
       {
@@ -120,7 +113,7 @@ export const setLanguagePrepUploadFile = async (id, imageData) => {
       },
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

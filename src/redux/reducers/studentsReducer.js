@@ -85,9 +85,6 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case ADD_STUDENT_APPLICATION:
-      console.log("ADD_STUDENT_APPLICATION");
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -108,9 +105,6 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case ADD_STUDENT_TRANSACTIONS:
-      console.log("ADD_STUDENT_TRANSACTIONS");
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -131,9 +125,6 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case ADD_STUDENT_SAVEDPREFRENCES:
-      console.log("ADD_STUDENT_SAVEDPREFRENCES");
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -153,9 +144,6 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case ADD_STUDENT_PREPS_BATCHES:
-      console.log("ADD_STUDENT_PREPS_BATCHES");
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -176,9 +164,6 @@ export const studentsReducer = (state = initialState, action) => {
       };
 
     case ADD_STUDENT_DOCUMENTS:
-      console.log("ADD_STUDENT_DOCUMENTS");
-      console.log(action);
-
       return {
         ...state,
         loading: false,
@@ -215,9 +200,6 @@ export const studentsReducer = (state = initialState, action) => {
 
     case SET_SELECTED_STUDENT:
       return { ...state, selectedStudent: action.payload, loading: false };
-
-    case STUDENT_DATA_LOADING:
-      console.log("STUDENT_DATA_LOADING");
 
       return {
         ...state,

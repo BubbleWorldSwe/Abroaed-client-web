@@ -50,13 +50,9 @@ const RequestDocumentModal = ({
         )
       );
 
-      console.log("Form ready to submit", filteredData);
-
       if (filteredData._id) {
-        console.log("Update");
         updateDocument(filteredData);
       } else {
-        console.log("Add");
         requestDocument(filteredData);
       }
     } catch (error) {

@@ -57,15 +57,12 @@ const OverviewModal = ({ closeModal, onUpdate }) => {
       return;
     }
 
-    console.log("Form submitted with data:", formData);
     onUpdate(formData);
   };
 
   const handleInputChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
-
-  console.log(formData);
 
   return (
     <div className="w-[100vh] max-w-full mx-auto">

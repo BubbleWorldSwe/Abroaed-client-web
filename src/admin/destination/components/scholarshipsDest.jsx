@@ -17,23 +17,15 @@ function ScholarshipsDest({ onEdit, onUpdate }) {
   );
 
   function handleDeleteClick(id) {
-    console.log("Delete scholarships : " + id);
-
     const updatedScholarships = details.scholarships.filter(
       (scholarship) => scholarship._id !== id
     );
     const scholarshipsWithoutId = updatedScholarships.map(
       ({ _id, ...rest }) => rest
     );
-    //console.log(scholarshipsWithoutId);
 
     onUpdate({ scholarships: scholarshipsWithoutId });
   }
-
-  useEffect(() => {
-    console.log("details updated in ScholarshipsDest ");
-    console.log(details.scholarships);
-  }, [details]);
 
   return (
     <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">

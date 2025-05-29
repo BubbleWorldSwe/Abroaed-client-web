@@ -65,8 +65,6 @@ const StudentDocuments = () => {
     setActiveTab(index);
   };
 
-  console.log(selectedDoc);
-
   async function uploadDocument() {
     try {
       if (!selectedFile) {
@@ -97,15 +95,12 @@ const StudentDocuments = () => {
         status: "pending",
       });
 
-      console.log(data);
-
       if (data.status === 200) {
         dispatch(fetchStudentDocumentsRequest(leadId));
       } else {
         toast.error(data?.message);
       }
       setIsModalOpen(false);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -130,7 +125,6 @@ const StudentDocuments = () => {
 
   const groupedApprovedDocuments = groupDocumentsByStatus(approvedDocuments);
 
-  console.log(documents);
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {

@@ -69,7 +69,6 @@ const TestPrep = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteTestPrepRequest(id));
     setCurrentPage(1);
     dispatch(fetchTestPrepsRequest(1));
@@ -77,7 +76,6 @@ const TestPrep = () => {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editTestPrepRequest(id, data));
     } catch (error) {
       console.log(error);
@@ -86,7 +84,6 @@ const TestPrep = () => {
 
   useEffect(() => {
     if (testPreps?.length === 0) {
-      console.log("fetchTestPrepsRequest");
       dispatch(fetchTestPrepsRequest(currentPage));
     }
   }, [dispatch, testPreps, currentPage]);

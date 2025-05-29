@@ -18,26 +18,19 @@ function CoursesCard({ onEdit, onUpdate }) {
 
   function handleDeleteClick(id) {
     try {
-      console.log("Delete courses : " + id);
-
       const updatedScholarships = collegeDetails.courses.filter(
         (course) => course._id !== id
       );
       const coursesWithoutId = updatedScholarships.map(
         ({ _id, ...rest }) => rest
       );
-      //console.log(coursesWithoutId);
 
       onUpdate({ courses: coursesWithoutId });
     } catch (error) {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    console.log("details updated in ScholarshipsDest ");
-    console.log(collegeDetails.courses);
-  }, [collegeDetails]);
+ 
 
   return (
     <div className=" bg-white  dark:border-gray-700 dark:bg-gray-800">

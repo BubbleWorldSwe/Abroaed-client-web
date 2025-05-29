@@ -43,7 +43,6 @@ function StudentOtpLogin() {
         recaptcha
       );
 
-      console.log(result);
       setConfirmationResult(result);
       //  toast.success("OTP sent to your phone!");
       //  setResendCount((prev) => prev + 1);

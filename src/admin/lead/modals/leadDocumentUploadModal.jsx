@@ -29,8 +29,6 @@ const LeadUploadDocumentModal = ({
     (state) => state?.students?.selectedStudent
   );
 
-  console.log(applications);
-
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {
@@ -122,8 +120,6 @@ const LeadUploadDocumentModal = ({
       toast.error("An error occurred while uploading the document");
     }
   };
-
-  console.log(isOpen, "handleOpenUploadModal");
 
   return (
     <>

@@ -63,7 +63,6 @@ export const addStudentFailure = (error) => ({
 });
 
 export const addStudentApplication = (student) => {
-  console.log(student);
   return {
     type: ADD_STUDENT_APPLICATION,
     payload: student,
@@ -71,7 +70,6 @@ export const addStudentApplication = (student) => {
 };
 
 export const addStudentTransaction = (student) => {
-  console.log(student);
   return {
     type: ADD_STUDENT_TRANSACTIONS,
     payload: student,

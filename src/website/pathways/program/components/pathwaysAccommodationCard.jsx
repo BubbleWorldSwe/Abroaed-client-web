@@ -8,7 +8,6 @@ import locationIcon from "../../../../assets/locationIcon.png";
 import bookmark from "../../../../assets/bookmark.png";
 
 const PathwaysAccommodationCard = ({ item, source, onAddLead }) => {
-  console.log(source);
   const [openModal, setOpenModal] = useState(false);
 
   const handleCloseAddModal = () => {

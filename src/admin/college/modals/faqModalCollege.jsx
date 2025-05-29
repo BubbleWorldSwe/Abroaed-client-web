@@ -38,8 +38,6 @@ const FaqModalCollege = ({ closeModal, filledData, onUpdate }) => {
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
 
-      //   console.log(faqWithoutId);
-
       onUpdate({ faqSchema: faqWithoutId });
 
       // closeModal();

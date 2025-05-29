@@ -34,7 +34,6 @@ export const makeGetRequest = async (url, token) => {
     let response;
 
     if (token) {
-      console.log("With Token");
       response = await fetch(url, constructGetRequestOptionsWithToken(token), {
         signal: controller.signal,
       });
@@ -70,7 +69,6 @@ export const makePostRequest = async (url, payload) => {
   try {
     console.log("make POST request = " + url);
 
-    console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(url, constructPostRequestOptions(payload), {
@@ -126,7 +124,6 @@ export const makePutRequestWithToken = async (url, payload, token) => {
   try {
     console.log("make PUT request = " + url);
 
-    console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(
@@ -157,7 +154,6 @@ export const makePatchRequest = async (url, payload) => {
   try {
     console.log("make PATCH request = " + url);
 
-    console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(url, constructPatchRequestOptions(payload), {
@@ -183,9 +179,6 @@ export const makePatchRequestWithToken = async (url, payload, token) => {
   try {
     console.log("make PATCH TOKEN request = " + url);
 
-    console.log(token);
-
-    console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(
@@ -254,7 +247,6 @@ export const makePutRequest = async (url, payload) => {
   try {
     console.log("make PUT request = " + url);
 
-    console.log(payload);
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
     const response = await fetch(url, constructPutRequestOptions(payload), {

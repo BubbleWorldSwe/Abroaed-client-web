@@ -66,7 +66,6 @@ function* searchLeads(action) {
 function* addNewLead(action) {
   try {
     const response = yield call(setAddLead, action.payload?.leadData);
-    console.log(response);
 
     if (response.status === 200) {
       yield put(addLeadSuccess(response.data));
@@ -107,9 +106,6 @@ function* handleEditLead(action) {
   try {
     const { id, leadData } = action.payload;
     const response = yield call(setUpdateLead, id, leadData);
-    console.log("handleEditLead in Saga", response);
-
-    debugger;
 
     if (response.status === 200) {
       yield put(editLeadSuccess(response.data));
@@ -129,7 +125,6 @@ function* handleEditLeadStudent(action) {
 
     // First API call to update the student
     const response = yield call(setUpdateStudent, userId, leadData);
-    console.log("handleEditStudent in Saga", response);
 
     if (response.status === 200) {
       // Second API call to get updated student details from lead

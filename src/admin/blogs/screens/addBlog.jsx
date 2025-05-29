@@ -124,8 +124,6 @@ const AddBlog = () => {
     }
   }, [success]);
 
-  console.log(imageFile);
-
   return (
     <>
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col ">

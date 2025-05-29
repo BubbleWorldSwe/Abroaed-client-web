@@ -83,7 +83,6 @@ const AddLeadModal = ({ isOpen, onClose, onAddLead }) => {
         return;
       }
 
-      console.log("Lead Data:", formData);
       onAddLead({
         user: { ...formData, email: email.toLowerCase() },
         source: leadSource,

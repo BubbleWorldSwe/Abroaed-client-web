@@ -45,7 +45,6 @@ const Blogs = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteBlogRequest(id));
     setCurrentPage(1);
     dispatch(fetchBlogsRequest(1));
@@ -61,7 +60,6 @@ const Blogs = () => {
 
   useEffect(() => {
     if (blogs?.length === 0) {
-      console.log("fetchBlogsRequest");
       dispatch(fetchBlogsRequest(currentPage));
     }
   }, [dispatch, blogs, currentPage]);

@@ -37,7 +37,7 @@ export const getSearchLeads = async (query) => {
       `${BASE_URL}/api/v1/admin/leads/list?filter={"type":"lead"}&search=${query}`,
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -53,7 +53,7 @@ export const getAllLeads = async () => {
       `${BASE_URL}/api/v1/admin/leads/list`,
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -64,7 +64,6 @@ export const getAllLeads = async () => {
 
 export const setAddLead = async (credentials) => {
   try {
-    console.log(credentials);
     const { adminToken } = store.getState().auth;
     const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/leads/create`,
@@ -82,7 +81,6 @@ export const setAddLead = async (credentials) => {
 export const setUpdateLead = async (id, credentials) => {
   try {
     const { adminToken } = store.getState().auth;
-    console.log(credentials);
 
     const data = await makePatchRequestWithToken(
       `${BASE_URL}/api/v1/admin/leads/${id}`,
@@ -99,8 +97,6 @@ export const setUpdateLead = async (id, credentials) => {
 
 export const setUpdateStudent = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePutRequest(
       `${BASE_URL}/api/v1/admin/users/${id}`,
       credentials
@@ -115,8 +111,6 @@ export const setUpdateStudent = async (id, credentials) => {
 
 export const setDeleteLead = async (id) => {
   try {
-    console.log(id + " id");
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/leads/${id}`
     );
@@ -130,7 +124,6 @@ export const setDeleteLead = async (id) => {
 
 export const getLeadDetailsById = async (id) => {
   try {
-    console.log(id);
     const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/leads/${id}`);
 
     if (data.success) {
@@ -174,7 +167,7 @@ export const getLeadSavedPrefrences = async (leadId) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/save-preference/list?filter={"user":"${leadId}"}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -197,7 +190,6 @@ export const getLeadDocuments = async (id) => {
 };
 
 export const setUploadLeadDocuments = async (id, fileData) => {
-  console.log(fileData);
   try {
     const data = await makePostRequestWithFormData(
       `${BASE_URL}/api/v1/admin/document-upload/file/${id}`,
@@ -212,7 +204,6 @@ export const setUploadLeadDocuments = async (id, fileData) => {
 };
 
 export const setUpdateLeadDocuments = async (docId, fileData) => {
-  console.log(fileData);
   try {
     const data = await makePostRequestWithFormData(
       `${BASE_URL}/api/v1/admin/document-upload/update/${docId}`,

@@ -11,13 +11,10 @@ const SimplifyThings = ({ onEdit, onUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
   const handleEditClick = (data) => {
-    console.log(data);
     onEdit(data);
   };
 
   function handleDeleteClick(id) {
-    console.log("Delete onDeleteSimplifyThings : " + id);
-
     const updatedSimplifyThings = languagePrepDetails.simplifyThings.filter(
       (data) => data._id !== id
     );
@@ -25,11 +22,9 @@ const SimplifyThings = ({ onEdit, onUpdate }) => {
     const simplifyThingsWithoutId = updatedSimplifyThings.map(
       ({ _id, ...rest }) => rest
     );
-    console.log(simplifyThingsWithoutId);
+
     onUpdate({ simplifyThings: simplifyThingsWithoutId });
   }
-
-  console.log(languagePrepDetails?.simplifyThings);
 
   return (
     <table className="w-full px-5 text-sm text-left text-gray-500 dark:text-gray-400">

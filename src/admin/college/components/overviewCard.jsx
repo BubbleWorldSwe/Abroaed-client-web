@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import AddOverviewContentModal from "../../common/modals/addOverviewsContentModal";
+import AddOverviewContentModal from "../modals/addOverviewsContentModal";
 
 function OverviewCard() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);

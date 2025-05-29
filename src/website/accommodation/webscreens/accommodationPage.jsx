@@ -68,9 +68,6 @@ function AccomodationPage() {
 
   const handleAddLead = (data) => {
     try {
-      console.log("handleAddLead");
-      console.log(data);
-
       dispatch(addLeadRequest(data));
     } catch (error) {
       console.log(error);
@@ -79,9 +76,6 @@ function AccomodationPage() {
 
   const addToSavedPreferences = (type, typeId) => {
     try {
-      console.log("addToSavedPreferences");
-      //  console.log(type, typeId);
-
       dispatch(
         addSavedPreferenceRequest({
           user: studentId,
@@ -96,9 +90,6 @@ function AccomodationPage() {
 
   const removeFromSavedPreferences = (id) => {
     try {
-      console.log("removeFromSavedPreferences");
-      console.log(id);
-
       dispatch(deleteSavedPreferenceRequest(id));
     } catch (error) {
       console.log(error);

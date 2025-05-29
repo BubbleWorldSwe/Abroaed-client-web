@@ -21,7 +21,6 @@ const LeadAssignTeam = ({ onOpenModal, onUpdate }) => {
 
     const newArray = updatedAssignTeamMembers.map((m) => m._id);
 
-    console.log("Updated assignTeamMembers IDs:", newArray);
     onUpdate({ assignTeamMembers: newArray }, leadProfile._id);
   };
 

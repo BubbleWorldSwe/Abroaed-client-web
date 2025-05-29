@@ -40,7 +40,6 @@ const LanguagePrep = () => {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editLanguagePrepRequest(id, data));
     } catch (error) {
       console.log(error);
@@ -76,7 +75,6 @@ const LanguagePrep = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteLanguagePrepRequest(id));
     setCurrentPage(1);
     dispatch(fetchLanguagePrepsRequest(1));
@@ -84,7 +82,6 @@ const LanguagePrep = () => {
 
   useEffect(() => {
     if (languagePreps?.length === 0) {
-      console.log("fetchLanguagePrepsRequest");
       dispatch(fetchLanguagePrepsRequest(currentPage));
     }
   }, [dispatch, languagePreps, currentPage]);

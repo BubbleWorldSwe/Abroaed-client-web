@@ -57,12 +57,6 @@ const LocationModal = ({
                 (data) => data?._id === e.target.value
               );
 
-              console.log(
-                "Selected Country Object:",
-                selectedCountry._id,
-                selectedCountry?.countryId?._id
-              );
-
               getStatesList(selectedCountry?.countryId?._id);
             }}
             options={destinationsList.map((data) => ({

@@ -62,8 +62,6 @@ const BatchesTestPrepModal = ({ closeModal, filledData, onUpdate }) => {
     onUpdate({ batches: batchesWithoutId });
   };
 
-  console.log(formData);
-
   const handleInputChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };

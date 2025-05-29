@@ -137,8 +137,6 @@ function Teams() {
     }
   }
 
-  console.log(loading, "teams loading");
-
   useEffect(() => {
     if (teams.length === 0) {
       dispatch(fetchTeamsRequest(currentPage));

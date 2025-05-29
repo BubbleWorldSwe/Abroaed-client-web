@@ -20,7 +20,6 @@ const BlogsDetails = () => {
 
   const handleEditBlogs = (blog) => {
     try {
-      console.log(blogDetails);
       dispatch(setSelectedBlog(blogDetails));
 
       navigate(`/admin/blogs/editBlog/${encodeURIComponent(blogDetails._id)}`, {

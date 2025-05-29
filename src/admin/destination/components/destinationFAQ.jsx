@@ -16,11 +16,8 @@ function DestinationFAQ({ onEdit, onUpdate }) {
   const { isWriteAccess } = useSelector((state) => state.auth);
 
   function handleDeleteClick(id) {
-    console.log("Delete onDeleteFaq : " + id);
-
     const updatedFaqs = details.faqs.filter((faq) => faq._id !== id);
     const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
-    console.log(faqWithoutId);
 
     onUpdate({ faqs: faqWithoutId });
   }

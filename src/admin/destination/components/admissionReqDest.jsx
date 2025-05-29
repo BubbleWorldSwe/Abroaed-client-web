@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 
 function AdmissionReqDest({}) {
-  // console.log("details.admissionRequirements");
   const details = useSelector(
     (state) => state.destinations.selectedDestination
   );

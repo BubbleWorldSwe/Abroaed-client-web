@@ -28,7 +28,6 @@ function BlogPage() {
     }
   }
 
-  console.log(blogDetails);
   useEffect(() => {
     fetchData();
   }, [id]);

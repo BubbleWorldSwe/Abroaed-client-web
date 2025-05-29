@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const TestPrepNavMobileModal = ({ menuItems = [] }) => {
-  console.log(menuItems);
   return (
     <ul className=" grid grid-cols-1 ">
       {menuItems?.map((data, index) => (

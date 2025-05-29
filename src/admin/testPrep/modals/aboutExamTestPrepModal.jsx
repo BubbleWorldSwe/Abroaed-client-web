@@ -52,8 +52,6 @@ const AboutExamTestPrepModal = ({ closeModal, onUpdate }) => {
       aboutExam: cleanedAboutExam, // always include it (may be empty {})
     };
 
-    console.log(cleanedFormData);
-
     onUpdate(cleanedFormData);
   };
 

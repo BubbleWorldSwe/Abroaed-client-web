@@ -20,9 +20,6 @@ const AbroaedPlusPage = () => {
   const dispatch = useDispatch();
   const handleAddLead = (data) => {
     try {
-      console.log("handleAddLead");
-      console.log(data);
-
       dispatch(addLeadRequest(data));
     } catch (error) {
       console.log(error);

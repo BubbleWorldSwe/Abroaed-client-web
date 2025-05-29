@@ -47,10 +47,6 @@ const StudentProfile = () => {
     }
   }
 
-  console.log(studentProfile?.user?.userDetail);
-
-  console.log(studentId, leadId);
-
   return (
     <>
       <StudentProfileEditModal

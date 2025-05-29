@@ -17,8 +17,6 @@ const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
   };
   const { isWriteAccess } = useSelector((state) => state.auth);
   function handleDeleteClick(id) {
-    console.log("Delete immigrations : " + id);
-
     const updatedImmigrations = details.immigrations.filter(
       (scholarship) => scholarship._id !== id
     );

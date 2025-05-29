@@ -14,7 +14,6 @@ const AddCommentModal = ({
   filledData,
   updateApplication,
 }) => {
-  console.log("Data -----");
   const defaultComment = {
     message: "",
   };
@@ -64,7 +63,6 @@ const AddCommentModal = ({
   };
 
   const handleSubmit = (e) => {
-    console.log("Hello");
     e.preventDefault();
 
     const hasEmptyMessages = formData.comments.some(
@@ -80,8 +78,6 @@ const AddCommentModal = ({
       ...formData,
       comments: formData.comments.map(({ _id, ...rest }) => rest),
     };
-
-    console.log(formattedData);
 
     updateApplication(formattedData);
   };

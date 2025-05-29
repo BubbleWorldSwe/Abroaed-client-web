@@ -50,14 +50,6 @@ function ResetPassword() {
     dispatch(studentUpdatePasswordRequest({ password, confirmPassword }));
   };
 
-  console.log(studentToken);
-
-  useEffect(() => {
-    if (studentToken && studentId) {
-      console.log("Token ----");
-    }
-  }, [studentToken, studentId]);
-
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">

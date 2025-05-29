@@ -37,7 +37,6 @@ const ExpensesAddModal = ({ closeModal, onUpdate }) => {
       return;
     }
 
-    console.log("✅ Form submitted successfully:", formData);
     onUpdate({
       expenses: formData.map((data) => ({
         label: data.label,

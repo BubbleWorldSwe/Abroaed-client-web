@@ -13,8 +13,6 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
 
   const { role } = useSelector((state) => state.auth);
 
-  console.log(role, "role");
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -87,8 +85,6 @@ function AddTeamMember({ isOpen, onClose, onAddTeam, roles }) {
       onClose();
     }
   }, [success]);
-
-  console.log(success);
 
   return isOpen ? (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">

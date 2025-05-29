@@ -28,9 +28,7 @@ const AdmissionRequirementAddModal = ({
   const handleSubmit = (e) => {
     try {
       e.preventDefault();
-      console.log("Selected Document IDs:", selectedDocuments);
 
-      // closeModal();
       onUpdate({
         admissionRequirements: selectedDocuments,
       });
@@ -38,8 +36,6 @@ const AdmissionRequirementAddModal = ({
       console.log(error);
     }
   };
-
-  console.log(selectedDocuments);
 
   return (
     <div>

@@ -40,8 +40,6 @@ const FaqLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
 
       const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
 
-      console.log(faqWithoutId);
-
       onUpdate({ faqs: faqWithoutId });
 
       // closeModal();

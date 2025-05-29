@@ -25,15 +25,13 @@ export const getSavedPreferences = async (studentId) => {
 
 export const setAddSavedPreference = async (credentials) => {
   try {
-    console.log(credentials);
-
     const { adminToken } = store.getState().auth;
     const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/save-preference/create`,
       credentials,
       adminToken
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -44,13 +42,11 @@ export const setAddSavedPreference = async (credentials) => {
 
 export const setUpdateSavedPreference = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/save-preference/${id}`,
       credentials
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -61,12 +57,10 @@ export const setUpdateSavedPreference = async (id, credentials) => {
 
 export const setDeleteSavedPreference = async (id) => {
   try {
-    console.log(id + " id");
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/save-preference/${id}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

@@ -56,8 +56,8 @@ function HomeLayout() {
 
   const handleAddLead = (data) => {
     // setIsLoading(true);
-    console.log("handleAddLead");
-    // console.log(data);
+
+    //
 
     dispatch(addLeadRequest(data));
     // setIsLoading(false);

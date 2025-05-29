@@ -24,7 +24,6 @@ export const getBlogs = async (page) => {
 };
 
 export const getAllBlogs = async () => {
-  console.log("getAllBlogs");
   try {
     const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/blogs/post`);
     if (data.success) {
@@ -66,7 +65,6 @@ export const setUpdateBlog = async (id, credentials) => {
 };
 
 export const setDeleteBlog = async (id) => {
-  console.log(id);
   try {
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/blogs/post/${id}`
@@ -97,7 +95,7 @@ export const getBlogsCategory = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/blogs/category`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -111,7 +109,7 @@ export const getBlogsByCategoryId = async (id) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/blogs/category/${id}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -122,7 +120,6 @@ export const getBlogsByCategoryId = async (id) => {
 
 export const setBlogUploadFile = async (id, imageData) => {
   try {
-    console.log(id, "id");
     const { files } = imageData;
     const { adminToken } = store.getState().auth;
     const data = await makePutRequestWithFormData(
@@ -132,7 +129,7 @@ export const setBlogUploadFile = async (id, imageData) => {
       },
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

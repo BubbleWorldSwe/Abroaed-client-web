@@ -38,10 +38,6 @@ const Accommodations = () => {
   );
 
   const handleAddAccommodation = (data) => {
-    //  setIsAddModalOpen(false);
-    console.log("handleAddAccommodation");
-    // console.log(data);
-
     dispatch(addAccommodationRequest(data));
     setCurrentPage(1);
     // dispatch(fetchAccommodationsRequest(1));
@@ -81,7 +77,6 @@ const Accommodations = () => {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteAccommodationRequest(id));
     setCurrentPage(1);
     dispatch(fetchAccommodationsRequest(1));
@@ -122,7 +117,6 @@ const Accommodations = () => {
 
   useEffect(() => {
     if (accommodations?.length === 0) {
-      console.log("fetchAccommodationsRequest");
       dispatch(fetchAccommodationsRequest(currentPage));
     }
   }, [dispatch, accommodations, currentPage]);

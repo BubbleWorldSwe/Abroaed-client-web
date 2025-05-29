@@ -21,7 +21,6 @@ import { getAllDestinations } from "../../../api/destinationApi";
 import { getStatesByCountryId } from "../../../api/countriesApi";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "../../../commons/modal/deletedModal";
-import AddOverviewContentModal from "../../common/modals/addOverviewsContentModal";
 import ActivityLoader from "../../../commons/components/loader/activityLoader";
 
 const AccommodationDetails = () => {

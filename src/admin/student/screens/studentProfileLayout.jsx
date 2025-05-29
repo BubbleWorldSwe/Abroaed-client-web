@@ -71,8 +71,6 @@ const StudentProfileLayout = () => {
     (state) => state?.students?.selectedStudent
   );
 
-  // console.log(studentProfile?.documents);
-
   const [openModal, setOpenModal] = useState(false);
   const [modal, setModal] = useState(null);
   const [collegesList, setCollegesList] = useState([]);
@@ -272,7 +270,7 @@ const StudentProfileLayout = () => {
     try {
       dispatch(setStudentDataLoading(true));
       const data = await setUploadStudentDocuments(id, fileData);
-      // console.log(data);
+      //
 
       if (data?.status === 200) {
         dispatch(addStudentApplication(data?.data));
@@ -349,7 +347,7 @@ const StudentProfileLayout = () => {
         selectedApplication?._id
       );
 
-      //   console.log(data);
+      //
 
       if (data?.status === 200) {
         fetchStudentApplications();
@@ -400,7 +398,6 @@ const StudentProfileLayout = () => {
       console.log(error);
     }
   }
-  //  console.log(selectedDoc);
 
   useEffect(() => {
     fetchData();

@@ -15,8 +15,6 @@ const UpdateLeadPersonalInfo = ({
 }) => {
   const [formData, setFormData] = useState(filledData);
 
-  console.log(formData);
-
   // Handle input change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +56,6 @@ const UpdateLeadPersonalInfo = ({
   const handleUpdateLeadProfileInfo = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      //  console.log(updatedFormData, leadId);
       const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
       onUpdate(updatedFormData, userId);
     }

@@ -60,7 +60,6 @@ function* handleStudentSignUp(action) {
   try {
     const response = yield call(setStudentSignUp, action.payload);
 
-    console.log(response);
     if (response.status === 201) {
       let message = `An OTP has been sent to ${action?.payload?.email}. Please check your inbox and enter the code.`;
       toast.success(message);
@@ -82,7 +81,6 @@ function* handleStudentResetPassword(action) {
   try {
     const response = yield call(setUpdateStudentPassword, action.payload);
 
-    console.log(response);
     if (response.status === 200) {
       yield put(studentUpdatePasswordSuccess(response.data));
       toast.success("Password Set Successfully, Please Login to Continue");
@@ -106,13 +104,9 @@ function* handleGetStudentProfile(action) {
   try {
     const response = yield call(getUserProfile, action.payload);
 
-    console.log("response");
-    console.log(response);
     if (response.status === 200) {
-      console.log("studentGetProfileSuccess");
       yield put(studentGetProfileSuccess(response.data));
     } else {
-      console.log("studentGetProfileFailure");
       yield put(studentGetProfileFailure(response.message));
       // toast.error("Failed to fetch student profile");
     }
@@ -129,7 +123,6 @@ function* handleAdminResetPassword(action) {
   try {
     const response = yield call(setUpdateAdminPassword, action.payload);
 
-    console.log(response);
     if (response.status === 200) {
       yield put(studentUpdatePasswordSuccess(response.data));
       toast.success("Password Set Successfully, Please Login to Continue");
@@ -153,7 +146,6 @@ function* handleGetAdminProfile(action) {
   try {
     const response = yield call(getUserProfile, action.payload);
     if (response.status === 200) {
-      console.log(response.data);
       yield put(adminGetProfileSuccess(response.data));
     } else {
       yield put(adminGetProfileFailure(response.message));

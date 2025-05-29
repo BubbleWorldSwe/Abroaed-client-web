@@ -43,10 +43,7 @@ function StudentOtpLogin() {
     try {
       const recaptcha = new RecaptchaVerifier(auth, "recaptcha-container", {
         size: "invisible",
-        callback: () => {
-          console.log("callback");
-          //  sendOtp();
-        },
+        callback: () => {},
       });
 
       const result = await signInWithPhoneNumber(
@@ -55,7 +52,6 @@ function StudentOtpLogin() {
         recaptcha
       );
 
-      console.log(result);
       setConfirmationResult(result);
       //  toast.success("OTP sent to your phone!");
       //  setResendCount((prev) => prev + 1);
@@ -77,10 +73,9 @@ function StudentOtpLogin() {
       const result = await confirmationResult.confirm(otp);
       const user = result.user;
       toast.success("OTP verified successfully!");
-      console.log("Logged in user:", user);
-      navigate("/dashboard"); // or your target page
+
+      navigate("/dashboard");
     } catch (err) {
-      console.error("OTP verification error:", err);
       toast.error("Invalid or expired OTP.");
     }
   };

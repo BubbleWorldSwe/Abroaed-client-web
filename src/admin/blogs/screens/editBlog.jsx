@@ -27,7 +27,6 @@ const EditBlog = () => {
   const { loading } = useSelector((state) => state.blogs);
   async function onUploadImage(data) {
     try {
-      // console.log(data);
       dispatch(
         uploadBlogImageRequest(blogDetails._id, {
           files: data,
@@ -62,7 +61,6 @@ const EditBlog = () => {
   };
 
   const publishBlog = (status) => {
-    console.log("status", status);
     try {
       if (
         status === "publish" &&

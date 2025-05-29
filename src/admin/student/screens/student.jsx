@@ -93,7 +93,6 @@ function Student() {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editStudentLeadRequest(id, data));
 
       setshowTeamModal(false);
@@ -133,7 +132,6 @@ function Student() {
 
   useEffect(() => {
     if (students?.length === 0) {
-      console.log("fetchStudentsRequest");
       dispatch(fetchStudentsRequest(currentPage));
     }
   }, [dispatch, currentPage, students]);

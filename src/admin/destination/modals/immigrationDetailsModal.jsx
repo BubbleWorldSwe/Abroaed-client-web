@@ -66,8 +66,6 @@ const ImmigrationDetailsModal = ({
       })
     );
 
-    console.log(immigrationWithoutId);
-
     onUpdate({ immigrations: immigrationWithoutId });
 
     // closeModal();

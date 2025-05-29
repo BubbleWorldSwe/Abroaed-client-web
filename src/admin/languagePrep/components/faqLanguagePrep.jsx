@@ -17,13 +17,10 @@ const LanguageFaqs = ({ onEdit, onUpdate }) => {
   };
 
   function handleDeleteClick(id) {
-    console.log("Delete onDeleteFaq : " + id);
-
     const updatedFaqs = languagePrepDetails.faqs.filter(
       (faq) => faq._id !== id
     );
     const faqWithoutId = updatedFaqs.map(({ _id, ...rest }) => rest);
-    console.log(faqWithoutId);
 
     onUpdate({ faqs: faqWithoutId });
   }

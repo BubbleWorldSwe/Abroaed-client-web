@@ -28,8 +28,6 @@ const BatchesLanguagePrepModal = ({ closeModal, filledData, onUpdate }) => {
     }
   );
 
-  console.log(formData);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

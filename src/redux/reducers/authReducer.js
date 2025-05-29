@@ -75,7 +75,6 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case STUDENT_SIGNUP_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         loading: false,
@@ -84,14 +83,12 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case SET_ADMIN_TOKEN:
-      console.log(action.payload);
       return { ...state, adminToken: action.payload };
 
     case STUDENT_UPDATE_PASSWORD_SUCCESS:
       return { ...state, loading: false, message: action.payload };
 
     case SET_STUDENT_TOKEN:
-      console.log(action.payload);
       return { ...state, studentToken: action.payload };
 
     case STUDENT_UPDATE_PROFILE_SUCCESS:

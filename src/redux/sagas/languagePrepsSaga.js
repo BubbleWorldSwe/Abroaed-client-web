@@ -83,7 +83,6 @@ function* addNewLanguagePrep(action) {
 function* deleteLanguagePrep(action) {
   try {
     const response = yield call(setDeleteLanguagePrep, action.payload);
-    console.log(response);
 
     if (response.status === 200) {
       yield put(deleteLanguagePrepSuccess(action.payload));

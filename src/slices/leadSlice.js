@@ -35,7 +35,7 @@ export const leadsSlice = createSlice({
   reducers: {
     assignTeamMember: (state, action) => {
       const { id, teamMembers } = action.payload;
-      console.log("team members", teamMembers);
+
       const lead = state.leads.find((lead) => lead.id === id);
       if (lead) {
         lead.counsellor = teamMembers.counsellor || "";
@@ -47,9 +47,7 @@ export const leadsSlice = createSlice({
       const { id, appointmentData } = action.payload;
       const lead = state.leads.find((lead) => lead.id === id);
       if (lead) {
-        console.log("Before update:", lead.appointment);
         lead.appointment = appointmentData;
-        console.log("After update:", lead.appointment);
       } else {
         console.error(`Lead with ID ${id} not found`);
       }

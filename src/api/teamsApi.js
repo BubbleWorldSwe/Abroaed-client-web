@@ -15,7 +15,7 @@ export const getTeams = async (page) => {
       // `${BASE_URL}/api/v1/admin/users?page=${page}&limit=${pageDataLimit}`
       `${BASE_URL}/api/v1/admin/users`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -29,7 +29,7 @@ export const getTeamsByMembers = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/users?filter=members`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -39,10 +39,9 @@ export const getTeamsByMembers = async () => {
 };
 
 export const getAllTeams = async () => {
-  console.log("getAllTeams");
   try {
     const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/users`);
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -75,7 +74,7 @@ export const setDeleteTeam = async (id) => {
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/users/${id}`
     );
-    //  console.log(data);
+    //
     if (data.success) {
       return data;
     }
@@ -86,13 +85,11 @@ export const setDeleteTeam = async (id) => {
 
 export const setUpdateTeam = async (id, credentials) => {
   try {
-    console.log(id, credentials);
-
     const data = await makePutRequest(
       `${BASE_URL}/api/v1/admin/users/${id}`,
       credentials
     );
-    //  console.log(data);
+    //
     if (data.success) {
       return data;
     }

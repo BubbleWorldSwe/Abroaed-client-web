@@ -26,8 +26,6 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
     ]
   );
 
-  console.log(professions);
-
   const handleInputChange = (e, fieldName) => {
     setFormData({ ...formData, [fieldName]: e.target.value });
   };
@@ -69,8 +67,6 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
 
     // closeModal();
   };
-
-  console.log(formData);
 
   return (
     <div>

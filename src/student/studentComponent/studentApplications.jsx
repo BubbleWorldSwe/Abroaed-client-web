@@ -7,14 +7,10 @@ const StudentApplications = () => {
 
   const studentApplications = formatStudentApplications(applications || []);
 
-  console.log(studentApplications);
-
   function getDataLengthByStatus(targetStatus) {
     const item = studentApplications.find((s) => s.status === targetStatus);
     return item ? item.data?.length || 0 : 0;
   }
-
-  console.log(studentApplications);
 
   return (
     <div className="w-full bg-[#fff] font-rethink min-h-[90vh] px-5 py-10  scroll-smooth">

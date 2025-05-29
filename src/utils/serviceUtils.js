@@ -34,7 +34,6 @@ export const constructGetRequestOptions = () => {
 };
 
 export const constructGetRequestOptionsWithToken = (token) => {
-  console.log(token);
   const myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -58,7 +57,6 @@ export const constructPostRequestOptions = (payload) => {
 };
 
 export const constructPostRequestWithTokenOptions = (payload, token) => {
-  console.log(token + " : Token");
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
   requestHeaders.append("Authorization", `Bearer ${token}`);
@@ -73,7 +71,6 @@ export const constructPostRequestWithTokenOptions = (payload, token) => {
 };
 
 export const constructPutRequestWithTokenOptions = (payload, token) => {
-  console.log(token);
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
   requestHeaders.append("Authorization", `Bearer ${token}`);
@@ -114,7 +111,6 @@ export const constructPutRequestOptions = (payload) => {
 };
 
 export const constructDeleteRequestOptionsWithPayload = (payload) => {
-  console.log(payload);
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
 
@@ -139,7 +135,6 @@ export const constructDeleteRequestOptions = () => {
 };
 
 export const constructSuccessResponse = (payload) => {
-  console.log(payload);
   return {
     success: RESPONSE_SUCCESS,
     data: payload,
@@ -192,14 +187,11 @@ export const constructPostRequestOptionsWithFormData = (payload) => {
 };
 
 export const constructPatchRequestOptionsWithToken = (payload, token) => {
-  console.log(payload);
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);
   requestHeaders.append("Authorization", `Bearer ${token}`);
 
   var raw = JSON.stringify(payload);
-
-  console.log(raw);
 
   return {
     method: REQUEST_METHOD_PATCH,

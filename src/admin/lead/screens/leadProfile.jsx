@@ -131,7 +131,7 @@ const LeadProfileLayout = () => {
         leadProfile?.user?._id,
         fileData
       );
-      // console.log(data);
+      //
 
       if (data?.status === 200) {
         fetchLeadUploadedDocuments();

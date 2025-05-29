@@ -42,7 +42,6 @@ function AddCollegeModal({
       return;
     }
 
-    console.log(formData);
     onAddCollege(formData);
   };
 
@@ -139,12 +138,6 @@ function AddCollegeModal({
 
                     const selectedCountry = destinationsList.find(
                       (data) => data?._id === e.target.value
-                    );
-
-                    console.log(
-                      "Selected Country Object:",
-                      selectedCountry._id,
-                      selectedCountry?.countryId?._id
                     );
 
                     getStatesList(selectedCountry?.countryId?._id);

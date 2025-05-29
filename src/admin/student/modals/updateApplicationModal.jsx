@@ -44,7 +44,6 @@ const UpdateApplicationModal = ({
       return;
     }
 
-    console.log("Form Data:", formData);
     updateApplication(formData);
   };
 

@@ -17,7 +17,7 @@ export const getDestinations = async (page) => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/list${path}`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -31,7 +31,7 @@ export const getAllDestinations = async () => {
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/list`
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }
@@ -42,14 +42,13 @@ export const getAllDestinations = async () => {
 
 export const setAddDestination = async (credentials) => {
   try {
-    console.log(credentials);
     const { adminToken } = store.getState().auth;
     const data = await makePostRequestWithToken(
       `${BASE_URL}/api/v1/admin/destination/create`,
       credentials,
       adminToken
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -60,13 +59,11 @@ export const setAddDestination = async (credentials) => {
 
 export const setUpdateDestination = async (id, credentials) => {
   try {
-    console.log(credentials);
-
     const data = await makePatchRequest(
       `${BASE_URL}/api/v1/admin/destination/${id}`,
       credentials
     );
-    // console.log(data);
+    //
     if (data.success) {
       return data.data;
     }
@@ -77,12 +74,10 @@ export const setUpdateDestination = async (id, credentials) => {
 
 export const setDeleteDestination = async (id) => {
   try {
-    console.log(id + " id");
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/destination/${id}`
     );
-    //  console.log(data);
+    //
     if (data.success) {
       return data;
     }
@@ -93,7 +88,6 @@ export const setDeleteDestination = async (id) => {
 
 export const getDestinationDetailsById = async (id) => {
   try {
-    console.log(id);
     const data = await makeGetRequest(
       `${BASE_URL}/api/v1/admin/destination/${id}`
     );
@@ -118,7 +112,7 @@ export const setDestinationUploadFile = async (id, imageData) => {
       },
       adminToken
     );
-    console.log(data);
+
     if (data.success) {
       return data.data;
     }

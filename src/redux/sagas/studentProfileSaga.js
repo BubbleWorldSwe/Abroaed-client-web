@@ -50,7 +50,7 @@ function* handleFetchStudentProfile(action) {
     } else {
       yield put(fetchStudentProfileFailure(response.message));
       //toast.error(response.message);
-      console.log(response.message);
+      console.log(response);
     }
   } catch (error) {
     yield put(fetchStudentProfileFailure(error.message));
@@ -64,7 +64,6 @@ function* handleEditStudentProfile(action) {
 
     // First API call to update the student
     const response = yield call(setUpdateStudent, userId, profileData);
-    console.log("handleEditStudent in Saga", response);
 
     if (response.status === 200) {
       // Second API call to get updated student details from lead
@@ -76,7 +75,7 @@ function* handleEditStudentProfile(action) {
       } else {
         yield put(editStudentProfileFailure(leadDetailsResponse.message));
         //  toast.error(leadDetailsResponse.message);
-        console.log(response.message);
+        console.log(response);
       }
     } else {
       yield put(editStudentProfileFailure(response.message));
@@ -94,12 +93,11 @@ function* handleFetchStudentApplications(action) {
     const response = yield call(getStudentApplications, action.payload);
 
     if (response.status === 200) {
-      console.log(response.data);
       yield put(fetchStudentApplicationSuccess(response.data.result));
       // toast.success("Student Application fetched successfully!");
     } else {
       yield put(fetchStudentApplicationSuccess(response.message));
-      console.log(response.message);
+      console.log(response);
       // toast.error(response.message);
     }
   } catch (error) {
@@ -114,13 +112,12 @@ function* handleFetchStudentDocuments(action) {
     const response = yield call(getStudentDocuments, action.payload);
 
     if (response.status === 200) {
-      console.log(response.data);
       yield put(fetchStudentDocumentsSuccess(response.data.result));
       // toast.success("Student Application fetched successfully!");
     } else {
       yield put(fetchStudentDocumentsFailure(response.message));
       //  toast.error(response.message);
-      console.log(response.message);
+      console.log(response);
     }
   } catch (error) {
     yield put(fetchStudentDocumentsFailure(error.message));
@@ -139,7 +136,7 @@ function* handleFetchStudentTransactions(action) {
     } else {
       yield put(fetchStudentTransactionsFailure(response.message));
       // toast.error(response.message);
-      console.log(response.message);
+      console.log(response);
     }
   } catch (error) {
     yield put(fetchStudentTransactionsFailure(error.message));
@@ -158,7 +155,7 @@ function* handleFetchSavedPreferences(action) {
     } else {
       yield put(fetchStudentSavedPreferencesFailure(response.message));
       //  toast.error(response.message);
-      console.log(response.message);
+      console.log(response);
     }
   } catch (error) {
     yield put(fetchStudentSavedPreferencesFailure(error.message));
@@ -178,7 +175,7 @@ function* handleFetchPrepsBatches(action) {
     } else {
       yield put(fetchStudentPrepsBatchesFailure(response.message));
       //  toast.error(response.message);
-      console.log(response.message);
+      console.log(response);
     }
   } catch (error) {
     yield put(fetchStudentPrepsBatchesFailure(error.message));

@@ -28,8 +28,6 @@ function Destinations() {
   };
 
   const onAddDestination = (countryId, capital) => {
-    console.log(countryId, capital);
-
     dispatch(addDestinationRequest({ countryId, capital }));
     setCurrentPage(1);
     // dispatch(fetchDestinationsRequest(1));
@@ -37,7 +35,6 @@ function Destinations() {
   };
 
   const handleDelete = (id) => {
-    console.log("handleDelete " + id);
     dispatch(deleteDestinationRequest(id));
     setCurrentPage(1);
     dispatch(fetchDestinationsRequest(1));
@@ -45,7 +42,6 @@ function Destinations() {
 
   async function onUpdate(data, id) {
     try {
-      console.log(data, id);
       dispatch(editDestinationRequest(id, data));
     } catch (error) {
       console.log(error);
