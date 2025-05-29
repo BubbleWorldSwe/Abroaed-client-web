@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { ChevronDown, ChevronUp, Home, Menu, X } from "lucide-react";
+import { Home, } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -11,7 +11,7 @@ import LanguageNavModalMobile from "../modals/languageNavModalMobile";
 import { studentLogout } from "../../../redux/actions/authActions";
 import { useNavigate } from "react-router-dom";
 import LogoutModal from "../../../commons/modal/logoutModal";
-import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
+// import { FaInstagram, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import CombinedTestPrepModal from "../modals/combinedTestPrepModal";
 import ServicesNavModal from "../modals/servicesNavModal";
 // import SocialIconNavModal from "../modals/socialIconNavModal";
@@ -54,7 +54,7 @@ function Header({ isHeaderBgWhite = false }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpenHambarger, setIsOpenHambarger] = useState(false);
   const [expanded, setExpanded] = useState(null);
-  const { studentToken, student } = useSelector((state) => state.auth);
+  const { student } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpenExploreCollegePhone, setIsOpenExploreCollegePhone] =
     useState(false);
@@ -68,9 +68,7 @@ function Header({ isHeaderBgWhite = false }) {
     setIsModalOpen(false);
     navigate("/home");
   };
-  const handleExploreCollegeModal = () => {
-    setIsOpenExploreCollegePhone(true);
-  };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -197,6 +195,7 @@ function Header({ isHeaderBgWhite = false }) {
         { title: "Why ABROAED?", link: "/whyAbroaed" },
         { title: "Career", link: "/careers" },
         { title: "Contact Us", link: "/contactUs" },
+        { title: "Events", link: "/events" },
       ],
     },
     {
@@ -247,30 +246,29 @@ function Header({ isHeaderBgWhite = false }) {
     },
   ];
 
-  const socialLinks = [
-    {
-      icon: <FaInstagram size={20} />,
-      url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
-    },
-    // { icon: <FaFacebook size={20} />, url: "#" },
-    {
-      icon: <FaLinkedin size={20} />,
-      url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all",
-    },
-    {
-      icon: <FaXTwitter size={20} />,
-      url: "https://x.com/i/flow/login?redirect_after_login=%2Fabroaed",
-    }, // X (formerly Twitter)
-    // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
-  ];
+  // const socialLinks = [
+  //   {
+  //     icon: <FaInstagram size={20} />,
+  //     url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
+  //   },
+  //   // { icon: <FaFacebook size={20} />, url: "#" },
+  //   {
+  //     icon: <FaLinkedin size={20} />,
+  //     url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all",
+  //   },
+  //   {
+  //     icon: <FaXTwitter size={20} />,
+  //     url: "https://x.com/i/flow/login?redirect_after_login=%2Fabroaed",
+  //   }, // X (formerly Twitter)
+  //   // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
+  // ];
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
-        scrolling || isHeaderBgWhite
-          ? "bg-gray-primary text-white shadow-md"
-          : "bg-gray-primary text-white bg-opacity-10"
-      }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
+        ? "bg-gray-primary text-white shadow-md"
+        : "bg-gray-primary text-white bg-opacity-10"
+        }`}
     >
       <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
         <div className="flex  basis  items-center">
@@ -307,11 +305,10 @@ function Header({ isHeaderBgWhite = false }) {
     px-2 relative transition-colors duration-300 cursor-pointer
     after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
     after:bg-white after:opacity-0 after:-z-10
-    ${
-      activeDropdown === key
-        ? "after:opacity-100 font-semibold  text-gray-primary"
-        : "font-semibold"
-    }
+    ${activeDropdown === key
+                          ? "after:opacity-100 font-semibold  text-gray-primary"
+                          : "font-semibold"
+                        }
   `}
                     >
                       <a href={link || "#"}>{label}</a>
@@ -321,11 +318,11 @@ function Header({ isHeaderBgWhite = false }) {
                         <Component
                           {...(Array.isArray(data)
                             ? {
-                                menuItems: data.map(({ productName, _id }) => ({
-                                  title: productName,
-                                  _id,
-                                })),
-                              }
+                              menuItems: data.map(({ productName, _id }) => ({
+                                title: productName,
+                                _id,
+                              })),
+                            }
                             : { ...data })}
                           handleMouseEnter={handleMouseEnter}
                           handleMouseLeave={handleMouseLeave}
@@ -345,11 +342,10 @@ function Header({ isHeaderBgWhite = false }) {
     px-2 relative transition-colors duration-300 cursor-pointer
     after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
     after:bg-white after:opacity-0 after:-z-10
-    ${
-      activeDropdown === "exploreColleges"
-        ? "after:opacity-100 font-semibold  text-gray-primary"
-        : "font-semibold"
-    }
+    ${activeDropdown === "exploreColleges"
+                      ? "after:opacity-100 font-semibold  text-gray-primary"
+                      : "font-semibold"
+                    }
   `}
                 >
                   <a className="cursor-pointer">Explore Colleges</a>
@@ -456,7 +452,7 @@ function Header({ isHeaderBgWhite = false }) {
             // onMouseEnter={() => handleMouseEnter("login")}
             // onMouseLeave={handleMouseLeave}
             className="relative "
-            // className="relative hidden md:block"
+          // className="relative hidden md:block"
           >
             <button
               onClick={() => handleMouseEnter("bookMenu")}
