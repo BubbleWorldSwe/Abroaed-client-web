@@ -2,7 +2,6 @@
 
 import ImageComponent from "./imageComponent";
 import TextComponent from "./textComponent";
-import { motion } from "framer-motion";
 
 const CardComponent = ({ imgFirst, text, heading, imgUrl, idx }) => (
     <div className="overflow-hidden">

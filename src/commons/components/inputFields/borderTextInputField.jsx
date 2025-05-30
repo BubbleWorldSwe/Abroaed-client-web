@@ -21,7 +21,7 @@ export function BorderTextInputField({
     <div className="my-2">
       <label
         style={labelStyle}
-        className="block text-lg font-medium text-gray-primary mb-1"
+        className="block text-lg font-normal text-gray-primary mb-1"
       >
         {label}*
       </label>

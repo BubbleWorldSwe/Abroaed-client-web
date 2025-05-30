@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
+import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader"
 import vector from ".././../../../assets/kpiVector.png"
 import { motion } from "framer-motion";
@@ -31,11 +32,7 @@ function CareerJobSection() {
                     >
                         We'd Love to work with someone like you!
                     </SectionMainHeader>
-                    {/* <SecondaryTitle
-                        style={{ color: "#52525B" }}
-                    >
-                        Category Name
-                    </SecondaryTitle> */}
+
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
                     {jobOpenings?.map((job, index) => (
@@ -66,6 +63,11 @@ function CareerJobSection() {
                             </motion.div>
                         </div>
                     ))}
+                </div>
+                <div className="mt-6 ">
+                    <PrimaryBodyText >
+                        * Kindly email us at career@abroaed.com
+                    </PrimaryBodyText>
                 </div>
             </section >
         </div >

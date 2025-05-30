@@ -70,6 +70,7 @@ import AdminSignin from "../admin/auth/adminSignin";
 import AdminResetPassword from "../admin/auth/adminResetPassword";
 import AdminProfile from "../admin/profile/screens/viewProfile";
 import Dashboard from "../admin/dashboard/Dashboard";
+import EventsPage from "../website/events/webpages/eventsPage";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -115,6 +116,11 @@ const AppRoutes = () => {
     {
       path: "/login",
       element: <Login />,
+      isPrivate: false,
+    },
+    {
+      path: "/events",
+      element: < EventsPage />,
       isPrivate: false,
     },
     {

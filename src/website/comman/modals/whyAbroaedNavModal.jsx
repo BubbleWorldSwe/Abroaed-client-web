@@ -6,6 +6,7 @@ const items = [
   { title: "Why ABROAED?", href: "/whyAbroaed" },
   { title: "Career", href: "/careers" },
   { title: "Contact Us", href: "/contactUs" },
+  { title: "Events", href: "/events" },
 ];
 const WhyAbroaedNavModal = ({ handleMouseEnter, handleMouseLeave }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
