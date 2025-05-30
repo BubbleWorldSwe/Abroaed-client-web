@@ -120,7 +120,7 @@ const AppRoutes = () => {
     },
     {
       path: "/events",
-      element: < EventsPage />,
+      element: <EventsPage />,
       isPrivate: false,
     },
     {

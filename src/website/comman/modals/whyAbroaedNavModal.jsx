@@ -5,12 +5,11 @@ import { useState } from "react";
 const items = [
   { title: "Why ABROAED?", href: "/whyAbroaed" },
   { title: "Career", href: "/careers" },
-  { title: "Contact Us", href: "/contactUs" },
   { title: "Events", href: "/events" },
+  { title: "Contact Us", href: "/contactUs" },
 ];
 const WhyAbroaedNavModal = ({ handleMouseEnter, handleMouseLeave }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
 
   return (
     <div
@@ -29,8 +28,9 @@ const WhyAbroaedNavModal = ({ handleMouseEnter, handleMouseLeave }) => {
               <div className="flex  w-full justify-between items-center ">
                 <a className="block px-4 py-1 ">{data?.title}</a>
                 <ChevronRightIcon
-                  className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
-                    }`}
+                  className={`w-5 h-5   ${
+                    hoveredIndex === index ? " opacity-100" : "opacity-0"
+                  }`}
                 />
               </div>
             </li>

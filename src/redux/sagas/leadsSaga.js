@@ -77,6 +77,8 @@ function* searchLeads(action) {
   try {
     const data = yield call(getSearchLeads, action.payload);
 
+    console.log(data);
+
     if (data.status === 200) {
       yield put(searchLeadsSuccess(data.data));
     } else {

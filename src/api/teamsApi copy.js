@@ -1,13 +1,15 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { pageDataLimit } from "../constants/values";
 import { store } from "../redux/store";
 import {
   makeDeleteRequest,
   makeGetRequest,
+  makePostRequest,
   makePostRequestWithToken,
   makePutRequest,
 } from "../utils/apiUtils";
 
-export const getTeams = async (page) => {
+export const getTeams1 = async (page) => {
   try {
     const { role } = store.getState().auth;
 
@@ -28,7 +30,7 @@ export const getTeams = async (page) => {
   }
 };
 
-export const getTeams2 = async (page) => {
+export const getTeams = async (page) => {
   try {
     const { role } = store.getState().auth;
 

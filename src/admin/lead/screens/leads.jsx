@@ -38,6 +38,7 @@ import { leadsData } from "../data";
 import FilterModal from "../modals/filterModal";
 import LeadExcelUploadModal from "../modals/leadExcelUploadModal";
 import { getFilterLeads } from "../../../api/leadsApi";
+import { formatDate } from "../../../utils/helper";
 
 function Leads() {
   const dispatch = useDispatch();
@@ -85,23 +86,21 @@ function Leads() {
       console.log(filteredData);
 
       const flatData = filteredData?.map((item) => ({
-        _id: item._id || "",
+        createdAt: formatDate(item.createdAt) || "",
         firstName: item.user?.firstName || "",
         lastName: item.user?.lastName || "",
         email: item.user?.email || "",
         mobile: item.user?.mobile || "",
-        address: item.user?.address || "",
-
-        roleName: item.user?.roleId?.roleName || "",
-        highestEducation: item.user?.userDetail?.highestEducation || "",
-        applyingFor: item.user?.userDetail?.applyingFor || "",
+        status: item.status || "",
+        source: item.source || "",
+        entity: item.entity || "",
         preferredDestination:
           item.user?.userDetail?.preferredDestination?.countryId?.name || "",
+        highestEducation: item.user?.userDetail?.highestEducation || "",
+        applyingFor: item.user?.userDetail?.applyingFor || "",
         targetYear: item.user?.userDetail?.targetYear || "",
-        source: item.source || "",
-        status: item.status || "",
-        entity: item.entity || "",
-        createdAt: item.createdAt || "",
+
+        address: item.user?.address || "",
       }));
 
       // Convert JSON to worksheet
@@ -340,6 +339,8 @@ function Leads() {
     dispatch(fetchLeadsRequest(currentPage));
   }, [location.pathname]);
 
+  console.log(leads);
+
   return (
     <>
       {showTeamModal && (
@@ -477,7 +478,7 @@ function Leads() {
                       />
                       <IconButton
                         onClick={() => setShowExcelUploadModal(true)}
-                        label={" Export Data"}
+                        label={" Bulk Create"}
                         icon={<FileSpreadsheetIcon size={16} />}
                       />
                     </>

@@ -7,10 +7,11 @@ export function TableFooter({
   handleNextPage,
   tableData,
   colSpan,
+  totalLength,
 }) {
   const getDataLength = () => {
     const pageData = tableData?.find((item) => item.index === currentPage);
-    return pageData?.data?.length || 0;
+    return totalLength ? totalLength : pageData?.data?.length || 0;
   };
 
   return (

@@ -55,8 +55,25 @@ export const leadsReducer = (state = initialState, action) => {
       return { ...state, loading: true, success: null };
 
     case FETCH_LEADS_SUCCESS:
-    case SEARCH_LEADS_SUCCESS:
+
     case FETCH_LEADS_FILTER_DATA_SUCCESS:
+      console.log(action?.payload);
+      return {
+        ...state,
+        loading: false,
+        leads:
+          action.payload.page === 1
+            ? [{ index: action.payload.page, data: action.payload.result }]
+            : [
+                ...state.leads,
+                { index: action.payload.page, data: action.payload.result },
+              ],
+        totalPages: action.payload.totalPages,
+        page: action.payload.page,
+      };
+
+    case SEARCH_LEADS_SUCCESS:
+      console.log(action?.payload);
       return {
         ...state,
         loading: false,

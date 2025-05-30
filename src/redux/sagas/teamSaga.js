@@ -30,6 +30,8 @@ function* fetchTeams(action) {
   try {
     const response = yield call(getTeams, action.payload);
 
+    console.log(response);
+
     if (response.status === 200) {
       yield put(fetchTeamsSuccess(response.data));
     } else {

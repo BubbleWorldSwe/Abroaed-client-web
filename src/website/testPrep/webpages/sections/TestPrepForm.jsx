@@ -31,6 +31,7 @@ function TestPrepForm() {
                     id="phoneNumber"
                     name="phoneNumber"
                     placeholder="Phone Number"
+                    maxLength={10}
                     className="rounded-xl px-3 py-2.5 placeholder:font-Poppins placeholder:text-xs leading-6 tracking-wide font-Poppins text-black text-xs focus:outline-none focus:ring-0 w-full focus:shadow-custom-white focus:shadow-gray-600 shadow-md transition-all duration-500 ease-in-out"
                   />
                 </div>

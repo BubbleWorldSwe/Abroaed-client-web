@@ -130,6 +130,7 @@ function StudentSignUp() {
                 onChange={handleChange}
                 placeholder="Enter Phone Number"
                 required
+                maxLength={10}
               />
 
               <div className="space-y-3">

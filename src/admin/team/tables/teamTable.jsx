@@ -18,7 +18,7 @@ const TeamTable = ({
   currentPage,
   onSetEditData,
 }) => {
-  const { teams, totalPages } = useSelector((state) => state.teams);
+  const { teams, totalPages, total } = useSelector((state) => state.teams);
   const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   const [deleteId, setDeleteId] = useState(null);
@@ -174,8 +174,9 @@ const TeamTable = ({
           currentPage={currentPage}
           handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
-          tableData={teams}
+          // tableData={teams}
           colSpan={7}
+          totalLength={total}
         />
       </table>
       <DeleteConfirmationModal

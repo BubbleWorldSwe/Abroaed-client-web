@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { Home, } from "lucide-react";
+import { Home } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import ExploreCollegesNavItemModal from "../modals/exploreCollegesNavItemModal";
 import { getCollegesByDestinationId } from "../../../api/collegesApi";
@@ -68,7 +68,6 @@ function Header({ isHeaderBgWhite = false }) {
     setIsModalOpen(false);
     navigate("/home");
   };
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -194,8 +193,8 @@ function Header({ isHeaderBgWhite = false }) {
       subItems: [
         { title: "Why ABROAED?", link: "/whyAbroaed" },
         { title: "Career", link: "/careers" },
-        { title: "Contact Us", link: "/contactUs" },
         { title: "Events", link: "/events" },
+        { title: "Contact Us", link: "/contactUs" },
       ],
     },
     {
@@ -265,10 +264,11 @@ function Header({ isHeaderBgWhite = false }) {
 
   return (
     <header
-      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${scrolling || isHeaderBgWhite
-        ? "bg-gray-primary text-white shadow-md"
-        : "bg-gray-primary text-white bg-opacity-10"
-        }`}
+      className={`w-full fixed top-0 z-30 border-gray-400 transition-all duration-300 ${
+        scrolling || isHeaderBgWhite
+          ? "bg-gray-primary text-white shadow-md"
+          : "bg-gray-primary text-white bg-opacity-10"
+      }`}
     >
       <nav className="flex items-center justify-between  md:justify-center   w-full px-2 md:px-12">
         <div className="flex  basis  items-center">
@@ -305,10 +305,11 @@ function Header({ isHeaderBgWhite = false }) {
     px-2 relative transition-colors duration-300 cursor-pointer
     after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
     after:bg-white after:opacity-0 after:-z-10
-    ${activeDropdown === key
-                          ? "after:opacity-100 font-semibold  text-gray-primary"
-                          : "font-semibold"
-                        }
+    ${
+      activeDropdown === key
+        ? "after:opacity-100 font-semibold  text-gray-primary"
+        : "font-semibold"
+    }
   `}
                     >
                       <a href={link || "#"}>{label}</a>
@@ -318,11 +319,11 @@ function Header({ isHeaderBgWhite = false }) {
                         <Component
                           {...(Array.isArray(data)
                             ? {
-                              menuItems: data.map(({ productName, _id }) => ({
-                                title: productName,
-                                _id,
-                              })),
-                            }
+                                menuItems: data.map(({ productName, _id }) => ({
+                                  title: productName,
+                                  _id,
+                                })),
+                              }
                             : { ...data })}
                           handleMouseEnter={handleMouseEnter}
                           handleMouseLeave={handleMouseLeave}
@@ -342,10 +343,11 @@ function Header({ isHeaderBgWhite = false }) {
     px-2 relative transition-colors duration-300 cursor-pointer
     after:content-[''] after:absolute after:-top-[70%] after:left-0 after:w-full after:h-[2.55rem]
     after:bg-white after:opacity-0 after:-z-10
-    ${activeDropdown === "exploreColleges"
-                      ? "after:opacity-100 font-semibold  text-gray-primary"
-                      : "font-semibold"
-                    }
+    ${
+      activeDropdown === "exploreColleges"
+        ? "after:opacity-100 font-semibold  text-gray-primary"
+        : "font-semibold"
+    }
   `}
                 >
                   <a className="cursor-pointer">Explore Colleges</a>
@@ -452,7 +454,7 @@ function Header({ isHeaderBgWhite = false }) {
             // onMouseEnter={() => handleMouseEnter("login")}
             // onMouseLeave={handleMouseLeave}
             className="relative "
-          // className="relative hidden md:block"
+            // className="relative hidden md:block"
           >
             <button
               onClick={() => handleMouseEnter("bookMenu")}
