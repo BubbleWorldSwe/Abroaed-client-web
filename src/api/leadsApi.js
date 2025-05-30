@@ -5,6 +5,7 @@ import {
   makeDeleteRequest,
   makeGetRequest,
   makePatchRequest,
+  makePatchRequestWithFormData,
   makePatchRequestWithToken,
   makePostRequest,
   makePostRequestWithFormData,
@@ -21,6 +22,26 @@ export const getLeads = async (page) => {
       `${BASE_URL}/api/v1/admin/leads/list?${path}filter={"type":"lead"}`,
       adminToken
     );
+
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getFilterLeads = async (startDate, endDate, page) => {
+  try {
+    const { adminToken } = store.getState().auth;
+
+    let url = `${BASE_URL}/api/v1/admin/leads/list?filter={"dateRange":{"startDate":"${startDate}","endDate":"${endDate}"},"dateColumn":"createdAt"}`;
+
+    if (page) {
+      url += `&page=${page}&limit=${pageDataLimit}`;
+    }
+
+    const data = await makeGetRequest(url, adminToken);
 
     if (data.success) {
       return data.data;
@@ -69,6 +90,35 @@ export const setAddLead = async (credentials) => {
       `${BASE_URL}/api/v1/admin/leads/create`,
       credentials,
       adminToken
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUpdateStudentDocuments = async (docId, fileData) => {
+  try {
+    const data = await makePostRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/document-upload/update/${docId}`,
+      fileData
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const setUploadBulkLead = async (fileData) => {
+  try {
+    const { adminToken } = store.getState().auth;
+    const data = await makePatchRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/leads/bulk-create`,
+      fileData
     );
     if (data.success) {
       return data.data;

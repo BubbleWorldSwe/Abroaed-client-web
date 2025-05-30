@@ -27,7 +27,6 @@ import {
 import { toast } from "react-toastify";
 
 function* fetchTeams(action) {
-  console.log(action);
   try {
     const response = yield call(getTeams, action.payload);
 

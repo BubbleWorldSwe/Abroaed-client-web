@@ -186,6 +186,18 @@ export const constructPostRequestOptionsWithFormData = (payload) => {
   };
 };
 
+export const constructPatchRequestOptionsWithFormData = (payload) => {
+  var requestHeaders = new Headers();
+
+  const formdata = getFormData(payload);
+
+  return {
+    method: REQUEST_METHOD_PATCH,
+    headers: requestHeaders,
+    body: formdata,
+  };
+};
+
 export const constructPatchRequestOptionsWithToken = (payload, token) => {
   var requestHeaders = new Headers();
   requestHeaders.append(REQUEST_HEADER_CONTENT_KEY, REQUEST_HEADER_JSON);

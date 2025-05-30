@@ -5,8 +5,16 @@ import { ModalCloseButton } from "../../../commons/components/buttons/modalClose
 import { ModalSubmitButton } from "../../../commons/components/buttons/modalSubmitButton";
 import { toast } from "react-toastify";
 import moment from "moment";
+import { ModalDeleteButton } from "../../../commons/components/buttons/modalDeleteButton";
 
-const FilterModal = ({ isOpen, leadId, onClose, onUpdate, filledData }) => {
+const FilterModal = ({
+  isOpen,
+  leadId,
+  onClose,
+  fetchFilterData,
+  filledData,
+  clearFilterData,
+}) => {
   const [formData, setFormData] = useState(
     filledData || {
       from: "",
@@ -19,25 +27,19 @@ const FilterModal = ({ isOpen, leadId, onClose, onUpdate, filledData }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    if (!formData.to || !formData.from) {
-      toast.error(
-        "Please fill in all fields before scheduling the appointment."
-      );
-      return;
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const formattedData = {
-      ...formData,
-      from: moment(formData.from, "YYYY-MM-DDTHH:mm")
-        .utc()
-        .format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"),
-    };
+    const { from, to } = formData;
 
-    onUpdate({ scheduleDetails: formattedData }, leadId);
+    fetchFilterData(from, to);
+    onClose();
+  };
 
-    // setConfirmModalOpen(true);
-    // dispatch(scheduleAppointment({ id: leadId, appointmentData }));
+  const clearData = (e) => {
+    e.preventDefault();
+    setFormData({ from: "", to: "" });
+    clearFilterData();
   };
 
   return isOpen ? (
@@ -51,10 +53,7 @@ const FilterModal = ({ isOpen, leadId, onClose, onUpdate, filledData }) => {
             &times;
           </button>
           <h2 className="text-xl font-semibold mb-7">Filter</h2>
-          <form
-            className="space-y-4 mt-4"
-            //onSubmit={handleSubmit}
-          >
+          <form className="space-y-4 mt-4" onSubmit={handleSubmit}>
             <div className="mx-auto grid grid-cols-1 gap-4 lg:grid-cols-2 mb-10">
               <TextInputField
                 label="From Date*"
@@ -75,13 +74,14 @@ const FilterModal = ({ isOpen, leadId, onClose, onUpdate, filledData }) => {
                 name="to"
                 type="date"
                 value={
-                  formData?.to ? moment(formData.t0).format("YYYY-MM-DD") : ""
+                  formData?.to ? moment(formData.to).format("YYYY-MM-DD") : ""
                 }
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="flex justify-end space-x-2">
+              <ModalDeleteButton label="Clear" onClick={clearData} />
               <ModalCloseButton label="Close" onClick={onClose} />
 
               {/* <ModalDeleteButton

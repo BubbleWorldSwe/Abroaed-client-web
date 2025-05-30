@@ -11,11 +11,9 @@ import { saveAs } from "file-saver";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllDestinationsRequest } from "../../../redux/actions/destinationActions";
 import {
-  addBulkLeadsRequest,
   addLeadRequest,
   deleteLeadRequest,
   editLeadRequest,
-  fetchLeadsFilterDataRequest,
   fetchLeadsRequest,
   searchLeadsRequest,
 } from "../../../redux/actions/leadsActions";
@@ -26,7 +24,6 @@ import {
   FileSpreadsheet,
   FileSpreadsheetIcon,
   Filter,
-  FilterX,
   FilterXIcon,
   Search,
 } from "lucide-react";
@@ -36,8 +33,6 @@ import { useLocation } from "react-router-dom";
 import { IconButton } from "../../../commons/components/buttons/iconButton";
 import { leadsData } from "../data";
 import FilterModal from "../modals/filterModal";
-import LeadExcelUploadModal from "../modals/leadExcelUploadModal";
-import { getFilterLeads } from "../../../api/leadsApi";
 
 function Leads() {
   const dispatch = useDispatch();
@@ -48,6 +43,55 @@ function Leads() {
     (state) => state.leads
   );
 
+  const flatData = leads[0]?.data?.map((item) => ({
+    _id: item._id || "",
+    firstName: item.user?.firstName || "",
+    lastName: item.user?.lastName || "",
+    address: item.user?.address || "",
+    email: item.user?.email || "",
+    mobile: item.user?.mobile || "",
+    roleName: item.user?.roleId?.roleName || "",
+    highestEducation: item.user?.userDetail?.highestEducation || "",
+    applyingFor: item.user?.userDetail?.applyingFor || "",
+    preferredDestination:
+      item.user?.userDetail?.preferredDestination?.countryId?.name || "",
+    targetYear: item.user?.userDetail?.targetYear || "",
+    source: item.source || "",
+    status: item.status || "",
+    entity: item.entity || "",
+    createdAt: item.createdAt || "",
+  }));
+
+  const handleDownload = () => {
+    // Convert JSON to worksheet
+    const worksheet = XLSX.utils.json_to_sheet(flatData);
+
+    // Set dynamic column widths based on header text and content
+    const headers = Object.keys(flatData[0] || {});
+    const colWidths = headers.map((header) => {
+      const headerLength = header.length;
+      const maxContentLength = Math.max(
+        ...flatData.map((row) => String(row[header] || "").length)
+      );
+      return { wch: Math.max(headerLength, maxContentLength) + 2 }; // +2 padding
+    });
+    worksheet["!cols"] = colWidths;
+
+    // Create a new workbook and append the worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Write workbook and convert to binary array
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+
+    // Create a Blob and trigger download
+    const data = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(data, "leads.xlsx");
+  };
+
   const location = useLocation();
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [selectedMember, setSelectedMember] = useState(null);
@@ -55,88 +99,14 @@ function Leads() {
   const [showAppointmentModal, setshowAppointmentModal] = useState(false);
   const [showTeamModal, setshowTeamModal] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-  const [showFilterModal, setShowFilterModal] = useState(false);
-  const [showExcelUploadModal, setShowExcelUploadModal] = useState(false);
+
+  const [showFilterModal, setShowFilterModal] = useState(null);
+
   const [rolesList, setRolesList] = useState([]);
+
   const [membersList, setMembersList] = useState([]);
+
   const [query, setQuery] = useState("");
-
-  const [isFilterData, setIsFilterData] = useState(false);
-
-  const [filterStartDate, setFilterStartDate] = useState(null);
-  const [filterEndDate, setFilterEndDate] = useState(null);
-
-  const fetchFilterData = (startDate, endDate) => {
-    setFilterStartDate(startDate);
-    setFilterEndDate(endDate);
-    dispatch(fetchLeadsFilterDataRequest(startDate, endDate, 1));
-    setIsFilterData(true);
-    setCurrentPage(1);
-  };
-
-  const handleDownload = async () => {
-    const filterLeads = await getFilterLeads(filterStartDate, filterEndDate);
-
-    console.log(filterLeads);
-
-    if (filterLeads.status === 200) {
-      const filteredData = filterLeads?.data?.result;
-
-      console.log(filteredData);
-
-      const flatData = filteredData?.map((item) => ({
-        _id: item._id || "",
-        firstName: item.user?.firstName || "",
-        lastName: item.user?.lastName || "",
-        email: item.user?.email || "",
-        mobile: item.user?.mobile || "",
-        address: item.user?.address || "",
-
-        roleName: item.user?.roleId?.roleName || "",
-        highestEducation: item.user?.userDetail?.highestEducation || "",
-        applyingFor: item.user?.userDetail?.applyingFor || "",
-        preferredDestination:
-          item.user?.userDetail?.preferredDestination?.countryId?.name || "",
-        targetYear: item.user?.userDetail?.targetYear || "",
-        source: item.source || "",
-        status: item.status || "",
-        entity: item.entity || "",
-        createdAt: item.createdAt || "",
-      }));
-
-      // Convert JSON to worksheet
-      const worksheet = XLSX.utils.json_to_sheet(flatData);
-
-      // Set dynamic column widths based on header text and content
-      const headers = Object.keys(flatData[0] || {});
-      const colWidths = headers.map((header) => {
-        const headerLength = header.length;
-        const maxContentLength = Math.max(
-          ...flatData.map((row) => String(row[header] || "").length)
-        );
-        return { wch: Math.max(headerLength, maxContentLength) + 2 }; // +2 padding
-      });
-      worksheet["!cols"] = colWidths;
-
-      // Create a new workbook and append the worksheet
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-
-      // Write workbook and convert to binary array
-      const excelBuffer = XLSX.write(workbook, {
-        bookType: "xlsx",
-        type: "array",
-      });
-
-      // Create a Blob and trigger download
-      const data = new Blob([excelBuffer], {
-        type: "application/octet-stream",
-      });
-      saveAs(data, "leads.xlsx");
-    } else {
-      toast.error(filterLeads?.message);
-    }
-  };
 
   const handleScheduleAppointment = (member) => {
     try {
@@ -198,23 +168,9 @@ function Leads() {
       console.log(error);
     }
   };
-
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
-
-  async function clearFilterData() {
-    try {
-      dispatch(fetchLeadsRequest(1));
-      setShowFilterModal(false);
-      setIsFilterData(false);
-      setFilterStartDate(null);
-      setFilterEndDate(null);
-      setCurrentPage(1);
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async function fetchData() {
     try {
@@ -234,18 +190,7 @@ function Leads() {
     try {
       dispatch(addLeadRequest(data, "Lead Added Sucessfully"));
       setCurrentPage(1);
-
-      handleCloseAddModal();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleExportLeadData = (data) => {
-    try {
-      dispatch(addBulkLeadsRequest({ file: data }));
-      setCurrentPage(1);
-
+      // dispatch(fetchLeadsRequest(1));
       handleCloseAddModal();
     } catch (error) {
       console.log(error);
@@ -286,18 +231,7 @@ function Leads() {
       const pageExists = leads.some((item) => item.index === currentPage + 1);
 
       if (!pageExists) {
-        if (isFilterData) {
-          // You need to store filter dates in state to reuse them
-          dispatch(
-            fetchLeadsFilterDataRequest(
-              filterStartDate,
-              filterEndDate,
-              currentPage + 1
-            )
-          );
-        } else {
-          dispatch(fetchLeadsRequest(currentPage + 1));
-        }
+        dispatch(fetchLeadsRequest(currentPage + 1));
       }
 
       setCurrentPage((prev) => prev + 1);
@@ -309,17 +243,7 @@ function Leads() {
       const pageExists = leads.some((item) => item.index === currentPage - 1);
 
       if (!pageExists) {
-        if (isFilterData) {
-          dispatch(
-            fetchLeadsFilterDataRequest(
-              filterStartDate,
-              filterEndDate,
-              currentPage - 1
-            )
-          );
-        } else {
-          dispatch(fetchLeadsRequest(currentPage - 1));
-        }
+        dispatch(fetchLeadsRequest(currentPage - 1));
       }
 
       setCurrentPage((prev) => prev - 1);
@@ -327,7 +251,7 @@ function Leads() {
   };
 
   useEffect(() => {
-    if (leads?.length === 0 && !isFilterData) {
+    if (leads?.length === 0) {
       dispatch(fetchLeadsRequest(currentPage));
     }
   }, [dispatch, currentPage, leads]);
@@ -396,18 +320,11 @@ function Leads() {
         isOpen={showFilterModal}
         leadId={selectedMember?._id}
         onClose={() => setShowFilterModal(false)}
-        fetchFilterData={fetchFilterData}
-        clearFilterData={clearFilterData}
+        onUpdate={onUpdate}
         filledData={{
           appointmentType: selectedMember?.scheduleDetails?.appointmentType,
           preferredSlot: selectedMember?.scheduleDetails?.preferredSlot,
         }}
-      />
-
-      <LeadExcelUploadModal
-        isOpen={showExcelUploadModal}
-        onClose={() => setShowExcelUploadModal(false)}
-        onUploadBulkLead={handleExportLeadData}
       />
 
       <div className="min-h-screen bg-white dark:bg-gray-900 ">
@@ -456,16 +373,10 @@ function Leads() {
                   </div>
 
                   <div
-                    className={`ml-4 h-10 w-10 flex items-center justify-center rounded-md cursor-pointer ${
-                      isFilterData ? "bg-red-600" : "bg-[#EDBD05]"
-                    }`}
+                    className="bg-[#EDBD05] ml-4 h-10 w-10 flex items-center justify-center rounded-md cursor-pointer"
                     onClick={() => setShowFilterModal(true)}
                   >
-                    {isFilterData ? (
-                      <FilterX color="white" size={22} />
-                    ) : (
-                      <Filter color="black" size={22} />
-                    )}
+                    <Filter color="black" size={22} />
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -476,19 +387,17 @@ function Leads() {
                         label={" New Lead"}
                       />
                       <IconButton
-                        onClick={() => setShowExcelUploadModal(true)}
+                        onClick={handleOpenAddModal}
                         label={" Export Data"}
                         icon={<FileSpreadsheetIcon size={16} />}
                       />
                     </>
                   )}
-                  {isFilterData && (
-                    <IconButton
-                      onClick={handleDownload}
-                      label={" Download"}
-                      icon={<Download size={16} />}
-                    />
-                  )}
+                  <IconButton
+                    onClick={handleDownload}
+                    label={" Download"}
+                    icon={<Download size={16} />}
+                  />
                 </div>
               </div>
             </div>

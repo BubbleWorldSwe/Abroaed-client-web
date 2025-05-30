@@ -1,5 +1,6 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import {
+  getFilterLeads,
   getLeadDetailsById,
   getLeads,
   getSearchLeads,
@@ -7,9 +8,13 @@ import {
   setDeleteLead,
   setUpdateLead,
   setUpdateStudent,
+  setUploadBulkLead,
 } from "../../api/leadsApi";
 import {
+  ADD_BULK_LEADS_REQUEST,
   ADD_LEAD_REQUEST,
+  addBulkLeadsFailure,
+  addBulkLeadsSuccess,
   addLeadFailure,
   addLeadSuccess,
   DELETE_LEAD_REQUEST,
@@ -21,8 +26,11 @@ import {
   editLeadsStudentFailure,
   editLeadsStudentSuccess,
   editLeadSuccess,
+  FETCH_LEADS_FILTER_DATA_REQUEST,
   FETCH_LEADS_REQUEST,
   fetchLeadsFailure,
+  fetchLeadsFilterDataFailure,
+  fetchLeadsFilterDataSuccess,
   fetchLeadsSuccess,
   SEARCH_LEADS_REQUEST,
   searchLeadsFailure,
@@ -43,6 +51,24 @@ function* fetchLeads(action) {
   } catch (error) {
     yield put(fetchLeadsFailure(error.message));
     toast.error(error.message);
+  }
+}
+
+function* fetchFilterLeads(action) {
+  try {
+    const { startDate, endDate, page } = action.payload;
+    const data = yield call(getFilterLeads, startDate, endDate, page);
+
+    console.log(data);
+
+    if (data.status === 200) {
+      yield put(fetchLeadsFilterDataSuccess(data.data));
+    } else {
+      yield put(fetchLeadsFilterDataFailure(data.message));
+    }
+  } catch (error) {
+    yield put(fetchLeadsFilterDataFailure(error.message));
+    toast.error(error);
   }
 }
 
@@ -81,6 +107,24 @@ function* addNewLead(action) {
     }
   } catch (error) {
     yield put(addLeadFailure(error.message));
+    toast.error(error.message);
+  }
+}
+
+//upload bulk lead
+function* addBulkLeads(action) {
+  try {
+    const response = yield call(setUploadBulkLead, action.payload);
+
+    if (response.status === 200) {
+      yield put(addBulkLeadsSuccess(response.data));
+      toast.success(action.payload?.alertMsg);
+    } else {
+      yield put(addBulkLeadsFailure(response.message));
+      toast.error(response.message);
+    }
+  } catch (error) {
+    yield put(addBulkLeadsFailure(error.message));
     toast.error(error.message);
   }
 }
@@ -157,4 +201,7 @@ export default function* leadsSaga() {
   yield takeLatest(EDIT_LEADS_STUDENT_REQUEST, handleEditLeadStudent);
 
   yield takeLatest(SEARCH_LEADS_REQUEST, searchLeads);
+  yield takeLatest(FETCH_LEADS_FILTER_DATA_REQUEST, fetchFilterLeads);
+
+  yield takeLatest(ADD_BULK_LEADS_REQUEST, addBulkLeads);
 }

@@ -26,6 +26,17 @@ export const EDIT_LEADS_STUDENT_REQUEST = "EDIT_LEADS_STUDENT_REQUEST";
 export const EDIT_LEADS_STUDENT_SUCCESS = "EDIT_LEADS_STUDENT_SUCCESS";
 export const EDIT_LEADS_STUDENT_FAILURE = "EDIT_LEADS_STUDENT_FAILURE";
 
+export const FETCH_LEADS_FILTER_DATA_REQUEST =
+  "FETCH_LEADS_FILTER_DATA_REQUEST";
+export const FETCH_LEADS_FILTER_DATA_SUCCESS =
+  "FETCH_LEADS_FILTER_DATA_SUCCESS";
+export const FETCH_LEADS_FILTER_DATA_FAILURE =
+  "FETCH_LEADS_FILTER_DATA_FAILURE";
+
+export const ADD_BULK_LEADS_REQUEST = "ADD_BULK_LEADS_REQUEST";
+export const ADD_BULK_LEADS_SUCCESS = "ADD_BULK_LEADS_SUCCESS";
+export const ADD_BULK_LEADS_FAILURE = "ADD_BULK_LEADS_FAILURE";
+
 export const SET_SELECTED_LEAD = "SET_SELECTED_LEAD";
 
 export const ADD_LEAD_SAVEDPREFRENCES = "ADD_LEAD_SAVEDPREFRENCES";
@@ -167,4 +178,36 @@ export const searchLeadsFailure = (error) => ({
 export const setLeadsDataLoading = (loading) => ({
   type: LEADS_DATA_LOADING,
   payload: loading,
+});
+
+// Fetch Leads Filter Data Actions
+export const fetchLeadsFilterDataRequest = (startDate, endDate, page = 1) => ({
+  type: FETCH_LEADS_FILTER_DATA_REQUEST,
+  payload: { startDate, endDate, page },
+});
+
+export const fetchLeadsFilterDataSuccess = (filteredData) => ({
+  type: FETCH_LEADS_FILTER_DATA_SUCCESS,
+  payload: filteredData,
+});
+
+export const fetchLeadsFilterDataFailure = (error) => ({
+  type: FETCH_LEADS_FILTER_DATA_FAILURE,
+  payload: error,
+});
+
+// Add Bulk Leads Actions
+export const addBulkLeadsRequest = (bulkLeads) => ({
+  type: ADD_BULK_LEADS_REQUEST,
+  payload: bulkLeads,
+});
+
+export const addBulkLeadsSuccess = (addedLeads) => ({
+  type: ADD_BULK_LEADS_SUCCESS,
+  payload: addedLeads,
+});
+
+export const addBulkLeadsFailure = (error) => ({
+  type: ADD_BULK_LEADS_FAILURE,
+  payload: error,
 });

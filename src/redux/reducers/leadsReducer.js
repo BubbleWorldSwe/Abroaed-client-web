@@ -21,6 +21,12 @@ import {
   ADD_LEAD_DOCUMENTS,
   LEADS_DATA_LOADING,
   EDIT_LEADS_STUDENT_REQUEST,
+  FETCH_LEADS_FILTER_DATA_REQUEST,
+  ADD_BULK_LEADS_REQUEST,
+  FETCH_LEADS_FILTER_DATA_SUCCESS,
+  ADD_BULK_LEADS_SUCCESS,
+  FETCH_LEADS_FILTER_DATA_FAILURE,
+  ADD_BULK_LEADS_FAILURE,
 } from "../actions/leadsActions";
 
 const initialState = {
@@ -44,10 +50,13 @@ export const leadsReducer = (state = initialState, action) => {
     case EDIT_LEADS_STUDENT_REQUEST:
     case FETCH_LEADS_STUDENTS_REQUEST:
     case SEARCH_LEADS_REQUEST:
+    case FETCH_LEADS_FILTER_DATA_REQUEST: // New case
+    case ADD_BULK_LEADS_REQUEST: // New case
       return { ...state, loading: true, success: null };
 
     case FETCH_LEADS_SUCCESS:
     case SEARCH_LEADS_SUCCESS:
+    case FETCH_LEADS_FILTER_DATA_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -108,18 +117,34 @@ export const leadsReducer = (state = initialState, action) => {
       return initialState;
 
     case ADD_LEAD_SUCCESS:
+    case ADD_BULK_LEADS_SUCCESS:
       return { ...initialState, success: true };
 
     case FETCH_LEADS_FAILURE:
     case ADD_LEAD_FAILURE:
     case DELETE_LEAD_FAILURE:
     case EDIT_LEAD_FAILURE:
+    // case FETCH_LEADS_FILTER_DATA_FAILURE:
+    case ADD_BULK_LEADS_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload,
         //  leads: [],
         success: false,
+      };
+
+    case FETCH_LEADS_FILTER_DATA_FAILURE:
+      return {
+        ...state,
+        loading: false,
+
+        leads: [],
+        totalPages: null,
+        page: 1,
+        limit: null,
+        total: null,
+        error: action.payload,
       };
 
     case SEARCH_LEADS_FAILURE:
