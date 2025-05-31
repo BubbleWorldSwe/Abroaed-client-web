@@ -134,7 +134,7 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
               <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
               {details.imageUrl ? `Edit Image` : "Add Image"}
             </button>
-            <button
+            {/* <button
               onClick={() => {
                 setIsModalOpen(!isModalOpen);
               }}
@@ -143,7 +143,7 @@ const DestinationImage = ({ onUploadImage, handleDelete }) => {
             >
               <Trash2 size={20} style={{ marginRight: 10 }} />
               <span>Delete</span>
-            </button>
+            </button> */}
           </div>
         )}
       </div>

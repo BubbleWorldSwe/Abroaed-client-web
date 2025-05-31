@@ -7,7 +7,7 @@ import {
   makePutRequest,
 } from "../utils/apiUtils";
 
-export const getTeams = async (page) => {
+export const getTeams2 = async (page) => {
   try {
     const { role } = store.getState().auth;
 
@@ -28,7 +28,7 @@ export const getTeams = async (page) => {
   }
 };
 
-export const getTeams2 = async (page) => {
+export const getTeams = async (page) => {
   try {
     const { role } = store.getState().auth;
 
@@ -52,13 +52,20 @@ export const getTeams2 = async (page) => {
           (member) => member.roleId?.roleName === "Counsellor"
         );
       }
-      // If other roles, keep all
+
+      const response = data.data.data;
 
       return {
-        ...data.data,
-        result, // filtered result
-        total: result.length,
-        totalPages: Math.ceil(result.length / data.data.limit),
+        data: {
+          result,
+
+          page: response?.page,
+
+          total: result.length,
+          totalPages: response?.totalPages,
+        },
+        status: data?.data?.status,
+        message: data?.data?.message,
       };
     }
   } catch (error) {

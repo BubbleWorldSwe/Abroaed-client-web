@@ -1,4 +1,5 @@
 import {
+  Download,
   Edit,
   EllipsisVertical,
   Eye,
@@ -14,6 +15,7 @@ import { useSelector } from "react-redux";
 import { formatDate } from "../../../utils/helper";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 import { Tooltip } from "flowbite-react";
+import DocumentPreviewModal from "../../../commons/modal/docPreviewModal";
 
 const DocumentLibrary = ({
   requestedDocument,
@@ -27,6 +29,9 @@ const DocumentLibrary = ({
 
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const [reqDropdownVisible, setReqDropdownVisible] = useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalFile, setModalFile] = useState(null);
 
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
   const [activeTab, setActiveTab] = useState("All");
@@ -68,6 +73,13 @@ const DocumentLibrary = ({
     }
   };
 
+  const handleViewDocument = (file) => {
+    console.log(file);
+    setModalFile(file);
+    setIsModalOpen(true);
+    setDropdownVisible(null);
+  };
+
   const approvedDocuments = studentProfile?.documents?.filter(
     (doc) =>
       doc.status?.toLowerCase() === "approved" &&
@@ -83,6 +95,8 @@ const DocumentLibrary = ({
 
   // Reset refs before rendering so they don't accumulate stale nodes
   dropdownRefs.current = [];
+
+  console.log(studentProfile?.documents);
 
   return (
     <>
@@ -123,37 +137,49 @@ const DocumentLibrary = ({
                 </tr>
               </thead>
               <tbody>
-                {studentProfile?.documents &&
-                studentProfile?.documents.length > 0 ? (
-                  studentProfile?.documents
-                    ?.filter(
+                {studentProfile?.documents ? (
+                  (() => {
+                    const filteredDocs = studentProfile.documents.filter(
                       (data) =>
                         data?.status === "pending" ||
                         data?.status === "rejected" ||
                         data?.status === "requested"
-                    )
-                    ?.map((data, i) => (
-                      <tr
-                        key={i}
-                        className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {data?.title}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {data?.type}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {data?.applicationId?.college?.name || "---"}
-                        </td>
+                    );
 
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {data?.status === "rejected" ? (
-                            <Tooltip
-                              content={<div>{data.remarks}</div>}
-                              placement="bottom"
-                              className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
-                            >
+                    return filteredDocs.length > 0 ? (
+                      filteredDocs.map((data, i) => (
+                        <tr
+                          key={i}
+                          className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                        >
+                          <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {data?.title}
+                          </td>
+                          <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {data?.type}
+                          </td>
+                          <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {data?.applicationId?.college?.name || "---"}
+                          </td>
+                          <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {data?.status === "rejected" ? (
+                              <Tooltip
+                                content={<div>{data.remarks}</div>}
+                                placement="bottom"
+                                className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
+                              >
+                                <span
+                                  className="p-2 px-5 rounded-full text-gray-900 font-semibold capitalize"
+                                  style={{
+                                    backgroundColor: getStatusBgColor(
+                                      data?.status
+                                    ),
+                                  }}
+                                >
+                                  {data?.status}
+                                </span>
+                              </Tooltip>
+                            ) : (
                               <span
                                 className="p-2 px-5 rounded-full text-gray-900 font-semibold capitalize"
                                 style={{
@@ -164,93 +190,105 @@ const DocumentLibrary = ({
                               >
                                 {data?.status}
                               </span>
-                            </Tooltip>
-                          ) : (
-                            <span
-                              className="p-2 px-5 rounded-full text-gray-900 font-semibold capitalize"
-                              style={{
-                                backgroundColor: getStatusBgColor(data?.status),
-                              }}
+                            )}
+                          </td>
+                          <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {formatDate(data?.deadline)}
+                          </td>
+                          <td className="px-4 py-3">
+                            <button
+                              className="focus:outline-none"
+                              onClick={(e) => handleReqDropdownToggle(e, i)}
                             >
-                              {data?.status}
-                            </span>
-                          )}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {formatDate(data?.deadline)}
-                        </td>
-                        <td className="px-4 py-3">
-                          <button
-                            className="focus:outline-none"
-                            onClick={(e) => handleReqDropdownToggle(e, i)}
-                          >
-                            <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                          </button>
-                          {reqDropdownVisible === i && (
-                            <div
-                              ref={(el) => (dropdownRefs.current[i] = el)}
-                              className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] `}
-                            >
-                              <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                                {data.status !== "requested" ? (
-                                  <>
-                                    <li>
-                                      <button
-                                        type="button"
-                                        onClick={() => {
-                                          openStatusModal(data);
-                                          setReqDropdownVisible(false);
-                                        }}
-                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                      >
-                                        <Edit className="w-4 h-4" />
-                                        <span>Change Status</span>
-                                      </button>
-                                    </li>
-                                    <li>
-                                      <a
-                                        href={`${IMAGE_BASE_URL}/${data?.file}`}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                      >
-                                        <Eye className="w-4 h-4" />
-                                        <span>View File</span>
-                                      </a>
-                                    </li>
-                                  </>
-                                ) : null}
-
-                                <li>
-                                  <button
-                                    onClick={() => {
-                                      deleteDocument(data?._id);
-                                      setReqDropdownVisible(false);
-                                    }}
-                                    className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span>Delete</span>
-                                  </button>
-                                </li>
-                                <li>
-                                  <button
-                                    onClick={() => {
-                                      setSelectedDoc(data);
-                                      setReqDropdownVisible(false);
-                                    }}
-                                    className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                  >
-                                    <Edit className="w-4 h-4" />
-                                    <span>Edit</span>
-                                  </button>
-                                </li>
-                              </ul>
-                            </div>
-                          )}
+                              <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                            </button>
+                            {reqDropdownVisible === i && (
+                              <div
+                                ref={(el) => (dropdownRefs.current[i] = el)}
+                                className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999]`}
+                              >
+                                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                  {data.status !== "requested" ? (
+                                    <>
+                                      <li>
+                                        <button
+                                          type="button"
+                                          onClick={() => {
+                                            openStatusModal(data);
+                                            setReqDropdownVisible(false);
+                                          }}
+                                          className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        >
+                                          <Edit className="w-4 h-4" />
+                                          <span>Change Status</span>
+                                        </button>
+                                      </li>
+                                      <li>
+                                        <a
+                                          href={`${IMAGE_BASE_URL}/${data?.file}`}
+                                          download
+                                          className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        >
+                                          <Download className="w-4 h-4" />
+                                          <span>Download File</span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <button
+                                          onClick={() =>
+                                            handleViewDocument(
+                                              `${IMAGE_BASE_URL}/${data?.file}`
+                                            )
+                                          }
+                                          className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600"
+                                        >
+                                          <Eye className="w-4 h-4" />
+                                          <span>View File</span>
+                                        </button>
+                                      </li>
+                                    </>
+                                  ) : null}
+                                  <li>
+                                    <button
+                                      onClick={() => {
+                                        deleteDocument(data?._id);
+                                        setReqDropdownVisible(false);
+                                      }}
+                                      className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                  <li>
+                                    <button
+                                      onClick={() => {
+                                        setSelectedDoc(data);
+                                        setReqDropdownVisible(false);
+                                      }}
+                                      className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                    >
+                                      <Edit className="w-4 h-4" />
+                                      <span>Edit</span>
+                                    </button>
+                                  </li>
+                                </ul>
+                              </div>
+                            )}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td
+                          colSpan="6"
+                          className="px-4 py-3 text-center text-gray-500"
+                        >
+                          No data exists
                         </td>
                       </tr>
-                    ))
+                    );
+                  })()
                 ) : (
                   <tr>
                     <td
@@ -351,14 +389,26 @@ const DocumentLibrary = ({
                           >
                             <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                               <li>
-                                <a
-                                  href={`${IMAGE_BASE_URL}/${data?.file}`}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                <button
+                                  onClick={() =>
+                                    handleViewDocument(
+                                      `${IMAGE_BASE_URL}/${data?.file}`
+                                    )
+                                  }
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600"
                                 >
                                   <Eye className="w-4 h-4" />
                                   <span>View File</span>
+                                </button>
+                              </li>
+                              <li>
+                                <a
+                                  href={`${IMAGE_BASE_URL}/${data?.file}`}
+                                  download
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Download className="w-4 h-4" />
+                                  <span>Download File</span>
                                 </a>
                               </li>
                               <li>
@@ -394,6 +444,11 @@ const DocumentLibrary = ({
           </div>
         </div>
       </div>
+      <DocumentPreviewModal
+        isOpen={isModalOpen}
+        file={modalFile}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 };

@@ -13,9 +13,11 @@ import { fetchStudentDocumentsRequest } from "../../redux/actions/studentProfile
 import { toast } from "react-toastify";
 import { IMAGE_BASE_URL } from "../../constants/baseUrl";
 import { Tooltip } from "flowbite-react";
+import DocumentPreviewModal from "../../commons/modal/docPreviewModal";
+import ActivityLoader from "../../commons/components/loader/activityLoader";
 
 const StudentDocuments = () => {
-  const { documents } = useSelector((state) => state?.studentProfile);
+  const { documents, loading } = useSelector((state) => state?.studentProfile);
   const dispatch = useDispatch();
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
   const [activeTab, setActiveTab] = useState("All");
@@ -23,6 +25,8 @@ const StudentDocuments = () => {
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const { leadId } = useSelector((state) => state.studentProfile);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClickOutside = (e) => {
     // Close dropdown if the click is outside of the dropdown area
@@ -90,17 +94,21 @@ const StudentDocuments = () => {
         return;
       }
 
+      setIsLoading(true);
+
       const data = await setUpdateStudentDocuments(selectedDoc._id, {
         files: selectedFile,
         status: "pending",
       });
 
       if (data.status === 200) {
+        toast.success(data.message);
         dispatch(fetchStudentDocumentsRequest(leadId));
       } else {
         toast.error(data?.message);
       }
       setIsModalOpen(false);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -124,6 +132,16 @@ const StudentDocuments = () => {
   );
 
   const groupedApprovedDocuments = groupDocumentsByStatus(approvedDocuments);
+
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
+  const [modalFile, setModalFile] = useState(null);
+
+  const handleViewDocument = (file) => {
+    console.log(file);
+    setModalFile(file);
+    setIsPreviewModalOpen(true);
+    setDropdownVisible(null);
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -234,13 +252,16 @@ const StudentDocuments = () => {
                                 : "Re-Upload"}
                             </button>
                           ) : (
-                            <a
-                              href={`${IMAGE_BASE_URL}/${data?.file}`}
-                              target="_blank"
+                            <button
+                              onClick={() =>
+                                handleViewDocument(
+                                  `${IMAGE_BASE_URL}/${data?.file}`
+                                )
+                              }
                               className="text-blue-900 hover:underline font-bold hover:decoration-blue-800"
                             >
                               View File
-                            </a>
+                            </button>
                           )}
                         </td>
                       </tr>
@@ -327,13 +348,17 @@ const StudentDocuments = () => {
                     </td>
                     <td className="px-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       <div className="flex items-center justify-center space-x-4">
-                        <a
-                          href={`${IMAGE_BASE_URL}/${data?.file}`}
+                        <button
+                          onClick={() =>
+                            handleViewDocument(
+                              `${IMAGE_BASE_URL}/${data?.file}`
+                            )
+                          }
                           target="_blank"
                           className="text-blue-900 hover:underline font-bold hover:decoration-blue-800"
                         >
                           View File
-                        </a>
+                        </button>
                         {/*  <a
                           href={`${IMAGE_BASE_URL}/${data?.file}`}
                           target="_blank"
@@ -442,6 +467,13 @@ const StudentDocuments = () => {
           </div>
         </div>
       )}
+
+      <DocumentPreviewModal
+        isOpen={isPreviewModalOpen}
+        file={modalFile}
+        onClose={() => setIsPreviewModalOpen(false)}
+      />
+      <ActivityLoader loading={loading || isLoading} />
     </div>
   );
 };

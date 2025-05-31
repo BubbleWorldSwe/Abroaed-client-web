@@ -12,7 +12,6 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
-import DocumentPreviewModal from "../../../commons/modal/docPreviewModal";
 
 const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
   const dropdownRef = useRef(null);
@@ -45,7 +44,6 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
   );
 
   const handleViewDocument = (file) => {
-    console.log(file);
     setModalFile(file);
     setIsModalOpen(true);
     setDropdownVisible(null);
@@ -188,11 +186,29 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
         </div>
       </div>
 
-      <DocumentPreviewModal
-        isOpen={isModalOpen}
-        file={modalFile}
-        onClose={() => setIsModalOpen(false)}
-      />
+      {/* Modal for viewing document */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[9999] bg-black bg-opacity-70 flex items-center justify-center">
+          <div className="bg-white p-4 rounded-lg max-w-3xl w-full relative">
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute top-2 right-2 text-gray-600 hover:text-black"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            {modalFile?.toLowerCase().endsWith(".pdf") ? (
+              <iframe
+                src={modalFile}
+                title="Document"
+                className="w-full h-[80vh]"
+                frameBorder="0"
+              ></iframe>
+            ) : (
+              <img src={modalFile} alt="Document" className="w-full h-auto" />
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

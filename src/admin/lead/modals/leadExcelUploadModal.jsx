@@ -5,11 +5,13 @@ import { Search, Upload } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { SelectField } from "../../../commons/components/inputFields/selectField";
+import { leadSources } from "../../../constants/values";
 
 const LeadExcelUploadModal = ({ isOpen, onClose, onUploadBulkLead }) => {
   const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
-
+  const [leadSource, setLeadSource] = useState("");
   const handleFileDrop = (e) => {
     e.preventDefault();
     const selectedFile = e.dataTransfer.files[0];
@@ -22,15 +24,11 @@ const LeadExcelUploadModal = ({ isOpen, onClose, onUploadBulkLead }) => {
   };
 
   const validateFile = (file) => {
-    const allowedTypes = [
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "application/vnd.ms-excel",
-      "text/csv",
-    ];
+    const allowedTypes = ["text/csv"];
     const maxSize = 5 * 1024 * 1024; // 5MB
 
     if (!allowedTypes.includes(file.type)) {
-      toast.error("Only Excel (.xlsx, .xls) or CSV files are allowed.");
+      toast.error("Only  CSV files are allowed.");
       return;
     }
 
@@ -51,7 +49,7 @@ const LeadExcelUploadModal = ({ isOpen, onClose, onUploadBulkLead }) => {
         return;
       }
 
-      onUploadBulkLead(file);
+      onUploadBulkLead({ file, source: leadSource });
 
       setFile(null);
       onClose();
@@ -74,10 +72,21 @@ const LeadExcelUploadModal = ({ isOpen, onClose, onUploadBulkLead }) => {
             </button>
             <h2 className="text-xl font-semibold mb-4">Upload Excel or CSV</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
+              <SelectField
+                label="Lead Source*"
+                name="source"
+                value={leadSource}
+                onChange={(e) => setLeadSource(e.target.value)}
+                options={leadSources?.map((data) => ({
+                  label: data,
+                  value: data,
+                }))}
+                required
+              />
               <div className="text-base font-semibold">
                 Upload Excel/CSV data for leads{" "}
                 <span className="text-gray-500 text-sm">
-                  (supported: .xlsx, .xls, .csv | Max: 5MB)
+                  (supported: .csv | Max: 5MB)
                 </span>
               </div>
 
@@ -108,7 +117,7 @@ const LeadExcelUploadModal = ({ isOpen, onClose, onUploadBulkLead }) => {
                     <input
                       type="file"
                       className="hidden"
-                      accept=".xlsx,.xls,.csv"
+                      accept=".csv"
                       onChange={handleFileChange}
                       ref={fileInputRef}
                     />

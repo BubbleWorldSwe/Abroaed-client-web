@@ -5,7 +5,7 @@ import pencil from "../../../assets/pencil.png";
 
 const LeadScheduleAppointment = ({ onOpenModal }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   return (
     <div className="w-full mx-auto my-2 p-6 bg-white rounded-lg shadow-lg">
@@ -14,7 +14,7 @@ const LeadScheduleAppointment = ({ onOpenModal }) => {
           <h2 className={`text-2xl font-bold text-gray-primary`}>
             Schedule Appointment
           </h2>
-          {isWriteAccess && (
+          {isWriteAccess && role !== "Backend Associate" && (
             <button
               onClick={onOpenModal} // Trigger modal from parent
               className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"

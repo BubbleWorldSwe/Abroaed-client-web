@@ -55,10 +55,10 @@ export const teamReducer = (state = initialState, action) => {
                 { index: action.payload.page, data: action.payload.result },
               ],
 
-        totalPages: action.payload.totalPages,
-        page: action.payload.page,
+        totalPages: action.payload.totalPages || 1,
+        page: action.payload.page || 1,
         limit: action.payload.limit,
-        total: action.payload.total,
+        total: action.payload.total || action.payload.result?.length,
         loading: false,
       };
 

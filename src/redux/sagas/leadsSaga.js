@@ -118,9 +118,15 @@ function* addBulkLeads(action) {
   try {
     const response = yield call(setUploadBulkLead, action.payload);
 
+    console.log(response);
+
     if (response.status === 200) {
       yield put(addBulkLeadsSuccess(response.data));
-      toast.success(action.payload?.alertMsg);
+      // toast.success(response?.message);
+      toast.success("Leads Uploaed Sucessfully");
+      toast.success(
+        `Inserted Data : ${response?.data?.insertedCount}, Skipped Data : ${response?.data?.skippedCount}`
+      );
     } else {
       yield put(addBulkLeadsFailure(response.message));
       toast.error(response.message);

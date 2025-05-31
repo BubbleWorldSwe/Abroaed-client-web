@@ -38,7 +38,7 @@ const LeadProfile = ({ handleDelete }) => {
             </div>
           </div>
         </div>
-        {isWriteAccess && (
+        {/* {isWriteAccess && (
           <div className="my-auto ">
             <button
               onClick={() => {
@@ -50,7 +50,7 @@ const LeadProfile = ({ handleDelete }) => {
               <span>Delete</span>
             </button>
           </div>
-        )}
+        )} */}
       </div>
       {leadProfile?.status?.toLowerCase() === "lost" && (
         <div className="px-4 text-[#9B1C1C] rounded text-md font-semibold">

@@ -1,4 +1,5 @@
 import { BASE_URL } from "../constants/baseUrl";
+import { store } from "../redux/store";
 import { makeGetRequest, makePutRequest } from "../utils/apiUtils";
 
 export const getAdmissionDocuments = async () => {
@@ -57,7 +58,11 @@ export const getRoles = async () => {
 
 export const getAdminDashboard = async () => {
   try {
-    const data = await makeGetRequest(`${BASE_URL}/api/v1/admin/dashboard`);
+    const { adminToken } = store.getState().auth;
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/dashboard`,
+      adminToken
+    );
 
     if (data.success) {
       return data.data;

@@ -37,8 +37,7 @@ const LeadTable = ({
   const { leads, totalPages } = useSelector((state) => state.leads);
 
   console.log(leads);
-  const { isWriteAccess } = useSelector((state) => state.auth);
-  const { role } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   const [deleteId, setDeleteId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -260,19 +259,19 @@ const LeadTable = ({
                                   </button>
                                 </li>
                                 {/* {isWriteAccess && (
-                                <li>
-                                  <button
-                                    onClick={() => {
-                                      setDeleteId(lead);
-                                      setIsModalOpen(!isModalOpen);
-                                    }}
-                                    className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span>Delete</span>
-                                  </button>
-                                </li>
-                              )} */}
+                                  <li>
+                                    <button
+                                      onClick={() => {
+                                        setDeleteId(lead);
+                                        setIsModalOpen(!isModalOpen);
+                                      }}
+                                      className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                )} */}
                               </ul>
                             </div>
                           )}
@@ -295,7 +294,7 @@ const LeadTable = ({
           handleNextPage={handleNextPage}
           handlePrevPage={handlePrevPage}
           tableData={leads}
-          colSpan={9}
+          colSpan={10}
         />
       </table>
 

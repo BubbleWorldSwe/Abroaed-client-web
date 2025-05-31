@@ -38,6 +38,8 @@ const App = () => {
     admin,
   } = useSelector((state) => state.auth);
 
+  console.log(adminToken);
+
   const { leadId } = useSelector((state) => state.studentProfile);
 
   async function fetchData() {

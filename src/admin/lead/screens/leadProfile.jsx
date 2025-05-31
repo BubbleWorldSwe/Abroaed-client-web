@@ -43,8 +43,10 @@ const LeadProfileLayout = () => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { role } = useSelector((state) => state.auth);
   const { loading } = useSelector((state) => state.leads);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [membersList, setMembersList] = useState([]);
   const [rolesList, setRolesList] = useState([]);
@@ -239,10 +241,12 @@ const LeadProfileLayout = () => {
           <LeadPersonalDetails onOpenModal={() => handleModal("personal")} />
 
           <LeadAdditionInfo onOpenModal={() => handleModal("addition")} />
-          <LeadAssignTeam
-            onOpenModal={() => handleModal("assignTeam")}
-            onUpdate={onUpdate}
-          />
+          {role !== "Counsellor" && role !== "Backend Associate" && (
+            <LeadAssignTeam
+              onOpenModal={() => handleModal("assignTeam")}
+              onUpdate={onUpdate}
+            />
+          )}
           <LeadScheduleAppointment
             onOpenModal={() => handleModal("appointment")}
           />

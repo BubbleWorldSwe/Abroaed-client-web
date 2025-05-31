@@ -306,6 +306,7 @@ export const makePostRequestWithFormData = async (url, payload) => {
 
     let controller = new AbortController();
     setTimeout(() => controller.abort(), POST_REQUEST_TIMEOUT);
+
     const response = await fetch(
       url,
       constructPostRequestOptionsWithFormData(payload),
@@ -314,12 +315,17 @@ export const makePostRequestWithFormData = async (url, payload) => {
       }
     );
 
-    const json = await response.json();
+    console.log(response);
 
+    const json = await response.json();
     console.log(json);
 
-    if (json.status) return constructSuccessResponse(json);
-    else return constructFailureResponse(json.message);
+    // 🔥 New Success Logic
+    if ((json && json.status) || response.status === 200) {
+      return constructSuccessResponse({ ...json, status: response.status });
+    } else {
+      return constructFailureResponse(json?.message || "Unknown error");
+    }
   } catch (error) {
     if (
       error.message === ABORT_ERROR_MESSAGE ||

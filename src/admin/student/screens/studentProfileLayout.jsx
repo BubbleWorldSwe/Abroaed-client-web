@@ -347,7 +347,7 @@ const StudentProfileLayout = () => {
         selectedApplication?._id
       );
 
-      //
+      console.log(data);
 
       if (data?.status === 200) {
         fetchStudentApplications();

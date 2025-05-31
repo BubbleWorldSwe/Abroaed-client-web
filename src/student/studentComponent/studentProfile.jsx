@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editStudentProfileRequest } from "../../redux/actions/studentProfileActions";
 import StudentAdditionInfoModal from "../modals/studentAdditionInfoModal";
 import { IMAGES } from "../../constants/images";
+import ActivityLoader from "../../commons/components/loader/activityLoader";
 
 const StudentProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -15,24 +16,16 @@ const StudentProfile = () => {
   const handleOpenAddModal = () => {
     setIsAddModalOpen(true);
   };
-  const { _id } = useSelector((state) => state.auth.student);
+  const [isLoading, setIsLoading] = useState(true);
+
   const dispatch = useDispatch();
 
   const [addInfoModal, setAddInfoModal] = useState(null);
 
-  const {
-    savedPreferences,
-    applications,
-    studentProfile,
-    transactions,
-    prepsBatches,
-    studentId,
-    leadId,
-  } = useSelector((state) => state.studentProfile);
+  const { studentProfile, loading } = useSelector(
+    (state) => state.studentProfile
+  );
 
-  const handleTabClick = (index) => {
-    setActiveTab(index);
-  };
   const handleCloseAddModal = () => {
     setIsAddModalOpen(false);
   };
@@ -202,9 +195,8 @@ const StudentProfile = () => {
             {studentProfile?.assignTeamMembers?.map((data, key) => (
               <div className="flex items-center gap-4" key={key}>
                 <img
-                  className="w-20 object-cover h-20 rounded-full"
-                  src="https://media.istockphoto.com/id/1476170969/photo/portrait-of-young-man-ready-for-job-business-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=-F_sZl6saA5wNg2OTdO3zcHZ3aQ2ml9Ru-PXGcUDdHg="
-                  alt=""
+                  className="w-16 object-cover h-16 rounded-full bg-slate-300 border-2 ml-5"
+                  src={IMAGES.user}
                 />
                 <div className=" dark:text-white">
                   <div className="text-sm ">{data?.roleId?.roleName}</div>
@@ -268,6 +260,7 @@ const StudentProfile = () => {
           </div>
         </div> */}
       </div>
+      <ActivityLoader loading={loading} />
     </>
   );
 };

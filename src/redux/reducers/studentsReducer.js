@@ -51,7 +51,6 @@ export const studentsReducer = (state = initialState, action) => {
       return { ...state, loading: true };
 
     case FETCH_STUDENTS_SUCCESS:
-    case SEARCH_STUDENTS_SUCCESS:
       return {
         ...state,
         loading: false,
@@ -64,6 +63,22 @@ export const studentsReducer = (state = initialState, action) => {
               ],
         totalPages: action.payload.totalPages,
         page: action.payload.page,
+      };
+
+    case SEARCH_STUDENTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        /*  students:
+          action.payload.page === 1
+            ? [{ index: action.payload.page, data: action.payload.result }]
+            : [
+                ...state.students,
+                { index: action.payload.page, data: action.payload.result },
+              ], */
+        students: [{ index: 1, data: action.payload.result }],
+        totalPages: action.payload.totalPages || 1,
+        page: action.payload.page || 1,
       };
 
     case EDIT_STUDENT_SUCCESS:

@@ -4,7 +4,7 @@ import pencil from "../../../assets/pencil.png";
 
 const LeadPersonalDetails = ({ onOpenModal }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   return (
     <div className="w-full mx-auto mb-8 p-5 bg-white rounded-lg shadow-lg">
@@ -12,7 +12,7 @@ const LeadPersonalDetails = ({ onOpenModal }) => {
         <h2 className={`text-2xl font-bold text-gray-primary`}>
           Personal Information
         </h2>
-        {isWriteAccess && (
+        {isWriteAccess && role !== "Backend Associate" && (
           <button
             onClick={onOpenModal}
             className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"

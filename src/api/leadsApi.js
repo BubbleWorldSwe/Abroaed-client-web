@@ -116,10 +116,12 @@ export const setUpdateStudentDocuments = async (docId, fileData) => {
 export const setUploadBulkLead = async (fileData) => {
   try {
     const { adminToken } = store.getState().auth;
-    const data = await makePatchRequestWithFormData(
-      `${BASE_URL}/api/v1/admin/leads/bulk-create`,
+    const data = await makePostRequestWithFormData(
+      `${BASE_URL}/api/v1/admin/leads/create-batch`,
       fileData
     );
+
+    console.log(data);
     if (data.success) {
       return data.data;
     }

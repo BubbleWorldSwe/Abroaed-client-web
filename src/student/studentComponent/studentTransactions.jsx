@@ -1,16 +1,8 @@
-import { Trash2, Edit } from "lucide-react";
-import { transactionsDetails } from "../data";
 import { useSelector } from "react-redux";
 import { formatDateTime } from "../../utils/helper";
 
 const StudentTransactions = () => {
-  const {
-    savedPreferences,
-    applications,
-    studentProfile,
-    transactions,
-    prepsBatches,
-  } = useSelector((state) => state.studentProfile);
+  const { transactions } = useSelector((state) => state.studentProfile);
   return (
     <div className="w-full bg-[#fff] font-rethink min-h-[90vh] px-5 py-10 ">
       <h2 className="text-2xl font-semibold mb-5">My Transactions</h2>

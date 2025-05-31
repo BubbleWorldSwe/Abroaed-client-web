@@ -77,15 +77,20 @@ export const leadsReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        leads:
+        /*   leads:
           action.payload.page === 1
             ? [{ index: action.payload.page, data: action.payload.result }]
             : [
                 ...state.leads,
                 { index: action.payload.page, data: action.payload.result },
-              ],
-        totalPages: action.payload.totalPages,
-        page: action.payload.page,
+              ], */
+
+        leads: [{ index: 1, data: action.payload.result }],
+
+        totalPages: action.payload.totalPages || 1,
+        page: action.payload.page || 1,
+
+        total: action.payload.total || action.payload.result?.length,
       };
 
     case EDIT_LEAD_SUCCESS:

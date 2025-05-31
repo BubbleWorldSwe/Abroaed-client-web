@@ -251,14 +251,14 @@ const CollegeImageSection = ({
               <img src={pencil} alt="pic" className="w-4 h-4 mr-2" />
               Cover Image
             </button>
-            <button
+            {/*   <button
               onClick={() => setIsModalOpen(true)}
               type="button"
               className="flex items-center text-white text-lg font-bold border-red-700 rounded-lg px-5 py-2.5 bg-red-600 border-2 hover:bg-red-700"
             >
               <Trash2 size={20} className="mr-2" />
               <span>Delete</span>
-            </button>
+            </button> */}
           </div>
         )}
       </div>

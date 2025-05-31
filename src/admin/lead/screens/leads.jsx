@@ -242,7 +242,7 @@ function Leads() {
 
   const handleExportLeadData = (data) => {
     try {
-      dispatch(addBulkLeadsRequest({ file: data }));
+      dispatch(addBulkLeadsRequest(data));
       setCurrentPage(1);
 
       handleCloseAddModal();

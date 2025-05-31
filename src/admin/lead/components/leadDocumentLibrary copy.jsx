@@ -18,7 +18,7 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
   const tabs = ["All", "Government", "Academic", "Finance", "Applications"];
   const [activeTab, setActiveTab] = useState("All");
 
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
 
@@ -52,7 +52,7 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
           <h2 className="text-2xl py-2 font-semibold  mb-3">
             Document Library
           </h2>
-          {isWriteAccess && (
+          {isWriteAccess && role !== "Backend Associate" && (
             <div className="flex gap-4 items-center">
               <button
                 //   className="flex items-center gap-2 px-3 py-1 text-sm font-semibold text-black cursor-pointer hover:bg-gray-200 rounded"
@@ -70,22 +70,24 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
             className="flex w-full -mb-px text-sm font-medium text-center"
             role="tablist"
           >
-            {tabs.map((tab) => (
-              <li key={tab} className="w-full" role="presentation">
-                <button
-                  className={`inline-block p-4 w-full text-base font-semibold rounded-t-lg ${
-                    activeTab === tab
-                      ? "text-black border-b-2 border-blue-500"
-                      : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                  }`}
-                  onClick={() => setActiveTab(tab)}
-                  role="tab"
-                  aria-selected={activeTab === tab}
-                >
-                  {tab}
-                </button>
-              </li>
-            ))}
+            {tabs
+              .filter((data) => data !== "Applications")
+              .map((tab) => (
+                <li key={tab} className="w-full" role="presentation">
+                  <button
+                    className={`inline-block p-4 w-full text-base font-semibold rounded-t-lg ${
+                      activeTab === tab
+                        ? "text-black border-b-2 border-blue-500"
+                        : "text-gray-500 dark:text-gray-400 font-semibold hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    }`}
+                    onClick={() => setActiveTab(tab)}
+                    role="tab"
+                    aria-selected={activeTab === tab}
+                  >
+                    {tab}
+                  </button>
+                </li>
+              ))}
           </ul>
         </div>
 
