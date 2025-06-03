@@ -8,7 +8,7 @@ import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationMo
 const LeadAssignTeam = ({ onOpenModal, onUpdate }) => {
   const leadProfile = useSelector((state) => state?.leads?.selectedLead);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   const { assignTeamMembers } = leadProfile;
 
@@ -31,18 +31,20 @@ const LeadAssignTeam = ({ onOpenModal, onUpdate }) => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">Assigned Team</h2>
 
-          {isWriteAccess && (
-            <button
-              onClick={onOpenModal}
-              className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"
-            >
-              <img
-                src={pencil}
-                alt="pencil-img"
-                className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
-              />
-            </button>
-          )}
+          {isWriteAccess &&
+            role !== "Backend Associate" &&
+            role !== "Counsellor" && (
+              <button
+                onClick={onOpenModal}
+                className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"
+              >
+                <img
+                  src={pencil}
+                  alt="pencil-img"
+                  className="w-6 h-6 transition-all duration-300 group-hover:scale-110"
+                />
+              </button>
+            )}
         </div>
         {/* Grid container for team details */}
         <table className="w-full px-5 text-sm text-left text-gray-500 dark:text-gray-400">
@@ -52,7 +54,9 @@ const LeadAssignTeam = ({ onOpenModal, onUpdate }) => {
               <th className="px-4 py-3">Email</th>
               <th className="px-4 py-3">Mobile No.</th>
               <th className="px-4 py-3">Role</th>
-              {isWriteAccess && <th className="px-4 py-3"></th>}
+              {isWriteAccess &&
+                role !== "Backend Associate" &&
+                role !== "Counsellor" && <th className="px-4 py-3"></th>}
             </tr>
           </thead>
           <tbody>
@@ -69,22 +73,24 @@ const LeadAssignTeam = ({ onOpenModal, onUpdate }) => {
                   <td className=" px-4 py-3">{data?.email}</td>
                   <td className=" px-4 py-3">{data?.mobile}</td>
                   <td className=" px-4 py-3">{data?.roleId?.roleName}</td>
-                  {isWriteAccess && (
-                    <td className="text-center w-[100px]">
-                      <div className="flex items-center justify-center space-x-5">
-                        <img
-                          src={trash}
-                          alt="Delete"
-                          className="w-5 h-5 cursor-pointer"
-                          //  onClick={() => handleDeleteClick(data?._id)}
-                          onClick={() => {
-                            setDeleteId(data?._id);
-                            setIsModalOpen(!isModalOpen);
-                          }}
-                        />
-                      </div>
-                    </td>
-                  )}
+                  {isWriteAccess &&
+                    role !== "Backend Associate" &&
+                    role !== "Counsellor" && (
+                      <td className="text-center w-[100px]">
+                        <div className="flex items-center justify-center space-x-5">
+                          <img
+                            src={trash}
+                            alt="Delete"
+                            className="w-5 h-5 cursor-pointer"
+                            //  onClick={() => handleDeleteClick(data?._id)}
+                            onClick={() => {
+                              setDeleteId(data?._id);
+                              setIsModalOpen(!isModalOpen);
+                            }}
+                          />
+                        </div>
+                      </td>
+                    )}
                 </tr>
               ))
             ) : (

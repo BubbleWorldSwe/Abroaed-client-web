@@ -14,7 +14,7 @@ const LeadScheduleAppointment = ({ onOpenModal }) => {
           <h2 className={`text-2xl font-bold text-gray-primary`}>
             Schedule Appointment
           </h2>
-          {isWriteAccess && role !== "Backend Associate" && (
+          {isWriteAccess && role !== "Backend Manager" && (
             <button
               onClick={onOpenModal} // Trigger modal from parent
               className="group relative p-3 rounded-full transition-all duration-300 bg-white hover:bg-gray-200"

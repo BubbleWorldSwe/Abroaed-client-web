@@ -100,6 +100,7 @@ const LeadProfileLayout = () => {
 
   async function fetchLeadSavedPefrences() {
     try {
+      dispatch(setLeadsDataLoading(true));
       const list = await getLeadSavedPrefrences(leadProfile?.user?._id);
 
       if (list.status === 200) {
@@ -114,6 +115,7 @@ const LeadProfileLayout = () => {
 
   async function fetchLeadUploadedDocuments() {
     try {
+      dispatch(setLeadsDataLoading(true));
       const list = await getLeadDocuments(leadProfile?.user?._id);
 
       if (list.status === 200) {
@@ -241,12 +243,10 @@ const LeadProfileLayout = () => {
           <LeadPersonalDetails onOpenModal={() => handleModal("personal")} />
 
           <LeadAdditionInfo onOpenModal={() => handleModal("addition")} />
-          {role !== "Counsellor" && role !== "Backend Associate" && (
-            <LeadAssignTeam
-              onOpenModal={() => handleModal("assignTeam")}
-              onUpdate={onUpdate}
-            />
-          )}
+          <LeadAssignTeam
+            onOpenModal={() => handleModal("assignTeam")}
+            onUpdate={onUpdate}
+          />
           <LeadScheduleAppointment
             onOpenModal={() => handleModal("appointment")}
           />

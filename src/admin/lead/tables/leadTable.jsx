@@ -100,7 +100,7 @@ const LeadTable = ({
             <th scope="col" className="px-4 py-3">
               Lead Status
             </th>
-            <th className="px-4 py-3">Counsellor</th>
+            <th className="px-4 py-3">POC</th>
             <th scope="col" className="px-4 py-3">
               Appointment
             </th>
@@ -119,7 +119,8 @@ const LeadTable = ({
                 (item) =>
                   item.index === currentPage &&
                   item.data.map((lead, index) => {
-                    let counsellor = getCounsellor(lead?.assignTeamMembers);
+                    // let counsellor = getCounsellor(lead?.assignTeamMembers);
+                    let counsellor = lead?.assignTeamMembers.at(-1);
                     return (
                       <tr
                         key={index}

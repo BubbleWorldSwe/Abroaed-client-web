@@ -19,6 +19,7 @@ const StudentApplication = ({
   onOpenCommentModal,
 }) => {
   const { isWriteAccess } = useSelector((state) => state.auth);
+
   const studentProfile = useSelector(
     (state) => state?.students?.selectedStudent
   );
@@ -62,7 +63,7 @@ const StudentApplication = ({
                         tab.title === "Rejected" ? "white" : "gray-primary"
                       }`}
                     >
-                      {tab.title}
+                      {`${tab?.title} ( ${tab?.data?.length ?? 0} )`}
                     </span>
                   </button>
                 </div>

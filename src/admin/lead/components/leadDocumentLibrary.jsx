@@ -63,7 +63,7 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
       <div className="mt-10">
         <div className="flex justify-between">
           <h2 className="text-2xl py-2 font-semibold mb-3">Document Library</h2>
-          {isWriteAccess && role !== "Backend Associate" && (
+          {isWriteAccess && role !== "Backend Manager" && (
             <button
               className="flex text-sm items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
               onClick={handleOpenUploadModal}
