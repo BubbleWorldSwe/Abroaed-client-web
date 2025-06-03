@@ -3,7 +3,7 @@ import StudentTransactionModal from "../modals/studentTransactionModal";
 import { useSelector } from "react-redux";
 import { formatDate, formatDateTime } from "../../../utils/helper";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
-import { EllipsisVertical, Pencil, Trash2 } from "lucide-react";
+import { EllipsisVertical, Pencil, Plus, Trash2 } from "lucide-react";
 
 const StudentTransaction = ({
   studentId,
@@ -52,8 +52,9 @@ const StudentTransaction = ({
           {isWriteAccess && (
             <button
               onClick={onOpen}
-              className="flex text-sm items-center gap-2 bg-[#0D6FEC] text-white px-3 py-2 rounded-lg hover:bg-blue-500 transition"
+              className="flex text-sm  items-center gap-2 bg-[#FAFAFA] text-black px-3 py-1 rounded-lg hover:bg-gray-400 transition"
             >
+              <Plus size={15} />
               Add Transaction
             </button>
           )}

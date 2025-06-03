@@ -21,7 +21,7 @@ const StudentApplicationsList = ({ studentApplication = [] }) => {
                     tab.title === "Rejected" ? "white" : "gray-primary"
                   }`}
                 >
-                  {tab.title}
+                  {tab.title} ({tab?.data.length})
                 </span>
               </button>
             </div>

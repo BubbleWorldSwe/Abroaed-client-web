@@ -44,7 +44,7 @@ const StudentApplication = ({
             </button>
           )}
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-4 overflow-x-auto">
           {studentApplication.map((tab, index) => {
             return (
               <div
@@ -63,7 +63,7 @@ const StudentApplication = ({
                         tab.title === "Rejected" ? "white" : "gray-primary"
                       }`}
                     >
-                      {`${tab?.title} ( ${tab?.data?.length ?? 0} )`}
+                      {tab.title} ({tab?.data.length})
                     </span>
                   </button>
                 </div>

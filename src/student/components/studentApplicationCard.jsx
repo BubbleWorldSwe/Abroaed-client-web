@@ -1,13 +1,14 @@
 import studentColImg from "../../assets/studentColImg.png";
 import studentcolFrame from "../../assets/studentcolFrame.png";
+import { IMAGES } from "../../constants/images";
 
 const StudentApplicationCard = ({ data }) => {
   return (
     <div className="w-full bg-white border border-gray-200 rounded-lg shadow relative">
       <div className="relative">
         <img
-          className="rounded-t-lg max-w-xl h-40 object-cover"
-          src={studentColImg}
+          className="rounded-t-lg w-full max-w-xl h-40 object-cover"
+          src={IMAGES.noCollege}
           alt="pic"
         />
         <div className="absolute w-24 h-24 -bottom-16 left-5">
@@ -17,7 +18,7 @@ const StudentApplicationCard = ({ data }) => {
       <div className="p-5 mt-5">
         <div className="flex justify-between items-center">
           <h5 className="text-[19px] font-semibold text-gray-900 line-clamp-1">
-            {data?.college?.name}
+            {data?.college?.name || "----"}
           </h5>
         </div>
 
