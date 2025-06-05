@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 
 import image from "../../../assets/dark.png";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const BlogCard = ({ article }) => {
   return (
     <article className="p-4  bg-white flex-shrink-0  rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 flex flex-col h-[25rem]">
       <img
-        className="mb-5 rounded-lg"
-        src={image}
-        alt="office laptop working"
+        className="mb-5 rounded-lg h-56 object-contain"
+        src={article?.image ? `${IMAGE_BASE_URL}/${article?.image}` : image}
       />
       <div
         className="mb-3 dark:text-gray-400 line-clamp-3 flex-grow"

@@ -172,6 +172,15 @@ function Dashboard() {
       </header>
 
       <main className="flex-1 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-900">
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex gap-2 items-center bg-white dark:bg-gray-800 px-4 py-2 rounded">
+            <Calendar className="w-4 h-4" />
+            <span>Jan 01, 2024 - Jan 07, 2024</span>
+          </div>
+          <button className="bg-gray-800 text-white px-4 py-2 rounded">
+            Download
+          </button>
+        </div>
         {/* Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           {metrics.map((metric, i) => (
@@ -209,7 +218,6 @@ function Dashboard() {
             </div>
           ))}
         </div>
-
         {/* Charts */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
           <div className="bg-white dark:bg-gray-800 p-4 rounded">
@@ -224,7 +232,6 @@ function Dashboard() {
             </div>
           </div>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white dark:bg-gray-800 p-4 rounded">
             <h3 className="mb-2 font-semibold" mb-5>

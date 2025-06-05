@@ -5,6 +5,7 @@ import studentcolFrame from "../../../assets/studentcolFrame.png";
 import { useSelector } from "react-redux";
 import { statusSequence } from "../../../constants/values";
 import { IMAGES } from "../../../constants/images";
+import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const StudentApplicationCard = ({
   data,
@@ -26,6 +27,14 @@ const StudentApplicationCard = ({
     console.log(data);
   };
 
+  const coverImage = data?.college?.images?.find(
+    (img) => img.type === "cover" && !img.isDeleted
+  )?.ImageUrl;
+
+  const logoImage = data?.college?.images?.find(
+    (img) => img.type === "logo" && !img.isDeleted
+  )?.ImageUrl;
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -44,11 +53,17 @@ const StudentApplicationCard = ({
       <div className="relative">
         <img
           className="rounded-t-lg w-full max-w-xl h-40 object-cover"
-          src={IMAGES.noCollege}
+          src={
+            coverImage ? `${IMAGE_BASE_URL}/${coverImage}` : IMAGES.noCollege
+          }
           alt="pic"
         />
-        <div className="absolute w-24 h-24 -bottom-16 left-5">
-          <img src={studentcolFrame} alt="add_img_pic" />
+        <div className="absolute w-20 h-20 -bottom-9 left-5 object-contain shadow-sm">
+          <img
+            src={logoImage ? `${IMAGE_BASE_URL}/${logoImage}` : IMAGES.noLogo}
+            alt="add_img_pic"
+            className="h-20 w-20 rounded-sm"
+          />
         </div>
       </div>
       <div className="p-5 mt-5">

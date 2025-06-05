@@ -49,16 +49,21 @@ const CollegeTable = ({
 
   const handleSubmit = (status, id, college) => {
     try {
-      if (
-        status === "publish" &&
-        (!college?.description?.trim() ||
-          !college?.images?.some((img) => img.type === "cover") ||
-          !college?.images?.some((img) => img.type === "logo"))
-      ) {
-        toast.error(
-          "Add both cover and logo images, and fill out the description to publish the page."
+      if (status === "publish") {
+        const hasDescription = !!college?.description?.trim();
+        const hasCoverImage = college?.images?.some(
+          (img) => img.type === "cover"
         );
-        return;
+        const hasLogoImage = college?.images?.some(
+          (img) => img.type === "logo"
+        );
+
+        if (!hasDescription || !hasCoverImage || !hasLogoImage) {
+          toast.error(
+            "Add both cover and logo images, and fill out the description to publish the page."
+          );
+          return;
+        }
       }
 
       onUpdate({ status: status }, id);

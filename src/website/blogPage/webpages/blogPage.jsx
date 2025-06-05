@@ -12,7 +12,6 @@ function BlogPage() {
   const [blogDetails, setblogDetails] = useState(null);
   const { id } = useParams();
 
-  console.log(id);
   const [isLoading, setIsLoading] = useState(true);
   async function fetchData() {
     try {

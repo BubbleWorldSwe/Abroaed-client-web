@@ -240,7 +240,10 @@ const StudentProfileLayout = () => {
       const college = await getCollegesByDestinationId(destId);
 
       if (college.status === 200) {
-        setCollegesList(college.data?.result);
+        const publishedColleges = college.data?.result?.filter(
+          (item) => item.status === "publish"
+        );
+        setCollegesList(publishedColleges);
       }
     } catch (error) {
       console.log(error);

@@ -18,11 +18,9 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
           {allDestinations?.map((item, index) => (
             <a href={`/destinations/${item._id}`} key={item._id}>
               <li
-
                 className="flex  items-center cursor-pointer justify-between  text-sm text-gray-600 font-semibold hover:text-gray-900   px-5 py-3 hover:bg-gray-100 rounded-lg transition-all"
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-
               >
                 <div className="flex items-center gap-2 ">
                   <span className="">
@@ -31,11 +29,11 @@ const DestinationNavItemModal = ({ handleMouseEnter }) => {
                   <a>{item?.countryId?.name}</a>
                 </div>
                 <ChevronRightIcon
-                  className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
-                    }`}
+                  className={`w-5 h-5   ${
+                    hoveredIndex === index ? " opacity-100" : "opacity-0"
+                  }`}
                 />
               </li>
-
             </a>
           ))}
         </ul>
