@@ -47,7 +47,7 @@ const ExploreCollegesNavItemModal = ({
         </div>
 
         {/* Right Section: States and Colleges */}
-        <div className="py-5 w-3/4 px-5  bg-gray-100 dark:bg-gray-700 overflow-y-auto">
+        <div className="py-5 px-5  bg-gray-100 dark:bg-gray-700 overflow-y-auto">
           {isLoading ? (
             <Loader />
           ) : states.length <= 0 ? (
@@ -66,47 +66,53 @@ const ExploreCollegesNavItemModal = ({
               <h3 className="mb-4 text-lg font-bold text-gray-700 dark:text-white">
                 States
               </h3>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {states.map((state) => (
-                  <button
-                    key={state?._id}
-                    onClick={() => handleStateClick(state)}
-                    className={`px-4 py-2 border rounded-full hover:bg-gray-primary hover:text-white font-semibold ${
-                      selectedState?._id === state?._id
-                        ? "bg-gray-800 text-white"
-                        : "bg-white text-gray-700"
-                    }`}
-                  >
-                    {state?.name}
-                  </button>
-                ))}
+              <div className="mb-4 overflow-x-auto w-[700px]">
+                <div className="flex gap-2 w-max min-w-full pr-2">
+                  {states.map((state) => (
+                    <button
+                      key={state?._id}
+                      onClick={() => handleStateClick(state)}
+                      className={`px-4 py-2 border rounded-full whitespace-nowrap hover:bg-gray-primary hover:text-white font-semibold ${
+                        selectedState?._id === state?._id
+                          ? "bg-gray-800 text-white"
+                          : "bg-white text-gray-700"
+                      }`}
+                    >
+                      {state?.name}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Colleges List */}
               {/*  <h3 className="mb-4 text-lg font-bold text-gray-700 dark:text-white">
               Colleges
             </h3> */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-2 max-h-[55vh] overflow-y-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-2 overflow-y-auto">
                 {isLoading ? (
                   <p>Loading...</p>
                 ) : filteredColleges.length > 0 ? (
-                  filteredColleges.map((college) => (
-                    <UniversityCard item={college} key={college?._id} />
-                  ))
+                  <>
+                    {filteredColleges.slice(0, 10).map((college) => (
+                      <UniversityCard item={college} key={college?._id} />
+                    ))}
+                    {filteredColleges.length > 10 && (
+                      <div className="col-span-2 text-center mt-2">
+                        <a
+                          href={`/destinations/${selectedDestination?._id}`}
+                          className="inline-block px-6 py-2 text-white bg-gray-800 hover:bg-gray-700 rounded font-semibold"
+                        >
+                          Show More
+                        </a>
+                      </div>
+                    )}
+                  </>
                 ) : (
-                  <p>No colleges available for the selected state.</p>
+                  <p className="col-span-2">
+                    No colleges available for the selected state.
+                  </p>
                 )}
               </div>
-              {filteredColleges.length > 10 && (
-                <div className="mt-4 text-center">
-                  <a
-                    href={`/destinations/${selectedDestination?._id}`}
-                    className="px-6 py-2 text-black font-bold"
-                  >
-                    Show More
-                  </a>
-                </div>
-              )}
             </>
           )}
         </div>

@@ -56,11 +56,20 @@ export const getRoles = async () => {
   }
 };
 
-export const getAdminDashboard = async () => {
+export const getAdminDashboard = async (startDate, endDate, userId) => {
+  console.log(startDate, endDate, userId);
   try {
     const { adminToken } = store.getState().auth;
+
+    const params = new URLSearchParams();
+    if (startDate) params.append("startDate", startDate);
+    if (endDate) params.append("endDate", endDate);
+    if (userId) params.append("userId", userId);
+
+    const queryString = params.toString() ? `?${params.toString()}` : "";
+
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/dashboard`,
+      `${BASE_URL}/api/v1/admin/dashboard${queryString}`,
       adminToken
     );
 
