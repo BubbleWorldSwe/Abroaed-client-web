@@ -2,7 +2,7 @@ import PrimaryBodyText from "../../../styleComponents/primaryBodyText";
 import SectionMainHeader from "../../../styleComponents/sectionMainHeader";
 import { motion } from "framer-motion";
 
-const AccommodationHeaderTextSection = () => {
+const CollegeHeaderTextSection = () => {
   return (
     <div className="relative">
       <div className=" relative z-10">
@@ -16,17 +16,16 @@ const AccommodationHeaderTextSection = () => {
               className="overflow-hidden"
             >
               <SectionMainHeader className="mb-4">
-                Accommodation Made Easy at ABROAED
+                Choosing the Right College Made Easy at ABROAED
               </SectionMainHeader>
               <PrimaryBodyText className={""}>
-                Choosing a place to live is one of the first major steps in
-                relocating to a new country, and it can be a little
-                intimidating. There are many factors to consider, ranging from
-                various housing styles to determining what is affordable, safe,
-                and close by. Having someone to help you navigate it all is
-                crucial for this reason. We at ABROAED streamline the process so
-                that your lodging is taken care of before you even pack your
-                bags!
+                Selecting the perfect college is one of the most important steps
+                when planning to study abroad, and it can sometimes feel
+                overwhelming. With so many options to consider—from courses and
+                campus facilities to location, affordability, and student
+                support—making the right choice is crucial. That’s why at
+                ABROAED, we simplify the process for you, helping you find the
+                best college fit even before you start your journey!
               </PrimaryBodyText>
             </motion.div>
           </div>
@@ -36,4 +35,4 @@ const AccommodationHeaderTextSection = () => {
   );
 };
 
-export default AccommodationHeaderTextSection;
+export default CollegeHeaderTextSection;

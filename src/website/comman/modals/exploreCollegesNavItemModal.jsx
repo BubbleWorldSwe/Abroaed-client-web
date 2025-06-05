@@ -47,9 +47,11 @@ const ExploreCollegesNavItemModal = ({
         </div>
 
         {/* Right Section: States and Colleges */}
-        <div className="py-5 px-5  bg-gray-100 dark:bg-gray-700 overflow-y-auto">
+        <div className="py-5 px-5 bg-gray-100 dark:bg-gray-700 overflow-y-auto w-full">
           {isLoading ? (
-            <Loader />
+            <div className="flex items-center justify-center min-h-[300px] w-full">
+              <Loader />
+            </div>
           ) : states.length <= 0 ? (
             <>
               <p className="my-20 text-[16px] font-semibold text-gray-700 text-center">
@@ -99,7 +101,7 @@ const ExploreCollegesNavItemModal = ({
                     {filteredColleges.length > 10 && (
                       <div className="col-span-2 text-center mt-2">
                         <a
-                          href={`/destinations/${selectedDestination?._id}`}
+                          href={`/collegesList/${selectedDestination?._id}`}
                           className="inline-block px-6 py-2 text-white bg-gray-800 hover:bg-gray-700 rounded font-semibold"
                         >
                           Show More

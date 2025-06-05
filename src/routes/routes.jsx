@@ -71,6 +71,7 @@ import AdminResetPassword from "../admin/auth/adminResetPassword";
 import AdminProfile from "../admin/profile/screens/viewProfile";
 import Dashboard from "../admin/dashboard/Dashboard";
 import EventsPage from "../website/events/webpages/eventsPage";
+import CollegesList from "../website/college/webpages/collegesList";
 
 const AppRoutes = () => {
   const allRoutes = [
@@ -196,6 +197,11 @@ const AppRoutes = () => {
     {
       path: "/college/:id",
       element: <CollegePage />,
+      isPrivate: false,
+    },
+    {
+      path: "/collegesList/:id",
+      element: <CollegesList />,
       isPrivate: false,
     },
     {

@@ -39,16 +39,35 @@ function DestinationUniCoursersSection({
                 className="overflow-hidden"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-10">
-                  {collegesList.map((item, index) => (
-                    // index < 20 &&
-                    <UniversityDetailsCard
-                      addToSavedPreferences={addToSavedPreferences}
-                      removeFromSavedPreferences={removeFromSavedPreferences}
-                      item={item}
-                      key={index}
-                    />
-                  ))}
+                  {collegesList.map(
+                    (item, index) =>
+                      index < 12 && (
+                        <UniversityDetailsCard
+                          addToSavedPreferences={addToSavedPreferences}
+                          removeFromSavedPreferences={
+                            removeFromSavedPreferences
+                          }
+                          item={item}
+                          key={index}
+                        />
+                      )
+                  )}
                 </div>
+                {collegesList?.length >= 12 && (
+                  <div className="text-center mb-8">
+                    <a
+                      href={`/collegesList/${destinationDetails._id}`}
+                      className="w-full"
+                    >
+                      <button
+                        type="submit"
+                        className={`py-3 px-10 text-base font-semibold mt-4 text-center text-gray-primary rounded-lg hover:bg-gray-primary hover:text-white bg-yellow-primary  focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500`}
+                      >
+                        View All
+                      </button>
+                    </a>
+                  </div>
+                )}
               </motion.div>
             </div>
 
