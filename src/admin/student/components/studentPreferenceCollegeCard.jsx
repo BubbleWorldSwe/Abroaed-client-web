@@ -14,14 +14,14 @@ const StudentPreferenceCollegeCard = ({ college }) => {
   const logoImage = college?.typeId?.images?.find((img) => img.type === "logo");
 
   return (
-    <div className="bg-white w-80 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="bg-white w-[300px] min-w-[300px] max-w-[384px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="relative">
         <img
           className="rounded-t-lg w-full h-40 object-cover"
           src={
             coverImage
               ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
-              : IMAGES.noImage
+              : IMAGES.noCollege
           }
           alt="cover"
         />
@@ -44,7 +44,7 @@ const StudentPreferenceCollegeCard = ({ college }) => {
 
       <div className="p-5 mt-7">
         <div className="flex justify-between">
-          <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white whitespace-nowrap">
+          <h5 className="text-xl line-clamp-1 font-semibold tracking-tight text-gray-900 dark:text-white whitespace-nowrap">
             {college?.typeId?.name}
           </h5>
         </div>

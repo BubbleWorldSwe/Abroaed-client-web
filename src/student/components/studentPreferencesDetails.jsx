@@ -11,13 +11,7 @@ function StudentPreferenceDetails() {
 
   const handleTabClick = (index) => setActiveTab(index);
 
-  const {
-    savedPreferences,
-    applications,
-    studentProfile,
-    transactions,
-    prepsBatches,
-  } = useSelector((state) => state.studentProfile);
+  const { savedPreferences } = useSelector((state) => state.studentProfile);
 
   const colleges = savedPreferences.filter((pref) => pref.type === "colleges");
   const courses = savedPreferences.filter((pref) => pref.type === "courses");
@@ -25,7 +19,6 @@ function StudentPreferenceDetails() {
     (pref) => pref.type === "accommodation"
   );
 
-  // Decide which array to show based on the active tab
   const activeData =
     activeTab === 0 ? colleges : activeTab === 1 ? courses : accommodations;
 

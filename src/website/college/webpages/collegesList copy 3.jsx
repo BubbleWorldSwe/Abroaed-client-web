@@ -48,7 +48,7 @@ function CollegesList() {
         setIsDataLoading(true);
       }
 
-      const data = await getCollegesByDestinationId(destinationId, page, 40);
+      const data = await getCollegesByDestinationId(destinationId, page);
 
       if (data.status === 200) {
         const publishedCollege = data.data.result.filter(
@@ -58,6 +58,17 @@ function CollegesList() {
         setCollegeList((prev) =>
           append ? [...prev, ...publishedCollege] : publishedCollege
         );
+
+        const uniqueStates = [
+          ...new Map(
+            publishedCollege.map((college) => [
+              college?.stateId?._id,
+              college?.stateId,
+            ])
+          ).values(),
+        ];
+        // setStates(uniqueStates);
+
         setTotalPages(data.data?.totalPages);
       }
 

@@ -38,8 +38,6 @@ function CollegesList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
-  const [states, setStates] = useState([]);
-
   async function fetchColleges(destinationId, page = 1, append = false) {
     try {
       if (append) {
@@ -48,7 +46,7 @@ function CollegesList() {
         setIsDataLoading(true);
       }
 
-      const data = await getCollegesByDestinationId(destinationId, page, 40);
+      const data = await getCollegesByDestinationId(destinationId, page);
 
       if (data.status === 200) {
         const publishedCollege = data.data.result.filter(

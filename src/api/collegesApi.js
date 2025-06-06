@@ -34,10 +34,14 @@ export const getAllColleges = async (page) => {
   }
 };
 
-export const getCollegesByDestinationId = async (destId) => {
+export const getCollegesByDestinationId = async (destId, page, limit) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/colleges/list?filter={"destinationId":"${destId}"}`
+      page
+        ? limit
+          ? `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=${limit}&filter={"destinationId":"${destId}"}`
+          : `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=${pageDataLimit}&filter={"destinationId":"${destId}"}`
+        : `${BASE_URL}/api/v1/admin/colleges/list?filter={"destinationId":"${destId}"}`
     );
 
     if (data.success) {

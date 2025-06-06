@@ -1,6 +1,6 @@
 const LeadPreferenceCourseCard = ({ course }) => {
   return (
-    <div className="w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
+    <div className="bg-white w-[300px] min-w-[300px] max-w-[384px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="flex flex-col flex-grow">
         <div>
           <div className="flex justify-between">

@@ -1,5 +1,15 @@
+import { Viewer, Worker } from "@react-pdf-viewer/core";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+
 const DocumentPreviewModal = ({ isOpen, file, onClose }) => {
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
   if (!isOpen) return null;
+
+  const fileUrl = typeof file === "string" ? file : URL.createObjectURL(file);
 
   return (
     <div className="fixed inset-0 z-[9999] bg-black bg-opacity-70 flex items-center justify-center">
@@ -11,19 +21,33 @@ const DocumentPreviewModal = ({ isOpen, file, onClose }) => {
         >
           ❌
         </button>
-        {file?.toLowerCase().endsWith(".pdf") ? (
-          <object
-            data={file}
-            type="application/pdf"
-            className="w-full h-[80vh]"
-          >
-            <p>
-              Your browser does not support PDFs.{" "}
-              <a href={file}>Download the PDF</a>.
-            </p>
-          </object>
+        {file?.name?.toLowerCase()?.endsWith(".pdf") ||
+        file?.toLowerCase?.()?.endsWith(".pdf") ? (
+          <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js">
+            <div
+              style={{
+                height: "750px",
+                maxWidth: "900px",
+                margin: "0 auto",
+              }}
+            >
+              <Viewer
+                fileUrl={fileUrl}
+                plugins={[defaultLayoutPluginInstance]}
+                renderError={(error) => (
+                  <div className="text-red-500 p-4">
+                    Failed to load PDF: {error.message}
+                  </div>
+                )}
+              />
+            </div>
+          </Worker>
         ) : (
-          <img src={file} alt="Document" className="w-full h-auto" />
+          <img
+            src={fileUrl}
+            alt="Document"
+            className="w-full h-auto min-h-36"
+          />
         )}
       </div>
     </div>

@@ -6,7 +6,7 @@ import { IMAGES } from "../../../constants/images";
 
 const StudentPreferenceAccommodationCard = ({ accommodation }) => {
   return (
-    <div className="max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+    <div className="bg-white w-[300px] min-w-[300px] max-w-[384px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <img
         className="rounded-t-lg w-full h-48 object-cover"
         //  src={accommodations}
@@ -14,7 +14,7 @@ const StudentPreferenceAccommodationCard = ({ accommodation }) => {
         src={
           accommodation?.typeId?.imageUrl
             ? `${IMAGE_BASE_URL}/${accommodation?.typeId?.imageUrl}`
-            : IMAGES.noImage
+            : IMAGES.noAccommodation
         }
       />
       <div className="p-5 flex flex-col flex-grow">

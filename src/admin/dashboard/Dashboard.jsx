@@ -392,7 +392,7 @@ function Dashboard() {
 
           <div className="bg-white dark:bg-gray-800 p-4 rounded">
             <h3 className="mb-4 font-semibold">Applications</h3>
-            <div className="w-full h-96 flex items-center justify-center">
+            <div className="flex items-center justify-center">
               <Pie data={applicationData} options={chartOptions} />
             </div>
           </div>
