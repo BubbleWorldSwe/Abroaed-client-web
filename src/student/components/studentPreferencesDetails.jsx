@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import StudentPreferenceCollegeCard from "./studentPreferenceCollegeCard";
 import StudentPreferenceCourseCard from "./studentPreferenceCourseCard";
 import StudentPreferenceAccommodationCard from "./studentPreferenceAccommodationCard";
 
-function StudentPreferenceDetails() {
+function StudentPreferenceDetails({ removeFromSavedPreferences }) {
   const [activeTab, setActiveTab] = useState(0);
   const tabs = ["Colleges", "Course", "Accommodations"];
 
@@ -21,6 +21,10 @@ function StudentPreferenceDetails() {
 
   const activeData =
     activeTab === 0 ? colleges : activeTab === 1 ? courses : accommodations;
+
+  useEffect(() => {
+    console.log("savedPreferences changes");
+  }, [savedPreferences]);
 
   return (
     <div>
@@ -55,15 +59,24 @@ function StudentPreferenceDetails() {
           <>
             {activeTab === 0 &&
               colleges.map((college, index) => (
-                <StudentPreferenceCollegeCard key={index} college={college} />
+                <StudentPreferenceCollegeCard
+                  removeFromSavedPreferences={removeFromSavedPreferences}
+                  key={index}
+                  college={college}
+                />
               ))}
             {activeTab === 1 &&
               courses.map((course, index) => (
-                <StudentPreferenceCourseCard key={index} course={course} />
+                <StudentPreferenceCourseCard
+                  removeFromSavedPreferences={removeFromSavedPreferences}
+                  key={index}
+                  course={course}
+                />
               ))}
             {activeTab === 2 &&
               accommodations.map((acc, index) => (
                 <StudentPreferenceAccommodationCard
+                  removeFromSavedPreferences={removeFromSavedPreferences}
                   key={index}
                   accommodation={acc}
                 />

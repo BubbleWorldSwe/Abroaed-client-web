@@ -8,18 +8,13 @@ const ProfileModal = ({ handleMouseEnter, handleMouseLeave, logout }) => {
       onMouseLeave={() => setTimeout(handleMouseLeave, 200)}
     >
       <ul className="space-2 grid grid-cols-1 w-[15vw]  shadow-lg  rounded-b-lg mt-2 bg-white">
-        {/* {menuItems?.map((data, index) => ( */}
-        <li
-          className="flex hover:opacity-100  items-center justify-between border-b border-gray-200  text-sm text-gray-600 font-semibold hover:text-gray-900   px-3 py-2 hover:bg-gray-100 rounded-lg transition-all"
-          // onMouseEnter={() => setHoveredIndex('index')}
-        >
+        <li className="flex hover:opacity-100  items-center justify-between border-b border-gray-200  text-sm text-gray-600 font-semibold hover:text-gray-900   px-3 py-2 hover:bg-gray-100 rounded-lg transition-all">
           <div className="">
             <a
-              // style={{ backgroundColor: "olive" }}
               href={"/student/profile"}
-              className=" gap-2 px-4 py-2  w-full flex  items-center "
+              className="flex text-sm font-semibold text-gray-700 py-1 gap-2 px-2"
             >
-              <CircleUser />
+              <CircleUser size={20} />
               <span>View Profile</span>
             </a>
           </div>
@@ -28,10 +23,9 @@ const ProfileModal = ({ handleMouseEnter, handleMouseLeave, logout }) => {
           <div className="">
             <a
               href={"/student/home"}
-              //  style={{ backgroundColor: "palevioletred" }}
-              className=" gap-2 px-4 py-2  w-full flex  items-center "
+              className="flex text-sm font-semibold text-gray-700 py-1 gap-2 px-2"
             >
-              <LayoutDashboard />
+              <LayoutDashboard size={20} />
               <span>View Dashboard</span>
             </a>
           </div>
@@ -40,10 +34,9 @@ const ProfileModal = ({ handleMouseEnter, handleMouseLeave, logout }) => {
           <div className="">
             <a
               onClick={logout}
-              // href={}
-              className=" gap-2 px-4 py-2  w-full flex  items-center "
+              className="flex text-sm font-semibold text-gray-700 py-1 gap-2 px-2"
             >
-              <LogOut />
+              <LogOut size={20} />
               <span>Sign Out</span>
             </a>
           </div>

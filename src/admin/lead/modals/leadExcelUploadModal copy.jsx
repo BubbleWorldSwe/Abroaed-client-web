@@ -51,7 +51,6 @@ const LeadExcelUploadModal = ({ isOpen, onClose, onUploadBulkLead }) => {
 
     try {
       const data = await parseExcelOrCsv(file);
-      console.log("Parsed Data:", data);
 
       if (!data || data.length === 0) {
         toast.error("No data found in the file.");

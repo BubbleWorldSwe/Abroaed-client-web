@@ -18,9 +18,9 @@ const NavStudent = () => {
   return (
     <>
       <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md">
-        <div>
+        <a href="/home">
           <img src={IMAGES.logoBlack} alt="Logo" className="h-8 w-10" />
-        </div>
+        </a>
         <div className="flex items-center space-x-5">
           <div className="flex-1 mx-4 max-w-md">
             <div className="relative">

@@ -121,7 +121,6 @@ export const setUploadBulkLead = async (fileData) => {
       fileData
     );
 
-    console.log(data);
     if (data.success) {
       return data.data;
     }

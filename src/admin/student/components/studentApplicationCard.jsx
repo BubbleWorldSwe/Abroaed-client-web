@@ -23,8 +23,6 @@ const StudentApplicationCard = ({
   const toggleMenu = (data) => {
     setIsMenuOpen((prev) => !prev);
     setSelectedApplication(data);
-
-    console.log(data);
   };
 
   const coverImage = data?.college?.images?.find(

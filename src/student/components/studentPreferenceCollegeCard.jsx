@@ -4,8 +4,12 @@ import fluent_person from "../../assets/fluent_person.png";
 import Book from "../../assets/Book.png";
 import { IMAGE_BASE_URL } from "../../constants/baseUrl";
 import { IMAGES } from "../../constants/images";
+import { Delete, DeleteIcon, Trash2 } from "lucide-react";
 
-const StudentPreferenceCollegeCard = ({ college }) => {
+const StudentPreferenceCollegeCard = ({
+  college,
+  removeFromSavedPreferences,
+}) => {
   const coverImage = college?.typeId?.images?.find(
     (img) => img.type === "cover"
   );
@@ -23,7 +27,12 @@ const StudentPreferenceCollegeCard = ({ college }) => {
               : IMAGES.noCollege
           }
           alt="cover"
+          //onClick={removeFromSavedPreferences(college._id)}
         />
+
+        {/*  <div onClick={() => removeFromSavedPreferences(college._id)}>
+          <Trash2 />
+        </div> */}
         <div className="absolute w-20 h-20 -bottom-7 left-5 bg-white rounded-[5px] overflow-hidden shadow-md">
           {logoImage ? (
             <img

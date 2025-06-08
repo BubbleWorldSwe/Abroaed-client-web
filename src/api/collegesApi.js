@@ -36,13 +36,12 @@ export const getAllColleges = async (page) => {
 
 export const getCollegesByDestinationId = async (destId, page, limit) => {
   try {
-    const data = await makeGetRequest(
-      page
-        ? limit
-          ? `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=${limit}&filter={"destinationId":"${destId}"}`
-          : `${BASE_URL}/api/v1/admin/colleges/list?page=${page}&limit=${pageDataLimit}&filter={"destinationId":"${destId}"}`
-        : `${BASE_URL}/api/v1/admin/colleges/list?filter={"destinationId":"${destId}"}`
-    );
+    let url = `${BASE_URL}/api/v1/admin/colleges/list?filter={"destinationId":"${destId}"}`;
+    let query = page
+      ? `&page=${page}&limit=${limit ? limit : pageDataLimit}`
+      : "";
+
+    const data = await makeGetRequest(url + query);
 
     if (data.success) {
       return data.data;

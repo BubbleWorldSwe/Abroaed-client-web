@@ -1,6 +1,6 @@
 import { SquareUserRound } from "lucide-react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CheckboxField } from "../../commons/components/inputFields/checkboxField";
 import { formatDate, formatStudentApplications } from "../../utils/helper";
@@ -8,13 +8,27 @@ import StudentApplicationsList from "../components/studentApplicationsList";
 import StudentPreferenceDetails from "../components/studentPreferencesDetails";
 import { IMAGES } from "../../constants/images";
 import ActivityLoader from "../../commons/components/loader/activityLoader";
+import {
+  deleteSavedPreferenceRequest,
+  fetchSavedPreferencesRequest,
+} from "../../redux/actions/savedPreferencesActions";
 
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);
   const { loading } = useSelector((state) => state?.studentProfile);
-  const { applications, studentProfile, prepsBatches } = useSelector(
-    (state) => state.studentProfile
-  );
+  const { applications, studentProfile, prepsBatches, savedPreferences } =
+    useSelector((state) => state.studentProfile);
+
+  const dispatch = useDispatch();
+
+  const removeFromSavedPreferences = (id) => {
+    try {
+      dispatch(deleteSavedPreferenceRequest(id));
+      dispatch(fetchSavedPreferencesRequest(studentId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const studentApplications = formatStudentApplications(applications || []);
 
@@ -34,6 +48,13 @@ const StudentHome = () => {
       navigate("/home");
     }
   }, [studentToken, studentId, navigate]);
+
+  console.log(savedPreferences.length);
+
+  useEffect(() => {
+    console.log("Saved Pref Changes");
+    dispatch(fetchSavedPreferencesRequest(studentId));
+  }, [savedPreferences]);
 
   return (
     <>
@@ -91,7 +112,9 @@ const StudentHome = () => {
           </a> */}
           </div>
           <div className="mt-2  bg-white p-6 rounded-xl shadow-md">
-            <StudentPreferenceDetails />
+            <StudentPreferenceDetails
+              removeFromSavedPreferences={removeFromSavedPreferences}
+            />
           </div>
         </div>
         {/* my applications */}

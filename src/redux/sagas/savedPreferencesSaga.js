@@ -26,6 +26,8 @@ function* fetchSavedPreferences(action) {
   try {
     const data = yield call(getSavedPreferences, action.payload);
 
+    console.log(data);
+
     if (data.status === 200) {
       yield put(fetchSavedPreferencesSuccess(data.data));
     } else {

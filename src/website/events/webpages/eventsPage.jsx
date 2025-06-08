@@ -11,7 +11,6 @@ function EventsPage() {
   const dispatch = useDispatch();
 
   const handleAddLead = (data) => {
-    console.log(data);
     dispatch(addLeadRequest(data));
   };
 

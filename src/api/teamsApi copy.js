@@ -44,12 +44,10 @@ export const getTeams = async (page) => {
 
       // 🔥 Apply role-based filtering
       if (role === "Backend Manager") {
-        console.log("Backend Manager");
         result = result.filter(
           (member) => member.roleId?.roleName === "Backend Associate"
         );
       } else if (role === "Counsellor Manager") {
-        console.log("Counsellor Manager");
         result = result.filter(
           (member) => member.roleId?.roleName === "Counsellor"
         );

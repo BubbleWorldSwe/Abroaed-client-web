@@ -244,16 +244,24 @@ function Header({ isHeaderBgWhite = false }) {
       label: "Destinations",
       component: DestinationNavItemModal,
     },
-    {
-      key: "profile",
-      label: "Profile & Settings",
-      link: "/student/home",
-      /*  subItems: [
-        { title: "Dashboard", link: "/student/home" },
-        { title: "My Profile", link: "/student/profile" },
-      ], */
-    },
   ];
+
+  // const socialLinks = [
+  //   {
+  //     icon: <FaInstagram size={20} />,
+  //     url: "https://www.instagram.com/abroaed/?igsh=MW9qenltenBzZDIxeg%3D%3D#",
+  //   },
+  //   // { icon: <FaFacebook size={20} />, url: "#" },
+  //   {
+  //     icon: <FaLinkedin size={20} />,
+  //     url: "https://www.linkedin.com/company/abroaed/posts/?feedView=all",
+  //   },
+  //   {
+  //     icon: <FaXTwitter size={20} />,
+  //     url: "https://x.com/i/flow/login?redirect_after_login=%2Fabroaed",
+  //   }, // X (formerly Twitter)
+  //   // { icon: <FaYoutube size={20} />, url: "#" } // YouTube
+  // ];
 
   return (
     <header
@@ -366,6 +374,53 @@ function Header({ isHeaderBgWhite = false }) {
           </div>
         </div>
         <div className="flex items-center gap-5">
+          <div className="flex flex-grow-0 basis-[10%] justify-end ">
+            <div
+              onMouseEnter={() => handleMouseEnter("login")}
+              onMouseLeave={handleMouseLeave}
+            >
+              {studentToken ? (
+                <>
+                  <button
+                    // onClick={() => navigate("/signin")}
+                    className={`px-4 py-1  whitespace-nowrap bg-[#FDDA24] hover:bg-[#508030]  text-[#27272A] hover:border-none font-medium text-sm rounded-lg`}
+                  >
+                    Hello, {`${student?.firstName} ${student?.lastName}`}
+                  </button>
+                  {activeDropdown === "login" && (
+                    <div className="relative">
+                      <ProfileModal
+                        handleMouseEnter={handleMouseEnter}
+                        handleMouseLeave={handleMouseLeave}
+                        logout={() => setIsModalOpen(true)}
+                      />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <button
+                  onClick={() => navigate("/signin")}
+                  className={`px-4 py-1  bg-[#FDDA24] hover:bg-white font-semibold text-[#27272A] hover:border-none text-sm rounded-lg`}
+                >
+                  Login
+                </button>
+              )}
+            </div>
+          </div>
+          {/* <div className="flex   md:justify-end  space-x-3">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  className=" text-white hover:text-gray-300 rounded-full"
+                  aria-label="Social Link"
+                  target="_blank"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div> */}
+          {/* explore colleges mobile view  */}
           <div>
             <button
               className="block md:hidden p-2 basis-[0%]"
@@ -418,39 +473,37 @@ function Header({ isHeaderBgWhite = false }) {
             )}
           </div>
 
-          <div className="flex flex-grow-0 basis-[10%] justify-end ">
-            <div
-              onMouseEnter={() => handleMouseEnter("login")}
-              onMouseLeave={handleMouseLeave}
-            >
-              {studentToken ? (
-                <>
-                  <button
-                    // onClick={() => navigate("/signin")}
-                    className={`px-4 py-1  whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
-                  >
-                    Hello, {`${student?.firstName}`}
-                  </button>
-                  {activeDropdown === "login" && (
-                    <div className="relative">
-                      <ProfileModal
-                        handleMouseEnter={handleMouseEnter}
-                        handleMouseLeave={handleMouseLeave}
-                        logout={() => setIsModalOpen(true)}
-                      />
-                    </div>
-                  )}
-                </>
-              ) : (
-                <button
-                  onClick={() => navigate("/signin")}
-                  className={`px-4 py-1  whitespace-nowrap  bg-yellow-primary hover:bg-white font-semibold text-gray-primary hover:border-none text-sm rounded-lg`}
+          {/* <div className="hidden md:block">
+              <div
+                onMouseEnter={() => handleMouseEnter("socialIcon")}
+                onMouseLeave={handleMouseLeave}
+                className={`relative cursor-pointer group 
+                   ${activeDropdown === "socialIcon" ? "" : ""}`}
+
+              >
+                <p
+                  className={`px-1 relative transition-colors duration-300  
+                after:content-[''] after:absolute after:-top-7 after:left-0 after:w-full after:h-[3.5rem]
+                after:bg-white after:opacity-0 after:rounded-sm after:transition-opacity after:duration-300
+                ${activeDropdown === "socialIcon"
+                      ? "after:opacity-100 after:-z-10 font-semibold text-gray-primary"
+                      : ""
+                    }
+                    `}
                 >
-                  Login
-                </button>
+                  <Phone />
+                </p>
+              </div>
+              {activeDropdown === "socialIcon" && (
+                <div className="relative">
+                  <SocialIconNavModal
+                    handleMouseEnter={handleMouseEnter}
+                   handleMouseLeave={handleMouseLeave}
+                  />
+                </div>
               )}
-            </div>
-          </div>
+
+            </div> */}
         </div>
 
         {/* mobile menu */}
@@ -463,7 +516,6 @@ function Header({ isHeaderBgWhite = false }) {
           expanded={expanded}
           isOpenHambarger={isOpenHambarger}
           activeDropdown={activeDropdown}
-          logout={() => setIsModalOpen(true)}
         />
       </nav>
       <LogoutModal

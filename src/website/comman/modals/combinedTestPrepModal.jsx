@@ -22,9 +22,7 @@ const CombinedTestPrepModal = ({
           {/* ELT Prep Main Item */}
 
           {eltPreps.map((data, index) => (
-            <a href={`/testprep/${data?._id}`}
-              key={index}
-            >
+            <a href={`/testprep/${data?._id}`} key={index}>
               <li
                 className="flex  items-center justify-between  cursor-pointer text-sm text-gray-600 font-semibold hover:text-gray-900   border-b border-gray-200  px-3 py-1 hover:bg-gray-100 rounded-lg transition-all"
                 onMouseEnter={() => setHoveredIndex(index)}
@@ -36,13 +34,13 @@ const CombinedTestPrepModal = ({
                   </span>
                 </a>
                 <ChevronRightIcon
-                  className={`w-5 h-5   ${hoveredIndex === index ? " opacity-100" : "opacity-0"
-                    }`}
+                  className={`w-5 h-5   ${
+                    hoveredIndex === index ? " opacity-100" : "opacity-0"
+                  }`}
                 />
               </li>
             </a>
           ))}
-
 
           {/* Language Prep Main Item */}
           <li
@@ -57,8 +55,9 @@ const CombinedTestPrepModal = ({
               Language Prep
             </span>
             <ChevronRightIcon
-              className={`w-5 h-5   ${hoveredIndex === "lang" ? " opacity-100" : "opacity-0"
-                }`}
+              className={`w-5 h-5   ${
+                hoveredIndex === "lang" ? " opacity-100" : "opacity-0"
+              }`}
             />
             {/* Submenu for Language */}
             {activeSubMenu === "lang" && (

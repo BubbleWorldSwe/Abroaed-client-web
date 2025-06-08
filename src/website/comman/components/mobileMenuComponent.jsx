@@ -2,6 +2,7 @@
 import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import BookCounsellingModal from "../modals/bookCounsellingModal";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MobileMenuComponent = ({
   setIsOpenHambarger,
@@ -12,8 +13,11 @@ const MobileMenuComponent = ({
   handleMouseEnter,
   handleMouseLeave,
   activeDropdown,
+  logout,
 }) => {
   const navigate = useNavigate();
+
+  const { studentToken } = useSelector((state) => state.auth);
 
   return (
     <div className="">
@@ -35,74 +39,85 @@ const MobileMenuComponent = ({
 
           {/*mobile Menu Items */}
           <ul className="space-y-1 px-4 py-2">
-            {mobileMenuItem.map(
-              (
-                { label, link, subItems, component: Component, data },
-                index
-              ) => (
-                <li key={index}>
-                  <a href={link}>
-                    <button
-                      className="w-full  flex justify-between  py-2 text-[18px] font-normal  transition-all ease-in-out delay-150 "
-                      onClick={() => toggleSubMenu(label)}
-                    >
-                      {label}
-                      {subItems || Component ? (
-                        expanded === label ? (
-                          <ChevronUp size={18} />
+            {mobileMenuItem
+              .filter((item) => item.key !== "profile" || studentToken)
+              .map(
+                (
+                  { label, link, subItems, component: Component, data },
+                  index
+                ) => (
+                  <li key={index}>
+                    <a href={link}>
+                      <button
+                        className="w-full  flex justify-between  py-2 text-[18px] font-normal  transition-all ease-in-out delay-150 "
+                        onClick={() => toggleSubMenu(label)}
+                      >
+                        {label}
+                        {subItems || Component ? (
+                          expanded === label ? (
+                            <ChevronUp size={18} />
+                          ) : (
+                            <ChevronDown size={18} />
+                          )
                         ) : (
-                          <ChevronDown size={18} />
-                        )
-                      ) : (
-                        ""
-                      )}
-                    </button>
-                  </a>
-                  {expanded === label && subItems?.length > 0 && (
-                    <div className="">
-                      {subItems?.map(({ title, link }, index) => (
-                        <>
-                          <a key={index} href={link}>
-                            <div className="hover:bg-white hover:bg-opacity-10 py-1 ">
-                              {title}
-                            </div>
-                          </a>
-                          {/* <hr className="bg-white " /> */}
-                        </>
-                      ))}
-                    </div>
-                  )}
-                  {expanded === label && Component && (
-                    <Component
-                      handleMouseEnter={handleMouseEnter}
-                      {...(data && Array.isArray(data)
-                        ? {
-                            menuItems: data.map(
-                              ({ productName, _id, exam }) => ({
-                                title: productName,
-                                _id,
-                                shortForm: exam ? exam : "",
-                              })
-                            ),
-                          }
-                        : { ...data })}
-                      onClose={handleMouseLeave}
-                    />
-                  )}
-                </li>
-              )
-            )}
+                          ""
+                        )}
+                      </button>
+                    </a>
+                    {expanded === label && subItems?.length > 0 && (
+                      <div className="">
+                        {subItems?.map(({ title, link }, index) => (
+                          <>
+                            <a key={index} href={link}>
+                              <div className="hover:bg-white hover:bg-opacity-10 py-1 ">
+                                {title}
+                              </div>
+                            </a>
+                            {/* <hr className="bg-white " /> */}
+                          </>
+                        ))}
+                      </div>
+                    )}
+                    {expanded === label && Component && (
+                      <Component
+                        handleMouseEnter={handleMouseEnter}
+                        {...(data && Array.isArray(data)
+                          ? {
+                              menuItems: data.map(
+                                ({ productName, _id, exam }) => ({
+                                  title: productName,
+                                  _id,
+                                  shortForm: exam ? exam : "",
+                                })
+                              ),
+                            }
+                          : { ...data })}
+                        onClose={handleMouseLeave}
+                      />
+                    )}
+                  </li>
+                )
+              )}
           </ul>
 
           <div className="relative flex flex-col  gap-4 py-4 justify-end  h-[35%] ">
             <hr className="w-full  mb-4 bg-white " />
             <div className="px-2 w-full mx-auto">
-              <button
-                onClick={() => navigate("/signIn")}
-                className={`px-4 py-3 border-2  whitespace-nowrap w-full bg-gray-primary  hover:bg-white font-semibold text-white hover:border-none text-lg rounded-full`}
-              >
-                Sign In
-              </button>
+              {studentToken ? (
+                <button
+                  onClick={logout}
+                  className={`px-4 py-3 border-2  whitespace-nowrap w-full bg-gray-primary  hover:bg-white font-semibold hover:text-black text-lg rounded-full`}
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <button
+                  onClick={() => navigate("/signIn")}
+                  className={`px-4 py-3 border-2  whitespace-nowrap w-full bg-gray-primary  hover:bg-white font-semibold hover:text-black text-lg rounded-full`}
+                >
+                  Sign In
+                </button>
+              )}
             </div>
             <div className="w-full px-2 mx-auto">
               <button

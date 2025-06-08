@@ -59,8 +59,6 @@ function* fetchFilterLeads(action) {
     const { startDate, endDate, page } = action.payload;
     const data = yield call(getFilterLeads, startDate, endDate, page);
 
-    console.log(data);
-
     if (data.status === 200) {
       yield put(fetchLeadsFilterDataSuccess(data.data));
     } else {
@@ -76,8 +74,6 @@ function* fetchFilterLeads(action) {
 function* searchLeads(action) {
   try {
     const data = yield call(getSearchLeads, action.payload);
-
-    console.log(data);
 
     if (data.status === 200) {
       yield put(searchLeadsSuccess(data.data));
