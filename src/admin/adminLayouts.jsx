@@ -4,19 +4,22 @@ import AdminNav from "./adminNav";
 
 const AdminLayout = () => {
   return (
-    <div className="bg-gray-200 font-rethink relative dark:bg-gray-900 antialiased h-screen">
+    <div className="min-h-screen h-[100vh] w-full bg-gray-200 font-rethink dark:bg-gray-900 antialiased flex flex-col">
+      {/* Navbar */}
       <AdminNav />
-      <div className="flex h-[90vh]">
+
+      {/* Content Area */}
+      <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <CollapsableSidebar className="h-full" />
+
         {/* Main Content */}
-        <main className="bg-gray-200 dark:bg-gray-900 h-full  w-full flex flex-col">
-          <div className="flex-grow  overflow-scroll">
-            <Outlet />
-          </div>
+        <main className="flex-1 overflow-auto bg-gray-200 dark:bg-gray-900">
+          <Outlet />
         </main>
       </div>
     </div>
+
   );
 };
 

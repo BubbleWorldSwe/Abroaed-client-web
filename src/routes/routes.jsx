@@ -243,7 +243,6 @@ const AppRoutes = () => {
       requiredRole: "admin",
       children: [
         { path: "", element: <Navigate to="dashboard" replace /> },
-
         { path: "dashboard", element: <Dashboard /> },
         { path: "viewProfile", element: <AdminProfile /> },
         { path: "teams", element: <Teams /> },

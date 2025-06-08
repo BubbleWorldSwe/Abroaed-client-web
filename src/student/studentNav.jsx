@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { IMAGES } from "../constants/images";
 import { useDispatch } from "react-redux";
 import { studentLogout } from "../redux/actions/authActions";
 import LogoutModal from "../commons/modal/logoutModal";
@@ -18,9 +17,14 @@ const NavStudent = () => {
   return (
     <>
       <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md">
-        <a href="/home">
-          <img src={IMAGES.logoBlack} alt="Logo" className="h-8 w-10" />
-        </a>
+        <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
+          <a
+            href="/student/home"
+            className="font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] text-black"
+          >
+            ABROA<span style={{ color: "#fbba18" }}>ED</span>
+          </a>
+        </h3>
         <div className="flex items-center space-x-5">
           <div className="flex-1 mx-4 max-w-md">
             <div className="relative">

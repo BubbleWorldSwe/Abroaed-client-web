@@ -78,14 +78,14 @@ const StudentHome = () => {
             </div>
             <div className="flex flex-col  gap-3">
               {counsellor && (
-                <div className="p-4 flex gap-3 text-center border border-gray-200 rounded-lg w-[20vw]">
+                <div className="p-4 flex gap-3 text-center border border-gray-200 rounded-lg ">
                   <SquareUserRound className="w-10 h-10" />
                   <div className="flex flex-col gap-1 text-start">
-                    <p className="text-sm font-semibold">
+                    <p className="text-sm whitespace-nowrap  font-semibold">
                       Counsellor:{" "}
                       {`${counsellor?.firstName} ${counsellor?.lastName}`}
                     </p>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs whitespace-nowrap text-gray-600">
                       Next Counselling on 17/02
                     </p>
                   </div>

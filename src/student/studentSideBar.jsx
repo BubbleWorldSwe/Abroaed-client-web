@@ -28,7 +28,7 @@ const StudentSideBar = () => {
   ];
   return (
     <motion.div animate={{ width: isOpen ? 220 : 60 }}>
-      <aside className="h-[90vh]  py-5 w-full bg-white flex flex-col p-2">
+      <aside className="h-[90vh]  py-5  bg-white w-full flex flex-col p-2">
         <nav className="flex flex-col gap-2">
           {menuItems.map(({ path, label, icon: Icon }) => (
             <SidebarItem
@@ -36,6 +36,7 @@ const StudentSideBar = () => {
               path={path}
               label={label}
               Icon={Icon}
+              isOpen={isOpen}
               isActive={isActive}
             />
           ))}
