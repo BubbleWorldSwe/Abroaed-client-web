@@ -5,12 +5,12 @@ import HeroTextComponent from "../../../styleComponents/heroText";
 function EventsHeroSection() {
   return (
     <HeroTextComponent img={eventHero}>
-      {/* <h1 className={heroStyle.header}>
+      <h1 className={heroStyle.header}>
         Education Expo 2025
       </h1>
       <p className={heroStyle.text}>
         Your Path to Higher Studies
-      </p> */}
+      </p>
     </HeroTextComponent>
   );
 }
