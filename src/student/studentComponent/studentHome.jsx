@@ -12,6 +12,9 @@ import {
   deleteSavedPreferenceRequest,
   fetchSavedPreferencesRequest,
 } from "../../redux/actions/savedPreferencesActions";
+import { toast } from "react-toastify";
+import { setDeleteSavedPreference } from "../../api/savedPreferencesApi";
+import { fetchStudentSavedPreferencesRequest } from "../../redux/actions/studentProfileActions";
 
 const StudentHome = () => {
   const { studentToken, studentId } = useSelector((state) => state.auth);
@@ -21,10 +24,16 @@ const StudentHome = () => {
 
   const dispatch = useDispatch();
 
-  const removeFromSavedPreferences = (id) => {
+  const removeFromSavedPreferences = async (id) => {
     try {
-      dispatch(deleteSavedPreferenceRequest(id));
-      dispatch(fetchSavedPreferencesRequest(studentId));
+      const data = await setDeleteSavedPreference(id);
+
+      if (data.status === 200) {
+        dispatch(fetchStudentSavedPreferencesRequest(studentId));
+        toast.success("Successfully Removed from Saved Prefrences");
+      } else {
+        toast.error(data?.message || "Something Went Wrong...");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -48,13 +57,6 @@ const StudentHome = () => {
       navigate("/home");
     }
   }, [studentToken, studentId, navigate]);
-
-  console.log(savedPreferences.length);
-
-  useEffect(() => {
-    console.log("Saved Pref Changes");
-    dispatch(fetchSavedPreferencesRequest(studentId));
-  }, [savedPreferences]);
 
   return (
     <>

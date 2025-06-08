@@ -1,22 +1,35 @@
 /* eslint-disable react/prop-types */
 
+import { Bookmark } from "lucide-react";
 import locationIcon from "../../assets/locationIcon.png";
 import wallet from "../../assets/wallet.png";
 import { IMAGE_BASE_URL } from "../../constants/baseUrl";
 import { IMAGES } from "../../constants/images";
 
-const StudentPreferenceAccommodationCard = ({ accommodation }) => {
+const StudentPreferenceAccommodationCard = ({
+  accommodation,
+  removeFromSavedPreferences,
+}) => {
   return (
     <div className="bg-white w-[300px] min-w-[300px] max-w-[384px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <img
-        className="rounded-t-lg w-full h-48 object-cover"
-        src={
-          accommodation?.typeId?.imageUrl
-            ? `${IMAGE_BASE_URL}/${accommodation?.typeId?.imageUrl}`
-            : IMAGES.noAccommodation
-        }
-        alt={accommodation.name}
-      />
+      <div className="relative">
+        <img
+          className="rounded-t-lg w-full h-48 object-cover"
+          src={
+            accommodation?.typeId?.imageUrl
+              ? `${IMAGE_BASE_URL}/${accommodation?.typeId?.imageUrl}`
+              : IMAGES.noAccommodation
+          }
+          alt={accommodation.name}
+        />
+        <div
+          className="absolute top-2 right-2 bg-white p-1 rounded-full shadow cursor-pointer"
+          onClick={() => removeFromSavedPreferences(accommodation._id)}
+        >
+          <Bookmark className="w-5 h-5 text-gray-700" fill="" />
+        </div>
+      </div>
+
       <div className="p-5 flex flex-col flex-grow">
         {/* Header */}
         <div className="flex justify-between">

@@ -4,7 +4,7 @@ import fluent_person from "../../assets/fluent_person.png";
 import Book from "../../assets/Book.png";
 import { IMAGE_BASE_URL } from "../../constants/baseUrl";
 import { IMAGES } from "../../constants/images";
-import { Delete, DeleteIcon, Trash2 } from "lucide-react";
+import { Bookmark, Delete, DeleteIcon, Trash2 } from "lucide-react";
 
 const StudentPreferenceCollegeCard = ({
   college,
@@ -30,9 +30,12 @@ const StudentPreferenceCollegeCard = ({
           //onClick={removeFromSavedPreferences(college._id)}
         />
 
-        {/*  <div onClick={() => removeFromSavedPreferences(college._id)}>
-          <Trash2 />
-        </div> */}
+        <div
+          className="absolute top-2 right-2 bg-white p-1 rounded-full shadow cursor-pointer"
+          onClick={() => removeFromSavedPreferences(college._id)}
+        >
+          <Bookmark className="w-5 h-5 text-gray-700" fill />
+        </div>
         <div className="absolute w-20 h-20 -bottom-7 left-5 bg-white rounded-[5px] overflow-hidden shadow-md">
           {logoImage ? (
             <img

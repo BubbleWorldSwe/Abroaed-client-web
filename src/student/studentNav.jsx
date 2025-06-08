@@ -19,7 +19,7 @@ const NavStudent = () => {
       <nav className="bg-white w-full border-b border-gray-300 px-10 py-3 flex items-center justify-between drop-shadow-md">
         <h3 className="text-lg font-semibold sm:text-3xl md:text-4xl lg:text-lg">
           <a
-            href="/student/home"
+            href="/home"
             className="font-cinzel tracking-[0.15em] text-2xl font-extrabold leading-[40px] text-black"
           >
             ABROA<span style={{ color: "#fbba18" }}>ED</span>

@@ -14,6 +14,7 @@ const initialState = {
   loading: false,
   savedPreferences: new Set(),
   error: null,
+  success: null,
 };
 
 export const savedPreferencesReducer = (state = initialState, action) => {
@@ -28,6 +29,7 @@ export const savedPreferencesReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         savedPreferences: new Set(action.payload.result), // Convert array to Set
+        success: true,
       };
 
     case FETCH_SAVEDPREFERENCES_FAILURE:

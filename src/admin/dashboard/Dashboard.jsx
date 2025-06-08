@@ -158,7 +158,7 @@ function Dashboard() {
     datasets: [
       {
         data: [leads?.Converted, leads?.nurture, leads?.Lost],
-        backgroundColor: ["#F59C0B", "#2BA4FF", "#F63E7F"],
+        backgroundColor: ["#F59C0B", "#2BA4FF", "#DB4437"],
       },
     ],
   };
@@ -392,7 +392,8 @@ function Dashboard() {
 
           <div className="bg-white dark:bg-gray-800 p-4 rounded">
             <h3 className="mb-4 font-semibold">Applications</h3>
-            <div className="flex items-center justify-center">
+            {/* <div className="flex items-center justify-center"> */}
+            <div className="w-full h-96 flex items-center justify-center">
               <Pie data={applicationData} options={chartOptions} />
             </div>
           </div>
