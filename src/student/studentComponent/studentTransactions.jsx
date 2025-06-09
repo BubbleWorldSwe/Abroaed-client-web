@@ -42,7 +42,7 @@ const StudentTransactions = () => {
         <div className="overflow-x-auto mt-4">
           <table className="w-full border border-gray-300 rounded-lg">
             <thead>
-              <tr className="bg-gray-200 text-gray-600 text-sm">
+              <tr className="bg-gray-20R0 text-gray-600 text-sm">
                 <th className="p-3 text-left">Transaction Date</th>
                 <th className="p-3 text-left">Amount (in ₹)</th>
                 <th className="p-3 text-left">Description</th>

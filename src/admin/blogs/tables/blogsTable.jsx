@@ -119,8 +119,8 @@ const BlogsTable = ({
           </tr>
         </thead>
         <tbody>
-          {blogs.length > 0 ? (
-            blogs.map(
+          {blogs?.length > 0 ? (
+            blogs?.map(
               (item) =>
                 item.index === currentPage &&
                 item.data.map((blog, index) => (

@@ -7,6 +7,7 @@ const BlogHomeBlogsSection = ({
   selectedCategory,
   onCategoryChange,
 }) => {
+  console.log(selectedCategory);
   return (
     <div className="relative z-10">
       <section className="dark:bg-gray-900 relative px-12 py-5 pb-16 mx-auto">
@@ -28,11 +29,11 @@ const BlogHomeBlogsSection = ({
               <button
                 key={i}
                 className={`px-5 py-2 rounded-lg border-2 ${
-                  selectedCategory === data.id
+                  selectedCategory === data._id
                     ? "bg-gray-primary text-white border-none"
                     : "bg-white text-gray-primary border-gray-600 hover:bg-gray-primary hover:text-white"
                 }`}
-                onClick={() => onCategoryChange(data.id)}
+                onClick={() => onCategoryChange(data._id)}
               >
                 {data?.name}
               </button>

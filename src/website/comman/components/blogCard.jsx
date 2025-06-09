@@ -5,13 +5,15 @@ import { IMAGE_BASE_URL } from "../../../constants/baseUrl";
 
 const BlogCard = ({ article }) => {
   return (
-    <article className="p-4  bg-white flex-shrink-0  rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 flex flex-col h-[25rem]">
+    <article className="p-4  bg-white flex-shrink-0  rounded-lg shadow-md dark:bg-gray-900 dark:border-gray-700 flex flex-col">
       <img
-        className="mb-5 rounded-lg h-56 object-contain"
+        className="mb-5 rounded-lg h-56 object-fill"
         src={article?.image ? `${IMAGE_BASE_URL}/${article?.image}` : image}
       />
+      <h3 className="text-lg font-bold mb-2 line-clamp-2">{article?.title}</h3>
+
       <div
-        className="mb-3 dark:text-gray-400 line-clamp-3 flex-grow"
+        className="mb-3 dark:text-gray-400 line-clamp-3"
         dangerouslySetInnerHTML={{ __html: article.content }}
       />
 

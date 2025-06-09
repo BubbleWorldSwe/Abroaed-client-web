@@ -107,7 +107,7 @@ export const getBlogsCategory = async () => {
 export const getBlogsByCategoryId = async (id) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/blogs/category/${id}`
+      `${BASE_URL}/api/v1/admin/blogs/post?filter={"category":"${id}"}`
     );
 
     if (data.success) {

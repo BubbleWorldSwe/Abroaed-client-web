@@ -31,8 +31,14 @@ function BlogsHome() {
     setIsLoading(true);
     try {
       const list = await getBlogsByCategoryId(id);
+
+      console.log(list);
       if (list.status === 200) {
-        setBlogs(list.data.result);
+        const publishedBlogs = list.data?.result?.filter(
+          (item) => item.status === "publish"
+        );
+
+        setBlogs(publishedBlogs);
       } else setBlogs([]);
     } catch (error) {
       console.log(error);
@@ -45,7 +51,12 @@ function BlogsHome() {
     try {
       const list = await getBlogs();
       if (list.status === 200) {
-        setBlogs(list.data.result);
+        const publishedBlogs = list.data.result.filter(
+          (item) => item.status === "publish"
+        );
+        setBlogs(publishedBlogs);
+
+        //  setBlogs(list.data.result);
       } else setBlogs([]);
     } catch (error) {
       console.log(error);
