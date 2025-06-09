@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import StudentApplicationsList from "../components/studentApplicationsList";
-import { formatStudentApplications } from "../../utils/helper";
+import { formatDate, formatStudentApplications } from "../../utils/helper";
 
 const StudentApplications = () => {
   const { applications } = useSelector((state) => state?.studentProfile);
@@ -67,6 +67,9 @@ const StudentApplications = () => {
                   <th scope="col" className="px-4 py-3 min-w-[10rem]">
                     Comment
                   </th>
+                  <th scope="col" className="px-4 py-3 min-w-[10rem]">
+                    Date Added
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -86,6 +89,9 @@ const StudentApplications = () => {
                         </td>
                         <td className="px-4 py-3 font-medium text-gray-900">
                           {data?.message || "-"}
+                        </td>
+                        <td className="px-4 py-3 font-medium text-gray-900">
+                          {formatDate(data?.createdAt) || "-"}
                         </td>
                       </tr>
                     ))

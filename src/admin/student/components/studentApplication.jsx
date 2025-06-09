@@ -48,7 +48,7 @@ const StudentApplication = ({
           {studentApplication.map((tab, index) => {
             return (
               <div
-                className="flex-1 min-w-[300px] flex flex-col gap-4"
+                className="flex-1 min-w-[250px] flex flex-col gap-4"
                 key={index}
               >
                 <div className="" role="">

@@ -26,7 +26,7 @@ const DocumentPreviewModal = ({ isOpen, file, onClose }) => {
           <Worker workerUrl="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js">
             <div
               style={{
-                height: "750px",
+                height: "80vh",
                 maxWidth: "900px",
                 margin: "0 auto",
               }}

@@ -6,6 +6,7 @@ const items = [
   { title: "Why ABROAED?", href: "/whyAbroaed" },
   { title: "Career", href: "/careers" },
   { title: "Events", href: "/events" },
+  { title: "Blogs", href: "/blogs" },
   { title: "Contact Us", href: "/contactUs" },
 ];
 const WhyAbroaedNavModal = ({ handleMouseEnter, handleMouseLeave }) => {

@@ -8,13 +8,10 @@ const DestinationImmigrationDetailsSection = ({ destinationDetails }) => {
   return (
     <Element name="immigration-details">
       <div className="relative ">
-        <div className="   flex flex-col gap-6">
+        <div className="flex flex-col gap-6">
           {/* Content */}
           <div className="relative">
-
-            <SectionMainHeader
-              className="mb-2"
-            >
+            <SectionMainHeader className="mb-2">
               Immigration Details
             </SectionMainHeader>
             <div className="my-4 border-t border-gray-300"></div>

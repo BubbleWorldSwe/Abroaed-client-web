@@ -45,7 +45,7 @@ const LeadUploadDocumentModal = ({
         "image/png",
         "image/jpg",
       ];
-      const maxSize = 2 * 1024 * 1024; // 2MB
+      const maxSize = 4 * 1024 * 1024; // 4MB
 
       if (!allowedTypes.includes(file.type)) {
         toast.error("Only PDF, JPG, and PNG files are allowed");
@@ -53,7 +53,7 @@ const LeadUploadDocumentModal = ({
       }
 
       if (file.size > maxSize) {
-        toast.error("File size must be less than 2MB");
+        toast.error("File size must be less than 4MB");
         return;
       }
 
@@ -70,7 +70,7 @@ const LeadUploadDocumentModal = ({
         "image/png",
         "image/jpg",
       ];
-      const maxSize = 2 * 1024 * 1024; // 2MB
+      const maxSize = 4 * 1024 * 1024; // 4MB
 
       if (!allowedTypes.includes(file.type)) {
         toast.error("Only PDF, JPG, and PNG files are allowed");
@@ -78,7 +78,7 @@ const LeadUploadDocumentModal = ({
       }
 
       if (file.size > maxSize) {
-        toast.error("File size must be less than 2MB");
+        toast.error("File size must be less than 4MB");
         return;
       }
 
@@ -197,7 +197,7 @@ const LeadUploadDocumentModal = ({
                         Click to upload or drag and drop
                       </p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">
-                        Max. File Size: 2MB
+                        Max. File Size: 4MB
                       </p>
                       <button
                         type="button"

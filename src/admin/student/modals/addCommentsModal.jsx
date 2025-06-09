@@ -64,7 +64,7 @@ const AddCommentModal = ({
     e.preventDefault();
 
     // Combine updated existing comments and new comments, filter out empty messages
-    const combinedComments = [...existingComments, ...formData.comments].filter(
+    const combinedComments = [...formData.comments, ...existingComments].filter(
       (comment) => comment.message.trim() !== ""
     );
 

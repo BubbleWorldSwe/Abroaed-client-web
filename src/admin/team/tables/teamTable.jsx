@@ -141,6 +141,22 @@ const TeamTable = ({
                                       <span>Update Member</span>
                                     </button>
                                   </li>
+                                  {role === "Admin" && (
+                                    <li>
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setDeleteId(member);
+                                          setIsModalOpen(!isModalOpen);
+                                          //setDropdownVisible(null);
+                                        }}
+                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
+                                        <span>Delete</span>
+                                      </button>
+                                    </li>
+                                  )}
                                 </ul>
                               </div>
                             )}

@@ -259,7 +259,7 @@ const LeadTable = ({
                                     <span>View Profile</span>
                                   </button>
                                 </li>
-                                {/* {isWriteAccess && (
+                                {isWriteAccess && role === "Admin" && (
                                   <li>
                                     <button
                                       onClick={() => {
@@ -272,7 +272,7 @@ const LeadTable = ({
                                       <span>Delete</span>
                                     </button>
                                   </li>
-                                )} */}
+                                )}
                               </ul>
                             </div>
                           )}

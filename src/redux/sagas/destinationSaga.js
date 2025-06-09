@@ -98,6 +98,8 @@ function* handleEditDestination(action) {
     const { id, destinationData } = action.payload;
     const response = yield call(setUpdateDestination, id, destinationData);
 
+    console.log(response);
+
     if (response.status === 200) {
       yield put(editDestinationSuccess(response.data));
       toast.success("Destination Updated successfully!");

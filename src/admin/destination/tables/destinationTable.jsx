@@ -30,7 +30,7 @@ const DestinationTable = ({
   const { destinations, totalPages } = useSelector(
     (state) => state.destinations
   );
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -172,19 +172,6 @@ const DestinationTable = ({
                             </li>
                             {isWriteAccess && (
                               <>
-                                {/*  <li>
-                                  <button
-                                    onClick={() => {
-                                      setDeleteId(destination);
-                                      setIsModalOpen(!isModalOpen);
-                                    }}
-                                    // onClick={() => handleDelete(destination._id)}
-                                    className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span>Delete</span>
-                                  </button>
-                                </li> */}
                                 <li>
                                   <button
                                     onClick={() =>
@@ -206,6 +193,21 @@ const DestinationTable = ({
                                     </span>
                                   </button>
                                 </li>
+                                {role === "Admin" && (
+                                  <li>
+                                    <button
+                                      onClick={() => {
+                                        setDeleteId(destination);
+                                        setIsModalOpen(!isModalOpen);
+                                      }}
+                                      // onClick={() => handleDelete(destination._id)}
+                                      className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                )}
                               </>
                             )}
                           </ul>

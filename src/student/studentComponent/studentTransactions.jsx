@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { formatDateTime } from "../../utils/helper";
+import { formatDate, formatDateTime } from "../../utils/helper";
 
 const StudentTransactions = () => {
   const { transactions } = useSelector((state) => state.studentProfile);
@@ -53,7 +53,7 @@ const StudentTransactions = () => {
               {transactions?.length > 0 ? (
                 transactions.map((tx, index) => (
                   <tr key={index} className="text-gray-700 border-b">
-                    <td className="p-3">{formatDateTime(tx.date)}</td>
+                    <td className="p-3">{formatDate(tx.date)}</td>
                     <td className="p-3 flex items-center gap-2">
                       {tx.amount}{" "}
                       {index === 0 && <span className="text-red-500">•</span>}

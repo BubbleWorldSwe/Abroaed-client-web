@@ -24,7 +24,7 @@ const CollegeTable = ({
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
@@ -224,20 +224,22 @@ const CollegeTable = ({
                                     </span>
                                   </button>
                                 </li>
-                                {/*  <li>
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      setDeleteId(college);
-                                      setIsModalOpen(!isModalOpen);
-                                      //setDropdownVisible(null);
-                                    }}
-                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span>Delete</span>
-                                  </button>
-                                </li> */}
+                                {role === "Admin" && (
+                                  <li>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setDeleteId(college);
+                                        setIsModalOpen(!isModalOpen);
+                                        //setDropdownVisible(null);
+                                      }}
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                )}
                               </>
                             )}
                           </ul>

@@ -35,7 +35,11 @@ function SigninPage() {
 
   useEffect(() => {
     if (adminToken && role !== "Student") {
-      navigate("/admin/dashboard");
+      if (role === "Content Manager") {
+        navigate("/admin/testPrep");
+      } else {
+        navigate("/admin/dashboard");
+      }
     }
   }, [adminToken, navigate]);
 

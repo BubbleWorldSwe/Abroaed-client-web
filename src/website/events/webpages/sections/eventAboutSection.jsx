@@ -97,7 +97,11 @@ const EventAboutSection = ({ onFormSubmit, entity, source }) => {
             transition={{ duration: 0.9, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
           >
-            <SectionMainHeader className=" mb-4">About Event</SectionMainHeader>
+            {/*  <SectionMainHeader className=" mb-4">About Event</SectionMainHeader> */}
+
+            <SectionMainHeader className=" mb-4">
+              Education Expo 2025
+            </SectionMainHeader>
 
             <ul className="space-y-2 mb-6 text-gray-700">
               {eventDetails.map((item, index) => (

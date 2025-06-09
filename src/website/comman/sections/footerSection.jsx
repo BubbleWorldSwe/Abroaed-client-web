@@ -42,6 +42,7 @@ const links = [
       { name: "Home", link: "/home" },
       { name: "Our Story", link: "/aboutus" },
       // { name: "Founder's Desk", link: "/founders-desk" },
+      { name: "Events", link: "/events" },
       { name: "Blogs", link: "/blogs" },
       // { name: "Explore Colleges", link: "/" },
       // { name: "Destinations", link: "/destinations" }

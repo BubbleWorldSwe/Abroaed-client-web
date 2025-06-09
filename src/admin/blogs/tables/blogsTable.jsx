@@ -25,7 +25,7 @@ const BlogsTable = ({
   handleDelete,
   changeStatus,
 }) => {
-  const { isWriteAccess } = useSelector((state) => state.auth);
+  const { isWriteAccess, role } = useSelector((state) => state.auth);
   const { blogs, totalPages } = useSelector((state) => state.blogs);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -226,20 +226,22 @@ const BlogsTable = ({
                                   )}
                                 </li>
 
-                                {/* <li>
-                                  <button
-                                    type="button"
-                                    onClick={() => {
-                                      setDeleteId(blog);
-                                      setIsModalOpen(!isModalOpen);
-                                      //setDropdownVisible(null);
-                                    }}
-                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span>Delete</span>
-                                  </button>
-                                </li> */}
+                                {role === "Admin" && (
+                                  <li>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setDeleteId(blog);
+                                        setIsModalOpen(!isModalOpen);
+                                        //setDropdownVisible(null);
+                                      }}
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                )}
                               </>
                             )}
                           </ul>

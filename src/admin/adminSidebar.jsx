@@ -25,7 +25,18 @@ function CollapsableSidebar() {
   const url = useLocation();
 
   const menuItems = [
-    { path: "/admin/dashboard", label: "Dashboard", icon: Home },
+    {
+      path: "/admin/dashboard",
+      label: "Dashboard",
+      icon: Home,
+      roles: [
+        "Admin",
+        "Counsellor",
+        "Backend Associate",
+        "Backend Manager",
+        "Counsellor Manager",
+      ],
+    },
     {
       path: "/admin/teams",
       label: "Teams",

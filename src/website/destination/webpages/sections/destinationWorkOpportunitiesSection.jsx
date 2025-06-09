@@ -22,7 +22,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               <MotionComponent>
                 <PrimaryBodyText
                   className={"mb-2 md:mb-8"}
-                // style={{ fontSize: '22px' }}
+                  // style={{ fontSize: '22px' }}
                 >
                   Studying in the {destinationDetails?.countryId?.name} offers a
                   variety of experiences. The cultural and traditional values of
@@ -55,7 +55,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
 
                 <PrimaryBodyText
                   className={"mb-5"}
-                // style={{ fontSize: '22px' }}
+                  // style={{ fontSize: '22px' }}
                 >
                   {destinationDetails?.workOpportunities?.postDegreeOpportunity}
                 </PrimaryBodyText>
@@ -66,7 +66,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
                 (data, index) => (
                   <div
                     key={index}
-                    className="w-full hover:scale-[1.01] transition-all ease-in-out delay-100 h-[8rem] md:h-[12rem] bg-gray-primary flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
+                    className="w-full hover:scale-[1.01] transition-all ease-in-out delay-100 h-[8rem] md:h-[8.5rem] bg-gray-primary flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700"
                   >
                     <motion.div
                       initial={{ opacity: 0, x: -30 }}
@@ -77,12 +77,12 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
                     >
                       <div className="p-5 h-full flex flex-col items-center justify-center">
                         <h5
-                          className={`mb-2 text-[24px] md:text-[28px] font-bold  text-[#e8e8eb]  dark:text-white`}
+                          className={`mb-2 text-[24px] md:text-[28px] font-bold  text-[#e8e8eb]  dark:text-white line-clamp-1`}
                         >
                           {data?.professionName}
                         </h5>
                         <p className=" font-semibold text-[#ede5e5] text-[18px] md:text-[22px] ">
-                          ₹ {data?.salary}
+                          {data?.salary} (in {destinationDetails?.currency})
                         </p>
                       </div>
                     </motion.div>
@@ -100,7 +100,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
               >
                 <PrimaryBodyText
                   className={"mt-4 md:my-10"}
-                // style={{ fontSize: '1px' }}
+                  // style={{ fontSize: '1px' }}
                 >
                   {" "}
                   {destinationDetails?.workOpportunities?.additionalInformation}
@@ -110,7 +110,7 @@ const DestinationWorkOpportunitiesSection = ({ destinationDetails }) => {
           </div>
         </div>
       </div>
-    </Element >
+    </Element>
   );
 };
 

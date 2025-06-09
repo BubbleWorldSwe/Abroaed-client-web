@@ -3,7 +3,7 @@ import PrimaryBodyText from "../../styleComponents/primaryBodyText";
 /* eslint-disable react/prop-types */
 const DestinationImmigrationDetailsCard = ({ data }) => {
   return (
-    <div className="w-96 h-96 bg-white flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+    <div className="w-full lg:w-[calc(50%-12px)] h-96 bg-white flex-shrink-0 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
       <div className="p-5 h-full overflow-y-auto">
         <div className="flex justify-between">
           <h5 className="mb-2 text-[22px] font-semibold text-gray-primary dark:text-white">

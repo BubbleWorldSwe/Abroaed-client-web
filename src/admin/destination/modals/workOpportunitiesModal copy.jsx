@@ -7,7 +7,6 @@ import { PlusSquare } from "lucide-react";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import trash from "../../../assets/delete.png";
-import { CurrencyInputField } from "../../../commons/components/inputFields/currencyInputField";
 
 const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
   const details = useSelector(
@@ -74,21 +73,23 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <TextareaInputField
-            label="Part-time options for Students"
+            label="Part-time options for Students*"
             name="partTimeStudents"
             type="text"
             value={formData?.partTimeStudents || ""}
             onChange={(e) => handleInputChange(e, "partTimeStudents")}
+            required
             placeholder="Enter"
           />
         </div>
         <div className="mt-5 mb-5">
           <TextareaInputField
-            label="Part-degree popular work opportunities"
+            label="Part-degree popular work opportunities*"
             name="postDegreeOpportunity"
             type="text"
             value={formData?.postDegreeOpportunity || ""}
             onChange={(e) => handleInputChange(e, "postDegreeOpportunity")}
+            required
             placeholder="Enter"
           />
         </div>
@@ -109,20 +110,19 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
                     e.target.value
                   )
                 }
-                placeholder="Enter"
                 required
+                placeholder="Enter"
               />
-              <CurrencyInputField
-                label="Average Salary*"
+              <TextInputField
+                label="Average Salary (in ₹)*"
                 name={`salary-${index}`}
                 type="number"
                 value={profession.salary}
                 onChange={(e) =>
                   handleProfessionChange(index, "salary", e.target.value)
                 }
-                placeholder="Enter"
-                currency={details?.countryId?.currency}
                 required
+                placeholder="Enter"
               />
               {index !== 0 ? (
                 <button

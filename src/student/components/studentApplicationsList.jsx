@@ -7,7 +7,7 @@ const StudentApplicationsList = ({ studentApplication = [] }) => {
     <div className="flex gap-4 overflow-auto max-h-screen">
       {studentApplication.map((tab, index) => {
         return (
-          <div className="flex-1 min-w-[300px] flex flex-col gap-4" key={index}>
+          <div className="flex-1 min-w-[250px] flex flex-col gap-4" key={index}>
             <div className="" role="">
               <button
                 className={`inline-block py-4 w-full text-sm text-start font-semibold border-b-2 border-[#D4D4D8] rounded-t-lg`}
