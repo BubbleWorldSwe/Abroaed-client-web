@@ -28,6 +28,25 @@ function BlogsHome() {
     }
   }
 
+  async function fetchBlogsByCategory2(id) {
+    setIsLoading(true);
+    try {
+      const list = await getBlogsByCategoryId(id);
+
+      console.log(list);
+      if (list.status === 200) {
+        const publishedBlogs = list.data?.result?.filter(
+          (item) => item.status === "publish"
+        );
+
+        setBlogs(publishedBlogs);
+      } else setBlogs([]);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+  }
+
   async function fetchBlogsByCategory(id) {
     setIsLoading(true);
     try {
@@ -43,8 +62,8 @@ function BlogsHome() {
   }
 
   async function fetchAllBlogs() {
+    setIsLoading(true);
     try {
-      // setIsLoading(true);
       const list = await getBlogs();
       if (list.status === 200) {
         const publishedBlogs = list.data.result.filter(
@@ -54,6 +73,8 @@ function BlogsHome() {
         setAllBlogs(publishedBlogs);
 
         const categories = list.data.result.map((item) => item.category);
+
+        console.log(categories);
 
         const uniqueCategories = [
           ...new Set(list.data.result.map((item) => item.category)),

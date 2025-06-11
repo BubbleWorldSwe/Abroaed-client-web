@@ -1,4 +1,5 @@
 import eventHero from "../../../../assets/eventHero.png";
+import event2 from "../../../../assets/event2.png";
 import { heroStyle } from "../../../comman/contexts/heroStyle";
 import HeroTextComponent from "../../../styleComponents/heroText";
 

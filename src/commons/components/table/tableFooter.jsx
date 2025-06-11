@@ -36,7 +36,7 @@ export function TableFooter({
               </button>
 
               <span className="text-gray-600 dark:text-gray-300">
-                Page {currentPage} of {totalPages || 1}
+                Page {currentPage || 1} of {totalPages || 1}
               </span>
 
               <button

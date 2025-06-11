@@ -1,4 +1,3 @@
-
 import Footer from "../../comman/sections/footerSection";
 import Header from "../../comman/sections/headerSection";
 import BlogCategoryArticlesSection from "./sections/blogCategoryArticlesSection";
@@ -9,7 +8,6 @@ import BlogCategoryTradingNowSection from "./sections/blogCategoryTradingNowSect
 import BlogRountingSection from "./sections/blogRountingSection";
 
 function BlogsCategoryPage() {
-
   return (
     <div className="font-rethink relative">
       <Header isHeaderBgWhite={true} />

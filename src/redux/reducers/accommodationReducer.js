@@ -56,7 +56,7 @@ export const accommodationsReducer = (state = initialState, action) => {
       };
 
     case ADD_ACCOMMODATION_SUCCESS:
-      return { ...initialState, success: true };
+      return { ...initialState, success: true, isAdded: true };
 
     case DELETE_ACCOMMODATION_SUCCESS:
       return initialState;

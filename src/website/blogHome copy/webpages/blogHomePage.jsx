@@ -15,7 +15,6 @@ function BlogsHome() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("all"); // Default to "All Posts"
   const [blogs, setBlogs] = useState([]);
-  const [allBlogs, setAllBlogs] = useState([]);
 
   async function fetchData() {
     try {
@@ -31,11 +30,16 @@ function BlogsHome() {
   async function fetchBlogsByCategory(id) {
     setIsLoading(true);
     try {
-      const list = allBlogs.filter((item) => item?.category?._id === id);
+      const list = await getBlogsByCategoryId(id);
 
-      const publishedBlogs = list?.filter((item) => item.status === "publish");
+      console.log(list);
+      if (list.status === 200) {
+        const publishedBlogs = list.data?.result?.filter(
+          (item) => item.status === "publish"
+        );
 
-      setBlogs(publishedBlogs);
+        setBlogs(publishedBlogs);
+      } else setBlogs([]);
     } catch (error) {
       console.log(error);
     }
@@ -43,38 +47,27 @@ function BlogsHome() {
   }
 
   async function fetchAllBlogs() {
+    setIsLoading(true);
     try {
-      // setIsLoading(true);
       const list = await getBlogs();
       if (list.status === 200) {
         const publishedBlogs = list.data.result.filter(
           (item) => item.status === "publish"
         );
         setBlogs(publishedBlogs);
-        setAllBlogs(publishedBlogs);
 
-        const categories = list.data.result.map((item) => item.category);
-
-        const uniqueCategories = [
-          ...new Set(list.data.result.map((item) => item.category)),
-        ];
-
-        const unique = Array.from(
-          new Map(
-            uniqueCategories.map(({ _id, name }) => [
-              `${_id}-${name}`,
-              { _id, name },
-            ])
-          ).values()
-        );
-
-        setBlogsCategory(unique);
+        //  setBlogs(list.data.result);
       } else setBlogs([]);
     } catch (error) {
       console.log(error);
     }
     setIsLoading(false);
   }
+
+  useEffect(() => {
+    fetchData();
+    fetchAllBlogs(); // Fetch all blogs by default
+  }, []);
 
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
@@ -84,11 +77,6 @@ function BlogsHome() {
       fetchBlogsByCategory(categoryId);
     }
   };
-
-  useEffect(() => {
-    //  fetchData();
-    fetchAllBlogs(); // Fetch all blogs by default
-  }, []);
 
   if (isLoading) {
     return <PageLoader />;

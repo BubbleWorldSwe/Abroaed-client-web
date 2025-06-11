@@ -33,7 +33,7 @@ const Accommodations = () => {
   const [destinationsList, setDestinationsList] = useState([]);
   const [statesList, setStatesList] = useState([]);
 
-  const { accommodations, totalPages, loading } = useSelector(
+  const { accommodations, totalPages, loading, isAdded } = useSelector(
     (state) => state.accommodations
   );
 
@@ -119,7 +119,7 @@ const Accommodations = () => {
     if (accommodations?.length === 0) {
       dispatch(fetchAccommodationsRequest(currentPage));
     }
-  }, [dispatch, accommodations, currentPage]);
+  }, [dispatch, accommodations, currentPage, isAdded]);
 
   useEffect(() => {
     fetchData();
