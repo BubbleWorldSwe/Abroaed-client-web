@@ -67,7 +67,7 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
               style={{ flex: "0 0 auto" }}
             >
               <img
-                className="w-full h-50 object-fill rounded-lg cursor-pointer"
+                className="w-full h-full object-cover rounded-lg cursor-pointer"
                 src={`${IMAGE_BASE_URL}/${image.ImageUrl}`}
                 alt={`Existing ${index + 1}`}
                 onClick={() => {
@@ -131,6 +131,9 @@ const MediaGallery = ({ closeModal, onUploadImage }) => {
               )}
         </div>
       </div>
+      <p className="text-black font-semibold text-sm my-4">
+        Recommended Size : 1920 × 1080 px (Aspect Ratio: 16:9)
+      </p>
 
       {/* Numbering and Uploading status */}
       <div className="text-end mt-5">

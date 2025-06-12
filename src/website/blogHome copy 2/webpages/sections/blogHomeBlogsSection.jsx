@@ -1,24 +1,17 @@
-import { useState } from "react";
 import BlogCard from "../../../comman/components/blogCard";
-import BlogHomeArticleCard from "../../comoponents/blogHomeArticleCard"; // This import seems unused
-// If BlogHomeArticleCard is unused, you can remove it.
+import BlogHomeArticleCard from "../../comoponents/blogHomeArticleCard";
 
 const BlogHomeBlogsSection = ({
   category,
   blogs,
   selectedCategory,
   onCategoryChange,
-  fetchBlogs,
-  totalPages,
-  currentPage,
-  setCurrentPage,
-  isLoadMoreLoading,
 }) => {
   return (
     <div className="relative z-10">
       <section className="dark:bg-gray-900 relative px-4 md:px-12 py-5 pb-16 mx-auto">
-        <div className="mx-auto max-w-screen-2xl">
-          {/* Category Filters */}
+        <div className="mx-auto max-w-screen-2xl lg:grid lg:grid-cols-1">
+          {/* Category Selection - Centered & Scrollable on Overflow */}
           <div className="w-full flex justify-center">
             <div className="flex gap-4 items-center py-4 px-2 max-w-full overflow-x-auto scrollbar-hide">
               <div className="flex gap-4 mx-auto">
@@ -50,9 +43,9 @@ const BlogHomeBlogsSection = ({
             </div>
           </div>
 
-          {/* Blog Cards */}
+          {/* Blog Articles */}
           <div className="grid mb-5 grid-cols-1 pt-5 gap-8 sm:grid-cols-2 xl:grid-cols-3">
-            {blogs?.length > 0 ? (
+            {blogs.length > 0 ? (
               blogs.map((data, index) => (
                 <BlogCard key={index} article={data} />
               ))
@@ -62,29 +55,6 @@ const BlogHomeBlogsSection = ({
               </p>
             )}
           </div>
-
-          {/* Load More Button */}
-          {blogs.length > 0 && totalPages > currentPage && (
-            <div className="flex justify-center mt-10">
-              <button
-                className="w-36 text-white bg-primary-600 hover:bg-gray-primary focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-700"
-                onClick={() => {
-                  const nextPage = currentPage + 1;
-                  setCurrentPage(nextPage);
-                  fetchBlogs(selectedCategory, nextPage, true);
-                }}
-                disabled={isLoadMoreLoading}
-              >
-                {isLoadMoreLoading ? (
-                  <div className="flex justify-center items-center">
-                    <div className="spinner-border animate-spin h-4 w-4 border-t-2 border-b-2 border-white rounded-full"></div>
-                  </div>
-                ) : (
-                  "Load More"
-                )}
-              </button>
-            </div>
-          )}
         </div>
       </section>
     </div>

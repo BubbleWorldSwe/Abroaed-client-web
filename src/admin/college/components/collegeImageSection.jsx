@@ -296,10 +296,10 @@ const CollegeImageSection = ({
               )}
             </div>
 
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-black font-semibold text-sm mb-4">
               {modalType === "logo"
-                ? "Max. File Size: 500KB"
-                : "Max. File Size: 1MB"}
+                ? " Recommended Size : 500 × 500 px (Aspect Ratio: 1:1)"
+                : "Recommended Size : 1920 × 1080 px (Aspect Ratio: 16:9)"}
             </p>
 
             <div
@@ -327,7 +327,11 @@ const CollegeImageSection = ({
                     drag and drop
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400">
-                    JPG, PNG or JPEG
+                    JPG, PNG or JPEG (
+                    {modalType === "logo"
+                      ? "Max. File Size: 500KB"
+                      : "Max. File Size: 1MB"}
+                    )
                   </p>
                 </div>
                 <input

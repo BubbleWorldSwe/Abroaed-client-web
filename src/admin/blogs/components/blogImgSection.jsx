@@ -115,7 +115,7 @@ const BlogImageSection = ({ onUploadImage }) => {
 
             <div className="w-full relative mb-4">
               <img
-                className="w-full h-60 object-cover"
+                className="w-full h-60 object-cover rounded-sm mb-3"
                 src={
                   imagePreview
                     ? imagePreview
@@ -125,6 +125,9 @@ const BlogImageSection = ({ onUploadImage }) => {
                 }
                 alt="Current"
               />
+              <p className="text-black font-semibold text-sm mb-4">
+                Recommended Size : 1920 × 1080 px (Aspect Ratio: 16:9)
+              </p>
             </div>
 
             <div

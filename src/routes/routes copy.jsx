@@ -41,7 +41,7 @@ import LeadProfileLayout from "../admin/lead/screens/leadProfile";
 import AdminLayout from "../admin/adminLayouts";
 import LeaguageOfExcellencePage from "../website/leagueOfExcellence/webpages/leaguageOfExcellencePage";
 import AbroaedPlusPage from "../website/abroaedPlus/webscreens/abroaedPlusPage";
-// import BlogsCategoryPage from "../website/blogCategory/webpages/blogsCategoryPage";
+
 import BlogsHome from "../website/blogHome/webpages/blogHomePage";
 import BlogPage from "../website/blogPage/webpages/blogPage";
 import ContactUsPage from "../website/contactUs/webpages/contactUsPage";
@@ -135,10 +135,7 @@ const AppRoutes = () => {
     { path: "/blog/:id", element: <BlogPage />, isPrivate: false },
     { path: "/blogs", element: <BlogsHome />, isPrivate: false },
     // {
-    //   path: "/blog/category/:id",
-    //   element: <BlogsCategoryPage />,
-    //   isPrivate: false,
-    // },
+
     { path: "/finance", element: <FinancePage />, isPrivate: false },
     { path: "/forex", element: <ForexPage />, isPrivate: false },
     { path: "/testprep/:id", element: <TestPrepLayout />, isPrivate: false },

@@ -176,10 +176,9 @@ const TestPrepImageUpdate = ({ onUploadImage, handleDelete }) => {
               </div>
             )}
 
-            <p className="text-gray-600 text-sm mb-4">
-              Size should be 1000 x 1500 px. Supported files: JPG, PNG
+            <p className="text-black font-semibold text-sm mb-4">
+              Recommended Size : 500 × 500 px (Aspect Ratio: 1:1)
             </p>
-
             <div
               className="flex items-center justify-center w-full"
               onDrop={handleDrop}

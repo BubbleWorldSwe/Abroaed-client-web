@@ -34,6 +34,19 @@ export const getAllBlogs = async () => {
   }
 };
 
+export const getPublishedBlogs = async (page) => {
+  try {
+    const data = await makeGetRequest(
+      `${BASE_URL}/api/v1/admin/blogs/post?page=${page}&limit=${pageDataLimit}&filter={"status":"publish"}`
+    );
+    if (data.success) {
+      return data.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const setAddBlog = async (credentials) => {
   try {
     const { adminToken } = store.getState().auth;
@@ -104,10 +117,10 @@ export const getBlogsCategory = async () => {
   }
 };
 
-export const getBlogsByCategoryId = async (id) => {
+export const getBlogsByCategoryId = async (id, page) => {
   try {
     const data = await makeGetRequest(
-      `${BASE_URL}/api/v1/admin/blogs/post?filter={"category":"${id}"}`
+      `${BASE_URL}/api/v1/admin/blogs/post?filter={"category":"${id}","status":"publish"}&page=${page}&limit=${pageDataLimit}`
     );
 
     if (data.success) {

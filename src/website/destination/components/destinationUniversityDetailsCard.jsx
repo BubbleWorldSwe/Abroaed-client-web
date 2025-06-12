@@ -28,21 +28,25 @@ const UniversityDetailsCard = ({
 
   return (
     <div className="w-full md:max-w-sm h-full flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <img
-        className="rounded-t-lg w-full h-48 object-cover"
-        src={
-          coverImage
-            ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
-            : IMAGES.noCollege
-        }
-        alt={item.name}
-      />
+      <a href={`/college/${item._id}`}>
+        <img
+          className="rounded-t-lg w-full h-40 object-cover"
+          src={
+            coverImage
+              ? `${IMAGE_BASE_URL}/${coverImage?.ImageUrl}`
+              : IMAGES.noCollege
+          }
+          alt={item.name}
+        />
+      </a>
       <div className="p-5 flex flex-col flex-grow">
         {/* Header Section */}
         <div className="flex justify-between">
-          <h5 className="mb-2 font-bold tracking-tight text-gray-primary text-[22px] dark:text-white">
-            {item?.name}
-          </h5>
+          <a href={`/college/${item._id}`}>
+            <h5 className="mb-2 font-bold tracking-tight text-gray-primary text-[22px] dark:text-white">
+              {item?.name}
+            </h5>
+          </a>
 
           {/* Bookmark Button */}
           {isLoggedInStudent && (
@@ -81,14 +85,14 @@ const UniversityDetailsCard = ({
         </div>
 
         {/* Description */}
-        <p className="mb-5 text-[#71717A] font-normal dark:text-gray-400 line-clamp-4 flex-grow">
+        <p className="text-[#71717A] font-normal dark:text-gray-400 line-clamp-3 flex-grow">
           {item.description}
         </p>
 
         {/* Button Always at Bottom */}
-        <div className="mt-auto">
+        {/*  <div className="mt-auto">
           <EnquireButton href={`/college/${item._id}`} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

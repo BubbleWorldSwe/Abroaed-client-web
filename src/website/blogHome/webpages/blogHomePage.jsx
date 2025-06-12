@@ -4,90 +4,101 @@ import Header from "../../comman/sections/headerSection";
 import BlogHomeBlogsSection from "./sections/blogHomeBlogsSection";
 import BlogHomeHeaderTestSection from "./sections/blogHomeHeaderTextSection";
 import {
-  getBlogs,
   getBlogsByCategoryId,
   getBlogsCategory,
+  getPublishedBlogs,
 } from "../../../api/blogsApi";
 import PageLoader from "../../../commons/components/loader/pageLoader";
 
 function BlogsHome() {
   const [blogsCategory, setBlogsCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState("all"); // Default to "All Posts"
+  const [isLoadMoreLoading, setIsLoadMoreLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [blogs, setBlogs] = useState([]);
-  const [allBlogs, setAllBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
 
-  async function fetchData() {
+  const fetchCategories = async () => {
     try {
       const list = await getBlogsCategory();
       if (list.status === 200) {
-        setBlogsCategory(list.data.result);
+        const filtered = list.data.result.filter(
+          (data) => data?.blogPostCount > 0
+        );
+        setBlogsCategory(filtered);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching categories", error);
     }
-  }
+  };
 
-  async function fetchBlogsByCategory(id) {
-    setIsLoading(true);
+  const fetchAllBlogs = async (page = 1, loadMore = false) => {
     try {
-      const list = allBlogs.filter((item) => item?.category?._id === id);
+      if (page === 1) setIsLoading(true);
+      else setIsLoadMoreLoading(true);
 
-      const publishedBlogs = list?.filter((item) => item.status === "publish");
-
-      setBlogs(publishedBlogs);
+      const res = await getPublishedBlogs(page);
+      if (res.status === 200) {
+        const newBlogs = res.data.result;
+        setBlogs((prev) => (loadMore ? [...prev, ...newBlogs] : newBlogs));
+        setTotalPages(res.data?.totalPages);
+      } else {
+        setBlogs([]);
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching blogs", error);
+    } finally {
+      setIsLoading(false);
+      setIsLoadMoreLoading(false);
     }
-    setIsLoading(false);
-  }
+  };
 
-  async function fetchAllBlogs() {
+  const fetchBlogsByCategory = async (id, page = 1, loadMore = false) => {
     try {
-      // setIsLoading(true);
-      const list = await getBlogs();
-      if (list.status === 200) {
-        const publishedBlogs = list.data.result.filter(
+      if (page === 1) setIsLoading(true);
+      else setIsLoadMoreLoading(true);
+
+      const res = await getBlogsByCategoryId(id, page);
+      if (res.status === 200) {
+        const published = res.data?.result?.filter(
           (item) => item.status === "publish"
         );
-        setBlogs(publishedBlogs);
-        setAllBlogs(publishedBlogs);
-
-        const categories = list.data.result.map((item) => item.category);
-
-        const uniqueCategories = [
-          ...new Set(list.data.result.map((item) => item.category)),
-        ];
-
-        const unique = Array.from(
-          new Map(
-            uniqueCategories.map(({ _id, name }) => [
-              `${_id}-${name}`,
-              { _id, name },
-            ])
-          ).values()
-        );
-
-        setBlogsCategory(unique);
-      } else setBlogs([]);
+        setBlogs((prev) => (loadMore ? [...prev, ...published] : published));
+        setTotalPages(res.data?.totalPages || 1);
+      } else {
+        setBlogs([]);
+      }
     } catch (error) {
-      console.log(error);
+      console.log("Error fetching category blogs", error);
+    } finally {
+      setIsLoading(false);
+      setIsLoadMoreLoading(false);
     }
-    setIsLoading(false);
-  }
+  };
 
   const handleCategoryChange = (categoryId) => {
     setSelectedCategory(categoryId);
+    setCurrentPage(1);
+
     if (categoryId === "all") {
-      fetchAllBlogs();
+      fetchAllBlogs(1, false);
     } else {
-      fetchBlogsByCategory(categoryId);
+      fetchBlogsByCategory(categoryId, 1, false);
+    }
+  };
+
+  const handleLoadMore = (categoryId, page, loadMore) => {
+    if (categoryId === "all") {
+      fetchAllBlogs(page, loadMore);
+    } else {
+      fetchBlogsByCategory(categoryId, page, loadMore);
     }
   };
 
   useEffect(() => {
-    //  fetchData();
-    fetchAllBlogs(); // Fetch all blogs by default
+    fetchCategories();
+    fetchAllBlogs();
   }, []);
 
   if (isLoading) {
@@ -104,6 +115,11 @@ function BlogsHome() {
           blogs={blogs}
           selectedCategory={selectedCategory}
           onCategoryChange={handleCategoryChange}
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          isLoadMoreLoading={isLoadMoreLoading}
+          fetchBlogs={handleLoadMore}
         />
         <Footer />
       </div>

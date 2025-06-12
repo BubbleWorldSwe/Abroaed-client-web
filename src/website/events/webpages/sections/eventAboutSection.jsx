@@ -161,7 +161,9 @@ const EventAboutSection = ({ onFormSubmit, entity, source }) => {
             transition={{ duration: 0.9, ease: "easeOut" }}
             viewport={{ once: false, amount: 0.5 }}
           >
-            <h2 className="text-2xl mb-2 font-semibold">Register Now</h2>
+            <h2 className="text-2xl mb-2 font-semibold">
+              Explore Opportunities Now
+            </h2>
             <form className="  flex flex-col gap-2" onSubmit={handleSubmit}>
               <BorderTextInputField
                 label="First Name"
@@ -204,7 +206,7 @@ const EventAboutSection = ({ onFormSubmit, entity, source }) => {
                 type="submit"
                 className="py-3 my-4 w-full px-10 text-base font-semibold text-center text-[#432205] rounded-lg bg-yellow-primary hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-yellow-400 dark:bg-yellow-300 dark:hover:bg-yellow-400 dark:focus:ring-yellow-500"
               >
-                Register Now
+                Explore
               </button>
             </form>
 

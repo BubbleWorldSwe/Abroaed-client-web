@@ -12,7 +12,7 @@ export const blogRoutes = [
 
 ]
 
-const BlogRountingSection = () => {
+const BlogHomeRountingSection = () => {
     return (
         <section className="bg-white fixed top-28 w-full    z-20 p-2 shadow-xl">
             <div className="flex justify-center items-center max-w-screen-xl mx-auto dark:bg-gray-800 sm:rounded-xl py-2 space-y-3 md:flex-row md:space-y-0 md:space-x-5 ">
@@ -34,4 +34,4 @@ const BlogRountingSection = () => {
 };
 
 
-export default BlogRountingSection
+export default BlogHomeRountingSection

@@ -181,9 +181,9 @@ const LanguageImageSection = ({ onUploadImage, handleDelete }) => {
               </div>
             )}
 
-            {/*  <p className="text-gray-600 text-sm mb-4">
-              Size should be 1000 x 1500 px. Supported files: JPG, PNG
-            </p> */}
+            <p className="text-black font-semibold text-sm mb-4">
+              Recommended Size : 1920 × 1080 px (Aspect Ratio: 16:9)
+            </p>
 
             <div
               className="flex items-center justify-center w-full"
