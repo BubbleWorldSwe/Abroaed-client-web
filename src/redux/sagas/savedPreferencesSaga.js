@@ -46,7 +46,7 @@ function* addNewSavedPreference(action) {
 
     if (response.status === 200) {
       yield put(addSavedPreferenceSuccess(response?.data));
-      toast.success(response.message);
+      //toast.success(response.message);
     } else {
       yield put(addSavedPreferenceFailure(response.message));
       toast.error(response.message);
@@ -64,7 +64,7 @@ function* deleteSavedPreference(action) {
 
     if (response.status === 200) {
       yield put(deleteSavedPreferenceSuccess(action.payload));
-      toast.success(response.message);
+      // toast.success(response.message);
     } else {
       yield put(deleteSavedPreferenceFailure(response.message));
       toast.error(response.message);

@@ -76,7 +76,7 @@ const AddCommentModal = ({
     updateApplication({
       comments: combinedComments.map(({ message }) => ({ message })),
     });
-    onClose();
+    // onClose();
   };
 
   return (

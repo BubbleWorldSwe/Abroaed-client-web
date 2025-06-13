@@ -1,9 +1,24 @@
 import { useSelector } from "react-redux";
 import StudentApplicationsList from "../components/studentApplicationsList";
 import { formatDate, formatStudentApplications } from "../../utils/helper";
+import moment from "moment";
 
 const StudentApplications = () => {
   const { applications } = useSelector((state) => state?.studentProfile);
+
+  function getSortedComments() {
+    return applications
+      .flatMap((app) => {
+        const college = app.college?.name || "";
+        const course = app.courseName || "";
+        return (app.comments || []).map((c) => ({ ...c, college, course }));
+      })
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt)); // newest first
+  }
+
+  const sortedComments = getSortedComments();
+
+  console.log(sortedComments);
 
   const studentApplications = formatStudentApplications(applications || []);
 
@@ -73,29 +88,26 @@ const StudentApplications = () => {
                 </tr>
               </thead>
               <tbody>
-                {applications.length > 0 &&
-                applications.some((app) => app.comments?.length > 0) ? (
-                  applications.map((app, _) =>
-                    app.comments.map((data, i) => (
-                      <tr
-                        key={`${app._id}-${i}`} // better unique key
-                        className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
-                      >
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {app?.college?.name || "-"}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {app?.courseName || "-"}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-gray-900">
-                          {data?.message || "-"}
-                        </td>
-                        <td className="px-4 py-3 font-medium text-gray-900">
-                          {formatDate(data?.createdAt) || "-"}
-                        </td>
-                      </tr>
-                    ))
-                  )
+                {sortedComments.length > 0 ? (
+                  sortedComments.map((data, i) => (
+                    <tr
+                      key={`${i}`} // better unique key
+                      className="border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {data?.college || "-"}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {data?.course || "-"}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900">
+                        {data?.message || "-"}
+                      </td>
+                      <td className="px-4 py-3 font-medium text-gray-900">
+                        {formatDate(data?.createdAt) || "-"}
+                      </td>
+                    </tr>
+                  ))
                 ) : (
                   <tr>
                     <td

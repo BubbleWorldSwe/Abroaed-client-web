@@ -138,34 +138,33 @@ const LeadTable = ({
                         <td className="px-4 py-3">{lead?.entity}</td>
                         <td className="px-4 py-3">
                           {lead?.status ? (
-                            <Tooltip
-                              content={
-                                <div>
-                                  {lead?.remark || "No remarks available"}
-                                </div>
-                              }
-                              placement="bottom"
-                              className="!bg-white !text-gray-900 !shadow-lg !border !border-gray-300"
-                            >
+                            <div className="relative inline-block group">
+                              {/* Status badge */}
                               <span
-                                className={`font-medium p-2 rounded ${
+                                className={`font-medium p-2 rounded cursor-default ${
                                   lead.status.toLowerCase() === "lost"
                                     ? "bg-[#FDE8E8] text-[#9B1C1C]"
                                     : lead.status.toLowerCase() === "nurture"
                                     ? "bg-[#FDF6B2] text-[#723B13]"
                                     : lead.status.toLowerCase() === "converted"
                                     ? "bg-[#DEF7EC] text-[#03543F]"
-                                    : "bg-gray-200"
+                                    : "bg-gray-200 text-gray-700"
                                 }`}
                               >
                                 {lead.status.charAt(0).toUpperCase() +
                                   lead.status.slice(1).toLowerCase()}
                               </span>
-                            </Tooltip>
+
+                              {/* Tooltip box, shown on hover */}
+                              <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 z-10 hidden group-hover:block whitespace-nowrap bg-white text-gray-900 text-sm rounded border border-gray-300 shadow-lg px-3 py-1">
+                                {lead.remark || "No remarks available"}
+                              </div>
+                            </div>
                           ) : (
                             "-"
                           )}
                         </td>
+
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {counsellor?.firstName || counsellor?.lastName
                             ? `${counsellor?.firstName} ${counsellor?.lastName}`

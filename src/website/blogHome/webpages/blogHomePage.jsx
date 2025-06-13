@@ -108,7 +108,7 @@ function BlogsHome() {
   return (
     <div className="font-rethink relative">
       <Header isHeaderBgWhite={true} />
-      <div className="absolute top-32 left-0 w-full">
+      <div className="absolute top-10 left-0 w-full">
         <BlogHomeHeaderTestSection />
         <BlogHomeBlogsSection
           category={blogsCategory}

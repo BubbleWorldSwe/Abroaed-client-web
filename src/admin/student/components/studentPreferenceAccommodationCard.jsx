@@ -6,9 +6,9 @@ import { IMAGES } from "../../../constants/images";
 
 const StudentPreferenceAccommodationCard = ({ accommodation }) => {
   return (
-    <div className="bg-white w-[300px] min-w-[300px] max-w-[384px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="bg-white w-[250px] min-w-[250px] max-w-[250px] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <img
-        className="rounded-t-lg w-full h-48 object-cover"
+        className="rounded-t-lg w-full h-36 object-cover"
         //  src={accommodations}
         alt={accommodation.name}
         src={
@@ -21,18 +21,11 @@ const StudentPreferenceAccommodationCard = ({ accommodation }) => {
         {/* Header */}
         <div className="flex justify-between">
           <h5
-            className={`text-[22px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}
+            className={`text-[18px] mb-1 font-semibold tracking-tight text-gray-primary dark:text-white`}
           >
             {accommodation?.typeId?.accomodationName}
           </h5>
-          <div>
-            {/* <button>
-                            <img
-                                src={bookmark}
-                                alt="bookmarkIcon"
-                            />
-                        </button> */}
-          </div>
+          <div></div>
         </div>
 
         {/* Location */}
@@ -43,7 +36,7 @@ const StudentPreferenceAccommodationCard = ({ accommodation }) => {
               src={locationIcon}
               alt={accommodation.name}
             />
-            <p className="font-semibold text-[16px] text-gray-500 dark:text-gray-400">
+            <p className="font-semibold text-[14px] text-gray-500 dark:text-gray-400">
               {accommodation?.typeId?.stateId?.name},{" "}
               {accommodation?.typeId?.destinationId?.countryId?.name}
             </p>
@@ -58,19 +51,16 @@ const StudentPreferenceAccommodationCard = ({ accommodation }) => {
               src={wallet}
               alt={accommodation.name}
             />
-            <p className="font-normal  dark:text-gray-400">
+            <p className="font-normal  text-[13px] dark:text-gray-400">
               ₹{accommodation?.typeId?.price} per month
             </p>
           </div>
         </div>
         <div className="flex-grow">
-          <p className="mb-5 font-norma text-gray-500 dark:text-gray-400 line-clamp-4">
+          <p className="font-normal text-[13px] text-gray-500 dark:text-gray-400 line-clamp-4">
             {accommodation?.typeId?.description}
           </p>
         </div>
-        {/* <div className="mt-auto">
-                    <EnquireButton onClick={handleOpenAddModal} />
-                </div> */}
       </div>
     </div>
   );

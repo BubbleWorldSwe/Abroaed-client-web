@@ -63,7 +63,7 @@ const StudentApplication = ({
                         tab.title === "Rejected" ? "white" : "gray-primary"
                       }`}
                     >
-                      {tab.title} ({tab?.data.length})
+                      {tab.title} ( {tab?.data.length} )
                     </span>
                   </button>
                 </div>

@@ -39,7 +39,7 @@ function BlogPage() {
     <div className="font-rethink relative">
       <Header isHeaderBgWhite={true} />
       {/* <BlogRountingSection /> */}
-      <div className="absolute top-32 left-0 w-full">
+      <div className="absolute top-10 left-0 w-full">
         <BlogPageHeaderText blogDetails={blogDetails} />
         <BlogPageContaintSection blogDetails={blogDetails} />
 

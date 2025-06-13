@@ -447,7 +447,7 @@ function Header() {
                   href="/pathwaysProgram"
                   className="block  rounded text-yellow-700 dark:text-primary-500"
                 >
-                  Pathways Program
+                  Pathway Programs
                 </a>
               </li>
               <li>

@@ -43,7 +43,7 @@ const PathwaysProgramPage = () => {
     <div className="font-rethink">
       <Header />
       <PathwaysProgramHeroSection
-        header={"Pathways Program Name"}
+        header={"Pathway Program Name"}
         text={"Batch Starts: Jan 1, 2025 | ABROAED Intake: Aug’ 2025"}
         img={pathwaysProgramHero}
       />

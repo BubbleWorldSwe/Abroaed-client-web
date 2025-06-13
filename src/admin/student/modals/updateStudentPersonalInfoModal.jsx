@@ -54,7 +54,7 @@ const UpdateStudentPersonalInfo = ({
     try {
       e.preventDefault();
       if (validateForm()) {
-        const { email, mobile, ...updatedFormData } = formData; // Remove email and mobile
+        const { email, ...updatedFormData } = formData; // Remove email and mobile
 
         onUpdate(updatedFormData, userId);
       }

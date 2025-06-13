@@ -1,4 +1,4 @@
-import { SquareUserRound } from "lucide-react";
+import { FilesIcon, SquareUserRound } from "lucide-react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -84,17 +84,16 @@ const StudentHome = () => {
                   <SquareUserRound className="w-10 h-10" />
                   <div className="flex flex-col gap-1 text-start">
                     <p className="text-sm whitespace-nowrap  font-semibold">
-                      Counsellor:{" "}
-                      {`${counsellor?.firstName} ${counsellor?.lastName}`}
+                      Counsellor
                     </p>
                     <p className="text-xs whitespace-nowrap text-gray-600">
-                      Next Counselling on 17/02
+                      {`${counsellor?.firstName} ${counsellor?.lastName}`}
                     </p>
                   </div>
                 </div>
               )}
               <div className="p-4 flex gap-3 text-center border border-gray-200 rounded-lg">
-                <SquareUserRound className="w-10 h-10" />
+                <FilesIcon className="w-10 h-10" />
                 <div className="flex flex-col gap-1 text-start">
                   <p className="text-sm font-semibold">Total Applications</p>
                   <p className="text-xs text-gray-600">

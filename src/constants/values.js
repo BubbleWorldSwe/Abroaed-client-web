@@ -92,7 +92,7 @@ export const source = {
   homeCounselling: "Home Counselling",
   leaguageOfExcellence: "Leaguage Of Excellence",
   pathways: "Pathways",
-  pathwaysProgram: "Pathways Program",
+  pathwaysProgram: "Pathway Program",
   menu: "Menu",
   forex: "Forex",
 };
@@ -110,7 +110,7 @@ export const entity = {
   homeCounselling: "Home Counselling",
   leaguageOfExcellence: "Leaguage Of Excellence",
   pathways: "Pathways",
-  pathwaysProgram: "Pathways Program",
+  pathwaysProgram: "Pathway Programs",
   menu: "Menu",
   forex: "Forex",
   events: "Events",

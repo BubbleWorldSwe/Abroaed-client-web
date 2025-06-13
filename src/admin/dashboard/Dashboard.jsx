@@ -129,10 +129,14 @@ function Dashboard() {
     fetchData();
   }
 
+  console.log(leads);
+
   const metrics = [
     {
       title: "Total Leads",
-      value: leads ? leads.Converted + leads.Lost + leads.nurture : 0,
+      value: leads
+        ? (leads.Converted || 0) + (leads.Lost || 0) + (leads.nurture || 0)
+        : 0,
       change: "+10%",
       positive: true,
     },

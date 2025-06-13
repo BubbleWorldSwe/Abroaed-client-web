@@ -102,7 +102,7 @@ const TeamTable = ({
                           )}
                         </td>
                         <td className="px-4 py-3">
-                          {formatDateTime(member.createdAt)}
+                          {formatDate(member.createdAt)}
                         </td>
                         {isWriteAccess ? (
                           <td className="px-4 py-3 relative flex justify-center items-center group">

@@ -214,7 +214,7 @@ function Header({ isHeaderBgWhite = false }) {
     },
     {
       key: "pathways",
-      label: "Pathways",
+      label: "Pathway",
       link: "/pathways",
     },
     {

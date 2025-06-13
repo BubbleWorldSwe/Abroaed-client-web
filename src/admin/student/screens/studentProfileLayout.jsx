@@ -342,7 +342,7 @@ const StudentProfileLayout = () => {
     }
   }
 
-  async function updateStudentApplication(appData) {
+  async function updateStudentApplication2(appData) {
     try {
       dispatch(setStudentDataLoading(true));
       const data = await setUpdateStudentApplication(
@@ -357,6 +357,41 @@ const StudentProfileLayout = () => {
         setUpdateDocModal(false);
         setChangeStatusModal(false);
         setDocCommentModal(false);
+      } else {
+        toast.error(data?.message);
+        dispatch(setStudentDataLoading(false));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function updateStudentApplication(appData) {
+    try {
+      dispatch(setStudentDataLoading(true));
+      const data = await setUpdateStudentApplication(
+        appData,
+        selectedApplication?._id
+      );
+
+      if (data?.status === 200) {
+        const freshAppsResp = await getStudentApplications(id);
+        if (freshAppsResp?.status === 200) {
+          const updatedApp = freshAppsResp.data.result.find(
+            (a) => a._id === selectedApplication._id
+          );
+
+          dispatch(addStudentApplication(freshAppsResp.data.result));
+
+          setSelectedApplication(updatedApp);
+        }
+
+        toast.success(data?.message);
+
+        setUpdateApplicationModal(false);
+        setUpdateDocModal(false);
+        setChangeStatusModal(false);
+        // <-- NO setDocCommentModal(false) here!
       } else {
         toast.error(data?.message);
         dispatch(setStudentDataLoading(false));

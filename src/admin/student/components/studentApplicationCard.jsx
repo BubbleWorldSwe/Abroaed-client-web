@@ -50,25 +50,31 @@ const StudentApplicationCard = ({
     <div className="w-full bg-white border border-gray-200 rounded-lg shadow relative">
       <div className="relative">
         <img
-          className="rounded-t-lg w-full max-w-xl h-40 object-cover"
+          className="rounded-t-lg w-full max-w-xl h-36 object-cover"
           src={
             coverImage ? `${IMAGE_BASE_URL}/${coverImage}` : IMAGES.noCollege
           }
           alt="pic"
         />
-        <div className="absolute w-20 h-20 -bottom-9 left-5 object-contain shadow-sm">
+        <div className="absolute w-16 h-16 -bottom-5 left-4 bg-white rounded-[5px] overflow-hidden shadow-md">
           <img
             src={logoImage ? `${IMAGE_BASE_URL}/${logoImage}` : IMAGES.noLogo}
             alt="add_img_pic"
-            className="h-20 w-20 rounded-sm"
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
-      <div className="p-5 mt-5">
+      <div className="p-4 mt-5">
         <div className="flex justify-between items-center">
-          <h5 className="text-[19px] font-semibold text-gray-900 line-clamp-1">
-            {data?.college?.name || "----"}
-          </h5>
+          <div className="relative group w-full">
+            <h5 className="text-[18px] line-clamp-1 font-semibold tracking-tight text-gray-900 dark:text-white">
+              {data?.college?.name || "----"}
+            </h5>
+
+            <div className="absolute z-10 hidden w-max max-w-xs group-hover:block bg-black text-white text-sm rounded px-2 py-1 top-full mt-1">
+              {data?.college?.name}
+            </div>
+          </div>
           {isWriteAccess && status !== "rejected" && (
             // status !== "offer_letter_received" &&
             <div className="relative" ref={menuRef}>
@@ -76,12 +82,12 @@ const StudentApplicationCard = ({
                 <MoreVerticalIcon size={20} color="#71717A" />
               </button>
               {isMenuOpen && (
-                <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                <div className="absolute -right-3 mt-2 w-60 bg-white border border-gray-200 rounded-lg shadow-lg z-10">
                   <ul className="text-gray-700">
                     {status !== "offer_letter_received" && (
                       <li
                         onClick={onOpen}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                        className="px-4 py-1 hover:bg-gray-100 cursor-pointer"
                       >
                         Modify
                       </li>
@@ -91,7 +97,7 @@ const StudentApplicationCard = ({
                       status !== "offer_letter_received" && (
                         <li
                           onClick={onOpenStatusModal}
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                          className="px-4 py-1 hover:bg-gray-100 cursor-pointer"
                         >
                           Move Forward
                         </li>
@@ -99,7 +105,7 @@ const StudentApplicationCard = ({
                     <li
                       // onClick={onOpen}
                       onClick={onOpenCommentModal}
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      className="px-4 py-1 hover:bg-gray-100 cursor-pointer"
                     >
                       Add Comment
                     </li>
@@ -110,8 +116,8 @@ const StudentApplicationCard = ({
           )}
         </div>
 
-        <p className="text-gray-500 mt-2">{data?.intake}</p>
-        <p className="text-gray-500 mb-2">{data?.courseName}</p>
+        <p className="text-gray-500 mt-2 text-[14px]">{data?.intake}</p>
+        <p className="text-gray-500 mb-2 text-[14px]">{data?.courseName}</p>
       </div>
     </div>
   );

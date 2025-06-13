@@ -16,7 +16,9 @@ const BlogHomeHeaderTestSection = () => {
             <div className="flex gap-2">
               <p className="text-[#52525B] font-semibold text-lg">
                 {/* Trusted by Visionaries Worldwide */}
-                Whether you're exploring global education, seeking expert guidance, or preparing for a world-class future—our insights are your gateway to informed decisions and boundless opportunity.
+                Whether you're exploring global education, seeking expert
+                guidance, or preparing for a world-class future—our insights are
+                your gateway to informed decisions and boundless opportunity.
               </p>
             </div>
           </div>
