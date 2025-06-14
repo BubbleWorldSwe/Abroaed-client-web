@@ -80,6 +80,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
             value={formData?.partTimeStudents || ""}
             onChange={(e) => handleInputChange(e, "partTimeStudents")}
             placeholder="Enter"
+            required
           />
         </div>
         <div className="mt-5 mb-5">
@@ -90,6 +91,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
             value={formData?.postDegreeOpportunity || ""}
             onChange={(e) => handleInputChange(e, "postDegreeOpportunity")}
             placeholder="Enter"
+            required
           />
         </div>
 
@@ -124,7 +126,7 @@ const WorkOpportunitiesModal = ({ closeModal, onUpdate }) => {
                 currency={details?.countryId?.currency}
                 required
               />
-              {index !== 0 ? (
+              {professions?.length > 1 ? (
                 <button
                   type="button"
                   className="text-red-500 mb-2"

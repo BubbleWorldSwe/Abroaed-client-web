@@ -106,50 +106,52 @@ const EditBlog = () => {
       <div className="min-h-screen font-rethink bg-white dark:bg-gray-900 flex flex-col">
         <section className="py-3 sm:py-5 flex-grow">
           <div className="flex py-2 flex-col h-screen mx-auto max-w-screen-2xl bg-white dark:bg-gray-800 relative sm:rounded-lg">
-            <div className="flex justify-between items-center mb-4">
-              <div className="font-bold text-xl">Edit Blog</div>
-              <div className="space-x-2">
-                <button
-                  className="px-4 py-2 bg-gray-200 rounded-lg"
-                  onClick={() =>
-                    navigate(
-                      `/admin/blogs/blogDetails/${encodeURIComponent(
-                        blogDetails._id
-                      )}`,
-                      {
-                        state: blogDetails,
-                      }
-                    )
-                  }
-                >
-                  Preview
-                </button>
-                <button
-                  onClick={handleSubmit}
-                  className="px-4 py-2 bg-blue-500 text-white rounded-lg"
-                >
-                  Save Blog
-                </button>
-                {blogDetails.status === "draft" ? (
+            <div className="px-5">
+              <div className="flex justify-between items-center mb-4">
+                <div className="font-bold text-xl">Edit Blog</div>
+                <div className="space-x-2">
                   <button
-                    onClick={() => publishBlog("publish")}
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                    className="px-4 py-2 bg-gray-200 rounded-lg"
+                    onClick={() =>
+                      navigate(
+                        `/admin/blogs/blogDetails/${encodeURIComponent(
+                          blogDetails._id
+                        )}`,
+                        {
+                          state: blogDetails,
+                        }
+                      )
+                    }
                   >
-                    Publish Blog
+                    Preview
                   </button>
-                ) : (
                   <button
-                    onClick={() => publishBlog("draft")}
-                    className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                    onClick={handleSubmit}
+                    className="px-4 py-2 bg-blue-500 text-white rounded-lg"
                   >
-                    Save as Draft
+                    Save Blog
                   </button>
-                )}
+                  {/*  {blogDetails.status === "draft" ? (
+                    <button
+                      onClick={() => publishBlog("publish")}
+                      className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                    >
+                      Publish Blog
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => publishBlog("draft")}
+                      className="px-4 py-2 bg-green-500 text-white rounded-lg"
+                    >
+                      Save as Draft
+                    </button>
+                  )} */}
+                </div>
               </div>
-            </div>
-            <div className="text-sm text-gray-500 mb-4">
-              Last Updated{" "}
-              {new Date(blogDetails.updatedAt).toLocaleDateString()}
+              <div className="text-sm text-gray-500 mb-4">
+                Last Updated{" "}
+                {new Date(blogDetails.updatedAt).toLocaleDateString()}
+              </div>
             </div>
             <div className="w-full mx-auto my-6 border rounded-lg shadow-lg bg-white">
               <BlogImageSection onUploadImage={onUploadImage} />
