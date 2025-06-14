@@ -7,6 +7,7 @@ import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { useSelector } from "react-redux";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { formatDate, formatDateTime } from "../../../utils/helper";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const TeamTable = ({
   handleDelete,
@@ -23,12 +24,10 @@ const TeamTable = ({
 
   const [deleteId, setDeleteId] = useState(null);
   const dropdownRef = useRef(null);
-  const [dropdownDirection, setDropdownDirection] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
   const handleClickOutside = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -61,50 +60,52 @@ const TeamTable = ({
         </thead>
         <tbody>
           {teams.length > 0 &&
-          teams.some(
-            (item) => item.index === currentPage && item.data.length > 0
-          ) ? (
+            teams.some(
+              (item) => item.index === currentPage && item.data.length > 0
+            ) ? (
             teams.map((item) =>
               item.index === currentPage
                 ? item.data
-                    .filter((member) => {
-                      // Apply role-based filter
-                      if (role === "Backend Manager") {
-                        return member.roleId?.roleName === "Backend Associate";
-                      } else if (role === "Counsellor Manager") {
-                        return member.roleId?.roleName === "Counsellor";
-                      } else {
-                        return true;
-                      }
-                    })
-                    .map((member, index) => (
-                      <tr
-                        key={index}
-                        className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700`}
-                      >
-                        <td className="px-4 py-3">{`${member?.firstName} ${member?.lastName}`}</td>
-                        <td className="px-4 py-3">+91 {member?.mobile}</td>
-                        <td className="px-4 py-3">{member?.email}</td>
-                        <td className="px-4 py-3">
-                          {member?.roleId?.roleName}
-                        </td>
-                        <td className="px-4 py-3">
-                          {member.isWriteAccess ? (
-                            <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                              Read & Write
-                            </span>
-                          ) : (
-                            <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                              Read Only
-                            </span>
-                          )}
-                        </td>
-                        <td className="px-4 py-3">
-                          {formatDate(member.createdAt)}
-                        </td>
-                        {isWriteAccess ? (
-                          <td className="px-4 py-3 relative flex justify-center items-center group">
+                  .filter((member) => {
+                    // Apply role-based filter
+                    if (role === "Backend Manager") {
+                      return member.roleId?.roleName === "Backend Associate";
+                    } else if (role === "Counsellor Manager") {
+                      return member.roleId?.roleName === "Counsellor";
+                    } else {
+                      return true;
+                    }
+                  })
+                  .map((member, index) => (
+                    <tr
+                      key={index}
+                      className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700`}
+                    >
+                      <td className="px-4 py-3">{`${member?.firstName} ${member?.lastName}`}</td>
+                      <td className="px-4 py-3">+91 {member?.mobile}</td>
+                      <td className="px-4 py-3">{member?.email}</td>
+                      <td className="px-4 py-3">
+                        {member?.roleId?.roleName}
+                      </td>
+                      <td className="px-4 py-3">
+                        {member.isWriteAccess ? (
+                          <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            Read & Write
+                          </span>
+                        ) : (
+                          <span className="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            Read Only
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3">
+                        {formatDate(member.createdAt)}
+                      </td>
+                      {isWriteAccess ? (
+                        <td className="px-4 py-3 relative ">
+                          <div className="relative inline-block">
                             <button
+                              ref={dropdownRef}
                               aria-haspopup="true"
                               aria-expanded={
                                 dropdownVisible === index ? "true" : "false"
@@ -120,11 +121,7 @@ const TeamTable = ({
                             {dropdownVisible === index && (
                               <div
                                 ref={dropdownRef}
-                                className={`absolute right-0 min-w-max bg-white dark:bg-gray-800 shadow-lg rounded-1xl z-50 transition-all duration-300 ease-in-out ${
-                                  dropdownDirection === "up"
-                                    ? "bottom-full mb-2"
-                                    : "top-full mt-2"
-                                }`}
+                                className={adminTable3dotsClass}
                               >
                                 <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
                                   <li>
@@ -158,12 +155,13 @@ const TeamTable = ({
                                 </ul>
                               </div>
                             )}
-                          </td>
-                        ) : (
-                          <td></td>
-                        )}
-                      </tr>
-                    ))
+                          </div>
+                        </td>
+                      ) : (
+                        <td></td>
+                      )}
+                    </tr>
+                  ))
                 : null
             )
           ) : (

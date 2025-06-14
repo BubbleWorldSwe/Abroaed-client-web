@@ -3,13 +3,13 @@ import { Edit, EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { setSelectedTestPrep } from "../../../redux/actions/testPrepsActions";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { formatDateTime } from "../../../utils/helper";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import { toast } from "react-toastify";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const TestPrepTable = ({
   currentPage,
@@ -21,7 +21,6 @@ const TestPrepTable = ({
   const { testPreps, totalPages } = useSelector((state) => state.testPreps);
   const { isWriteAccess } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
@@ -52,7 +51,6 @@ const TestPrepTable = ({
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
 
   const handleSubmit = (status, id, test) => {
@@ -128,57 +126,55 @@ const TestPrepTable = ({
                       {formatDateTime(test.createdAt)}
                     </td>
 
-                    <td className="px-4 py-3">
-                      <button
-                        className="focus:outline-none"
-                        onClick={(e) => handleDropdownToggle(e, index)}
-                      >
-                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                      </button>
-                      {dropdownVisible === index && (
-                        <div
-                          ref={dropdownRef}
-                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                            dropdownDirection === "up"
-                              ? "bottom-full mb-2"
-                              : "mt-2"
-                          }`}
+                    <td className="px-4 py-3 relative">
+                      <div className="relative inline-block">
+
+                        <button
+                          className="focus:outline-none"
+                          onClick={(e) => handleDropdownToggle(e, index)}
                         >
-                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                            <li>
-                              <button
-                                type="button"
-                                onClick={() => handleViewDetails(test)}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Eye className="w-4 h-4" />
-                                <span>View Details</span>
-                              </button>
-                            </li>
-                            {isWriteAccess && (
-                              <>
-                                <li>
-                                  <button
-                                    onClick={() =>
-                                      handleSubmit(
-                                        test?.status === "draft"
-                                          ? "publish"
-                                          : "draft",
-                                        test._id,
-                                        test
-                                      )
-                                    }
-                                    className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                  >
-                                    <Edit className="w-4 h-4" />
-                                    <span>
-                                      {test?.status === "draft"
-                                        ? "Publish Page"
-                                        : "Withdraw Page"}
-                                    </span>
-                                  </button>
-                                </li>
-                                {/* <li>
+                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                        </button>
+                        {dropdownVisible === index && (
+                          <div
+                            ref={dropdownRef}
+                            className={adminTable3dotsClass}
+                          >
+                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => handleViewDetails(test)}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                  <span>View Details</span>
+                                </button>
+                              </li>
+                              {isWriteAccess && (
+                                <>
+                                  <li>
+                                    <button
+                                      onClick={() =>
+                                        handleSubmit(
+                                          test?.status === "draft"
+                                            ? "publish"
+                                            : "draft",
+                                          test._id,
+                                          test
+                                        )
+                                      }
+                                      className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
+                                    >
+                                      <Edit className="w-4 h-4" />
+                                      <span>
+                                        {test?.status === "draft"
+                                          ? "Publish Page"
+                                          : "Withdraw Page"}
+                                      </span>
+                                    </button>
+                                  </li>
+                                  {/* <li>
                                   <button
                                     type="button"
                                     onClick={() => {
@@ -191,11 +187,12 @@ const TestPrepTable = ({
                                     <span>Delete</span>
                                   </button>
                                 </li> */}
-                              </>
-                            )}
-                          </ul>
-                        </div>
-                      )}
+                                </>
+                              )}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))

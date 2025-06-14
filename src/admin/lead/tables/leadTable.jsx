@@ -20,6 +20,7 @@ import { formatDateTime } from "../../../utils/helper";
 import { setSelectedLead } from "../../../redux/actions/leadsActions";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const LeadTable = ({
   handleAssignTeamMember,
@@ -41,7 +42,6 @@ const LeadTable = ({
   const [deleteId, setDeleteId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [dropdownDirection, setDropdownDirection] = useState(null);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -53,7 +53,6 @@ const LeadTable = ({
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
 
   const handleClickOutside = (e) => {
@@ -140,15 +139,14 @@ const LeadTable = ({
                             <div className="relative inline-block group">
                               {/* Status badge */}
                               <span
-                                className={`font-medium p-2 rounded cursor-default ${
-                                  lead.status.toLowerCase() === "lost"
-                                    ? "bg-[#FDE8E8] text-[#9B1C1C]"
-                                    : lead.status.toLowerCase() === "nurture"
+                                className={`font-medium p-2 rounded cursor-default ${lead.status.toLowerCase() === "lost"
+                                  ? "bg-[#FDE8E8] text-[#9B1C1C]"
+                                  : lead.status.toLowerCase() === "nurture"
                                     ? "bg-[#FDF6B2] text-[#723B13]"
                                     : lead.status.toLowerCase() === "converted"
-                                    ? "bg-[#DEF7EC] text-[#03543F]"
-                                    : "bg-gray-200 text-gray-700"
-                                }`}
+                                      ? "bg-[#DEF7EC] text-[#03543F]"
+                                      : "bg-gray-200 text-gray-700"
+                                  }`}
                               >
                                 {lead.status.charAt(0).toUpperCase() +
                                   lead.status.slice(1).toLowerCase()}
@@ -173,48 +171,42 @@ const LeadTable = ({
                         <td className="px-4 py-3">
                           <span>
                             {lead?.scheduleDetails
-                              ? `${
-                                  lead?.scheduleDetails?.appointmentType
-                                } at ${formatDateTime(
-                                  lead?.scheduleDetails?.preferredSlot
-                                )}`
+                              ? `${lead?.scheduleDetails?.appointmentType
+                              } at ${formatDateTime(
+                                lead?.scheduleDetails?.preferredSlot
+                              )}`
                               : "To be Scheduled"}
                           </span>
                         </td>
                         <td className="px-4 py-3 whitespace-nowrap">
                           <span>{formatDateTime(lead?.createdAt)}</span>
                         </td>
-                        <td className="px-4 py-3">
-                          <button
-                            ref={dropdownRef}
-                            className="focus:outline-none"
-                            onClick={(e) => {
-                              handleDropdownToggle(e, index);
-                            }}
-                          >
-                            <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                          </button>
-                          {dropdownVisible === index && (
-                            <div
-                              className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                                dropdownDirection === "up"
-                                  ? "bottom-full mb-2"
-                                  : "mt-2"
-                              }`}
+                        <td className="px-4 py-3 relative">
+                          <div className="relative inline-block">
+                            <button
+                              ref={dropdownRef}
+                              className="focus:outline-none"
+                              onClick={(e) => {
+                                handleDropdownToggle(e, index);
+                              }}
                             >
-                              <ul
-                                className="py-1 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="apple-imac-27-dropdown-button"
+                              <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                            </button>
+
+                            {dropdownVisible === index && (
+                              <div
+                                className={adminTable3dotsClass}
                               >
-                                {isWriteAccess && (
-                                  <>
-                                    {role !== "Counsellor" &&
-                                      role !== "Backend Associate" && (
+                                <ul
+                                  className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                  aria-labelledby="dropdown-button"
+                                >
+                                  {isWriteAccess && (
+                                    <>
+                                      {role !== "Counsellor" && role !== "Backend Associate" && (
                                         <li>
                                           <button
-                                            onClick={() =>
-                                              handleAssignTeamMember(lead)
-                                            }
+                                            onClick={() => handleAssignTeamMember(lead)}
                                             className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                           >
                                             <Plus className="w-5 h-5" />
@@ -223,58 +215,59 @@ const LeadTable = ({
                                         </li>
                                       )}
 
-                                    <li>
-                                      <button
-                                        onClick={() =>
-                                          handleUpdateTeamMember(lead)
-                                        }
-                                        className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                      >
-                                        <Pencil className="w-4 h-4" />
-                                        <span>Update Lead Status</span>
-                                      </button>
-                                    </li>
-                                    <li>
-                                      <button
-                                        onClick={() =>
-                                          handleScheduleAppointment(lead)
-                                        }
-                                        className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                      >
-                                        <CalendarDays className="w-4 h-4" />
-                                        <span>Schedule Appointment</span>
-                                      </button>
-                                    </li>
-                                  </>
-                                )}
-                                <li>
-                                  <button
-                                    type="button"
-                                    onClick={() => handleViewDetails(lead)}
-                                    className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                  >
-                                    <Eye className="w-4 h-4" />
-                                    <span>View Profile</span>
-                                  </button>
-                                </li>
-                                {isWriteAccess && role === "Admin" && (
+                                      <li>
+                                        <button
+                                          onClick={() => handleUpdateTeamMember(lead)}
+                                          className="flex text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        >
+                                          <Pencil className="w-4 h-4" />
+                                          <span>Update Lead Status</span>
+                                        </button>
+                                      </li>
+
+                                      <li>
+                                        <button
+                                          onClick={() => handleScheduleAppointment(lead)}
+                                          className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        >
+                                          <CalendarDays className="w-4 h-4" />
+                                          <span>Schedule Appointment</span>
+                                        </button>
+                                      </li>
+                                    </>
+                                  )}
+
                                   <li>
                                     <button
-                                      onClick={() => {
-                                        setDeleteId(lead);
-                                        setIsModalOpen(!isModalOpen);
-                                      }}
-                                      className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      type="button"
+                                      onClick={() => handleViewDetails(lead)}
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                     >
-                                      <Trash2 className="w-4 h-4" />
-                                      <span>Delete</span>
+                                      <Eye className="w-4 h-4" />
+                                      <span>View Profile</span>
                                     </button>
                                   </li>
-                                )}
-                              </ul>
-                            </div>
-                          )}
+
+                                  {isWriteAccess && role === "Admin" && (
+                                    <li>
+                                      <button
+                                        onClick={() => {
+                                          setDeleteId(lead);
+                                          setIsModalOpen(!isModalOpen);
+                                        }}
+                                        className="flex whitespace-nowrap text-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
+                                        <span>Delete</span>
+                                      </button>
+                                    </li>
+                                  )}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
                         </td>
+
                       </tr>
                     );
                   })

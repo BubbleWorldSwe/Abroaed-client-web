@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { EnquireButton } from "../../../commons/components/buttons/enquireButton";
 import CourseEnquiryModal from "../../comman/modals/courseEnquiryModal";
 import { Bookmark } from "lucide-react";
-
+import { motion } from "framer-motion";
 const CourseCard = ({
   course,
   source,
@@ -45,7 +45,13 @@ const CourseCard = ({
       />
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow p-5 dark:bg-gray-800 dark:border-gray-700 flex flex-col h-full">
         <div className="flex flex-col flex-grow">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+            className=""
+          >
             <div className="flex justify-between">
               <h5 className="mb-2 text-[22px] font-semibold text-gray-primary dark:text-white">
                 {course.name}
@@ -62,9 +68,8 @@ const CourseCard = ({
                   }
                 >
                   <Bookmark
-                    className={`w-6 h-6 text-black ${
-                      isSaved ? "fill-black" : "text-gray-500"
-                    }`}
+                    className={`w-6 h-6 text-black ${isSaved ? "fill-black" : "text-gray-500"
+                      }`}
                   />
                 </button>
               )}
@@ -98,7 +103,7 @@ const CourseCard = ({
             <p className="mb-3 font-normal text-[#71717A] text-base dark:text-gray-400 flex-grow">
               {course.brief}
             </p>
-          </div>
+          </motion.div>
         </div>
 
         {/* Button Always at Bottom */}

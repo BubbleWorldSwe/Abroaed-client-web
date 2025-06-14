@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { formatDate, formatDateTime } from "../../../utils/helper";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const TransactionTable = ({
   dropdownVisible,
@@ -21,7 +22,6 @@ const TransactionTable = ({
 }) => {
   const dropdownRef = useRef(null);
   const [selectedRows, setSelectedRows] = useState({});
-  const [dropdownDirection, setDropdownDirection] = useState(null);
 
   const { transactions, totalPages } = useSelector(
     (state) => state.transactions
@@ -32,7 +32,6 @@ const TransactionTable = ({
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
 
   const handleClickOutside = (e) => {
@@ -77,9 +76,8 @@ const TransactionTable = ({
                 item?.data.map((transaction, index) => (
                   <tr
                     key={index}
-                    className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 ${
-                      selectedRows[index] ? "bg-[#FFFCC2]" : ""
-                    }`}
+                    className={`border-b dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 ${selectedRows[index] ? "bg-[#FFFCC2]" : ""
+                      }`}
                   >
                     <th
                       scope="row"
@@ -102,23 +100,21 @@ const TransactionTable = ({
                     </td>
                     {isWriteAccess && (
                       <td className="px-4 py-3">
-                        <button
-                          ref={dropdownRef}
-                          className="focus:outline-none"
-                          onClick={(e) => handleDropdownToggle(e, index)}
-                        >
-                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                        </button>
-                        {dropdownVisible === index && (
-                          <div
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                              dropdownDirection === "up"
-                                ? "bottom-full mb-2"
-                                : "mt-2"
-                            }`}
+                        <div className="relative inline-block">
+
+                          <button
+                            ref={dropdownRef}
+                            className="focus:outline-none"
+                            onClick={(e) => handleDropdownToggle(e, index)}
                           >
-                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                              {/*  <li>
+                            <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                          </button>
+                          {dropdownVisible === index && (
+                            <div
+                              className={adminTable3dotsClass}
+                            >
+                              <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                {/*  <li>
                             <button
                               type="button"
                               className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -127,35 +123,36 @@ const TransactionTable = ({
                               <span>View Details</span>
                             </button>
                           </li> */}
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => handleEdit(transaction)}
-                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                  <Pencil className="w-4 h-4" />
-                                  <span>Edit</span>
-                                </button>
-                              </li>
-                              {role === "Admin" && (
                                 <li>
                                   <button
                                     type="button"
-                                    onClick={() => {
-                                      setDeleteId(transaction);
-                                      setIsModalOpen(!isModalOpen);
-                                      setDropdownVisible(null);
-                                    }}
+                                    onClick={() => handleEdit(transaction)}
                                     className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                   >
-                                    <Trash2 className="w-4 h-4" />
-                                    <span>Delete</span>
+                                    <Pencil className="w-4 h-4" />
+                                    <span>Edit</span>
                                   </button>
                                 </li>
-                              )}
-                            </ul>
-                          </div>
-                        )}
+                                {role === "Admin" && (
+                                  <li>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        setDeleteId(transaction);
+                                        setIsModalOpen(!isModalOpen);
+                                        setDropdownVisible(null);
+                                      }}
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <Trash2 className="w-4 h-4" />
+                                      <span>Delete</span>
+                                    </button>
+                                  </li>
+                                )}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
                       </td>
                     )}
                   </tr>

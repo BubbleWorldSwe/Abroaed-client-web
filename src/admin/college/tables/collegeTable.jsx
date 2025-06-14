@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
-import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
+
 import { setSelectedCollege } from "../../../redux/actions/collegeActions";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import { formatDateTime } from "../../../utils/helper";
 import { toast } from "react-toastify";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const CollegeTable = ({
   currentPage,
@@ -20,7 +21,6 @@ const CollegeTable = ({
 }) => {
   const dispatch = useDispatch();
   const { colleges, totalPages } = useSelector((state) => state.colleges);
-  const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -83,7 +83,6 @@ const CollegeTable = ({
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
 
   const handleViewDetails = (college) => {
@@ -174,77 +173,76 @@ const CollegeTable = ({
                     <td className="px-4 py-3">
                       {formatDateTime(college.createdAt)}
                     </td>
-                    <td className="px-4 py-3">
-                      <button
-                        className="focus:outline-none"
-                        onClick={(e) => handleDropdownToggle(e, index)}
-                      >
-                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                      </button>
-                      {dropdownVisible === index && (
-                        <div
-                          ref={dropdownRef}
-                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                            dropdownDirection === "up"
-                              ? "bottom-full mb-2"
-                              : "mt-2"
-                          }`}
+                    <td className="px-4 py-3 relative">
+                      <div className="relative inline-block">
+
+                        <button
+                          className="focus:outline-none"
+                          onClick={(e) => handleDropdownToggle(e, index)}
                         >
-                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                            <li>
-                              <button
-                                type="button"
-                                onClick={() => handleViewDetails(college)}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Eye className="w-5 h-5" />
-                                <span>View Details</span>
-                              </button>
-                            </li>
-                            {isWriteAccess && (
-                              <>
-                                <li>
-                                  <button
-                                    onClick={() =>
-                                      handleSubmit(
-                                        college?.status === "draft"
-                                          ? "publish"
-                                          : "draft",
-                                        college._id,
-                                        college
-                                      )
-                                    }
-                                    className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                  >
-                                    <Edit className="w-4 h-4" />
-                                    <span>
-                                      {college?.status === "draft"
-                                        ? "Publish Page"
-                                        : "Withdraw Page"}
-                                    </span>
-                                  </button>
-                                </li>
-                                {role === "Admin" && (
+                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                        </button>
+                        {dropdownVisible === index && (
+                          <div
+                            ref={dropdownRef}
+                            className={adminTable3dotsClass}
+                          >
+                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => handleViewDetails(college)}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Eye className="w-5 h-5" />
+                                  <span>View Details</span>
+                                </button>
+                              </li>
+                              {isWriteAccess && (
+                                <>
                                   <li>
                                     <button
-                                      type="button"
-                                      onClick={() => {
-                                        setDeleteId(college);
-                                        setIsModalOpen(!isModalOpen);
-                                        //setDropdownVisible(null);
-                                      }}
-                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      onClick={() =>
+                                        handleSubmit(
+                                          college?.status === "draft"
+                                            ? "publish"
+                                            : "draft",
+                                          college._id,
+                                          college
+                                        )
+                                      }
+                                      className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
                                     >
-                                      <Trash2 className="w-4 h-4" />
-                                      <span>Delete</span>
+                                      <Edit className="w-4 h-4" />
+                                      <span>
+                                        {college?.status === "draft"
+                                          ? "Publish Page"
+                                          : "Withdraw Page"}
+                                      </span>
                                     </button>
                                   </li>
-                                )}
-                              </>
-                            )}
-                          </ul>
-                        </div>
-                      )}
+                                  {role === "Admin" && (
+                                    <li>
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setDeleteId(college);
+                                          setIsModalOpen(!isModalOpen);
+                                          //setDropdownVisible(null);
+                                        }}
+                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
+                                        <span>Delete</span>
+                                      </button>
+                                    </li>
+                                  )}
+                                </>
+                              )}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))

@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
-import { Edit, EllipsisVertical, Eye, Pencil, Trash2 } from "lucide-react";
+import { Edit, EllipsisVertical, Eye, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { TableFooter } from "../../../commons/components/table/tableFooter";
-import { CheckboxField } from "../../../commons/components/inputFields/checkboxField";
 import DeleteConfirmationModal from "../../../commons/modal/deleteConfirmationModal";
 import { setSelectedAccommodation } from "../../../redux/actions/accommodationActions";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import { formatDateTime } from "../../../utils/helper";
 import { toast } from "react-toastify";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const AccommodationTable = ({
   currentPage,
@@ -18,7 +18,6 @@ const AccommodationTable = ({
   handleDelete,
   onUpdate,
 }) => {
-  const [dropdownDirection, setDropdownDirection] = useState(null);
   const [dropdownVisible, setDropdownVisible] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
@@ -78,7 +77,6 @@ const AccommodationTable = ({
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
 
   return (
@@ -117,10 +115,9 @@ const AccommodationTable = ({
                     <td className="px-4 py-3">{`${accommodation?.stateId?.name}, ${accommodation?.destinationId?.countryId?.name}`}</td>
                     {/* <td className="px-4 py-3">{`${accommodation?.city}, ${accommodation?.stateId?.name}, ${accommodation.countryId?.name}`}</td> */}
                     <td className="px-4 py-3">
-                      {`${accommodation.price} (in ${
-                        accommodation?.destinationId?.countryId?.currency ||
+                      {`${accommodation.price} (in ${accommodation?.destinationId?.countryId?.currency ||
                         accommodation.currency
-                      })`}
+                        })`}
                     </td>
                     <td className="px-4 py-3">{accommodation.availablity}</td>
                     <td className="px-4 py-3 line-clamp-3 overflow-scroll">
@@ -137,78 +134,77 @@ const AccommodationTable = ({
                       {formatDateTime(accommodation.createdAt)}
                     </td>
 
-                    <td className="px-4 py-3">
-                      <button
-                        className="focus:outline-none"
-                        onClick={(e) => handleDropdownToggle(e, index)}
-                      >
-                        <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                      </button>
-                      {dropdownVisible === index && (
-                        <div
-                          ref={dropdownRef}
-                          className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                            dropdownDirection === "up"
-                              ? "bottom-full mb-2"
-                              : "mt-2"
-                          }`}
-                        >
-                          <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                            <li>
-                              <button
-                                type="button"
-                                onClick={() => handleViewDetails(accommodation)}
-                                className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                              >
-                                <Eye className="w-4 h-4" />
-                                <span>View Details</span>
-                              </button>
-                            </li>
+                    <td className="px-4 py-3 relative">
+                      <div className="relative inline-block">
 
-                            {isWriteAccess && (
-                              <>
-                                <li>
-                                  <button
-                                    onClick={() =>
-                                      handleSubmit(
-                                        accommodation?.status === "draft"
-                                          ? "publish"
-                                          : "draft",
-                                        accommodation._id,
-                                        accommodation
-                                      )
-                                    }
-                                    className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
-                                  >
-                                    <Edit className="w-4 h-4" />
-                                    <span>
-                                      {accommodation?.status === "draft"
-                                        ? "Publish Page"
-                                        : "Withdraw Page"}
-                                    </span>
-                                  </button>
-                                </li>
-                                {role === "Admin" && (
+                        <button
+                          className="focus:outline-none"
+                          onClick={(e) => handleDropdownToggle(e, index)}
+                        >
+                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                        </button>
+                        {dropdownVisible === index && (
+                          <div
+                            ref={dropdownRef}
+                            className={adminTable3dotsClass}
+                          >
+                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                              <li>
+                                <button
+                                  type="button"
+                                  onClick={() => handleViewDetails(accommodation)}
+                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                >
+                                  <Eye className="w-4 h-4" />
+                                  <span>View Details</span>
+                                </button>
+                              </li>
+
+                              {isWriteAccess && (
+                                <>
                                   <li>
                                     <button
-                                      type="button"
-                                      onClick={() => {
-                                        setDeleteId(accommodation);
-                                        setIsModalOpen(!isModalOpen);
-                                        //setDropdownVisible(null);
-                                      }}
-                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      onClick={() =>
+                                        handleSubmit(
+                                          accommodation?.status === "draft"
+                                            ? "publish"
+                                            : "draft",
+                                          accommodation._id,
+                                          accommodation
+                                        )
+                                      }
+                                      className="flex items-center gap-2 py-2 px-4 dark:hover:bg-gray-600"
                                     >
-                                      <Trash2 className="w-4 h-4" />
-                                      <span>Delete</span>
+                                      <Edit className="w-4 h-4" />
+                                      <span>
+                                        {accommodation?.status === "draft"
+                                          ? "Publish Page"
+                                          : "Withdraw Page"}
+                                      </span>
                                     </button>
                                   </li>
-                                )}
-                              </>
-                            )}
-                          </ul>
-                        </div>
-                      )}
+                                  {role === "Admin" && (
+                                    <li>
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          setDeleteId(accommodation);
+                                          setIsModalOpen(!isModalOpen);
+                                          //setDropdownVisible(null);
+                                        }}
+                                        className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
+                                        <span>Delete</span>
+                                      </button>
+                                    </li>
+                                  )}
+                                </>
+                              )}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))

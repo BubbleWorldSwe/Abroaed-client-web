@@ -10,6 +10,7 @@ import { TableFooter } from "../../../commons/components/table/tableFooter";
 import { setSelectedStudent } from "../../../redux/actions/studentsActions";
 import { TableNoData } from "../../../commons/components/table/tableNoData";
 import { formatDate, formatDateTime } from "../../../utils/helper";
+import { adminTable3dotsClass } from "../../../utils/className";
 
 const StudentTable = ({
   handleOpenAddModal,
@@ -22,7 +23,6 @@ const StudentTable = ({
 }) => {
   const dispatch = useDispatch();
   const { students, totalPages } = useSelector((state) => state.students);
-  const [dropdownDirection, setDropdownDirection] = useState(null);
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
   const { isWriteAccess } = useSelector((state) => state.auth);
@@ -36,7 +36,6 @@ const StudentTable = ({
   const handleDropdownToggle = (e, index) => {
     e.stopPropagation();
     setDropdownVisible(dropdownVisible === index ? null : index);
-    setDropdownDirection("down");
   };
 
   function getCounsellor(studentProfile) {
@@ -111,51 +110,49 @@ const StudentTable = ({
                       <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {formatDateTime(member?.updatedAt)}
                       </td>
-                      <td className="px-4 py-3">
-                        <button
-                          className="focus:outline-none"
-                          onClick={(e) => handleDropdownToggle(e, index)}
-                        >
-                          <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
-                        </button>
-                        {dropdownVisible === index && (
-                          <div
-                            ref={dropdownRef}
-                            className={`absolute right-0 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-lg z-[9999] ${
-                              dropdownDirection === "up"
-                                ? "bottom-full mb-2"
-                                : "mt-2"
-                            }`}
+                      <td className="px-4 py-3 relative">
+                        <div className="relative inline-block">
+                          <button
+                            className="focus:outline-none"
+                            onClick={(e) => handleDropdownToggle(e, index)}
                           >
-                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                              {isWriteAccess && (
+                            <EllipsisVertical className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                          </button>
+                          {dropdownVisible === index && (
+                            <div
+                              ref={dropdownRef}
+                              className={adminTable3dotsClass}
+                            >
+                              <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
+                                {isWriteAccess && (
+                                  <li>
+                                    <button
+                                      type="button"
+                                      onClick={() => {
+                                        handleOpenAddModal("assign");
+                                        handleAssignTeamMember(member);
+                                      }}
+                                      className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >
+                                      <Plus className="w-4 h-4" />
+                                      <span>Assign Member</span>
+                                    </button>
+                                  </li>
+                                )}
                                 <li>
                                   <button
                                     type="button"
-                                    onClick={() => {
-                                      handleOpenAddModal("assign");
-                                      handleAssignTeamMember(member);
-                                    }}
+                                    onClick={() => handleViewDetails(member)}
                                     className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                   >
-                                    <Plus className="w-4 h-4" />
-                                    <span>Assign Member</span>
+                                    <Eye className="w-4 h-4" />
+                                    <span>View Profile</span>
                                   </button>
                                 </li>
-                              )}
-                              <li>
-                                <button
-                                  type="button"
-                                  onClick={() => handleViewDetails(member)}
-                                  className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                >
-                                  <Eye className="w-4 h-4" />
-                                  <span>View Profile</span>
-                                </button>
-                              </li>
-                            </ul>
-                          </div>
-                        )}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
                       </td>
                     </tr>
                   );
