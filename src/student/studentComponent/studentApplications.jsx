@@ -18,8 +18,6 @@ const StudentApplications = () => {
 
   const sortedComments = getSortedComments();
 
-  console.log(sortedComments);
-
   const studentApplications = formatStudentApplications(applications || []);
 
   function getDataLengthByStatus(targetStatus) {

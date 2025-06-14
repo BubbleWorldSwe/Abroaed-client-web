@@ -36,7 +36,6 @@ const LeadTable = ({
   const dispatch = useDispatch();
   const { leads, totalPages } = useSelector((state) => state.leads);
 
-  console.log(leads);
   const { isWriteAccess, role } = useSelector((state) => state.auth);
 
   const [deleteId, setDeleteId] = useState(null);

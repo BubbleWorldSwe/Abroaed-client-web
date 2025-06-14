@@ -59,6 +59,8 @@ function* fetchFilterLeads(action) {
     const { startDate, endDate, page } = action.payload;
     const data = yield call(getFilterLeads, startDate, endDate, page);
 
+    console.log(data);
+
     if (data.status === 200) {
       yield put(fetchLeadsFilterDataSuccess(data.data));
     } else {
@@ -113,8 +115,6 @@ function* addNewLead(action) {
 function* addBulkLeads(action) {
   try {
     const response = yield call(setUploadBulkLead, action.payload);
-
-    console.log(response);
 
     if (response.status === 200) {
       yield put(addBulkLeadsSuccess(response.data));

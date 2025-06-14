@@ -21,8 +21,6 @@ const TeamTable = ({
   const { teams, totalPages, total } = useSelector((state) => state.teams);
   const { isWriteAccess, role } = useSelector((state) => state.auth);
 
-  console.log(teams);
-
   const [deleteId, setDeleteId] = useState(null);
   const dropdownRef = useRef(null);
   const [dropdownDirection, setDropdownDirection] = useState(null);

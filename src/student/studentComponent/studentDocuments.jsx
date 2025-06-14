@@ -137,7 +137,6 @@ const StudentDocuments = () => {
   const [modalFile, setModalFile] = useState(null);
 
   const handleViewDocument = (file) => {
-    console.log(file);
     setModalFile(file);
     setIsPreviewModalOpen(true);
     setDropdownVisible(null);

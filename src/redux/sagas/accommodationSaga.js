@@ -37,7 +37,7 @@ function* fetchAccommodations(action) {
     }
   } catch (error) {
     yield put(fetchAccommodationsFailure(error.message));
-    //  console.log(error.message);
+
     toast.error(error.message);
   }
 }

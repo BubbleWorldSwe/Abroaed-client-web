@@ -211,7 +211,18 @@ export const studentsReducer = (state = initialState, action) => {
       return { ...state, loading: false, error: action.payload };
 
     case SEARCH_STUDENTS_FAILURE:
-      return { ...state, loading: false, error: action.payload, students: [] };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+
+        students: [{ index: 1, data: [] }],
+        totalPages: 1,
+        page: 1,
+
+        total: action.payload.result?.length,
+      };
 
     case SET_SELECTED_STUDENT:
       return { ...state, selectedStudent: action.payload, loading: false };

@@ -19,8 +19,6 @@ export const getTeams2 = async (page) => {
     if (data.success) {
       let result = data.data;
 
-      console.log(result);
-
       return data.data;
     }
   } catch (error) {
@@ -116,8 +114,6 @@ export const setAddTeam = async (credentials) => {
 
 export const setDeleteTeam = async (id) => {
   try {
-    // console.log(credentials);
-
     const data = await makeDeleteRequest(
       `${BASE_URL}/api/v1/admin/users/${id}`
     );

@@ -57,7 +57,7 @@ function* fetchAllLanguagePreps() {
   } catch (error) {
     yield put(fetchAllLanguagePrepsFailure(error.message));
     // toast.error(error.message);
-    console.log(error.message);
+    console.log(error);
   }
 }
 

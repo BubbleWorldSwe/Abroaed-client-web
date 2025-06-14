@@ -15,8 +15,6 @@ function Dashboard() {
 
   const { adminToken, admin } = useSelector((state) => state.auth);
 
-  console.log(admin);
-
   return (
     <div className="h-screen flex flex-col p-2">
       {/* Adjust padding and spacing */}

@@ -74,7 +74,6 @@ const DocumentLibrary = ({
   };
 
   const handleViewDocument = (file) => {
-    console.log(file);
     setModalFile(file);
     setIsModalOpen(true);
     setDropdownVisible(null);
@@ -95,8 +94,6 @@ const DocumentLibrary = ({
 
   // Reset refs before rendering so they don't accumulate stale nodes
   dropdownRefs.current = [];
-
-  console.log(studentProfile?.documents);
 
   return (
     <>

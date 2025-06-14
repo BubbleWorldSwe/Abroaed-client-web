@@ -65,10 +65,7 @@ function StudentSignUp() {
   };
   useEffect(() => {
     if (user) {
-      console.log("User Received");
       navigate("/otpVerification");
-    } else {
-      console.log("Not Received");
     }
   }, [user]);
 

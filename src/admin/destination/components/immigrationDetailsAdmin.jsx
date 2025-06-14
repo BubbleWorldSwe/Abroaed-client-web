@@ -27,7 +27,6 @@ const ImmigrationDetailsAdmin = ({ onEdit, onUpdate }) => {
           typeof rest.visaType === "object" ? rest.visaType._id : rest.visaType,
       })
     );
-    // console.log(immigrationWithoutId);
 
     onUpdate({ immigrations: immigrationWithoutId });
   }

@@ -47,8 +47,6 @@ const ScholarshipModal = ({ closeModal, filledData, onUpdate }) => {
       ({ _id, ...rest }) => rest
     );
 
-    // console.log(scholarshipsWithoutId);
-
     onUpdate({ scholarships: scholarshipsWithoutId });
 
     //  closeModal();

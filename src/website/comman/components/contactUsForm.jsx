@@ -15,8 +15,6 @@ const ContactUsForm = ({
 }) => {
   const { error, loading } = useSelector((state) => state.leads);
 
-  console.log(error + " : Error");
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",

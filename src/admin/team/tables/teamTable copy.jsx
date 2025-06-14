@@ -57,8 +57,6 @@ const TeamTable = ({
       })
     );
 
-  console.log(filteredTeams.length);
-
   return (
     <>
       <table className="w-full border-2 rounded-lg text-sm text-left text-gray-500 dark:text-gray-400">

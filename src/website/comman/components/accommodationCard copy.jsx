@@ -27,8 +27,6 @@ const AccommodationCard = ({
     return (saved?.typeId?._id || saved?.typeId) === item?._id;
   });
 
-  console.log(savedItem);
-
   const isSaved = Boolean(savedItem);
 
   const { isLoggedInStudent } = useSelector((state) => state.auth);

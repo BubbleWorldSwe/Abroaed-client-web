@@ -55,9 +55,7 @@ export const leadsReducer = (state = initialState, action) => {
       return { ...state, loading: true, success: null };
 
     case FETCH_LEADS_SUCCESS:
-
     case FETCH_LEADS_FILTER_DATA_SUCCESS:
-      console.log(action?.payload);
       return {
         ...state,
         loading: false,
@@ -73,7 +71,6 @@ export const leadsReducer = (state = initialState, action) => {
       };
 
     case SEARCH_LEADS_SUCCESS:
-      console.log(action?.payload);
       return {
         ...state,
         loading: false,
@@ -86,7 +83,6 @@ export const leadsReducer = (state = initialState, action) => {
               ], */
 
         leads: [{ index: 1, data: action.payload.result }],
-
         totalPages: action.payload.totalPages || 1,
         page: action.payload.page || 1,
 
@@ -170,7 +166,18 @@ export const leadsReducer = (state = initialState, action) => {
       };
 
     case SEARCH_LEADS_FAILURE:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+        success: false,
+
+        leads: [{ index: 1, data: [] }],
+        totalPages: 1,
+        page: 1,
+
+        total: action.payload.result?.length,
+      };
 
     case SET_SELECTED_LEAD:
       return { ...state, selectedLead: action.payload, loading: false };

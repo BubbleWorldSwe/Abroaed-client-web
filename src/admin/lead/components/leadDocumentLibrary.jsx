@@ -45,7 +45,6 @@ const LeadDocumentLibrary = ({ handleOpenUploadModal, deleteDocument }) => {
   );
 
   const handleViewDocument = (file) => {
-    console.log(file);
     setModalFile(file);
     setIsModalOpen(true);
     setDropdownVisible(null);

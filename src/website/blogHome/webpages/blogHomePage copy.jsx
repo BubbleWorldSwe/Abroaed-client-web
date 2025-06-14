@@ -33,7 +33,6 @@ function BlogsHome() {
     try {
       const list = await getBlogsByCategoryId(id);
 
-      console.log(list);
       if (list.status === 200) {
         const publishedBlogs = list.data?.result?.filter(
           (item) => item.status === "publish"
@@ -73,8 +72,6 @@ function BlogsHome() {
         setAllBlogs(publishedBlogs);
 
         const categories = list.data.result.map((item) => item.category);
-
-        console.log(categories);
 
         const uniqueCategories = [
           ...new Set(list.data.result.map((item) => item.category)),

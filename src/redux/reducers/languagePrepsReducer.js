@@ -64,7 +64,6 @@ export const languagePrepsReducer = (state = initialState, action) => {
       const preps = action.payload.result;
 
       const publishedItems = preps.filter((item) => {
-        console.log(item?.status);
         return item.status === "publish";
       });
       return {

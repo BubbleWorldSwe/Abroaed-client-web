@@ -129,8 +129,6 @@ function Dashboard() {
     fetchData();
   }
 
-  console.log(leads);
-
   const metrics = [
     {
       title: "Total Leads",

@@ -77,7 +77,6 @@ export const makePostRequest = async (url, payload) => {
     });
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);
@@ -136,7 +135,6 @@ export const makePutRequestWithToken = async (url, payload, token) => {
     );
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);
@@ -229,7 +227,6 @@ export const makeDeleteRequest = async (url, payload) => {
     }
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);
@@ -255,7 +252,6 @@ export const makePutRequest = async (url, payload) => {
     });
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);
@@ -285,7 +281,6 @@ export const makePutRequestWithFormData = async (url, payload, token) => {
     );
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);
@@ -315,10 +310,7 @@ export const makePostRequestWithFormData = async (url, payload) => {
       }
     );
 
-    console.log(response);
-
     const json = await response.json();
-    console.log(json);
 
     // 🔥 New Success Logic
     if ((json && json.status) || response.status === 200) {
@@ -352,7 +344,6 @@ export const makePatchRequestWithFormData = async (url, payload) => {
     );
 
     const json = await response.json();
-    console.log(json);
 
     if (json.status) return constructSuccessResponse(json);
     else return constructFailureResponse(json.message);

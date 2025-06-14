@@ -66,7 +66,6 @@ export const destnationReducer = (state = initialState, action) => {
       const destinations = action.payload.result;
 
       const publishedItems = destinations.filter((item) => {
-        console.log(item?.status);
         return item.status === "complete";
       });
 

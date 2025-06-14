@@ -78,12 +78,8 @@ function Leads() {
   const handleDownload = async () => {
     const filterLeads = await getFilterLeads(filterStartDate, filterEndDate);
 
-    console.log(filterLeads);
-
     if (filterLeads.status === 200) {
       const filteredData = filterLeads?.data?.result;
-
-      console.log(filteredData);
 
       const flatData = filteredData?.map((item) => ({
         createdAt: formatDate(item.createdAt) || "",
@@ -338,8 +334,6 @@ function Leads() {
   useEffect(() => {
     dispatch(fetchLeadsRequest(currentPage));
   }, [location.pathname]);
-
-  console.log(leads);
 
   return (
     <>

@@ -55,7 +55,7 @@ function* fetchAllDestinations() {
     }
   } catch (error) {
     yield put(fetchAllDestinationsFailure(error.message));
-    console.log(error.message);
+
     // toast.error(error.message);
   }
 }
@@ -97,8 +97,6 @@ function* handleEditDestination(action) {
   try {
     const { id, destinationData } = action.payload;
     const response = yield call(setUpdateDestination, id, destinationData);
-
-    console.log(response);
 
     if (response.status === 200) {
       yield put(editDestinationSuccess(response.data));
