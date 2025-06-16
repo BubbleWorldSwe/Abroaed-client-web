@@ -153,7 +153,6 @@ const BlogsTable = ({
 
                     <td className="px-4 py-3 relative">
                       <div className="relative inline-block">
-
                         <button
                           className="focus:outline-none"
                           onClick={(e) => handleDropdownToggle(e, index)}
@@ -184,7 +183,7 @@ const BlogsTable = ({
                                       onClick={() => handleEditBlogs(blog)}
                                       className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                     >
-                                      <Edit2 className="w-4 h-4" />
+                                      <Edit3 className="w-4 h-4" />
                                       <span>Edit Blog</span>
                                     </button>
                                   </li>
@@ -203,8 +202,8 @@ const BlogsTable = ({
                                         }
                                         className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
-                                        <PaintbrushVerticalIcon className="w-4 h-4" />
-                                        <span>Save as Draft</span>
+                                        <Edit className="w-4 h-4" />
+                                        <span>Withdraw Page</span>
                                       </button>
                                     ) : (
                                       <button
@@ -220,8 +219,8 @@ const BlogsTable = ({
                                         }
                                         className="flex items-center gap-2 py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                       >
-                                        <PaintbrushVerticalIcon className="w-4 h-4" />
-                                        <span>Publish Blog</span>
+                                        <Edit className="w-4 h-4" />
+                                        <span>Publish Page</span>
                                       </button>
                                     )}
                                   </li>
