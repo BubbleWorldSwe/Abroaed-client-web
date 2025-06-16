@@ -29,7 +29,7 @@ function BlogsHome() {
         setBlogsCategory(filtered);
       }
     } catch (error) {
-      console.log("Error fetching categories", error);
+      console.log(error);
     }
   };
 
@@ -47,7 +47,7 @@ function BlogsHome() {
         setBlogs([]);
       }
     } catch (error) {
-      console.log("Error fetching blogs", error);
+      console.log(error);
     } finally {
       setIsLoading(false);
       setIsLoadMoreLoading(false);
@@ -70,7 +70,7 @@ function BlogsHome() {
         setBlogs([]);
       }
     } catch (error) {
-      console.log("Error fetching category blogs", error);
+      console.log(error);
     } finally {
       setIsLoading(false);
       setIsLoadMoreLoading(false);

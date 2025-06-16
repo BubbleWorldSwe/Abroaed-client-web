@@ -79,7 +79,7 @@ function CollegeResultForCountry({
                   />
                 ))
               ) : (
-                <p className="text-gray-500">No accommodations available.</p>
+                <p className="text-gray-500">No Colleges available.</p>
               )}
             </div>
           )}

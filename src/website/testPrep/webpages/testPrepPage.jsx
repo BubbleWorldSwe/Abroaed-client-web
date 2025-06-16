@@ -143,7 +143,6 @@ function TestPrepLayout() {
         data._id,
         paymentId
       );
-      console.log(prep);
 
       if (prep?.status === 200) {
         toast.success(prep?.message);

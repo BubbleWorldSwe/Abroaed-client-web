@@ -22,9 +22,7 @@ function StudentPreferenceDetails({ removeFromSavedPreferences }) {
   const activeData =
     activeTab === 0 ? colleges : activeTab === 1 ? courses : accommodations;
 
-  useEffect(() => {
-    console.log("savedPreferences changes");
-  }, [savedPreferences]);
+  useEffect(() => {}, [savedPreferences]);
 
   return (
     <div>

@@ -116,8 +116,6 @@ export const constructDeleteRequestOptionsWithPayload = (payload) => {
 
   var raw = JSON.stringify(payload);
 
-  console.log(raw);
-
   return {
     method: REQUEST_METHOD_DELETE,
     headers: requestHeaders,

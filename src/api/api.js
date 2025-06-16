@@ -57,7 +57,6 @@ export const getRoles = async () => {
 };
 
 export const getAdminDashboard = async (startDate, endDate, userId) => {
-  console.log(startDate, endDate, userId);
   try {
     const { adminToken } = store.getState().auth;
 
