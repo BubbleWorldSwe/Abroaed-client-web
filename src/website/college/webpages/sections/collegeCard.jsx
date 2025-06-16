@@ -24,7 +24,7 @@ const CollegeCard = ({
   return (
     <a
       href={`/college/${item._id}`}
-      className="w-full p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col md:flex-row overflow-hidden"
+      className="w-full p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-row overflow-hidden"
     >
       {/* Image Section */}
       <div className="w-20 h-16 flex-shrink-0">
@@ -61,7 +61,7 @@ const CollegeCard = ({
         {isLoggedInStudent && (
           <button
             onClick={(e) => {
-              e.preventDefault(); // Prevent link redirect when clicking bookmark
+              e.preventDefault();
               isSaved
                 ? removeFromSavedPreferences(savedItem._id)
                 : addToSavedPreferences("colleges", item?._id);
