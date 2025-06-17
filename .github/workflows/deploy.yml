@@ -3,7 +3,7 @@ name: Build and Deploy Frontend
 on:
   push:
     branches:
-      - mainline
+      - prod
 
 jobs:
   build-and-deploy:
